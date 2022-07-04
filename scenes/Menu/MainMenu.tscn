@@ -45,12 +45,12 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="NewGameButton" parent="VBoxContainer/CenterRow/Buttons" instance=ExtResource( 5 )]
-margin_top = 264.0
+margin_top = 236.0
 margin_right = 280.0
-margin_bottom = 309.0
+margin_bottom = 295.0
 
 [node name="LoadGameButton" parent="VBoxContainer/CenterRow/Buttons" instance=ExtResource( 2 )]
-margin_top = 313.0
+margin_top = 299.0
 margin_right = 280.0
 margin_bottom = 358.0
 scene_to_load = "res://scenes/Menu/LoadGame.tscn"
@@ -58,13 +58,13 @@ scene_to_load = "res://scenes/Menu/LoadGame.tscn"
 [node name="OptionsButton" parent="VBoxContainer/CenterRow/Buttons" instance=ExtResource( 3 )]
 margin_top = 362.0
 margin_right = 280.0
-margin_bottom = 407.0
+margin_bottom = 421.0
 scene_to_load = "res://scenes/Menu/Options.tscn"
 
 [node name="QuitGameButton" parent="VBoxContainer/CenterRow/Buttons" instance=ExtResource( 4 )]
-margin_top = 411.0
+margin_top = 425.0
 margin_right = 280.0
-margin_bottom = 456.0
+margin_bottom = 484.0
 
 [node name="FadeIn" parent="." instance=ExtResource( 6 )]
 visible = false

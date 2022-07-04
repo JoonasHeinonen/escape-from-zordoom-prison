@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://resources/fonts/rainyhearts.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scripts/Menu/MenuButton.gd" type="Script" id=2]
 [ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=3]
 
@@ -8,6 +7,5 @@
 margin_right = 1280.0
 margin_bottom = 51.0
 theme = ExtResource( 3 )
-custom_fonts/font = ExtResource( 1 )
 text = "label"
 script = ExtResource( 2 )
