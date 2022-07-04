@@ -4,4 +4,3 @@
 
 [node name="OptionsButton" instance=ExtResource( 1 )]
 text = "OPTIONS"
-scene_to_load = "res://scenes/Menu/Options.tscn"
