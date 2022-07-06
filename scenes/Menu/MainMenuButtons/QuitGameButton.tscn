@@ -4,3 +4,5 @@
 
 [node name="QuitGameButton" instance=ExtResource( 1 )]
 text = "QUIT GAME"
+
+[connection signal="pressed" from="." to="." method="_on_QuitGameButton_pressed"]
