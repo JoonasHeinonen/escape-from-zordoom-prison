@@ -4,4 +4,3 @@
 
 [node name="LoadGameButton" instance=ExtResource( 1 )]
 text = "LOAD GAME"
-scene_to_load = "res://scenes/Menu/LoadGame.tscn"

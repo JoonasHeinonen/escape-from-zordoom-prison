@@ -2,6 +2,10 @@ extends Button
 
 export (String) var scene_to_load
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	var index_button = self
+	index_button.grab_focus()
+
+# Quits the game.
+func _on_QuitGameButton_pressed():
+	get_tree().quit()
