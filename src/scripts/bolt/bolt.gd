@@ -10,7 +10,8 @@ var getMagnet=false
 func _ready():
 	pass # Replace with function body.
 
-
+#adding random number
+var random=RandomNumberGenerator.new()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -28,8 +29,10 @@ func _physics_process(delta):
 		for bod in bodies2:
 			#this add the bolt amount to the player
 			if bod.name=="player":
-				get_parent().get_node("player").score+=1
-				print(get_parent().get_node("player").score)
+				#makes sure that every number is random
+				random.randomize()
+				get_parent().get_node("player").bolt+=random.randi_range(10,100)
+				print(get_parent().get_node("player").bolt)
 				queue_free()
 			
 	

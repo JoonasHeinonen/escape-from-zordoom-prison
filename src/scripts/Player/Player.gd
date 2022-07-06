@@ -8,7 +8,7 @@ var velocity=Vector3(0,0,0)
 export var  speed=1
 var gravity=0
 var jump=5
-var score=0
+var bolt=0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
