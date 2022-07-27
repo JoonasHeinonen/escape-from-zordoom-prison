@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://resources/images/characters/angela_sheet_init_finished.png" type="Texture" id=3]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -14,6 +15,61 @@ albedo_texture = ExtResource( 2 )
 
 [sub_resource type="SphereShape" id=6]
 radius = 2.29378
+
+[sub_resource type="Animation" id=8]
+resource_name = "Angela_Still"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 0, 1, 0, 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Angela_Walk"
+length = 0.95
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 8, 10, 11, 12, 13, 14, 15, 16, 17, 18 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Angela_Still"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Angela_Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachine" id=13]
+states/Angela_Still/node = SubResource( 9 )
+states/Angela_Still/position = Vector2( 140, 37 )
+states/Angela_Walk/node = SubResource( 10 )
+states/Angela_Walk/position = Vector2( 331, 37 )
+transitions = [ "Angela_Still", "Angela_Walk", SubResource( 11 ), "Angela_Walk", "Angela_Still", SubResource( 12 ) ]
+start_node = "Angela_Still"
+graph_offset = Vector2( 11, -27 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
 [node name="player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0612217 )
@@ -29,6 +85,7 @@ transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
+visible = false
 mesh = SubResource( 2 )
 skeleton = NodePath("../CollisionShape")
 material/0 = SubResource( 3 )
@@ -38,3 +95,22 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="AreaPlayer"]
 shape = SubResource( 6 )
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+generate_lightmap = false
+pixel_size = 0.04
+shaded = true
+double_sided = false
+texture = ExtResource( 3 )
+hframes = 10
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Angela_Still = SubResource( 8 )
+anims/Angela_Walk = SubResource( 7 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 13 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 14 )
