@@ -51,7 +51,7 @@ material/0 = null
 shape = SubResource( 12 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="walls_floors"]
-transform = Transform( 4, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.31502, 0 )
+transform = Transform( 14, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2.315, 0 )
 mesh = SubResource( 9 )
 skeleton = NodePath("../..")
 material/0 = null

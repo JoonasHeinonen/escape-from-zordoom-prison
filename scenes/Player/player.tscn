@@ -32,6 +32,42 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 19 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D/SpotLight:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.221415, -0.0698602, 0.10579 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3D/SpotLight2:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.0157429, -0.446967, 0.10579 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite3D/SpotLight3:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.50632, -0.179795, 0.10579 ) ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Angela_Still"
@@ -49,6 +85,78 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 0, 0, 1, 0, 0, 1, 2 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D/SpotLight:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.115846, -0.281346, 0.10579 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3D/SpotLight2:translation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.382073, -0.547632, 0.10579 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite3D/SpotLight3:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0.235502, -0.54609, 0.10579 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite3D/SpotLight:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite3D/SpotLight2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprite3D/SpotLight3:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "Angela_Walk"
@@ -65,6 +173,66 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 8, 10, 11, 12, 13, 14, 15, 16, 17, 18 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite3D/SpotLight:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.377, -0.249, 0.106 ), Vector3( 0.14, -0.18, 0.106 ), Vector3( 0.06, -0.16, 0.106 ), Vector3( 0.18, -0.16, 0.106 ), Vector3( 0.22, -0.14, 0.106 ), Vector3( 0.06, -0.24, 0.106 ), Vector3( 0.18, -0.16, 0.106 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite3D/SpotLight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, false, true, false, false, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite3D/SpotLight2:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.3, -0.56, 0.106 ), Vector3( 0.12, -0.55, 0.106 ), Vector3( -0.3, -0.6, 0.106 ), Vector3( -0.5, -0.45, 0.106 ), Vector3( -0.3, -0.5, 0.106 ), Vector3( 0.22, -0.55, 0.106 ), Vector3( 0.24, -0.5, 0.106 ), Vector3( 0.38, -0.4, 0.106 ), Vector3( 0.25, -0.5, 0.106 ), Vector3( 0.325, -0.5, 0.106 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprite3D/SpotLight3:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0.13, -0.56, 0.106 ), Vector3( 0.45, -0.42, 0.106 ), Vector3( 0.34, -0.45, 0.106 ), Vector3( 0.38, -0.54, 0.106 ), Vector3( 0.33, -0.56, 0.106 ), Vector3( -0.12, -0.6, 0.106 ), Vector3( -0.35, -0.34, 0.106 ), Vector3( -0.15, -0.45, 0.106 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Sprite3D/SpotLight3:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false, true ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=16]
@@ -90,7 +258,7 @@ states/Angela_Fall/position = Vector2( 140, 123 )
 states/Angela_Still/node = SubResource( 9 )
 states/Angela_Still/position = Vector2( 140, 37 )
 states/Angela_Walk/node = SubResource( 10 )
-states/Angela_Walk/position = Vector2( 331, 37 )
+states/Angela_Walk/position = Vector2( 335, 37 )
 transitions = [ "Angela_Still", "Angela_Walk", SubResource( 11 ), "Angela_Walk", "Angela_Still", SubResource( 12 ), "Angela_Still", "Angela_Fall", SubResource( 17 ), "Angela_Fall", "Angela_Still", SubResource( 18 ) ]
 start_node = "Angela_Still"
 graph_offset = Vector2( 11, -27 )
@@ -129,7 +297,31 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 2
-frame = 2
+frame = 1
+
+[node name="SpotLight" type="SpotLight" parent="Sprite3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.221415, -0.0698602, 0.10579 )
+light_color = Color( 1, 0.482353, 0.482353, 1 )
+light_energy = 0.5
+light_indirect_energy = 0.5
+light_specular = 0.2
+spot_range = 0.43704
+
+[node name="SpotLight2" type="SpotLight" parent="Sprite3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0157429, -0.446967, 0.10579 )
+light_color = Color( 1, 0.482353, 0.482353, 1 )
+light_energy = 0.5
+light_indirect_energy = 0.5
+light_specular = 0.2
+spot_range = 0.43704
+
+[node name="SpotLight3" type="SpotLight" parent="Sprite3D"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50632, -0.179795, 0.10579 )
+light_color = Color( 1, 0.482353, 0.482353, 1 )
+light_energy = 0.5
+light_indirect_energy = 0.5
+light_specular = 0.2
+spot_range = 0.43704
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Angela_Fall = SubResource( 15 )
