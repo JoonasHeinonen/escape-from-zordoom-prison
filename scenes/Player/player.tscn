@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -15,6 +15,23 @@ albedo_texture = ExtResource( 2 )
 
 [sub_resource type="SphereShape" id=6]
 radius = 2.29378
+
+[sub_resource type="Animation" id=15]
+resource_name = "Angela_Fall"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 19 ]
+}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Angela_Still"
@@ -50,6 +67,9 @@ tracks/0/keys = {
 "values": [ 8, 10, 11, 12, 13, 14, 15, 16, 17, 18 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=16]
+animation = "Angela_Fall"
+
 [sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Angela_Still"
 
@@ -60,12 +80,18 @@ animation = "Angela_Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=12]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
 [sub_resource type="AnimationNodeStateMachine" id=13]
+states/Angela_Fall/node = SubResource( 16 )
+states/Angela_Fall/position = Vector2( 140, 123 )
 states/Angela_Still/node = SubResource( 9 )
 states/Angela_Still/position = Vector2( 140, 37 )
 states/Angela_Walk/node = SubResource( 10 )
 states/Angela_Walk/position = Vector2( 331, 37 )
-transitions = [ "Angela_Still", "Angela_Walk", SubResource( 11 ), "Angela_Walk", "Angela_Still", SubResource( 12 ) ]
+transitions = [ "Angela_Still", "Angela_Walk", SubResource( 11 ), "Angela_Walk", "Angela_Still", SubResource( 12 ), "Angela_Still", "Angela_Fall", SubResource( 17 ), "Angela_Fall", "Angela_Still", SubResource( 18 ) ]
 start_node = "Angela_Still"
 graph_offset = Vector2( 11, -27 )
 
@@ -81,7 +107,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.13789 )
 current = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -104,8 +129,10 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 2
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Angela_Fall = SubResource( 15 )
 anims/Angela_Still = SubResource( 8 )
 anims/Angela_Walk = SubResource( 7 )
 
