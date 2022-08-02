@@ -14,6 +14,10 @@ config/name="Escape From Zordoom Prison"
 run/main_scene="res://scenes/Menu/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globle="*res://src/scripts/Globle.gd"
+
 [display]
 
 window/size/width=1280
