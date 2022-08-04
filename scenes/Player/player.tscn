@@ -297,10 +297,9 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 2
-frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.221415, -0.0698602, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -308,7 +307,7 @@ light_specular = 0.2
 spot_range = 0.43704
 
 [node name="SpotLight2" type="SpotLight" parent="Sprite3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0157429, -0.446967, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382073, -0.547632, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -316,7 +315,7 @@ light_specular = 0.2
 spot_range = 0.43704
 
 [node name="SpotLight3" type="SpotLight" parent="Sprite3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50632, -0.179795, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235502, -0.54609, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
