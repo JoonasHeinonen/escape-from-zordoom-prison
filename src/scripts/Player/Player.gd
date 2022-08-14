@@ -35,10 +35,10 @@ func _physics_process(delta):
 			state_machine.travel("Angela_Still")
 		if is_on_floor() and Input.is_action_just_pressed("jump"):
 			velocity.y = jump
-		if Input.is_key_pressed(KEY_I):
+		if Input.is_action_just_released("ui_home"):
 			on_inventory = true
 	elif on_inventory == true:
-		if Input.is_key_pressed(KEY_I):
+		if Input.is_action_just_released("ui_home"):
 			on_inventory = false
 	
 	if not is_on_floor():
@@ -49,7 +49,6 @@ func _physics_process(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	print(velocity.x)
 	var y_position = self.global_transform.origin.y
 	
 	# Fall death.

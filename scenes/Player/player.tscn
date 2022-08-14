@@ -301,6 +301,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 2
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -357,8 +358,10 @@ margin_right = 140.0
 margin_bottom = 140.0
 
 [node name="0" type="Control" parent="PlayerUI/InventoryContainer"]
-margin_right = 70.0
-margin_bottom = 70.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 90.0
+margin_bottom = 90.0
 theme = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
@@ -388,8 +391,10 @@ text = "0"
 [node name="2" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -70.0
-margin_bottom = 70.0
+margin_left = -90.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 90.0
 theme = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
@@ -437,8 +442,10 @@ text = "0"
 [node name="5" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -70.0
-margin_right = 70.0
+margin_left = 20.0
+margin_top = -90.0
+margin_right = 90.0
+margin_bottom = -20.0
 theme = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
@@ -472,8 +479,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -70.0
-margin_top = -70.0
+margin_left = -90.0
+margin_top = -90.0
+margin_right = -20.0
+margin_bottom = -20.0
 theme = ExtResource( 4 )
 __meta__ = {
 "_editor_description_": ""
