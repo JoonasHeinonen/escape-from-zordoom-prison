@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
 [ext_resource path="res://resources/images/characters/angela_sheet_init_finished.png" type="Texture" id=3]
+[ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=4]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -265,6 +266,9 @@ graph_offset = Vector2( 11, -27 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
+[sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 0, 0, 0, 0.392157 )
+
 [node name="player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0612217 )
 script = ExtResource( 1 )
@@ -332,3 +336,158 @@ tree_root = SubResource( 13 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 14 )
+
+[node name="PlayerUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="PlayerUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_styles/panel = SubResource( 19 )
+
+[node name="InventoryContainer" type="Control" parent="PlayerUI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -140.0
+margin_right = 140.0
+margin_bottom = 140.0
+
+[node name="0" type="Control" parent="PlayerUI/InventoryContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 90.0
+margin_bottom = 90.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+
+[node name="1" type="Control" parent="PlayerUI/InventoryContainer"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -35.0
+margin_right = 35.0
+margin_bottom = 70.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+
+[node name="2" type="Control" parent="PlayerUI/InventoryContainer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -90.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 90.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+
+[node name="3" type="Control" parent="PlayerUI/InventoryContainer"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -35.0
+margin_right = 70.0
+margin_bottom = 35.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/3"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+
+[node name="4" type="Control" parent="PlayerUI/InventoryContainer"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -70.0
+margin_top = -35.0
+margin_bottom = 35.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+
+[node name="5" type="Control" parent="PlayerUI/InventoryContainer"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -90.0
+margin_right = 90.0
+margin_bottom = -20.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/5"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+
+[node name="6" type="Control" parent="PlayerUI/InventoryContainer"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -35.0
+margin_top = -70.0
+margin_right = 35.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/6"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
+
+[node name="7" type="Control" parent="PlayerUI/InventoryContainer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -90.0
+margin_top = -90.0
+margin_right = -20.0
+margin_bottom = -20.0
+theme = ExtResource( 4 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/7"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "0"
