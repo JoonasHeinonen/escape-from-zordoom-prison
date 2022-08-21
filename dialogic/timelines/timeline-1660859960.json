@@ -1,0 +1,79 @@
+{
+	"events": [
+		{
+			"character": "character-1660859944.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "hello!"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1660859986.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1660859986.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "What are you doing?"
+		},
+		{
+			"character": "character-1660859944.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "you know just being a test dummy for this sick game!"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1660859986.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": true,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1660859986.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ok"
+		},
+		{
+			"character": "character-1660859944.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "ok enjoy your stay\"!\""
+		}
+	],
+	"metadata": {
+		"dialogic-version": "1.4.2 - Dev",
+		"file": "timeline-1660859960.json",
+		"name": "timeline-1"
+	}
+}
