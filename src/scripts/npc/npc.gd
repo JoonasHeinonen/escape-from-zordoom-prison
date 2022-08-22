@@ -41,7 +41,7 @@ func _input(event):
 						print(active)
 				value+=1
 				if value>4 and active==true:
-					value=3
+					value=4
 					active=false
 					
 				
