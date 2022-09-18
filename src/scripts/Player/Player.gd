@@ -1,18 +1,24 @@
 extends KinematicBody
 
-# Initializes the animation state machine.
+onready var projectile = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
+
+export var speed = 1
+
 var state_machine
 
 var velocity = Vector3(0,0,0)
-export var speed = 1
+
 var gravity = 4
 var jump = 3
 var bolt = 0
+
 var alive = true
 var on_inventory = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
+	$ShootTimer.start()
 	state_machine = $AnimationTree.get("parameters/playback")
 
 func _physics_process(delta):
@@ -60,6 +66,13 @@ func _process(delta):
 	else:
 		$PlayerUI/InventoryContainer.visible = false
 
+# Limits the shooting rate.
+func _on_ShootTimer_timeout():
+	print("Shoot shoot shoot!")
+	if Input.is_action_pressed("ui_ranged_attack"):
+		shoot()
+		$ShootTimer.start()
+
 # Walking functionality.
 func walk(vel, scale, weapon_translation):
 	state_machine.travel("Angela_Walk")
@@ -68,9 +81,16 @@ func walk(vel, scale, weapon_translation):
 	$WeaponPlaceHolder.scale.x = scale
 	$WeaponPlaceHolder.translation.x = weapon_translation
 
-# Shooting functionality.
+# Perform the ranged combat.
 func ranged_combat():
 	if Input.is_action_pressed("ui_ranged_attack"):
-		$WeaponPlaceHolder.visible = true
+		$WeaponPlaceHolder.visible = true	
 	else:
 		$WeaponPlaceHolder.visible = false
+
+# Shooting functionality.
+func shoot():
+	var bullet = projectile.instance()
+	bullet.translation.x = 3
+	get_parent().add_child(bullet)
+	bullet.global_transform = $WeaponPlaceHolder/WeaponMuzzle.global_transform

@@ -1,7 +1,5 @@
 extends Area
 
-
-
 var getMagnet=false
 #var position=Vector3()
 

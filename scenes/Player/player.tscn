@@ -302,7 +302,6 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 2
-frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -500,3 +499,10 @@ pixel_size = 0.04
 shaded = true
 double_sided = false
 texture = ExtResource( 5 )
+
+[node name="WeaponMuzzle" type="Position3D" parent="WeaponPlaceHolder"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.708276, 0.153141, 0 )
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true

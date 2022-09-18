@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://resources/images/effects/projectile_effects/projectile_blaster_effect.png" type="Texture" id=1]
+[ext_resource path="res://src/scripts/effects/bullets/blaster_projectile_effect.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "ProjectileEffect"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 7, 6, 5, 4, 3, 2, 1, 0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "ProjectileEffect"
+
+[sub_resource type="AnimationNodeStateMachine" id=3]
+states/ProjectileEffect/node = SubResource( 5 )
+states/ProjectileEffect/position = Vector2( 298, 109 )
+start_node = "ProjectileEffect"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+
+[node name="Spatial" type="KinematicBody"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.1, 0, 0, 0, 0.05, 0, 0, 0, 0.1, 0, 0, 0 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+double_sided = false
+texture = ExtResource( 1 )
+hframes = 8
+frame = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+playback_speed = 4.0
+anims/ProjectileEffect = SubResource( 2 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 3 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 4 )
