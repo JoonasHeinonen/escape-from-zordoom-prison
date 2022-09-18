@@ -20,16 +20,12 @@ func _physics_process(delta):
 	
 	if alive == true && on_inventory == false:
 		if Input.is_action_pressed("ui_right") and  Input.is_action_pressed("ui_left"):
-			state_machine.travel("Angela_Still")		
+			state_machine.travel("Angela_Still")
 			velocity.x = 0
 		elif Input.is_action_pressed("ui_right"):
-			state_machine.travel("Angela_Walk")		
-			velocity.x = 5
-			$Sprite3D.scale.x = 1
+			walk(5, 1, 1)
 		elif Input.is_action_pressed("ui_left"):
-			state_machine.travel("Angela_Walk")		
-			velocity.x = -5
-			$Sprite3D.scale.x = -1
+			walk(-5, -1, -1)
 		else:
 			velocity.x = lerp(velocity.x,0,0.1)
 			state_machine.travel("Angela_Still")
@@ -37,6 +33,7 @@ func _physics_process(delta):
 			velocity.y = jump
 		if Input.is_action_just_released("ui_home"):
 			on_inventory = true
+		ranged_combat()
 	elif on_inventory == true:
 		if Input.is_action_just_released("ui_home"):
 			on_inventory = false
@@ -62,3 +59,18 @@ func _process(delta):
 		$PlayerUI/InventoryContainer.visible = true
 	else:
 		$PlayerUI/InventoryContainer.visible = false
+
+# Walking functionality.
+func walk(vel, scale, weapon_translation):
+	state_machine.travel("Angela_Walk")
+	velocity.x = vel
+	$Sprite3D.scale.x = scale
+	$WeaponPlaceHolder.scale.x = scale
+	$WeaponPlaceHolder.translation.x = weapon_translation
+
+# Shooting functionality.
+func ranged_combat():
+	if Input.is_action_pressed("ui_ranged_attack"):
+		$WeaponPlaceHolder.visible = true
+	else:
+		$WeaponPlaceHolder.visible = false
