@@ -1,7 +1,5 @@
 extends KinematicBody
 
-onready var anim_player = $AnimationPlayer
-
 var speed = -1
 var velocity = Vector3(0,0,0)
 

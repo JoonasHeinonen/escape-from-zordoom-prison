@@ -68,7 +68,6 @@ func _process(delta):
 
 # Limits the shooting rate.
 func _on_ShootTimer_timeout():
-	print("Shoot shoot shoot!")
 	if Input.is_action_pressed("ui_ranged_attack"):
 		shoot()
 		$ShootTimer.start()
@@ -84,7 +83,7 @@ func walk(vel, scale, weapon_translation):
 # Perform the ranged combat.
 func ranged_combat():
 	if Input.is_action_pressed("ui_ranged_attack"):
-		$WeaponPlaceHolder.visible = true	
+		$WeaponPlaceHolder.visible = true
 	else:
 		$WeaponPlaceHolder.visible = false
 

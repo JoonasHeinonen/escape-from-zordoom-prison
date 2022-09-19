@@ -112,6 +112,17 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="walls_floors/MeshInstance6/StaticBody"]
 shape = SubResource( 12 )
 
+[node name="MeshInstance7" type="MeshInstance" parent="walls_floors"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4318, 2.07162, 0 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="StaticBody" type="StaticBody" parent="walls_floors/MeshInstance7"]
+
+[node name="CollisionShape" type="CollisionShape" parent="walls_floors/MeshInstance7/StaticBody"]
+shape = SubResource( 12 )
+
 [node name="player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 
