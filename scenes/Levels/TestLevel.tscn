@@ -1,13 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Collectibles/bolt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/UI/BoltCounter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=4]
-
-[sub_resource type="CapsuleMesh" id=13]
-
-[sub_resource type="BoxShape" id=14]
+[ext_resource path="res://scenes/Blocks & World/paris_block_house.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Environment" id=10]
 background_energy = 0.0
@@ -16,6 +13,10 @@ background_energy = 0.0
 
 [sub_resource type="CubeMesh" id=4]
 
+[sub_resource type="CapsuleMesh" id=13]
+
+[sub_resource type="BoxShape" id=14]
+
 [sub_resource type="CubeMesh" id=9]
 
 [sub_resource type="BoxShape" id=12]
@@ -23,6 +24,57 @@ background_energy = 0.0
 [sub_resource type="BoxShape" id=11]
 
 [node name="testLevel" type="Spatial"]
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="bolt2" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8738, 2.08283, 0 )
+
+[node name="bolt3" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.79584, 0.08, 0 )
+
+[node name="bolt" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64725, 0, 0 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 10 )
+
+[node name="SpotLight" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
+light_energy = 3.533
+
+[node name="SpotLight2" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.76275, 0, 6.23114 )
+light_color = Color( 0.603922, 0.917647, 0.933333, 1 )
+light_energy = 3.533
+spot_range = 8.34558
+
+[node name="SpotLight3" type="SpotLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72138, 1.85745, 2.17397 )
+light_color = Color( 0.603922, 0.917647, 0.933333, 1 )
+light_energy = 3.533
+spot_range = 8.34558
+
+[node name="Sun" type="DirectionalLight" parent="WorldEnvironment"]
+transform = Transform( 1, 0, 0, 0, 0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 6.12036, 16.3808 )
+light_energy = 0.01
+
+[node name="background" type="Node" parent="."]
+
+[node name="MeshInstance2" type="MeshInstance" parent="background"]
+transform = Transform( 3, 0, 0, 0, 1.915, 0, 0, 0, 1, 4.07, 0.750103, -11.108 )
+mesh = SubResource( 8 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="MeshInstance" type="MeshInstance" parent="background"]
+transform = Transform( 2, 0, 0, 0, 9.763, 0, 0, 0, 1, 9.06, 8.77856, -10.7286 )
+mesh = SubResource( 4 )
+skeleton = NodePath("../../player/Camera")
+material/0 = null
+
+[node name="BoltCounter" parent="." instance=ExtResource( 3 )]
 
 [node name="npc" type="Node" parent="."]
 
@@ -39,34 +91,10 @@ material/0 = null
 transform = Transform( 1.488, 0, 0, 0, 3.171, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 14 )
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 10 )
-
-[node name="SpotLight" type="SpotLight" parent="WorldEnvironment"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
-light_energy = 3.533
-
-[node name="SpotLight2" type="SpotLight" parent="WorldEnvironment"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.76275, 0, 6.23114 )
-light_color = Color( 0.603922, 0.917647, 0.933333, 1 )
-light_energy = 3.533
-spot_range = 8.34558
-
-[node name="background" type="Node" parent="."]
-
-[node name="MeshInstance2" type="MeshInstance" parent="background"]
-transform = Transform( 3, 0, 0, 0, 1.915, 0, 0, 0, 1, 4.07, 0.750103, -11.108 )
-mesh = SubResource( 8 )
-skeleton = NodePath("../..")
-material/0 = null
-
-[node name="MeshInstance" type="MeshInstance" parent="background"]
-transform = Transform( 2, 0, 0, 0, 9.763, 0, 0, 0, 1, 9.06, 8.77856, -10.7286 )
-mesh = SubResource( 4 )
-skeleton = NodePath("../../player/Camera")
-material/0 = null
-
 [node name="walls_floors" type="Node" parent="."]
+
+[node name="paris_block_house" parent="walls_floors" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.17299, -1.55964, 1.37035 )
 
 [node name="MeshInstance3" type="MeshInstance" parent="walls_floors"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60321, 0 )
@@ -80,7 +108,7 @@ material/0 = null
 shape = SubResource( 12 )
 
 [node name="MeshInstance4" type="MeshInstance" parent="walls_floors"]
-transform = Transform( 14, 0, 0, 0, 1, 0, 0, 0, 1, 10, -2.315, 0 )
+transform = Transform( 14, 0, 0, 0, 1, 0, 0, 0, 1, 48.5888, -2.03107, 0 )
 mesh = SubResource( 9 )
 skeleton = NodePath("../..")
 material/0 = null
@@ -90,19 +118,8 @@ material/0 = null
 [node name="CollisionShape" type="CollisionShape" parent="walls_floors/MeshInstance4/StaticBody"]
 shape = SubResource( 11 )
 
-[node name="MeshInstance5" type="MeshInstance" parent="walls_floors"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -2.315, 0 )
-mesh = SubResource( 9 )
-skeleton = NodePath("../..")
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="walls_floors/MeshInstance5"]
-
-[node name="CollisionShape" type="CollisionShape" parent="walls_floors/MeshInstance5/StaticBody"]
-shape = SubResource( 12 )
-
 [node name="MeshInstance6" type="MeshInstance" parent="walls_floors"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1.25, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1.57455, 0 )
 mesh = SubResource( 9 )
 skeleton = NodePath("../..")
 material/0 = null
@@ -111,28 +128,3 @@ material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="walls_floors/MeshInstance6/StaticBody"]
 shape = SubResource( 12 )
-
-[node name="MeshInstance7" type="MeshInstance" parent="walls_floors"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4318, 2.07162, 0 )
-mesh = SubResource( 9 )
-skeleton = NodePath("../..")
-material/0 = null
-
-[node name="StaticBody" type="StaticBody" parent="walls_floors/MeshInstance7"]
-
-[node name="CollisionShape" type="CollisionShape" parent="walls_floors/MeshInstance7/StaticBody"]
-shape = SubResource( 12 )
-
-[node name="player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
-
-[node name="bolt2" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8738, 1.09906, 0 )
-
-[node name="bolt3" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.79584, 0.08, 0 )
-
-[node name="bolt" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64725, 0, 0 )
-
-[node name="BoltCounter" parent="." instance=ExtResource( 3 )]
