@@ -25,7 +25,7 @@ func _ready():
 	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
 	$ShootTimer.start()
 	state_machine = $AnimationTree.get("parameters/playback")
-	walk(0, 1, (-1) * 0.3, -0.667)
+	walk(0, 1, (-1) * 0.1, -2)
 
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
@@ -35,9 +35,9 @@ func _physics_process(delta):
 			state_machine.travel("Angela_Still")
 			velocity.x = 0
 		elif Input.is_action_pressed("ui_right"):
-			walk(5, 1, (-1) * 0.3, -0.667)
+			walk(5, 1, (-1) * 0.1, -2)
 		elif Input.is_action_pressed("ui_left"):
-			walk(-5, -1, 0.3, 0.667)
+			walk(-5, -1, 0.1, 2)
 		else:
 			velocity.x = lerp(velocity.x,0,0.1)
 			state_machine.travel("Angela_Still")
