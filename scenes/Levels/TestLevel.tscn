@@ -26,7 +26,11 @@ background_energy = 0.0
 [node name="testLevel" type="Spatial"]
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 16.3872, 0 )
+axis_lock_motion_x = false
+axis_lock_motion_y = false
+move_lock_x = false
+move_lock_y = false
 
 [node name="bolt2" parent="." instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8738, 2.08283, 0 )

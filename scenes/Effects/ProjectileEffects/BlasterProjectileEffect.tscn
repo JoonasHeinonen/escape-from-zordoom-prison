@@ -42,10 +42,9 @@ disabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
-double_sided = false
 texture = ExtResource( 1 )
 hframes = 8
-frame = 2
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_speed = 4.0
