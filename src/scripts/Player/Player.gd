@@ -25,6 +25,7 @@ func _ready():
 	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
 	$ShootTimer.start()
 	state_machine = $AnimationTree.get("parameters/playback")
+	walk(0, 1, (-1) * 0.3, -0.667)
 
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
@@ -108,9 +109,5 @@ func shoot():
 # Used to debug the rotation values.
 func debug_rotation_values(x, y, z):
 	var values = "Rotation values: %s %s %s."	
-	var args = values % [
-		$MeshInstance.rotation.x,
-		$MeshInstance.rotation.y,
-		$MeshInstance.rotation.z
-	]
+	var args = values % [x, y, z]
 	print(args)

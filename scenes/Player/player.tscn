@@ -377,12 +377,12 @@ light_specular = 0.2
 spot_range = 0.43704
 
 [node name="MeshInstance" type="MeshInstance" parent="Sprite3D"]
-transform = Transform( 0.3, 2.62268e-08, 0, 2.62268e-08, -0.3, 0, 0, 0, 1, 0, 0, -0.139 )
+transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
 mesh = SubResource( 21 )
 material/0 = null
 
 [node name="HandInstance" type="MeshInstance" parent="Sprite3D/MeshInstance"]
-transform = Transform( -2.91555e-08, -0.667, 0, -0.667, 2.91555e-08, 0, 0, 0, 1, 0.311091, -0.00754362, 0 )
+transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0.311091, -0.00754362, 0 )
 mesh = SubResource( 20 )
 skeleton = NodePath("../..")
 material/0 = null
