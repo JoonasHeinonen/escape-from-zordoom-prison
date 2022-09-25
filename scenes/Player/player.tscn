@@ -75,18 +75,6 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector3( 0.50632, -0.179795, 0.10579 ) ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite3D/MeshInstance/HandInstance:translation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0.498534, 0.182796, 0 ) ]
-}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Angela_Still"
@@ -176,18 +164,6 @@ tracks/6/keys = {
 "update": 1,
 "values": [ true ]
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath("Sprite3D/MeshInstance/HandInstance:translation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0.311091, -0.00754362, 0 ) ]
-}
 
 [sub_resource type="Animation" id=7]
 resource_name = "Angela_Walk"
@@ -265,18 +241,6 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false, true, true, false, true ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite3D/MeshInstance/HandInstance:translation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0.508609, -0.00754362, 0 ) ]
-}
 
 [sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Angela_Fall"
@@ -351,6 +315,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 2
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -382,7 +347,7 @@ mesh = SubResource( 21 )
 material/0 = null
 
 [node name="HandInstance" type="MeshInstance" parent="Sprite3D/MeshInstance"]
-transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0.311091, -0.00754362, 0 )
+transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0, -1.25, 0.0236015 )
 mesh = SubResource( 20 )
 skeleton = NodePath("../..")
 material/0 = null
@@ -394,7 +359,7 @@ double_sided = false
 texture = ExtResource( 6 )
 
 [node name="WeaponPlaceHolder" type="Sprite3D" parent="Sprite3D/MeshInstance/HandInstance/Hand"]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 1, 0.173, 0.0375, 0.01 )
+transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
 pixel_size = 0.04
 shaded = true
 double_sided = false
