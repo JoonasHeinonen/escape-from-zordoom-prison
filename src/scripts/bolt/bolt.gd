@@ -26,7 +26,7 @@ func _physics_process(delta):
 				var countBoults=get_parent().get_node("player").bolt+random.randi_range(10,100)
 				#grabes the bolt amout
 				Globle.bolts+=countBoults
-				print(Globle.bolts)
+				# print(Globle.bolts)
 			
 				queue_free()
 			

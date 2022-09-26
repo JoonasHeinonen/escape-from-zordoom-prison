@@ -52,10 +52,9 @@ disabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
-double_sided = false
 texture = ExtResource( 1 )
 hframes = 5
-frame = 3
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/BlasterProjectileExplosion = SubResource( 4 )
@@ -68,4 +67,4 @@ parameters/playback = SubResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409 )
-omni_range = 0.903043
+omni_range = 0.283651

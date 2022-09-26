@@ -1,10 +1,11 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://resources/images/characters/angela_sheet_init_finished.png" type="Texture" id=3]
+[ext_resource path="res://resources/images/characters/angela_sheet_init_finished_holster_weapon.png" type="Texture" id=3]
 [ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=4]
 [ext_resource path="res://resources/images/weapons/edge_blaster.png" type="Texture" id=5]
+[ext_resource path="res://resources/images/characters/angela_weapon.png" type="Texture" id=6]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -17,6 +18,10 @@ albedo_texture = ExtResource( 2 )
 
 [sub_resource type="SphereShape" id=6]
 radius = 2.29378
+
+[sub_resource type="QuadMesh" id=21]
+
+[sub_resource type="PointMesh" id=20]
 
 [sub_resource type="Animation" id=15]
 resource_name = "Angela_Fall"
@@ -272,6 +277,10 @@ bg_color = Color( 0, 0, 0, 0.392157 )
 
 [node name="player" type="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0612217 )
+axis_lock_motion_x = true
+axis_lock_motion_y = true
+move_lock_x = true
+move_lock_y = true
 script = ExtResource( 1 )
 speed = 200
 
@@ -280,6 +289,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.13789 )
 current = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 5 )
+
+[node name="ShootingRaycast" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.81054 )
 shape = SubResource( 5 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -302,6 +315,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 2
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -326,6 +340,33 @@ light_energy = 0.5
 light_indirect_energy = 0.5
 light_specular = 0.2
 spot_range = 0.43704
+
+[node name="MeshInstance" type="MeshInstance" parent="Sprite3D"]
+transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
+mesh = SubResource( 21 )
+material/0 = null
+
+[node name="HandInstance" type="MeshInstance" parent="Sprite3D/MeshInstance"]
+transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0, -1.25, 0.0236015 )
+mesh = SubResource( 20 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="Hand" type="Sprite3D" parent="Sprite3D/MeshInstance/HandInstance"]
+transform = Transform( 20, 1.13687e-13, 0, -1.13687e-13, 20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
+shaded = true
+double_sided = false
+texture = ExtResource( 6 )
+
+[node name="WeaponPlaceHolder" type="Sprite3D" parent="Sprite3D/MeshInstance/HandInstance/Hand"]
+transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
+pixel_size = 0.04
+shaded = true
+double_sided = false
+texture = ExtResource( 5 )
+
+[node name="WeaponMuzzle" type="Position3D" parent="Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Angela_Fall = SubResource( 15 )
@@ -493,15 +534,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 text = "0"
 
-[node name="WeaponPlaceHolder" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.15, 0 )
-pixel_size = 0.04
-shaded = true
-double_sided = false
-texture = ExtResource( 5 )
+[node name="Node" type="Node" parent="."]
 
-[node name="WeaponMuzzle" type="Position3D" parent="WeaponPlaceHolder"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.708276, 0.153141, 0 )
+[node name="Node2" type="Node" parent="."]
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.5
