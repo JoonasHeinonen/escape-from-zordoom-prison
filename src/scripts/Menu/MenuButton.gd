@@ -9,3 +9,7 @@ func _ready():
 # Quits the game.
 func _on_QuitGameButton_pressed():
 	get_tree().quit()
+
+# Set the label for a menu button.
+func set_label(replace_text = $MenuButton.text):
+	self.text = replace_text
