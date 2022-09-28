@@ -52,6 +52,10 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		state_machine.travel("Angela_Fall")
+	
+	# Return to the main menu.
+	if Input.is_action_just_pressed("ui_esc"):
+		get_tree().change_scene("res://scenes/Menu/MainMenu.tscn")
 
 	move_and_slide(velocity,Vector3.UP)
 
