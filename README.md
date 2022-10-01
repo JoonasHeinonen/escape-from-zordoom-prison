@@ -6,14 +6,16 @@ Escape from Zordoom Prison is a Godot-based project, 2.5 side-scrolling action-a
 
 To clone the repository, use the HTTP-based command:
 
-`git clone https://github.com/JoonasHeinonen/escape-from-zordoom-prison zordoom_escape`
+```git
+git clone https://github.com/JoonasHeinonen/escape-from-zordoom-prison zordoom_escape
+```
 
 To import the project into Godot, open your Godot Engine's project manager. Click import, this will prompt you the folder location. Enter the folder location of the Zordoom instance. Click `Import & Edit` after the manager detects the correct Godot instance. Let the import process to finish and you are good to go!
 
 ## Version information
 
 Currently, running on the following Godot version:
-|                          |                          |
+| Project                  | Version                  |
 | ------------------------ | ------------------------ |
 | Godot                    | 3.4.4 (Stable, official) |
 
