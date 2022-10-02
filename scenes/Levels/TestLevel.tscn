@@ -63,7 +63,7 @@ spot_range = 8.34558
 
 [node name="Sun" type="DirectionalLight" parent="WorldEnvironment"]
 transform = Transform( 1, 0, 0, 0, 0.987688, 0.156434, 0, -0.156434, 0.987688, 0, 6.12036, 16.3808 )
-light_energy = 0.01
+light_energy = 0.4
 
 [node name="background" type="Node" parent="."]
 
@@ -140,3 +140,12 @@ shape = SubResource( 12 )
 
 [node name="BoltCrate" parent="destructibles/crates" instance=ExtResource( 6 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -13, 0.08, 0 )
+
+[node name="BoltCrate2" parent="destructibles/crates" instance=ExtResource( 6 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.48396, -1.11023, 0 )
+
+[node name="BoltCrate3" parent="destructibles/crates" instance=ExtResource( 6 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.5761, -1.11023, 0 )
+
+[node name="BoltCrate4" parent="destructibles/crates" instance=ExtResource( 6 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.03642, -0.381383, 0 )
