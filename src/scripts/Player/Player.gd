@@ -11,7 +11,7 @@ var state_machine
 var velocity = Vector3(0,0,0)
 
 var gravity = 4
-var jump = 3
+var jump = 4
 var bolt = 0
 
 var alive = true
