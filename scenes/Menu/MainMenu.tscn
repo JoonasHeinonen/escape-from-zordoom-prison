@@ -48,6 +48,8 @@ alignment = 1
 margin_top = 236.0
 margin_right = 280.0
 margin_bottom = 295.0
+text = "SELECT LEVEL"
+scene_to_load = "res://scenes/Menu/LevelView.tscn"
 
 [node name="LoadGameButton" parent="VBoxContainer/CenterRow/Buttons" instance=ExtResource( 2 )]
 margin_top = 299.0
