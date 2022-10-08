@@ -1,7 +1,5 @@
 extends Control
 
-var scene_path_to_load
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	button_focus()
@@ -10,9 +8,7 @@ func _ready():
 
 # Loads the scene defined to a particular button.
 func _on_Button_pressed(scene_to_load):
-	scene_path_to_load = scene_to_load
-	$FadeIn.show()
-	$FadeIn.fade_in()
+	get_tree().change_scene(scene_to_load)
 
 # Sets the focused button.
 func button_focus():
@@ -21,4 +17,4 @@ func button_focus():
 
 # Run when FadeIn fade is finished.
 func _on_FadeIn_fade_finished():
-	get_tree().change_scene(scene_path_to_load)
+	pass # Leave this empty, for now.
