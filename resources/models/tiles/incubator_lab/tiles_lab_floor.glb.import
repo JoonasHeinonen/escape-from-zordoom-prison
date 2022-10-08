@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/tiles_wall_ceiling.glb-b05b37f4790ccff2de2c544f233c4e01.scn"
+path="res://.import/tiles_lab_floor.glb-d285488ec075a9ae5dfb7d12144bb716.scn"
 
 [deps]
 
-source_file="res://resources/models/tiles/incubator_lab/tiles_wall_ceiling.glb"
-dest_files=[ "res://.import/tiles_wall_ceiling.glb-b05b37f4790ccff2de2c544f233c4e01.scn" ]
+source_file="res://resources/models/tiles/incubator_lab/tiles_lab_floor.glb"
+dest_files=[ "res://.import/tiles_lab_floor.glb-d285488ec075a9ae5dfb7d12144bb716.scn" ]
 
 [params]
 
