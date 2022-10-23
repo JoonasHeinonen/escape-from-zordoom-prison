@@ -398,7 +398,7 @@ margin_top = -140.0
 margin_right = 140.0
 margin_bottom = 140.0
 
-[node name="0" type="Control" parent="PlayerUI/InventoryContainer"]
+[node name="Button_0" type="Control" parent="PlayerUI/InventoryContainer"]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 90.0
@@ -408,12 +408,12 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/0"]
+[node name="button_0" type="Button" parent="PlayerUI/InventoryContainer/Button_0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "0"
 
-[node name="1" type="Control" parent="PlayerUI/InventoryContainer"]
+[node name="Button_1" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -35.0
@@ -424,12 +424,12 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/1"]
+[node name="button_1" type="Button" parent="PlayerUI/InventoryContainer/Button_1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "0"
 
-[node name="2" type="Control" parent="PlayerUI/InventoryContainer"]
+[node name="Button_2" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -90.0
@@ -441,12 +441,12 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/2"]
+[node name="button_2" type="Button" parent="PlayerUI/InventoryContainer/Button_2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "0"
 
-[node name="3" type="Control" parent="PlayerUI/InventoryContainer"]
+[node name="Button_3" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_top = -35.0
@@ -457,12 +457,12 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/3"]
+[node name="button_3" type="Button" parent="PlayerUI/InventoryContainer/Button_3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "0"
 
-[node name="4" type="Control" parent="PlayerUI/InventoryContainer"]
+[node name="Button_4" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -475,12 +475,12 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/4"]
+[node name="button_4" type="Button" parent="PlayerUI/InventoryContainer/Button_4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "0"
 
-[node name="5" type="Control" parent="PlayerUI/InventoryContainer"]
+[node name="Button_5" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
@@ -492,12 +492,12 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/5"]
+[node name="button_5" type="Button" parent="PlayerUI/InventoryContainer/Button_5"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "0"
 
-[node name="6" type="Control" parent="PlayerUI/InventoryContainer"]
+[node name="Button_6" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -510,12 +510,12 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/6"]
+[node name="button_6" type="Button" parent="PlayerUI/InventoryContainer/Button_6"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "0"
 
-[node name="7" type="Control" parent="PlayerUI/InventoryContainer"]
+[node name="Button_7" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -529,7 +529,7 @@ __meta__ = {
 "_editor_description_": ""
 }
 
-[node name="Button" type="Button" parent="PlayerUI/InventoryContainer/7"]
+[node name="button_7" type="Button" parent="PlayerUI/InventoryContainer/Button_7"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "0"
@@ -541,3 +541,12 @@ text = "0"
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_0/button_0" to="." method="_on_button_0_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_1/button_1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_2/button_2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_3/button_3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_4/button_4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_5/button_5" to="." method="_on_button_5_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_6/button_6" to="." method="_on_button_6_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_7/button_7" to="." method="_on_button_7_pressed"]
