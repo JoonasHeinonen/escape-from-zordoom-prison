@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -6,6 +6,13 @@
 [ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=4]
 [ext_resource path="res://resources/images/weapons/edge_blaster.png" type="Texture" id=5]
 [ext_resource path="res://resources/images/characters/angela_weapon.png" type="Texture" id=6]
+[ext_resource path="res://resources/images/weapons/blitz_gun.png" type="Texture" id=7]
+[ext_resource path="res://resources/images/weapons/gravity_bomb.png" type="Texture" id=8]
+[ext_resource path="res://resources/images/weapons/negotiator.png" type="Texture" id=9]
+[ext_resource path="res://resources/images/weapons/pulse_rifle.png" type="Texture" id=10]
+[ext_resource path="res://resources/images/weapons/sleepinator.png" type="Texture" id=11]
+[ext_resource path="res://resources/images/weapons/ry3no.png" type="Texture" id=12]
+[ext_resource path="res://resources/images/ui_back.png" type="Texture" id=13]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -411,7 +418,12 @@ __meta__ = {
 [node name="button_0" type="Button" parent="PlayerUI/InventoryContainer/Button_0"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_0/button_0"]
+margin_right = 70.0
+margin_bottom = 70.0
+texture = ExtResource( 5 )
+stretch_mode = 4
 
 [node name="Button_1" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_left = 0.5
@@ -427,7 +439,12 @@ __meta__ = {
 [node name="button_1" type="Button" parent="PlayerUI/InventoryContainer/Button_1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_1/button_1"]
+margin_right = 70.0
+margin_bottom = 70.0
+texture = ExtResource( 7 )
+stretch_mode = 4
 
 [node name="Button_2" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_left = 1.0
@@ -444,7 +461,12 @@ __meta__ = {
 [node name="button_2" type="Button" parent="PlayerUI/InventoryContainer/Button_2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_2/button_2"]
+margin_right = 70.0
+margin_bottom = 70.0
+texture = ExtResource( 8 )
+stretch_mode = 4
 
 [node name="Button_3" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_top = 0.5
@@ -460,7 +482,12 @@ __meta__ = {
 [node name="button_3" type="Button" parent="PlayerUI/InventoryContainer/Button_3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_3/button_3"]
+margin_right = 70.0
+margin_bottom = 70.0
+texture = ExtResource( 9 )
+stretch_mode = 4
 
 [node name="Button_4" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_left = 1.0
@@ -478,7 +505,12 @@ __meta__ = {
 [node name="button_4" type="Button" parent="PlayerUI/InventoryContainer/Button_4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_4/button_4"]
+margin_right = 70.0
+margin_bottom = 70.0
+texture = ExtResource( 10 )
+stretch_mode = 4
 
 [node name="Button_5" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_top = 1.0
@@ -495,7 +527,12 @@ __meta__ = {
 [node name="button_5" type="Button" parent="PlayerUI/InventoryContainer/Button_5"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_5/button_5"]
+margin_right = 70.0
+margin_bottom = 70.0
+texture = ExtResource( 12 )
+stretch_mode = 4
 
 [node name="Button_6" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_left = 0.5
@@ -513,7 +550,12 @@ __meta__ = {
 [node name="button_6" type="Button" parent="PlayerUI/InventoryContainer/Button_6"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_6/button_6"]
+margin_right = 70.0
+margin_bottom = 70.0
+texture = ExtResource( 13 )
+stretch_mode = 4
 
 [node name="Button_7" type="Control" parent="PlayerUI/InventoryContainer"]
 anchor_left = 1.0
@@ -532,7 +574,12 @@ __meta__ = {
 [node name="button_7" type="Button" parent="PlayerUI/InventoryContainer/Button_7"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "0"
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_7/button_7"]
+margin_right = 70.0
+margin_bottom = 70.0
+texture = ExtResource( 11 )
+stretch_mode = 4
 
 [node name="Node" type="Node" parent="."]
 
