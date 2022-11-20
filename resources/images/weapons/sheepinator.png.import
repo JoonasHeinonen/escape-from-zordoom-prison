@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sleepinator.png-d61489022c9507f8bdff805f25f33e86.stex"
+path="res://.import/sheepinator.png-c94b7f539ad8fed857e638c92ff956b9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/weapons/sleepinator.png"
-dest_files=[ "res://.import/sleepinator.png-d61489022c9507f8bdff805f25f33e86.stex" ]
+source_file="res://resources/images/weapons/sheepinator.png"
+dest_files=[ "res://.import/sheepinator.png-c94b7f539ad8fed857e638c92ff956b9.stex" ]
 
 [params]
 

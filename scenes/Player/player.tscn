@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -6,13 +6,7 @@
 [ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=4]
 [ext_resource path="res://resources/images/weapons/edge_blaster.png" type="Texture" id=5]
 [ext_resource path="res://resources/images/characters/angela_weapon.png" type="Texture" id=6]
-[ext_resource path="res://resources/images/weapons/blitz_gun.png" type="Texture" id=7]
-[ext_resource path="res://resources/images/weapons/gravity_bomb.png" type="Texture" id=8]
-[ext_resource path="res://resources/images/weapons/negotiator.png" type="Texture" id=9]
-[ext_resource path="res://resources/images/weapons/pulse_rifle.png" type="Texture" id=10]
-[ext_resource path="res://resources/images/weapons/sleepinator.png" type="Texture" id=11]
-[ext_resource path="res://resources/images/weapons/ry3no.png" type="Texture" id=12]
-[ext_resource path="res://resources/images/ui_back.png" type="Texture" id=13]
+[ext_resource path="res://src/scripts/Player/PlayerWeaponsInventory.gd" type="Script" id=14]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -283,6 +277,7 @@ graph_offset = Vector2( 11, -27 )
 bg_color = Color( 0, 0, 0, 0.392157 )
 
 [node name="player" type="KinematicBody"]
+pause_mode = 1
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0612217 )
 axis_lock_motion_x = true
 axis_lock_motion_y = true
@@ -323,6 +318,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 2
+frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -387,6 +383,7 @@ active = true
 parameters/playback = SubResource( 14 )
 
 [node name="PlayerUI" type="Control" parent="."]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -396,6 +393,7 @@ anchor_bottom = 1.0
 custom_styles/panel = SubResource( 19 )
 
 [node name="InventoryContainer" type="Control" parent="PlayerUI"]
+pause_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -404,181 +402,126 @@ margin_left = -140.0
 margin_top = -140.0
 margin_right = 140.0
 margin_bottom = 140.0
+script = ExtResource( 14 )
 
-[node name="Button_0" type="Control" parent="PlayerUI/InventoryContainer"]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 90.0
-margin_bottom = 90.0
-theme = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
+[node name="MenuContainer" type="GridContainer" parent="PlayerUI/InventoryContainer"]
+margin_right = 280.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 280, 280 )
+custom_constants/vseparation = 35
+custom_constants/hseparation = 35
+columns = 3
 
-[node name="button_0" type="Button" parent="PlayerUI/InventoryContainer/Button_0"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_0/button_0"]
+[node name="WeaponSlot1" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
 margin_right = 70.0
 margin_bottom = 70.0
-texture = ExtResource( 5 )
+theme = ExtResource( 4 )
+disabled = true
+
+[node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot1"]
+margin_right = 70.0
+margin_bottom = 70.0
 stretch_mode = 4
 
-[node name="Button_1" type="Control" parent="PlayerUI/InventoryContainer"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -35.0
-margin_right = 35.0
+[node name="WeaponSlot2" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
+margin_left = 105.0
+margin_right = 175.0
 margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
 theme = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
+disabled = true
 
-[node name="button_1" type="Button" parent="PlayerUI/InventoryContainer/Button_1"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_1/button_1"]
+[node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot2"]
 margin_right = 70.0
 margin_bottom = 70.0
-texture = ExtResource( 7 )
 stretch_mode = 4
 
-[node name="Button_2" type="Control" parent="PlayerUI/InventoryContainer"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -90.0
-margin_top = 20.0
-margin_right = -20.0
-margin_bottom = 90.0
+[node name="WeaponSlot3" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
+margin_left = 210.0
+margin_right = 280.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
 theme = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
+disabled = true
 
-[node name="button_2" type="Button" parent="PlayerUI/InventoryContainer/Button_2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_2/button_2"]
+[node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot3"]
 margin_right = 70.0
 margin_bottom = 70.0
-texture = ExtResource( 8 )
 stretch_mode = 4
 
-[node name="Button_3" type="Control" parent="PlayerUI/InventoryContainer"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -35.0
+[node name="WeaponSlot4" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
+margin_top = 105.0
 margin_right = 70.0
-margin_bottom = 35.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 70, 70 )
 theme = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
+disabled = true
 
-[node name="button_3" type="Button" parent="PlayerUI/InventoryContainer/Button_3"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_3/button_3"]
+[node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot4"]
 margin_right = 70.0
 margin_bottom = 70.0
-texture = ExtResource( 9 )
 stretch_mode = 4
 
-[node name="Button_4" type="Control" parent="PlayerUI/InventoryContainer"]
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -70.0
-margin_top = -35.0
-margin_bottom = 35.0
+[node name="BackButton" type="Panel" parent="PlayerUI/InventoryContainer/MenuContainer"]
+margin_left = 105.0
+margin_top = 105.0
+margin_right = 175.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 70, 70 )
+
+[node name="WeaponSlot5" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
+margin_left = 210.0
+margin_top = 105.0
+margin_right = 280.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 70, 70 )
 theme = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
+disabled = true
 
-[node name="button_4" type="Button" parent="PlayerUI/InventoryContainer/Button_4"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_4/button_4"]
+[node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot5"]
 margin_right = 70.0
 margin_bottom = 70.0
-texture = ExtResource( 10 )
 stretch_mode = 4
 
-[node name="Button_5" type="Control" parent="PlayerUI/InventoryContainer"]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = -90.0
-margin_right = 90.0
-margin_bottom = -20.0
+[node name="WeaponSlot6" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
+margin_top = 210.0
+margin_right = 70.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 70, 70 )
 theme = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
+disabled = true
 
-[node name="button_5" type="Button" parent="PlayerUI/InventoryContainer/Button_5"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_5/button_5"]
+[node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot6"]
 margin_right = 70.0
 margin_bottom = 70.0
-texture = ExtResource( 12 )
 stretch_mode = 4
 
-[node name="Button_6" type="Control" parent="PlayerUI/InventoryContainer"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -35.0
-margin_top = -70.0
-margin_right = 35.0
+[node name="WeaponSlot7" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
+margin_left = 105.0
+margin_top = 210.0
+margin_right = 175.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 70, 70 )
 theme = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
+disabled = true
 
-[node name="button_6" type="Button" parent="PlayerUI/InventoryContainer/Button_6"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_6/button_6"]
+[node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot7"]
 margin_right = 70.0
 margin_bottom = 70.0
-texture = ExtResource( 13 )
 stretch_mode = 4
 
-[node name="Button_7" type="Control" parent="PlayerUI/InventoryContainer"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -90.0
-margin_top = -90.0
-margin_right = -20.0
-margin_bottom = -20.0
+[node name="WeaponSlot8" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
+margin_left = 210.0
+margin_top = 210.0
+margin_right = 280.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 70, 70 )
 theme = ExtResource( 4 )
-__meta__ = {
-"_editor_description_": ""
-}
+disabled = true
 
-[node name="button_7" type="Button" parent="PlayerUI/InventoryContainer/Button_7"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/InventoryContainer/Button_7/button_7"]
+[node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8"]
 margin_right = 70.0
 margin_bottom = 70.0
-texture = ExtResource( 11 )
 stretch_mode = 4
 
 [node name="Node" type="Node" parent="."]
@@ -589,11 +532,11 @@ stretch_mode = 4
 wait_time = 0.5
 autostart = true
 
-[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_0/button_0" to="." method="_on_button_0_pressed"]
-[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_1/button_1" to="." method="_on_button_1_pressed"]
-[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_2/button_2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_3/button_3" to="." method="_on_button_3_pressed"]
-[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_4/button_4" to="." method="_on_button_4_pressed"]
-[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_5/button_5" to="." method="_on_button_5_pressed"]
-[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_6/button_6" to="." method="_on_button_6_pressed"]
-[connection signal="pressed" from="PlayerUI/InventoryContainer/Button_7/button_7" to="." method="_on_button_7_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot1" to="." method="_on_WeaponSlot1_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot2" to="." method="_on_WeaponSlot2_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot3" to="." method="_on_WeaponSlot3_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot4" to="." method="_on_WeaponSlot4_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot5" to="." method="_on_WeaponSlot5_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot6" to="." method="_on_WeaponSlot6_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot7" to="." method="_on_WeaponSlot7_pressed"]
+[connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8" to="." method="_on_WeaponSlot8_pressed"]

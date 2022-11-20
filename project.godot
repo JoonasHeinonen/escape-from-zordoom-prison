@@ -87,6 +87,8 @@ config/icon="res://icon.png"
 [autoload]
 
 Globle="*res://src/scripts/Globle.gd"
+JsonData="*res://src/scripts/HelperScripts/JSONData.gd"
+Inventory="*res://src/scripts/Player/Inventory.gd"
 
 [display]
 
