@@ -4,6 +4,7 @@ onready var projectile 	  = preload("res://scenes/Projectiles/BlasterProjectile.
 onready var hand_instance = $Sprite3D/HandInstance
 onready var gun_instance  = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
 onready var camera  	  = $Camera
+onready var pause_menu 	  = $PlayerUI/PauseMenuContainer
 
 export var speed 		  = 1
 
@@ -34,6 +35,7 @@ func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
 	$PlayerUI/InventoryContainer.visible = false
 	walk(0, 1, (-1) * 0.1, -2)
+	pause_menu.hide()
 	
 	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
@@ -87,10 +89,9 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 		state_machine.travel("Angela_Fall")
 	
-	# Return to the main menu.
+	# Pause menu logic
 	if Input.is_action_just_pressed("ui_esc"):
 		get_tree().change_scene("res://scenes/Menu/MainMenu.tscn")
-
 	move_and_slide(velocity,Vector3.UP)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

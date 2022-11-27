@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=4]
 [ext_resource path="res://resources/images/weapons/edge_blaster.png" type="Texture" id=5]
 [ext_resource path="res://resources/images/characters/angela_weapon.png" type="Texture" id=6]
+[ext_resource path="res://scenes/Menu/PlayerMenuButtons/ReturnToMainMenuButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Menu/PlayerMenuButtons/ReturnToGameButton.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/scripts/Player/PauseMenuContainer.gd" type="Script" id=9]
 [ext_resource path="res://src/scripts/Player/PlayerWeaponsInventory.gd" type="Script" id=14]
 
 [sub_resource type="BoxShape" id=5]
@@ -318,7 +321,6 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 2
-frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -347,13 +349,11 @@ spot_range = 0.43704
 [node name="MeshInstance" type="MeshInstance" parent="Sprite3D"]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
 mesh = SubResource( 21 )
-material/0 = null
 
 [node name="HandInstance" type="MeshInstance" parent="Sprite3D/MeshInstance"]
 transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0, -1.25, 0.0236015 )
 mesh = SubResource( 20 )
 skeleton = NodePath("../..")
-material/0 = null
 
 [node name="Hand" type="Sprite3D" parent="Sprite3D/MeshInstance/HandInstance"]
 transform = Transform( 20, 1.13687e-13, 0, -1.13687e-13, 20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
@@ -524,6 +524,48 @@ margin_right = 70.0
 margin_bottom = 70.0
 stretch_mode = 4
 
+[node name="PauseMenuContainer" type="Control" parent="PlayerUI"]
+margin_left = 500.0
+margin_top = 220.0
+margin_right = 780.0
+margin_bottom = 500.0
+script = ExtResource( 9 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/PauseMenuContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -140.0
+margin_right = 140.0
+margin_bottom = 140.0
+alignment = 1
+
+[node name="CenterRow" type="HBoxContainer" parent="PlayerUI/PauseMenuContainer/VBoxContainer"]
+margin_right = 280.0
+margin_bottom = 280.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow"]
+margin_right = 280.0
+margin_bottom = 280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ReturnToGameButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
+margin_top = 79.0
+margin_right = 280.0
+margin_bottom = 138.0
+text = "RETURN"
+
+[node name="ReturnToMainMenuButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 7 )]
+margin_top = 142.0
+margin_right = 280.0
+margin_bottom = 201.0
+scene_to_load = ""
+
 [node name="Node" type="Node" parent="."]
 
 [node name="Node2" type="Node" parent="."]
@@ -540,3 +582,5 @@ autostart = true
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot6" to="." method="_on_WeaponSlot6_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot7" to="." method="_on_WeaponSlot7_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8" to="." method="_on_WeaponSlot8_pressed"]
+[connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToGameButton_pressed"]
+[connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]

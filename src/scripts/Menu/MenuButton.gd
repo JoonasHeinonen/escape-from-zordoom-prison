@@ -2,8 +2,6 @@ extends Button
 
 export (String) var scene_to_load
 
-
-
 # Quits the game.
 func _on_QuitGameButton_pressed():
 	get_tree().quit()
