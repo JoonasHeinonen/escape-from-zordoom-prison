@@ -1,29 +1,23 @@
 extends Control
 
-var time_scale_target = 1
-var interpolation     = 1
+onready var return_btn = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	return_btn.grab_focus()
 	hide()
 
 func _input(event):
 	if event.is_action_pressed("ui_esc"):
-		show() if !self.visible else hide()
+		if (!Globle.player_inventory):
+			return_btn.grab_focus()
+			show() if !self.visible else hide()
 
 func _physics_process(delta):
-	if (!self.visible):
-		interpolation = 0
-		time_scale_target = 0
-		get_parent().set_process_input(true)
+	if (self.visible):
+		get_tree().paused = true
 	else:
-		interpolation = 1
-		Engine.time_scale = 1
-		get_parent().set_process_input(false)
-
-	if interpolation <= 1:
-		interpolation += delta
-	Engine.time_scale = lerp(Engine.time_scale, time_scale_target, interpolation)
+		get_tree().paused = false
 
 # Returns to the game.
 func _on_ReturnToGameButton_pressed():

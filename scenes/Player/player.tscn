@@ -321,6 +321,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 2
+frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -558,6 +559,7 @@ alignment = 1
 margin_top = 79.0
 margin_right = 280.0
 margin_bottom = 138.0
+shortcut_in_tooltip = false
 text = "RETURN"
 
 [node name="ReturnToMainMenuButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 7 )]
