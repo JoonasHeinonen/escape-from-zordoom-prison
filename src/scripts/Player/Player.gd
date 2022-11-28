@@ -3,7 +3,7 @@ extends KinematicBody
 onready var projectile 	  = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
 onready var hand_instance = $Sprite3D/HandInstance
 onready var gun_instance  = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
-onready var camera  	  = $Camera
+onready var camera 		  = $Camera
 
 export var speed 		  = 1
 
@@ -17,7 +17,6 @@ var jump 				  = 4
 var bolt 				  = 0
 
 var alive 				  = true
-var player_inventory 	  = false
 
 # Weapon variables, if player has such weapon.
 var current_weapon 		  = null
@@ -25,7 +24,7 @@ var current_weapon 		  = null
 var ray_origin  		  = Vector3()
 var ray_end 			  = Vector3()
 
-### Inherited functions from Godot.
+### INHERITED FUNCTIONS FROM GODOT.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -67,7 +66,7 @@ func _physics_process(delta):
 		_:
 			gun_instance.hide()
 	
-	if alive && !player_inventory:
+	if alive && !Globle.player_inventory:
 		if Input.is_action_pressed("ui_right") and  Input.is_action_pressed("ui_left"):
 			state_machine.travel("Angela_Still")
 			velocity.x = 0
@@ -80,17 +79,11 @@ func _physics_process(delta):
 			state_machine.travel("Angela_Still")
 		if is_on_floor() and Input.is_action_just_pressed("jump"):
 			velocity.y = jump
-		if Input.is_action_pressed("ui_inventory"):
-			player_inventory != player_inventory
-	
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		state_machine.travel("Angela_Fall")
 	
-	# Return to the main menu.
-	if Input.is_action_just_pressed("ui_esc"):
-		get_tree().change_scene("res://scenes/Menu/MainMenu.tscn")
-
 	move_and_slide(velocity,Vector3.UP)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -109,13 +102,13 @@ func _process(delta):
 	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
 	var result = space_state.intersect_ray(from, to)
 	
-	if !player_inventory:
+	if !Globle.player_inventory:
 		$Sprite3D/MeshInstance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
 	
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
 
-### Custom functions for player functionality.
+### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
 
 # Sets all the in the inventory.
 func set_weapons_to_inventory(weapons):
@@ -214,7 +207,7 @@ func shoot_ry3no():
 func shoot_sheepinator():
 	print("Sheepinator used. All enemies are converted into sheeps.")
 
-### Functions used for debugging the player scene. NOT USED IN FINAL PRODUCT.
+### FUNCTIONS USED FUR DEBUGGING THE PLAYER SCENE. NOT USED IN THE FINAL PRODUCT.
 
 # Used to debug the rotation values.
 func debug_rotation_values(x, y, z):
@@ -222,7 +215,7 @@ func debug_rotation_values(x, y, z):
 	var args = values % [x, y, z]
 	print(args)
 
-### This is where the signal functions go in the script for `player.gd`.
+### THE SIGNAL FUNCTIONS FOR THE `PLAYER.GD`.
 
 # Limits the shooting rate.
 func _on_ShootTimer_timeout():

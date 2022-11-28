@@ -67,6 +67,7 @@ scene_to_load = "res://scenes/Menu/Options.tscn"
 margin_top = 425.0
 margin_right = 280.0
 margin_bottom = 484.0
+text = "EXIT"
 
 [node name="FadeIn" parent="." instance=ExtResource( 6 )]
 visible = false

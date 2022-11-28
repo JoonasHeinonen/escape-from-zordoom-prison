@@ -7,8 +7,9 @@ const WEAPONS_AVAILABLE   = [
 	"pulse_rifle", "ry3no", "sheepinator"
 ]
 
-var bolts 			= 0
-var current_weapons = ["edge_blaster"]
+var bolts 			 = 0
+var current_weapons  = ["edge_blaster"]
+var player_inventory = false
 
 #not sure if we need this instance_node
 func instance_node(node,location,parent):
