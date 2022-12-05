@@ -11,17 +11,17 @@ func _input(event):
 	if event.is_action_pressed("ui_esc"):
 		if (!Globle.player_inventory):
 			return_btn.grab_focus()
-			show() if !self.visible else hide()
-
-func _physics_process(delta):
-	if (self.visible):
-		get_tree().paused = true
-	else:
-		get_tree().paused = false
+			if (!self.visible):
+				show()
+				get_tree().paused = true
+			else:
+				hide()
+				get_tree().paused = false
 
 # Returns to the game.
 func _on_ReturnToGameButton_pressed():
 	hide()
+	get_tree().paused = false
 
 # Returns to the main menu.
 func _on_ReturnToMainMenuButton_pressed():
