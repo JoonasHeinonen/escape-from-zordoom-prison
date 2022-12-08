@@ -11,10 +11,10 @@ func _input(event):
 	if event.is_action_pressed("ui_esc"):
 		if (!Globle.player_inventory):
 			return_btn.grab_focus()
-			if (!self.visible):
+			if (!self.visible && !get_tree().paused):
 				show()
 				get_tree().paused = true
-			else:
+			elif (self.visible):
 				hide()
 				get_tree().paused = false
 
