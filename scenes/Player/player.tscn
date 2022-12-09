@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Menu/PlayerMenuButtons/ReturnToMainMenuButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Menu/PlayerMenuButtons/ReturnToGameButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scripts/Player/PauseMenuContainer.gd" type="Script" id=9]
+[ext_resource path="res://src/scripts/npc/vendor_container.gd" type="Script" id=10]
 [ext_resource path="res://src/scripts/Player/PlayerWeaponsInventory.gd" type="Script" id=14]
 
 [sub_resource type="BoxShape" id=5]
@@ -321,7 +322,6 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 2
-frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -568,6 +568,43 @@ margin_right = 280.0
 margin_bottom = 201.0
 scene_to_load = ""
 
+[node name="VendorContainer" type="Control" parent="PlayerUI"]
+margin_left = 500.0
+margin_top = 220.0
+margin_right = 780.0
+margin_bottom = 500.0
+script = ExtResource( 10 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -140.0
+margin_right = 140.0
+margin_bottom = 140.0
+alignment = 1
+
+[node name="CenterRow" type="HBoxContainer" parent="PlayerUI/VendorContainer/VBoxContainer"]
+margin_right = 280.0
+margin_bottom = 280.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow"]
+margin_right = 280.0
+margin_bottom = 280.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="ReturnToGameButton" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
+margin_top = 110.0
+margin_right = 280.0
+margin_bottom = 169.0
+shortcut_in_tooltip = false
+text = "LEAVE VENDOR"
+
 [node name="Node" type="Node" parent="."]
 
 [node name="Node2" type="Node" parent="."]
@@ -586,3 +623,4 @@ autostart = true
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8" to="." method="_on_WeaponSlot8_pressed"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToGameButton_pressed"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
+[connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]

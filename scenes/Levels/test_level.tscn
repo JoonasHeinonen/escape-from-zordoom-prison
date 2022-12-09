@@ -88,7 +88,7 @@ skeleton = NodePath("../../player/Camera")
 [node name="BoltCounter" parent="." instance=ExtResource( 3 )]
 
 [node name="slim_cognito" parent="." instance=ExtResource( 9 )]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 12.8769, -4.01892, 0 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 12, -4, -1.5 )
 
 [node name="npc" type="Node" parent="."]
 
