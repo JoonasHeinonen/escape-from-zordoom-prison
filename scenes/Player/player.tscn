@@ -395,6 +395,7 @@ custom_styles/panel = SubResource( 19 )
 
 [node name="InventoryContainer" type="Control" parent="PlayerUI"]
 pause_mode = 2
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -526,6 +527,7 @@ margin_bottom = 70.0
 stretch_mode = 4
 
 [node name="PauseMenuContainer" type="Control" parent="PlayerUI"]
+visible = false
 margin_left = 500.0
 margin_top = 220.0
 margin_right = 780.0
@@ -569,10 +571,10 @@ margin_bottom = 201.0
 scene_to_load = ""
 
 [node name="VendorContainer" type="Control" parent="PlayerUI"]
-margin_left = 500.0
-margin_top = 220.0
-margin_right = 780.0
-margin_bottom = 500.0
+margin_left = 70.0
+margin_top = 70.0
+margin_right = 1210.0
+margin_bottom = 650.0
 script = ExtResource( 10 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
@@ -580,30 +582,52 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -140.0
-margin_top = -140.0
-margin_right = 140.0
-margin_bottom = 140.0
+margin_left = -570.0
+margin_top = -290.0
+margin_right = 570.0
+margin_bottom = -230.0
 alignment = 1
 
 [node name="CenterRow" type="HBoxContainer" parent="PlayerUI/VendorContainer/VBoxContainer"]
-margin_right = 280.0
-margin_bottom = 280.0
+margin_right = 1140.0
+margin_bottom = 60.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow"]
-margin_right = 280.0
-margin_bottom = 280.0
+margin_right = 1140.0
+margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="ReturnToGameButton" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
-margin_top = 110.0
-margin_right = 280.0
-margin_bottom = 169.0
+margin_right = 1140.0
+margin_bottom = 59.0
 shortcut_in_tooltip = false
 text = "LEAVE VENDOR"
+
+[node name="WeaponsForSale" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -570.0
+margin_top = -210.0
+margin_right = -190.0
+margin_bottom = 290.0
+alignment = 1
+
+[node name="CenterRow" type="HBoxContainer" parent="PlayerUI/VendorContainer/WeaponsForSale"]
+margin_right = 380.0
+margin_bottom = 500.0
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="PlayerUI/VendorContainer/WeaponsForSale/CenterRow"]
+margin_right = 380.0
+margin_bottom = 500.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
 
 [node name="Node" type="Node" parent="."]
 

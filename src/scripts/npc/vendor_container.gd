@@ -27,5 +27,6 @@ func _on_ReturnToGameButton_pressed():
 
 # Pauses/unpauses the game and opens/closes the vendor system.
 func vendor_process(var open: bool, var pause: bool):
+	Globle.update_vendor()
 	get_tree().paused = open
 	get_parent().set_process_input(pause)

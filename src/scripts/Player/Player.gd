@@ -4,6 +4,7 @@ onready var projectile 	  = preload("res://scenes/Projectiles/BlasterProjectile.
 onready var hand_instance = $Sprite3D/HandInstance
 onready var gun_instance  = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
 onready var camera 		  = $Camera
+onready var gun_btn 		  = preload("res://scenes/Menu/Materials/LevelButton.tscn")
 
 export var speed 		  = 1
 
@@ -37,6 +38,9 @@ func _ready():
 	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
 		current_weapon = "edge_blaster"
+	
+	# Determine weapons for sale.
+		set_vendor_weapons(Globle.weapons_for_sale)
 
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
@@ -109,6 +113,13 @@ func _process(delta):
 	set_weapons_to_inventory(Globle.current_weapons)
 
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
+
+# Sets all the items to the vendor.
+func set_vendor_weapons(weapons_for_sale):
+	for wpn_for_sale in weapons_for_sale:
+		var btn = gun_btn.instance()
+		btn.set_label(wpn_for_sale)
+		$PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons.add_child(btn)
 
 # Sets all the in the inventory.
 func set_weapons_to_inventory(weapons):

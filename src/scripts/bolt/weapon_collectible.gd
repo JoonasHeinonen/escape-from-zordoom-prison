@@ -37,6 +37,7 @@ func _ready():
 			set_weapon_image("sheepinator")
 
 func _physics_process(delta):
+	var x : int = 0
 	if !getMagnet:
 		# Makes the bolts fall due to the y axis.
 		translation.y
@@ -51,8 +52,8 @@ func _physics_process(delta):
 			# Adds the item to the player's inventory.
 			if bod.name=="player":
 				Globle.current_weapons.append(weapon)
+				Globle.update_vendor()
 				queue_free()
-
 
 # Changes the texture of the gun.
 func set_weapon_image(weapon_name: String):
