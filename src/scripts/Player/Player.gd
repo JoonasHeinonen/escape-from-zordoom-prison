@@ -38,9 +38,7 @@ func _ready():
 	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
 		current_weapon = "edge_blaster"
-	
-	# Determine weapons for sale.
-		set_vendor_weapons(Globle.weapons_for_sale)
+	set_vendor_weapons(Globle.weapons_for_sale)
 
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
@@ -69,7 +67,7 @@ func _physics_process(delta):
 			change_weapon_texture("sheepinator")
 		_:
 			gun_instance.hide()
-	
+
 	if alive && !Globle.player_inventory:
 		if Input.is_action_pressed("ui_right") and  Input.is_action_pressed("ui_left"):
 			state_machine.travel("Angela_Still")
@@ -87,7 +85,8 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		state_machine.travel("Angela_Fall")
-	
+
+	set_vendor_weapons(Globle.weapons_for_sale)
 	move_and_slide(velocity,Vector3.UP)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -114,8 +113,12 @@ func _process(delta):
 
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
 
-# Sets all the items to the vendor.
+# Sets all the items to the vendor, i.e. determine all the weapons for sale.
 func set_vendor_weapons(weapons_for_sale):
+	var node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
+	for n in node.get_children():
+		node.remove_child(n)
+		n.queue_free()
 	for wpn_for_sale in weapons_for_sale:
 		var btn = gun_btn.instance()
 		btn.set_label(wpn_for_sale)
