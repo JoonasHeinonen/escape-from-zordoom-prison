@@ -39,15 +39,15 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.79584, 0.08, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64725, 0, 0 )
 
 [node name="WeaponCollectible" parent="." instance=ExtResource( 8 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -2.53554, 0 )
-weapon = "edge_blaster"
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 23.4547, -2.53554, 0 )
+weapon = "negotiator"
 
 [node name="WeaponCollectible2" parent="." instance=ExtResource( 8 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 6.88309, -1.05825, 0 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 30.1382, -1.05825, 0 )
 weapon = "blitz_gun"
 
 [node name="WeaponCollectible3" parent="." instance=ExtResource( 8 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, -10.4437, -2.56146, 0 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 12.8114, -2.56146, 0 )
 weapon = "ry3no"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

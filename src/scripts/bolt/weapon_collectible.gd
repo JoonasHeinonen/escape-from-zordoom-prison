@@ -50,9 +50,13 @@ func _physics_process(delta):
 		var bodies2 = get_overlapping_bodies()
 		for bod in bodies2:
 			# Adds the item to the player's inventory.
-			if bod.name=="player":
+			if bod.name == "player":
+				var wpn_index : int = -1
+				for wpn_for_sale in Globle.weapons_for_sale:
+					wpn_index += 1
+					if wpn_for_sale == weapon:
+						Globle.weapons_for_sale.remove(wpn_index)
 				Globle.current_weapons.append(weapon)
-				Globle.update_vendor()
 				queue_free()
 
 # Changes the texture of the gun.

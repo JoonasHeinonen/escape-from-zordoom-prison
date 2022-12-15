@@ -1,10 +1,11 @@
 extends KinematicBody
 
 onready var projectile 	  = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
+onready var gun_btn 	  = preload("res://scenes/UI/VendorWeaponButton.tscn")
+
 onready var hand_instance = $Sprite3D/HandInstance
 onready var gun_instance  = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
 onready var camera 		  = $Camera
-onready var gun_btn 		  = preload("res://scenes/Menu/Materials/LevelButton.tscn")
 
 export var speed 		  = 1
 
@@ -82,6 +83,9 @@ func _physics_process(delta):
 		if is_on_floor() and Input.is_action_just_pressed("jump"):
 			velocity.y = jump
 
+	if Input.is_action_just_released("ui_accept"):
+		Globle.update_vendor()
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		state_machine.travel("Angela_Fall")
@@ -116,12 +120,16 @@ func _process(delta):
 # Sets all the items to the vendor, i.e. determine all the weapons for sale.
 func set_vendor_weapons(weapons_for_sale):
 	var node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
+
 	for n in node.get_children():
 		node.remove_child(n)
 		n.queue_free()
+
 	for wpn_for_sale in weapons_for_sale:
 		var btn = gun_btn.instance()
+		btn.set_wpn_for_sale(wpn_for_sale)
 		btn.set_label(wpn_for_sale)
+		btn.connect("pressed", self, "_on_Vendor_Choice_pressed", [btn, btn.wpn_for_sale])
 		$PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons.add_child(btn)
 
 # Sets all the in the inventory.
@@ -256,6 +264,11 @@ func _on_ShootTimer_timeout():
 			"sheepinator":
 				shoot_sheepinator()
 				$ShootTimer.start()
+
+# Loads the scene defined to a particular button.
+func _on_Vendor_Choice_pressed(button, wpn):
+	Globle.current_weapons.append(wpn)
+	Globle.update_vendor()
 
 # Change weapon to Edge Blaster.
 func _on_WeaponSlot1_pressed():

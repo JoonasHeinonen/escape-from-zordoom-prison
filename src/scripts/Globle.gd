@@ -14,9 +14,6 @@ var player_inventory 	= false
 var vendor_open 	 	= false
 var vendor_active 	 	= false
 
-func _process(delta):
-	update_vendor()
-
 # Not sure if we need this instance_node
 func instance_node(node,location,parent):
 	var node_instance=node.instance()
@@ -24,7 +21,10 @@ func instance_node(node,location,parent):
 	node_instance.global_position=location
 	return node_instance
 
+# Updates the vendor after purchasing an item.
 func update_vendor():
+	var wpn_index : int = -1
 	for wpn_for_sale in weapons_for_sale:
+		wpn_index += 1
 		if current_weapons.has(wpn_for_sale):
-			weapons_for_sale.remove(wpn_for_sale)
+			weapons_for_sale.remove(wpn_index)
