@@ -4,7 +4,7 @@ onready var bolt_instance = preload("res://scenes/Collectibles/bolt.tscn")
 
 # For adding random numbers.
 var random = RandomNumberGenerator.new()
-
+var active=false
 # Detects the collisions on this scene.
 func _on_BoltCrate_body_entered(body):
 	print("The body: " + body)
@@ -36,3 +36,16 @@ func generate_bolt_position(x_axis, y_axis):
 	var y = random.randf_range(y_axis - div, y_axis + div)
 	
 	return Vector3(x, y, 0)
+	
+func take_damage(amount:int)-> void:
+	print("hit box has enterd the hurt box")
+	active=true
+#cant get the box to show that the player has exited the box
+#also need to get the box to explode and to get bolts
+		 
+func _input(event):
+	if Input.is_action_just_pressed("ui_melee_attack") and  active==true:
+		print("crate hit",10)
+		
+
+

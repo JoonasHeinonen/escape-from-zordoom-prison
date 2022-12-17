@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/models/destructibles/crates/bolt_crate.glb" type="PackedScene" id=1]
 [ext_resource path="res://src/scripts/destructibles/bolt_crate.gd" type="Script" id=2]
+[ext_resource path="res://src/scripts/destructibles/Crate_hurt_box.gd" type="Script" id=3]
 
 [sub_resource type="BoxShape" id=1]
 
 [sub_resource type="BoxShape" id=2]
+
+[sub_resource type="BoxShape" id=3]
 
 [node name="BoltCrate" type="RigidBody"]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
@@ -25,5 +28,15 @@ transform = Transform( 1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
 shape = SubResource( 2 )
+
+[node name="Crate_hurt_Box" type="Area" parent="."]
+transform = Transform( 0.2, 0, 0, 0, 0.4, 0, 0, 0, 0.2, 0, 0, 0 )
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Crate_hurt_Box"]
+transform = Transform( 3.38165, 0, 0, 0, 1, 0, 0, 0, 1.24147, 0, 0, 0 )
+shape = SubResource( 3 )
 
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
