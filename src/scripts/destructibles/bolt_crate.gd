@@ -40,12 +40,18 @@ func generate_bolt_position(x_axis, y_axis):
 func take_damage(amount:int)-> void:
 	print("hit box has enterd the hurt box")
 	active=true
+	
+func no_damage(amount:int)-> void:
+	print("hit box has exit the hurt box")
+	active=false
 #cant get the box to show that the player has exited the box
 #also need to get the box to explode and to get bolts
 		 
 func _input(event):
 	if Input.is_action_just_pressed("ui_melee_attack") and  active==true:
-		print("crate hit",10)
+		print("crate hit ",10)
+	if Input.is_action_just_pressed("ui_melee_attack") and  active==false:
+		print("no hit ",0)
 		
 
 

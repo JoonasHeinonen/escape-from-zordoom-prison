@@ -7,7 +7,7 @@ func _init() ->void:
 	
 func _ready() -> void: 
 	connect("area_entered",self,"_on_area_entered")
-	connect("area_exit",self,"_on_area_exit")
+	connect("area_exited",self,"_on_area_exit")
 
 func _on_area_entered(hitbox:PlayerHit_box) -> void:
 	if hitbox ==null:
@@ -15,10 +15,14 @@ func _on_area_entered(hitbox:PlayerHit_box) -> void:
 	elif owner.has_method("take_damage"):
 		owner.take_damage(hitbox.damage)
 		
+		
 
-func _on_area_exit(hitbox) -> void:
-	if hitbox.body =="PlayerHit_box":
-		print("exit")
-		pass
-		 
+func _on_area_exit(hitbox:PlayerHit_box) -> void:
+	if hitbox ==null:
+		return 
+	elif owner.has_method("take_damage"):
+		print("none")
+		return
+			
+				 
 	
