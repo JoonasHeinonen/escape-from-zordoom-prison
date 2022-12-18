@@ -18,11 +18,11 @@ func _on_area_entered(hitbox:PlayerHit_box) -> void:
 		
 
 func _on_area_exit(hitbox:PlayerHit_box) -> void:
-	if hitbox ==null:
+	if hitbox ==null:    
 		return 
-	elif owner.has_method("take_damage"):
-		print("none")
-		return
+	elif owner.has_method("no_damage"):
+		owner.no_damage(0)
+		
 			
 				 
 	
