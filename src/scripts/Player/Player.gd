@@ -115,16 +115,19 @@ func _process(delta):
 	
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
+	
+	# Set the bolts in the vendor.
+	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
 
 # Sets all the items to the vendor, i.e. determine all the weapons for sale.
 func set_vendor_weapons(weapons_for_sale):
-	var node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
+	var vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
 
-	for n in node.get_children():
-		node.remove_child(n)
-		n.queue_free()
+	for v_n in vendor_node.get_children():
+		vendor_node.remove_child(v_n)
+		v_n.queue_free()
 
 	for wpn_for_sale in weapons_for_sale:
 		var wpn_name = ""
@@ -212,22 +215,29 @@ func walk(vel, scale, weapon_translation, hand_translation):
 func purchase_weapon(wpn_price : int, wpn, btn):
 	print("Purchasing...")
 	if (Globle.bolts >= wpn_price):
-		get_tree().paused = false
 		Globle.current_weapons.append(wpn)
 		Globle.update_vendor()
 		Globle.bolts -= wpn_price
 		btn.queue_free()
 		set_vendor_weapons(Globle.weapons_for_sale)
-		get_tree().paused = true
+		$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 	else:
 		print("Insufficient funds...")
 
 # Updates the vendor data once a weapon is highlighted.
 func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
+	var wpn_name_to_label = ""
+	var unwanted_chars = ["_"]
+
+	# Takes the chars from the wpn_for_sale.
+	for c in unwanted_chars:
+		wpn_name_to_label = wpn_name.replace(c, " ")
+	wpn_name_to_label = wpn_name_to_label.to_upper()
+	
 	var weapon_sprite_path = "res://resources/images/weapons/vendor/" + wpn_name + "_vendor.png"
-	print("Weapon name: " + str(wpn_name))
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/HBoxContainer/WeaponPrice.text = str(wpn_price)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponDescription.text = str(wpn_desc)
+	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
 
 # Shooting functionality for the edge blaster.
