@@ -7,7 +7,6 @@ var random = RandomNumberGenerator.new()
 
 # Detects the collisions on this scene.
 func _on_BoltCrate_body_entered(body):
-	print("The body: " + body)
 	if body.name=="BlasterProjectileExplosion":
 		queue_free()
 

@@ -1,6 +1,8 @@
 extends KinematicBody
 
 onready var projectile 	  = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
+onready var gun_btn 	  = preload("res://scenes/UI/VendorWeaponButton.tscn")
+
 onready var hand_instance = $Sprite3D/HandInstance
 onready var gun_instance  = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
 onready var camera 		  = $Camera
@@ -37,6 +39,7 @@ func _ready():
 	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
 		current_weapon = "edge_blaster"
+	set_vendor_weapons(Globle.weapons_for_sale)
 
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
@@ -65,7 +68,7 @@ func _physics_process(delta):
 			change_weapon_texture("sheepinator")
 		_:
 			gun_instance.hide()
-	
+
 	if alive && !Globle.player_inventory:
 		if Input.is_action_pressed("ui_right") and  Input.is_action_pressed("ui_left"):
 			state_machine.travel("Angela_Still")
@@ -80,10 +83,15 @@ func _physics_process(delta):
 		if is_on_floor() and Input.is_action_just_pressed("jump"):
 			velocity.y = jump
 
+	if Input.is_action_just_released("ui_accept"):
+		print(Globle.WPNS[0])
+		Globle.update_vendor()
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		state_machine.travel("Angela_Fall")
-	
+
+	set_vendor_weapons(Globle.weapons_for_sale)
 	move_and_slide(velocity,Vector3.UP)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -107,8 +115,35 @@ func _process(delta):
 	
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
+	
+	# Set the bolts in the vendor.
+	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
+
+# Sets all the items to the vendor, i.e. determine all the weapons for sale.
+func set_vendor_weapons(weapons_for_sale):
+	var vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
+
+	for v_n in vendor_node.get_children():
+		vendor_node.remove_child(v_n)
+		v_n.queue_free()
+
+	for wpn_for_sale in weapons_for_sale:
+		var wpn_name = ""
+		var unwanted_chars = ["_"]
+		var btn = gun_btn.instance()
+		btn.set_wpn_for_sale(wpn_for_sale)
+		
+		# Takes the chars from the wpn_for_sale.
+		for c in unwanted_chars:
+			wpn_name = wpn_for_sale.replace(c, " ")
+		wpn_name = wpn_name.to_upper()
+
+		btn.set_label(wpn_name)
+		btn.connect("pressed", self, "_on_Vendor_Choice_pressed", [btn, btn.wpn_for_sale])
+		btn.connect("focus_entered", self, "_on_VendorWeaponButton_focus_entered", [btn, btn.wpn_for_sale])
+		$PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons.add_child(btn)
 
 # Sets all the in the inventory.
 func set_weapons_to_inventory(weapons):
@@ -176,6 +211,35 @@ func walk(vel, scale, weapon_translation, hand_translation):
 	$Sprite3D/MeshInstance/HandInstance.scale.y = hand_translation
 	$Sprite3D/MeshInstance.rotate_x(270)
 
+# Purchases weapon when a weapon button is pressed.
+func purchase_weapon(wpn_price : int, wpn, btn):
+	print("Purchasing...")
+	if (Globle.bolts >= wpn_price):
+		Globle.current_weapons.append(wpn)
+		Globle.update_vendor()
+		Globle.bolts -= wpn_price
+		btn.queue_free()
+		set_vendor_weapons(Globle.weapons_for_sale)
+		$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
+	else:
+		print("Insufficient funds...")
+
+# Updates the vendor data once a weapon is highlighted.
+func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
+	var wpn_name_to_label = ""
+	var unwanted_chars = ["_"]
+
+	# Takes the chars from the wpn_for_sale.
+	for c in unwanted_chars:
+		wpn_name_to_label = wpn_name.replace(c, " ")
+	wpn_name_to_label = wpn_name_to_label.to_upper()
+	
+	var weapon_sprite_path = "res://resources/images/weapons/vendor/" + wpn_name + "_vendor.png"
+	$PlayerUI/VendorContainer/WeaponDescriptionPanel/HBoxContainer/WeaponPrice.text = str(wpn_price)
+	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponDescription.text = str(wpn_desc)
+	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
+	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
+
 # Shooting functionality for the edge blaster.
 func shoot_edge_blaster():
 	var bullet = projectile.instance()
@@ -242,6 +306,70 @@ func _on_ShootTimer_timeout():
 			"sheepinator":
 				shoot_sheepinator()
 				$ShootTimer.start()
+
+# Loads the scene defined to a particular button.
+func _on_Vendor_Choice_pressed(button, wpn):
+	match (wpn):
+		"edge_blaster":
+			purchase_weapon(Globle.WPNS[1][0], wpn, button)
+		"blitz_gun":
+			purchase_weapon(Globle.WPNS[1][1], wpn, button)
+		"gravity_bomb":
+			purchase_weapon(Globle.WPNS[1][2], wpn, button)
+		"negotiator":
+			purchase_weapon(Globle.WPNS[1][3], wpn, button)
+		"pulse_rifle":
+			purchase_weapon(Globle.WPNS[1][4], wpn, button)
+		"ry3no":
+			purchase_weapon(Globle.WPNS[1][5], wpn, button)
+		"sheepinator":
+			purchase_weapon(Globle.WPNS[1][6], wpn, button)
+
+# Acts when a vendor weapon button is highlighted.
+func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
+	match (wpn):
+		"edge_blaster":
+			update_vendor_data(
+				Globle.WPNS[0][0],
+				Globle.WPNS[1][0],
+				Globle.WPNS[2][0]
+			)
+		"blitz_gun":
+			update_vendor_data(
+				Globle.WPNS[0][1],
+				Globle.WPNS[1][1],
+				Globle.WPNS[2][1]
+			)
+		"gravity_bomb":
+			update_vendor_data(
+				Globle.WPNS[0][2],
+				Globle.WPNS[1][2],
+				Globle.WPNS[2][2]
+			)
+		"negotiator":
+			update_vendor_data(
+				Globle.WPNS[0][3],
+				Globle.WPNS[1][3],
+				Globle.WPNS[2][3]
+			)
+		"pulse_rifle":
+			update_vendor_data(
+				Globle.WPNS[0][4],
+				Globle.WPNS[1][4],
+				Globle.WPNS[2][4]
+			)
+		"ry3no":
+			update_vendor_data(
+				Globle.WPNS[0][5],
+				Globle.WPNS[1][5],
+				Globle.WPNS[2][5]
+			)
+		"sheepinator":
+			update_vendor_data(
+				Globle.WPNS[0][6],
+				Globle.WPNS[1][6],
+				Globle.WPNS[2][6]
+			)
 
 # Change weapon to Edge Blaster.
 func _on_WeaponSlot1_pressed():
