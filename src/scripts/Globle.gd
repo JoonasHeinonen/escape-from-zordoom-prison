@@ -6,8 +6,7 @@ const WEAPONS_AVAILABLE   = [
 	"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
 	"pulse_rifle", "ry3no", "sheepinator"
 ]
-
-var bolts 			 = 0
+var bolts 			 = 999999
 var current_weapons  = ["edge_blaster"]
 var player_inventory = false
 
