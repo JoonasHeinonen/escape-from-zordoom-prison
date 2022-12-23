@@ -4,7 +4,6 @@ func _physics_process(delta):
 	self.rotation.x = 0
 	self.rotation.y = 0
 	self.rotation.z = 0
-	debug_rotation_values(self.rotation.x, self.rotation.y, self.rotation.z)
 	if $Sprite3D.frame in [4]:
 		queue_free()
 

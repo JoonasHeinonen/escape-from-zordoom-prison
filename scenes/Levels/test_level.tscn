@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/Destructibles/Crates/bolt_crate.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=7]
 [ext_resource path="res://scenes/Collectibles/weapon_collectible.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/NPC/Friendly/slim_cognito.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Environment" id=10]
 background_energy = 0.0
@@ -37,16 +38,16 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.79584, 0.08, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64725, 0, 0 )
 
 [node name="WeaponCollectible" parent="." instance=ExtResource( 8 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -2.53554, 0 )
-weapon = "edge_blaster"
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 23.4547, -2.53554, 0 )
+weapon = "negotiator"
 
 [node name="WeaponCollectible2" parent="." instance=ExtResource( 8 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 6.88309, -1.05825, 0 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 30.1382, -1.05825, 0 )
 weapon = "blitz_gun"
 
 [node name="WeaponCollectible3" parent="." instance=ExtResource( 8 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 48.0585, 1.53706, 0 )
-weapon = "pulse_rifle"
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 12.8114, -2.56146, 0 )
+weapon = "ry3no"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 10 )
@@ -85,6 +86,9 @@ mesh = SubResource( 4 )
 skeleton = NodePath("../../player/Camera")
 
 [node name="BoltCounter" parent="." instance=ExtResource( 3 )]
+
+[node name="slim_cognito" parent="." instance=ExtResource( 9 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.278046, -4, -1.5 )
 
 [node name="npc" type="Node" parent="."]
 
