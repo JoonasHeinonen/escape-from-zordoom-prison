@@ -585,6 +585,10 @@ collision_layer = 2
 collision_mask = 0
 script = ExtResource( 10 )
 
+[node name="CollisionShape2" type="CollisionShape" parent="PlayerHit_box"]
+transform = Transform( 0.19207, 0, 0, 0, 0.19207, 0, 0, 0, 0.131249, -1.22741, 0, 0 )
+shape = SubResource( 22 )
+
 [node name="CollisionShape" type="CollisionShape" parent="PlayerHit_box"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.387844, 0, 0 )
 shape = SubResource( 22 )

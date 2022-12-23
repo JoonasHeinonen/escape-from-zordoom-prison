@@ -111,18 +111,7 @@ func _process(delta):
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
 
-### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
-## melee combat fuction
-# goal for next week have detait that the modle has entered the hurt box
-#then once the player press f or the melee button
-#the box is distroyed then the box produces bolts
-"""
-func meleeCombat(amount:int)-> void):
-	if Input.is_action_just_pressed("ui_melee_attack"):
-		print("Melee button is pressed")
-"""
-
-		
+### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.		
 		
 # Sets all the in the inventory.
 func set_weapons_to_inventory(weapons):
