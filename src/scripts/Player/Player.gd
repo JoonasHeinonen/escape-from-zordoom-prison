@@ -36,6 +36,8 @@ func _ready():
 	$PlayerUI/InventoryContainer.visible = false
 	walk(0, 1, (-1) * 0.1, -2)
 	
+	
+	
 	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
 		current_weapon = "edge_blaster"
@@ -43,6 +45,7 @@ func _ready():
 
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
+	
 	
 	# Decide the weapons
 	if Globle.current_weapons.size() > 0:
@@ -109,10 +112,10 @@ func _process(delta):
 	var from = camera.project_ray_origin(mouse_pos)
 	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
 	var result = space_state.intersect_ray(from, to)
-	
+	#button for melee is pressed once.
 	if !Globle.player_inventory:
 		$Sprite3D/MeshInstance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
-	
+		
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
 	
@@ -271,6 +274,7 @@ func shoot_ry3no():
 func shoot_sheepinator():
 	print("Sheepinator used. All enemies are converted into sheeps.")
 
+
 ### FUNCTIONS USED FUR DEBUGGING THE PLAYER SCENE. NOT USED IN THE FINAL PRODUCT.
 
 # Used to debug the rotation values.
@@ -399,6 +403,6 @@ func _on_WeaponSlot6_pressed():
 func _on_WeaponSlot7_pressed():
 	current_weapon = "sheepinator"
 
-# Empty, for ow
+# Empty, for now
 func _on_WeaponSlot8_pressed():
 	pass # Replace with function body.

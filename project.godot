@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area",
+"class": "Crate_hurt_Box",
+"language": "GDScript",
+"path": "res://src/scripts/destructibles/Crate_hurt_box.gd"
+}, {
 "base": "Reference",
 "class": "DTS",
 "language": "GDScript",
@@ -63,8 +68,14 @@ _global_script_classes=[ {
 "class": "HistoryRow",
 "language": "GDScript",
 "path": "res://addons/dialogic/Example Assets/History/HistoryRow.gd"
+}, {
+"base": "Area",
+"class": "PlayerHit_box",
+"language": "GDScript",
+"path": "res://src/scripts/Player/PlayerHit_box.gd"
 } ]
 _global_script_class_icons={
+"Crate_hurt_Box": "",
 "DTS": "",
 "Dialogic": "",
 "DialogicAnimaPropertiesHelper": "",
@@ -75,7 +86,8 @@ _global_script_class_icons={
 "DialogicParser": "",
 "DialogicResources": "",
 "DialogicUtil": "",
-"HistoryRow": ""
+"HistoryRow": "",
+"PlayerHit_box": ""
 }
 
 [application]
@@ -159,6 +171,11 @@ ui_ranged_attack={
 ui_esc={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777217,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_melee_attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":70,"unicode":0,"echo":false,"script":null)
  ]
 }
 
