@@ -24,11 +24,6 @@ const WPNS = [
 		"The Sheepinator in Going Commando is a black pistol with glowing orange accents. It fires two spiralling orange beams which function as a single beam. The Black Sheepinator is a longer carbine, with greater orange accents and a left-hand grip."
 	]
 ]
-<<<<<<< HEAD
-var bolts 			 = 999999
-var current_weapons  = ["edge_blaster"]
-var player_inventory = false
-=======
 
 var bolts 			 	= 0
 var weapons_for_sale 	= [
@@ -38,7 +33,6 @@ var current_weapons  	= ["edge_blaster"]
 var player_inventory 	= false
 var vendor_open 	 	= false
 var vendor_active 	 	= false
->>>>>>> master
 
 # Not sure if we need this instance_node
 func instance_node(node,location,parent):

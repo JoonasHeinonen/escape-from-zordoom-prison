@@ -122,10 +122,6 @@ func _process(delta):
 	# Set the bolts in the vendor.
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 
-<<<<<<< HEAD
-### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.		
-		
-=======
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
 
 # Sets all the items to the vendor, i.e. determine all the weapons for sale.
@@ -152,7 +148,6 @@ func set_vendor_weapons(weapons_for_sale):
 		btn.connect("focus_entered", self, "_on_VendorWeaponButton_focus_entered", [btn, btn.wpn_for_sale])
 		$PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons.add_child(btn)
 
->>>>>>> master
 # Sets all the in the inventory.
 func set_weapons_to_inventory(weapons):
 	for weapon in weapons:
