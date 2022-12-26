@@ -33,6 +33,7 @@ var current_weapons  	= ["edge_blaster"]
 var player_inventory 	= false
 var vendor_open 	 	= false
 var vendor_active 	 	= false
+var melee_attack 		= false
 
 # Not sure if we need this instance_node
 func instance_node(node,location,parent):

@@ -4,6 +4,7 @@ onready var projectile 	  = preload("res://scenes/Projectiles/BlasterProjectile.
 onready var gun_btn 	  = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
 onready var hand_instance = $Sprite3D/HandInstance
+onready var mesh_instance = $Sprite3D/MeshInstance
 onready var gun_instance  = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
 onready var camera 		  = $Camera
 
@@ -36,8 +37,6 @@ func _ready():
 	$PlayerUI/InventoryContainer.visible = false
 	walk(0, 1, (-1) * 0.1, -2)
 	
-	
-	
 	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
 		current_weapon = "edge_blaster"
@@ -45,14 +44,13 @@ func _ready():
 
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
-	
-	
+
 	# Decide the weapons
 	if Globle.current_weapons.size() > 0:
 		pass
 	else:
 		current_weapon = null
-	
+
 	# No weapon in hand if no weapon available.
 	match current_weapon:
 		"edge_blaster":
@@ -73,13 +71,16 @@ func _physics_process(delta):
 			gun_instance.hide()
 
 	if alive && !Globle.player_inventory:
-		if Input.is_action_pressed("ui_right") and  Input.is_action_pressed("ui_left"):
-			state_machine.travel("Angela_Still")
-			velocity.x = 0
+		if Input.is_action_pressed("ui_melee_attack"):
+			state_machine.travel("Angela_Melee")
+			if (state_machine.get_current_play_position() > 0.3):
+				Globle.melee_attack = true
 		elif Input.is_action_pressed("ui_right"):
 			walk(5, 1, (-1) * 0.1, -2)
+			$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
 		elif Input.is_action_pressed("ui_left"):
 			walk(-5, -1, 0.1, 2)
+			$PlayerHit_box.set_translation(Vector3((-0.649 * 3.1), 0, 0))
 		else:
 			velocity.x = lerp(velocity.x,0,0.1)
 			state_machine.travel("Angela_Still")
@@ -90,9 +91,14 @@ func _physics_process(delta):
 		print(Globle.WPNS[0])
 		Globle.update_vendor()
 
+	if Input.is_action_just_released("ui_melee_attack"):
+		Globle.melee_attack = false
+
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		state_machine.travel("Angela_Fall")
+		if Input.is_action_pressed("ui_melee_attack"):
+			state_machine.travel("Angela_Melee")
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	move_and_slide(velocity,Vector3.UP)
@@ -112,10 +118,13 @@ func _process(delta):
 	var from = camera.project_ray_origin(mouse_pos)
 	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
 	var result = space_state.intersect_ray(from, to)
-	#button for melee is pressed once.
+	# Button for melee is pressed once.
 	if !Globle.player_inventory:
-		$Sprite3D/MeshInstance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
-		
+		mesh_instance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
+
+	# Hide the hand gun when doing a melee attack.
+	mesh_instance.hide() if Globle.melee_attack else mesh_instance.show()
+
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
 	
@@ -210,13 +219,12 @@ func walk(vel, scale, weapon_translation, hand_translation):
 	state_machine.travel("Angela_Walk")
 	velocity.x = vel
 	$Sprite3D.scale.x = scale
-	$Sprite3D/MeshInstance.scale.x = weapon_translation
+	mesh_instance.scale.x = weapon_translation
 	$Sprite3D/MeshInstance/HandInstance.scale.y = hand_translation
-	$Sprite3D/MeshInstance.rotate_x(270)
+	mesh_instance.rotate_x(270)
 
 # Purchases weapon when a weapon button is pressed.
 func purchase_weapon(wpn_price : int, wpn, btn):
-	print("Purchasing...")
 	if (Globle.bolts >= wpn_price):
 		Globle.current_weapons.append(wpn)
 		Globle.update_vendor()
@@ -274,7 +282,6 @@ func shoot_ry3no():
 func shoot_sheepinator():
 	print("Sheepinator used. All enemies are converted into sheeps.")
 
-
 ### FUNCTIONS USED FUR DEBUGGING THE PLAYER SCENE. NOT USED IN THE FINAL PRODUCT.
 
 # Used to debug the rotation values.
@@ -287,7 +294,7 @@ func debug_rotation_values(x, y, z):
 
 # Limits the shooting rate.
 func _on_ShootTimer_timeout():
-	if Input.is_action_pressed("ui_ranged_attack"):
+	if Input.is_action_pressed("ui_ranged_attack") && !Globle.melee_attack:
 		match current_weapon:
 			"edge_blaster":
 				shoot_edge_blaster()

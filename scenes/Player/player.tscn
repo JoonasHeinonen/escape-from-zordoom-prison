@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -83,6 +83,21 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0.50632, -0.179795, 0.10579 ) ]
+}
+
+[sub_resource type="Animation" id=24]
+resource_name = "Angela_Melee"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 20, 21, 22, 23, 24 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -254,6 +269,9 @@ tracks/5/keys = {
 [sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Angela_Fall"
 
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "Angela_Melee"
+
 [sub_resource type="AnimationNodeAnimation" id=9]
 animation = "Angela_Still"
 
@@ -268,16 +286,22 @@ animation = "Angela_Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=18]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
 [sub_resource type="AnimationNodeStateMachine" id=13]
 states/Angela_Fall/node = SubResource( 16 )
-states/Angela_Fall/position = Vector2( 140, 123 )
+states/Angela_Fall/position = Vector2( 140, 175 )
+states/Angela_Melee/node = SubResource( 25 )
+states/Angela_Melee/position = Vector2( 413, 175 )
 states/Angela_Still/node = SubResource( 9 )
 states/Angela_Still/position = Vector2( 140, 37 )
 states/Angela_Walk/node = SubResource( 10 )
-states/Angela_Walk/position = Vector2( 335, 37 )
-transitions = [ "Angela_Still", "Angela_Walk", SubResource( 11 ), "Angela_Walk", "Angela_Still", SubResource( 12 ), "Angela_Still", "Angela_Fall", SubResource( 17 ), "Angela_Fall", "Angela_Still", SubResource( 18 ) ]
+states/Angela_Walk/position = Vector2( 413, 37 )
+transitions = [ "Angela_Still", "Angela_Walk", SubResource( 11 ), "Angela_Walk", "Angela_Still", SubResource( 12 ), "Angela_Still", "Angela_Fall", SubResource( 17 ), "Angela_Fall", "Angela_Still", SubResource( 18 ), "Angela_Still", "Angela_Melee", SubResource( 26 ), "Angela_Melee", "Angela_Still", SubResource( 27 ) ]
 start_node = "Angela_Still"
-graph_offset = Vector2( 11, -27 )
+graph_offset = Vector2( -134, 9 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
@@ -331,11 +355,11 @@ shaded = true
 double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
-vframes = 2
-frame = 2
+vframes = 3
+frame = 11
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0884085, -0.167102, 0.106 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -343,7 +367,7 @@ light_specular = 0.2
 spot_range = 0.43704
 
 [node name="SpotLight2" type="SpotLight" parent="Sprite3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382073, -0.547632, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.428979, -0.503266, 0.106 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -351,7 +375,7 @@ light_specular = 0.2
 spot_range = 0.43704
 
 [node name="SpotLight3" type="SpotLight" parent="Sprite3D"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235502, -0.54609, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.379062, -0.439347, 0.106 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -385,6 +409,7 @@ transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Angela_Fall = SubResource( 15 )
+anims/Angela_Melee = SubResource( 24 )
 anims/Angela_Still = SubResource( 8 )
 anims/Angela_Walk = SubResource( 7 )
 
@@ -785,17 +810,13 @@ wait_time = 0.5
 autostart = true
 
 [node name="PlayerHit_box" type="Area" parent="."]
-transform = Transform( 1.76495, 0, 0, 0, 2.53835, 0, 0, 0, 1, 0.648769, 0, 0 )
+transform = Transform( 1.76495, 0, 0, 0, 2.53835, 0, 0, 0, 1, 0.0593457, 0.347264, 0 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 15 )
 
-[node name="CollisionShape2" type="CollisionShape" parent="PlayerHit_box"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -1.13585, 0, 0 )
-shape = SubResource( 23 )
-
 [node name="CollisionShape" type="CollisionShape" parent="PlayerHit_box"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.387844, 0, 0 )
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.388, 0, 0 )
 shape = SubResource( 23 )
 
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot1" to="." method="_on_WeaponSlot1_pressed"]
