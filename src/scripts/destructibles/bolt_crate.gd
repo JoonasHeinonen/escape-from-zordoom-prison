@@ -28,20 +28,17 @@ func generate_bolt_position(x_axis, y_axis):
 	
 func take_damage(amount:int)-> void:
 	print("hit box has enterd the hurt box")
-	active=true
+	active = true
 	
 func no_damage(amount:int)-> void:
 	print("hit box has exit the hurt box")
-	active=false
-#also need to get the box to explode and to get bolts
-		 
-func _input(event):
-	if Input.is_action_just_pressed("ui_melee_attack") and  active==true:
-		print("crate hit ",10)
-		createBolts()		
-	elif Input.is_action_just_pressed("ui_melee_attack") and  active==false:
-		print("no hit ",0)
-		
+	active = false
+# Also need to get the box to explode and to get bolts
+
+func _process(delta):
+	if Globle.melee_attack && active:
+		createBolts()
+
 # Creates the default 3 bolts for the destroyed crate.
 func createBolts():
 	for i in 3:
