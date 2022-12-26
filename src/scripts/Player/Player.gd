@@ -73,8 +73,15 @@ func _physics_process(delta):
 	if alive && !Globle.player_inventory:
 		if Input.is_action_pressed("ui_melee_attack"):
 			state_machine.travel("Angela_Melee")
+			print(velocity.x)
 			if (state_machine.get_current_play_position() > 0.3):
 				Globle.melee_attack = true
+			if (state_machine.get_current_play_position() >= 0.4):
+				Globle.melee_attack = false
+				if velocity.x > 0:
+					velocity.x -= 0.1
+				if velocity.x < 0:
+					velocity.x += 0.1
 		elif Input.is_action_pressed("ui_right"):
 			walk(5, 1, (-1) * 0.1, -2)
 			$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
@@ -123,7 +130,7 @@ func _process(delta):
 		mesh_instance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
 
 	# Hide the hand gun when doing a melee attack.
-	mesh_instance.hide() if Globle.melee_attack else mesh_instance.show()
+	mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else mesh_instance.show()
 
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
@@ -294,7 +301,7 @@ func debug_rotation_values(x, y, z):
 
 # Limits the shooting rate.
 func _on_ShootTimer_timeout():
-	if Input.is_action_pressed("ui_ranged_attack") && !Globle.melee_attack:
+	if Input.is_action_pressed("ui_ranged_attack") && !Input.is_action_pressed("ui_melee_attack"):
 		match current_weapon:
 			"edge_blaster":
 				shoot_edge_blaster()
