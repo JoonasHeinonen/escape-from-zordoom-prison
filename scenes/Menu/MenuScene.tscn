@@ -18,10 +18,10 @@ margin_top = 330.0
 margin_right = 674.0
 margin_bottom = 389.0
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_right = 68.0
 margin_bottom = 59.0
 theme = ExtResource( 3 )
 text = "Back"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="." method="_on_BackButton_pressed"]

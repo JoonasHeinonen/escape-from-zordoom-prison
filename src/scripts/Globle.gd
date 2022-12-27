@@ -35,6 +35,8 @@ var vendor_open 	 	= false
 var vendor_active 	 	= false
 var melee_attack 		= false
 
+var menu_to_return 		= "none"
+
 # Not sure if we need this instance_node
 func instance_node(node,location,parent):
 	var node_instance=node.instance()

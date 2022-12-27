@@ -1,11 +1,22 @@
 extends Control
 
-onready var index_button = $VBoxContainer/CenterRow/Buttons/NewGameButton
+onready var new_game_button  = $VBoxContainer/CenterRow/Buttons/NewGameButton
+onready var load_game_button = $VBoxContainer/CenterRow/Buttons/LoadGameButton
+onready var options_button   = $VBoxContainer/CenterRow/Buttons/OptionsButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	get_tree().paused = false
-	index_button.grab_focus()
+
+	# Set the active button.
+	match Globle.menu_to_return:
+		"LoadGame":
+			load_game_button.grab_focus()
+		"Options":
+			options_button.grab_focus()
+		_:
+			new_game_button.grab_focus()
+
 	for button in $VBoxContainer/CenterRow/Buttons.get_children():
 		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
 
