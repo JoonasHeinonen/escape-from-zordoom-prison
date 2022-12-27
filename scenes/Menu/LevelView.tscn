@@ -55,6 +55,7 @@ margin_bottom = 126.0
 theme = ExtResource( 1 )
 text = "Back"
 script = ExtResource( 3 )
+menus = "StartGame"
 
 [node name="FadeIn" parent="." instance=ExtResource( 4 )]
 visible = false

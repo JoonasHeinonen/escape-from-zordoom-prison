@@ -25,4 +25,5 @@ func _on_ReturnToGameButton_pressed():
 
 # Returns to the main menu.
 func _on_ReturnToMainMenuButton_pressed():
+	Globle.menu_to_return = "StartGame"
 	get_tree().change_scene("res://scenes/Menu/MainMenu.tscn")
