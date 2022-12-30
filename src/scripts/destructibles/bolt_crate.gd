@@ -11,7 +11,6 @@ func _on_BoltCrate_body_entered(body):
 		queue_free()
 
 # Detects the collisions on this scene.
-
 func _on_Area_area_entered(body):
 	if body.name == "ProjectileExplosionArea":
 		createBolts()

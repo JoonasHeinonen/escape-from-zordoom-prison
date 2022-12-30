@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Collectibles/bolt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player/player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=7]
 [ext_resource path="res://scenes/Collectibles/weapon_collectible.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/NPC/Friendly/slim_cognito.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=10]
 
 [sub_resource type="PanoramaSky" id=15]
 radiance_size = 4
@@ -161,6 +162,20 @@ transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.5761, -1.11023, 0 )
 
 [node name="BoltCrate4" parent="destructibles/crates" instance=ExtResource( 6 )]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.03642, -0.381383, 0 )
+
+[node name="explosive_crates" type="Node" parent="destructibles"]
+
+[node name="ExplosiveCrate" parent="destructibles/explosive_crates" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37761, -3.55909, 0 )
+
+[node name="ExplosiveCrate2" parent="destructibles/explosive_crates" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5133, 0.451267, 0 )
+
+[node name="ExplosiveCrate3" parent="destructibles/explosive_crates" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.5038, 0.451267, 0 )
+
+[node name="ExplosiveCrate4" parent="destructibles/explosive_crates" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.9963, 1.35481, 0 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19.853, 1.06942, 0 )
