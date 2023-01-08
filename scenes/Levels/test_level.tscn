@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/Collectibles/bolt.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Player/player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/Collectibles/weapon_collectible.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/NPC/Friendly/slim_cognito.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=10]
+[ext_resource path="res://resources/images/characters/npc/black_question_mark.png" type="Texture" id=11]
 
 [sub_resource type="PanoramaSky" id=15]
 radiance_size = 4
@@ -100,8 +101,12 @@ mesh = SubResource( 13 )
 skeleton = NodePath("../..")
 
 [node name="CollisionShape" type="CollisionShape" parent="npc/npc"]
-transform = Transform( 1.488, 0, 0, 0, 3.171, 0, 0, 1.49012e-08, 1, 0, 0, 0 )
+transform = Transform( 1.488, 0, 0, 0, 3.171, 0, 0, 4.47035e-08, 1, 0, 0.174326, -2.73879 )
 shape = SubResource( 14 )
+
+[node name="QuestionMark" type="Sprite3D" parent="npc/npc"]
+transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.1, 0, 0.5, -4.37114e-09, 0, 0, 1.012 )
+texture = ExtResource( 11 )
 
 [node name="walls_floors" type="Node" parent="."]
 

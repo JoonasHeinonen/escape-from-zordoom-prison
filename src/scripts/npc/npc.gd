@@ -7,11 +7,6 @@ func _ready():
 	connect("body_entered",self,"_on_NPC_body_entered")
 	connect("body_exited",self,"_on_NPC_body_exited")
 	
-"""
-func _physics_process(delta):
-	print(value)
-	print(active)
-"""
 func _input(event):
 	if get_node_or_null('DialogNode')==null:
 			if Input.is_action_just_pressed("ui_accept") and active==true: 
@@ -45,26 +40,10 @@ func _input(event):
 					value=4
 					active=false
 					
+func _process(delta):
+	$QuestionMark.visible=active
+					
 				
-				"""
-				if Input.is_action_pressed("ui_accept") and active==true:
-				value+=1
-				if value==2:
-					get_tree().paused=true
-					var dialog=Dialogic.start('timeline-2')
-					dialog.pause_mode=Node.PAUSE_MODE_PROCESS
-					dialog.connect('timeline_end',self,'unpause')
-					add_child(dialog)
-					active=false
-				elif value==4:
-					get_tree().paused=true
-					var dialog=Dialogic.start('timeline-3')
-					dialog.pause_mode=Node.PAUSE_MODE_PROCESS
-					dialog.connect('timeline_end',self,'unpause')
-					add_child(dialog)
-					active=false
-				"""
-			
 				
 				
 func unpause(timeline_name):
