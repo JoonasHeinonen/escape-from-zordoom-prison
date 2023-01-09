@@ -6,6 +6,7 @@ onready var options_button   = $VBoxContainer/CenterRow/Buttons/OptionsButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Audio/Click.play()
 	get_tree().paused = false
 
 	# Set the active button.
@@ -28,3 +29,9 @@ func _on_Button_pressed(scene_to_load):
 # Run when FadeIn fade is finished.
 func _on_FadeIn_fade_finished():
 	pass # Leave this empty, for now.
+
+func _on_OptionsButton_pressed():
+	pass # Replace with function body.
+
+func _on_OptionsButton_focus_entered():
+	pass # Replace with function body.

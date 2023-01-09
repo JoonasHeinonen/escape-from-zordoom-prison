@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Ratchet_&_Clank_-_Going_Commando.iso_01780.wav-578ed8776e9e729ad61d7f9364a87daf.sample"
+
+[deps]
+
+source_file="res://resources/audio/npc/enemy/Ratchet_&_Clank_-_Going_Commando.iso_01780.wav"
+dest_files=[ "res://.import/Ratchet_&_Clank_-_Going_Commando.iso_01780.wav-578ed8776e9e729ad61d7f9364a87daf.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

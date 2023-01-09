@@ -1,14 +1,16 @@
 extends RigidBody
 
-onready var bolt_instance = preload("res://scenes/Collectibles/bolt.tscn")
+onready var bolt_instance 		= preload("res://scenes/Collectibles/bolt.tscn")
+onready var crate_destroy_sound = $Audio/CrateDestory
 
 # For adding random numbers.
 var random = RandomNumberGenerator.new()
-var active=false
+var active = false
+
 # Detects the collisions on this scene.
 func _on_BoltCrate_body_entered(body):
 	if body.name == "BlasterProjectileExplosion" || body.name == "ExplosionEffectiveRadius":
-		queue_free()
+		hide()
 
 # Detects the collisions on this scene.
 func _on_Area_area_entered(body):
@@ -49,4 +51,5 @@ func createBolts():
 			bolt.translation[0],
 			bolt.translation[1]
 		)
+	crate_destroy_sound.play()
 	queue_free()

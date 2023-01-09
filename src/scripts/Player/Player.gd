@@ -26,6 +26,7 @@ var current_weapon 		  = null
 
 var ray_origin  		  = Vector3()
 var ray_end 			  = Vector3()
+var random 				  = RandomNumberGenerator.new()
 
 ### INHERITED FUNCTIONS FROM GODOT.
 
@@ -131,6 +132,7 @@ func _process(delta):
 
 	# Hide the hand gun when doing a melee attack.
 	mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else mesh_instance.show()
+	play_melee_sound(random.randi_range(0,4)) if Input.is_action_just_pressed("ui_melee_attack") else print()
 
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
@@ -258,12 +260,39 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
 
+# Play the audio for collecting a bolt.
+func collect_bolt(bolt_index : int):
+	match bolt_index:
+		0:
+			$Audio/Bolt/Bolt0.play()
+		1:
+			$Audio/Bolt/Bolt1.play()
+		2:
+			$Audio/Bolt/Bolt2.play()
+		_:
+			$Audio/Bolt/Bolt0.play()
+
+# Play the audio for the melee.
+func play_melee_sound(melee_index : int):
+	match melee_index:
+		0:
+			$Audio/Melee/Melee0.play()
+		1:
+			$Audio/Melee/Melee1.play()
+		2:
+			$Audio/Melee/Melee2.play()
+		3:
+			$Audio/Melee/Melee3.play()
+		_:
+			$Audio/Melee/Melee0.play()
+
 # Shooting functionality for the edge blaster.
 func shoot_edge_blaster():
 	var bullet = projectile.instance()
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
 	bullet.global_transform = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+	$Audio/EdgeBlaster.play()
 
 # Shooting functionality for the blitz gun.
 func shoot_blitz_gun():

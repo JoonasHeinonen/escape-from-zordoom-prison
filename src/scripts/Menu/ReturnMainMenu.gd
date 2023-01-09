@@ -20,3 +20,6 @@ func _on_BackButton_pressed():
 		_:
 			Globle.menu_to_return = "StartGame"
 	get_tree().change_scene("res://scenes/Menu/MainMenu.tscn")
+
+func _on_BackButton_focus_entered():
+	$Audio/Move.play()

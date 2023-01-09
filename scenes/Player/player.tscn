@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=53 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -15,6 +15,18 @@
 [ext_resource path="res://scenes/UI/BoltCounter.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/scripts/Player/PlayerWeaponsInventory.gd" type="Script" id=14]
 [ext_resource path="res://src/scripts/Player/PlayerHit_box.gd" type="Script" id=15]
+[ext_resource path="res://resources/audio/weapons/player/edge_blaster.wav" type="AudioStream" id=16]
+[ext_resource path="res://resources/audio/collectibles/bolt_collect_1.wav" type="AudioStream" id=17]
+[ext_resource path="res://resources/audio/collectibles/bolt_collect_0.wav" type="AudioStream" id=18]
+[ext_resource path="res://resources/audio/collectibles/bolt_collect_2.wav" type="AudioStream" id=19]
+[ext_resource path="res://resources/audio/player/gravel_step_0.wav" type="AudioStream" id=20]
+[ext_resource path="res://resources/audio/player/gravel_step_1.wav" type="AudioStream" id=21]
+[ext_resource path="res://resources/audio/player/melee_2.wav" type="AudioStream" id=22]
+[ext_resource path="res://resources/audio/player/melee_1.wav" type="AudioStream" id=23]
+[ext_resource path="res://resources/audio/ui/button_click.wav" type="AudioStream" id=24]
+[ext_resource path="res://resources/audio/player/melee_0.wav" type="AudioStream" id=25]
+[ext_resource path="res://resources/audio/player/melee_3.wav" type="AudioStream" id=26]
+[ext_resource path="res://resources/audio/ui/button_navigate.wav" type="AudioStream" id=27]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -236,10 +248,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0.3, -0.56, 0.106 ), Vector3( 0.12, -0.55, 0.106 ), Vector3( -0.3, -0.6, 0.106 ), Vector3( -0.5, -0.45, 0.106 ), Vector3( -0.3, -0.5, 0.106 ), Vector3( 0.22, -0.55, 0.106 ), Vector3( 0.24, -0.5, 0.106 ), Vector3( 0.38, -0.4, 0.106 ), Vector3( 0.25, -0.5, 0.106 ), Vector3( 0.325, -0.5, 0.106 ) ]
+"values": [ Vector3( 0.3, -0.56, 0.106 ), Vector3( 0.12, -0.55, 0.106 ), Vector3( -0.5, -0.45, 0.106 ), Vector3( 0.22, -0.55, 0.106 ), Vector3( -0.3, -0.5, 0.106 ), Vector3( 0.38, -0.4, 0.106 ), Vector3( 0.25, -0.5, 0.106 ), Vector3( 0.325, -0.5, 0.106 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Sprite3D/SpotLight3:translation")
@@ -264,6 +276,24 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ false, true, true, false, true ]
+}
+tracks/6/type = "audio"
+tracks/6/path = NodePath("Audio/Body/Step")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 21 )
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 20 )
+} ],
+"times": PoolRealArray( 0, 0.5 )
 }
 
 [sub_resource type="AnimationNodeAnimation" id=16]
@@ -356,7 +386,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 3
-frame = 2
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -621,6 +651,14 @@ margin_right = 280.0
 margin_bottom = 201.0
 scene_to_load = ""
 
+[node name="Audio" type="Node" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton/Audio"]
+stream = ExtResource( 24 )
+
+[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton/Audio"]
+stream = ExtResource( 27 )
+
 [node name="VendorContainer" type="Control" parent="PlayerUI"]
 margin_left = 70.0
 margin_top = 70.0
@@ -819,6 +857,41 @@ script = ExtResource( 15 )
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.388, 0, 0 )
 shape = SubResource( 23 )
 
+[node name="Audio" type="Node" parent="."]
+
+[node name="EdgeBlaster" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 16 )
+
+[node name="Bolt" type="Node" parent="Audio"]
+
+[node name="Bolt0" type="AudioStreamPlayer" parent="Audio/Bolt"]
+stream = ExtResource( 18 )
+
+[node name="Bolt1" type="AudioStreamPlayer" parent="Audio/Bolt"]
+stream = ExtResource( 17 )
+
+[node name="Bolt2" type="AudioStreamPlayer" parent="Audio/Bolt"]
+stream = ExtResource( 19 )
+
+[node name="Body" type="Node" parent="Audio"]
+
+[node name="Step" type="AudioStreamPlayer" parent="Audio/Body"]
+stream = ExtResource( 20 )
+
+[node name="Melee" type="Node" parent="Audio"]
+
+[node name="Melee0" type="AudioStreamPlayer" parent="Audio/Melee"]
+stream = ExtResource( 25 )
+
+[node name="Melee1" type="AudioStreamPlayer" parent="Audio/Melee"]
+stream = ExtResource( 23 )
+
+[node name="Melee2" type="AudioStreamPlayer" parent="Audio/Melee"]
+stream = ExtResource( 22 )
+
+[node name="Melee3" type="AudioStreamPlayer" parent="Audio/Melee"]
+stream = ExtResource( 26 )
+
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot1" to="." method="_on_WeaponSlot1_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot2" to="." method="_on_WeaponSlot2_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot3" to="." method="_on_WeaponSlot3_pressed"]
@@ -828,5 +901,6 @@ shape = SubResource( 23 )
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot7" to="." method="_on_WeaponSlot7_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8" to="." method="_on_WeaponSlot8_pressed"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToGameButton_pressed"]
+[connection signal="focus_entered" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_entered"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
 [connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
