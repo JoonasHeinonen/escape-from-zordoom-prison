@@ -71,6 +71,6 @@ stream = ExtResource( 6 )
 visible = false
 color = Color( 0, 0, 0, 0 )
 
-[connection signal="focus_entered" from="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" to="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" method="_on_BackButton_focus_entered"]
+[connection signal="focus_exited" from="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" to="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" method="_on_BackButton_focus_exited"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" to="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" method="_on_BackButton_pressed"]
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

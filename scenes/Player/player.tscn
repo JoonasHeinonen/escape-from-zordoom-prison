@@ -386,7 +386,6 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 3
-frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -711,6 +710,14 @@ margin_bottom = 59.0
 shortcut_in_tooltip = false
 text = "LEAVE VENDOR"
 
+[node name="Audio2" type="Node" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
+stream = ExtResource( 24 )
+
+[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
+stream = ExtResource( 27 )
+
 [node name="WeaponsForSale" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -892,6 +899,14 @@ stream = ExtResource( 22 )
 [node name="Melee3" type="AudioStreamPlayer" parent="Audio/Melee"]
 stream = ExtResource( 26 )
 
+[node name="UI" type="Node" parent="Audio"]
+
+[node name="Click" type="AudioStreamPlayer" parent="Audio/UI"]
+stream = ExtResource( 24 )
+
+[node name="Move" type="AudioStreamPlayer" parent="Audio/UI"]
+stream = ExtResource( 27 )
+
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot1" to="." method="_on_WeaponSlot1_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot2" to="." method="_on_WeaponSlot2_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot3" to="." method="_on_WeaponSlot3_pressed"]
@@ -900,7 +915,8 @@ stream = ExtResource( 26 )
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot6" to="." method="_on_WeaponSlot6_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot7" to="." method="_on_WeaponSlot7_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8" to="." method="_on_WeaponSlot8_pressed"]
+[connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" method="_on_ReturnToGameButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToGameButton_pressed"]
-[connection signal="focus_entered" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_entered"]
+[connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
 [connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]

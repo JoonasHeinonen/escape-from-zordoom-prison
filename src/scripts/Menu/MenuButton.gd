@@ -29,23 +29,29 @@ func _on_LevelButton_pressed():
 func _on_ReturnButton_pressed():
 	$Audio/Click.play()
 
-func _on_NewGameButton_focus_entered():
+func _on_ReturnToGameButton_focus_exited():
 	$Audio/Move.play()
 
-func _on_LoadGameButton_focus_entered():
+func _on_ReturnToMainMenuButton_focus_exited():
 	$Audio/Move.play()
 
-func _on_OptionsButton_focus_entered():
+func _on_NewGameButton_focus_exited():
 	$Audio/Move.play()
 
-func _on_QuitGameButton_focus_entered():
+func _on_LoadGameButton_focus_exited():
 	$Audio/Move.play()
 
-func _on_LevelButton_focus_entered():
+func _on_OptionsButton_focus_exited():
 	$Audio/Move.play()
 
-func _on_ReturnButton_focus_entered():
+func _on_QuitGameButton_focus_exited():
 	$Audio/Move.play()
 
-func _on_ReturnToMainMenuButton_focus_entered():
+func _on_LevelButton_focus_exited():
 	$Audio/Move.play()
+
+func _on_ReturnButton_exited():
+	$Audio/Move.play()
+
+func _on_ReturnButton_focus_exited():
+	pass
