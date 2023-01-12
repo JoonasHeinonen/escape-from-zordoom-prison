@@ -27,6 +27,10 @@ func _physics_process(delta):
 				#grabes the bolt amout
 				Globle.bolts+=countBoults
 				# print(Globle.bolts)
+				
+				# Plays the bolt sound on the player's instance.
+				if bod.has_method("collect_bolt"):
+					bod.collect_bolt(random.randi_range(0,2))
 			
 				queue_free()
 			

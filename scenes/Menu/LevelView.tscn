@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/scripts/Menu/addon/LevelListing.gd" type="Script" id=2]
 [ext_resource path="res://src/scripts/Menu/ReturnMainMenu.gd" type="Script" id=3]
 [ext_resource path="res://scenes/Transitions/fade_in.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/audio/ui/button_click.wav" type="AudioStream" id=5]
+[ext_resource path="res://resources/audio/ui/button_navigate.wav" type="AudioStream" id=6]
 
 [node name="LevelView" type="Control"]
 anchor_right = 1.0
@@ -57,9 +59,18 @@ text = "Back"
 script = ExtResource( 3 )
 menus = "StartGame"
 
+[node name="Audio" type="Node" parent="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton/Audio"]
+stream = ExtResource( 5 )
+
+[node name="Move" type="AudioStreamPlayer" parent="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton/Audio"]
+stream = ExtResource( 6 )
+
 [node name="FadeIn" parent="." instance=ExtResource( 4 )]
 visible = false
 color = Color( 0, 0, 0, 0 )
 
+[connection signal="focus_exited" from="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" to="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" method="_on_BackButton_focus_exited"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" to="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" method="_on_BackButton_pressed"]
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
