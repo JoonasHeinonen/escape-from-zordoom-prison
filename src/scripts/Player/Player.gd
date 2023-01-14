@@ -1,6 +1,8 @@
 extends KinematicBody
 
 onready var projectile 	  = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
+onready var blizGunProjectile 	  = preload("res://scenes/Projectiles/BilzGunProjectile.tscn")
+
 onready var gun_btn 	  = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
 onready var hand_instance = $Sprite3D/HandInstance
@@ -296,6 +298,11 @@ func shoot_edge_blaster():
 
 # Shooting functionality for the blitz gun.
 func shoot_blitz_gun():
+	var bullet = blizGunProjectile.instance()
+	bullet.translation.x = 3
+	get_parent().add_child(bullet)
+	bullet.global_transform = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+	$Audio/EdgeBlaster.play()
 	print("Blizzard and blitz!")
 
 # Shooting functionality for the gravity bomb.
