@@ -26,3 +26,10 @@ func _on_area_exit(hitbox:PlayerHit_box) -> void:
 			
 				 
 	
+
+
+
+func _on_Crate_hurt_Box_body_entered(body):
+	if body.name == "BilzGunProjectile":
+		print("test")
+		pass # Replace with function body.

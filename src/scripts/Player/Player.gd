@@ -302,7 +302,7 @@ func shoot_blitz_gun():
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
 	bullet.global_transform = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
-	$Audio/EdgeBlaster.play()
+	#$Audio/EdgeBlaster.play()
 	print("Blizzard and blitz!")
 
 # Shooting functionality for the gravity bomb.
