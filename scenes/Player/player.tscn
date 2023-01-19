@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://src/scripts/npc/vendor_container.gd" type="Script" id=10]
 [ext_resource path="res://src/theme/zordoom_resource_theme.tres" type="Theme" id=11]
 [ext_resource path="res://scenes/UI/bolt-icon.png" type="Texture" id=12]
-[ext_resource path="res://scenes/UI/BoltCounter.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/scripts/UI/boltCount.gd" type="Script" id=13]
 [ext_resource path="res://src/scripts/Player/PlayerWeaponsInventory.gd" type="Script" id=14]
 [ext_resource path="res://src/scripts/Player/PlayerHit_box.gd" type="Script" id=15]
 [ext_resource path="res://resources/audio/weapons/player/edge_blaster.wav" type="AudioStream" id=16]
@@ -27,6 +27,7 @@
 [ext_resource path="res://resources/audio/player/melee_0.wav" type="AudioStream" id=25]
 [ext_resource path="res://resources/audio/player/melee_3.wav" type="AudioStream" id=26]
 [ext_resource path="res://resources/audio/ui/button_navigate.wav" type="AudioStream" id=27]
+[ext_resource path="res://resources/fonts/rg-future-italic.tres" type="DynamicFont" id=28]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -386,6 +387,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 3
+frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -452,8 +454,6 @@ parameters/playback = SubResource( 14 )
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="Node2D" parent="PlayerUI" instance=ExtResource( 13 )]
 
 [node name="InventoryContainer" type="Control" parent="PlayerUI"]
 pause_mode = 2
@@ -659,6 +659,7 @@ stream = ExtResource( 24 )
 stream = ExtResource( 27 )
 
 [node name="VendorContainer" type="Control" parent="PlayerUI"]
+visible = false
 margin_left = 70.0
 margin_top = 70.0
 margin_right = 1210.0
@@ -845,6 +846,66 @@ theme = ExtResource( 11 )
 text = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
 autowrap = true
 clip_text = true
+
+[node name="InGameUI" type="Control" parent="PlayerUI"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Bolts" type="Control" parent="PlayerUI/InGameUI"]
+margin_left = 1030.0
+margin_right = 1280.0
+margin_bottom = 150.0
+
+[node name="Sprite" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
+position = Vector2( 210, 35 )
+scale = Vector2( 0.34, 0.3 )
+texture = ExtResource( 12 )
+
+[node name="bolts" type="Label" parent="PlayerUI/InGameUI/Bolts"]
+margin_top = 5.0
+margin_right = 175.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 28 )
+text = "100
+"
+script = ExtResource( 13 )
+
+[node name="Ammo" type="Control" parent="PlayerUI/InGameUI"]
+margin_right = 250.0
+margin_bottom = 150.0
+
+[node name="Sprite" type="Sprite" parent="PlayerUI/InGameUI/Ammo"]
+position = Vector2( 40, 35 )
+scale = Vector2( 0.34, 0.3 )
+texture = ExtResource( 12 )
+
+[node name="AmmoHas" type="Label" parent="PlayerUI/InGameUI/Ammo"]
+margin_left = 75.0
+margin_top = 5.0
+margin_right = 155.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 28 )
+text = "0"
+align = 1
+
+[node name="AmmoBy" type="Label" parent="PlayerUI/InGameUI/Ammo"]
+margin_left = 155.0
+margin_top = 5.0
+margin_right = 195.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 28 )
+text = "I"
+
+[node name="AmmoMax" type="Label" parent="PlayerUI/InGameUI/Ammo"]
+margin_left = 195.0
+margin_top = 5.0
+margin_right = 275.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 28 )
+text = "0
+"
+align = 1
 
 [node name="Node" type="Node" parent="."]
 

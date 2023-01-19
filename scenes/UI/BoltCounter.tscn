@@ -5,13 +5,11 @@
 [ext_resource path="res://scenes/UI/bolt-icon.png" type="Texture" id=3]
 
 [node name="Node2D" type="Node2D"]
+visible = false
 
 [node name="Control" type="Control" parent="."]
 margin_right = 1285.0
 margin_bottom = 715.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Sprite" type="Sprite" parent="Control"]
 position = Vector2( 31.875, 33.553 )
@@ -27,6 +25,3 @@ custom_fonts/font = ExtResource( 2 )
 text = "100
 "
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
