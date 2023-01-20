@@ -11,7 +11,7 @@ extents = Vector3( 0.0758928, 0.0428323, nan )
 [node name="BilzGunProjectile" type="RigidBody"]
 script = ExtResource( 2 )
 
-[node name="3" type="Sprite3D" parent="."]
+[node name="bullet" type="Sprite3D" parent="."]
 transform = Transform( 2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0.209488, 0, 0 )
 texture = ExtResource( 1 )
 
