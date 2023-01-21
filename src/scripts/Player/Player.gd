@@ -30,6 +30,8 @@ var ray_origin  		  = Vector3()
 var ray_end 			  = Vector3()
 var random 				  = RandomNumberGenerator.new()
 
+const RANDOM_ANGLE		=PI/2.0
+var fire_Rate			=3
 ### INHERITED FUNCTIONS FROM GODOT.
 
 # Called when the node enters the scene tree for the first time.
@@ -297,8 +299,6 @@ func shoot_edge_blaster():
 	$Audio/EdgeBlaster.play()
 
 # Shooting functionality for the blitz gun.
-const randomAngle=PI/2.0
-var fire_Rate=3
 func shoot_blitz_gun():	
 	$Audio/BlizGun.play()
 	#bullet spread
@@ -307,7 +307,7 @@ func shoot_blitz_gun():
 		bullet.translation.x = 3
 		get_parent().add_child(bullet)
 		bullet.global_transform = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/blizGunMuzzle.global_transform
-		bullet.rotate(Vector3(0,0,1),(randf()-.5)*randomAngle)
+		bullet.rotate(Vector3(0,0,1),(randf()-.5)*RANDOM_ANGLE)
 	print("Blizzard and blitz!")
 
 # Shooting functionality for the gravity bomb.
