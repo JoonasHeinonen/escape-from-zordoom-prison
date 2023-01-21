@@ -6,9 +6,11 @@ var speed = 8
 var velocity = Vector3(0,0,0)
 
 onready var projectile_effect = preload("res://scenes/Effects/ProjectileEffects/BlasterProjectileEffect.tscn")
-onready var projectile_explosion = preload("res://scenes/Effects/ProjectileEffects/BlasterProjectileExplosion.tscn")
+onready var projectile_explosion = preload("res://scenes/Effects/ProjectileEffects/BlizGunProjectileExplosion.tscn")
 
 func _ready():
+	$KillTimer.connect("timeout", self, "_on_KillTimer_timeout")
+	$KillTimer.start()
 	set_physics_process(true)
 	pass 
 

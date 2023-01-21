@@ -26,6 +26,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0 )
 [node name="Explosion" type="Position3D" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.289351, 0, 0 )
 
+[node name="KillTimer" type="Timer" parent="."]
+autostart = true
+
 [node name="BiltzArea" type="Area" parent="."]
 transform = Transform( 0.296063, 0, 0, 0, 0.203169, 0, 0, 0, 1, 0.266527, 0, 0 )
 

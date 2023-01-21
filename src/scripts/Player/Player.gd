@@ -297,16 +297,16 @@ func shoot_edge_blaster():
 	$Audio/EdgeBlaster.play()
 
 # Shooting functionality for the blitz gun.
-const randomAngle:=PI/2.0
+const randomAngle=PI/2.0
 var fire_Rate=3
 func shoot_blitz_gun():	
-	$Audio/EdgeBlaster.play()
+	$Audio/BlizGun.play()
 	#bullet spread
 	for index in fire_Rate:
 		var bullet = blizGunProjectile.instance()
 		bullet.translation.x = 3
 		get_parent().add_child(bullet)
-		bullet.global_transform = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+		bullet.global_transform = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/blizGunMuzzle.global_transform
 		bullet.rotate(Vector3(0,0,1),(randf()-.5)*randomAngle)
 	print("Blizzard and blitz!")
 
