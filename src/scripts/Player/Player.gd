@@ -1,7 +1,7 @@
 extends KinematicBody
-
+const RANDOM_ANGLE		  =PI/2.0
 onready var projectile 	  = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
-onready var blizGunProjectile 	  = preload("res://scenes/Projectiles/BilzGunProjectile.tscn")
+onready var blitzGunProjectile 	 = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
 
 onready var gun_btn 	  = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
@@ -29,8 +29,6 @@ var current_weapon 		  = null
 var ray_origin  		  = Vector3()
 var ray_end 			  = Vector3()
 var random 				  = RandomNumberGenerator.new()
-
-const RANDOM_ANGLE		=PI/2.0
 var fire_Rate			=3
 ### INHERITED FUNCTIONS FROM GODOT.
 
@@ -303,17 +301,16 @@ func shoot_blitz_gun():
 	$Audio/BlizGun.play()
 	#bullet spread
 	for index in fire_Rate:
-		var bullet = blizGunProjectile.instance()
+		var bullet = blitzGunProjectile.instance()
 		bullet.translation.x = 3
 		get_parent().add_child(bullet)
-		bullet.global_transform = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/blizGunMuzzle.global_transform
+		bullet.global_transform = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/blitzGunMuzzle.global_transform
 		bullet.rotate(Vector3(0,0,1),(randf()-.5)*RANDOM_ANGLE)
 	print("Blizzard and blitz!")
 
 # Shooting functionality for the gravity bomb.
 func shoot_gravity_bomb():
 	print("Gravity will guide this grenade into ground, emerging into explosion!")
-
 # Shooting functionality for the negotiator.
 func shoot_negotiator():
 	print("You have negotiated your enemies... To surrender...")

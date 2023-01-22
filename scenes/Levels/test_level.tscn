@@ -11,7 +11,7 @@
 [ext_resource path="res://scenes/NPC/Friendly/slim_cognito.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=10]
 [ext_resource path="res://resources/images/characters/npc/black_question_mark.png" type="Texture" id=11]
-[ext_resource path="res://scenes/Projectiles/BilzGunProjectile.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Projectiles/BlitzGunProjectile.tscn" type="PackedScene" id=12]
 
 [sub_resource type="PanoramaSky" id=15]
 radiance_size = 4
@@ -223,6 +223,6 @@ axis_lock_motion_y = false
 move_lock_x = false
 move_lock_y = false
 
-[node name="BilzGun" parent="." instance=ExtResource( 12 )]
+[node name="BlitzGun" parent="." instance=ExtResource( 12 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.989, 4.10237, 0 )
 visible = false

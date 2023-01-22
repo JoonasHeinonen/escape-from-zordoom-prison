@@ -9,12 +9,12 @@ var active = false
 
 # Detects the collisions on this scene.
 func _on_BoltCrate_body_entered(body):
-	if body.name == "BlasterProjectileExplosion" || body.name == "ExplosionEffectiveRadius" :
+	if body.name == "BlasterProjectileExplosion" || body.name == "ExplosionEffectiveRadius":
 		hide()
 
 # Detects the collisions on this scene.
 func _on_Area_area_entered(body):
-	if body.name == "ProjectileExplosionArea" || body.name == "ExplosionEffectiveRadius" :
+	if body.name == "ProjectileExplosionArea" || body.name == "ExplosionEffectiveRadius":
 		createBolts()
 
 # Generates a random position for the bolt.

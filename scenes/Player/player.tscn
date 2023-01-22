@@ -434,7 +434,7 @@ shaded = true
 double_sided = false
 texture = ExtResource( 5 )
 
-[node name="blizGunMuzzle" type="Position3D" parent="Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+[node name="blitzGunMuzzle" type="Position3D" parent="Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0 )
 
 [node name="WeaponMuzzle" type="Position3D" parent="Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
