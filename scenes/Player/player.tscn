@@ -27,7 +27,7 @@
 [ext_resource path="res://resources/audio/player/melee_0.wav" type="AudioStream" id=25]
 [ext_resource path="res://resources/audio/player/melee_3.wav" type="AudioStream" id=26]
 [ext_resource path="res://resources/audio/ui/button_navigate.wav" type="AudioStream" id=27]
-[ext_resource path="res://resources/audio/weapons/player/BlizGun.wav" type="AudioStream" id=28]
+[ext_resource path="res://resources/audio/weapons/player/BlitzGun.wav" type="AudioStream" id=28]
 
 [sub_resource type="BoxShape" id=5]
 

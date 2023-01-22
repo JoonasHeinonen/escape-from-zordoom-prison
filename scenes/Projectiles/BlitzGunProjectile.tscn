@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/scripts/effects/bullets/BlitzGunProjectile.gd" type="Script" id=1]
-[ext_resource path="res://resources/images/effects/projectile_effects/BliztGun_projectile.png" type="Texture" id=2]
+[ext_resource path="res://resources/images/effects/projectile_effects/BlitzGun_projectile.png" type="Texture" id=2]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.0758928, 0.0428323, nan )

@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/BlizGun.wav-edc1138e6d99a6fe10b34df236863126.sample"
+path="res://.import/BlitzGun.wav-cd783ed4f400bd89c39ef9242812784a.sample"
 
 [deps]
 
-source_file="res://resources/audio/weapons/player/BlizGun.wav"
-dest_files=[ "res://.import/BlizGun.wav-edc1138e6d99a6fe10b34df236863126.sample" ]
+source_file="res://resources/audio/weapons/player/BlitzGun.wav"
+dest_files=[ "res://.import/BlitzGun.wav-cd783ed4f400bd89c39ef9242812784a.sample" ]
 
 [params]
 
