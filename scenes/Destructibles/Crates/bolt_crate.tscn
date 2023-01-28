@@ -61,3 +61,4 @@ shape = SubResource( 3 )
 stream = ExtResource( 4 )
 
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
+[connection signal="body_entered" from="Crate_hurt_Box" to="Crate_hurt_Box" method="_on_Crate_hurt_Box_body_entered"]

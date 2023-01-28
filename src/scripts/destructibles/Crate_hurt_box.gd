@@ -15,14 +15,13 @@ func _on_area_entered(hitbox:PlayerHit_box) -> void:
 	elif owner.has_method("take_damage"):
 		owner.take_damage(hitbox.damage)
 		
-		
-
 func _on_area_exit(hitbox:PlayerHit_box) -> void:
 	if hitbox ==null:    
 		return 
 	elif owner.has_method("no_damage"):
 		owner.no_damage(0)
 		
-			
-				 
-	
+func _on_Crate_hurt_Box_body_entered(body):
+	if body.name == "BilzGunProjectile":
+		print("test")
+		pass
