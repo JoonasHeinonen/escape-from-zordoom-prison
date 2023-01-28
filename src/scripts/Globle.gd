@@ -25,7 +25,7 @@ const WPNS = [
 	]
 ]
 
-var bolts 			 	= 0
+var bolts 			 	= 9666666555
 var weapons_for_sale 	= [
 	"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator", "pulse_rifle", "ry3no", "sheepinator"
 ]
