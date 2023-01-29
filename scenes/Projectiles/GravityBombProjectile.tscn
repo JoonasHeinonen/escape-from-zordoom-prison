@@ -23,6 +23,9 @@ texture = ExtResource( 1 )
 shape = SubResource( 3 )
 disabled = true
 
+[node name="Explosion" type="Position3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.289351, 0, 0 )
+
 [node name="KillTimer" type="Timer" parent="."]
 autostart = true
 
