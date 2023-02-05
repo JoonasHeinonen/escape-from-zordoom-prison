@@ -25,11 +25,15 @@ const WPNS = [
 	]
 ]
 
+var player_character 	= null
+
 var bolts 			 	= 0
+
 var weapons_for_sale 	= [
 	"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator", "pulse_rifle", "ry3no", "sheepinator"
 ]
 var current_weapons  	= ["edge_blaster"]
+
 var player_inventory 	= false
 var vendor_open 	 	= false
 var vendor_active 	 	= false
