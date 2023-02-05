@@ -49,7 +49,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.79584, 0.08, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64725, 0, 0 )
 
 [node name="WeaponCollectible" parent="." instance=ExtResource( 4 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 23.4547, -2.53554, 0 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 33.8398, -2.53554, 0 )
 weapon = "negotiator"
 
 [node name="WeaponCollectible2" parent="." instance=ExtResource( 4 )]
@@ -57,7 +57,7 @@ transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 2.79358, -1.05825, 0 )
 weapon = "blitz_gun"
 
 [node name="WeaponCollectible3" parent="." instance=ExtResource( 4 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 12.8114, 4.45104, 0 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 12.2247, 4.45104, 0 )
 weapon = "ry3no"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -217,7 +217,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2348, 0.362001, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.8761, 1.08331, 0 )
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0179, 3.96202, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0179, 0.773238, 0 )
 axis_lock_motion_x = false
 axis_lock_motion_y = false
 move_lock_x = false

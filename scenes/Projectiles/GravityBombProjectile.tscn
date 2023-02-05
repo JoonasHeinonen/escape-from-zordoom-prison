@@ -20,6 +20,7 @@ transform = Transform( 2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0.00466165, 0, 0 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 shape = SubResource( 3 )
 disabled = true
 
@@ -27,10 +28,11 @@ disabled = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.289351, 0, 0 )
 
 [node name="KillTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [node name="GravityBombArea" type="Area" parent="."]
-transform = Transform( 0.296063, 0, 0, 0, 0.203169, 0, 0, 0, 1, 0.266527, 0, 0 )
+transform = Transform( 0.506501, 0, 0, 0, 0.203169, 0, 0, 0, 1, 0.0388635, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="GravityBombArea"]
 shape = SubResource( 4 )

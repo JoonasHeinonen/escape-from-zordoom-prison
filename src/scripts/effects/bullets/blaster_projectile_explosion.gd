@@ -1,12 +1,8 @@
 extends KinematicBody
 
-func _physics_process(delta):
-	self.rotation.x = 0
-	self.rotation.y = 0
-	self.rotation.z = 0
-	if $Sprite3D.frame in [4]:
-		queue_free()
-
+# Run when KillTimer has timed out.
+func _on_KillTimer_timeout():
+	queue_free()
 # Used to debug the rotation values.
 func debug_rotation_values(x, y, z):
 	var values = "Rotation values: %s %s %s."	

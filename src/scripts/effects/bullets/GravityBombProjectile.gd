@@ -5,8 +5,7 @@ var velocity = Vector3(1,-1,0)
 #https://www.youtube.com/watch?v=p6OQ7XVsiKw
 onready var gravity_bomb_explosion = preload("res://scenes/Effects/ProjectileEffects/GravityBombExplosion.tscn")
 func _ready():
-	$KillTimer.connect("timeout", self, "_on_KillTimer_timeout")
-	$KillTimer.start()
+	
 	apply_impulse(Vector3.ZERO,velocity*8)
 
 #https://www.youtube.com/watch?v=F1Fyj3Lh_Pc&t=239s

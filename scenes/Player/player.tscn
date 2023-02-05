@@ -27,14 +27,13 @@
 [ext_resource path="res://resources/audio/player/melee_0.wav" type="AudioStream" id=25]
 [ext_resource path="res://resources/audio/player/melee_3.wav" type="AudioStream" id=26]
 [ext_resource path="res://resources/audio/ui/button_navigate.wav" type="AudioStream" id=27]
-[ext_resource path="res://src/theme/zordoom_ingameui_theme.tres" type="Theme" id=28]
+[ext_resource path="res://resources/audio/weapons/player/BlitzGun.wav" type="AudioStream" id=28]
 [ext_resource path="res://scenes/UI/ammo-icon.png" type="Texture" id=29]
 [ext_resource path="res://src/scripts/Player/PlayerUI.gd" type="Script" id=30]
 [ext_resource path="res://scenes/UI/health-icon.png" type="Texture" id=31]
 [ext_resource path="res://scenes/UI/icon-hexagon-placeholder.png" type="Texture" id=32]
 [ext_resource path="res://scenes/UI/icon-square-placeholder.png" type="Texture" id=33]
 [ext_resource path="res://scenes/UI/icon-triangle-placeholder.png" type="Texture" id=34]
-[ext_resource path="res://resources/audio/weapons/player/BlitzGun.wav" type="AudioStream" id=28]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -507,7 +506,6 @@ margin_left = -30.0
 margin_top = -2.0
 margin_right = 170.0
 margin_bottom = 48.0
-theme = ExtResource( 28 )
 text = "100"
 align = 2
 valign = 1
@@ -547,7 +545,6 @@ texture = ExtResource( 34 )
 [node name="AmmoHas" type="Label" parent="PlayerUI/InGameUI/Ammo"]
 margin_right = 80.0
 margin_bottom = 50.0
-theme = ExtResource( 28 )
 text = "0"
 align = 2
 valign = 1
@@ -556,7 +553,6 @@ valign = 1
 margin_left = 80.0
 margin_right = 120.0
 margin_bottom = 50.0
-theme = ExtResource( 28 )
 custom_colors/font_color = Color( 0.25098, 0.443137, 0.470588, 0.784314 )
 text = "/"
 align = 1
@@ -566,7 +562,6 @@ valign = 1
 margin_left = 120.0
 margin_right = 200.0
 margin_bottom = 50.0
-theme = ExtResource( 28 )
 custom_colors/font_color = Color( 0.25098, 0.443137, 0.470588, 0.784314 )
 text = "0"
 valign = 1
@@ -606,7 +601,6 @@ margin_left = 150.25
 margin_top = -3.0
 margin_right = 195.25
 margin_bottom = 47.0
-theme = ExtResource( 28 )
 text = "0"
 align = 2
 valign = 1
@@ -616,7 +610,6 @@ margin_left = 195.25
 margin_top = -3.0
 margin_right = 205.25
 margin_bottom = 47.0
-theme = ExtResource( 28 )
 text = "/"
 align = 1
 valign = 1
@@ -626,7 +619,6 @@ margin_left = 205.25
 margin_top = -3.0
 margin_right = 250.25
 margin_bottom = 47.0
-theme = ExtResource( 28 )
 text = "0"
 valign = 1
 
