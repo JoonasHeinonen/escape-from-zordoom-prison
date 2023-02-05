@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/angela_sheet_init_finished.png-acc3964ffa31bb8e66165fb813283aff.stex"
+path="res://.import/angela_sheet_init_finished_holster_weapon.png-8d8ed9614400c0e6370b0392c601b8a5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/characters/angela_sheet_init_finished.png"
-dest_files=[ "res://.import/angela_sheet_init_finished.png-acc3964ffa31bb8e66165fb813283aff.stex" ]
+source_file="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png"
+dest_files=[ "res://.import/angela_sheet_init_finished_holster_weapon.png-8d8ed9614400c0e6370b0392c601b8a5.stex" ]
 
 [params]
 

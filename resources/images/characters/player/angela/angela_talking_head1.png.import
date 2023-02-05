@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/angela_talking_head1.png-0c358b8e51410d17b4bf5d5344f9dc39.stex"
+path="res://.import/angela_talking_head1.png-3d8a64431e45d1f4658a29544e84dede.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/characters/angela_talking_head1.png"
-dest_files=[ "res://.import/angela_talking_head1.png-0c358b8e51410d17b4bf5d5344f9dc39.stex" ]
+source_file="res://resources/images/characters/player/angela/angela_talking_head1.png"
+dest_files=[ "res://.import/angela_talking_head1.png-3d8a64431e45d1f4658a29544e84dede.stex" ]
 
 [params]
 

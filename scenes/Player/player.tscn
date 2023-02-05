@@ -2,10 +2,10 @@
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://resources/images/characters/angela_sheet_init_finished_holster_weapon.png" type="Texture" id=3]
+[ext_resource path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" type="Texture" id=3]
 [ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=4]
 [ext_resource path="res://resources/images/weapons/edge_blaster.png" type="Texture" id=5]
-[ext_resource path="res://resources/images/characters/angela_weapon.png" type="Texture" id=6]
+[ext_resource path="res://resources/images/characters/player/angela/angela_weapon.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Menu/PlayerMenuButtons/ReturnToMainMenuButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Menu/PlayerMenuButtons/ReturnToGameButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scripts/Player/PauseMenuContainer.gd" type="Script" id=9]
@@ -394,6 +394,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 3
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="Sprite3D"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
