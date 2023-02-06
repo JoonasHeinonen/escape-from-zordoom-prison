@@ -25,7 +25,7 @@ const WPNS = [
 	]
 ]
 
-var player_character 	= null
+var player_character 	= "Rivet"
 
 var bolts 			 	= 0
 
