@@ -7,7 +7,8 @@ var res_string: String = ""
 func _ready():
 	res_string = "res://resources/images/characters/player/%s/%s_character_selection.png"
 	$CharacterImage.texture = load(res_string % [characters.to_lower(), characters.to_lower()])
-	
+	$CharacterPanel/CharacterName.text = characters
+
 # When selecting the player character.
 func _on_CharacterSelectionButton_pressed():
 	Globle.player_character = characters

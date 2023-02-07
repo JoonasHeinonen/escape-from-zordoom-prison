@@ -87,17 +87,20 @@ func _physics_process(delta):
 			gun_instance.hide()
 
 	if alive && !Globle.player_inventory:
+		# Melee attack.
 		if Input.is_action_pressed("ui_melee_attack"):
-			state_machine.travel("Player_Melee")
-			print(velocity.x)
-			if (state_machine.get_current_play_position() > 0.3):
-				Globle.melee_attack = true
-			if (state_machine.get_current_play_position() >= 0.4):
-				Globle.melee_attack = false
-				if velocity.x > 0:
-					velocity.x -= 0.1
-				if velocity.x < 0:
-					velocity.x += 0.1
+			# Disable Rivet's melee attack for now.
+			if Globle.player_character != "Rivet":
+				state_machine.travel("Player_Melee")
+				print(velocity.x)
+				if (state_machine.get_current_play_position() > 0.3):
+					Globle.melee_attack = true
+				if (state_machine.get_current_play_position() >= 0.4):
+					Globle.melee_attack = false
+					if velocity.x > 0:
+						velocity.x -= 0.1
+					if velocity.x < 0:
+						velocity.x += 0.1
 		elif Input.is_action_pressed("ui_right"):
 			walk(5, 1, (-1) * 0.1, -2)
 			$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
@@ -114,14 +117,18 @@ func _physics_process(delta):
 		print(Globle.WPNS[0])
 		Globle.update_vendor()
 
-	if Input.is_action_just_released("ui_melee_attack"):
-		Globle.melee_attack = false
+	# Disable Rivet's melee attack for now.
+	if Globle.player_character != "Rivet":
+		if Input.is_action_just_released("ui_melee_attack"):
+			Globle.melee_attack = false
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		state_machine.travel("Player_Fall")
-		if Input.is_action_pressed("ui_melee_attack"):
-			state_machine.travel("Player_Melee")
+		# Disable Rivet's melee attack for now.
+		if Globle.player_character != "Rivet":
+			if Input.is_action_pressed("ui_melee_attack"):
+				state_machine.travel("Player_Melee")
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	move_and_slide(velocity,Vector3.UP)
@@ -148,8 +155,10 @@ func _process(delta):
 		
 	# Hide the hand gun when doing a melee attack.
 	angela_mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else angela_mesh_instance.show()
-	rivet_mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_mesh_instance.show()
-	play_melee_sound(random.randi_range(0,4)) if Input.is_action_just_pressed("ui_melee_attack") else print()
+	# Disable Rivet's melee attack for now.
+	if Globle.player_character != "Rivet":
+		rivet_mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_mesh_instance.show()
+		play_melee_sound(random.randi_range(0,4)) if Input.is_action_just_pressed("ui_melee_attack") else print()
 
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
