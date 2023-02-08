@@ -1,8 +1,8 @@
 extends KinematicBody
 
 func _ready():
-	$KillTimer.connect("timeout", self, "_on_KillTimer_timeout")
-	$KillTimer.start()
+	$"../KillTimer".connect("timeout", self, "_on_KillTimer_timeout")
+	$"../KillTimer".start()
 func _physics_process(delta):
 	self.rotation.x = 0
 	self.rotation.y = 0
