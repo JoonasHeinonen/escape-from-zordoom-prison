@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://resources/images/effects/explosions_n_fire/Flame.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/effects/explosions/gravity_bomb_explosion.gd" type="Script" id=2]
@@ -11,8 +11,8 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource( 1 )
 
 [sub_resource type="Gradient" id=11]
-offsets = PoolRealArray( 0.190476, 0.395833, 0.642857, 1 )
-colors = PoolColorArray( 0.858398, 0.81886, 0.364652, 1, 0.932617, 0.912803, 0.869775, 1, 0.959961, 0.557576, 0.119058, 1, 0.996078, 0.937255, 0.87451, 0 )
+offsets = PoolRealArray( 0.190476, 0.592068, 1 )
+colors = PoolColorArray( 0.858398, 0.81886, 0.364652, 1, 0.768555, 0.436345, 0.0743036, 1, 0.996078, 0.937255, 0.87451, 0 )
 
 [sub_resource type="GDScript" id=14]
 
@@ -20,10 +20,17 @@ colors = PoolColorArray( 0.858398, 0.81886, 0.364652, 1, 0.932617, 0.912803, 0.8
 gradient = SubResource( 11 )
 script = SubResource( 14 )
 
+[sub_resource type="Curve" id=15]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.585811, 0.51227 ), -1.54356, -1.54356, 0, 0, Vector2( 1, 0 ), -0.427939, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=16]
+curve = SubResource( 15 )
+
 [sub_resource type="ParticlesMaterial" id=9]
 gravity = Vector3( 0, 1, 0 )
 initial_velocity = 2.0
 initial_velocity_random = 0.12
+scale_curve = SubResource( 16 )
 color_ramp = SubResource( 12 )
 
 [sub_resource type="QuadMesh" id=10]
