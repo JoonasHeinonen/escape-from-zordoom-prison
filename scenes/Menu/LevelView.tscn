@@ -25,12 +25,12 @@ alignment = 1
 
 [node name="CenterRow" type="HBoxContainer" parent="CenterContainer/VBoxContainer"]
 margin_right = 400.0
-margin_bottom = 126.0
+margin_bottom = 63.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterRow"]
 margin_right = 400.0
-margin_bottom = 126.0
+margin_bottom = 63.0
 rect_min_size = Vector2( 400, 0 )
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -50,7 +50,7 @@ margin_top = 63.0
 margin_right = 400.0
 margin_bottom = 63.0
 
-[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer/CenterRow/Buttons"]
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 67.0
 margin_right = 400.0
 margin_bottom = 126.0
@@ -59,18 +59,18 @@ text = "Back"
 script = ExtResource( 3 )
 menus = "StartGame"
 
-[node name="Audio" type="Node" parent="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton"]
+[node name="Audio" type="Node" parent="CenterContainer/VBoxContainer/BackButton"]
 
-[node name="Click" type="AudioStreamPlayer" parent="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton/Audio"]
+[node name="Click" type="AudioStreamPlayer" parent="CenterContainer/VBoxContainer/BackButton/Audio"]
 stream = ExtResource( 5 )
 
-[node name="Move" type="AudioStreamPlayer" parent="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton/Audio"]
+[node name="Move" type="AudioStreamPlayer" parent="CenterContainer/VBoxContainer/BackButton/Audio"]
 stream = ExtResource( 6 )
 
 [node name="FadeIn" parent="." instance=ExtResource( 4 )]
 visible = false
 color = Color( 0, 0, 0, 0 )
 
-[connection signal="focus_exited" from="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" to="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" method="_on_BackButton_focus_exited"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" to="CenterContainer/VBoxContainer/CenterRow/Buttons/BackButton" method="_on_BackButton_pressed"]
+[connection signal="focus_exited" from="CenterContainer/VBoxContainer/BackButton" to="CenterContainer/VBoxContainer/BackButton" method="_on_BackButton_focus_exited"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/BackButton" to="CenterContainer/VBoxContainer/BackButton" method="_on_BackButton_pressed"]
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

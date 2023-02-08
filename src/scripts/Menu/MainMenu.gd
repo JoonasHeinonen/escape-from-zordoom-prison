@@ -15,6 +15,8 @@ func _ready():
 			load_game_button.grab_focus()
 		"Options":
 			options_button.grab_focus()
+		"CharacterSelection":
+			new_game_button.grab_focus()
 		_:
 			new_game_button.grab_focus()
 

@@ -1,44 +1,55 @@
 extends KinematicBody
 
-const RANDOM_ANGLE		  =PI/2.0
+const RANDOM_ANGLE		  		 = PI/2.0
 
-onready var projectile 	  = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
+onready var projectile 	  		 = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
 onready var blitzGunProjectile 	 = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
 
-onready var gun_btn 	  = preload("res://scenes/UI/VendorWeaponButton.tscn")
+onready var gun_btn 	  		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
-onready var hand_instance = $Sprite3D/HandInstance
-onready var mesh_instance = $Sprite3D/MeshInstance
-onready var gun_instance  = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
-onready var camera 		  = $Camera
+onready var angela_mesh_instance = $AngelaSprite/MeshInstance
+onready var rivet_mesh_instance  = $RivetSprite/MeshInstance
+onready var camera 		  		 = $Camera
 
-export var speed 		  = 1
+export var speed 		  		 = 1
 
+var gun_instance
 var state_machine
 var active_weapon_button
 
-var velocity 			  = Vector3(0,0,0)
+var velocity 			  		 = Vector3(0,0,0)
 
-var gravity 			  = 4
-var jump 				  = 4
-var bolt 				  = 0
+var gravity 			  		 = 4
+var jump 				  		 = 4
+var bolt 				  		 = 0
 
-var alive 				  = true
+var alive 				  		 = true
 
 # Weapon variables, if player has such weapon.
-var current_weapon 		  = null
+var current_weapon 		  		 = null
 
-var ray_origin  		  = Vector3()
-var ray_end 			  = Vector3()
-var random 				  = RandomNumberGenerator.new()
-var fire_Rate			=3
+var ray_origin  		  		 = Vector3()
+var ray_end 			  		 = Vector3()
+var random 				  		 = RandomNumberGenerator.new()
+var fire_Rate			  		 = 3
+
 ### INHERITED FUNCTIONS FROM GODOT.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	# Set the state machine and the active sprite.
+	if (Globle.player_character == "Rivet"):
+		state_machine = $RivetAnimationTree.get("parameters/playback")
+		gun_instance  = $RivetSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
+		$RivetSprite.show()
+		$AngelaSprite.hide()
+	elif (Globle.player_character == "Angela"):
+		state_machine = $AngelaAnimationTree.get("parameters/playback")
+		gun_instance  = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
+		$AngelaSprite.show()
+		$RivetSprite.hide()
 	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
 	$ShootTimer.start()
-	state_machine = $AnimationTree.get("parameters/playback")
 	$PlayerUI/InventoryContainer.visible = false
 	walk(0, 1, (-1) * 0.1, -2)
 	
@@ -76,17 +87,20 @@ func _physics_process(delta):
 			gun_instance.hide()
 
 	if alive && !Globle.player_inventory:
+		# Melee attack.
 		if Input.is_action_pressed("ui_melee_attack"):
-			state_machine.travel("Angela_Melee")
-			print(velocity.x)
-			if (state_machine.get_current_play_position() > 0.3):
-				Globle.melee_attack = true
-			if (state_machine.get_current_play_position() >= 0.4):
-				Globle.melee_attack = false
-				if velocity.x > 0:
-					velocity.x -= 0.1
-				if velocity.x < 0:
-					velocity.x += 0.1
+			# Disable Rivet's melee attack for now.
+			if Globle.player_character != "Rivet":
+				state_machine.travel("Player_Melee")
+				print(velocity.x)
+				if (state_machine.get_current_play_position() > 0.3):
+					Globle.melee_attack = true
+				if (state_machine.get_current_play_position() >= 0.4):
+					Globle.melee_attack = false
+					if velocity.x > 0:
+						velocity.x -= 0.1
+					if velocity.x < 0:
+						velocity.x += 0.1
 		elif Input.is_action_pressed("ui_right"):
 			walk(5, 1, (-1) * 0.1, -2)
 			$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
@@ -95,7 +109,7 @@ func _physics_process(delta):
 			$PlayerHit_box.set_translation(Vector3((-0.649 * 3.1), 0, 0))
 		else:
 			velocity.x = lerp(velocity.x,0,0.1)
-			state_machine.travel("Angela_Still")
+			state_machine.travel("Player_Still")
 		if is_on_floor() and Input.is_action_just_pressed("jump"):
 			velocity.y = jump
 
@@ -103,14 +117,18 @@ func _physics_process(delta):
 		print(Globle.WPNS[0])
 		Globle.update_vendor()
 
-	if Input.is_action_just_released("ui_melee_attack"):
-		Globle.melee_attack = false
+	# Disable Rivet's melee attack for now.
+	if Globle.player_character != "Rivet":
+		if Input.is_action_just_released("ui_melee_attack"):
+			Globle.melee_attack = false
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-		state_machine.travel("Angela_Fall")
-		if Input.is_action_pressed("ui_melee_attack"):
-			state_machine.travel("Angela_Melee")
+		state_machine.travel("Player_Fall")
+		# Disable Rivet's melee attack for now.
+		if Globle.player_character != "Rivet":
+			if Input.is_action_pressed("ui_melee_attack"):
+				state_machine.travel("Player_Melee")
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	move_and_slide(velocity,Vector3.UP)
@@ -124,7 +142,7 @@ func _process(delta):
 	
 	# Weapon slot index.
 	var slot_index = 1
-	
+
 	var ray_length = 100000
 	var mouse_pos = get_viewport().get_mouse_position()
 	var from = camera.project_ray_origin(mouse_pos)
@@ -132,11 +150,15 @@ func _process(delta):
 	var result = space_state.intersect_ray(from, to)
 	# Button for melee is pressed once.
 	if !Globle.player_inventory:
-		mesh_instance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
-
+		angela_mesh_instance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
+		rivet_mesh_instance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
+		
 	# Hide the hand gun when doing a melee attack.
-	mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else mesh_instance.show()
-	play_melee_sound(random.randi_range(0,4)) if Input.is_action_just_pressed("ui_melee_attack") else print()
+	angela_mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else angela_mesh_instance.show()
+	# Disable Rivet's melee attack for now.
+	if Globle.player_character != "Rivet":
+		rivet_mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_mesh_instance.show()
+		play_melee_sound(random.randi_range(0,4)) if Input.is_action_just_pressed("ui_melee_attack") else print()
 
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
@@ -229,12 +251,18 @@ func change_weapon_texture(weapon_name: String):
 
 # Walking functionality.
 func walk(vel, scale, weapon_translation, hand_translation):
-	state_machine.travel("Angela_Walk")
+	state_machine.travel("Player_Walk")
 	velocity.x = vel
-	$Sprite3D.scale.x = scale
-	mesh_instance.scale.x = weapon_translation
-	$Sprite3D/MeshInstance/HandInstance.scale.y = hand_translation
-	mesh_instance.rotate_x(270)
+	if (Globle.player_character == "Angela"):
+		$AngelaSprite.scale.x = scale
+		angela_mesh_instance.scale.x = weapon_translation
+		$AngelaSprite/MeshInstance/HandInstance.scale.y = hand_translation
+		angela_mesh_instance.rotate_x(270)
+	elif (Globle.player_character == "Rivet"):
+		$RivetSprite.scale.x = scale
+		rivet_mesh_instance.scale.x = weapon_translation
+		$RivetSprite/MeshInstance/HandInstance.scale.y = hand_translation
+		rivet_mesh_instance.rotate_x(270)
 
 # Purchases weapon when a weapon button is pressed.
 func purchase_weapon(wpn_price : int, wpn, btn):
@@ -295,7 +323,7 @@ func shoot_edge_blaster():
 	var bullet = projectile.instance()
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
-	bullet.global_transform = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+	bullet.global_transform = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 	$Audio/EdgeBlaster.play()
 
 # Shooting functionality for the blitz gun.
@@ -306,7 +334,7 @@ func shoot_blitz_gun():
 		var bullet = blitzGunProjectile.instance()
 		bullet.translation.x = 3
 		get_parent().add_child(bullet)
-		bullet.global_transform = $Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/blitzGunMuzzle.global_transform
+		bullet.global_transform = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/blitzGunMuzzle.global_transform
 		bullet.rotate(Vector3(0,0,1),(randf()-.5)*RANDOM_ANGLE)
 	print("Blizzard and blitz!")
 
