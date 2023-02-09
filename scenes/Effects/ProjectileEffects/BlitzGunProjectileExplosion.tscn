@@ -71,7 +71,7 @@ parameters/playback = SubResource( 9 )
 
 [node name="OmniLight" type="OmniLight" parent="KinematicBody"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409 )
-omni_range = 0.497191
+omni_range = 0.737704
 
 [node name="ProjectileExplosionArea" type="Area" parent="KinematicBody"]
 transform = Transform( 1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0 )
