@@ -2,28 +2,28 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/angela_weapon.png-5c4f14ecb361600013f1e27d09c5ce50.stex"
+path="res://.import/rivet_character_selection.png-85230eedb1eeed0c7be7ee4b96ff8b90.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/characters/angela_weapon.png"
-dest_files=[ "res://.import/angela_weapon.png-5c4f14ecb361600013f1e27d09c5ce50.stex" ]
+source_file="res://resources/images/characters/player/rivet/rivet_character_selection.png"
+dest_files=[ "res://.import/rivet_character_selection.png-85230eedb1eeed0c7be7ee4b96ff8b90.stex" ]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
-flags/filter=false
-flags/mipmaps=true
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
 flags/anisotropic=false
-flags/srgb=1
+flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=false
+detect_3d=true
 svg/scale=1.0

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/angela_weapon_outdated.png-d1e32f166107c622a969238aa7cb28fd.stex"
+path="res://.import/angela_talking_head1.png-3d8a64431e45d1f4658a29544e84dede.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/characters/angela_weapon_outdated.png"
-dest_files=[ "res://.import/angela_weapon_outdated.png-d1e32f166107c622a969238aa7cb28fd.stex" ]
+source_file="res://resources/images/characters/player/angela/angela_talking_head1.png"
+dest_files=[ "res://.import/angela_talking_head1.png-3d8a64431e45d1f4658a29544e84dede.stex" ]
 
 [params]
 

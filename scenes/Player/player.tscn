@@ -1,11 +1,11 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=74 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://resources/images/characters/angela_sheet_init_finished_holster_weapon.png" type="Texture" id=3]
+[ext_resource path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" type="Texture" id=3]
 [ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=4]
 [ext_resource path="res://resources/images/weapons/edge_blaster.png" type="Texture" id=5]
-[ext_resource path="res://resources/images/characters/angela_weapon.png" type="Texture" id=6]
+[ext_resource path="res://resources/images/characters/player/angela/angela_weapon.png" type="Texture" id=6]
 [ext_resource path="res://scenes/Menu/PlayerMenuButtons/ReturnToMainMenuButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Menu/PlayerMenuButtons/ReturnToGameButton.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scripts/Player/PauseMenuContainer.gd" type="Script" id=9]
@@ -34,6 +34,8 @@
 [ext_resource path="res://scenes/UI/icon-hexagon-placeholder.png" type="Texture" id=32]
 [ext_resource path="res://scenes/UI/icon-square-placeholder.png" type="Texture" id=33]
 [ext_resource path="res://scenes/UI/icon-triangle-placeholder.png" type="Texture" id=34]
+[ext_resource path="res://src/theme/zordoom_ingameui_theme.tres" type="Theme" id=35]
+[ext_resource path="res://resources/images/characters/player/rivet/rivet_sprite_sheet.png" type="Texture" id=36]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -52,11 +54,11 @@ radius = 2.29378
 [sub_resource type="PointMesh" id=20]
 
 [sub_resource type="Animation" id=15]
-resource_name = "Angela_Fall"
+resource_name = "Player_Fall"
 length = 0.5
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/path = NodePath("AngelaSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -68,7 +70,7 @@ tracks/0/keys = {
 "values": [ 19 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite3D/SpotLight:translation")
+tracks/1/path = NodePath("AngelaSprite/SpotLight:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -80,7 +82,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0.221415, -0.0698602, 0.10579 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite3D/SpotLight2:translation")
+tracks/2/path = NodePath("AngelaSprite/SpotLight2:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -92,7 +94,7 @@ tracks/2/keys = {
 "values": [ Vector3( -0.0157429, -0.446967, 0.10579 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite3D/SpotLight3:translation")
+tracks/3/path = NodePath("AngelaSprite/SpotLight3:translation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -105,9 +107,9 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id=24]
-resource_name = "Angela_Melee"
+resource_name = "Player_Melee"
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/path = NodePath("AngelaSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -120,11 +122,11 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=8]
-resource_name = "Angela_Still"
+resource_name = "Player_Still"
 length = 0.9
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/path = NodePath("AngelaSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -136,7 +138,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 0, 0, 1, 0, 0, 1, 2 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite3D/SpotLight:translation")
+tracks/1/path = NodePath("AngelaSprite/SpotLight:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -148,7 +150,7 @@ tracks/1/keys = {
 "values": [ Vector3( -0.115846, -0.281346, 0.10579 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite3D/SpotLight2:translation")
+tracks/2/path = NodePath("AngelaSprite/SpotLight2:translation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -160,7 +162,7 @@ tracks/2/keys = {
 "values": [ Vector3( -0.382073, -0.547632, 0.10579 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite3D/SpotLight3:translation")
+tracks/3/path = NodePath("AngelaSprite/SpotLight3:translation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -172,7 +174,7 @@ tracks/3/keys = {
 "values": [ Vector3( 0.235502, -0.54609, 0.10579 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite3D/SpotLight:visible")
+tracks/4/path = NodePath("AngelaSprite/SpotLight:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -184,7 +186,7 @@ tracks/4/keys = {
 "values": [ true ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Sprite3D/SpotLight2:visible")
+tracks/5/path = NodePath("AngelaSprite/SpotLight2:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -196,7 +198,7 @@ tracks/5/keys = {
 "values": [ true ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Sprite3D/SpotLight3:visible")
+tracks/6/path = NodePath("AngelaSprite/SpotLight3:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -209,11 +211,11 @@ tracks/6/keys = {
 }
 
 [sub_resource type="Animation" id=7]
-resource_name = "Angela_Walk"
+resource_name = "Player_Walk"
 length = 0.95
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/path = NodePath("AngelaSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -225,7 +227,7 @@ tracks/0/keys = {
 "values": [ 8, 10, 11, 12, 13, 14, 15, 16, 17, 18 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite3D/SpotLight:translation")
+tracks/1/path = NodePath("AngelaSprite/SpotLight:translation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -237,7 +239,7 @@ tracks/1/keys = {
 "values": [ Vector3( 0.377, -0.249, 0.106 ), Vector3( 0.14, -0.18, 0.106 ), Vector3( 0.06, -0.16, 0.106 ), Vector3( 0.18, -0.16, 0.106 ), Vector3( 0.22, -0.14, 0.106 ), Vector3( 0.06, -0.24, 0.106 ), Vector3( 0.18, -0.16, 0.106 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite3D/SpotLight:visible")
+tracks/2/path = NodePath("AngelaSprite/SpotLight:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -249,7 +251,7 @@ tracks/2/keys = {
 "values": [ false, false, true, false, false, true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite3D/SpotLight2:translation")
+tracks/3/path = NodePath("AngelaSprite/SpotLight2:translation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -261,7 +263,7 @@ tracks/3/keys = {
 "values": [ Vector3( 0.3, -0.56, 0.106 ), Vector3( 0.12, -0.55, 0.106 ), Vector3( -0.5, -0.45, 0.106 ), Vector3( 0.22, -0.55, 0.106 ), Vector3( -0.3, -0.5, 0.106 ), Vector3( 0.38, -0.4, 0.106 ), Vector3( 0.25, -0.5, 0.106 ), Vector3( 0.325, -0.5, 0.106 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Sprite3D/SpotLight3:translation")
+tracks/4/path = NodePath("AngelaSprite/SpotLight3:translation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -273,7 +275,7 @@ tracks/4/keys = {
 "values": [ Vector3( 0.13, -0.56, 0.106 ), Vector3( 0.45, -0.42, 0.106 ), Vector3( 0.34, -0.45, 0.106 ), Vector3( 0.38, -0.54, 0.106 ), Vector3( 0.33, -0.56, 0.106 ), Vector3( -0.12, -0.6, 0.106 ), Vector3( -0.35, -0.34, 0.106 ), Vector3( -0.15, -0.45, 0.106 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Sprite3D/SpotLight3:visible")
+tracks/5/path = NodePath("AngelaSprite/SpotLight3:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -303,44 +305,122 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
-[sub_resource type="AnimationNodeAnimation" id=16]
-animation = "Angela_Fall"
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "Player_Fall"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
-animation = "Angela_Melee"
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "Player_Melee"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
-animation = "Angela_Still"
+[sub_resource type="AnimationNodeAnimation" id=42]
+animation = "Player_Still"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
-animation = "Angela_Walk"
+[sub_resource type="AnimationNodeAnimation" id=43]
+animation = "Player_Walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+[sub_resource type="AnimationNodeStateMachineTransition" id=44]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+[sub_resource type="AnimationNodeStateMachineTransition" id=45]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=17]
+[sub_resource type="AnimationNodeStateMachineTransition" id=46]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+[sub_resource type="AnimationNodeStateMachineTransition" id=47]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+[sub_resource type="AnimationNodeStateMachineTransition" id=48]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+[sub_resource type="AnimationNodeStateMachineTransition" id=49]
 
 [sub_resource type="AnimationNodeStateMachine" id=13]
-states/Angela_Fall/node = SubResource( 16 )
-states/Angela_Fall/position = Vector2( 140, 175 )
-states/Angela_Melee/node = SubResource( 25 )
-states/Angela_Melee/position = Vector2( 413, 175 )
-states/Angela_Still/node = SubResource( 9 )
-states/Angela_Still/position = Vector2( 140, 37 )
-states/Angela_Walk/node = SubResource( 10 )
-states/Angela_Walk/position = Vector2( 413, 37 )
-transitions = [ "Angela_Still", "Angela_Walk", SubResource( 11 ), "Angela_Walk", "Angela_Still", SubResource( 12 ), "Angela_Still", "Angela_Fall", SubResource( 17 ), "Angela_Fall", "Angela_Still", SubResource( 18 ), "Angela_Still", "Angela_Melee", SubResource( 26 ), "Angela_Melee", "Angela_Still", SubResource( 27 ) ]
-start_node = "Angela_Still"
-graph_offset = Vector2( -134, 9 )
+states/Player_Fall/node = SubResource( 40 )
+states/Player_Fall/position = Vector2( 153, 152 )
+states/Player_Melee/node = SubResource( 41 )
+states/Player_Melee/position = Vector2( 369, 152 )
+states/Player_Still/node = SubResource( 42 )
+states/Player_Still/position = Vector2( 153, 44 )
+states/Player_Walk/node = SubResource( 43 )
+states/Player_Walk/position = Vector2( 369, 44 )
+transitions = [ "Player_Still", "Player_Walk", SubResource( 44 ), "Player_Walk", "Player_Still", SubResource( 45 ), "Player_Still", "Player_Fall", SubResource( 46 ), "Player_Fall", "Player_Still", SubResource( 47 ), "Player_Still", "Player_Melee", SubResource( 48 ), "Player_Melee", "Player_Still", SubResource( 49 ) ]
+start_node = "Player_Still"
+graph_offset = Vector2( -160, -8 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
+
+[sub_resource type="Animation" id=32]
+resource_name = "Player_Fall"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 23 ]
+}
+
+[sub_resource type="Animation" id=30]
+resource_name = "Player_Still"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 0 ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "Player_Walk"
+length = 0.9
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 12, 13, 14, 15, 16, 17, 18, 19 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=33]
+animation = "Player_Fall"
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "Player_Still"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "Player_Walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+
+[sub_resource type="AnimationNodeStateMachine" id=28]
+states/Player_Fall/node = SubResource( 33 )
+states/Player_Fall/position = Vector2( 458, 59 )
+states/Player_Still/node = SubResource( 34 )
+states/Player_Still/position = Vector2( 278, 59 )
+states/Player_Walk/node = SubResource( 35 )
+states/Player_Walk/position = Vector2( 278, 181 )
+transitions = [ "Player_Still", "Player_Fall", SubResource( 36 ), "Player_Fall", "Player_Still", SubResource( 37 ), "Player_Walk", "Player_Still", SubResource( 38 ), "Player_Still", "Player_Walk", SubResource( 39 ) ]
+start_node = "Player_Still"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
 [sub_resource type="StyleBoxFlat" id=19]
 bg_color = Color( 0, 0, 0, 0.490196 )
@@ -385,7 +465,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 [node name="CollisionShape" type="CollisionShape" parent="AreaPlayer"]
 shape = SubResource( 6 )
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="AngelaSprite" type="Sprite3D" parent="."]
 generate_lightmap = false
 pixel_size = 0.04
 shaded = true
@@ -393,9 +473,9 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 3
-frame = 2
+frame = 1
 
-[node name="SpotLight" type="SpotLight" parent="Sprite3D"]
+[node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
@@ -403,7 +483,7 @@ light_indirect_energy = 0.5
 light_specular = 0.2
 spot_range = 0.43704
 
-[node name="SpotLight2" type="SpotLight" parent="Sprite3D"]
+[node name="SpotLight2" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382073, -0.547632, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
@@ -411,7 +491,7 @@ light_indirect_energy = 0.5
 light_specular = 0.2
 spot_range = 0.43704
 
-[node name="SpotLight3" type="SpotLight" parent="Sprite3D"]
+[node name="SpotLight3" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235502, -0.54609, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
@@ -419,45 +499,94 @@ light_indirect_energy = 0.5
 light_specular = 0.2
 spot_range = 0.43704
 
-[node name="MeshInstance" type="MeshInstance" parent="Sprite3D"]
+[node name="MeshInstance" type="MeshInstance" parent="AngelaSprite"]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
 mesh = SubResource( 21 )
 
-[node name="HandInstance" type="MeshInstance" parent="Sprite3D/MeshInstance"]
+[node name="HandInstance" type="MeshInstance" parent="AngelaSprite/MeshInstance"]
 transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0, -1.25, 0.0236015 )
 mesh = SubResource( 20 )
 skeleton = NodePath("../..")
 
-[node name="Hand" type="Sprite3D" parent="Sprite3D/MeshInstance/HandInstance"]
+[node name="Hand" type="Sprite3D" parent="AngelaSprite/MeshInstance/HandInstance"]
 transform = Transform( 20, 1.13687e-13, 0, -1.13687e-13, 20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
 shaded = true
 double_sided = false
 texture = ExtResource( 6 )
 
-[node name="WeaponPlaceHolder" type="Sprite3D" parent="Sprite3D/MeshInstance/HandInstance/Hand"]
+[node name="WeaponPlaceHolder" type="Sprite3D" parent="AngelaSprite/MeshInstance/HandInstance/Hand"]
 transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
 pixel_size = 0.04
 shaded = true
 double_sided = false
 texture = ExtResource( 5 )
 
-[node name="blitzGunMuzzle" type="Position3D" parent="Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+[node name="blitzGunMuzzle" type="Position3D" parent="AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0 )
 
-[node name="WeaponMuzzle" type="Position3D" parent="Sprite3D/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+[node name="WeaponMuzzle" type="Position3D" parent="AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Angela_Fall = SubResource( 15 )
-anims/Angela_Melee = SubResource( 24 )
-anims/Angela_Still = SubResource( 8 )
-anims/Angela_Walk = SubResource( 7 )
+[node name="AngelaAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Player_Fall = SubResource( 15 )
+anims/Player_Melee = SubResource( 24 )
+anims/Player_Still = SubResource( 8 )
+anims/Player_Walk = SubResource( 7 )
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AngelaAnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 13 )
-anim_player = NodePath("../AnimationPlayer")
+anim_player = NodePath("../AngelaAnimationPlayer")
 active = true
 parameters/playback = SubResource( 14 )
+
+[node name="RivetSprite" type="Sprite3D" parent="."]
+visible = false
+generate_lightmap = false
+pixel_size = 0.04
+shaded = true
+double_sided = false
+texture = ExtResource( 36 )
+hframes = 10
+vframes = 3
+
+[node name="MeshInstance" type="MeshInstance" parent="RivetSprite"]
+transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
+mesh = SubResource( 21 )
+
+[node name="HandInstance" type="MeshInstance" parent="RivetSprite/MeshInstance"]
+transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0, -1.25, 0.0236015 )
+mesh = SubResource( 20 )
+skeleton = NodePath("../..")
+
+[node name="Hand" type="Sprite3D" parent="RivetSprite/MeshInstance/HandInstance"]
+transform = Transform( 20, 1.13687e-13, 0, -1.13687e-13, 20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
+shaded = true
+double_sided = false
+texture = ExtResource( 6 )
+
+[node name="WeaponPlaceHolder" type="Sprite3D" parent="RivetSprite/MeshInstance/HandInstance/Hand"]
+transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
+pixel_size = 0.04
+shaded = true
+double_sided = false
+texture = ExtResource( 5 )
+
+[node name="blitzGunMuzzle" type="Position3D" parent="RivetSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0 )
+
+[node name="WeaponMuzzle" type="Position3D" parent="RivetSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
+
+[node name="RivetAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Player_Fall = SubResource( 32 )
+anims/Player_Still = SubResource( 30 )
+anims/Player_Walk = SubResource( 31 )
+
+[node name="RivetAnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 28 )
+anim_player = NodePath("../RivetAnimationPlayer")
+active = true
+parameters/playback = SubResource( 29 )
 
 [node name="PlayerUI" type="Control" parent="."]
 pause_mode = 2
@@ -506,6 +635,7 @@ margin_left = -30.0
 margin_top = -2.0
 margin_right = 170.0
 margin_bottom = 48.0
+theme = ExtResource( 35 )
 text = "100"
 align = 2
 valign = 1
@@ -545,6 +675,7 @@ texture = ExtResource( 34 )
 [node name="AmmoHas" type="Label" parent="PlayerUI/InGameUI/Ammo"]
 margin_right = 80.0
 margin_bottom = 50.0
+theme = ExtResource( 35 )
 text = "0"
 align = 2
 valign = 1
@@ -553,6 +684,7 @@ valign = 1
 margin_left = 80.0
 margin_right = 120.0
 margin_bottom = 50.0
+theme = ExtResource( 35 )
 custom_colors/font_color = Color( 0.25098, 0.443137, 0.470588, 0.784314 )
 text = "/"
 align = 1
@@ -562,6 +694,7 @@ valign = 1
 margin_left = 120.0
 margin_right = 200.0
 margin_bottom = 50.0
+theme = ExtResource( 35 )
 custom_colors/font_color = Color( 0.25098, 0.443137, 0.470588, 0.784314 )
 text = "0"
 valign = 1
@@ -601,6 +734,7 @@ margin_left = 150.25
 margin_top = -3.0
 margin_right = 195.25
 margin_bottom = 47.0
+theme = ExtResource( 35 )
 text = "0"
 align = 2
 valign = 1
@@ -610,6 +744,7 @@ margin_left = 195.25
 margin_top = -3.0
 margin_right = 205.25
 margin_bottom = 47.0
+theme = ExtResource( 35 )
 text = "/"
 align = 1
 valign = 1
@@ -619,6 +754,7 @@ margin_left = 205.25
 margin_top = -3.0
 margin_right = 250.25
 margin_bottom = 47.0
+theme = ExtResource( 35 )
 text = "0"
 valign = 1
 

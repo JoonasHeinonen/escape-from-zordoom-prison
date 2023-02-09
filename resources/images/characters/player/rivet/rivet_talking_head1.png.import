@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/rivet_talking_head1.png-d120b5e4c3a44cf74a05ee5135c80542.stex"
+path="res://.import/rivet_talking_head1.png-7d43678305473d7ba8b348cb3a4ce6fe.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/characters/rivet_talking_head1.png"
-dest_files=[ "res://.import/rivet_talking_head1.png-d120b5e4c3a44cf74a05ee5135c80542.stex" ]
+source_file="res://resources/images/characters/player/rivet/rivet_talking_head1.png"
+dest_files=[ "res://.import/rivet_talking_head1.png-7d43678305473d7ba8b348cb3a4ce6fe.stex" ]
 
 [params]
 
