@@ -8,3 +8,5 @@ func _ready():
 	pass
 
 
+func _on_KillTimer_timeout():
+	queue_free()
