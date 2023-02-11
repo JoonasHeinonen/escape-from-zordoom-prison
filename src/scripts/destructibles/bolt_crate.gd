@@ -1,7 +1,8 @@
 extends RigidBody
 
-onready var bolt_instance 		= preload("res://scenes/Collectibles/bolt.tscn")
-onready var crate_destroy_sound = $Audio/CrateDestory
+onready var bolt_instance 		 = preload("res://scenes/Collectibles/bolt.tscn")
+onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
+onready var crate_destroy_sound  = $Audio/CrateDestory
 
 # For adding random numbers.
 var random = RandomNumberGenerator.new()
@@ -51,5 +52,7 @@ func createBolts():
 			bolt.translation[0],
 			bolt.translation[1]
 		)
-	crate_destroy_sound.play()
+	var b_c_f = bolt_crate_fragments.instance()
+	get_parent().get_parent().get_parent().add_child(b_c_f)
+	b_c_f.global_transform = global_transform
 	queue_free()
