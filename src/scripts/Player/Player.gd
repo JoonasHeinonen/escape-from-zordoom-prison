@@ -341,6 +341,7 @@ func shoot_blitz_gun():
 
 # Shooting functionality for the gravity bomb.
 func shoot_gravity_bomb():
+	$Audio/GravityBomb.play()
 	print("Gravity will guide this grenade into ground, emerging into explosion!")
 	var bullet = gravityBombProjectile.instance()
 	bullet.translation.x = 3
