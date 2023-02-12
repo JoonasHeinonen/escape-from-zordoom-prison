@@ -7,6 +7,10 @@ onready var crate_destroy_sound = $Audio/CrateDestory
 var random = RandomNumberGenerator.new()
 var active = false
 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	self.set_meta("type", "destroyable")
+
 # Detects the collisions on this scene.
 func _on_BoltCrate_body_entered(body):
 	if body.name == "BlasterProjectileExplosion" || body.name == "ExplosionEffectiveRadius":
