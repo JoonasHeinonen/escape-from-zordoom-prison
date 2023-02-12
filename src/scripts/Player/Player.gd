@@ -4,6 +4,7 @@ const RANDOM_ANGLE		  		 = PI/2.0
 
 onready var projectile 	  		 = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
 onready var blitzGunProjectile 	 = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
+onready var bolt_sparkle 		 = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
 
 onready var gun_btn 	  		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
@@ -303,6 +304,14 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 
 # Play the audio for collecting a bolt.
 func collect_bolt(bolt_index : int):
+	# Create the bolt sparkle once a bolt is collected.
+	var b_s = bolt_sparkle.instance()
+	b_s.global_transform = $CollisionShape.global_transform	
+	b_s.scale = Vector3(1, 1, 1)
+	b_s.translation.z = 0.1
+	get_parent().add_child(b_s)
+
+	# For playing the randomized bolt collection sound effect.
 	match bolt_index:
 		0:
 			$Audio/Bolt/Bolt0.play()

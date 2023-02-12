@@ -106,19 +106,19 @@ randomness = 0.25
 process_material = SubResource( 9 )
 draw_pass_1 = SubResource( 3 )
 
-[node name="ExplosiveCrateExplosionTimer" type="Timer" parent="."]
+[node name="ExpireTimer" type="Timer" parent="."]
 wait_time = 0.7
 autostart = true
 
 [node name="ExplosionEffectiveRadius" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="ExplosionEffectiveRadius"]
-transform = Transform( 1.84387, 0, 0, 0, 1.84387, 0, 0, 0, 1.84387, 0, 0, 0 )
+transform = Transform( 0.8035, 0, 0, 0, 0.8035, 0, 0, 0, 0.8035, 0, 0, 0 )
 shape = SubResource( 11 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
-omni_range = 2.75348
+omni_range = 1.11079
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/ExplosionEffectiveRadius = SubResource( 14 )
@@ -129,4 +129,4 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 13 )
 
-[connection signal="timeout" from="ExplosiveCrateExplosionTimer" to="." method="_on_ExplosiveCrateExplosionTimer_timeout"]
+[connection signal="timeout" from="ExpireTimer" to="." method="_on_ExpireTimer_timeout"]
