@@ -32,7 +32,7 @@ var bolts 			 	= 0
 var weapons_for_sale 	= [
 	"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator", "pulse_rifle", "ry3no", "sheepinator"
 ]
-var current_weapons  	= ["edge_blaster", "gravity_bomb"]
+var current_weapons  	= ["edge_blaster", "gravity_bomb" , "negotiator"]
 
 var player_inventory 	= false
 var vendor_open 	 	= false

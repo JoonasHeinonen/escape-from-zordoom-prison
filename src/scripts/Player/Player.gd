@@ -5,7 +5,7 @@ const RANDOM_ANGLE		  		 = PI/2.0
 onready var projectile 	  		 = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
 onready var blitzGunProjectile 	 = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
 onready var gravityBombProjectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
-
+onready var negotiatorProjectile = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
 onready var gun_btn 	  		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
 onready var angela_mesh_instance = $AngelaSprite/MeshInstance
@@ -352,6 +352,10 @@ func shoot_gravity_bomb():
 	
 # Shooting functionality for the negotiator.
 func shoot_negotiator():
+	var bullet = negotiatorProjectile.instance()
+	bullet.translation.x = 3
+	get_parent().add_child(bullet)
+	bullet.global_transform = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 	print("You have negotiated your enemies... To surrender...")
 
 # Shooting functionality for the pulse rifle.
