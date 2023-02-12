@@ -10,9 +10,11 @@ onready var gun_btn 	  		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
 onready var angela_mesh_instance = $AngelaSprite/MeshInstance
 onready var rivet_mesh_instance  = $RivetSprite/MeshInstance
 onready var camera 		  		 = $Camera
+onready var hand_instance_src 	 = "res://resources/images/characters/player/"
 
 export var speed 		  		 = 1
 
+var hand_instance
 var gun_instance
 var state_machine
 var active_weapon_button
@@ -39,15 +41,22 @@ var fire_Rate			  		 = 3
 func _ready():
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):
+		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")				
 		state_machine = $RivetAnimationTree.get("parameters/playback")
 		gun_instance  = $RivetSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
+		hand_instance = $RivetSprite/MeshInstance/HandInstance/Hand
 		$RivetSprite.show()
 		$AngelaSprite.hide()
+		hand_instance.set_texture(g_i_s)
 	elif (Globle.player_character == "Angela"):
+		var g_i_s = load(hand_instance_src + "angela/angela_weapon.png")
 		state_machine = $AngelaAnimationTree.get("parameters/playback")
 		gun_instance  = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
+		hand_instance = $RivetSprite/MeshInstance/HandInstance/Hand
 		$AngelaSprite.show()
 		$RivetSprite.hide()
+		hand_instance.set_texture(g_i_s)
+		
 	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
 	$ShootTimer.start()
 	$PlayerUI/InventoryContainer.visible = false
