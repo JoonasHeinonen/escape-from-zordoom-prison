@@ -345,9 +345,9 @@ func shoot_gravity_bomb():
 	print("Gravity will guide this grenade into ground, emerging into explosion!")
 	var bullet = gravityBombProjectile.instance()
 	bullet.translation.x = 3
-	bullet.velocity= $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
+	bullet.velocity = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
 	get_parent().add_child(bullet)
-	bullet.rotate(Vector3(0,0,1),(randf()-.5)*RANDOM_ANGLE)
+	bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
 	bullet.global_transform = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 	
 # Shooting functionality for the negotiator.
