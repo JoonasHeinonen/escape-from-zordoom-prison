@@ -5,7 +5,7 @@ extends Node
 # 3-dimensional array containing all the necessary data for each weapon.
 # Subarray 0: Weapon names & identifiers.
 # Subarray 1: Weapon prices.
-# Subarray 3: Weapon descriptions for the vendor.
+# Subarray 2: Weapon descriptions for the vendor.
 const WPNS = [
 	[
 		"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
@@ -32,7 +32,7 @@ var bolts 			 	= 0
 var weapons_for_sale 	= [
 	"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator", "pulse_rifle", "ry3no", "sheepinator"
 ]
-var current_weapons  	= ["edge_blaster"]
+var current_weapons  	= ["edge_blaster", "gravity_bomb"]
 
 var player_inventory 	= false
 var vendor_open 	 	= false
