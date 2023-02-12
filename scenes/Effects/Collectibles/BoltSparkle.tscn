@@ -1,0 +1,7 @@
+[gd_scene format=2]
+
+[node name="BoltSparkle" type="Spatial"]
+
+[node name="Particles" type="Particles" parent="."]
+amount = 16
+lifetime = 3.0
