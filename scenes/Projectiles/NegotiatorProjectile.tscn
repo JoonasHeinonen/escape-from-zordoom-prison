@@ -4,19 +4,24 @@
 [ext_resource path="res://src/scripts/effects/bullets/Negotiator_Projectile.gd" type="Script" id=2]
 
 [sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.624757, 0.471215, 1 )
 
 [sub_resource type="BoxShape" id=2]
+extents = Vector3( 0.614169, 0.439448, 1 )
 
 [node name="KinematicBody" type="RigidBody"]
 script = ExtResource( 2 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 8.61407, 0, 0, 0, 8.61407, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0 )
 texture = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
 disabled = true
+
+[node name="Explosion" type="Position3D" parent="."]
+transform = Transform( 0.999946, 0.0103496, 0, -0.0103496, 0.999946, 0, 0, 0, 1, 0.289351, 0, 0 )
 
 [node name="Area" type="Area" parent="."]
 
