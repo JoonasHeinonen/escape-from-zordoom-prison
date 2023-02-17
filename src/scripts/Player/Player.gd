@@ -103,7 +103,6 @@ func _physics_process(delta):
 			# Disable Rivet's melee attack for now.
 			if Globle.player_character != "Rivet":
 				state_machine.travel("Player_Melee")
-				print(velocity.x)
 				if (state_machine.get_current_play_position() > 0.3):
 					Globle.melee_attack = true
 				if (state_machine.get_current_play_position() >= 0.4):
@@ -169,7 +168,7 @@ func _process(delta):
 	# Disable Rivet's melee attack for now.
 	if Globle.player_character != "Rivet":
 		rivet_mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_mesh_instance.show()
-		play_melee_sound(random.randi_range(0,4)) if Input.is_action_just_pressed("ui_melee_attack") else print()
+		if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
 
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
