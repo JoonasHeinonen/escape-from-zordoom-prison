@@ -106,7 +106,7 @@ randomness = 0.25
 process_material = SubResource( 9 )
 draw_pass_1 = SubResource( 3 )
 
-[node name="ExplosiveCrateExplosionTimer" type="Timer" parent="."]
+[node name="ExpireTimer" type="Timer" parent="."]
 wait_time = 0.7
 autostart = true
 
@@ -129,4 +129,4 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/playback = SubResource( 13 )
 
-[connection signal="timeout" from="ExplosiveCrateExplosionTimer" to="." method="_on_ExplosiveCrateExplosionTimer_timeout"]
+[connection signal="timeout" from="ExpireTimer" to="." method="_on_ExpireTimer_timeout"]

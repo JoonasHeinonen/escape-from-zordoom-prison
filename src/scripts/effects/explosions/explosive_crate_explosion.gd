@@ -1,13 +1,13 @@
 extends Spatial
 
-onready var countdown = $ExplosiveCrateExplosionTimer.time_left
+onready var countdown = $ExpireTimer.time_left
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$ExplosiveCrateExplosionTimer.connect("timeout", self, "_on_ExplosiveCrateExplosionTimer_timeout")
+	$ExpireTimer.connect("timeout", self, "_on_ExpireTimer_timeout")
 
 # Timeout when the explosion fades out.
-func _on_ExplosiveCrateExplosionTimer_timeout():
+func _on_ExpireTimer_timeout():
 	countdown -= 1
 	if countdown <= 0:
 		queue_free()
