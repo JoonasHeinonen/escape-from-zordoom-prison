@@ -15,15 +15,12 @@ func _ready():
 	
 	match bolt_index:
 		"0":
-			print(0)
 			resource = load(bolt_image_path + bolt_file_name)
 			$Sprite3D.set_texture(resource)
 		"1":
-			print(1)
 			resource = load(bolt_image_path + bolt_file_name)
 			$Sprite3D.set_texture(resource)
 		"2":
-			print(2)
 			resource = load(bolt_image_path + bolt_file_name)
 			$Sprite3D.set_texture(resource)
 

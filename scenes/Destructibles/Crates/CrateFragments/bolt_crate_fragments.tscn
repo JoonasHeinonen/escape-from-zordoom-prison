@@ -2,7 +2,7 @@
 
 [ext_resource path="res://resources/materials/bolt_crate.tres" type="Material" id=2]
 [ext_resource path="res://resources/audio/environment/destructibles/crate_0.wav" type="AudioStream" id=8]
-[ext_resource path="res://src/scripts/destructibles/bolt_crate_fragments.gd" type="Script" id=9]
+[ext_resource path="res://src/scripts/destructibles/destructible_fragments.gd" type="Script" id=9]
 [ext_resource path="res://resources/models/destructibles/crates/bolt_crate_broken/BoltCrate.material" type="Material" id=10]
 
 [sub_resource type="BoxShape" id=1]
@@ -128,6 +128,7 @@ surfaces/0 = {
 
 [node name="bolt_crate_fragments" type="Spatial"]
 script = ExtResource( 9 )
+sound_name = "crate_destroy"
 
 [node name="crate_shattered_0" type="RigidBody" parent="."]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.0955608, 0, 0 )
@@ -236,5 +237,5 @@ wait_time = 3.0
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="CrateDestroy" type="AudioStreamPlayer" parent="Audio"]
+[node name="DestroySound" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 8 )
