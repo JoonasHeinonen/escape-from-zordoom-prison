@@ -25,10 +25,13 @@ surfaces/0 = {
 
 [sub_resource type="BoxShape" id=3]
 
-[node name="BoltCrate" type="RigidBody"]
-mode = 1
-mass = 65535.0
-gravity_scale = 128.0
+[node name="BoltCrate" type="KinematicBody"]
+collision_layer = 3
+collision_mask = 3
+axis_lock_motion_x = true
+axis_lock_motion_z = true
+move_lock_x = true
+move_lock_z = true
 script = ExtResource( 2 )
 scene_type = "bolt_crate"
 

@@ -55,8 +55,13 @@ angular_velocity_random = 1.0
 
 [sub_resource type="QuadMesh" id=5]
 
-[node name="LampPost" type="RigidBody"]
-mode = 1
+[node name="LampPost" type="KinematicBody"]
+axis_lock_motion_x = true
+axis_lock_motion_y = true
+axis_lock_motion_z = true
+move_lock_x = true
+move_lock_y = true
+move_lock_z = true
 script = ExtResource( 3 )
 scene_type = "lamp_post"
 

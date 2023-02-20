@@ -1,12 +1,14 @@
-extends RigidBody
+extends KinematicBody
 
 onready var bolt_instance 		 = preload("res://scenes/Collectibles/bolt.tscn")
 onready var lamp_post_fragments  = preload("res://scenes/Destructibles/Infrastructure/Lamps/LampFragments/lamp_post_fragments.tscn")
 onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
+onready var crate_destroy_effect = preload("res://scenes/Effects/Collectibles//CrateDestroyed.tscn")
 
 export (String, "bolt_crate", "lamp_post") var scene_type
 
 var random 						 = RandomNumberGenerator.new()
+var velocity 			  		 = Vector3(0, 0, 0)
 var active : bool 				 = false
 var meta_type : String 			 = ""
 var meta_name : String 			 = ""
@@ -26,6 +28,10 @@ func _ready():
 
 	self.set_meta("type", meta_type)
 	self.set_meta("name", meta_name)
+
+func _physics_process(delta):
+	velocity.y = -4
+	move_and_slide(velocity, Vector3.UP)
 
 # Detects the collisions on this scene.
 func _on_BoltCrate_body_entered(body):
@@ -74,4 +80,20 @@ func createBolts():
 	var fragments = fragment_scene.instance()
 	get_parent().get_parent().get_parent().add_child(fragments)
 	fragments.global_transform = global_transform
+	destruction_effect()
 	queue_free()
+
+# Emit the destruction effect.
+func destruction_effect():
+	var d_e = null
+	# Matches the scene and the correct effect to that scene.
+	match (scene_type):
+		"lamp_post":
+			# d_e = lamp_post_destroy_effect.instance()
+			# get_parent().get_parent().get_parent().add_child(d_e)
+			# d_e.global_transform = global_transform
+			pass
+		"bolt_crate":
+			d_e = crate_destroy_effect.instance()
+			get_parent().get_parent().get_parent().add_child(d_e)
+			d_e.global_transform = global_transform
