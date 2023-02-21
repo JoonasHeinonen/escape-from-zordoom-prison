@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Destructibles/Crates/bolt_crate.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://resources/images/characters/npc/black_question_mark.png" type="Texture" id=11]
 [ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=12]
 [ext_resource path="res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Collectibles/ammo_can.tscn" type="PackedScene" id=14]
 
 [sub_resource type="PanoramaSky" id=15]
 radiance_size = 4
@@ -39,6 +40,9 @@ dof_blur_far_transition = 4.69
 [sub_resource type="BoxShape" id=12]
 
 [node name="testLevel" type="Spatial"]
+
+[node name="ammo_can" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17687, -2.5243, 0 )
 
 [node name="bolt2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8738, 0.612113, 0 )

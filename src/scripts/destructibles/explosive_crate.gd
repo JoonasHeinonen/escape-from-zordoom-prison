@@ -1,4 +1,4 @@
-extends RigidBody
+extends KinematicBody
 
 onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
 onready var countdown = $Timer.time_left

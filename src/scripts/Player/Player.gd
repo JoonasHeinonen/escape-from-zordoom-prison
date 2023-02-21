@@ -302,8 +302,8 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
 
-# Play the audio for collecting a bolt.
-func collect_bolt(bolt_index : int):
+# Play the audio for collecting a collectible resource.
+func collect_bolt(index : int, type : String):
 	# Create the bolt sparkle once a bolt is collected.
 	var b_s = bolt_sparkle.instance()
 	b_s.global_transform = $CollisionShape.global_transform	
@@ -311,16 +311,27 @@ func collect_bolt(bolt_index : int):
 	b_s.translation.z = 0.1
 	get_parent().add_child(b_s)
 
-	# For playing the randomized bolt collection sound effect.
-	match bolt_index:
-		0:
-			$Audio/Bolt/Bolt0.play()
-		1:
-			$Audio/Bolt/Bolt1.play()
-		2:
-			$Audio/Bolt/Bolt2.play()
-		_:
-			$Audio/Bolt/Bolt0.play()
+# For playing the randomized collectible collection sound effect.
+	if (type == "bolt"):
+		match index:
+			0:
+				$Audio/Collectibles/Bolt/Bolt0.play()
+			1:
+				$Audio/Collectibles/Bolt/Bolt1.play()
+			2:
+				$Audio/Collectibles/Bolt/Bolt2.play()
+			_:
+				$Audio/Collectibles/Bolt/Bolt0.play()
+	elif (type == "ammo"):
+		print("Ammo!")
+		match index:
+			0:
+				$Audio/Collectibles/Ammo/Ammo0.play()
+			1:
+				$Audio/Collectibles/Ammo/Ammo1.play()
+			_:
+				$Audio/Collectibles/Ammo/Ammo0.play()
+
 
 # Play the audio for the melee.
 func play_melee_sound(melee_index : int):
