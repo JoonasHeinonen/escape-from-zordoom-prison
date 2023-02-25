@@ -1,10 +1,31 @@
 extends Area
 
-var getMagnet=false
-#var position=Vector3()
+# var position 		= Vector3()
 
-#adding random number
-var random=RandomNumberGenerator.new()
+var getMagnet 		= false
+var random 	  		= RandomNumberGenerator.new() # Adding random number.
+var bolt_image_path = "res://resources/images/collectibles/bolt_"
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	random.randomize()
+	var bolt_index = str(random.randi_range(0,2))
+	var bolt_file_name = bolt_index + ".png"
+	var resource = null
+	
+	match bolt_index:
+		"0":
+			print(0)
+			resource = load(bolt_image_path + bolt_file_name)
+			$Sprite3D.set_texture(resource)
+		"1":
+			print(1)
+			resource = load(bolt_image_path + bolt_file_name)
+			$Sprite3D.set_texture(resource)
+		"2":
+			print(2)
+			resource = load(bolt_image_path + bolt_file_name)
+			$Sprite3D.set_texture(resource)
 
 func _physics_process(delta):
 	if getMagnet == false:
@@ -31,7 +52,6 @@ func _physics_process(delta):
 				# Plays the bolt sound on the player's instance.
 				if bod.has_method("collect_bolt"):
 					bod.collect_bolt(random.randi_range(0,2))
-			
 				queue_free()
 			
 	

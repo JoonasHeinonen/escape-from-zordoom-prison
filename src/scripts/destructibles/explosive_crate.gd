@@ -9,6 +9,8 @@ var active = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	self.set_meta("type", "destroyable")
+	self.set_meta("name", "explosive crate")
 	state_machine = $AnimationTree.get("parameters/playback")
 	$Timer.connect("timeout", self, "_on_Timer_timeout")
 

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/bolt.png-6d51621f01c742f54065b860a2f8f483.s3tc.stex"
-path.etc2="res://.import/bolt.png-6d51621f01c742f54065b860a2f8f483.etc2.stex"
+path.s3tc="res://.import/green_aiming_radical.png-b1fd5d5b37cd5993379c328280dec3ed.s3tc.stex"
+path.etc2="res://.import/green_aiming_radical.png-b1fd5d5b37cd5993379c328280dec3ed.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/images/collectibles/bolt.png"
-dest_files=[ "res://.import/bolt.png-6d51621f01c742f54065b860a2f8f483.s3tc.stex", "res://.import/bolt.png-6d51621f01c742f54065b860a2f8f483.etc2.stex" ]
+source_file="res://resources/images/ui/green_aiming_radical.png"
+dest_files=[ "res://.import/green_aiming_radical.png-b1fd5d5b37cd5993379c328280dec3ed.s3tc.stex", "res://.import/green_aiming_radical.png-b1fd5d5b37cd5993379c328280dec3ed.etc2.stex" ]
 
 [params]
 
@@ -22,7 +22,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=true
-flags/filter=false
+flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=1

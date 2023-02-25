@@ -4,6 +4,7 @@ const RANDOM_ANGLE		  		 = PI/2.0
 
 onready var projectile 	  		 = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
 onready var blitzGunProjectile 	 = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
+onready var bolt_sparkle 		 = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
 onready var gravityBombProjectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
 onready var negotiatorProjectile = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
 onready var gun_btn 	  		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
@@ -11,9 +12,11 @@ onready var gun_btn 	  		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
 onready var angela_mesh_instance = $AngelaSprite/MeshInstance
 onready var rivet_mesh_instance  = $RivetSprite/MeshInstance
 onready var camera 		  		 = $Camera
+onready var hand_instance_src 	 = "res://resources/images/characters/player/"
 
 export var speed 		  		 = 1
 
+var hand_instance
 var gun_instance
 var state_machine
 var active_weapon_button
@@ -40,15 +43,22 @@ var fire_Rate			  		 = 3
 func _ready():
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):
+		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")				
 		state_machine = $RivetAnimationTree.get("parameters/playback")
 		gun_instance  = $RivetSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
+		hand_instance = $RivetSprite/MeshInstance/HandInstance/Hand
 		$RivetSprite.show()
 		$AngelaSprite.hide()
+		hand_instance.set_texture(g_i_s)
 	elif (Globle.player_character == "Angela"):
+		var g_i_s = load(hand_instance_src + "angela/angela_weapon.png")
 		state_machine = $AngelaAnimationTree.get("parameters/playback")
 		gun_instance  = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
+		hand_instance = $RivetSprite/MeshInstance/HandInstance/Hand
 		$AngelaSprite.show()
 		$RivetSprite.hide()
+		hand_instance.set_texture(g_i_s)
+		
 	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
 	$ShootTimer.start()
 	$PlayerUI/InventoryContainer.visible = false
@@ -295,6 +305,14 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 
 # Play the audio for collecting a bolt.
 func collect_bolt(bolt_index : int):
+	# Create the bolt sparkle once a bolt is collected.
+	var b_s = bolt_sparkle.instance()
+	b_s.global_transform = $CollisionShape.global_transform	
+	b_s.scale = Vector3(1, 1, 1)
+	b_s.translation.z = 0.1
+	get_parent().add_child(b_s)
+
+	# For playing the randomized bolt collection sound effect.
 	match bolt_index:
 		0:
 			$Audio/Bolt/Bolt0.play()

@@ -8,6 +8,11 @@ onready var crate_destroy_sound  = $Audio/CrateDestory
 var random = RandomNumberGenerator.new()
 var active = false
 
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	self.set_meta("type", "destroyable")
+	self.set_meta("name", "bolt crate")
+
 # Detects the collisions on this scene.
 func _on_BoltCrate_body_entered(body):
 	if body.name == "BlasterProjectileExplosion" || body.name == "ExplosionEffectiveRadius":
@@ -38,6 +43,7 @@ func no_damage(amount:int)-> void:
 # Also need to get the box to explode and to get bolts
 
 func _process(delta):
+	set_meta("type", "destroyable")
 	if Globle.melee_attack && active:
 		createBolts()
 
