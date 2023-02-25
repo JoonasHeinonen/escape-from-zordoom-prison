@@ -486,6 +486,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 3
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -537,7 +538,7 @@ texture = ExtResource( 5 )
 transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0 )
 
 [node name="WeaponMuzzle" type="Position3D" parent="AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
-transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
+transform = Transform( 1, 3.55271e-15, 0, -3.55271e-15, 1, 0, 0, 0, 1, 0.610582, 0.153141, 0 )
 
 [node name="AngelaAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Player_Fall = SubResource( 15 )
