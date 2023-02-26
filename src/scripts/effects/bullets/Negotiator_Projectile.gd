@@ -13,7 +13,6 @@ func _physics_process(delta):
 	velocity.x = speed * delta * 1
 	translate(velocity)
 
-
 func _on_ProjectileArea_body_entered(body):
 	var explosion = projectile_explosion.instance()
 	get_tree().current_scene.add_child(explosion)
