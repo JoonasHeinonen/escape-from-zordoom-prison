@@ -12,7 +12,7 @@
 [ext_resource path="res://src/scripts/npc/vendor_container.gd" type="Script" id=10]
 [ext_resource path="res://src/theme/zordoom_resource_theme.tres" type="Theme" id=11]
 [ext_resource path="res://scenes/UI/bolt-icon.png" type="Texture" id=12]
-[ext_resource path="res://src/scripts/UI/boltCount.gd" type="Script" id=13]
+[ext_resource path="res://src/scripts/UI/bolt_count.gd" type="Script" id=13]
 [ext_resource path="res://src/scripts/Player/PlayerWeaponsInventory.gd" type="Script" id=14]
 [ext_resource path="res://src/scripts/Player/PlayerHit_box.gd" type="Script" id=15]
 [ext_resource path="res://resources/audio/weapons/player/edge_blaster.wav" type="AudioStream" id=16]
@@ -561,7 +561,6 @@ double_sided = false
 texture = ExtResource( 36 )
 hframes = 10
 vframes = 3
-frame = 2
 
 [node name="MeshInstance" type="MeshInstance" parent="RivetSprite"]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
