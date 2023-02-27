@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://resources/models/destructibles/crates/BoltCrate.material" type="Material" id=1]
-[ext_resource path="res://src/scripts/destructibles/bolt_crate.gd" type="Script" id=2]
+[ext_resource path="res://src/scripts/destructibles/destructible.gd" type="Script" id=2]
 [ext_resource path="res://src/scripts/destructibles/Crate_hurt_box.gd" type="Script" id=3]
-[ext_resource path="res://resources/audio/environment/destructibles/crate_0.wav" type="AudioStream" id=4]
 
 [sub_resource type="ArrayMesh" id=4]
 resource_name = "bolt_crate_Cube003"
@@ -26,17 +25,22 @@ surfaces/0 = {
 
 [sub_resource type="BoxShape" id=3]
 
-[node name="BoltCrate" type="RigidBody"]
-mode = 1
-mass = 0.00102041
+[node name="BoltCrate" type="KinematicBody"]
+collision_layer = 3
+collision_mask = 3
+axis_lock_motion_x = true
+axis_lock_motion_z = true
+move_lock_x = true
+move_lock_z = true
 script = ExtResource( 2 )
+scene_type = "bolt_crate"
 
 [node name="BoltCrate" type="MeshInstance" parent="."]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
 mesh = SubResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
+transform = Transform( 0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="Area" type="Area" parent="."]
@@ -54,11 +58,6 @@ script = ExtResource( 3 )
 [node name="CollisionShape" type="CollisionShape" parent="Crate_hurt_Box"]
 transform = Transform( 3.38165, 0, 0, 0, 1, 0, 0, 0, 1.24147, 0, 0, 0 )
 shape = SubResource( 3 )
-
-[node name="Audio" type="Node" parent="."]
-
-[node name="CrateDestory" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 4 )
 
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
 [connection signal="body_entered" from="Crate_hurt_Box" to="Crate_hurt_Box" method="_on_Crate_hurt_Box_body_entered"]

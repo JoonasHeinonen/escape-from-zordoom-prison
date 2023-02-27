@@ -6,7 +6,7 @@ onready var player  = $Player
 export(String, "edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
 	"pulse_rifle", "ry3no", "sheepinator") var weapon
 
-var getMagnet 	  	= false
+var get_magnet 	  	= false
 
 var weapon_name
 
@@ -38,14 +38,14 @@ func _ready():
 
 func _physics_process(delta):
 	var x : int = 0
-	if !getMagnet:
+	if !get_magnet:
 		# Makes the bolts fall due to the y axis.
 		translation.y
 
 	var bodies = get_overlapping_areas()
 	for body in bodies:
 		if body.name == "AreaPlayer":
-			getMagnet = true
+			get_magnet = true
 			translation += (get_parent().get_node("player").translation-translation) / 5
 		var bodies2 = get_overlapping_bodies()
 		for bod in bodies2:
