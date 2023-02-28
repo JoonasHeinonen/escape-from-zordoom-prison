@@ -11,7 +11,6 @@ func _on_TargetDetectionArea_body_entered(body):
 		for c in b_c:
 			if (!c.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
 				body.add_child(g_t_r)
-				print("Added a child")
 		g_t_r.global_transform = body.global_transform
 
 # When a body containing the proper tag exits the area.

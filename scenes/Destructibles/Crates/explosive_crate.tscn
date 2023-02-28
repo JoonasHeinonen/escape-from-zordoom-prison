@@ -118,9 +118,13 @@ start_node = "Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=5]
 
-[node name="ExplosiveCrate" type="RigidBody"]
-mode = 1
-mass = 0.00102041
+[node name="ExplosiveCrate" type="KinematicBody"]
+collision_layer = 3
+collision_mask = 3
+axis_lock_motion_x = true
+axis_lock_motion_z = true
+move_lock_x = true
+move_lock_z = true
 script = ExtResource( 2 )
 
 [node name="ExplosiveCrate" type="MeshInstance" parent="."]
@@ -130,7 +134,7 @@ skeleton = NodePath("../CollisionShape")
 material/0 = ExtResource( 1 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
+transform = Transform( 0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="Area" type="Area" parent="."]
