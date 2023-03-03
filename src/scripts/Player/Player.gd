@@ -380,6 +380,7 @@ func shoot_gravity_bomb():
 	
 # Shooting functionality for the negotiator.
 func shoot_negotiator():
+	$Audio/theNegotiator.play()
 	var bullet = negotiatorProjectile.instance()
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
