@@ -7,7 +7,6 @@ onready var projectile_explosion = preload("res://scenes/Effects/ProjectileEffec
 func _ready():
 	$KillTimer.connect("timeout", self, "_on_KillTimer_timeout")
 	$KillTimer.start()
-	pass
 
 func _physics_process(delta):
 	velocity.x = speed * delta * 1
@@ -18,4 +17,3 @@ func _on_ProjectileArea_body_entered(body):
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_transform = $Explosion.global_transform
 	queue_free()
-	pass # Replace with function body.

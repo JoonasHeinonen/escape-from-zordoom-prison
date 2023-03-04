@@ -385,7 +385,6 @@ func shoot_negotiator():
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
 	bullet.global_transform = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
-	print("You have negotiated your enemies... To surrender...")
 
 # Shooting functionality for the pulse rifle.
 func shoot_pulse_rifle():
