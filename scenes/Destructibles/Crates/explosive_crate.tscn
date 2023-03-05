@@ -126,6 +126,7 @@ axis_lock_motion_z = true
 move_lock_x = true
 move_lock_z = true
 script = ExtResource( 2 )
+scene_type = "explosive_crate"
 
 [node name="ExplosiveCrate" type="MeshInstance" parent="."]
 transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
@@ -175,5 +176,9 @@ light_color = Color( 1, 0, 0, 1 )
 [node name="Triggered" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource( 5 )
 
+[connection signal="mouse_entered" from="." to="." method="_on_ExplosiveCrate_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_ExplosiveCrate_mouse_exited"]
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
+[connection signal="mouse_entered" from="Area" to="." method="_on_explosive_crate_mouse_entered"]
+[connection signal="mouse_exited" from="Area" to="." method="_on_explosive_crate_mouse_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

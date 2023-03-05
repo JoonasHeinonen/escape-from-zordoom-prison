@@ -152,17 +152,28 @@ func _process(delta):
 	
 	# Weapon slot index.
 	var slot_index = 1
-
+	"""
 	var ray_length = 100000
 	var mouse_pos = get_viewport().get_mouse_position()
 	var from = camera.project_ray_origin(mouse_pos)
 	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
 	var result = space_state.intersect_ray(from, to)
+	"""
 	# Button for melee is pressed once.
 	if !Globle.player_inventory:
-		angela_mesh_instance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
-		rivet_mesh_instance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
-		
+		#angela_mesh_instance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
+		#rivet_mesh_instance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
+		var offset = -PI * 0.5
+		var screen_pos = get_viewport().get_camera().unproject_position(angela_mesh_instance.global_transform.origin)
+		var mouse_pos = get_viewport().get_mouse_position()
+		var angle = screen_pos.angle_to_point(mouse_pos)
+		angela_mesh_instance.rotation.x = 0
+		angela_mesh_instance.rotation.y = 0
+		angela_mesh_instance.rotation.z = -angle + offset
+		rivet_mesh_instance.rotation.x = 0
+		rivet_mesh_instance.rotation.y = 0
+		rivet_mesh_instance.rotation.z = -angle + offset
+
 	# Hide the hand gun when doing a melee attack.
 	angela_mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else angela_mesh_instance.show()
 	# Disable Rivet's melee attack for now.
@@ -525,3 +536,7 @@ func _on_WeaponSlot7_pressed():
 # Empty, for now
 func _on_WeaponSlot8_pressed():
 	pass # Replace with function body.
+
+
+func _on_player_mouse_entered():
+	print("Player here!")

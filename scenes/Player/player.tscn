@@ -455,8 +455,9 @@ visible = false
 shape = SubResource( 5 )
 
 [node name="ShootingRaycast" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.81054 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.09193 )
 shape = SubResource( 5 )
+disabled = true
 
 [node name="TargetDetectionArea" type="Area" parent="."]
 collision_layer = 3
@@ -531,7 +532,6 @@ texture = ExtResource( 6 )
 transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
 pixel_size = 0.04
 shaded = true
-double_sided = false
 texture = ExtResource( 5 )
 
 [node name="blitzGunMuzzle" type="Position3D" parent="AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
@@ -581,7 +581,6 @@ texture = ExtResource( 6 )
 transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
 pixel_size = 0.04
 shaded = true
-double_sided = false
 texture = ExtResource( 5 )
 
 [node name="blitzGunMuzzle" type="Position3D" parent="RivetSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
@@ -605,12 +604,14 @@ parameters/playback = SubResource( 29 )
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 30 )
 
 [node name="InGameUI" type="Control" parent="PlayerUI"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="Bolts" type="Control" parent="PlayerUI/InGameUI"]
 margin_left = 930.0
@@ -782,6 +783,7 @@ margin_left = -140.0
 margin_top = -140.0
 margin_right = 140.0
 margin_bottom = 140.0
+mouse_filter = 2
 script = ExtResource( 14 )
 
 [node name="Panel" type="Panel" parent="PlayerUI/InventoryContainer"]
@@ -919,6 +921,7 @@ margin_left = 500.0
 margin_top = 220.0
 margin_right = 780.0
 margin_bottom = 500.0
+mouse_filter = 2
 script = ExtResource( 9 )
 
 [node name="Panel" type="Panel" parent="PlayerUI/PauseMenuContainer"]
@@ -980,6 +983,7 @@ margin_left = 70.0
 margin_top = 70.0
 margin_right = 1210.0
 margin_bottom = 650.0
+mouse_filter = 2
 script = ExtResource( 10 )
 
 [node name="Panel" type="Panel" parent="PlayerUI/VendorContainer"]
