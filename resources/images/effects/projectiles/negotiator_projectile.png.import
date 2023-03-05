@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/gravity_bomb_projectile.png-d01d011457d0538fd41088f2c5956ee8.s3tc.stex"
-path.etc2="res://.import/gravity_bomb_projectile.png-d01d011457d0538fd41088f2c5956ee8.etc2.stex"
+path.s3tc="res://.import/negotiator_projectile.png-12bd8a70a7b5b584b87fa823f4394543.s3tc.stex"
+path.etc2="res://.import/negotiator_projectile.png-12bd8a70a7b5b584b87fa823f4394543.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/images/effects/projectiles/gravity_bomb_projectile.png"
-dest_files=[ "res://.import/gravity_bomb_projectile.png-d01d011457d0538fd41088f2c5956ee8.s3tc.stex", "res://.import/gravity_bomb_projectile.png-d01d011457d0538fd41088f2c5956ee8.etc2.stex" ]
+source_file="res://resources/images/effects/projectiles/negotiator_projectile.png"
+dest_files=[ "res://.import/negotiator_projectile.png-12bd8a70a7b5b584b87fa823f4394543.s3tc.stex", "res://.import/negotiator_projectile.png-12bd8a70a7b5b584b87fa823f4394543.etc2.stex" ]
 
 [params]
 

@@ -73,7 +73,7 @@ parameters/playback = SubResource( 3 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409 )
-omni_range = 0.840938
+omni_range = 0.652481
 
 [node name="ProjectileExplosionArea" type="Area" parent="."]
 transform = Transform( 1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0 )
