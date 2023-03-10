@@ -513,31 +513,31 @@ light_indirect_energy = 0.5
 light_specular = 0.2
 spot_range = 0.43704
 
-[node name="MeshInstance" type="MeshInstance" parent="AngelaSprite"]
+[node name="AngelaArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
 mesh = SubResource( 21 )
+skeleton = NodePath("../AngelaSprite")
 
-[node name="HandInstance" type="MeshInstance" parent="AngelaSprite/MeshInstance"]
-transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0, -1.25, 0.0236015 )
+[node name="HandInstance" type="MeshInstance" parent="AngelaArm"]
+transform = Transform( -8.74665e-08, 2.001, -8.74227e-08, 2.001, 8.74665e-08, 8.74229e-09, -1.74933e-08, 1.74933e-07, 1, 0, -1.25, 0.024 )
 mesh = SubResource( 20 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../AngelaSprite")
 
-[node name="Hand" type="Sprite3D" parent="AngelaSprite/MeshInstance/HandInstance"]
-transform = Transform( 20, 1.13687e-13, 0, -1.13687e-13, 20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
+[node name="Hand" type="Sprite3D" parent="AngelaArm/HandInstance"]
+transform = Transform( 20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
 shaded = true
-double_sided = false
 texture = ExtResource( 6 )
 
-[node name="WeaponPlaceHolder" type="Sprite3D" parent="AngelaSprite/MeshInstance/HandInstance/Hand"]
-transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
+[node name="WeaponPlaceHolder" type="Sprite3D" parent="AngelaArm/HandInstance/Hand"]
+transform = Transform( 0.25, 6.893e-37, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
 pixel_size = 0.04
 shaded = true
 texture = ExtResource( 5 )
 
-[node name="blitzGunMuzzle" type="Position3D" parent="AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+[node name="blitzGunMuzzle" type="Position3D" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0 )
 
-[node name="WeaponMuzzle" type="Position3D" parent="AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+[node name="WeaponMuzzle" type="Position3D" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
 
 [node name="AngelaAnimationPlayer" type="AnimationPlayer" parent="."]
@@ -562,31 +562,32 @@ texture = ExtResource( 36 )
 hframes = 10
 vframes = 3
 
-[node name="MeshInstance" type="MeshInstance" parent="RivetSprite"]
+[node name="RivetArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
+visible = false
 mesh = SubResource( 21 )
+skeleton = NodePath("../RivetSprite")
 
-[node name="HandInstance" type="MeshInstance" parent="RivetSprite/MeshInstance"]
+[node name="HandInstance" type="MeshInstance" parent="RivetArm"]
 transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0, -1.25, 0.0236015 )
 mesh = SubResource( 20 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../RivetSprite")
 
-[node name="Hand" type="Sprite3D" parent="RivetSprite/MeshInstance/HandInstance"]
-transform = Transform( 20, 1.13687e-13, 0, -1.13687e-13, 20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
+[node name="Hand" type="Sprite3D" parent="RivetArm/HandInstance"]
+transform = Transform( 20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
 shaded = true
-double_sided = false
 texture = ExtResource( 6 )
 
-[node name="WeaponPlaceHolder" type="Sprite3D" parent="RivetSprite/MeshInstance/HandInstance/Hand"]
+[node name="WeaponPlaceHolder" type="Sprite3D" parent="RivetArm/HandInstance/Hand"]
 transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
 pixel_size = 0.04
 shaded = true
 texture = ExtResource( 5 )
 
-[node name="blitzGunMuzzle" type="Position3D" parent="RivetSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+[node name="blitzGunMuzzle" type="Position3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0 )
 
-[node name="WeaponMuzzle" type="Position3D" parent="RivetSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+[node name="WeaponMuzzle" type="Position3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
 
 [node name="RivetAnimationPlayer" type="AnimationPlayer" parent="."]

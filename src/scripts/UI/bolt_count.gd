@@ -1,7 +1,7 @@
 extends Label
 
 # Displays the amout on the player screen.
-func _process(delta):
+func _process(_delta):
 	text = format_bolt_amount(Globle.bolts)
 
 # Format bolts in a correct manner.

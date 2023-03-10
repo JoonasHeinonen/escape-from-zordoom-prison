@@ -9,14 +9,14 @@ onready var gravityBombProjectile = preload("res://scenes/Projectiles/GravityBom
 
 onready var gun_btn 	  		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
-onready var angela_mesh_instance = $AngelaSprite/MeshInstance
-onready var rivet_mesh_instance  = $RivetSprite/MeshInstance
+onready var angela_arm 			 = $AngelaArm
+onready var rivet_arm 			 = $RivetArm
 onready var camera 		  		 = $Camera
 onready var hand_instance_src 	 = "res://resources/images/characters/player/"
 
 export var speed 		  		 = 1
 
-var hand_instance
+var hand_instance : Sprite3D
 var gun_instance
 var state_machine
 var active_weapon_button
@@ -45,24 +45,31 @@ func _ready():
 	if (Globle.player_character == "Rivet"):
 		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")				
 		state_machine = $RivetAnimationTree.get("parameters/playback")
-		gun_instance  = $RivetSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
-		hand_instance = $RivetSprite/MeshInstance/HandInstance/Hand
-		$RivetSprite.show()
+		gun_instance  = $RivetArm/HandInstance/Hand/WeaponPlaceHolder
+		hand_instance = $RivetArm/HandInstance/Hand
+		$AngelaArm/HandInstance/Hand/WeaponPlaceHolder.hide()
 		$AngelaSprite.hide()
+		$RivetSprite.show()
+		$AngelaArm.hide()
+		$RivetArm.show()
 		hand_instance.set_texture(g_i_s)
 	elif (Globle.player_character == "Angela"):
 		var g_i_s = load(hand_instance_src + "angela/angela_weapon.png")
 		state_machine = $AngelaAnimationTree.get("parameters/playback")
-		gun_instance  = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder
-		hand_instance = $RivetSprite/MeshInstance/HandInstance/Hand
+		gun_instance  = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder
+		hand_instance = $AngelaArm/HandInstance/Hand
+		$RivetArm/HandInstance/Hand/WeaponPlaceHolder.hide()
 		$AngelaSprite.show()
 		$RivetSprite.hide()
+		$AngelaArm.show()
+		$RivetArm.hide()
 		hand_instance.set_texture(g_i_s)
-		
+	hand_instance.scale.y = -20
+
 	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
 	$ShootTimer.start()
 	$PlayerUI/InventoryContainer.visible = false
-	walk(0, 1, (-1) * 0.1, -2)
+	walk(0, 1, -0.1)
 	
 	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
@@ -112,10 +119,14 @@ func _physics_process(delta):
 					if velocity.x < 0:
 						velocity.x += 0.1
 		elif Input.is_action_pressed("ui_right"):
-			walk(5, 1, (-1) * 0.1, -2)
+			walk(5, 1, -0.1)
+			$RivetArm/HandInstance/Hand.scale.y = -20
+			$AngelaArm/HandInstance/Hand.scale.y = -20
 			$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
 		elif Input.is_action_pressed("ui_left"):
-			walk(-5, -1, 0.1, 2)
+			walk(-5, -1, 0.1)
+			$RivetArm/HandInstance/Hand.scale.y = 20
+			$AngelaArm/HandInstance/Hand.scale.y = 20
 			$PlayerHit_box.set_translation(Vector3((-0.649 * 3.1), 0, 0))
 		else:
 			velocity.x = lerp(velocity.x,0,0.1)
@@ -152,33 +163,25 @@ func _process(delta):
 	
 	# Weapon slot index.
 	var slot_index = 1
-	"""
-	var ray_length = 100000
-	var mouse_pos = get_viewport().get_mouse_position()
-	var from = camera.project_ray_origin(mouse_pos)
-	var to = from + camera.project_ray_normal(mouse_pos) * ray_length
-	var result = space_state.intersect_ray(from, to)
-	"""
+
 	# Button for melee is pressed once.
 	if !Globle.player_inventory:
-		#angela_mesh_instance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
-		#rivet_mesh_instance.look_at(Vector3(result["position"].x, result["position"].y, result["position"].z), Vector3(0, 0, 1))
 		var offset = -PI * 0.5
-		var screen_pos = get_viewport().get_camera().unproject_position(angela_mesh_instance.global_transform.origin)
+		var screen_pos = get_viewport().get_camera().unproject_position(angela_arm.global_transform.origin)
 		var mouse_pos = get_viewport().get_mouse_position()
 		var angle = screen_pos.angle_to_point(mouse_pos)
-		angela_mesh_instance.rotation.x = 0
-		angela_mesh_instance.rotation.y = 0
-		angela_mesh_instance.rotation.z = -angle + offset
-		rivet_mesh_instance.rotation.x = 0
-		rivet_mesh_instance.rotation.y = 0
-		rivet_mesh_instance.rotation.z = -angle + offset
+		angela_arm.rotation.x = 0
+		angela_arm.rotation.y = 0
+		angela_arm.rotation.z = -angle + offset
+		rivet_arm.rotation.x = 0
+		rivet_arm.rotation.y = 0
+		rivet_arm.rotation.z = -angle + offset
 
 	# Hide the hand gun when doing a melee attack.
-	angela_mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else angela_mesh_instance.show()
+	angela_arm.hide() if Input.is_action_pressed("ui_melee_attack") else angela_arm.show()
 	# Disable Rivet's melee attack for now.
 	if Globle.player_character != "Rivet":
-		rivet_mesh_instance.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_mesh_instance.show()
+		rivet_arm.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_arm.show()
 		if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
 
 	# Determine inventory items.
@@ -271,19 +274,13 @@ func change_weapon_texture(weapon_name: String):
 	gun_instance.texture = load(weapon_sprite_path)
 
 # Walking functionality.
-func walk(vel, scale, weapon_translation, hand_translation):
+func walk(vel, scale, mesh_translation):
 	state_machine.travel("Player_Walk")
 	velocity.x = vel
 	if (Globle.player_character == "Angela"):
 		$AngelaSprite.scale.x = scale
-		angela_mesh_instance.scale.x = weapon_translation
-		$AngelaSprite/MeshInstance/HandInstance.scale.y = hand_translation
-		angela_mesh_instance.rotate_x(270)
 	elif (Globle.player_character == "Rivet"):
 		$RivetSprite.scale.x = scale
-		rivet_mesh_instance.scale.x = weapon_translation
-		$RivetSprite/MeshInstance/HandInstance.scale.y = hand_translation
-		rivet_mesh_instance.rotate_x(270)
 
 # Purchases weapon when a weapon button is pressed.
 func purchase_weapon(wpn_price : int, wpn, btn):
@@ -343,7 +340,6 @@ func collect_bolt(index : int, type : String):
 			_:
 				$Audio/Collectibles/Ammo/Ammo0.play()
 
-
 # Play the audio for the melee.
 func play_melee_sound(melee_index : int):
 	match melee_index:
@@ -358,12 +354,22 @@ func play_melee_sound(melee_index : int):
 		_:
 			$Audio/Melee/Melee0.play()
 
+# Determine whose weapon muzzle to use.
+func determine_weapon_muzzle(player : String, bullet):
+	match player:
+		"Angela":
+			bullet.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+		"Rivet":
+			bullet.global_transform = $RivetArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+		_:
+			pass
+
 # Shooting functionality for the edge blaster.
 func shoot_edge_blaster():
 	var bullet = projectile.instance()
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
-	bullet.global_transform = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+	determine_weapon_muzzle(Globle.player_character, bullet)
 	$Audio/EdgeBlaster.play()
 
 # Shooting functionality for the blitz gun.
@@ -374,9 +380,8 @@ func shoot_blitz_gun():
 		var bullet = blitzGunProjectile.instance()
 		bullet.translation.x = 3
 		get_parent().add_child(bullet)
-		bullet.global_transform = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/blitzGunMuzzle.global_transform
+		determine_weapon_muzzle(Globle.player_character, bullet)
 		bullet.rotate(Vector3(0,0,1),(randf()-.5)*RANDOM_ANGLE)
-	print("Blizzard and blitz!")
 
 # Shooting functionality for the gravity bomb.
 func shoot_gravity_bomb():
@@ -384,10 +389,10 @@ func shoot_gravity_bomb():
 	print("Gravity will guide this grenade into ground, emerging into explosion!")
 	var bullet = gravityBombProjectile.instance()
 	bullet.translation.x = 3
-	bullet.velocity = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
+	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
 	get_parent().add_child(bullet)
 	bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
-	bullet.global_transform = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+	determine_weapon_muzzle(Globle.player_character, bullet)
 	
 # Shooting functionality for the negotiator.
 func shoot_negotiator():
@@ -536,7 +541,6 @@ func _on_WeaponSlot7_pressed():
 # Empty, for now
 func _on_WeaponSlot8_pressed():
 	pass # Replace with function body.
-
 
 func _on_player_mouse_entered():
 	print("Player here!")
