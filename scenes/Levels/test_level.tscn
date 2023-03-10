@@ -111,7 +111,7 @@ transform = Transform( 1.488, 0, 0, 0, 3.171, 0, 0, 4.47035e-08, 1, 0, 0.174326,
 shape = SubResource( 14 )
 
 [node name="QuestionMark" type="Sprite3D" parent="npc/npc"]
-transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.1, 0, 0.5, -4.37114e-09, 0, 0, 1.012 )
+transform = Transform( 0.5, 0, 0, 0, -2.23517e-08, -0.1, 0, 0.5, -4.19095e-09, 0, -2.38419e-07, 1.012 )
 texture = ExtResource( 11 )
 
 [node name="walls_floors" type="Node" parent="."]
