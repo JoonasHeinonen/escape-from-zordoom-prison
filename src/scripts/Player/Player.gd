@@ -400,7 +400,7 @@ func shoot_negotiator():
 	var bullet = negotiatorProjectile.instance()
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
-	bullet.global_transform = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+	bullet.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 
 # Shooting functionality for the pulse rifle.
 func shoot_pulse_rifle():
