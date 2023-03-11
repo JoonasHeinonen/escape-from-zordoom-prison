@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/scripts/UI/boltCount.gd" type="Script" id=1]
+[ext_resource path="res://src/scripts/UI/bolt_count.gd" type="Script" id=1]
 [ext_resource path="res://resources/fonts/rg-future-italic.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/UI/bolt-icon.png" type="Texture" id=3]
 

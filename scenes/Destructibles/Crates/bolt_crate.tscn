@@ -59,5 +59,7 @@ script = ExtResource( 3 )
 transform = Transform( 3.38165, 0, 0, 0, 1, 0, 0, 0, 1.24147, 0, 0, 0 )
 shape = SubResource( 3 )
 
+[connection signal="mouse_entered" from="." to="." method="_on_BoltCrate_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_BoltCrate_mouse_exited"]
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
 [connection signal="body_entered" from="Crate_hurt_Box" to="Crate_hurt_Box" method="_on_Crate_hurt_Box_body_entered"]

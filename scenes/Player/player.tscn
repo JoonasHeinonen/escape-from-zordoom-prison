@@ -12,7 +12,7 @@
 [ext_resource path="res://src/scripts/npc/vendor_container.gd" type="Script" id=10]
 [ext_resource path="res://src/theme/zordoom_resource_theme.tres" type="Theme" id=11]
 [ext_resource path="res://scenes/UI/bolt-icon.png" type="Texture" id=12]
-[ext_resource path="res://src/scripts/UI/boltCount.gd" type="Script" id=13]
+[ext_resource path="res://src/scripts/UI/bolt_count.gd" type="Script" id=13]
 [ext_resource path="res://src/scripts/Player/PlayerWeaponsInventory.gd" type="Script" id=14]
 [ext_resource path="res://src/scripts/Player/PlayerHit_box.gd" type="Script" id=15]
 [ext_resource path="res://resources/audio/weapons/player/edge_blaster.wav" type="AudioStream" id=16]
@@ -456,8 +456,9 @@ visible = false
 shape = SubResource( 5 )
 
 [node name="ShootingRaycast" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.81054 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.09193 )
 shape = SubResource( 5 )
+disabled = true
 
 [node name="TargetDetectionArea" type="Area" parent="."]
 collision_layer = 3
@@ -514,33 +515,32 @@ light_indirect_energy = 0.5
 light_specular = 0.2
 spot_range = 0.43704
 
-[node name="MeshInstance" type="MeshInstance" parent="AngelaSprite"]
+[node name="AngelaArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
 mesh = SubResource( 21 )
+skeleton = NodePath("../AngelaSprite")
 
-[node name="HandInstance" type="MeshInstance" parent="AngelaSprite/MeshInstance"]
-transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0, -1.25, 0.0236015 )
+[node name="HandInstance" type="MeshInstance" parent="AngelaArm"]
+transform = Transform( -8.74665e-08, 2.001, -8.74227e-08, 2.001, 8.74665e-08, 8.74229e-09, -1.74933e-08, 1.74933e-07, 1, 0, -1.25, 0.024 )
 mesh = SubResource( 20 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../AngelaSprite")
 
-[node name="Hand" type="Sprite3D" parent="AngelaSprite/MeshInstance/HandInstance"]
-transform = Transform( 20, 1.13687e-13, 0, -1.13687e-13, 20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
+[node name="Hand" type="Sprite3D" parent="AngelaArm/HandInstance"]
+transform = Transform( 20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
 shaded = true
-double_sided = false
 texture = ExtResource( 6 )
 
-[node name="WeaponPlaceHolder" type="Sprite3D" parent="AngelaSprite/MeshInstance/HandInstance/Hand"]
-transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
+[node name="WeaponPlaceHolder" type="Sprite3D" parent="AngelaArm/HandInstance/Hand"]
+transform = Transform( 0.25, 6.893e-37, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
 pixel_size = 0.04
 shaded = true
-double_sided = false
 texture = ExtResource( 5 )
 
-[node name="blitzGunMuzzle" type="Position3D" parent="AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+[node name="blitzGunMuzzle" type="Position3D" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0 )
 
-[node name="WeaponMuzzle" type="Position3D" parent="AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
-transform = Transform( 1, 3.55271e-15, 0, -3.55271e-15, 1, 0, 0, 0, 1, 0.610582, 0.153141, 0 )
+[node name="WeaponMuzzle" type="Position3D" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder"]
+transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
 
 [node name="AngelaAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Player_Fall = SubResource( 15 )
@@ -564,32 +564,32 @@ texture = ExtResource( 36 )
 hframes = 10
 vframes = 3
 
-[node name="MeshInstance" type="MeshInstance" parent="RivetSprite"]
+[node name="RivetArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
+visible = false
 mesh = SubResource( 21 )
+skeleton = NodePath("../RivetSprite")
 
-[node name="HandInstance" type="MeshInstance" parent="RivetSprite/MeshInstance"]
+[node name="HandInstance" type="MeshInstance" parent="RivetArm"]
 transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0, -1.25, 0.0236015 )
 mesh = SubResource( 20 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../RivetSprite")
 
-[node name="Hand" type="Sprite3D" parent="RivetSprite/MeshInstance/HandInstance"]
-transform = Transform( 20, 1.13687e-13, 0, -1.13687e-13, 20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
+[node name="Hand" type="Sprite3D" parent="RivetArm/HandInstance"]
+transform = Transform( 20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
 shaded = true
-double_sided = false
 texture = ExtResource( 6 )
 
-[node name="WeaponPlaceHolder" type="Sprite3D" parent="RivetSprite/MeshInstance/HandInstance/Hand"]
+[node name="WeaponPlaceHolder" type="Sprite3D" parent="RivetArm/HandInstance/Hand"]
 transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
 pixel_size = 0.04
 shaded = true
-double_sided = false
 texture = ExtResource( 5 )
 
-[node name="blitzGunMuzzle" type="Position3D" parent="RivetSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+[node name="blitzGunMuzzle" type="Position3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0 )
 
-[node name="WeaponMuzzle" type="Position3D" parent="RivetSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder"]
+[node name="WeaponMuzzle" type="Position3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
 
 [node name="RivetAnimationPlayer" type="AnimationPlayer" parent="."]
@@ -607,12 +607,14 @@ parameters/playback = SubResource( 29 )
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 30 )
 
 [node name="InGameUI" type="Control" parent="PlayerUI"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="Bolts" type="Control" parent="PlayerUI/InGameUI"]
 margin_left = 930.0
@@ -784,6 +786,7 @@ margin_left = -140.0
 margin_top = -140.0
 margin_right = 140.0
 margin_bottom = 140.0
+mouse_filter = 2
 script = ExtResource( 14 )
 
 [node name="Panel" type="Panel" parent="PlayerUI/InventoryContainer"]
@@ -921,6 +924,7 @@ margin_left = 500.0
 margin_top = 220.0
 margin_right = 780.0
 margin_bottom = 500.0
+mouse_filter = 2
 script = ExtResource( 9 )
 
 [node name="Panel" type="Panel" parent="PlayerUI/PauseMenuContainer"]
@@ -982,6 +986,7 @@ margin_left = 70.0
 margin_top = 70.0
 margin_right = 1210.0
 margin_bottom = 650.0
+mouse_filter = 2
 script = ExtResource( 10 )
 
 [node name="Panel" type="Panel" parent="PlayerUI/VendorContainer"]

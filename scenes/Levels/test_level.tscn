@@ -223,6 +223,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2348, 0.362001, 0 )
 [node name="ExplosiveCrate4" parent="destructibles/explosive_crates" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.8761, 1.08331, 0 )
 
+[node name="ExplosiveCrate5" parent="destructibles/explosive_crates" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00164, 1.08331, 0 )
+
 [node name="infrastructure" type="Node" parent="destructibles"]
 
 [node name="LampPost" parent="destructibles/infrastructure" instance=ExtResource( 13 )]
