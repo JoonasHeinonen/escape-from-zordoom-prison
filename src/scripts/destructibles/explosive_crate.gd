@@ -1,16 +1,12 @@
-extends KinematicBody
+extends "res://src/scripts/destructibles/destructible.gd"
 
 onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
 onready var countdown = $Timer.time_left
 
 var state_machine
 
-var active = false
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	self.set_meta("type", "destroyable")
-	self.set_meta("name", "explosive crate")
 	state_machine = $AnimationTree.get("parameters/playback")
 	$Timer.connect("timeout", self, "_on_Timer_timeout")
 
@@ -48,3 +44,15 @@ func _on_Timer_timeout():
 	countdown -= 1
 	if countdown <= 0:
 		generate_explosion()
+
+func _on_explosive_crate_mouse_entered():
+	add_active_radical()
+
+func _on_explosive_crate_mouse_exited():
+	remove_active_radical()
+
+func _on_ExplosiveCrate_mouse_entered():
+	add_active_radical()
+
+func _on_ExplosiveCrate_mouse_exited():
+	remove_active_radical()
