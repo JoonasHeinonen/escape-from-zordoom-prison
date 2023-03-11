@@ -6,7 +6,7 @@ onready var projectile 	  		 = preload("res://scenes/Projectiles/BlasterProjecti
 onready var blitzGunProjectile 	 = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
 onready var bolt_sparkle 		 = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
 onready var gravityBombProjectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
-
+onready var negotiatorProjectile = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
 onready var gun_btn 	  		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
 onready var angela_arm 			 = $AngelaArm
@@ -396,7 +396,11 @@ func shoot_gravity_bomb():
 	
 # Shooting functionality for the negotiator.
 func shoot_negotiator():
-	print("You have negotiated your enemies... To surrender...")
+	$Audio/theNegotiator.play()
+	var bullet = negotiatorProjectile.instance()
+	bullet.translation.x = 3
+	get_parent().add_child(bullet)
+	bullet.global_transform = $AngelaSprite/MeshInstance/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 
 # Shooting functionality for the pulse rifle.
 func shoot_pulse_rifle():
