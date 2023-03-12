@@ -1,7 +1,7 @@
 extends Area
 
 export (String, "bolt", "ammo") var type
-
+var active=false
 # var position 			   = Vector3()
 
 var getMagnet 			   = false
@@ -14,6 +14,9 @@ func _ready():
 	var bolt_index = str(random.randi_range(0,2))
 	var bolt_file_name = "bolt_" + bolt_index + ".png"
 	var resource = null
+	connect("body_entered",self,"_on_Ammo_body_entered")
+	connect("body_exited",self,"_on_Ammo_body_exited")
+	print(self.name)
 	
 	if (type == "bolt"):
 		match bolt_index:
@@ -30,6 +33,7 @@ func _ready():
 		resource = load(collectible_image_path + "ammo_can.png")
 		$Sprite3D.set_texture(resource)
 
+					
 func _physics_process(delta):
 	if getMagnet == false:
 		#makes the bolts fall due to the y axis
@@ -56,9 +60,21 @@ func _physics_process(delta):
 				if bod.has_method("collect_bolt"):
 					if (type == "bolt"):
 						bod.collect_bolt(random.randi_range(0,2), "bolt")
+						$Ui_notification.visible=false
 					elif (type == "ammo"):
 						bod.collect_bolt(random.randi_range(0,1), "ammo")
+						
 				queue_free()
-			
-	
+func _process(delta):
+	$QuestionMark.visible=active
+					
+					
+func _on_Ammo_body_entered(body):
+	if body.name == "player":
+		active=true
+		print("body has entered the ammo can")
+func _on_Ammo_body_exited(body):
+	if body.name == "player":
+		active=false
+		print("body has exited the ammo can")
 
