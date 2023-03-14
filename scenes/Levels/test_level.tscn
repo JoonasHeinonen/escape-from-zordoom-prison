@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Destructibles/Crates/bolt_crate.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=12]
 [ext_resource path="res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Collectibles/ammo_can.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/NPC/Enemies/Enemy.tscn" type="PackedScene" id=15]
 
 [sub_resource type="PanoramaSky" id=15]
 radiance_size = 4
@@ -97,22 +98,32 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 19.995, -2.001, -1.4 )
 
 [node name="npc" type="Node" parent="."]
 
-[node name="npc" type="Area" parent="npc"]
+[node name="friendly" type="Node" parent="npc"]
+
+[node name="npc" type="Area" parent="npc/friendly"]
 transform = Transform( 1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 7.1613, 0.0711673, -1.50097 )
 script = ExtResource( 9 )
 
-[node name="MeshInstance" type="MeshInstance" parent="npc/npc"]
+[node name="MeshInstance" type="MeshInstance" parent="npc/friendly/npc"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162291, -2.54972 )
 mesh = SubResource( 13 )
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CollisionShape" type="CollisionShape" parent="npc/npc"]
+[node name="CollisionShape" type="CollisionShape" parent="npc/friendly/npc"]
 transform = Transform( 1.488, 0, 0, 0, 3.171, 0, 0, 4.47035e-08, 1, 0, 0.174326, -2.73879 )
 shape = SubResource( 14 )
 
-[node name="QuestionMark" type="Sprite3D" parent="npc/npc"]
+[node name="QuestionMark" type="Sprite3D" parent="npc/friendly/npc"]
 transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.1, 0, 0.5, -4.37114e-09, 0, 0, 1.012 )
 texture = ExtResource( 11 )
+
+[node name="enemies" type="Node" parent="npc"]
+
+[node name="Enemy" parent="npc/enemies" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.37724, 2.4755, 0 )
+
+[node name="Enemy2" parent="npc/enemies" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0 )
 
 [node name="walls_floors" type="Node" parent="."]
 

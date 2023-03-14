@@ -1,7 +1,7 @@
 class_name Crate_hurt_Box
 extends Area 
 
-func _init() ->void:
+func _init() -> void:
 	collision_layer =0
 	collision_mask=2
 	
@@ -10,7 +10,7 @@ func _ready() -> void:
 	connect("area_exited",self,"_on_area_exit")
 
 func _on_area_entered(hitbox:PlayerHit_box) -> void:
-	if hitbox ==null:
+	if hitbox == null:
 		return 
 	elif owner.has_method("take_damage"):
 		owner.take_damage(hitbox.damage)
