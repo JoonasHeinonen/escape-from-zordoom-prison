@@ -32,6 +32,7 @@ func damage_enemy(health : int):
 # Called when enemy's health is 0.
 func expire_enemy():
 	queue_free()
+	# TODO add enemy death animation.
 
 # When an area collides with this area.
 # Used for a projectile collision now.
