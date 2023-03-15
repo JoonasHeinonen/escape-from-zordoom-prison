@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://resources/images/characters/npc/enemies/placeholder_enemy/placeholder_enemy.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/npc/enemies/enemy_base.gd" type="Script" id=2]
@@ -58,8 +58,6 @@ graph_offset = Vector2( 10, 26 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
-[sub_resource type="QuadMesh" id=12]
-
 [sub_resource type="BoxShape" id=11]
 
 [node name="Enemy" type="KinematicBody"]
@@ -68,6 +66,7 @@ move_lock_z = true
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0 )
 shape = SubResource( 2 )
 
 [node name="EnemySprite" type="Sprite3D" parent="."]
@@ -85,15 +84,12 @@ anim_player = NodePath("../EnemyAnimationPlayer")
 active = true
 parameters/playback = SubResource( 4 )
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
-visible = false
-mesh = SubResource( 12 )
-
 [node name="AreaEnemy" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="AreaEnemy"]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0 )
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.1, 0, 0, 0 )
 shape = SubResource( 11 )
 
+[connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
