@@ -60,15 +60,19 @@ func _physics_process(delta):
 				if bod.has_method("collect_bolt"):
 					if (type == "bolt"):
 						bod.collect_bolt(random.randi_range(0,2), "bolt")
-						$Ui_notification.visible=false
+						
 					elif (type == "ammo"):
 						bod.collect_bolt(random.randi_range(0,1), "ammo")
-						
 				queue_free()
-func _process(delta):
-	$QuestionMark.visible=active
-					
-					
+				
+func _process(delta):	
+	if (type == "bolt"):
+		#hides the notification
+		$Ui_notification.hide()
+	elif (type == "ammo"):	
+		#shows the notification
+		$Ui_notification.visible=active
+			
 func _on_Ammo_body_entered(body):
 	if body.name == "player":
 		active=true
