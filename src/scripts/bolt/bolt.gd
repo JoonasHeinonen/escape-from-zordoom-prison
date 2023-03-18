@@ -68,11 +68,11 @@ func _physics_process(delta):
 func _process(delta):	
 	if (type == "bolt"):
 		#hides the notification
-		$Ui_notification.hide()
+		$CanvasLayer/Ui_notification.hide()
 	elif (type == "ammo"):	
 		#shows the notification
-		$Ui_notification.visible=active
-		$text.visible=active	
+		$CanvasLayer/Ui_notification.visible=active
+		
 func _on_Ammo_body_entered(body):
 	if body.name == "player":
 		active=true

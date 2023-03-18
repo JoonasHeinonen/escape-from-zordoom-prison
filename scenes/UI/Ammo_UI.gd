@@ -10,5 +10,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	size=$Label.rect_size
+	#size=$Label.rect_size
 	pass
