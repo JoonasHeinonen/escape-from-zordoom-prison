@@ -33,6 +33,8 @@ layer = 3
 [node name="Ui_notification" type="CenterContainer" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = -104.0
+margin_bottom = -104.0
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Ui_notification"]
 margin_left = 217.0
