@@ -1,10 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://resources/images/collectibles/bolt_0.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/bolt/bolt.gd" type="Script" id=2]
 [ext_resource path="res://resources/images/ui/r_n_c__Final_ammo.png" type="Texture" id=3]
+[ext_resource path="res://scenes/UI/Ammo_UI.gd" type="Script" id=4]
+[ext_resource path="res://resources/fonts/lato-regular.tres" type="DynamicFont" id=5]
 
 [sub_resource type="SphereShape" id=7]
+
+[sub_resource type="ViewportTexture" id=8]
+viewport_path = NodePath("text/Viewport")
 
 [node name="bolt" type="Area"]
 script = ExtResource( 2 )
@@ -27,6 +32,23 @@ spot_range = 1.0
 spot_angle = 12.75
 
 [node name="Ui_notification" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.276, 0 )
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00398254, 2.27754, 0.00289917 )
+billboard = 1
 texture = ExtResource( 3 )
+
+[node name="text" type="Sprite3D" parent="."]
+transform = Transform( 1.448, 0, 0, 0, 1, 0, 0, 0, 1, 2.66373, -0.585623, 1.942 )
+billboard = 1
+texture = SubResource( 8 )
+
+[node name="Viewport" type="Viewport" parent="text"]
+size = Vector2( 600, 600 )
+transparent_bg = true
+render_target_v_flip = true
+script = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="text/Viewport"]
+margin_right = 2302.0
+margin_bottom = 249.0
+custom_fonts/font = ExtResource( 5 )
+text = "You got xxx ammo for xxx"

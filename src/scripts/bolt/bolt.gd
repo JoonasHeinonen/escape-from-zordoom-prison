@@ -72,7 +72,7 @@ func _process(delta):
 	elif (type == "ammo"):	
 		#shows the notification
 		$Ui_notification.visible=active
-			
+		$text.visible=active	
 func _on_Ammo_body_entered(body):
 	if body.name == "player":
 		active=true
