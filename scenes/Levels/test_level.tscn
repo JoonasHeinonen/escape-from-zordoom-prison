@@ -125,6 +125,7 @@ mesh = SubResource( 9 )
 skeleton = NodePath("../..")
 
 [node name="StaticBody" type="StaticBody" parent="walls_floors/MeshInstance3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0578098, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="walls_floors/MeshInstance3/StaticBody"]
 shape = SubResource( 12 )
@@ -234,8 +235,10 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00164, 1.08331, 0 )
 [node name="LampPost" parent="destructibles/infrastructure" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4.037, -1 )
 
+[node name="checkpoint" type="Node" parent="."]
+
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51148, 0.773238, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.7095, -10.63, 0 )
 axis_lock_motion_x = false
 axis_lock_motion_y = false
 move_lock_x = false
