@@ -28,6 +28,7 @@ spot_angle = 12.75
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
+visible = false
 
 [node name="Ui_notification" type="CenterContainer" parent="CanvasLayer"]
 anchor_right = 1.0
