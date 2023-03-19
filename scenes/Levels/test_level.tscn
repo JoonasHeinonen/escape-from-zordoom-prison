@@ -253,11 +253,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4.037, -1 )
 [node name="checkpoint" type="Node" parent="."]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-<<<<<<< HEAD
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 42.7095, -10.63, 0 )
-=======
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2487, -13.5958, 0 )
->>>>>>> master
 axis_lock_motion_x = false
 axis_lock_motion_y = false
 move_lock_x = false
