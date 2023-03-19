@@ -41,7 +41,7 @@ func _input(event):
 					active=false
 					
 func _process(delta):
-	$QuestionMark.visible=active
+	$EnterButton.visible=active
 					
 				
 				

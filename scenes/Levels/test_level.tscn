@@ -10,7 +10,7 @@
 [ext_resource path="res://scenes/Player/player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=9]
 [ext_resource path="res://resources/images/environment/haerkonen.jpg" type="Texture" id=10]
-[ext_resource path="res://resources/images/characters/npc/black_question_mark.png" type="Texture" id=11]
+[ext_resource path="res://resources/images/ui/enter_key.png" type="Texture" id=11]
 [ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=12]
 [ext_resource path="res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Collectibles/ammo_can.tscn" type="PackedScene" id=14]
@@ -40,6 +40,9 @@ dof_blur_far_transition = 4.69
 [sub_resource type="BoxShape" id=12]
 
 [node name="testLevel" type="Spatial"]
+
+[node name="ammo_can2" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8597, -2.15227, 0 )
 
 [node name="ammo_can" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17687, -2.5243, 0 )
@@ -110,8 +113,8 @@ skeleton = NodePath("../..")
 transform = Transform( 1.488, 0, 0, 0, 3.171, 0, 0, 4.47035e-08, 1, 0, 0.174326, -2.73879 )
 shape = SubResource( 14 )
 
-[node name="QuestionMark" type="Sprite3D" parent="npc/npc"]
-transform = Transform( 0.5, 0, 0, 0, -2.23517e-08, -0.1, 0, 0.5, -4.19095e-09, 0, -2.38419e-07, 1.012 )
+[node name="EnterButton" type="Sprite3D" parent="npc/npc"]
+transform = Transform( 6.30238, 0, 0, 0, -0.367835, -0.104683, 0, 6.27897, 0.073567, 0, -4.76837e-07, 1.012 )
 texture = ExtResource( 11 )
 
 [node name="walls_floors" type="Node" parent="."]
