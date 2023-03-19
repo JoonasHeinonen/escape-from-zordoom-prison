@@ -113,13 +113,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162291, -2.54972 )
 mesh = SubResource( 13 )
 skeleton = NodePath("../../..")
 
+[node name="EnterButton" type="Sprite3D" parent="npc/friendly/npc"]
+transform = Transform( 6.30238, 0, 0, 0, -6.24293, -0.0667688, 0, -0.765946, -0.109145, -7.1613, -2.50338, -0.230653 )
+texture = ExtResource( 11 )
+
 [node name="CollisionShape" type="CollisionShape" parent="npc/friendly/npc"]
 transform = Transform( 1.488, 0, 0, 0, 3.171, 0, 0, 4.47035e-08, 1, 0, 0.174326, -2.73879 )
 shape = SubResource( 14 )
-
-[node name="EnterButton" type="Sprite3D" parent="npc/npc"]
-transform = Transform( 6.30238, 0, 0, 0, -0.367835, -0.104683, 0, 6.27897, 0.073567, 0, -4.76837e-07, 1.012 )
-texture = ExtResource( 11 )
 
 [node name="enemies" type="Node" parent="npc"]
 
