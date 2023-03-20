@@ -1,5 +1,5 @@
 extends Area
-var active=false
+var active = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	connect("body_entered",self,"_on_slim_cognito_body_entered")
@@ -16,6 +16,7 @@ func _on_slim_cognito_body_exited(body):
 		Globle.vendor_active = false
 		active=false
 		print("player has left the vender body")
+		
 func _process(delta):
 	$EnterKey.visible=active
 	pass

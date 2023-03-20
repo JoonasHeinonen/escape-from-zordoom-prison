@@ -1,12 +1,13 @@
 extends Area
 
 export (String, "bolt", "ammo") var type
-var active=false
-# var position 			   = Vector3()
 
+# var position 			   = Vector3()
+var active = false
 var getMagnet 			   = false
 var random 	  			   = RandomNumberGenerator.new() # Adding random number.
 var collectible_image_path = "res://resources/images/collectibles/"
+var timer = Timer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,8 +15,8 @@ func _ready():
 	var bolt_index = str(random.randi_range(0,2))
 	var bolt_file_name = "bolt_" + bolt_index + ".png"
 	var resource = null
-	connect("body_entered",self,"_on_Ammo_body_entered")
-	connect("body_exited",self,"_on_Ammo_body_exited")
+	connect("body_entered" , self , "_on_Ammo_body_entered")
+	connect("body_exited" , self , "_on_Ammo_body_exited")
 	print(self.name)
 	
 	if (type == "bolt"):
@@ -60,7 +61,6 @@ func _physics_process(delta):
 				if bod.has_method("collect_bolt"):
 					if (type == "bolt"):
 						bod.collect_bolt(random.randi_range(0,2), "bolt")
-						
 					elif (type == "ammo"):
 						bod.collect_bolt(random.randi_range(0,1), "ammo")
 				queue_free()
@@ -76,9 +76,18 @@ func _process(delta):
 func _on_Ammo_body_entered(body):
 	if body.name == "player":
 		active=true
+		print(active)
 		print("body has entered the ammo can")
+		
 func _on_Ammo_body_exited(body):
-	if body.name == "player":
+	timer.connect("timeout",self,"do_this")
+	timer.wait_time = 5
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+
+	print (timer)
+	if body.name == "player" :
 		active=false
 		print("body has exited the ammo can")
 

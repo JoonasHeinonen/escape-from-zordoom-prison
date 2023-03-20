@@ -2,21 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/enter_key.png-731e21d55ecbbcbd1ed67dfe64b84512.s3tc.stex"
-path.etc2="res://.import/enter_key.png-731e21d55ecbbcbd1ed67dfe64b84512.etc2.stex"
+path="res://.import/enter_key.png-731e21d55ecbbcbd1ed67dfe64b84512.stex"
 metadata={
-"imported_formats": [ "s3tc", "etc2" ],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/ui/enter_key.png"
-dest_files=[ "res://.import/enter_key.png-731e21d55ecbbcbd1ed67dfe64b84512.s3tc.stex", "res://.import/enter_key.png-731e21d55ecbbcbd1ed67dfe64b84512.etc2.stex" ]
+dest_files=[ "res://.import/enter_key.png-731e21d55ecbbcbd1ed67dfe64b84512.stex" ]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
