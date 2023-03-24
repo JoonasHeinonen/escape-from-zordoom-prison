@@ -15,12 +15,10 @@ func _process(delta):
 		state_machine.travel("Activated")
 		$Timer.start()
 
-func take_damage(amount:int)-> void:
-	print("hit box has enterd the hurt box")
+func take_damage(amount:int) -> void:
 	active = true
 
-func no_damage(amount:int)-> void:
-	print("hit box has exit the hurt box")
+func no_damage(amount:int) -> void:
 	active = false
 
 # Destroys the crate, generate the explosion.
