@@ -54,7 +54,7 @@ albedo_texture = ExtResource( 4 )
 offsets = PoolRealArray( 0, 0.315315, 0.756757 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=9]
+[sub_resource type="GradientTexture" id=16]
 gradient = SubResource( 10 )
 
 [sub_resource type="ParticlesMaterial" id=6]
@@ -66,7 +66,7 @@ linear_accel = -0.18
 angle = 360.0
 angle_random = 1.0
 scale = 1.6
-color_ramp = SubResource( 9 )
+color_ramp = SubResource( 16 )
 
 [sub_resource type="QuadMesh" id=3]
 size = Vector2( 0.1, 0.1 )

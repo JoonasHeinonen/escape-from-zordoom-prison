@@ -1,9 +1,12 @@
 extends Area
 
-export (String, "bolt", "ammo") var type
+onready var projectile 	   = $TrailParticles
+
+export (String, "bolt", "ammo", "nanotech_node") var type
 
 # var position 			   = Vector3()
 
+var emit_trail 			   = false
 var getMagnet 			   = false
 var random 	  			   = RandomNumberGenerator.new() # Adding random number.
 var collectible_image_path = "res://resources/images/collectibles/"
@@ -14,50 +17,56 @@ func _ready():
 	var bolt_index = str(random.randi_range(0,2))
 	var bolt_file_name = "bolt_" + bolt_index + ".png"
 	var resource = null
-	
-	if (type == "bolt"):
-		match bolt_index:
-			"0":
-				resource = load(collectible_image_path + bolt_file_name)
-				$Sprite3D.set_texture(resource)
-			"1":
-				resource = load(collectible_image_path + bolt_file_name)
-				$Sprite3D.set_texture(resource)
-			"2":
-				resource = load(collectible_image_path + bolt_file_name)
-				$Sprite3D.set_texture(resource)
-	elif (type == "ammo"):
-		resource = load(collectible_image_path + "ammo_can.png")
-		$Sprite3D.set_texture(resource)
 
+	# Matches the type of the collectible.
+	match (type):
+		"bolt":
+			match bolt_index:
+				"0":
+					resource = load(collectible_image_path + bolt_file_name)
+					$Sprite3D.set_texture(resource)
+				"1":
+					resource = load(collectible_image_path + bolt_file_name)
+					$Sprite3D.set_texture(resource)
+				"2":
+					resource = load(collectible_image_path + bolt_file_name)
+					$Sprite3D.set_texture(resource)
+		"ammo":
+			resource = load(collectible_image_path + "ammo_can.png")
+			$Sprite3D.set_texture(resource)
+
+# Called during the physics processing step of the main loop.
 func _physics_process(delta):
-	if getMagnet == false:
-		#makes the bolts fall due to the y axis
+	if (type == "nanotech_node"):
+		$TrailParticles.show() if emit_trail else $TrailParticles.hide()
+
+	if !getMagnet:
+		# Makes the bolts fall due to the y axis
 		translation.y
-		
-	var bodies=get_overlapping_areas()
+
+	var bodies = get_overlapping_areas()
 	for body in bodies:
-		if body.name=="AreaPlayer":
-			getMagnet=true
-			translation +=(get_parent().get_node("player").translation-translation)/10
-		var bodies2=get_overlapping_bodies()
+		if body.name == "AreaPlayer":
+			getMagnet = true
+			translation += (get_parent().get_node("player").translation - translation) / 10
+			# if type == "nanotech_node":
+			# 	emit_trail = true
+		var bodies2 = get_overlapping_bodies()
 		for bod in bodies2:
-			#this add the bolt amount to the player
-			
-			if bod.name=="player":
-				#makes sure that every number is random
+			# This adds the bolt amount to the player.
+			if bod.name == "player":
+				# Makes sure that every number is random
 				random.randomize()
-				var countBoults=get_parent().get_node("player").bolt+random.randi_range(10,100)
-				#grabes the bolt amout
-				Globle.bolts+=countBoults
-				# print(Globle.bolts)
+				var countBoults=get_parent().get_node("player").bolt + random.randi_range(10, 100)
+				# Grabes the bolt amout
+				Globle.bolts += countBoults
 				
 				# Plays the bolt sound on the player's instance.
 				if bod.has_method("collect_bolt"):
 					if (type == "bolt"):
-						bod.collect_bolt(random.randi_range(0,2), "bolt")
+						bod.collect_bolt(random.randi_range(0, 2), "bolt")
 					elif (type == "ammo"):
-						bod.collect_bolt(random.randi_range(0,1), "ammo")
+						bod.collect_bolt(random.randi_range(0, 1), "ammo")
 				queue_free()
 			
 	

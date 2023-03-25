@@ -1,6 +1,6 @@
 extends "res://src/scripts/destructibles/destructible.gd"
 
-# TODO Import the nanotech node once the scene for the node is done.
+onready var nanotech_node = preload("res://scenes/Collectibles/nanotech_node.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,4 +14,9 @@ func _on_Area_area_entered(body):
 
 # Generates the nanotech node for player to collect
 func generate_health_node():
-	print("Generating node") # TODO generates the nanotech node for player to collect.
+	# TODO Generate the health crate splinters.
+	create_fragments()
+	var n_n = nanotech_node.instance()
+	get_parent().get_parent().get_parent().add_child(n_n)
+	n_n.global_transform = global_transform
+	queue_free()

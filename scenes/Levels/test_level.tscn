@@ -225,6 +225,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.9003, -10.1986, 0.27 )
 [node name="BoltCrate19" parent="destructibles/crates" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3077, -9.4803, 0.27 )
 
+[node name="HealthCrate" parent="destructibles/crates" instance=ExtResource( 17 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0204, -3.20883, 0 )
+
 [node name="explosive_crates" type="Node" parent="destructibles"]
 
 [node name="ExplosiveCrate" parent="destructibles/explosive_crates" instance=ExtResource( 1 )]
@@ -257,6 +260,3 @@ move_lock_y = false
 [node name="BlitzGun" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.989, 4.10237, 0 )
 visible = false
-
-[node name="HealthCrate" parent="." instance=ExtResource( 17 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0204, -3.20883, 0 )
