@@ -50,12 +50,6 @@ dof_blur_far_transition = 4.69
 [node name="ammo_can3" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3992, 6.96641, 0 )
 
-[node name="ammo_can2" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8597, -2.15227, 0 )
-
-[node name="ammo_can" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17687, -2.5243, 0 )
-
 [node name="bolt2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8738, 0.612113, 0 )
 
