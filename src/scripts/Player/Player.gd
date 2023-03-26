@@ -28,10 +28,11 @@ var jump 				  		 = 4
 var bolt 				  		 = 0
 
 var alive 				  		 = true
-
+var ui_notification				 = false
 # Weapon variables, if player has such weapon.
 var current_weapon 		  		 = null
 
+var timer 				         = Timer.new()
 var ray_origin  		  		 = Vector3()
 var ray_end 			  		 = Vector3()
 var random 				  		 = RandomNumberGenerator.new()
@@ -340,6 +341,19 @@ func collect_bolt(index : int, type : String):
 			_:
 				$Audio/Collectibles/Ammo/Ammo0.play()
 
+# UI Notification message
+func ui_notification_msg():
+	timer = Timer.new()
+	add_child(timer)
+	timer.autostart = true
+	timer.wait_time = 1
+	timer.connect("timeout", self, "_timeout")
+	ui_notification=true
+	print("Timed out!")
+	if (timer.wait_time == 3):
+		ui_notification=false
+		print(timer.wait_time)
+		print("body has exited the xxx can")
 # Play the audio for the melee.
 func play_melee_sound(melee_index : int):
 	match melee_index:

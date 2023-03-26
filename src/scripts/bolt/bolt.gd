@@ -63,33 +63,23 @@ func _physics_process(delta):
 					if (type == "bolt"):
 						bod.collect_bolt(random.randi_range(0,2), "bolt")
 					elif (type == "ammo"):
-						# TODO active the ui notfication on the player 
+						bod.ui_notification_msg()
 						bod.collect_bolt(random.randi_range(0,1), "ammo")
 				queue_free()
-				
-#func _process(delta):
-	
-	#if (type == "bolt"):
-		#hides the notification
-		#$CanvasLayer/Ui_notification.hide()
-	#elif (type == "ammo"):	
-		#shows the notification
-		#timer.wait_time+=delta
-		#$CanvasLayer/Ui_notification.visible=active
 		
-func _on_Ammo_body_exited(body):
-	if (timer.wait_time==3):
-		active=false
-		print(timer.wait_time)
-		print("body has exited the xxx can")
-
-func _on_Ammo_body_entered(body):
-	if body.name == "player":
-		print("body has entered the xxx can")
-		timer = Timer.new()
-		add_child(timer)
-		timer.autostart = true
-		timer.wait_time = 1
-		timer.connect("timeout", self, "_timeout")
-		active=true
-		print("Timed out!")
+#func _on_Ammo_body_exited(body):
+#	if (timer.wait_time==3):
+#		active=false
+#		print(timer.wait_time)
+#		print("body has exited the xxx can")
+#
+#func _on_Ammo_body_entered(body):
+#	if body.name == "player":
+#		print("body has entered the xxx can")
+#		timer = Timer.new()
+#		add_child(timer)
+#		timer.autostart = true
+#		timer.wait_time = 1
+#		timer.connect("timeout", self, "_timeout")
+#		active=true
+#		print("Timed out!")
