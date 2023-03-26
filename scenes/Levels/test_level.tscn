@@ -47,8 +47,17 @@ dof_blur_far_transition = 4.69
 
 [node name="testLevel" type="Spatial"]
 
+[node name="ammo_can6" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.7645, -11.2671, 0 )
+
+[node name="ammo_can5" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1608, -1.54334, 0 )
+
+[node name="ammo_can4" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0121, 7.00113, 0 )
+
 [node name="ammo_can3" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3992, 6.96641, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9202, 6.96641, 0 )
 
 [node name="bolt2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8738, 0.612113, 0 )

@@ -1170,21 +1170,22 @@ autowrap = true
 clip_text = true
 
 [node name="ui_notification" type="Control" parent="PlayerUI"]
-visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI/ui_notification"]
 layer = 3
-visible = false
 
 [node name="Ui_notification" type="CenterContainer" parent="PlayerUI/ui_notification/CanvasLayer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -4.0
+margin_top = -124.0
+margin_right = -4.0
+margin_bottom = -124.0
 
 [node name="TextureRect" type="TextureRect" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
-visible = false
 margin_left = 217.0
 margin_top = 218.0
 margin_right = 1062.0
@@ -1192,7 +1193,6 @@ margin_bottom = 502.0
 texture = ExtResource( 41 )
 
 [node name="ui_ammo" type="RichTextLabel" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
-visible = false
 margin_left = 440.0
 margin_top = 335.0
 margin_right = 840.0
@@ -1203,7 +1203,7 @@ bbcode_text = "[center]You got xxx ammo for xxx[/center]"
 text = "You got xxx ammo for xxx"
 
 [node name="Ui_Timer" type="Timer" parent="PlayerUI/ui_notification"]
-wait_time = 5.0
+wait_time = 3.0
 
 [node name="Node" type="Node" parent="."]
 

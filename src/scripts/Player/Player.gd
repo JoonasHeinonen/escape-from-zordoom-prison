@@ -12,6 +12,7 @@ onready var gun_btn 	  		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
 onready var angela_arm 			 = $AngelaArm
 onready var rivet_arm 			 = $RivetArm
 onready var camera 		  		 = $Camera
+onready var ui_timer 			 = $PlayerUI/ui_notification/Ui_Timer
 onready var hand_instance_src 	 = "res://resources/images/characters/player/"
 
 export var speed 		  		 = 1
@@ -67,6 +68,7 @@ func _ready():
 		hand_instance.set_texture(g_i_s)
 	hand_instance.scale.y = -20
 
+	ui_timer.connect("timeout", self, "_on_UI_Timer_timeout")
 	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
 	$ShootTimer.start()
 	$PlayerUI/InventoryContainer.visible = false
@@ -158,7 +160,7 @@ func _physics_process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var y_position = self.global_transform.origin.y
-
+	
 	# Get current physics state.
 	var space_state = get_world().direct_space_state
 	
@@ -341,19 +343,12 @@ func collect_bolt(index : int, type : String):
 			_:
 				$Audio/Collectibles/Ammo/Ammo0.play()
 
-# UI Notification message
+# UI notification message.
 func ui_notification_msg():
-	timer = Timer.new()
-	add_child(timer)
-	timer.autostart = true
-	timer.wait_time = 1
-	timer.connect("timeout", self, "_timeout")
-	ui_notification=true
-	print("Timed out!")
-	if (timer.wait_time == 3):
-		ui_notification=false
-		print(timer.wait_time)
-		print("body has exited the xxx can")
+	$PlayerUI/ui_notification/CanvasLayer/Ui_notification.show()
+	ui_timer.start()
+	ui_notification = true
+
 # Play the audio for the melee.
 func play_melee_sound(melee_index : int):
 	match melee_index:
@@ -437,6 +432,12 @@ func debug_rotation_values(x, y, z):
 	print(args)
 
 ### THE SIGNAL FUNCTIONS FOR THE `PLAYER.GD`.
+
+# This function hides the UI notification according to the wait time.
+func _on_UI_Timer_timeout():
+	if (ui_notification):
+		ui_notification = false
+		$PlayerUI/ui_notification/CanvasLayer/Ui_notification.hide()
 
 # Limits the shooting rate.
 func _on_ShootTimer_timeout():
