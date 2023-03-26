@@ -52,3 +52,6 @@ rect_min_size = Vector2( 400, 50 )
 bbcode_enabled = true
 bbcode_text = "[center]You got xxx ammo for xxx[/center]"
 text = "You got xxx ammo for xxx"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0

@@ -452,7 +452,6 @@ current = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0 )
-visible = false
 shape = SubResource( 5 )
 
 [node name="ShootingRaycast" type="CollisionShape" parent="."]
@@ -1184,7 +1183,7 @@ collision_mask = 0
 script = ExtResource( 15 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PlayerHit_box"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.388, 0, 0 )
+transform = Transform( 0.073514, 0, 0, 0, 0.073514, 0, 0, 0, 0.073514, 0.388, 0, 0 )
 shape = SubResource( 23 )
 
 [node name="Audio" type="Node" parent="."]

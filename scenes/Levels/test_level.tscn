@@ -47,6 +47,9 @@ dof_blur_far_transition = 4.69
 
 [node name="testLevel" type="Spatial"]
 
+[node name="ammo_can3" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3992, 6.96641, 0 )
+
 [node name="ammo_can2" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.8597, -2.15227, 0 )
 
@@ -63,7 +66,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.79584, 0.08, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64725, 0, 0 )
 
 [node name="WeaponCollectible" parent="." instance=ExtResource( 4 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 33.8398, -2.53554, 0 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0.49699, 8.44525, 0 )
 weapon = "negotiator"
 
 [node name="WeaponCollectible2" parent="." instance=ExtResource( 4 )]
@@ -293,7 +296,7 @@ bbcode_text = "[center]Checkpoint![/center]"
 text = "Checkpoint!"
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0126, 0.597145, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 30.8535, 8.49525, 0 )
 axis_lock_motion_x = false
 axis_lock_motion_y = false
 move_lock_x = false
