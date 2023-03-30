@@ -93,7 +93,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Escape From Zordoom Prison"
-run/main_scene="res://scenes/Menu/MainMenu.tscn"
+run/main_scene="res://scenes/Levels/test_level.tscn"
 config/icon="res://icon.png"
 
 [autoload]

@@ -1169,10 +1169,6 @@ text = "There are many variations of passages of Lorem Ipsum available, but the 
 autowrap = true
 clip_text = true
 
-[node name="Node" type="Node" parent="."]
-
-[node name="Node2" type="Node" parent="."]
-
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
@@ -1186,6 +1182,8 @@ script = ExtResource( 15 )
 [node name="CollisionShape" type="CollisionShape" parent="PlayerHit_box"]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.388, 0, 0 )
 shape = SubResource( 23 )
+
+[node name="Effects" type="Node" parent="."]
 
 [node name="Audio" type="Node" parent="."]
 

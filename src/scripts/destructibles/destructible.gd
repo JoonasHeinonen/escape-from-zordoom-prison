@@ -69,8 +69,13 @@ func no_damage(amount:int)-> void:
 	active = false
 # TODO Also need to get the box to explode and to get bolts(?)
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (scene_type != "explosive_crate" && scene_type != "health_crate" && Globle.melee_attack && active):
+	if (
+		scene_type != "explosive_crate" && 
+		scene_type != "health_crate" && 
+		Globle.melee_attack && active
+	):
 		createBolts()
 
 # Creates the default 3 bolts for the destroyed crate.

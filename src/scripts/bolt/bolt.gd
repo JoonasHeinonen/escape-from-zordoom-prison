@@ -1,13 +1,13 @@
 extends Area
 
+onready var health_light   = preload("res://scenes/Effects/Player/CollectHealthNode.tscn")
+onready var trail_particle = preload("res://scenes/Effects/Collectibles/TrailParticles.tscn")
 onready var projectile 	   = $TrailParticles
 
 export (String, "bolt", "ammo", "nanotech_node") var type
 
-# var position 			   = Vector3()
-
 var emit_trail 			   = false
-var getMagnet 			   = false
+var get_magnet 			   = false
 var random 	  			   = RandomNumberGenerator.new() # Adding random number.
 var collectible_image_path = "res://resources/images/collectibles/"
 
@@ -37,37 +37,48 @@ func _ready():
 
 # Called during the physics processing step of the main loop.
 func _physics_process(delta):
-	if (type == "nanotech_node"):
-		$TrailParticles.show() if emit_trail else $TrailParticles.hide()
-
-	if !getMagnet:
+	if !get_magnet:
 		# Makes the bolts fall due to the y axis
 		translation.y
+
+	if (emit_trail):
+		$Particles.hide()
+		$Particles2.hide()
 
 	var bodies = get_overlapping_areas()
 	for body in bodies:
 		if body.name == "AreaPlayer":
-			getMagnet = true
-			translation += (get_parent().get_node("player").translation - translation) / 10
-			# if type == "nanotech_node":
-			# 	emit_trail = true
+			get_magnet = true
+			if (type == "nanotech_node"):
+				emit_trail = true
+				for s in $Spots.get_children():
+					var t_p = trail_particle.instance()
+					t_p.global_transform = s.global_transform
+					get_parent().add_child(t_p)
+				queue_free()
+			else:
+				translation += (get_parent().get_node("player").translation - translation) / 10
 		var bodies2 = get_overlapping_bodies()
 		for bod in bodies2:
 			# This adds the bolt amount to the player.
 			if bod.name == "player":
 				# Makes sure that every number is random
 				random.randomize()
-				var countBoults=get_parent().get_node("player").bolt + random.randi_range(10, 100)
+				var countBoults = get_parent().get_node("player").bolt + random.randi_range(10, 100)
 				# Grabes the bolt amout
 				Globle.bolts += countBoults
 				
 				# Plays the bolt sound on the player's instance.
 				if bod.has_method("collect_bolt"):
-					if (type == "bolt"):
-						bod.collect_bolt(random.randi_range(0, 2), "bolt")
-					elif (type == "ammo"):
-						bod.collect_bolt(random.randi_range(0, 1), "ammo")
+					match(type):
+						"bolt":
+							bod.collect_bolt(random.randi_range(0, 2), "bolt")
+						"ammo":
+							bod.collect_bolt(random.randi_range(0, 1), "ammo")
+						"nanotech_node":
+							var effects : Node = null
+							var h_l 		   = health_light.instance()
+							if (bod.has_node("Effects")):
+								effects = bod.get_node("Effects")
+								effects.add_child(h_l)
 				queue_free()
-			
-	
-
