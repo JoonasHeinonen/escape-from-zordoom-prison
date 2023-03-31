@@ -158,6 +158,7 @@ func _physics_process(delta):
 	move_and_slide(velocity,Vector3.UP)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	var y_position = self.global_transform.origin.y
 	
