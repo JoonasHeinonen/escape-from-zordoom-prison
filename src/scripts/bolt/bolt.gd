@@ -41,10 +41,10 @@ func _ready():
 		"ammo":
 			resource = load(collectible_image_path + "ammo_can.png")
 			$Sprite3D.set_texture(resource)
-  connect("body_exited" , self , "_on_Ammo_body_exited")
+	connect("body_exited" , self , "_on_Ammo_body_exited")
 	connect("body_entered" , self , "_on_Ammo_body_entered")
 	print(self.name)
-	
+
 	if (type == "bolt"):
 		match bolt_index:
 			"0":
@@ -99,7 +99,7 @@ func _physics_process(delta):
 						"bolt":
 							bod.collect_bolt(random.randi_range(0, 2), "bolt")
 						"ammo":
-              bod.ui_notification_msg()
+							bod.ui_notification_msg()
 							bod.collect_bolt(random.randi_range(0, 1), "ammo")
 						"nanotech_node":
 							var effects : Node = null
