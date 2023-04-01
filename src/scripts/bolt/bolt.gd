@@ -8,6 +8,13 @@ export (String, "bolt", "ammo", "nanotech_node") var type
 
 var emit_trail 			   = false
 var get_magnet 			   = false
+
+# var position 			   = Vector3()
+var timer 				   = Timer.new()
+
+var active 				   = false
+var getMagnet 			   = false
+
 var random 	  			   = RandomNumberGenerator.new() # Adding random number.
 var collectible_image_path = "res://resources/images/collectibles/"
 
@@ -34,6 +41,24 @@ func _ready():
 		"ammo":
 			resource = load(collectible_image_path + "ammo_can.png")
 			$Sprite3D.set_texture(resource)
+  connect("body_exited" , self , "_on_Ammo_body_exited")
+	connect("body_entered" , self , "_on_Ammo_body_entered")
+	print(self.name)
+	
+	if (type == "bolt"):
+		match bolt_index:
+			"0":
+				resource = load(collectible_image_path + bolt_file_name)
+				$Sprite3D.set_texture(resource)
+			"1":
+				resource = load(collectible_image_path + bolt_file_name)
+				$Sprite3D.set_texture(resource)
+			"2":
+				resource = load(collectible_image_path + bolt_file_name)
+				$Sprite3D.set_texture(resource)
+	elif (type == "ammo"):
+		resource = load(collectible_image_path + "ammo_can.png")
+		$Sprite3D.set_texture(resource)
 
 # Called during the physics processing step of the main loop.
 func _physics_process(delta):
@@ -74,6 +99,7 @@ func _physics_process(delta):
 						"bolt":
 							bod.collect_bolt(random.randi_range(0, 2), "bolt")
 						"ammo":
+              bod.ui_notification_msg()
 							bod.collect_bolt(random.randi_range(0, 1), "ammo")
 						"nanotech_node":
 							var effects : Node = null
@@ -82,3 +108,20 @@ func _physics_process(delta):
 								effects = bod.get_node("Effects")
 								effects.add_child(h_l)
 				queue_free()
+		
+#func _on_Ammo_body_exited(body):
+#	if (timer.wait_time==3):
+#		active=false
+#		print(timer.wait_time)
+#		print("body has exited the xxx can")
+#
+#func _on_Ammo_body_entered(body):
+#	if body.name == "player":
+#		print("body has entered the xxx can")
+#		timer = Timer.new()
+#		add_child(timer)
+#		timer.autostart = true
+#		timer.wait_time = 1
+#		timer.connect("timeout", self, "_timeout")
+#		active=true
+#		print("Timed out!")

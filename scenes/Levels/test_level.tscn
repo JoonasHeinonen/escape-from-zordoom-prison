@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Destructibles/Crates/bolt_crate.tscn" type="PackedScene" id=2]
@@ -10,13 +10,15 @@
 [ext_resource path="res://scenes/Player/player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=9]
 [ext_resource path="res://resources/images/environment/haerkonen.jpg" type="Texture" id=10]
-[ext_resource path="res://resources/images/characters/npc/black_question_mark.png" type="Texture" id=11]
+[ext_resource path="res://resources/images/ui/enter_key.png" type="Texture" id=11]
 [ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=12]
 [ext_resource path="res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Collectibles/ammo_can.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/NPC/Enemies/Enemy.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Blocks & World/Doors/ArchDoors.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Destructibles/Crates/health_crate.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/scripts/UI/checkpoint_ui.gd" type="Script" id=17]
+[ext_resource path="res://resources/images/ui/r_n_c__Final_ammo.png" type="Texture" id=18]
 
 [sub_resource type="PanoramaSky" id=15]
 radiance_size = 4
@@ -42,10 +44,21 @@ dof_blur_far_transition = 4.69
 
 [sub_resource type="BoxShape" id=12]
 
+[sub_resource type="BoxShape" id=17]
+
 [node name="testLevel" type="Spatial"]
 
-[node name="ammo_can" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17687, -2.5243, 0 )
+[node name="ammo_can6" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.7645, -11.2671, 0 )
+
+[node name="ammo_can5" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1608, -1.54334, 0 )
+
+[node name="ammo_can4" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0121, 7.00113, 0 )
+
+[node name="ammo_can3" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9202, 6.96641, 0 )
 
 [node name="bolt2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8738, 0.612113, 0 )
@@ -57,7 +70,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.79584, 0.08, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64725, 0, 0 )
 
 [node name="WeaponCollectible" parent="." instance=ExtResource( 4 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 33.8398, -2.53554, 0 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0.49699, 8.44525, 0 )
 weapon = "negotiator"
 
 [node name="WeaponCollectible2" parent="." instance=ExtResource( 4 )]
@@ -115,8 +128,9 @@ skeleton = NodePath("../../..")
 transform = Transform( 1.488, 0, 0, 0, 3.171, 0, 0, 4.47035e-08, 1, 0, 0.174326, -2.73879 )
 shape = SubResource( 14 )
 
-[node name="QuestionMark" type="Sprite3D" parent="npc/friendly/npc"]
-transform = Transform( 0.5, 0, 0, 0, -2.18557e-08, -0.1, 0, 0.5, -4.37114e-09, 0, 0, 1.012 )
+[node name="EnterButton" type="Sprite3D" parent="npc/friendly/npc"]
+transform = Transform( 7.2616, 0, 0, 0, 1.29238, -4.59346, 0, -4.59346, 73.1668, 0, 0, 0 )
+billboard = 1
 texture = ExtResource( 11 )
 
 [node name="enemies" type="Node" parent="npc"]
@@ -135,6 +149,7 @@ mesh = SubResource( 9 )
 skeleton = NodePath("../..")
 
 [node name="StaticBody" type="StaticBody" parent="walls_floors/MeshInstance3"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0578098, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="walls_floors/MeshInstance3/StaticBody"]
 shape = SubResource( 12 )
@@ -250,8 +265,45 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00164, 1.08331, 0 )
 [node name="LampPost" parent="destructibles/infrastructure" instance=ExtResource( 13 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4.037, -1 )
 
+[node name="checkpoint" type="Node" parent="."]
+
+[node name="Area" type="Area" parent="checkpoint"]
+script = ExtResource( 17 )
+
+[node name="CollisionShape" type="CollisionShape" parent="checkpoint/Area"]
+transform = Transform( 3.19211, 0, 0, 0, 2.23192, 0, 0, 0, 1, 22, -13.8599, 0 )
+shape = SubResource( 17 )
+
+[node name="checkpoint" type="CanvasLayer" parent="checkpoint/Area"]
+layer = 3
+
+[node name="Ui_notification" type="CenterContainer" parent="checkpoint/Area/checkpoint"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -3.0
+margin_top = -218.0
+margin_right = -3.0
+margin_bottom = -218.0
+
+[node name="TextureRect" type="TextureRect" parent="checkpoint/Area/checkpoint/Ui_notification"]
+margin_left = 217.0
+margin_top = 218.0
+margin_right = 1062.0
+margin_bottom = 502.0
+texture = ExtResource( 18 )
+
+[node name="checkbox" type="RichTextLabel" parent="checkpoint/Area/checkpoint/Ui_notification"]
+margin_left = 440.0
+margin_top = 335.0
+margin_right = 840.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 400, 50 )
+bbcode_enabled = true
+bbcode_text = "[center]Checkpoint![/center]"
+text = "Checkpoint!"
+
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4984, 1.44468, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 30.8535, 8.49525, 0 )
 axis_lock_motion_x = false
 axis_lock_motion_y = false
 move_lock_x = false

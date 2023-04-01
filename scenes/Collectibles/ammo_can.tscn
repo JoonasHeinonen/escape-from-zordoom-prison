@@ -19,3 +19,9 @@ texture = ExtResource( 1 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0 )
 shape = SubResource( 1 )
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.33333, 0.94281, 0, -0.94281, -0.33333, -0.0202379, 1.07535, -0.185955 )
+light_color = Color( 0.74902, 0.898039, 0.901961, 1 )
+spot_range = 1.0
+spot_angle = 43.4095
