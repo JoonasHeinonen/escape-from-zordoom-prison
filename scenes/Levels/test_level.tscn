@@ -273,9 +273,6 @@ shape = SubResource( 17 )
 [node name="checkpoint" type="CanvasLayer" parent="checkpoint/Area"]
 layer = 3
 
-[node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint"]
-wait_time = 5.0
-
 [node name="Ui_notification" type="CenterContainer" parent="checkpoint/Area/checkpoint"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -300,6 +297,9 @@ rect_min_size = Vector2( 400, 50 )
 bbcode_enabled = true
 bbcode_text = "[center]Checkpoint![/center]"
 text = "Checkpoint!"
+
+[node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
+wait_time = 5.0
 
 [node name="player" parent="." instance=ExtResource( 8 )]
 transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 30.8535, -13.6437, 0 )
