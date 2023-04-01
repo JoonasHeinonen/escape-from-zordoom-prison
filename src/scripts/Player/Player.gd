@@ -326,26 +326,27 @@ func collect_bolt(index : int, type : String):
 	b_s.translation.z = 0.1
 	get_parent().add_child(b_s)
 
-# For playing the randomized collectible collection sound effect.
-	if (type == "bolt"):
-		match index:
-			0:
-				$Audio/Collectibles/Bolt/Bolt0.play()
-			1:
-				$Audio/Collectibles/Bolt/Bolt1.play()
-			2:
-				$Audio/Collectibles/Bolt/Bolt2.play()
-			_:
-				$Audio/Collectibles/Bolt/Bolt0.play()
-	elif (type == "ammo"):
-		print("Ammo!")
-		match index:
-			0:
-				$Audio/Collectibles/Ammo/Ammo0.play()
-			1:
-				$Audio/Collectibles/Ammo/Ammo1.play()
-			_:
-				$Audio/Collectibles/Ammo/Ammo0.play()
+	# For playing the randomized collectible collection sound effect.
+	match (type):
+		"bolt":
+			match index:
+				0:
+					$Audio/Collectibles/Bolt/Bolt0.play()
+				1:
+					$Audio/Collectibles/Bolt/Bolt1.play()
+				2:
+					$Audio/Collectibles/Bolt/Bolt2.play()
+				_:
+					$Audio/Collectibles/Bolt/Bolt0.play()
+		"ammo":
+			# TODO Add ammo, depending on the weapons the player has.
+			match index:
+				0:
+					$Audio/Collectibles/Ammo/Ammo0.play()
+				1:
+					$Audio/Collectibles/Ammo/Ammo1.play()
+				_:
+					$Audio/Collectibles/Ammo/Ammo0.play()
 
 # Restore 1 block of player health after collecting 4 nodes.
 func heal_player():

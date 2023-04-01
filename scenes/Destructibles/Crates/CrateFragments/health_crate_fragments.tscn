@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://resources/models/destructibles/crates/HealthCrateMaterial.material" type="Material" id=1]
 [ext_resource path="res://src/scripts/destructibles/destructible_fragments.gd" type="Script" id=2]
+[ext_resource path="res://resources/audio/environment/destructibles/glass_0.wav" type="AudioStream" id=3]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "health_crate_fragments_Cube004"
@@ -204,3 +205,8 @@ shape = SubResource( 12 )
 wait_time = 3.0
 
 [node name="KillTimer" type="Timer" parent="."]
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="DestroySound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 3 )

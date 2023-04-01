@@ -7,6 +7,7 @@ var parent 				 = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Audio/HealthNode.play()
 	player.health_node_counter += 1
 	expire_timer.connect("timeout", self, "_on_ExpireTimer_timeout")
 	parent = self.get_parent().get_parent()

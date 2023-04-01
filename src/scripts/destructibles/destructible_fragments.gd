@@ -16,7 +16,8 @@ func _ready():
 			destroy_sound.set_stream(load(root_src + "vase_0.wav"))
 			destroy_sound.play()
 		"health_destroy":
-			pass
+			destroy_sound.set_stream(load(root_src + "glass_0.wav"))
+			destroy_sound.play()
 	$ExpireTimer.connect("timeout", self, "_on_ExpireTimer_timeout")
 	$KillTimer.connect("timeout", self, "_on_KillTimer_timeout")
 	$ExpireTimer.start()
