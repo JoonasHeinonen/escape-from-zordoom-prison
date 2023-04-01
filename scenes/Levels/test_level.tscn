@@ -274,6 +274,7 @@ shape = SubResource( 17 )
 layer = 3
 
 [node name="Ui_notification" type="CenterContainer" parent="checkpoint/Area/checkpoint"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -3.0
