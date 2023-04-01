@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -40,6 +40,7 @@
 [ext_resource path="res://src/scripts/Player/player_target_detection_area.gd" type="Script" id=38]
 [ext_resource path="res://resources/audio/collectibles/Ratchet_&_Clank_-_Going_Commando.iso_59400.wav" type="AudioStream" id=39]
 [ext_resource path="res://resources/audio/weapons/player/theNegotiator.wav" type="AudioStream" id=40]
+[ext_resource path="res://resources/images/ui/r_n_c__Final_ammo.png" type="Texture" id=41]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -452,7 +453,6 @@ current = true
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0 )
-visible = false
 shape = SubResource( 5 )
 
 [node name="ShootingRaycast" type="CollisionShape" parent="."]
@@ -1169,6 +1169,42 @@ text = "There are many variations of passages of Lorem Ipsum available, but the 
 autowrap = true
 clip_text = true
 
+[node name="ui_notification" type="Control" parent="PlayerUI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI/ui_notification"]
+layer = 3
+
+[node name="Ui_notification" type="CenterContainer" parent="PlayerUI/ui_notification/CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -4.0
+margin_top = -124.0
+margin_right = -4.0
+margin_bottom = -124.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
+margin_left = 217.0
+margin_top = 218.0
+margin_right = 1062.0
+margin_bottom = 502.0
+texture = ExtResource( 41 )
+
+[node name="ui_ammo" type="RichTextLabel" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
+margin_left = 440.0
+margin_top = 335.0
+margin_right = 840.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 400, 50 )
+bbcode_enabled = true
+bbcode_text = "[center]You got xxx ammo for xxx[/center]"
+text = "You got xxx ammo for xxx"
+
+[node name="Ui_Timer" type="Timer" parent="PlayerUI/ui_notification"]
+wait_time = 3.0
+
 [node name="Node" type="Node" parent="."]
 
 [node name="Node2" type="Node" parent="."]
@@ -1184,7 +1220,7 @@ collision_mask = 0
 script = ExtResource( 15 )
 
 [node name="CollisionShape" type="CollisionShape" parent="PlayerHit_box"]
-transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.388, 0, 0 )
+transform = Transform( 0.073514, 0, 0, 0, 0.073514, 0, 0, 0, 0.073514, 0.388, 0, 0 )
 shape = SubResource( 23 )
 
 [node name="Audio" type="Node" parent="."]

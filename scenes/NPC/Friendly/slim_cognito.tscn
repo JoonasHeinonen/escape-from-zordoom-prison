@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/models/SlimCognito.material" type="Material" id=1]
 [ext_resource path="res://resources/models/OrangeMetal.material" type="Material" id=2]
 [ext_resource path="res://src/scripts/npc/vendor.gd" type="Script" id=3]
+[ext_resource path="res://resources/images/ui/enter_key.png" type="Texture" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "slim_cognito_Cylinder"
@@ -43,6 +44,10 @@ mesh = SubResource( 1 )
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 3, 0, 0, 0, 2, 0, 0, 0, 6, 0, 2, 4 )
 shape = SubResource( 2 )
+
+[node name="EnterKey" type="Sprite3D" parent="."]
+transform = Transform( 8.77498, 0, 0, 0, 8.77498, 0, 0, 0, 1, 0, 6.07058, 0.103005 )
+texture = ExtResource( 4 )
 
 [connection signal="body_entered" from="." to="." method="_on_slim_cognito_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_slim_cognito_body_exited"]

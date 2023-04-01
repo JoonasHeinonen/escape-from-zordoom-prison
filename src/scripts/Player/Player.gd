@@ -12,6 +12,7 @@ onready var gun_btn 	  		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
 onready var angela_arm 			 = $AngelaArm
 onready var rivet_arm 			 = $RivetArm
 onready var camera 		  		 = $Camera
+onready var ui_timer 			 = $PlayerUI/ui_notification/Ui_Timer
 onready var hand_instance_src 	 = "res://resources/images/characters/player/"
 
 export var speed 		  		 = 1
@@ -28,10 +29,11 @@ var jump 				  		 = 4
 var bolt 				  		 = 0
 
 var alive 				  		 = true
-
+var ui_notification				 = false
 # Weapon variables, if player has such weapon.
 var current_weapon 		  		 = null
 
+var timer 				         = Timer.new()
 var ray_origin  		  		 = Vector3()
 var ray_end 			  		 = Vector3()
 var random 				  		 = RandomNumberGenerator.new()
@@ -66,6 +68,7 @@ func _ready():
 		hand_instance.set_texture(g_i_s)
 	hand_instance.scale.y = -20
 
+	ui_timer.connect("timeout", self, "_on_UI_Timer_timeout")
 	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
 	$ShootTimer.start()
 	$PlayerUI/InventoryContainer.visible = false
@@ -155,9 +158,10 @@ func _physics_process(delta):
 	move_and_slide(velocity,Vector3.UP)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+
 func _process(delta):
 	var y_position = self.global_transform.origin.y
-
+	
 	# Get current physics state.
 	var space_state = get_world().direct_space_state
 	
@@ -340,6 +344,12 @@ func collect_bolt(index : int, type : String):
 			_:
 				$Audio/Collectibles/Ammo/Ammo0.play()
 
+# UI notification message.
+func ui_notification_msg():
+	$PlayerUI/ui_notification/CanvasLayer/Ui_notification.show()
+	ui_timer.start()
+	ui_notification = true
+
 # Play the audio for the melee.
 func play_melee_sound(melee_index : int):
 	match melee_index:
@@ -423,6 +433,12 @@ func debug_rotation_values(x, y, z):
 	print(args)
 
 ### THE SIGNAL FUNCTIONS FOR THE `PLAYER.GD`.
+
+# This function hides the UI notification according to the wait time.
+func _on_UI_Timer_timeout():
+	if (ui_notification):
+		ui_notification = false
+		$PlayerUI/ui_notification/CanvasLayer/Ui_notification.hide()
 
 # Limits the shooting rate.
 func _on_ShootTimer_timeout():
