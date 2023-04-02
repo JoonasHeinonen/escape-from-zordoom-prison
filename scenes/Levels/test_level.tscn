@@ -299,7 +299,6 @@ bbcode_text = "[center]Checkpoint![/center]"
 text = "Checkpoint!"
 
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
-wait_time = 5.0
 
 [node name="player" parent="." instance=ExtResource( 8 )]
 transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 30.8535, -13.6437, 0 )
