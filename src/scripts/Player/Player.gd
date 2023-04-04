@@ -104,6 +104,8 @@ func _physics_process(delta):
 			change_weapon_texture("ry3no")
 		"sheepinator":
 			change_weapon_texture("sheepinator")
+		"miniturret_glove":
+			change_weapon_texture("miniturret_glove")
 		_:
 			gun_instance.hide()
 
@@ -265,6 +267,12 @@ func set_weapons_to_inventory(weapons):
 				$PlayerUI/InventoryContainer/MenuContainer/WeaponSlot7/SlotTexture,
 				"sheepinator"
 			)
+		if (weapon == "miniturret_glove"):
+			set_weapon_metadata(
+				$PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8,
+				$PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8/SlotTexture,
+				"miniturret_glove"
+			)
 
 # Sets the weapon metadata for the inventory.
 func set_weapon_metadata(button: Button, res: TextureRect, weapon_name: String):
@@ -424,6 +432,10 @@ func shoot_ry3no():
 func shoot_sheepinator():
 	print("Sheepinator used. All enemies are converted into sheeps.")
 
+# Shooting functionality for the miniturret glove.
+func shoot_miniturret_glove():
+	print("Miniturret glove fired.")
+
 ### FUNCTIONS USED FUR DEBUGGING THE PLAYER SCENE. NOT USED IN THE FINAL PRODUCT.
 
 # Used to debug the rotation values.
@@ -465,6 +477,9 @@ func _on_ShootTimer_timeout():
 			"sheepinator":
 				shoot_sheepinator()
 				$ShootTimer.start()
+			"miniturret_glove":
+				shoot_miniturret_glove()
+				$ShootTimer.start()
 
 # Loads the scene defined to a particular button.
 func _on_Vendor_Choice_pressed(button, wpn):
@@ -483,6 +498,8 @@ func _on_Vendor_Choice_pressed(button, wpn):
 			purchase_weapon(Globle.WPNS[1][5], wpn, button)
 		"sheepinator":
 			purchase_weapon(Globle.WPNS[1][6], wpn, button)
+		"miniturret_glove":
+			purchase_weapon(Globle.WPNS[1][7], wpn, button)
 
 # Acts when a vendor weapon button is highlighted.
 func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
@@ -529,6 +546,12 @@ func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
 				Globle.WPNS[1][6],
 				Globle.WPNS[2][6]
 			)
+		"miniturret_glove":
+			update_vendor_data(
+				Globle.WPNS[0][7],
+				Globle.WPNS[1][7],
+				Globle.WPNS[2][7]
+			)
 
 # Change weapon to Edge Blaster.
 func _on_WeaponSlot1_pressed():
@@ -560,7 +583,7 @@ func _on_WeaponSlot7_pressed():
 
 # Empty, for now
 func _on_WeaponSlot8_pressed():
-	pass # Replace with function body.
+	current_weapon = "miniturret_glove"
 
 func _on_player_mouse_entered():
 	print("Player here!")
