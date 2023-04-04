@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://resources/images/effects/projectiles/gravity_bomb_projectile.png" type="Texture" id=1]
+[ext_resource path="res://resources/images/effects/projectiles/minigun_turret_packed.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/effects/bullets/GravityBombProjectile.gd" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=2]
@@ -11,10 +11,10 @@ extents = Vector3( 0.291842, 0.219277, 0.210843 )
 
 [sub_resource type="BoxShape" id=4]
 
-[node name="GravityBombProjectile" type="RigidBody"]
+[node name="MinigunTurretProjectile" type="RigidBody"]
 physics_material_override = SubResource( 2 )
 script = ExtResource( 2 )
-projectile_type = "gravity_bomb_projectile"
+projectile_type = "miniturret_projectile"
 
 [node name="ball" type="Sprite3D" parent="."]
 transform = Transform( 2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0.00466165, 0, 0 )
