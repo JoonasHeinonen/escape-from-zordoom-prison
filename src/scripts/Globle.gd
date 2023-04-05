@@ -41,6 +41,14 @@ var melee_attack 		= false
 
 var menu_to_return 		= "none"
 
+#spawn_point
+
+var spawn_point = Vector3(0, 0 , 0)
+
+func update_spawn(new_point):
+	spawn_point=new_point
+	
+	
 # Not sure if we need this instance_node
 func instance_node(node,location,parent):
 	var node_instance=node.instance()

@@ -16,6 +16,7 @@ func _on_checkpoint_body_entered(body):
 		$checkpoint/Ui_notification.show()
 		print("player has entered the checkpoint box")
 		active=true
+		
 func _on_checkpoint_body_exited(body):
 	#after the player exits the area the box goes away
 	if body.name == "player":

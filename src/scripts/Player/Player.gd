@@ -78,6 +78,10 @@ func _ready():
 	if Globle.current_weapons.size() > 0:
 		current_weapon = "edge_blaster"
 	set_vendor_weapons(Globle.weapons_for_sale)
+		#the spawn code for the player
+		# TODO: Invalid set index 'position' (on base: 'KinematicBody (Player.gd)') with value of type 'Vector3'. Bug fix
+	self.position = Global.spawn_point
+	
 
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
@@ -156,6 +160,8 @@ func _physics_process(delta):
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	move_and_slide(velocity,Vector3.UP)
+	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
