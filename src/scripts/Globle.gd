@@ -45,7 +45,7 @@ var menu_to_return 		= "none"
 
 var spawn_point = Vector3(0, 0 , 0)
 
-func update_spawn(new_point):
+func update_spawn(new_point:Vector3):
 	spawn_point=new_point
 	
 	

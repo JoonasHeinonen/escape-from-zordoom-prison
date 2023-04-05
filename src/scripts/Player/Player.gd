@@ -80,7 +80,7 @@ func _ready():
 	set_vendor_weapons(Globle.weapons_for_sale)
 		#the spawn code for the player
 		# TODO: Invalid set index 'position' (on base: 'KinematicBody (Player.gd)') with value of type 'Vector3'. Bug fix
-	self.position = Global.spawn_point
+	global_transform.origin = Global.spawn_point
 	
 
 func _physics_process(delta):
