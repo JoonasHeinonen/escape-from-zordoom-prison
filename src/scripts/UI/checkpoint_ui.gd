@@ -11,20 +11,15 @@ func _ready():
 	$checkpoint/Ui_notification.visible=false
 	
 func _on_checkpoint_body_entered(body):
-	
+	#after the player enters the area the box shows up
 	if body.name == "player":
 		$checkpoint/Ui_notification.show()
-		print("player has entered the checkpoint box")
-		
-		#TODO Why is coming back null
-		print(self.global_transform.origin)
-		active=true
+		active = true
 		
 func _on_checkpoint_body_exited(body):
 	#after the player exits the area the box goes away
 	if body.name == "player":
-		active=false
-		print("player has exited the checkpoint box")
+		active = false
 		$checkpoint/Ui_notification.hide()
 		queue_free()
 

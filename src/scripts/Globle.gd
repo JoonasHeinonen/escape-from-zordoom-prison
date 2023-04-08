@@ -41,13 +41,14 @@ var melee_attack 		= false
 
 var menu_to_return 		= "none"
 
-#spawn_point
-
 var spawn_point = Vector3(0, 0, 0)
-#todo redue the global spelling
+
+
+#this func updates the postion of the spawn point that player starts in
 func update_spawn(new_point):
+	
 	spawn_point=new_point
-	print(spawn_point)
+
 	
 # Not sure if we need this instance_node
 func instance_node(node,location,parent):

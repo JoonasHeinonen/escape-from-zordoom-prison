@@ -43,6 +43,7 @@ var fire_Rate			  		 = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#updates the new spawn point
 	global_transform.origin = Globle.spawn_point
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):

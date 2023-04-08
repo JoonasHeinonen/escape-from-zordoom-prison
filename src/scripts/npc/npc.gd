@@ -44,8 +44,7 @@ func _process(delta):
 	$EnterButton.visible=active
 					
 				
-				
-				
+								
 func unpause(timeline_name):
 	get_tree().paused=false
 func _on_NPC_body_entered(body):
