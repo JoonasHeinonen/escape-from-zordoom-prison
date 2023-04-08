@@ -43,6 +43,7 @@ var fire_Rate			  		 = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	global_transform.origin = Globle.spawn_point
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):
 		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")				
@@ -79,8 +80,8 @@ func _ready():
 		current_weapon = "edge_blaster"
 	set_vendor_weapons(Globle.weapons_for_sale)
 		#the spawn code for the player
-		# TODO: Invalid set index 'position' (on base: 'KinematicBody (Player.gd)') with value of type 'Vector3'. Bug fix
-	global_transform.origin = Global.spawn_point
+		#TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
+	
 	
 
 func _physics_process(delta):

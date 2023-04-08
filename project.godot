@@ -100,7 +100,6 @@ config/icon="res://icon.png"
 
 Globle="*res://src/scripts/Globle.gd"
 Inventory="*res://src/scripts/Player/Inventory.gd"
-Global="*res://scenes/Global.tscn"
 
 [display]
 

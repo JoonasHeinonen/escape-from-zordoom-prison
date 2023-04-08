@@ -25,7 +25,7 @@ const WPNS = [
 	]
 ]
 
-var player_character 	= "Rivet"
+var player_character 	= "Angela"
 
 var bolts 			 	= 0
 
@@ -43,11 +43,11 @@ var menu_to_return 		= "none"
 
 #spawn_point
 
-var spawn_point = Vector3(0, 0 , 0)
-
-func update_spawn(new_point:Vector3):
+var spawn_point = Vector3(0, 0, 0)
+#todo redue the global spelling
+func update_spawn(new_point):
 	spawn_point=new_point
-	
+	print(spawn_point)
 	
 # Not sure if we need this instance_node
 func instance_node(node,location,parent):

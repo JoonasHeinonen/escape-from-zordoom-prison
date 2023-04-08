@@ -15,6 +15,9 @@ func _on_checkpoint_body_entered(body):
 	if body.name == "player":
 		$checkpoint/Ui_notification.show()
 		print("player has entered the checkpoint box")
+		
+		#TODO Why is coming back null
+		print(self.global_transform.origin)
 		active=true
 		
 func _on_checkpoint_body_exited(body):
@@ -24,3 +27,5 @@ func _on_checkpoint_body_exited(body):
 		print("player has exited the checkpoint box")
 		$checkpoint/Ui_notification.hide()
 		queue_free()
+
+
