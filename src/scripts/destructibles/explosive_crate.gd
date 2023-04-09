@@ -10,17 +10,16 @@ func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
 	$Timer.connect("timeout", self, "_on_Timer_timeout")
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Globle.melee_attack && active:
 		state_machine.travel("Activated")
 		$Timer.start()
 
-func take_damage(amount:int)-> void:
-	print("hit box has enterd the hurt box")
+func take_damage(amount : int) -> void:
 	active = true
 
-func no_damage(amount:int)-> void:
-	print("hit box has exit the hurt box")
+func no_damage(amount : int) -> void:
 	active = false
 
 # Destroys the crate, generate the explosion.
