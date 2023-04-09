@@ -1,44 +1,45 @@
 extends KinematicBody
 
-const RANDOM_ANGLE		  			  = PI / 2.0
+const RANDOM_ANGLE		  				 = PI / 2.0
 
-onready var projectile 	  			  = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
-onready var blitz_gun_projectile 	  = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
-onready var bolt_sparkle 		 	  = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
-onready var gravity_bomb_projectile   = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
-onready var negotiator_projectile 	  = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
-onready var minigun_turret_projectile = preload("res://scenes/Projectiles/MinigunTurretProjectile.tscn")
-onready var gun_btn 	  		 	  = preload("res://scenes/UI/VendorWeaponButton.tscn")
+onready var projectile 	  				 = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
+onready var blitz_gun_projectile 		 = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
+onready var bolt_sparkle 		 		 = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
+onready var gravity_bomb_projectile 	 = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
+onready var negotiator_projectile 		 = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
+onready var miniturret_packed_projectile = preload("res://scenes/Projectiles/MiniturretPackedProjectile.tscn")
+onready var gun_btn 	  		 		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
-onready var angela_arm 				  = $AngelaArm
-onready var rivet_arm 				  = $RivetArm
-onready var camera 		  			  = $Camera
-onready var ui_timer 				  = $PlayerUI/ui_notification/Ui_Timer
-onready var hand_instance_src 		  = "res://resources/images/characters/player/"
+onready var angela_arm 					 = $AngelaArm
+onready var rivet_arm 					 = $RivetArm
+onready var camera 		  				 = $Camera
+onready var ui_timer 					 = $PlayerUI/ui_notification/Ui_Timer
+onready var hand_instance_src 			 = "res://resources/images/characters/player/"
 
-export var speed 		  			  = 1
+export var speed 		  				 = 1
 
 var hand_instance : Sprite3D
 var gun_instance
 var state_machine
 var active_weapon_button
 
-var velocity 			  		 	  = Vector3(0,0,0)
+var velocity 			  		 		 = Vector3(0,0,0)
 
-var gravity 			  			  = 4
-var jump 				  			  = 4
-var bolt 				  			  = 0
+var gravity 			  				 = 4
+var jump 				  				 = 4
+var bolt 				  				 = 0
 
-var alive 				  			  = true
-var ui_notification					  = false
+var alive 				  				 = true
+var ui_notification						 = false
+
 # Weapon variables, if player has such weapon.
-var current_weapon 		  			  = null
+var current_weapon 		  				 = null
 
-var timer 							  = Timer.new()
-var ray_origin  		  			  = Vector3()
-var ray_end 			  			  = Vector3()
-var random 				  			  = RandomNumberGenerator.new()
-var fire_Rate			  			  = 3
+var timer 								 = Timer.new()
+var ray_origin  		  				 = Vector3()
+var ray_end 			  				 = Vector3()
+var random 				  				 = RandomNumberGenerator.new()
+var fire_Rate			  				 = 3
 
 ### INHERITED FUNCTIONS FROM GODOT.
 
@@ -46,7 +47,7 @@ var fire_Rate			  			  = 3
 func _ready():
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):
-		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")				
+		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")
 		state_machine = $RivetAnimationTree.get("parameters/playback")
 		gun_instance  = $RivetArm/HandInstance/Hand/WeaponPlaceHolder
 		hand_instance = $RivetArm/HandInstance/Hand
@@ -392,7 +393,7 @@ func shoot_edge_blaster():
 	$Audio/EdgeBlaster.play()
 
 # Shooting functionality for the blitz gun.
-func shoot_blitz_gun():	
+func shoot_blitz_gun():
 	$Audio/BlizGun.play()
 	#bullet spread
 	for index in fire_Rate:
@@ -435,7 +436,7 @@ func shoot_sheepinator():
 
 # Shooting functionality for the miniturret glove.
 func shoot_miniturret_glove():
-	var bullet = minigun_turret_projectile.instance()
+	var bullet = miniturret_packed_projectile.instance()
 	bullet.translation.x = 3
 	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
 	get_parent().add_child(bullet)
