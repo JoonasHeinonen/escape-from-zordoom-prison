@@ -43,13 +43,10 @@ var menu_to_return 		= "none"
 
 var spawn_point = Vector3(0, 0, 0)
 
-
-#this func updates the postion of the spawn point that player starts in
+# This func updates the postion of the spawn point that player starts in
 func update_spawn(new_point):
-	
-	spawn_point=new_point
+	spawn_point = new_point
 
-	
 # Not sure if we need this instance_node
 func instance_node(node,location,parent):
 	var node_instance=node.instance()
