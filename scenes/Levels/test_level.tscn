@@ -216,8 +216,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9173, -1.1757, 0.27 )
 [node name="BoltCrate9" parent="destructibles/crates" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7824, -2.89695, 0.27 )
 
-<<<<<<< HEAD
-=======
 [node name="BoltCrate10" parent="destructibles/crates" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.4976, -11.6396, 0.27 )
 
@@ -254,7 +252,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4373, 0, 0 )
 [node name="HealthCrate2" parent="destructibles/crates" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0501, 0, 0 )
 
->>>>>>> master
 [node name="explosive_crates" type="Node" parent="destructibles"]
 
 [node name="ExplosiveCrate" parent="destructibles/explosive_crates" instance=ExtResource( 1 )]
