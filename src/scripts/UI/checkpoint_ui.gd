@@ -8,19 +8,21 @@ var ui_notification				 = false
 func _ready():
 	connect("body_entered",self,"_on_checkpoint_body_entered")
 	connect("body_exited",self,"_on_checkpoint_body_exited")
-	#$checkpoint/Area/checkpoint/Ui_notification.visible=false
+	$checkpoint/Ui_notification.visible=false
 	
 func _on_checkpoint_body_entered(body):
-	#after the player enters the area the box shows up
+
 	if body.name == "player":
-		#$checkpoint/Ui_notification.show()
-		active = true
-		
+		$checkpoint/Ui_notification.show()
+		print("player has entered the checkpoint box")
+
+		active=true
 func _on_checkpoint_body_exited(body):
 	#after the player exits the area the box goes away
 	if body.name == "player":
-		active = false
-		#$checkpoint/Ui_notification.hide()
+		active=false
+		print("player has exited the checkpoint box")
+		$checkpoint/Ui_notification.hide()
+		$checkpoint.hide()
 		queue_free()
-
 
