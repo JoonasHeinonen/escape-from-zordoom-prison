@@ -1,37 +1,38 @@
 extends KinematicBody
 
-const RANDOM_ANGLE		  		 = PI / 2.0
+const RANDOM_ANGLE 		  		  = PI / 2.0
 
-onready var projectile 	  		 = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
-onready var blitzGunProjectile 	 = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
-onready var bolt_sparkle 		 = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
+onready var projectile 	  		  = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
+onready var blitzGunProjectile 	  = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
+onready var bolt_sparkle 		  = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
 onready var gravityBombProjectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
-onready var negotiatorProjectile = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
-onready var gun_btn 	  		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
+onready var negotiatorProjectile  = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
+onready var gun_btn 	  		  = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
-onready var angela_arm 			 = $AngelaArm
-onready var rivet_arm 			 = $RivetArm
-onready var camera 		  		 = $Camera
+onready var angela_arm 			  = $AngelaArm
+onready var rivet_arm 			  = $RivetArm
+onready var camera 		  		  = $Camera
+onready var hand_instance_src 	  = "res://resources/images/characters/player/"
 onready var ui_timer 			 = $PlayerUI/ui_notification/Ui_Timer
-onready var hand_instance_src 	 = "res://resources/images/characters/player/"
 
-export var speed 		  		 = 1
+export var speed 		  		  = 1
 
 var hand_instance : Sprite3D
 var gun_instance
 var state_machine
 var active_weapon_button
 
-var velocity 			  		 = Vector3(0,0,0)
+var velocity 			  		  = Vector3(0,0,0)
 
-var gravity 			  		 = 4
-var jump 				  		 = 4
-var bolt 				  		 = 0
+var gravity 			  		  = 4
+var jump 				  		  = 4
+var bolt 				  		  = 0
+var health_node_counter 		  = 0
 
 var alive 				  		 = true
 var ui_notification				 = false
 # Weapon variables, if player has such weapon.
-var current_weapon 		  		 = null
+var current_weapon 		  		  = null
 
 var timer 				         = Timer.new()
 var ray_origin  		  		 = Vector3()
@@ -43,9 +44,11 @@ var fire_Rate			  		 = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
+
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):
-		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")				
+		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")
 		state_machine = $RivetAnimationTree.get("parameters/playback")
 		gun_instance  = $RivetArm/HandInstance/Hand/WeaponPlaceHolder
 		hand_instance = $RivetArm/HandInstance/Hand
@@ -138,10 +141,10 @@ func _physics_process(delta):
 			velocity.y = jump
 
 	if Input.is_action_just_released("ui_accept"):
-		print(Globle.WPNS[0])
 		Globle.update_vendor()
 
 	# Disable Rivet's melee attack for now.
+	# TODO Implement Rivet's melee attack.
 	if Globle.player_character != "Rivet":
 		if Input.is_action_just_released("ui_melee_attack"):
 			Globle.melee_attack = false
@@ -150,6 +153,7 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 		state_machine.travel("Player_Fall")
 		# Disable Rivet's melee attack for now.
+		# TODO Implement Rivet's melee attack.
 		if Globle.player_character != "Rivet":
 			if Input.is_action_pressed("ui_melee_attack"):
 				state_machine.travel("Player_Melee")
@@ -187,6 +191,9 @@ func _process(delta):
 	if Globle.player_character != "Rivet":
 		rivet_arm.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_arm.show()
 		if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
+
+	# Heal the player after collecting the nodes.
+	heal_player()
 
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
@@ -318,31 +325,40 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 func collect_bolt(index : int, type : String):
 	# Create the bolt sparkle once a bolt is collected.
 	var b_s = bolt_sparkle.instance()
-	b_s.global_transform = $CollisionShape.global_transform	
+	b_s.global_transform = $CollisionShape.global_transform
 	b_s.scale = Vector3(1, 1, 1)
 	b_s.translation.z = 0.1
 	get_parent().add_child(b_s)
 
-# For playing the randomized collectible collection sound effect.
-	if (type == "bolt"):
-		match index:
-			0:
-				$Audio/Collectibles/Bolt/Bolt0.play()
-			1:
-				$Audio/Collectibles/Bolt/Bolt1.play()
-			2:
-				$Audio/Collectibles/Bolt/Bolt2.play()
-			_:
-				$Audio/Collectibles/Bolt/Bolt0.play()
-	elif (type == "ammo"):
-		print("Ammo!")
-		match index:
-			0:
-				$Audio/Collectibles/Ammo/Ammo0.play()
-			1:
-				$Audio/Collectibles/Ammo/Ammo1.play()
-			_:
-				$Audio/Collectibles/Ammo/Ammo0.play()
+	# For playing the randomized collectible collection sound effect.
+	match (type):
+		"bolt":
+			match index:
+				0:
+					$Audio/Collectibles/Bolt/Bolt0.play()
+				1:
+					$Audio/Collectibles/Bolt/Bolt1.play()
+				2:
+					$Audio/Collectibles/Bolt/Bolt2.play()
+				_:
+					$Audio/Collectibles/Bolt/Bolt0.play()
+		"ammo":
+			# TODO Add ammo, depending on the weapons the player has.
+			match index:
+				0:
+					$Audio/Collectibles/Ammo/Ammo0.play()
+				1:
+					$Audio/Collectibles/Ammo/Ammo1.play()
+				_:
+					$Audio/Collectibles/Ammo/Ammo0.play()
+
+# Restore 1 block of player health after collecting 4 nodes.
+func heal_player():
+	# Adds health if 4 nodes are collected.
+	if (health_node_counter == 4):
+		print("1 block of health restored.") 
+		# TODO Increase the health once the health logic has been implemented.
+		health_node_counter = 0
 
 # UI notification message.
 func ui_notification_msg():
@@ -396,7 +412,6 @@ func shoot_blitz_gun():
 # Shooting functionality for the gravity bomb.
 func shoot_gravity_bomb():
 	$Audio/GravityBomb.play()
-	print("Gravity will guide this grenade into ground, emerging into explosion!")
 	var bullet = gravityBombProjectile.instance()
 	bullet.translation.x = 3
 	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x

@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Ratchet_&_Clank_-_Going_Commando.iso_02069.wav-21eeb5d51700641d8de344c6417974bd.sample"
+
+[deps]
+
+source_file="res://resources/audio/environment/gambling/Ratchet_&_Clank_-_Going_Commando.iso_02069.wav"
+dest_files=[ "res://.import/Ratchet_&_Clank_-_Going_Commando.iso_02069.wav-21eeb5d51700641d8de344c6417974bd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
