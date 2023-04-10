@@ -1,21 +1,21 @@
 extends KinematicBody
 
-onready var projectile 		 = preload("res://scenes/Projectiles/MiniturretProjectile.tscn")
+onready var projectile 			  = preload("res://scenes/Projectiles/MiniturretProjectile.tscn")
 
-onready var miniturret_gun 	  = $MiniturretGun
+onready var miniturret_gun 	  	  = $MiniturretGun
 
-var body_target 			  = null
+var body_target 				  = null
 var turn_direction 	 : String
-var state_machine
+var state_machine 	 : AnimationNodeStateMachinePlayback
 
-var miniturret_ammo  : int 	  = 12
-var turn_increment 	 : float  = 0.05
-var locked_on_target : bool   = false
+var miniturret_ammo  : int 		  = 12
+var turn_increment 	 : float 	  = 0.05
+var locked_on_target : bool 	  = false
 
-var directions 		 : Array  = ["up", "down"]
+var directions 		 : Array 	  = ["up", "down"]
 
-var velocity 				  = Vector3(0, 0, 0)
-var random 	  				  = RandomNumberGenerator.new()
+var velocity 					  = Vector3(0, 0, 0)
+var random 	  					  = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,7 +27,6 @@ func _ready():
 
 	random.randomize()
 	turn_direction = directions[(random.randi_range(0, directions.size() - 1))]
-	print(turn_direction)
 
 	$ExpireTimer.connect("timeout", self, "_on_ExpireTimer_timeout")
 	$ExpireTimer.start()
@@ -77,7 +76,6 @@ func _on_ShootTimer_timeout():
 	if (locked_on_target):
 		var bullet = projectile.instance()
 		get_parent().add_child(bullet)
-		print(bullet.scale)
 		bullet.global_transform = $MiniturretGun/WeaponMuzzle.global_transform
 		$Audio/MiniturretGun.play()
 		miniturret_ammo -= 1
@@ -94,6 +92,7 @@ func _on_TargetDetectionArea_body_exited(body):
 	if (body.has_meta("type") && body.get_meta("type") == "enemy"):
 	#if (body.name == "player"):
 		locked_on_target = false
+		body_target = null
 
 # https://godotengine.org/qa/74812/rotate-kinematiccharacter3d-towards-another-object-only
 # Returns the difference between point a and point b and returns the difference.
