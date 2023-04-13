@@ -1,23 +1,23 @@
 extends KinematicBody
 
-onready var bolt_instance 		 = preload("res://scenes/Collectibles/bolt.tscn")
-onready var lamp_post_fragments  = preload("res://scenes/Destructibles/Infrastructure/Lamps/LampFragments/lamp_post_fragments.tscn")
-onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
-onready var crate_destroy_effect = preload("res://scenes/Effects/Collectibles//CrateDestroyed.tscn")
-onready var radical 			 = preload("res://scenes/UI/GreenTargetRadical.tscn")
+onready var bolt_instance 		   = preload("res://scenes/Collectibles/bolt.tscn")
+onready var bolt_crate_fragments   = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
+onready var health_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/health_crate_fragments.tscn")
+onready var lamp_post_fragments    = preload("res://scenes/Destructibles/Infrastructure/Lamps/LampFragments/lamp_post_fragments.tscn")
+onready var crate_destroy_effect   = preload("res://scenes/Effects/Collectibles//CrateDestroyed.tscn")
+onready var radical 			   = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
-export (String, "bolt_crate", "lamp_post", "explosive_crate") var scene_type
+export (String, "bolt_crate", "lamp_post", "explosive_crate", "health_crate") var scene_type
 
-var random 						 = RandomNumberGenerator.new()
-var velocity 			  		 = Vector3(0, 0, 0)
-var active : bool 				 = false
-var meta_type : String 			 = ""
-var meta_name : String 			 = ""
-var fragment_scene : PackedScene = null
+var random 						   = RandomNumberGenerator.new()
+var velocity 			  		   = Vector3(0, 0, 0)
+var active : bool 				   = false
+var meta_type : String 			   = ""
+var meta_name : String 			   = ""
+var fragment_scene : PackedScene   = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(self, ": ", self.is_ray_pickable())
 	match (scene_type):
 		"lamp_post":
 			meta_type 	   = "infra_destroyable"
@@ -30,6 +30,10 @@ func _ready():
 		"explosive_crate":
 			meta_type 	   = "destroyable" 
 			meta_name 	   = "bolt crate"
+		"health_crate":
+			meta_type 	   = "destroyable" 
+			meta_name 	   = "health crate"
+			fragment_scene = health_crate_fragments
 
 	self.set_meta("type", meta_type)
 	self.set_meta("name", meta_name)
@@ -59,16 +63,19 @@ func generate_bolt_position(x_axis, y_axis):
 	return Vector3(x, y, 0)
 	
 func take_damage(amount:int)-> void:
-	print("hit box has enterd the hurt box")
 	active = true
 	
 func no_damage(amount:int)-> void:
-	print("hit box has exit the hurt box")
 	active = false
-# Also need to get the box to explode and to get bolts
+# TODO Also need to get the box to explode and to get bolts(?)
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (scene_type != "explosive_crate" && Globle.melee_attack && active):
+	if (
+		scene_type != "explosive_crate" && 
+		scene_type != "health_crate" && 
+		Globle.melee_attack && active
+	):
 		createBolts()
 
 # Creates the default 3 bolts for the destroyed crate.
@@ -82,9 +89,7 @@ func createBolts():
 			bolt.translation[0],
 			bolt.translation[1]
 		)
-	var fragments = fragment_scene.instance()
-	get_parent().get_parent().get_parent().add_child(fragments)
-	fragments.global_transform = global_transform
+	create_fragments()
 	destruction_effect()
 	queue_free()
 
@@ -103,12 +108,16 @@ func destruction_effect():
 			get_parent().get_parent().get_parent().add_child(d_e)
 			d_e.global_transform = global_transform
 
+# Creates the fragments.
+func create_fragments():
+	var fragments = fragment_scene.instance()
+	get_parent().get_parent().get_parent().add_child(fragments)
+	fragments.global_transform = global_transform
+
 func add_active_radical():
 	var g_t_r = radical.instance()
-	print(self)
 	if (!self.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
 		self.add_child(g_t_r)
-		print("Added a child")
 
 func remove_active_radical():
 	var d_l = self.get_children()
