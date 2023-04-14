@@ -47,6 +47,7 @@ dof_blur_far_transition = 4.69
 [sub_resource type="BoxShape" id=12]
 
 [sub_resource type="BoxShape" id=18]
+extents = Vector3( 1.1457, 1, 1 )
 
 [sub_resource type="BoxShape" id=19]
 
@@ -216,36 +217,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9173, -1.1757, 0.27 )
 [node name="BoltCrate9" parent="destructibles/crates" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7824, -2.89695, 0.27 )
 
-[node name="BoltCrate10" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.4976, -11.6396, 0.27 )
-
-[node name="BoltCrate11" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.6968, -11.6396, 0.27 )
-
-[node name="BoltCrate12" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.8995, -11.6396, 0.27 )
-
-[node name="BoltCrate13" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.1027, -11.6396, 0.27 )
-
-[node name="BoltCrate14" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5023, -10.9194, 0.27 )
-
-[node name="BoltCrate15" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.2969, -10.9194, 0.27 )
-
-[node name="BoltCrate16" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 53.0962, -10.9194, 0.27 )
-
-[node name="BoltCrate17" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.6942, -10.1986, 0.27 )
-
-[node name="BoltCrate18" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 51.9003, -10.1986, 0.27 )
-
-[node name="BoltCrate19" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 52.3077, -9.4803, 0.27 )
-
 [node name="HealthCrate" parent="destructibles/crates" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4373, 0, 0 )
 
@@ -277,11 +248,11 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4.037, -1 )
 [node name="area_of_death" type="Node" parent="."]
 
 [node name="death" type="Area" parent="area_of_death"]
-transform = Transform( 1, 0, 0, 0, 1.20766, 0, 0, 0, 1, 63.2513, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1.20766, 0, 0, 0, 1, 63.2513, 6.64839, 0 )
 script = ExtResource( 21 )
 
 [node name="deathBox" type="CollisionShape" parent="area_of_death/death"]
-transform = Transform( 43.2346, 0, 0, 0, 3.80285, 0, 0, 0, 1.00193, 0, -20.4742, 0 )
+transform = Transform( 43.2346, 0, 0, 0, 3.80285, 0, 0, 0, 1.00193, 31.2899, -36.131, 0 )
 shape = SubResource( 18 )
 
 [node name="checkpoint" type="Node" parent="."]
@@ -332,7 +303,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 31.778, -10.7842, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 0 )
 axis_lock_motion_x = false
 axis_lock_motion_y = false
 move_lock_x = false
