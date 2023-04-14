@@ -422,7 +422,7 @@ func shoot_blitz_gun():
 # Shooting functionality for the gravity bomb.
 func shoot_gravity_bomb():
 	$Audio/GravityBomb.play()
-	var bullet = gravityBombProjectile.instance()
+	var bullet = gravity_bomb_projectile.instance()
 	bullet.translation.x = 3
 	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
 	get_parent().add_child(bullet)
