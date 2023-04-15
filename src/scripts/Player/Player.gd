@@ -1,44 +1,46 @@
 extends KinematicBody
 
-const RANDOM_ANGLE 		  		  = PI / 2.0
+const RANDOM_ANGLE		  				 = PI / 2.0
 
-onready var projectile 	  		  = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
-onready var blitzGunProjectile 	  = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
-onready var bolt_sparkle 		  = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
-onready var gravityBombProjectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
-onready var negotiatorProjectile  = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
-onready var gun_btn 	  		  = preload("res://scenes/UI/VendorWeaponButton.tscn")
+onready var projectile 	  				 = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
+onready var blitz_gun_projectile 		 = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
+onready var bolt_sparkle 		 		 = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
+onready var gravity_bomb_projectile 	 = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
+onready var negotiator_projectile 		 = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
+onready var miniturret_packed_projectile = preload("res://scenes/Projectiles/MiniturretPackedProjectile.tscn")
+onready var gun_btn 	  		 		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
-onready var angela_arm 			  = $AngelaArm
-onready var rivet_arm 			  = $RivetArm
-onready var camera 		  		  = $Camera
-onready var hand_instance_src 	  = "res://resources/images/characters/player/"
-onready var ui_timer 			 = $PlayerUI/ui_notification/Ui_Timer
+onready var angela_arm 					 = $AngelaArm
+onready var rivet_arm 					 = $RivetArm
+onready var camera 		  				 = $Camera
+onready var ui_timer 					 = $PlayerUI/ui_notification/Ui_Timer
+onready var hand_instance_src 			 = "res://resources/images/characters/player/"
 
-export var speed 		  		  = 1
+export var speed 		  				 = 1
 
 var hand_instance : Sprite3D
 var gun_instance
 var state_machine
 var active_weapon_button
 
-var velocity 			  		  = Vector3(0,0,0)
+var velocity 			  		 		 = Vector3(0,0,0)
 
-var gravity 			  		  = 4
-var jump 				  		  = 4
-var bolt 				  		  = 0
+var gravity 			  				 = 4
+var jump 				  				 = 4
+var bolt 				  				 = 0
+
+var alive 				  				 = true
+var ui_notification						 = false
 var health_node_counter 		  = 0
 
-var alive 				  		 = true
-var ui_notification				 = false
 # Weapon variables, if player has such weapon.
-var current_weapon 		  		  = null
+var current_weapon 		  				 = null
 
-var timer 				         = Timer.new()
-var ray_origin  		  		 = Vector3()
-var ray_end 			  		 = Vector3()
-var random 				  		 = RandomNumberGenerator.new()
-var fire_Rate			  		 = 3
+var timer 								 = Timer.new()
+var ray_origin  		  				 = Vector3()
+var ray_end 			  				 = Vector3()
+var random 				  				 = RandomNumberGenerator.new()
+var fire_Rate			  				 = 3
 
 ### INHERITED FUNCTIONS FROM GODOT.
 
@@ -107,6 +109,8 @@ func _physics_process(delta):
 			change_weapon_texture("ry3no")
 		"sheepinator":
 			change_weapon_texture("sheepinator")
+		"miniturret_glove":
+			change_weapon_texture("miniturret_glove")
 		_:
 			gun_instance.hide()
 
@@ -272,6 +276,12 @@ func set_weapons_to_inventory(weapons):
 				$PlayerUI/InventoryContainer/MenuContainer/WeaponSlot7/SlotTexture,
 				"sheepinator"
 			)
+		if (weapon == "miniturret_glove"):
+			set_weapon_metadata(
+				$PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8,
+				$PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8/SlotTexture,
+				"miniturret_glove"
+			)
 
 # Sets the weapon metadata for the inventory.
 func set_weapon_metadata(button: Button, res: TextureRect, weapon_name: String):
@@ -399,11 +409,11 @@ func shoot_edge_blaster():
 	$Audio/EdgeBlaster.play()
 
 # Shooting functionality for the blitz gun.
-func shoot_blitz_gun():	
+func shoot_blitz_gun():
 	$Audio/BlizGun.play()
 	#bullet spread
 	for index in fire_Rate:
-		var bullet = blitzGunProjectile.instance()
+		var bullet = blitz_gun_projectile.instance()
 		bullet.translation.x = 3
 		get_parent().add_child(bullet)
 		determine_weapon_muzzle(Globle.player_character, bullet)
@@ -412,7 +422,7 @@ func shoot_blitz_gun():
 # Shooting functionality for the gravity bomb.
 func shoot_gravity_bomb():
 	$Audio/GravityBomb.play()
-	var bullet = gravityBombProjectile.instance()
+	var bullet = gravity_bomb_projectile.instance()
 	bullet.translation.x = 3
 	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
 	get_parent().add_child(bullet)
@@ -422,7 +432,7 @@ func shoot_gravity_bomb():
 # Shooting functionality for the negotiator.
 func shoot_negotiator():
 	$Audio/theNegotiator.play()
-	var bullet = negotiatorProjectile.instance()
+	var bullet = negotiator_projectile.instance()
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
 	bullet.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
@@ -438,6 +448,16 @@ func shoot_ry3no():
 # Shooting functionality for the sheepinator.
 func shoot_sheepinator():
 	print("Sheepinator used. All enemies are converted into sheeps.")
+
+# Shooting functionality for the miniturret glove.
+func shoot_miniturret_glove():
+	var bullet = miniturret_packed_projectile.instance()
+	bullet.translation.x = 3
+	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
+	get_parent().add_child(bullet)
+	bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
+	determine_weapon_muzzle(Globle.player_character, bullet)
+	
 
 ### FUNCTIONS USED FUR DEBUGGING THE PLAYER SCENE. NOT USED IN THE FINAL PRODUCT.
 
@@ -480,6 +500,9 @@ func _on_ShootTimer_timeout():
 			"sheepinator":
 				shoot_sheepinator()
 				$ShootTimer.start()
+			"miniturret_glove":
+				shoot_miniturret_glove()
+				$ShootTimer.start()
 
 # Loads the scene defined to a particular button.
 func _on_Vendor_Choice_pressed(button, wpn):
@@ -498,6 +521,8 @@ func _on_Vendor_Choice_pressed(button, wpn):
 			purchase_weapon(Globle.WPNS[1][5], wpn, button)
 		"sheepinator":
 			purchase_weapon(Globle.WPNS[1][6], wpn, button)
+		"miniturret_glove":
+			purchase_weapon(Globle.WPNS[1][7], wpn, button)
 
 # Acts when a vendor weapon button is highlighted.
 func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
@@ -544,6 +569,12 @@ func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
 				Globle.WPNS[1][6],
 				Globle.WPNS[2][6]
 			)
+		"miniturret_glove":
+			update_vendor_data(
+				Globle.WPNS[0][7],
+				Globle.WPNS[1][7],
+				Globle.WPNS[2][7]
+			)
 
 # Change weapon to Edge Blaster.
 func _on_WeaponSlot1_pressed():
@@ -575,7 +606,7 @@ func _on_WeaponSlot7_pressed():
 
 # Empty, for now
 func _on_WeaponSlot8_pressed():
-	pass # Replace with function body.
+	current_weapon = "miniturret_glove"
 
 func _on_player_mouse_entered():
 	print("Player here!")

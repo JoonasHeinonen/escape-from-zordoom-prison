@@ -14,8 +14,8 @@ var state_machine
 func _ready():
 	meta_name = "enemy"
 	state_machine = $EnemyAnimationTree.get("parameters/playback")
-	self.set_meta("type", "destroyable")
-	self.set_meta("name", "bolt crate")
+	self.set_meta("type", "enemy")
+	self.set_meta("name", "enemy")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -31,7 +31,6 @@ func _process(_delta):
 
 # Called when damage is dealt to the enemy.
 func damage_enemy(health : int):
-	print(state_machine.get_current_play_position())
 	enemy_health -= health
 
 # Called when enemy's health is 0.
@@ -46,23 +45,23 @@ func _on_AreaEnemy_area_entered(area):
 		state_machine.travel("Enemy_Damage")
 		damage_enemy(2)
 
+# Adds an active radical.
 func add_active_radical():
 	var g_t_r = radical.instance()
-	print(self)
 	if (!self.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
 		self.add_child(g_t_r)
-		print("Added a child")
 
+# Removes an active radical.
 func remove_active_radical():
 	var d_l = self.get_children()
 	for c in d_l:
 		if (c.name == "GreenTargetRadical"):
 			c.queue_free()
 
+# Act when the mouse has entered the base.
 func _on_Enemy_mouse_entered():
-	print("Enemy here!")
 	add_active_radical()
 
+# Act when the mouse has left the base.
 func _on_Enemy_mouse_exited():
-	print("No more enemy")
 	remove_active_radical()
