@@ -1,27 +1,28 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://resources/images/effects/projectiles/gravity_bomb_projectile.png" type="Texture" id=1]
-[ext_resource path="res://src/scripts/effects/bullets/GravityBombProjectile.gd" type="Script" id=2]
+[ext_resource path="res://src/scripts/effects/bullets/GravityBombProjectile.gd" type="Script" id=1]
+[ext_resource path="res://resources/images/effects/projectiles/minigun_turret_packed.png" type="Texture" id=2]
 
 [sub_resource type="PhysicsMaterial" id=2]
 bounce = 0.5
 
 [sub_resource type="BoxShape" id=3]
-extents = Vector3( 0.291842, 0.219277, 0.210843 )
+extents = Vector3( 0.2, 0.2, 0.2 )
 
 [sub_resource type="BoxShape" id=4]
+extents = Vector3( 2.00278, 3.92203, 1 )
 
-[node name="GravityBombProjectile" type="RigidBody"]
+[node name="MiniturretPackedProjectile" type="RigidBody"]
 physics_material_override = SubResource( 2 )
-script = ExtResource( 2 )
-projectile_type = "gravity_bomb_projectile"
+script = ExtResource( 1 )
+projectile_type = "miniturret_projectile"
 
 [node name="ball" type="Sprite3D" parent="."]
 transform = Transform( 2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0.00466165, 0, 0 )
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
 shape = SubResource( 3 )
 disabled = true
 
@@ -33,7 +34,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="GravityBombArea" type="Area" parent="."]
-transform = Transform( 0.506501, 0, 0, 0, 0.203169, 0, 0, 0, 1, 0.0388635, 0, 0 )
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0388635, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="GravityBombArea"]
 shape = SubResource( 4 )

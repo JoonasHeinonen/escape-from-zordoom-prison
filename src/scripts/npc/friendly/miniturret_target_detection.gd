@@ -4,10 +4,7 @@ onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
 # When a body containing the proper tag enters the area.
 func _on_TargetDetectionArea_body_entered(body):
-	if (body.has_meta("type") &&
-		body.get_meta("type") == "destroyable" ||
-		body.get_meta("type") == "enemy"
-	):
+	if (body.has_meta("type") && body.get_meta("type") == "destroyable"):
 		var g_t_r = radical.instance()
 		var b_c   = body.get_children()
 		
@@ -18,10 +15,7 @@ func _on_TargetDetectionArea_body_entered(body):
 
 # When a body containing the proper tag exits the area.
 func _on_TargetDetectionArea_body_exited(body):
-	if (body.has_meta("type") &&
-		body.get_meta("type") == "destroyable" ||
-		body.get_meta("type") == "enemy"
-	):
+	if (body.has_meta("type") && body.get_meta("type") == "destroyable"):
 		var l_c = body.get_children()
 		for c in l_c:
 			if (c.name == "GreenTargetRadical"):
