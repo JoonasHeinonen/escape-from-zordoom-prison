@@ -180,6 +180,10 @@ func _process(delta):
 	# Weapon slot index.
 	var slot_index = 1
 
+	if !alive:
+		$FadeIn.show()
+		$FadeIn.fade_in()
+
 	# Button for melee is pressed once.
 	if !Globle.player_inventory:
 		var offset = -PI * 0.5
@@ -587,3 +591,12 @@ func _on_WeaponSlot8_pressed():
 
 func _on_player_mouse_entered():
 	print("Player here!")
+
+
+func _on_ColliisionArea_area_entered(area):
+	if area.name == "death":
+		alive = false
+
+# Run when FadeIn fade is finished.
+func _on_FadeIn_fade_finished():
+	get_tree().reload_current_scene()

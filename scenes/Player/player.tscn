@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -41,6 +41,7 @@
 [ext_resource path="res://resources/audio/collectibles/Ratchet_&_Clank_-_Going_Commando.iso_59400.wav" type="AudioStream" id=39]
 [ext_resource path="res://resources/audio/weapons/player/theNegotiator.wav" type="AudioStream" id=40]
 [ext_resource path="res://resources/images/ui/r_n_c__Final_ammo.png" type="Texture" id=41]
+[ext_resource path="res://scenes/Transitions/fade_in.tscn" type="PackedScene" id=42]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -446,6 +447,12 @@ move_lock_x = true
 move_lock_y = true
 script = ExtResource( 1 )
 speed = 200
+
+[node name="ColliisionArea" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="ColliisionArea"]
+transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0 )
@@ -1287,6 +1294,10 @@ stream = ExtResource( 39 )
 
 [node name="HealthNode0" type="AudioStreamPlayer" parent="Audio/Collectibles/HealthNode"]
 
+[node name="FadeIn" parent="." instance=ExtResource( 42 )]
+color = Color( 0, 0, 0, 0 )
+
+[connection signal="area_entered" from="ColliisionArea" to="." method="_on_ColliisionArea_area_entered"]
 [connection signal="body_entered" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_entered"]
 [connection signal="body_exited" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_exited"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot1" to="." method="_on_WeaponSlot1_pressed"]
@@ -1302,3 +1313,4 @@ stream = ExtResource( 39 )
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
 [connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

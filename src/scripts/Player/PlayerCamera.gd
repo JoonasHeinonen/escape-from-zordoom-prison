@@ -9,7 +9,7 @@ export var yMin = 0.0
 # Smooth Camera Trigger and SmoothSpeed value
 export var Smooth = false
 export var SmoothSpeed = 0.125
-var a = 5
+var a = 2
 var b = "text"
 var player
 func _ready():
@@ -29,7 +29,7 @@ func _process(delta):
 	var Clampz = Own.get_translation().z
 
 	var All = Vector3(Clampx, Clampy, Clampz)
-
+	
 	if Smooth == false:
 		get_node(".").set_translation(All)
 	if Smooth == true:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Destructibles/Crates/bolt_crate.tscn" type="PackedScene" id=2]
@@ -20,7 +20,6 @@
 [ext_resource path="res://resources/images/ui/r_n_c__Final_ammo.png" type="Texture" id=18]
 [ext_resource path="res://src/scripts/UI/checkpoint_ui.gd" type="Script" id=19]
 [ext_resource path="res://src/scripts/Player/New SpawnPoint.gd" type="Script" id=20]
-[ext_resource path="res://src/scripts/Player/death_box.gd" type="Script" id=21]
 [ext_resource path="res://src/scripts/Player/PlayerCamera.gd" type="Script" id=22]
 
 [sub_resource type="PanoramaSky" id=15]
@@ -250,7 +249,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4.037, -1 )
 
 [node name="death" type="Area" parent="area_of_death"]
 transform = Transform( 1, 0, 0, 0, 1.20766, 0, 0, 0, 1, 63.2513, 6.64839, 0 )
-script = ExtResource( 21 )
 
 [node name="deathBox" type="CollisionShape" parent="area_of_death/death"]
 transform = Transform( 43.2346, 0, 0, 0, 3.80285, 0, 0, 0, 1.00193, 31.2899, -36.131, 0 )
