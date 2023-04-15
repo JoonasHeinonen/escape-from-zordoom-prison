@@ -1,16 +1,20 @@
 extends Area
 
+var player_Select = Globle.player_character
+
 var active=false
 var value=0
 var dialog
 func _ready():
+	
 	connect("body_entered",self,"_on_NPC_body_entered")
 	connect("body_exited",self,"_on_NPC_body_exited")
 	
 func _input(event):
+	
 	if get_node_or_null('DialogNode')==null:
 			if Input.is_action_just_pressed("ui_accept") and active==true: 
-				
+				print(player_Select)
 				match(value):
 					(0):
 						get_tree().paused=true
@@ -56,3 +60,4 @@ func _on_NPC_body_exited(body):
 	if body.name == "player":
 		active=false
 		print("body has exited the npc")
+		
