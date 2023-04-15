@@ -311,10 +311,10 @@ move_lock_x = false
 move_lock_y = false
 
 [node name="playerCamera" type="Spatial" parent="."]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 2.18287 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 15.946 )
 
 [node name="Camera" type="Camera" parent="playerCamera"]
-transform = Transform( 1.06181, 0, 0, 0, 1.06181, 0, 0, 0, 1.06181, 0, 0, 4.373 )
+transform = Transform( 1.06181, 0, 0, 0, 1.06181, 0, 0, 0, 1.06181, 0, -1.89906, -11.7398 )
 current = true
 script = ExtResource( 22 )
 Smooth = true
@@ -322,6 +322,8 @@ Smooth = true
 [node name="BlitzGun" parent="." instance=ExtResource( 6 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.989, 4.10237, 0 )
 visible = false
+
+[node name="Position3D" type="Position3D" parent="."]
 
 [connection signal="body_entered" from="area_of_death/death" to="area_of_death/death" method="_on_death_body_entered"]
 [connection signal="body_entered" from="checkpoint/New SpawnPoint" to="checkpoint/New SpawnPoint" method="_on_New_SpawnPoint_body_entered"]

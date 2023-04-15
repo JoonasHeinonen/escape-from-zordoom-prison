@@ -9,14 +9,16 @@ export var yMin = 0.0
 # Smooth Camera Trigger and SmoothSpeed value
 export var Smooth = false
 export var SmoothSpeed = 0.125
-var a = 2
+var a = 5
 var b = "text"
 var player
 func _ready():
 	set_process(true)
 	player= get_node("../../player")
 func _process(delta):
-	translation = lerp(player.translation, translation, 1.0)
+	#translation = lerp(player.translation, translation, 0.5)
+	translation.x=player.translation.x
+	translation.y=player.translation.y
 	var Target = get_node(".").get_translation()
 	var Own = get_node(".")
 
