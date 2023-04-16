@@ -606,14 +606,14 @@ anim_player = NodePath("../RivetAnimationPlayer")
 active = true
 parameters/playback = SubResource( 29 )
 
+[node name="FadeIn" parent="." instance=ExtResource( 42 )]
+
 [node name="PlayerUI" type="Control" parent="."]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 30 )
-
-[node name="FadeIn" parent="PlayerUI" instance=ExtResource( 42 )]
 
 [node name="InGameUI" type="Control" parent="PlayerUI"]
 pause_mode = 2
@@ -1298,17 +1298,17 @@ stream = ExtResource( 39 )
 [node name="HealthNode0" type="AudioStreamPlayer" parent="Audio/Collectibles/HealthNode"]
 
 [node name="playerCamera" type="Spatial" parent="."]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 15.946 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 7.138 )
 
 [node name="Camera" type="Camera" parent="playerCamera"]
-transform = Transform( 1.06181, 0, 0, 0, 1.06181, 0, 0, 0, 1.06181, 0, 0, -11.74 )
+transform = Transform( 1.06181, 0, 0, 0, 1.06181, 0, 0, 0, 1.06181, 0, 0, 0 )
 current = true
 script = ExtResource( 43 )
 
 [connection signal="area_entered" from="ColliisionArea" to="." method="_on_ColliisionArea_area_entered"]
 [connection signal="body_entered" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_entered"]
 [connection signal="body_exited" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_exited"]
-[connection signal="fade_finished" from="PlayerUI/FadeIn" to="." method="_on_FadeIn_fade_finished"]
+[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot1" to="." method="_on_WeaponSlot1_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot2" to="." method="_on_WeaponSlot2_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot3" to="." method="_on_WeaponSlot3_pressed"]

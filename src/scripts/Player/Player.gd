@@ -85,10 +85,8 @@ func _ready():
 	if Globle.current_weapons.size() > 0:
 		current_weapon = "edge_blaster"
 	set_vendor_weapons(Globle.weapons_for_sale)
-		#the spawn code for the player
-		#TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
-	
-	
+		# The spawn code for the player
+		# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
 
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
@@ -183,8 +181,9 @@ func _process(delta):
 
 	# Play fade in effect if the player's dead.
 	if !alive:
-		$PlayerUI/FadeIn.show()
-		$PlayerUI/FadeIn.fade_in()
+		$PlayerUI.hide()
+		$FadeIn.show()
+		$FadeIn.fade_in()
 
 	# Button for melee is pressed once.
 	if !Globle.player_inventory:
