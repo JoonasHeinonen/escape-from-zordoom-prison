@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=82 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -42,6 +42,7 @@
 [ext_resource path="res://resources/audio/weapons/player/theNegotiator.wav" type="AudioStream" id=40]
 [ext_resource path="res://resources/images/ui/r_n_c__Final_ammo.png" type="Texture" id=41]
 [ext_resource path="res://scenes/Transitions/fade_in.tscn" type="PackedScene" id=42]
+[ext_resource path="res://src/scripts/Player/PlayerCamera.gd" type="Script" id=43]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -611,6 +612,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 30 )
+
+[node name="FadeIn" parent="PlayerUI" instance=ExtResource( 42 )]
 
 [node name="InGameUI" type="Control" parent="PlayerUI"]
 pause_mode = 2
@@ -1294,12 +1297,18 @@ stream = ExtResource( 39 )
 
 [node name="HealthNode0" type="AudioStreamPlayer" parent="Audio/Collectibles/HealthNode"]
 
-[node name="FadeIn" parent="." instance=ExtResource( 42 )]
-color = Color( 0, 0, 0, 0 )
+[node name="playerCamera" type="Spatial" parent="."]
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 15.946 )
+
+[node name="Camera" type="Camera" parent="playerCamera"]
+transform = Transform( 1.06181, 0, 0, 0, 1.06181, 0, 0, 0, 1.06181, 0, 0, -11.74 )
+current = true
+script = ExtResource( 43 )
 
 [connection signal="area_entered" from="ColliisionArea" to="." method="_on_ColliisionArea_area_entered"]
 [connection signal="body_entered" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_entered"]
 [connection signal="body_exited" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_exited"]
+[connection signal="fade_finished" from="PlayerUI/FadeIn" to="." method="_on_FadeIn_fade_finished"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot1" to="." method="_on_WeaponSlot1_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot2" to="." method="_on_WeaponSlot2_pressed"]
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot3" to="." method="_on_WeaponSlot3_pressed"]
@@ -1313,4 +1322,3 @@ color = Color( 0, 0, 0, 0 )
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
 [connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
-[connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]

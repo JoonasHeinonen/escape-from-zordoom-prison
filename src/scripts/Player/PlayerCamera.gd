@@ -3,22 +3,24 @@ extends Camera
 # Max and Min in the x axis
 export var xMax = 0.0
 export var yMax = 0.0  
+
 # Max and Min in the y axis
 export var xMin = 0.0
 export var yMin = 0.0
+
 # Smooth Camera Trigger and SmoothSpeed value
-export var Smooth = false
-export var SmoothSpeed = 0.125
-var a = 2
-var b = "text"
+export var smooth = false
+export var smooth_speed = 1
+
 var player
+
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process(true)
-	player= get_node("../../player")
+	player = get_parent().get_parent()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#translation = lerp(player.translation, translation, 0.5)
-	translation.x=player.translation.x
-	translation.y=player.translation.y
 	var Target = get_node(".").get_translation()
 	var Own = get_node(".")
 
@@ -29,9 +31,5 @@ func _process(delta):
 	var Clampz = Own.get_translation().z
 
 	var All = Vector3(Clampx, Clampy, Clampz)
-	
-	if Smooth == false:
-		get_node(".").set_translation(All)
-	if Smooth == true:
-		var Lerp = Start.linear_interpolate(All, SmoothSpeed)
-		get_node(".").set_translation(Lerp)
+
+

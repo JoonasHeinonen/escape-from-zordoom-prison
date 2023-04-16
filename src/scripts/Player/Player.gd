@@ -170,11 +170,8 @@ func _physics_process(delta):
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	move_and_slide(velocity,Vector3.UP)
-	
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-
 func _process(delta):
 	var y_position = self.global_transform.origin.y
 	
@@ -184,9 +181,10 @@ func _process(delta):
 	# Weapon slot index.
 	var slot_index = 1
 
+	# Play fade in effect if the player's dead.
 	if !alive:
-		$FadeIn.show()
-		$FadeIn.fade_in()
+		$PlayerUI/FadeIn.show()
+		$PlayerUI/FadeIn.fade_in()
 
 	# Button for melee is pressed once.
 	if !Globle.player_inventory:
