@@ -85,8 +85,8 @@ func _ready():
 	if Globle.current_weapons.size() > 0:
 		current_weapon = "edge_blaster"
 	set_vendor_weapons(Globle.weapons_for_sale)
-		# The spawn code for the player
-		# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
+	# The spawn code for the player
+	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
 
 func _physics_process(delta):
 	var current = state_machine.get_current_node()
@@ -133,12 +133,12 @@ func _physics_process(delta):
 					if velocity.x < 0:
 						velocity.x += 0.1
 		elif Input.is_action_pressed("ui_right"):
-			walk(5, 1, -0.1)
+			walk(7, 1, -0.1)
 			$RivetArm/HandInstance/Hand.scale.y = -20
 			$AngelaArm/HandInstance/Hand.scale.y = -20
 			$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
 		elif Input.is_action_pressed("ui_left"):
-			walk(-5, -1, 0.1)
+			walk(-7, -1, 0.1)
 			$RivetArm/HandInstance/Hand.scale.y = 20
 			$AngelaArm/HandInstance/Hand.scale.y = 20
 			$PlayerHit_box.set_translation(Vector3((-0.649 * 3.1), 0, 0))
@@ -167,7 +167,7 @@ func _physics_process(delta):
 				state_machine.travel("Player_Melee")
 
 	set_vendor_weapons(Globle.weapons_for_sale)
-	move_and_slide(velocity,Vector3.UP)
+	move_and_slide(velocity, Vector3.UP)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -617,11 +617,8 @@ func _on_WeaponSlot7_pressed():
 func _on_WeaponSlot8_pressed():
 	current_weapon = "miniturret_glove"
 
-func _on_player_mouse_entered():
-	print("Player here!")
-
-
-func _on_ColliisionArea_area_entered(area):
+# When the player enters another collision area.
+func _on_CollisionArea_area_entered(area):
 	if area.name == "death":
 		alive = false
 

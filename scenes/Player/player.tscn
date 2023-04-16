@@ -493,6 +493,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 3
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -1305,7 +1306,7 @@ transform = Transform( 1.06181, 0, 0, 0, 1.06181, 0, 0, 0, 1.06181, 0, 0, 0 )
 current = true
 script = ExtResource( 43 )
 
-[connection signal="area_entered" from="ColliisionArea" to="." method="_on_ColliisionArea_area_entered"]
+[connection signal="area_entered" from="ColliisionArea" to="." method="_on_CollisionArea_area_entered"]
 [connection signal="body_entered" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_entered"]
 [connection signal="body_exited" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_exited"]
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
