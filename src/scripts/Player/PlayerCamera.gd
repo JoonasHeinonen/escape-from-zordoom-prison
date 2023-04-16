@@ -32,4 +32,5 @@ func _process(delta):
 
 	var All = Vector3(Clampx, Clampy, Clampz)
 
-
+	# Stops following the player once the player's dead.
+	if (!player.alive) : self.set_as_toplevel(true)
