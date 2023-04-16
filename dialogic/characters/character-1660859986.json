@@ -13,7 +13,7 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://resources/images/characters/angela_talking_head1.png"
+			"path": "res://resources/images/characters/player/angela/angela_talking_head1.png"
 		}
 	],
 	"scale": 40,

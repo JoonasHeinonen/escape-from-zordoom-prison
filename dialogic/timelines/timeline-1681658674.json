@@ -11,7 +11,7 @@
 			"portrait": "Default",
 			"portrait_definition": "",
 			"position": {
-				"0": true,
+				"0": false,
 				"1": false,
 				"2": false,
 				"3": false,
@@ -24,42 +24,60 @@
 			"character": "character-1681588545.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Yo!"
+			"text": "Hey again!"
 		},
 		{
 			"character": "character-1660859944.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Hey!"
+			"text": "Yo yo!"
 		},
 		{
 			"character": "character-1681588545.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "What is up my guy ... or what are you?"
+			"text": "Did you see another lombax Around?"
 		},
 		{
 			"character": "character-1660859944.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Just a npc my dude!"
+			"text": "mmmmmmmmmmmmmmh"
+		},
+		{
+			"character": "character-1660859944.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Yea but I dont know where they went."
+		},
+		{
+			"character": "character-1660859944.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Sorry"
 		},
 		{
 			"character": "character-1681588545.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Alright! See you later!"
+			"text": "its cool"
+		},
+		{
+			"character": "character-1681588545.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "See you around!"
 		},
 		{
 			"character": "character-1660859944.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "See you later!"
+			"text": "See yea!"
 		}
 	],
 	"metadata": {
 		"dialogic-version": "1.4.2 - Dev",
-		"file": "timeline-1681588556.json",
-		"name": "timeLine-Rivet-1"
+		"file": "timeline-1681658674.json",
+		"name": "timeLine-Rivet-2"
 	}
 }

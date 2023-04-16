@@ -54,6 +54,20 @@ func _input(event):
 							dialog.connect('timeline_end',self,'unpause')
 							add_child(dialog)
 							print(active)
+						(2):
+							get_tree().paused=true
+							var dialog=Dialogic.start('timeLine-Rivet-2')
+							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
+							dialog.connect('timeline_end',self,'unpause')
+							add_child(dialog)
+							print(active)
+						(4):
+							get_tree().paused=true
+							var dialog=Dialogic.start('timeLine-Rivet-3')
+							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
+							dialog.connect('timeline_end',self,'unpause')
+							add_child(dialog)
+							print(active)
 					value+=1
 					if value>4 and active==true:
 						value=4

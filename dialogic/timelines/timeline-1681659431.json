@@ -11,7 +11,7 @@
 			"portrait": "Default",
 			"portrait_definition": "",
 			"position": {
-				"0": true,
+				"0": false,
 				"1": false,
 				"2": false,
 				"3": false,
@@ -21,45 +21,21 @@
 			"z_index": 0
 		},
 		{
-			"character": "character-1681588545.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Yo!"
-		},
-		{
 			"character": "character-1660859944.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Hey!"
+			"text": "...."
 		},
 		{
 			"character": "character-1681588545.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "What is up my guy ... or what are you?"
-		},
-		{
-			"character": "character-1660859944.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Just a npc my dude!"
-		},
-		{
-			"character": "character-1681588545.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "Alright! See you later!"
-		},
-		{
-			"character": "character-1660859944.json",
-			"event_id": "dialogic_001",
-			"portrait": "",
-			"text": "See you later!"
+			"text": "..."
 		}
 	],
 	"metadata": {
 		"dialogic-version": "1.4.2 - Dev",
-		"file": "timeline-1681588556.json",
-		"name": "timeLine-Rivet-1"
+		"file": "timeline-1681659431.json",
+		"name": "timeLine-Rivet-3"
 	}
 }
