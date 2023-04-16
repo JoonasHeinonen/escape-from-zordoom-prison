@@ -8,7 +8,7 @@ var dialog
 func _ready():
 	connect("body_entered", self, "_on_NPC_body_entered")
 	connect("body_exited", self, "_on_NPC_body_exited")
-	
+
 func _input(event):
 	if get_node_or_null('DialogNode') == null:
 			if Input.is_action_just_pressed("ui_accept") and active == true: 

@@ -3,9 +3,9 @@
 	"description": "",
 	"display_name": "",
 	"display_name_bool": false,
-	"id": "character-1660859986.json",
+	"id": "character-1681588545.json",
 	"mirror_portraits": false,
-	"name": "angela",
+	"name": "Rivet",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
@@ -13,9 +13,9 @@
 	"portraits": [
 		{
 			"name": "Default",
-			"path": "res://resources/images/characters/player/angela/angela_talking_head1.png"
+			"path": "res://resources/images/characters/player/rivet/rivet_talking_head1.png"
 		}
 	],
-	"scale": 40,
-	"theme": "default-theme.cfg"
+	"scale": 26,
+	"theme": ""
 }
