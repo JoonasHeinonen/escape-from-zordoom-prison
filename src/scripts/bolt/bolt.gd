@@ -108,20 +108,3 @@ func _physics_process(delta):
 								effects = bod.get_node("Effects")
 								effects.add_child(h_l)
 				queue_free()
-		
-#func _on_Ammo_body_exited(body):
-#	if (timer.wait_time==3):
-#		active=false
-#		print(timer.wait_time)
-#		print("body has exited the xxx can")
-#
-#func _on_Ammo_body_entered(body):
-#	if body.name == "player":
-#		print("body has entered the xxx can")
-#		timer = Timer.new()
-#		add_child(timer)
-#		timer.autostart = true
-#		timer.wait_time = 1
-#		timer.connect("timeout", self, "_timeout")
-#		active=true
-#		print("Timed out!")
