@@ -1,51 +1,81 @@
 extends Area
 
+var player_Select = Globle.player_character
+
 var active=false
 var value=0
 var dialog
 func _ready():
+	
 	connect("body_entered",self,"_on_NPC_body_entered")
 	connect("body_exited",self,"_on_NPC_body_exited")
 	
 func _input(event):
-	if get_node_or_null('DialogNode')==null:
-			if Input.is_action_just_pressed("ui_accept") and active==true: 
-				
-				match(value):
-					(0):
-						get_tree().paused=true
-						var dialog=Dialogic.start('timeline-1')
-						dialog.pause_mode=Node.PAUSE_MODE_PROCESS
-						dialog.connect('timeline_end',self,'unpause')
-						add_child(dialog)
-						print(active)
-					(2):
+	if player_Select == "Angela":
+		if get_node_or_null('DialogNode')==null:
+				if Input.is_action_just_pressed("ui_accept") and active==true: 
+					print(player_Select)
+					match(value):
+						(0):
+							get_tree().paused=true
+							var dialog=Dialogic.start('timeline-1')
+							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
+							dialog.connect('timeline_end',self,'unpause')
+							add_child(dialog)
+							print(active)
+						(2):
 						
-						get_tree().paused=true
-						var dialog=Dialogic.start('timeline-2')
-						dialog.pause_mode=Node.PAUSE_MODE_PROCESS
-						dialog.connect('timeline_end',self,'unpause')
-						add_child(dialog)
-						print(active)
-					(4):
+							get_tree().paused=true
+							var dialog=Dialogic.start('timeline-2')
+							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
+							dialog.connect('timeline_end',self,'unpause')
+							add_child(dialog)
+							print(active)
+						(4):
 						
-						get_tree().paused=true
-						var dialog=Dialogic.start('timeline-3')
-						dialog.pause_mode=Node.PAUSE_MODE_PROCESS
-						dialog.connect('timeline_end',self,'unpause')
-						add_child(dialog)
-						print(active)
-				value+=1
-				if value>4 and active==true:
-					value=4
-					active=false
-					
+							get_tree().paused=true
+							var dialog=Dialogic.start('timeline-3')
+							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
+							dialog.connect('timeline_end',self,'unpause')
+							add_child(dialog)
+							print(active)
+					value+=1
+					if value>4 and active == true:
+						value=4
+						active=false
+	if player_Select == "Rivet": 
+		if get_node_or_null('DialogNode')==null:
+				if Input.is_action_just_pressed("ui_accept") and active == true: 
+					match(value):
+						(0):
+							get_tree().paused=true
+							var dialog=Dialogic.start('timeLine-Rivet-1')
+							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
+							dialog.connect('timeline_end',self,'unpause')
+							add_child(dialog)
+							print(active)
+						(2):
+							get_tree().paused=true
+							var dialog=Dialogic.start('timeLine-Rivet-2')
+							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
+							dialog.connect('timeline_end',self,'unpause')
+							add_child(dialog)
+							print(active)
+						(4):
+							get_tree().paused=true
+							var dialog=Dialogic.start('timeLine-Rivet-3')
+							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
+							dialog.connect('timeline_end',self,'unpause')
+							add_child(dialog)
+							print(active)
+					value+=1
+					if value>4 and active==true:
+						value=4
+						active=false
+
 func _process(delta):
 	$EnterButton.visible=active
-					
-				
-				
-				
+	
 func unpause(timeline_name):
 	get_tree().paused=false
 func _on_NPC_body_entered(body):
@@ -56,3 +86,4 @@ func _on_NPC_body_exited(body):
 	if body.name == "player":
 		active=false
 		print("body has exited the npc")
+		
