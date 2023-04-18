@@ -47,5 +47,6 @@ margin_bottom = 60.0
 text = "ANGELA"
 align = 1
 valign = 1
+uppercase = true
 
 [connection signal="pressed" from="." to="." method="_on_CharacterSelectionButton_pressed"]
