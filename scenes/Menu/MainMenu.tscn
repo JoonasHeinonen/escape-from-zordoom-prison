@@ -85,7 +85,6 @@ stream = ExtResource( 9 )
 
 [node name="FadeIn" parent="MainMenu" instance=ExtResource( 6 )]
 visible = false
-color = Color( 0, 0, 0, 0 )
 
 [connection signal="focus_entered" from="MainMenu/VBoxContainer/CenterRow/Buttons/OptionsButton" to="." method="_on_OptionsButton_focus_entered"]
 [connection signal="pressed" from="MainMenu/VBoxContainer/CenterRow/Buttons/OptionsButton" to="." method="_on_OptionsButton_pressed"]
