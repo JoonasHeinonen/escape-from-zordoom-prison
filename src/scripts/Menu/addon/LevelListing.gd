@@ -1,6 +1,7 @@
 extends Control
 
 onready var level_button  = preload("res://scenes/Menu/Materials/LevelButton.tscn")
+onready var back_button   = $CenterContainer/VBoxContainer/BackButton
 onready var angela_sprite = get_parent().get_node("Angela/AngelaSprite")
 onready var rivet_sprite  = get_parent().get_node("Rivet/RivetSprite")
 
@@ -34,6 +35,7 @@ func _ready():
 		level.set_label(level_name)
 		level.connect("pressed", self, "_on_Button_pressed", [level.scene_to_load])
 		$CenterContainer/VBoxContainer/CenterRow/Buttons/LevelList.add_child(level)
+	back_button.grab_focus()
 
 # Loads the scene defined to a particular button.
 func _on_Button_pressed(scene_to_load):

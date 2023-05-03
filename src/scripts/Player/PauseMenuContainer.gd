@@ -1,6 +1,9 @@
 extends Control
 
-onready var return_btn = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
+onready var return_btn   = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
+onready var exit_btn 	 = $VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton
+
+var btns : Array = [return_btn, exit_btn]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,8 +18,12 @@ func _input(event):
 				show()
 				get_tree().paused = true
 			elif (self.visible):
-				hide()
-				get_tree().paused = false
+				_on_ReturnToGameButton_pressed()
+	if event.is_action_pressed("ui_accept"):
+		if (return_btn.has_focus()):
+			_on_ReturnToGameButton_pressed()
+		elif (exit_btn.has_focus()):
+			_on_ReturnToMainMenuButton_pressed()
 
 # Returns to the game.
 func _on_ReturnToGameButton_pressed():

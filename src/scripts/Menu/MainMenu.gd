@@ -1,13 +1,26 @@
 extends Control
 
-onready var new_game_button  = $VBoxContainer/CenterRow/Buttons/NewGameButton
-onready var load_game_button = $VBoxContainer/CenterRow/Buttons/LoadGameButton
-onready var options_button   = $VBoxContainer/CenterRow/Buttons/OptionsButton
+onready var new_game_button 	= $CenterContainer/Buttons/NewGameButton
+onready var load_game_button 	= $CenterContainer/Buttons/LoadGameButton
+onready var options_button 		= $CenterContainer/Buttons/OptionsButton
+
+onready var camera 				= get_parent().get_node("Camera")
+onready var character_Selection = get_parent().get_node("CharacterSelection")
+onready var load_game 			= get_parent().get_node("LoadGame")
+onready var options 			= get_parent().get_node("Options")
+
+var random 	  					= RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	random.randomize()
 	$Audio/Click.play()
-	get_tree().paused = false
+
+	get_tree().paused 			= false
+	self.visible 				= true
+	character_Selection.visible = false
+	options.visible 			= false
+	load_game.visible 			= false
 
 	# Set the active button.
 	match Globle.menu_to_return:
@@ -20,8 +33,11 @@ func _ready():
 		_:
 			new_game_button.grab_focus()
 
-	for button in $VBoxContainer/CenterRow/Buttons.get_children():
+	for button in $CenterContainer/Buttons.get_children():
 		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
+
+func _physics_process(delta):
+	camera.rotation += Vector3(0.001, 0.002, 0)
 
 # Loads the scene defined to a particular button.
 func _on_Button_pressed(scene_to_load):
