@@ -1,6 +1,8 @@
 extends Control
 
+onready var player     = get_parent().get_parent()
 onready var return_btn = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
+onready var btns       = $WeaponsForSale/CenterRow/Buttons
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,6 +20,18 @@ func _input(event):
 			if (Globle.vendor_active == false):
 				vendor_process(false, true)
 				hide()
+	if event.is_action_pressed("ui_accept"):
+		for btn in btns.get_children():
+			if btn.has_focus():
+				var wpn_name = btn.text
+				var unwanted_chars = [" "]
+				
+				# Takes the chars from the wpn_for_sale.
+				for c in unwanted_chars:
+					wpn_name = wpn_name.replace(c, "_")
+				wpn_name = wpn_name.to_lower()
+				print(wpn_name)
+				player._on_Vendor_Choice_pressed(btn, wpn_name)
 
 # Called when ReturnToGameButton is pressed.
 func _on_ReturnToGameButton_pressed():

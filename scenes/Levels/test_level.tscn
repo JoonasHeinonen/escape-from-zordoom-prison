@@ -1,11 +1,10 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Destructibles/Crates/bolt_crate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Collectibles/bolt.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Collectibles/weapon_collectible.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/NPC/Friendly/slim_cognito.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/UI/BoltCounter.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Player/player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=9]
 [ext_resource path="res://resources/images/environment/haerkonen.jpg" type="Texture" id=10]
@@ -20,13 +19,13 @@
 [ext_resource path="res://src/scripts/UI/checkpoint_ui.gd" type="Script" id=19]
 [ext_resource path="res://src/scripts/Player/New SpawnPoint.gd" type="Script" id=20]
 
-[sub_resource type="PanoramaSky" id=15]
+[sub_resource type="PanoramaSky" id=20]
 radiance_size = 4
 panorama = ExtResource( 10 )
 
 [sub_resource type="Environment" id=16]
 background_mode = 2
-background_sky = SubResource( 15 )
+background_sky = SubResource( 20 )
 background_sky_custom_fov = 90.0
 ambient_light_color = Color( 1, 1, 1, 1 )
 ambient_light_energy = 0.2
@@ -39,10 +38,6 @@ dof_blur_far_transition = 4.69
 [sub_resource type="CapsuleMesh" id=13]
 
 [sub_resource type="BoxShape" id=14]
-
-[sub_resource type="CubeMesh" id=9]
-
-[sub_resource type="BoxShape" id=12]
 
 [sub_resource type="BoxShape" id=18]
 extents = Vector3( 1.1457, 1, 1 )
@@ -89,29 +84,11 @@ weapon = "ry3no"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 16 )
 
-[node name="SpotLight" type="SpotLight" parent="WorldEnvironment"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
-light_energy = 3.533
-
-[node name="SpotLight2" type="SpotLight" parent="WorldEnvironment"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7.76275, 0, 6.23114 )
-light_color = Color( 0.603922, 0.917647, 0.933333, 1 )
-light_energy = 3.533
-spot_range = 8.34558
-
-[node name="SpotLight3" type="SpotLight" parent="WorldEnvironment"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72138, 1.85745, 2.17397 )
-light_color = Color( 0.603922, 0.917647, 0.933333, 1 )
-light_energy = 3.533
-spot_range = 8.34558
-
 [node name="Sun" type="DirectionalLight" parent="WorldEnvironment"]
 transform = Transform( 0.894669, 0.190723, -0.40397, 0, 0.904284, 0.426931, 0.446729, -0.381963, 0.809035, -6.40719, 32.8095, 16.3808 )
 light_energy = 0.2
 light_indirect_energy = 0.0
 light_specular = 0.595
-
-[node name="BoltCounter" parent="." instance=ExtResource( 7 )]
 
 [node name="slim_cognito" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 19.995, -2.001, -1.4 )
@@ -148,29 +125,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0 )
 
 [node name="Enemy3" parent="npc/enemies" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.4986, -0.382119, 0 )
-
-[node name="walls_floors" type="Node" parent="."]
-
-[node name="MeshInstance3" type="MeshInstance" parent="walls_floors"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60321, 0 )
-mesh = SubResource( 9 )
-skeleton = NodePath("../..")
-
-[node name="StaticBody" type="StaticBody" parent="walls_floors/MeshInstance3"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0578098, 0, 0 )
-
-[node name="CollisionShape" type="CollisionShape" parent="walls_floors/MeshInstance3/StaticBody"]
-shape = SubResource( 12 )
-
-[node name="MeshInstance6" type="MeshInstance" parent="walls_floors"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -3.04527, 0 )
-mesh = SubResource( 9 )
-skeleton = NodePath("../..")
-
-[node name="StaticBody" type="StaticBody" parent="walls_floors/MeshInstance6"]
-
-[node name="CollisionShape" type="CollisionShape" parent="walls_floors/MeshInstance6/StaticBody"]
-shape = SubResource( 12 )
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 12 )
@@ -308,8 +262,6 @@ axis_lock_motion_x = false
 axis_lock_motion_y = false
 move_lock_x = false
 move_lock_y = false
-
-[node name="Position3D" type="Position3D" parent="."]
 
 [connection signal="body_entered" from="area_of_death/death" to="area_of_death/death" method="_on_death_body_entered"]
 [connection signal="body_entered" from="checkpoint/New SpawnPoint" to="checkpoint/New SpawnPoint" method="_on_New_SpawnPoint_body_entered"]

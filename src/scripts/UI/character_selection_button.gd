@@ -14,3 +14,7 @@ func _on_CharacterSelectionButton_pressed():
 	Globle.player_character = characters
 	get_tree().change_scene(scene_to_load)
 	print(Globle.player_character)
+
+# Play the Move sound effect when not focused.
+func _on_CharacterSelectionButton_focus_exited():
+	$Audio/Move.play()

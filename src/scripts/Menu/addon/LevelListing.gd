@@ -1,15 +1,26 @@
 extends Control
 
-onready var level_button = preload("res://scenes/Menu/Materials/LevelButton.tscn")
+onready var level_button  = preload("res://scenes/Menu/Materials/LevelButton.tscn")
+onready var back_button   = $CenterContainer/VBoxContainer/BackButton
+onready var angela_sprite = get_parent().get_node("Angela/AngelaSprite")
+onready var rivet_sprite  = get_parent().get_node("Rivet/RivetSprite")
 
-var scene = null
-var levels = []
-var unwanted_chars = ["_",".tscn"]
+var scene 				  = null
+var levels 				  = []
+var unwanted_chars 		  = ["_",".tscn"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	levels = list_levels("res://scenes/Levels")
-	
+
+	# Determine the sprites of the characters.
+	if (Globle.player_character == "Rivet"):
+		rivet_sprite.frame  = 27
+		angela_sprite.frame = 9
+	elif (Globle.player_character == "Angela"):
+		rivet_sprite.frame  = 9
+		angela_sprite.frame = 25
+
 	# Iterates through the levels.
 	for level_name in levels:
 		var level = level_button.instance()
@@ -24,6 +35,7 @@ func _ready():
 		level.set_label(level_name)
 		level.connect("pressed", self, "_on_Button_pressed", [level.scene_to_load])
 		$CenterContainer/VBoxContainer/CenterRow/Buttons/LevelList.add_child(level)
+	back_button.grab_focus()
 
 # Loads the scene defined to a particular button.
 func _on_Button_pressed(scene_to_load):
