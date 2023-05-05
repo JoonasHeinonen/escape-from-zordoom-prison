@@ -10,6 +10,13 @@ func _ready():
 	return_btn.grab_focus()
 	hide()
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	# Hide / show the mouse and the active aiming radical.
+	if (self.visible):
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	print(Input.mouse_mode)
+
 func _input(event):
 	if event.is_action_pressed("ui_esc"):
 		if (!Globle.player_inventory):

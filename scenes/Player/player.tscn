@@ -493,6 +493,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -626,6 +627,7 @@ margin_left = 930.0
 margin_top = 570.0
 margin_right = 1280.0
 margin_bottom = 720.0
+mouse_filter = 2
 
 [node name="IconPlaceHolder" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
 position = Vector2( 232, 38 )
@@ -668,6 +670,7 @@ margin_left = 930.0
 margin_top = 25.0
 margin_right = 1280.0
 margin_bottom = 175.0
+mouse_filter = 2
 
 [node name="IconPlaceHolder" type="Sprite" parent="PlayerUI/InGameUI/Ammo"]
 position = Vector2( 232, 37 )
@@ -725,6 +728,7 @@ valign = 1
 margin_top = 25.0
 margin_right = 350.0
 margin_bottom = 175.0
+mouse_filter = 2
 
 [node name="IconPlaceHolder" type="Sprite" parent="PlayerUI/InGameUI/Health"]
 position = Vector2( 106, 37 )
@@ -801,12 +805,14 @@ margin_left = -500.0
 margin_top = -220.0
 margin_right = 500.0
 margin_bottom = 220.0
+mouse_filter = 2
 custom_styles/panel = SubResource( 19 )
 
 [node name="MenuContainer" type="GridContainer" parent="PlayerUI/InventoryContainer"]
 margin_right = 280.0
 margin_bottom = 280.0
 rect_min_size = Vector2( 280, 280 )
+mouse_filter = 2
 custom_constants/vseparation = 35
 custom_constants/hseparation = 35
 columns = 3
@@ -814,6 +820,7 @@ columns = 3
 [node name="WeaponSlot1" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
 margin_right = 70.0
 margin_bottom = 70.0
+mouse_filter = 2
 theme = ExtResource( 4 )
 disabled = true
 
@@ -827,6 +834,7 @@ margin_left = 105.0
 margin_right = 175.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 theme = ExtResource( 4 )
 disabled = true
 
@@ -840,6 +848,7 @@ margin_left = 210.0
 margin_right = 280.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 theme = ExtResource( 4 )
 disabled = true
 
@@ -853,6 +862,7 @@ margin_top = 105.0
 margin_right = 70.0
 margin_bottom = 175.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 theme = ExtResource( 4 )
 disabled = true
 
@@ -867,6 +877,7 @@ margin_top = 105.0
 margin_right = 175.0
 margin_bottom = 175.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 
 [node name="WeaponSlot5" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
 margin_left = 210.0
@@ -874,6 +885,7 @@ margin_top = 105.0
 margin_right = 280.0
 margin_bottom = 175.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 theme = ExtResource( 4 )
 disabled = true
 
@@ -887,6 +899,7 @@ margin_top = 210.0
 margin_right = 70.0
 margin_bottom = 280.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 theme = ExtResource( 4 )
 disabled = true
 
@@ -901,6 +914,7 @@ margin_top = 210.0
 margin_right = 175.0
 margin_bottom = 280.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 theme = ExtResource( 4 )
 disabled = true
 
@@ -915,6 +929,7 @@ margin_top = 210.0
 margin_right = 280.0
 margin_bottom = 280.0
 rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
 theme = ExtResource( 4 )
 disabled = true
 
@@ -939,6 +954,7 @@ margin_left = -500.0
 margin_top = -220.0
 margin_right = 500.0
 margin_bottom = 220.0
+mouse_filter = 2
 custom_styles/panel = SubResource( 19 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/PauseMenuContainer"]
@@ -950,16 +966,19 @@ margin_left = -140.0
 margin_top = -140.0
 margin_right = 140.0
 margin_bottom = 140.0
+mouse_filter = 2
 alignment = 1
 
 [node name="CenterRow" type="HBoxContainer" parent="PlayerUI/PauseMenuContainer/VBoxContainer"]
 margin_right = 280.0
 margin_bottom = 280.0
+mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow"]
 margin_right = 280.0
 margin_bottom = 280.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -968,6 +987,7 @@ alignment = 1
 margin_top = 79.0
 margin_right = 280.0
 margin_bottom = 138.0
+mouse_filter = 2
 shortcut_in_tooltip = false
 text = "RETURN"
 
@@ -975,6 +995,7 @@ text = "RETURN"
 margin_top = 142.0
 margin_right = 280.0
 margin_bottom = 201.0
+mouse_filter = 2
 scene_to_load = ""
 
 [node name="Audio" type="Node" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton"]
@@ -1036,6 +1057,7 @@ alignment = 1
 [node name="ReturnToGameButton" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
 margin_right = 1140.0
 margin_bottom = 59.0
+mouse_filter = 2
 shortcut_in_tooltip = false
 text = "LEAVE VENDOR"
 

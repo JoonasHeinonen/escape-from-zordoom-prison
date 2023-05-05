@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/scripts/Menu/addon/LevelListing.gd" type="Script" id=2]
@@ -9,8 +9,10 @@
 [ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=7]
 [ext_resource path="res://resources/images/characters/player/angela/angela_sheet_init_finished.png" type="Texture" id=8]
 [ext_resource path="res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png" type="Texture" id=9]
+[ext_resource path="res://src/scripts/UI/menu_scene_base.gd" type="Script" id=10]
 
 [node name="LevelView" type="Spatial"]
+script = ExtResource( 10 )
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 7 )
@@ -25,28 +27,33 @@ __meta__ = {
 [node name="LevelViewUI" type="Control" parent="."]
 margin_right = 1280.0
 margin_bottom = 720.0
+mouse_filter = 2
 script = ExtResource( 2 )
 
 [node name="CenterContainer" type="CenterContainer" parent="LevelViewUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelViewUI/CenterContainer"]
 margin_left = 530.0
 margin_top = 297.0
 margin_right = 750.0
 margin_bottom = 423.0
+mouse_filter = 2
 alignment = 1
 
 [node name="CenterRow" type="HBoxContainer" parent="LevelViewUI/CenterContainer/VBoxContainer"]
 margin_right = 220.0
 margin_bottom = 63.0
+mouse_filter = 2
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="LevelViewUI/CenterContainer/VBoxContainer/CenterRow"]
 margin_right = 220.0
 margin_bottom = 63.0
 rect_min_size = Vector2( 220, 0 )
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
@@ -64,11 +71,13 @@ uppercase = true
 margin_top = 63.0
 margin_right = 220.0
 margin_bottom = 63.0
+mouse_filter = 2
 
 [node name="BackButton" type="Button" parent="LevelViewUI/CenterContainer/VBoxContainer"]
 margin_top = 67.0
 margin_right = 220.0
 margin_bottom = 126.0
+mouse_filter = 2
 theme = ExtResource( 1 )
 text = "BACK"
 script = ExtResource( 3 )

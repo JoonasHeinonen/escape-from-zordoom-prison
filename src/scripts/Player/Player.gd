@@ -14,6 +14,11 @@ onready var angela_arm 					 = $AngelaArm
 onready var rivet_arm 					 = $RivetArm
 onready var camera 		  				 = $Camera
 onready var ui_timer 					 = $PlayerUI/ui_notification/Ui_Timer
+onready var ui_containers 				 = [
+	$PlayerUI/InventoryContainer,
+	$PlayerUI/PauseMenuContainer,
+	$PlayerUI/VendorContainer
+]
 onready var hand_instance_src 			 = "res://resources/images/characters/player/"
 
 export var speed 		  				 = 1
@@ -46,7 +51,6 @@ var fire_Rate			  				 = 3
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	global_transform.origin = Globle.spawn_point
-	
 	$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
 
 	# Set the state machine and the active sprite.
@@ -177,6 +181,12 @@ func _process(delta):
 	
 	# Weapon slot index.
 	var slot_index = 1
+
+	# Hide / show the mouse and the active aiming radical.
+	for ui_container in ui_containers:
+		print(ui_container.visible)
+		if (ui_container.visible == false):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	# Play fade in effect if the player's dead.
 	if !alive:
