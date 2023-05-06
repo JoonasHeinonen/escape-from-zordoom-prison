@@ -21,7 +21,6 @@ export var speed 		  				 = 1
 var hand_instance : Sprite3D
 var gun_instance
 var state_machine
-var active_weapon_button
 
 var velocity 			  		 		 = Vector3(0,0,0)
 

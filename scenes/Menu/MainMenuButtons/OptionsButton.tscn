@@ -16,4 +16,3 @@ stream = ExtResource( 2 )
 stream = ExtResource( 3 )
 
 [connection signal="focus_exited" from="." to="." method="_on_OptionsButton_focus_exited"]
-[connection signal="pressed" from="." to="." method="_on_OptionsButton_pressed"]
