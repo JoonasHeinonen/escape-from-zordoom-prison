@@ -548,7 +548,6 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
-frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -615,9 +614,8 @@ active = true
 parameters/playback = SubResource( 14 )
 
 [node name="RivetSprite" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.53195, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0273661, 0, 0 )
 generate_lightmap = false
-offset = Vector2( 9.05, -1 )
 pixel_size = 0.04
 shaded = true
 double_sided = false

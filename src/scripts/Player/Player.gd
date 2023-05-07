@@ -162,7 +162,7 @@ func _physics_process(delta):
 
 	# Disable Rivet's melee attack for now.
 	# TODO Implement Rivet's melee attack.
-	if Globle.player_character != "Rivet":
+	if Globle.player_character == "Rivet":
 		if Input.is_action_just_released("ui_melee_attack"):
 			Globle.melee_attack = false
 
