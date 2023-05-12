@@ -160,8 +160,7 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
 
-	# Disable Rivet's melee attack for now.
-	# TODO Implement Rivet's melee attack.
+	#  Rivet's melee attack
 	if Globle.player_character == "Rivet":
 		if Input.is_action_just_released("ui_melee_attack"):
 			Globle.melee_attack = false
@@ -169,11 +168,11 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		state_machine.travel("Player_Fall")
+		# Angela's melee attack
 		if Globle.player_character == "Angela":
 			if Input.is_action_pressed("ui_melee_attack"):
 				state_machine.travel("Player_Melee")
-		# Disable Rivet's melee attack for now.
-		# TODO Implement Rivet's melee attack.
+		#   Rivet's melee attack
 		if Globle.player_character == "Rivet":
 			if Input.is_action_pressed("ui_melee_attack"):
 				state_machine.travel("Player_Melee")
