@@ -378,10 +378,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 30, 31, 32, 33, 34, 35, 36, 30, 1 ]
+"values": [ 30, 31, 33, 34, 35, 36 ]
 }
 
 [sub_resource type="Animation" id=30]
@@ -546,6 +546,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
+frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
