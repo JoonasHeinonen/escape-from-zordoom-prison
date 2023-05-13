@@ -160,11 +160,6 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
 
-	#  Rivet's melee attack
-	if Globle.player_character == "Rivet":
-		if Input.is_action_just_released("ui_melee_attack"):
-			Globle.melee_attack = false
-
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		state_machine.travel("Player_Fall")

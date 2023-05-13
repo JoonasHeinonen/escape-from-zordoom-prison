@@ -371,8 +371,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=54]
 resource_name = "Player_Melee"
-length = 1.2
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("RivetSprite:frame")
 tracks/0/interp = 1
