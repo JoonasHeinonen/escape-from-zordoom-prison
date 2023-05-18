@@ -348,7 +348,6 @@ states/Player_Still/position = Vector2( 153, 44 )
 states/Player_Walk/node = SubResource( 43 )
 states/Player_Walk/position = Vector2( 369, 44 )
 transitions = [ "Player_Still", "Player_Walk", SubResource( 44 ), "Player_Walk", "Player_Still", SubResource( 45 ), "Player_Still", "Player_Fall", SubResource( 46 ), "Player_Fall", "Player_Still", SubResource( 47 ), "Player_Still", "Player_Melee", SubResource( 48 ), "Player_Melee", "Player_Still", SubResource( 49 ) ]
-start_node = "Player_Still"
 graph_offset = Vector2( -150.359, -8 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
@@ -403,7 +402,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=31]
 resource_name = "Player_Walk"
-length = 1.2
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("RivetSprite:frame")
@@ -415,7 +413,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 13, 14, 14, 15, 16, 16, 17, 18, 18, 19 ]
+"values": [ 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
 }
 
 [sub_resource type="Animation" id=51]
@@ -451,13 +449,11 @@ animation = "Player_Fall"
 [sub_resource type="AnimationNodeAnimation" id=57]
 animation = "Player_Melee"
 
-[sub_resource type="AnimationNodeAnimation" id=55]
+[sub_resource type="AnimationNodeAnimation" id=58]
 animation = "Player_Still"
 
 [sub_resource type="AnimationNodeAnimation" id=52]
 animation = "Player_Walk"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=58]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=59]
 
@@ -469,16 +465,18 @@ animation = "Player_Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=63]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=64]
+
 [sub_resource type="AnimationNodeStateMachine" id=28]
 states/Player_Fall/node = SubResource( 33 )
 states/Player_Fall/position = Vector2( 511, 84 )
 states/Player_Melee/node = SubResource( 57 )
 states/Player_Melee/position = Vector2( 486, 184 )
-states/Player_Still/node = SubResource( 55 )
-states/Player_Still/position = Vector2( 256, 58 )
+states/Player_Still/node = SubResource( 58 )
+states/Player_Still/position = Vector2( 285, 84 )
 states/Player_Walk/node = SubResource( 52 )
 states/Player_Walk/position = Vector2( 285, 184 )
-transitions = [ "Player_Still", "Player_Fall", SubResource( 58 ), "Player_Fall", "Player_Still", SubResource( 59 ), "Player_Walk", "Player_Still", SubResource( 60 ), "Player_Still", "Player_Walk", SubResource( 61 ), "Player_Still", "Player_Melee", SubResource( 62 ), "Player_Melee", "Player_Still", SubResource( 63 ) ]
+transitions = [ "Player_Still", "Player_Fall", SubResource( 59 ), "Player_Fall", "Player_Still", SubResource( 60 ), "Player_Still", "Player_Melee", SubResource( 61 ), "Player_Melee", "Player_Still", SubResource( 62 ), "Player_Still", "Player_Walk", SubResource( 63 ), "Player_Walk", "Player_Still", SubResource( 64 ) ]
 start_node = "Player_Still"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
@@ -668,7 +666,7 @@ visible = false
 
 [node name="PlayerUI" type="Control" parent="."]
 pause_mode = 2
-visible = false
+visible = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
