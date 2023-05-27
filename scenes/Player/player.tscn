@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -348,8 +348,7 @@ states/Player_Still/position = Vector2( 153, 44 )
 states/Player_Walk/node = SubResource( 43 )
 states/Player_Walk/position = Vector2( 369, 44 )
 transitions = [ "Player_Still", "Player_Walk", SubResource( 44 ), "Player_Walk", "Player_Still", SubResource( 45 ), "Player_Still", "Player_Fall", SubResource( 46 ), "Player_Fall", "Player_Still", SubResource( 47 ), "Player_Still", "Player_Melee", SubResource( 48 ), "Player_Melee", "Player_Still", SubResource( 49 ) ]
-start_node = "Player_Still"
-graph_offset = Vector2( -160, -8 )
+graph_offset = Vector2( -150.359, -8 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
@@ -369,8 +368,24 @@ tracks/0/keys = {
 "values": [ 23 ]
 }
 
+[sub_resource type="Animation" id=54]
+resource_name = "Player_Melee"
+tracks/0/type = "value"
+tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 30, 31, 33, 34, 35, 36 ]
+}
+
 [sub_resource type="Animation" id=30]
 resource_name = "Player_Still"
+length = 1.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("RivetSprite:frame")
@@ -379,15 +394,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.3, 0.4, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 2, 0 ]
+"values": [ 1, 3, 1, 3, 1 ]
 }
 
 [sub_resource type="Animation" id=31]
 resource_name = "Player_Walk"
-length = 0.9
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("RivetSprite:frame")
@@ -396,37 +410,46 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 10, 12, 13, 14, 15, 16, 17, 18, 19 ]
+"values": [ 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=33]
 animation = "Player_Fall"
 
-[sub_resource type="AnimationNodeAnimation" id=34]
+[sub_resource type="AnimationNodeAnimation" id=57]
+animation = "Player_Melee"
+
+[sub_resource type="AnimationNodeAnimation" id=58]
 animation = "Player_Still"
 
-[sub_resource type="AnimationNodeAnimation" id=35]
+[sub_resource type="AnimationNodeAnimation" id=52]
 animation = "Player_Walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+[sub_resource type="AnimationNodeStateMachineTransition" id=59]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+[sub_resource type="AnimationNodeStateMachineTransition" id=60]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+[sub_resource type="AnimationNodeStateMachineTransition" id=61]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=64]
 
 [sub_resource type="AnimationNodeStateMachine" id=28]
 states/Player_Fall/node = SubResource( 33 )
-states/Player_Fall/position = Vector2( 458, 59 )
-states/Player_Still/node = SubResource( 34 )
-states/Player_Still/position = Vector2( 278, 59 )
-states/Player_Walk/node = SubResource( 35 )
-states/Player_Walk/position = Vector2( 278, 181 )
-transitions = [ "Player_Still", "Player_Fall", SubResource( 36 ), "Player_Fall", "Player_Still", SubResource( 37 ), "Player_Walk", "Player_Still", SubResource( 38 ), "Player_Still", "Player_Walk", SubResource( 39 ) ]
+states/Player_Fall/position = Vector2( 511, 84 )
+states/Player_Melee/node = SubResource( 57 )
+states/Player_Melee/position = Vector2( 486, 184 )
+states/Player_Still/node = SubResource( 58 )
+states/Player_Still/position = Vector2( 285, 84 )
+states/Player_Walk/node = SubResource( 52 )
+states/Player_Walk/position = Vector2( 285, 184 )
+transitions = [ "Player_Still", "Player_Fall", SubResource( 59 ), "Player_Fall", "Player_Still", SubResource( 60 ), "Player_Still", "Player_Melee", SubResource( 61 ), "Player_Melee", "Player_Still", SubResource( 62 ), "Player_Still", "Player_Walk", SubResource( 63 ), "Player_Walk", "Player_Still", SubResource( 64 ) ]
 start_node = "Player_Still"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
@@ -486,6 +509,7 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
 shape = SubResource( 6 )
 
 [node name="AngelaSprite" type="Sprite3D" parent="."]
+visible = false
 generate_lightmap = false
 pixel_size = 0.04
 shaded = true
@@ -493,6 +517,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
+frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -520,6 +545,7 @@ spot_range = 0.43704
 
 [node name="AngelaArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
+visible = false
 mesh = SubResource( 21 )
 skeleton = NodePath("../AngelaSprite")
 
@@ -558,7 +584,7 @@ active = true
 parameters/playback = SubResource( 14 )
 
 [node name="RivetSprite" type="Sprite3D" parent="."]
-visible = false
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0677329, 0, 0 )
 generate_lightmap = false
 pixel_size = 0.04
 shaded = true
@@ -566,10 +592,10 @@ double_sided = false
 texture = ExtResource( 36 )
 hframes = 10
 vframes = 4
+frame = 1
 
 [node name="RivetArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
-visible = false
 mesh = SubResource( 21 )
 skeleton = NodePath("../RivetSprite")
 
@@ -597,6 +623,7 @@ transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 
 
 [node name="RivetAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Player_Fall = SubResource( 32 )
+anims/Player_Melee = SubResource( 54 )
 anims/Player_Still = SubResource( 30 )
 anims/Player_Walk = SubResource( 31 )
 
@@ -607,6 +634,7 @@ active = true
 parameters/playback = SubResource( 29 )
 
 [node name="FadeIn" parent="." instance=ExtResource( 42 )]
+visible = false
 
 [node name="PlayerUI" type="Control" parent="."]
 pause_mode = 2

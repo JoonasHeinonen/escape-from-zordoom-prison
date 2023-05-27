@@ -121,7 +121,17 @@ func _physics_process(delta):
 		# Melee attack.
 		if Input.is_action_pressed("ui_melee_attack"):
 			# Disable Rivet's melee attack for now.
-			if Globle.player_character != "Rivet":
+			if Globle.player_character == "Rivet":
+				state_machine.travel("Player_Melee")
+				if (state_machine.get_current_play_position() > 0.3):
+					Globle.melee_attack = true
+				if (state_machine.get_current_play_position() >= 0.4):
+					Globle.melee_attack = false
+					if velocity.x > 0:
+						velocity.x -= 0.1
+					if velocity.x < 0:
+						velocity.x += 0.1
+			if Globle.player_character == "Angela":
 				state_machine.travel("Player_Melee")
 				if (state_machine.get_current_play_position() > 0.3):
 					Globle.melee_attack = true
@@ -150,18 +160,20 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
 
-	# Disable Rivet's melee attack for now.
-	# TODO Implement Rivet's melee attack.
-	if Globle.player_character != "Rivet":
+	#  Rivet's melee attack
+	if Globle.player_character == "Rivet":
 		if Input.is_action_just_released("ui_melee_attack"):
 			Globle.melee_attack = false
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		state_machine.travel("Player_Fall")
-		# Disable Rivet's melee attack for now.
-		# TODO Implement Rivet's melee attack.
-		if Globle.player_character != "Rivet":
+		# Angela's melee attack
+		if Globle.player_character == "Angela":
+			if Input.is_action_pressed("ui_melee_attack"):
+				state_machine.travel("Player_Melee")
+		#   Rivet's melee attack
+		if Globle.player_character == "Rivet":
 			if Input.is_action_pressed("ui_melee_attack"):
 				state_machine.travel("Player_Melee")
 
@@ -198,9 +210,10 @@ func _process(delta):
 		rivet_arm.rotation.z = -angle + offset
 
 	# Hide the hand gun when doing a melee attack.
-	angela_arm.hide() if Input.is_action_pressed("ui_melee_attack") else angela_arm.show()
+	if Globle.player_character == "Angela":
+		angela_arm.hide() if Input.is_action_pressed("ui_melee_attack") else angela_arm.show()
 	# Disable Rivet's melee attack for now.
-	if Globle.player_character != "Rivet":
+	if Globle.player_character == "Rivet":
 		rivet_arm.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_arm.show()
 		if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
 
