@@ -128,7 +128,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 34.4986, -0.382119, 0 )
 
 [node name="nef_head" parent="npc/enemies" instance=ExtResource( 6 )]
-transform = Transform( 7.72382, 0, 0, 0, 7.72382, 0, 0, 0, 1, 27.1177, -14.531, 0 )
+transform = Transform( 7.72382, 0, 0, 0, 7.72382, 0, 0, 0, 1, 27.1177, -14.1474, 0 )
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 12 )
@@ -261,7 +261,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 31.88, -12.947, 0 )
 axis_lock_motion_x = false
 axis_lock_motion_y = false
 move_lock_x = false
