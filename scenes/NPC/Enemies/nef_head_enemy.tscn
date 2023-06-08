@@ -64,6 +64,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector3( 1.23528, -0.00802118, 0 ), Vector3( -0.835735, -0.00802118, 0 ), Vector3( -0.835735, -0.00802118, 0 ), Vector3( 0.871377, -0.00802118, 0 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("RayCast:translation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RayCast:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.7, 2.9, 3.5, 3.8, 4.3, 4.4, 5.6, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, -89.906 ), Vector3( 0, 0, -88.9825 ), Vector3( 0, 0, -89.8955 ), Vector3( 0, 0, 90.341 ), Vector3( 0, 0, 91.5724 ), Vector3( 0, 0, 90.1093 ), Vector3( 0, 0, 89.8331 ), Vector3( 0, 0, 90.5628 ), Vector3( 0, 0, 90.765 ) ]
+}
 
 [sub_resource type="Animation" id=23]
 length = 0.001
@@ -114,6 +138,18 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, -89.21 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RayCast:translation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.0538642, 0, 0 ) ]
 }
 
 [sub_resource type="AnimationNodeAnimation" id=29]
