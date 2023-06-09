@@ -1,5 +1,7 @@
 extends KinematicBody
 
+class_name Player
+
 const RANDOM_ANGLE		  				 = PI / 2.0
 
 onready var projectile 	  				 = preload("res://scenes/Projectiles/BlasterProjectile.tscn")

@@ -1,9 +1,9 @@
 extends RayCast
 
-#var target: player = null
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
+var target: Player = null
+#https://www.youtube.com/watch?v=04A7pUkhx3E
+func _physics_process(_delta:float) -> void:
+	if is_colliding():
+		if get_collider() is Player:
+			target = get_collider()
+			print("bad guy sees player")
