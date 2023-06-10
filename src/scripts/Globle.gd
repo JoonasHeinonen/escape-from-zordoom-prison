@@ -51,6 +51,7 @@ var menu_to_return 		= "none"
 
 var spawn_point = Vector3(31.8, -12.947, 0)
 
+
 # This func updates the postion of the spawn point that player starts in
 func update_spawn(new_point):
 	spawn_point = new_point

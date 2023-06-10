@@ -126,3 +126,5 @@ transform = Transform( 0.0137877, 0.999905, 0, -0.999905, 0.0137877, 0, 0, 0, 1,
 enabled = true
 collision_mask = 3
 script = ExtResource( 3 )
+
+[connection signal="my_signal" from="Sprite3D/RayCast" to="." method="_on_RayCast_my_signal"]
