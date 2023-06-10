@@ -1,10 +1,14 @@
 extends KinematicBody
 
+#moving and attack tutorial
+#https://www.youtube.com/watch?v=4WywpSBncFI
 var speed =-50
 var motion = Vector3()
-var gravity = -5
+var gravity = -1
 
 var direction = 1
+
+var is_moving_left = true
 
 func _ready():
 	pass
@@ -19,8 +23,4 @@ func _physics_process(delta):
 	motion.x = speed * direction
 	var bad_guy_postion = global_translation
 	move_and_slide(motion * delta)
-	#global_translation.distance_to(bad_guy_postion)
-	#if global_translation.distance_to(bad_guy_postion) < 1 * delta:
-		#direction = direction * -1
-	#if is_on_wall():
-		#direction = direction * -1
+

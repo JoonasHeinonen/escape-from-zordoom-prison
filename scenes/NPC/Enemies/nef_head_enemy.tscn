@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape" id=30]
 radius = 0.123485
-height = 0.101835
+height = 0.100412
 
 [sub_resource type="Animation" id=22]
 resource_name = "Enemy_Idle"
@@ -101,7 +101,7 @@ states/Enemy_movement/position = Vector2( 427, 97 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.23528, -0.00802118, 0 )
+transform = Transform( 0.991543, 0, 0, 0, -4.33417e-08, 0.991543, 0, -0.991543, -4.33417e-08, 1.23528, -0.00802118, 0 )
 shape = SubResource( 30 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -124,4 +124,5 @@ vframes = 4
 [node name="RayCast" type="RayCast" parent="Sprite3D"]
 transform = Transform( 0.0137877, 0.999905, 0, -0.999905, 0.0137877, 0, 0, 0, 1, -0.0538642, 0, 0 )
 enabled = true
+collision_mask = 3
 script = ExtResource( 3 )
