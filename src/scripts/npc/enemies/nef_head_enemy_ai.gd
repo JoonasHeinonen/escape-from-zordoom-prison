@@ -25,6 +25,7 @@ func _physics_process(delta):
 	
 	var bad_guy_postion = global_translation
 	move_and_slide(motion * delta)
+	
 	# this makes it so that when the nef_head hits the player it 
 	# changes direction 
 	for i in get_slide_count():
@@ -32,6 +33,20 @@ func _physics_process(delta):
 		var collider = slide_collision.get_collider()
 		if collider is Player:
 			 speed *= -1
+			 print ("hit the player")
+		elif  is_on_wall() :
+			direction=-1
+			#speed *= -1
+			print (is_on_wall())
+			
+#func wall_Turn_around():
+	#for i in get_slide_count():
+		#var slide_collision = get_slide_collision(i)
+		#var collider = slide_collision.get_collider()
+		#if is_on_wall():
+			 #speed *= -1
+			 #print ("hit the wall")
+			 #print(speed)
 
 #func _on_RayCast_my_signal():
 	#speed *= -1
