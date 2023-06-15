@@ -49,7 +49,7 @@ var melee_attack 		= false
 
 var menu_to_return 		= "none"
 
-var spawn_point = Vector3(31.8, -12.947, 0)
+var spawn_point = Vector3(30.668, -12.947, 0)
 
 
 # This func updates the postion of the spawn point that player starts in

@@ -14,9 +14,6 @@ var speed = -50
 var target: Player = null
 
 # to do : make it so that when it hits a wall it changes direction
-func _ready():
-	pass
-
 
 func _physics_process(delta):
 	motion.y = gravity
@@ -26,27 +23,20 @@ func _physics_process(delta):
 	var bad_guy_postion = global_translation
 	move_and_slide(motion * delta)
 	
-	# this makes it so that when the nef_head hits the player it 
+	# this makes it so that when the nef_head hits a wall and for some resaon it also sees the player as a wall it 
 	# changes direction 
 	for i in get_slide_count():
 		var slide_collision = get_slide_collision(i)
 		var collider = slide_collision.get_collider()
-		if collider is Player:
-			 speed *= -1
-			 print ("hit the player")
-		elif  is_on_wall() :
-			direction=-1
-			#speed *= -1
+		#if collider is Player:
+			# speed *= -1
+			 #print ("hit the player")
+		if  is_on_wall() :
+			#direction=-1
+			speed *= -1
 			print (is_on_wall())
-			
-#func wall_Turn_around():
-	#for i in get_slide_count():
-		#var slide_collision = get_slide_collision(i)
-		#var collider = slide_collision.get_collider()
-		#if is_on_wall():
-			 #speed *= -1
-			 #print ("hit the wall")
-			 #print(speed)
+			# however it freaks out when it is near the arch doors
+
 
 #func _on_RayCast_my_signal():
 	#speed *= -1
