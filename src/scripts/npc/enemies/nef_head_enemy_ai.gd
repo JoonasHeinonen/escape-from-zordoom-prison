@@ -14,6 +14,8 @@ var speed = -90
 var target: Player = null
 
 # to do : make it so that when it hits a wall it changes direction
+#right
+#to do make it so that when it hits a wall on its left it turns right
 
 func _physics_process(delta):
 	motion.y = gravity
@@ -33,10 +35,9 @@ func _physics_process(delta):
 			 #print ("hit the player")
 		if  is_on_wall() :
 			#direction=-1
+			$AnimationPlayer.play("Enemy_Turn_Right")
 			speed *= -1
-			print (is_on_wall())
-			# however it freaks out when it is near the arch doors
-
+		
 
 #func _on_RayCast_my_signal():
 	#speed *= -1
