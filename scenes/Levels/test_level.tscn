@@ -224,7 +224,6 @@ script = ExtResource( 20 )
 [node name="spawnBox" type="CollisionShape" parent="checkpoint/New SpawnPoint"]
 transform = Transform( 1.22962, 0, 0, 0, 1.22962, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 19 )
-disabled = true
 
 [node name="Area" type="Area" parent="checkpoint"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95778, 0, 0 )
