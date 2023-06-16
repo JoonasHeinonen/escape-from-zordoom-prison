@@ -3,13 +3,13 @@ extends KinematicBody
 #moving and attack tutorial
 #https://www.youtube.com/watch?v=4WywpSBncFI
 var motion = Vector3()
-var gravity = -1
+var gravity = 0
 
 var direction = 1
 
 var is_moving_left = true
 
-var speed = -50
+var speed = -90
 
 var target: Player = null
 
