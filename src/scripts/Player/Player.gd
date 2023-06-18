@@ -227,7 +227,7 @@ func _process(delta):
 	# Disable Rivet's melee attack for now.
 	if Globle.player_character == "Rivet":
 		rivet_arm.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_arm.show()
-		if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
+	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
 
 	# Heal the player after collecting the nodes.
 	heal_player()
