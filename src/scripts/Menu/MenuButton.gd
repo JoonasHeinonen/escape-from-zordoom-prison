@@ -11,6 +11,10 @@ onready var c_s_r_b 			= get_parent().get_parent().get_parent().get_parent().get
 onready var l_g_r_b 			= get_parent().get_parent().get_parent().get_parent().get_node("LoadGame/CenterContainer/VBoxContainer/BackButton")
 onready var o_r_b 				= get_parent().get_parent().get_parent().get_parent().get_node("Options/CenterContainer/VBoxContainer/BackButton")
 
+func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 # Quits the game.
 func _on_QuitGameButton_pressed():
 	get_tree().quit()
