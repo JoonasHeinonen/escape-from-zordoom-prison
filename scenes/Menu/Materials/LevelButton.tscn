@@ -8,6 +8,7 @@
 [node name="LevelButton" type="Button"]
 margin_right = 1280.0
 margin_bottom = 120.0
+mouse_filter = 2
 theme = ExtResource( 2 )
 text = "label"
 script = ExtResource( 1 )

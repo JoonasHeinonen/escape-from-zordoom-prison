@@ -25,6 +25,7 @@ __meta__ = {
 [node name="LevelViewUI" type="Control" parent="."]
 margin_right = 1280.0
 margin_bottom = 720.0
+mouse_filter = 2
 script = ExtResource( 2 )
 
 [node name="CenterContainer" type="CenterContainer" parent="LevelViewUI"]
@@ -69,6 +70,7 @@ margin_bottom = 63.0
 margin_top = 67.0
 margin_right = 220.0
 margin_bottom = 126.0
+mouse_filter = 2
 theme = ExtResource( 1 )
 text = "BACK"
 script = ExtResource( 3 )
