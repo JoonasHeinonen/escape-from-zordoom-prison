@@ -14,8 +14,10 @@ var speed = -90
 var target: Player = null
 
 var value  = 0
-#to do: when player is on the bad guy it freaks out
 
+onready var ray =$Sprite3D/RayCast
+#to do: when player is on the bad guy it freaks out
+#to do: have it so that the ray cast is fliped
 func _physics_process(delta):
 	motion.y = gravity
 	
@@ -37,10 +39,13 @@ func _physics_process(delta):
 			$AnimationPlayer.play("Enemy_Turn_Right")
 			speed *= -1
 			value += 1
-			print(value)
+			print(ray.translation.x)
+			ray.set_rotation_degrees(Vector3(0,0,90.237))
 		if  is_on_wall() and value == 2:
 			$AnimationPlayer.play("Enemy_Turn_Left")
 			value = 0
+			ray.set_rotation_degrees(Vector3(0,0,-89.21))
+			
 #func _on_RayCast_my_signal():
 	#speed *= -1
 	#pass # Replace with function body.
