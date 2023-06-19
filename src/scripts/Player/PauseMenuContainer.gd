@@ -10,6 +10,12 @@ func _ready():
 	return_btn.grab_focus()
 	hide()
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if (self.visible):
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 func _input(event):
 	if event.is_action_pressed("ui_esc"):
 		if (!Globle.player_inventory):

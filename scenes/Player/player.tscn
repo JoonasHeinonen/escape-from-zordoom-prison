@@ -348,6 +348,7 @@ states/Player_Still/position = Vector2( 153, 44 )
 states/Player_Walk/node = SubResource( 43 )
 states/Player_Walk/position = Vector2( 369, 44 )
 transitions = [ "Player_Still", "Player_Walk", SubResource( 44 ), "Player_Walk", "Player_Still", SubResource( 45 ), "Player_Still", "Player_Fall", SubResource( 46 ), "Player_Fall", "Player_Still", SubResource( 47 ), "Player_Still", "Player_Melee", SubResource( 48 ), "Player_Melee", "Player_Still", SubResource( 49 ) ]
+start_node = "Player_Still"
 graph_offset = Vector2( -150.359, -8 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
@@ -517,7 +518,6 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
-frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -592,7 +592,7 @@ double_sided = false
 texture = ExtResource( 36 )
 hframes = 10
 vframes = 4
-frame = 1
+frame = 3
 
 [node name="RivetArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
@@ -996,6 +996,7 @@ alignment = 1
 margin_top = 79.0
 margin_right = 280.0
 margin_bottom = 138.0
+mouse_filter = 2
 shortcut_in_tooltip = false
 text = "RETURN"
 
@@ -1003,6 +1004,7 @@ text = "RETURN"
 margin_top = 142.0
 margin_right = 280.0
 margin_bottom = 201.0
+mouse_filter = 2
 scene_to_load = ""
 
 [node name="Audio" type="Node" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton"]

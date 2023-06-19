@@ -19,6 +19,13 @@ var interpolation        = 1
 func _ready():
 	hide()
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	# Hide / show the mouse and the active aiming radical.
+	if (self.visible):
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
 func _input(event):
 	# All the input actions for game's pausing functionality.
 	if (!get_tree().paused):
