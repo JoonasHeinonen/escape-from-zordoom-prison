@@ -17,7 +17,6 @@ var value  = 0
 
 onready var ray =$Sprite3D/RayCast
 #to do: when player is on the bad guy it freaks out
-#to do: have it so that the ray cast is fliped
 func _physics_process(delta):
 	motion.y = gravity
 	
@@ -31,15 +30,11 @@ func _physics_process(delta):
 	for i in get_slide_count():
 		var slide_collision = get_slide_collision(i)
 		var collider = slide_collision.get_collider()
-		#if collider is Player:
-			# speed *= -1
-			 #print ("hit the player")
 		if  is_on_wall() :
 			#direction=-1
 			$AnimationPlayer.play("Enemy_Turn_Right")
 			speed *= -1
 			value += 1
-			print(ray.translation.x)
 			ray.set_rotation_degrees(Vector3(0,0,90.237))
 		if  is_on_wall() and value == 2:
 			$AnimationPlayer.play("Enemy_Turn_Left")
