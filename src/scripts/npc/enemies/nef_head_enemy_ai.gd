@@ -16,7 +16,7 @@ var target: Player = null
 var value  = 0
 
 onready var ray =$Sprite3D/RayCast
-#to do: when player is on the bad guy it freaks out
+#to do: make it so that the ray cast sees the player
 func _physics_process(delta):
 	motion.y = gravity
 	
@@ -40,7 +40,4 @@ func _physics_process(delta):
 			$AnimationPlayer.play("Enemy_Turn_Left")
 			value = 0
 			ray.set_rotation_degrees(Vector3(0,0,-89.21))
-			
-#func _on_RayCast_my_signal():
-	#speed *= -1
-	#pass # Replace with function body.
+						

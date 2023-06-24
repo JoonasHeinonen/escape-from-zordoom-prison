@@ -1,19 +1,13 @@
 extends RayCast
-
+onready var  laser_attack =  preload("res://scenes/Projectiles/nef_head_laser.tscn")
 var target: Player = null
-signal my_signal
+#to do: make the shooting animation and have it activate when the nef_head sees the player
+#to do : make so that when it shoots but it being odd
 #https://www.youtube.com/watch?v=04A7pUkhx3E
 func _physics_process(_delta:float) -> void:
-	#detect_turn_around()
 	if is_colliding():
 		if get_collider() is Player:
-			target = get_collider()
-	
-#detects both wall and player	
-#func detect_turn_around():
-	#if is_colliding() :
-		#print("turn around please.")
-		#emit_signal('my_signal')
-	#else:
-		#print("do not turn around")
-		
+			print("sees player")
+			var attack = laser_attack.instance()
+			get_parent().add_child(attack)
+			
