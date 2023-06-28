@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/npc/enemies/nef_head_enemy_ai.gd" type="Script" id=2]
 [ext_resource path="res://src/scripts/npc/enemies/RayCast_nef_trooper_head.gd" type="Script" id=3]
-[ext_resource path="res://scenes/Projectiles/nef_head_laser.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CapsuleShape" id=30]
 radius = 0.123485
@@ -156,10 +155,6 @@ vframes = 4
 
 [node name="Position3D" type="Position3D" parent="Sprite3D"]
 transform = Transform( 1, -0.000523599, 0, 0.000523599, 1, 0, 0, 0, 1, -0.273432, -0.0221915, -5.55112e-17 )
-
-[node name="laser" parent="Sprite3D/Position3D" instance=ExtResource( 4 )]
-transform = Transform( 1, -5.82077e-11, 0, 5.82077e-11, 1, 0, 0, 0, 1, 0, 0, 0 )
-visible = false
 
 [node name="RayCast" type="RayCast" parent="Sprite3D"]
 transform = Transform( 0.0137877, 0.999904, 0, -0.999904, 0.0137877, 0, 0, 0, 1, -0.0538642, 0, 0 )
