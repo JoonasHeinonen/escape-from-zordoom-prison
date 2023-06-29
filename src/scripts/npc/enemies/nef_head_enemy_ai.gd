@@ -15,17 +15,16 @@ var target: Player = null
 
 var value  = 0
 
-onready var ray =$Sprite3D/RayCast
-#to do: make it so that the ray cast sees the player
+onready var ray =$Sprite3D/player_finding
+
+var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
+
 func _physics_process(delta):
 	motion.y = gravity
 	
 	motion.x = speed * direction
 	
-	var bad_guy_postion = global_translation
 	move_and_slide(motion * delta)
-	
-	# this makes it so that when the nef_head hits a wall and for some resaon it also sees the player as a wall it 
 	# changes direction 
 	for i in get_slide_count():
 		var slide_collision = get_slide_collision(i)
@@ -41,3 +40,10 @@ func _physics_process(delta):
 			value = 0
 			ray.set_rotation_degrees(Vector3(0,0,-89.21))
 						
+
+func _on_player_finding_player_seen():
+	var attack = laser_attack_scene.instance()
+	add_child(attack)
+	attack.global_translation = $laser_muzzle.global_translation
+	print("fire laser") 
+# TODO fix animation
