@@ -128,10 +128,11 @@ states/Enemy_movement/position = Vector2( 427, 97 )
 [sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
 [node name="nef_head" type="KinematicBody"]
+transform = Transform( 1, -0.000644666, 1.68953e-05, 0.000644666, 1, 3.37906e-05, -1.6914e-05, -3.37812e-05, 1, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="laser_muzzle" type="Position3D" parent="."]
-transform = Transform( 0.415806, -0.000217716, 0, 0.000217716, 0.415806, 0, 0, 0, 0.389542, 1.09088, -0.0126169, -5.55112e-17 )
+transform = Transform( 0.415806, -0.000217716, 0, 0.000217716, 0.415806, 0, 2.27374e-12, 1.81899e-12, 0.389542, 1.09088, -0.0126169, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.991543, 0, 0, 0, -4.33417e-08, 0.991543, 0, -0.991543, -4.33417e-08, 1.23528, -0.00802118, 0 )

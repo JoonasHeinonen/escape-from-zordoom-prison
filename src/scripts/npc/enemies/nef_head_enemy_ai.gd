@@ -30,15 +30,16 @@ func _physics_process(delta):
 		var slide_collision = get_slide_collision(i)
 		var collider = slide_collision.get_collider()
 		if  is_on_wall() :
-			#direction=-1
 			$AnimationPlayer.play("Enemy_Turn_Right")
 			speed *= -1
 			value += 1
 			ray.set_rotation_degrees(Vector3(0,0,90.237))
+			#$laser_muzzle.set_translation(Vector3(1.439,0,0))
 		if  is_on_wall() and value == 2:
 			$AnimationPlayer.play("Enemy_Turn_Left")
 			value = 0
 			ray.set_rotation_degrees(Vector3(0,0,-89.21))
+			#$laser_muzzle.set_translation(Vector3(1.091,0,0))
 						
 
 func _on_player_finding_player_seen():
@@ -47,3 +48,4 @@ func _on_player_finding_player_seen():
 	attack.global_translation = $laser_muzzle.global_translation
 	print("fire laser") 
 # TODO fix animation
+# TODO have movement go with nef_head

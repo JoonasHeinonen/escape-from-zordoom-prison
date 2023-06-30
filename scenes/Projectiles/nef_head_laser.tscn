@@ -22,7 +22,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=2]
 resource_name = "laser"
-length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -31,19 +30,18 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 16, 17, 18 ]
+"values": [ 18 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=4]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "laser"
 
 [sub_resource type="AnimationNodeStateMachine" id=5]
-states/laser/node = SubResource( 4 )
-states/laser/position = Vector2( 364, 48 )
-start_node = "laser"
+states/laser/node = SubResource( 7 )
+states/laser/position = Vector2( 331, 76 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=6]
 
