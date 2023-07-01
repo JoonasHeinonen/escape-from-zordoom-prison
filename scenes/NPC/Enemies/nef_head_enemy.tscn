@@ -39,6 +39,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 12, 13, 14, 14 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../laser_muzzle:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1.39123, -0.0128105, 5.07366e-06 ), Vector3( 1.07494, -0.0126066, -2.69214e-07 ) ]
+}
 
 [sub_resource type="Animation" id=31]
 resource_name = "Enemy_Turn_Right"
@@ -53,6 +65,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 3, 4, 9, 10, 10 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../laser_muzzle:translation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector3( 1.07494, -0.0126066, -2.69214e-07 ), Vector3( 1.39123, -0.0128105, 5.07366e-06 ) ]
 }
 
 [sub_resource type="Animation" id=23]
@@ -117,6 +141,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ Vector3( -0.0538642, 0, 0 ) ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("../laser_muzzle:translation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1.07494, -0.0126066, -2.69214e-07 ) ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=29]
 animation = "Enemy_movement"
@@ -127,12 +163,12 @@ states/Enemy_movement/position = Vector2( 427, 97 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
-[node name="nef_head" type="KinematicBody"]
+[node name="nef_head" type="KinematicBody" groups=["nef_head"]]
 transform = Transform( 1, -0.000644666, 1.68953e-05, 0.000644666, 1, 3.37906e-05, -1.6914e-05, -3.37812e-05, 1, 0, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="laser_muzzle" type="Position3D" parent="."]
-transform = Transform( 0.415806, -0.000217716, 0, 0.000217716, 0.415806, 0, 2.27374e-12, 1.81899e-12, 0.389542, 1.09088, -0.0126169, 0 )
+transform = Transform( 0.415806, -0.000217716, -7.27596e-12, 0.000217716, 0.415806, 0, 1.90994e-11, 1.81899e-11, 0.389542, 1.07494, -0.0126066, -2.69214e-07 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 0.991543, 0, 0, 0, -4.33417e-08, 0.991543, 0, -0.991543, -4.33417e-08, 1.23528, -0.00802118, 0 )
@@ -163,4 +199,5 @@ enabled = true
 collision_mask = 3
 script = ExtResource( 3 )
 
+[connection signal="player_not_seen" from="Sprite3D/player_finding" to="." method="_on_player_finding_player_not_seen"]
 [connection signal="player_seen" from="Sprite3D/player_finding" to="." method="_on_player_finding_player_seen"]
