@@ -50,7 +50,7 @@ var fire_Rate			  				 = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	global_transform.origin = Globle.spawn_point
+	#global_transform.origin = Globle.spawn_point
 	$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
 
 	# Set the state machine and the active sprite.

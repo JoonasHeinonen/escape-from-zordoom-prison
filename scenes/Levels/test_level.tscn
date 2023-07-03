@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Destructibles/Crates/bolt_crate.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Collectibles/bolt.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Collectibles/weapon_collectible.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/NPC/Friendly/slim_cognito.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Player/player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=9]
 [ext_resource path="res://resources/images/environment/haerkonen.jpg" type="Texture" id=10]
@@ -116,6 +117,9 @@ billboard = 1
 texture = ExtResource( 11 )
 
 [node name="enemies" type="Node" parent="npc"]
+
+[node name="Girdeux" parent="npc/enemies" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 50.3274, -10.2842, 0 )
 
 [node name="Enemy" parent="npc/enemies" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0205, -1.01605, 0 )
@@ -257,7 +261,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 46.4708, -10.2011, 0 )
 axis_lock_motion_x = false
 axis_lock_motion_y = false
 move_lock_x = false
