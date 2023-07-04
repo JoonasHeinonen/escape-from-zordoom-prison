@@ -21,6 +21,7 @@ var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
 
 var attack = null
 
+
 func _physics_process(delta):
 	motion.y = gravity
 	
@@ -43,13 +44,10 @@ func _physics_process(delta):
 			ray.set_rotation_degrees(Vector3(0,0,-89.21))
 			$laser_muzzle.set_rotation_degrees(Vector3(0,0,0))
 						
-
+#https://www.youtube.com/watch?v=4Dj6vaatONI 
+#timer tut
 func _on_player_finding_player_seen():
-	attack = laser_attack_scene.instance()
-	get_parent().add_child(attack)
-	attack.global_translation = $laser_muzzle.global_translation
-	attack.global_rotation = $laser_muzzle.global_rotation
-	print("fire laser") 
-
-
-
+		attack = laser_attack_scene.instance()
+		get_parent().add_child(attack)
+		attack.global_translation = $laser_muzzle.global_translation
+		attack.global_rotation = $laser_muzzle.global_rotation

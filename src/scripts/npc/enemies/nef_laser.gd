@@ -15,7 +15,6 @@ func _physics_process(delta):
 
 func _on_KinematicBody_body_entered(body):
 	if body == Player :
-		print("test")
+		pass
 	if !body.is_in_group("nef_head") :
 		queue_free()
-		print("hit a wall")
