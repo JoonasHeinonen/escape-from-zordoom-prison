@@ -27,7 +27,7 @@ var timer = null
 
 var can_shoot = true
 
-#timer that has it so that it only shoots one bullete at a time after the player in in range
+#timer that has it so that it only shoots one bullet at a time after the player in in range
 func _ready():
 	timer = Timer.new()
 	timer.connect("timeout", self, "nef_head_shoot_time")
