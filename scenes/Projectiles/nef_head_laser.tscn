@@ -43,7 +43,7 @@ tracks/0/keys = {
 script = ExtResource( 2 )
 
 [node name="Sprite3D" type="Sprite3D" parent="Area"]
-transform = Transform( 1.5753, 0, 0, 0, 1.5753, 0, 0, 0, 1, 0, -0.0240717, 0 )
+transform = Transform( 3.33004, 0, 0, 0, 3.33004, 0, 0, 0, 1, 0, -0.0240717, 0 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 4

@@ -21,6 +21,22 @@ var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
 
 var attack = null
 
+var attack_delay = 2
+
+var timer = null
+
+var can_shoot = true
+
+#timer that has it so that it only shoots one bullete at a time after the player in in range
+func _ready():
+	timer = Timer.new()
+	timer.connect("timeout", self, "nef_head_shoot_time")
+	timer.wait_time = 1
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	
+	
 
 func _physics_process(delta):
 	motion.y = gravity
@@ -43,11 +59,18 @@ func _physics_process(delta):
 			value = 0
 			ray.set_rotation_degrees(Vector3(0,0,-89.21))
 			$laser_muzzle.set_rotation_degrees(Vector3(0,0,0))
-						
-#https://www.youtube.com/watch?v=4Dj6vaatONI 
-#timer tut
+
+
+func nef_head_shoot_time():
+	can_shoot = true
+
+	
 func _on_player_finding_player_seen():
+	# has it so that the projectile only shoots once every few secs
+	if  can_shoot:
 		attack = laser_attack_scene.instance()
 		get_parent().add_child(attack)
 		attack.global_translation = $laser_muzzle.global_translation
 		attack.global_rotation = $laser_muzzle.global_rotation
+		can_shoot = false
+		timer.start()

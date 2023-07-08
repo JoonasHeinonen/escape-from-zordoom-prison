@@ -128,7 +128,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.57, -10.9409, 0 )
 
 [node name="nef_head" parent="npc/enemies" instance=ExtResource( 6 )]
-transform = Transform( 7.72366, 0.0490702, 0, -0.0490702, 7.72366, 0, 0, 0, 1, 27.313, -14.1474, 0 )
+transform = Transform( 7.72366, 0.0490702, 0, -0.0490702, 7.72366, 0, 0, 0, 1, 26.9308, -14.1474, 0 )
 collision_layer = 3
 collision_mask = 3
 
