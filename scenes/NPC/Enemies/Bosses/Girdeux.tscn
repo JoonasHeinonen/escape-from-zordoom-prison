@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/npc/enemies/boss_base.gd" type="Script" id=2]
@@ -20,6 +20,21 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "Enemy_Fall"
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -74,6 +89,9 @@ tracks/0/keys = {
 [sub_resource type="AnimationNodeAnimation" id=7]
 animation = "Enemy_Damage"
 
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Enemy_Fall"
+
 [sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Enemy_Idle"
 
@@ -99,22 +117,30 @@ animation = "Girdeux_TurnHead"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
 [sub_resource type="AnimationNodeStateMachine" id=3]
 states/Enemy_Damage/node = SubResource( 7 )
 states/Enemy_Damage/position = Vector2( 497, 43 )
+states/Enemy_Fall/node = SubResource( 23 )
+states/Enemy_Fall/position = Vector2( 497, 217 )
 states/Enemy_Idle/node = SubResource( 8 )
 states/Enemy_Idle/position = Vector2( 92, 43 )
 states/Enemy_Walk/node = SubResource( 13 )
 states/Enemy_Walk/position = Vector2( 92, 217 )
 states/Girdeux_TurnHead/node = SubResource( 19 )
-states/Girdeux_TurnHead/position = Vector2( 329, 217 )
-transitions = [ "Enemy_Idle", "Enemy_Damage", SubResource( 9 ), "Enemy_Damage", "Enemy_Idle", SubResource( 10 ), "Enemy_Idle", "Enemy_Walk", SubResource( 14 ), "Enemy_Walk", "Enemy_Idle", SubResource( 15 ), "Enemy_Walk", "Enemy_Damage", SubResource( 16 ), "Enemy_Damage", "Enemy_Walk", SubResource( 17 ), "Enemy_Idle", "Girdeux_TurnHead", SubResource( 20 ), "Girdeux_TurnHead", "Enemy_Idle", SubResource( 21 ) ]
+states/Girdeux_TurnHead/position = Vector2( 296, 217 )
+transitions = [ "Enemy_Idle", "Enemy_Damage", SubResource( 9 ), "Enemy_Damage", "Enemy_Idle", SubResource( 10 ), "Enemy_Idle", "Enemy_Walk", SubResource( 14 ), "Enemy_Walk", "Enemy_Idle", SubResource( 15 ), "Enemy_Walk", "Enemy_Damage", SubResource( 16 ), "Enemy_Damage", "Enemy_Walk", SubResource( 17 ), "Enemy_Idle", "Girdeux_TurnHead", SubResource( 20 ), "Girdeux_TurnHead", "Enemy_Idle", SubResource( 21 ), "Enemy_Idle", "Enemy_Fall", SubResource( 24 ), "Enemy_Fall", "Enemy_Idle", SubResource( 25 ) ]
 start_node = "Enemy_Idle"
 graph_offset = Vector2( -172, -7 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
 [sub_resource type="BoxShape" id=11]
+
+[sub_resource type="BoxShape" id=26]
 
 [node name="Girdeux" type="KinematicBody"]
 axis_lock_motion_z = true
@@ -136,6 +162,7 @@ vframes = 2
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Enemy_Damage = SubResource( 6 )
+anims/Enemy_Fall = SubResource( 22 )
 anims/Enemy_Idle = SubResource( 5 )
 anims/Girdeux_TurnHead = SubResource( 18 )
 anims/Girdeux_Walk = SubResource( 12 )
@@ -158,6 +185,14 @@ enabled = true
 cast_to = Vector3( 10, 0, 0 )
 script = ExtResource( 3 )
 
+[node name="DetectDistance" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="DetectDistance"]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 26 )
+
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
+[connection signal="body_entered" from="DetectDistance" to="." method="_on_DetectDistance_body_entered"]
+[connection signal="body_exited" from="DetectDistance" to="." method="_on_DetectDistance_body_exited"]
