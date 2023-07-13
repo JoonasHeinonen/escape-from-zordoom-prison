@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/npc/enemies/nef_head_enemy_ai.gd" type="Script" id=2]
@@ -163,15 +163,18 @@ states/Enemy_movement/position = Vector2( 427, 97 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
+[sub_resource type="BoxShape" id=33]
+extents = Vector3( 0.228851, 0.209648, 1 )
+
 [node name="nef_head" type="KinematicBody" groups=["nef_head"]]
-transform = Transform( 1, -0.000644666, 1.68953e-05, 0.000644666, 1, 3.37906e-05, -1.6914e-05, -3.37812e-05, 1, 0, 0, 0 )
+transform = Transform( 1, -0.000644666, 1.68953e-05, 0.000644666, 1, 3.37906e-05, -1.6914e-05, -3.37812e-05, 1, -0.177667, 0, 0 )
 script = ExtResource( 2 )
 
 [node name="laser_muzzle" type="Position3D" parent="."]
-transform = Transform( 0.415806, -0.000217716, -7.27596e-12, 0.000217716, 0.415806, 0, 1.90994e-11, 1.81899e-11, 0.389542, 1.07494, -0.0126066, -2.69214e-07 )
+transform = Transform( 0.415806, -0.000217716, -8.6402e-12, 0.000217716, 0.415806, 0, 2.18279e-11, 2.09184e-11, 0.389542, 1.07494, -0.0126066, -2.69214e-07 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.991543, 0, 0, 0, -4.33417e-08, 0.991543, 0, -0.991543, -4.33417e-08, 1.23528, -0.00802118, 0 )
+transform = Transform( 0.991543, 0, -1.46971e-11, -1.55588e-11, -4.33429e-08, 0.991543, 5.45697e-12, -0.991543, -4.33356e-08, 1.23528, -0.00802118, 0 )
 shape = SubResource( 30 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -188,7 +191,7 @@ active = true
 parameters/playback = SubResource( 25 )
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.273, 0, 0 )
+transform = Transform( 1, -1.05975e-11, 0, -1.0727e-11, 1, 0, 5.45697e-12, 1.09139e-11, 1, 1.273, 0, 0 )
 texture = ExtResource( 1 )
 hframes = 9
 vframes = 4
@@ -199,5 +202,15 @@ enabled = true
 collision_mask = 3
 script = ExtResource( 3 )
 
+[node name="AreaEnemy" type="Area" parent="."]
+transform = Transform( 1, -1.05975e-11, 0, -1.0727e-11, 1, 0, 5.45697e-12, 1.09139e-11, 1, 1.23013, -0.000793027, 2.07797e-05 )
+
+[node name="CollisionShape" type="CollisionShape" parent="AreaEnemy"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.1, 0, 0, 0 )
+shape = SubResource( 33 )
+
+[connection signal="mouse_entered" from="." to="." method="_on_nef_head_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_nef_head_mouse_exited"]
 [connection signal="player_not_seen" from="Sprite3D/player_finding" to="." method="_on_player_finding_player_not_seen"]
 [connection signal="player_seen" from="Sprite3D/player_finding" to="." method="_on_player_finding_player_seen"]
+[connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
