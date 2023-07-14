@@ -1,8 +1,8 @@
 extends KinematicBody
 
-#moving and attack tutorial
-#https://www.youtube.com/watch?v=4WywpSBncFI
+
 var motion = Vector3()
+
 var gravity = 0
 
 var direction = 1
@@ -32,8 +32,14 @@ var can_shoot = true
 var state_machine
 
 export var enemy_health : int = 10
-#TO DO when the player shoots at the nef head it dies and goes away
+
+var meta_name : String 		  = ""
+
+onready var animation_Player  = $AnimationPlayer
+
 #timer that has it so that it only shoots one bullet at a time after the player in in range
+
+# fix lock on redical 
 func _ready():
 	timer = Timer.new()
 	timer.connect("timeout", self, "nef_head_shoot_time")
@@ -41,11 +47,21 @@ func _ready():
 	timer.one_shot = true
 	add_child(timer)
 	timer.start()
+	meta_name = "nef_head"
+	state_machine = $AnimationTree.get("parameters/playback")
+	self.set_meta("type", "enemy")
+	self.set_meta("name", "enemy")
+
 	
 func _process(_delta):
 	# Enemy expiration after the health is 0.
+	
+	if (state_machine.get_current_node() == "Enemy_Damage"):
+		if (state_machine.get_current_play_position() >= 0.2):
+			state_machine.travel("Enemy_Idle")
 	if (enemy_health <= 0) : expire_enemy()
-
+	
+	
 func _physics_process(delta):
 	motion.y = gravity
 	
@@ -98,7 +114,6 @@ func remove_active_radical():
 func _on_nef_head_mouse_entered():
 	add_active_radical()
 
-
 func _on_nef_head_mouse_exited():
 	remove_active_radical()
 # Called when enemy's health is 0.
@@ -111,4 +126,6 @@ func damage_enemy(health : int):
 
 func _on_AreaEnemy_area_entered(area):
 	if (area.name == "ProjectileExplosionArea"):
+		state_machine.travel("Enemy_Damage")
 		damage_enemy(2)
+		animation_Player.play("Enemy_Damage")
