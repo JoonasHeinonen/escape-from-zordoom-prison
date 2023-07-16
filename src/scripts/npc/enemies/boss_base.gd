@@ -42,3 +42,10 @@ func _on_FlamethrowerTimer_timeout():
 
 func _on_TurnTimer_timeout():
 	decide_direction(direction)
+
+func _on_Weakspot_area_entered(area):
+	if area.name == "ProjectileExplosionArea":
+		damage_enemy(1)
+
+func _on_Weakspot_body_entered(body):
+	print(body)

@@ -1,9 +1,10 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/npc/enemies/boss_base.gd" type="Script" id=2]
 [ext_resource path="res://src/scripts/npc/enemies/enemy_raycast.gd" type="Script" id=3]
 [ext_resource path="res://resources/images/weapons/enemy/girdeux_flamethrower.png" type="Texture" id=4]
+[ext_resource path="res://resources/images/weapons/enemy/girdeux_flametank.png" type="Texture" id=5]
 
 [sub_resource type="SphereShape" id=29]
 radius = 1.75
@@ -147,6 +148,8 @@ graph_offset = Vector2( -110, 118 )
 
 [sub_resource type="BoxShape" id=26]
 
+[sub_resource type="BoxShape" id=30]
+
 [node name="Girdeux" type="KinematicBody"]
 axis_lock_motion_z = true
 move_lock_z = true
@@ -197,7 +200,7 @@ cast_to = Vector3( 10, 0, 0 )
 script = ExtResource( 3 )
 
 [node name="Flamethrower" type="Spatial" parent="."]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0.1 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 4.35212, 0, 0.1 )
 
 [node name="FlamethrowerSprite" type="Sprite3D" parent="Flamethrower"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0706029, -0.110141, 0 )
@@ -206,6 +209,17 @@ texture = ExtResource( 4 )
 
 [node name="FlamethrowerPos" type="Position3D" parent="Flamethrower/FlamethrowerSprite"]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.329299, -0.0263703, 0 )
+
+[node name="Weakspot" type="Area" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Weakspot"]
+transform = Transform( 0.1, 0, 0, 0, 0.4, 0, 0, 0, 1, -0.261055, -0.0572883, 0 )
+shape = SubResource( 30 )
+
+[node name="FlameTankSprite" type="Sprite3D" parent="Weakspot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0 )
+texture = ExtResource( 5 )
 
 [node name="FlamethrowerTimer" type="Timer" parent="."]
 wait_time = 0.1
@@ -217,5 +231,7 @@ wait_time = 0.1
 [connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
 [connection signal="body_entered" from="DetectDistance" to="." method="_on_DetectDistance_body_entered"]
 [connection signal="body_exited" from="DetectDistance" to="." method="_on_DetectDistance_body_exited"]
+[connection signal="area_entered" from="Weakspot" to="." method="_on_Weakspot_area_entered"]
+[connection signal="body_entered" from="Weakspot" to="." method="_on_Weakspot_body_entered"]
 [connection signal="timeout" from="FlamethrowerTimer" to="." method="_on_FlamethrowerTimer_timeout"]
 [connection signal="timeout" from="TurnTimer" to="." method="_on_TurnTimer_timeout"]
