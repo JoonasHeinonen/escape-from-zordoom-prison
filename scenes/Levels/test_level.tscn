@@ -118,6 +118,9 @@ texture = ExtResource( 11 )
 
 [node name="enemies" type="Node" parent="npc"]
 
+[node name="nef_head" parent="npc/enemies" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8568, -14.5241, -0.129245 )
+
 [node name="Enemy" parent="npc/enemies" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0205, -1.01605, 0 )
 
@@ -126,11 +129,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0 )
 
 [node name="Enemy3" parent="npc/enemies" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.57, -10.9409, 0 )
-
-[node name="nef_head" parent="npc/enemies" instance=ExtResource( 6 )]
-transform = Transform( 7.72366, 0.0490702, 0, -0.0490702, 7.72366, 0, 0, 0, 1, 26.9308, -14.1474, 0 )
-collision_layer = 3
-collision_mask = 3
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 12 )
@@ -266,7 +264,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 28.8988, 1.5491, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 26.4332, -12.8427, 0 )
 collision_layer = 5
 collision_mask = 5
 axis_lock_motion_x = false

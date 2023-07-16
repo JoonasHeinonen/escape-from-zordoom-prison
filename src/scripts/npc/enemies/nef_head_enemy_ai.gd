@@ -100,12 +100,20 @@ func _on_player_finding_player_seen():
 
 # Adds an active radical.
 func add_active_radical():
-	var g_t_r = radical.instance()
-	if (!self.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
+	if (!self.has_node("GreenTargetRadical")):
+		var g_t_r = radical.instance()
 		self.add_child(g_t_r)
-		
+		var right_scale = 1 / scale.x
+		g_t_r.scale = Vector3(right_scale,right_scale,right_scale)
+		print(self.has_node("target_radical"))
+		if self.has_node("target_radical"):
+			g_t_r.transform = $target_radical.transform
+			
+			
 # Removes an active radical.
 func remove_active_radical():
+	if (self.has_node("GreenTargetRadical")):
+		$GreenTargetRadical.queue_free()
 	var d_l = self.get_children()
 	for c in d_l:
 		if (c.name == "GreenTargetRadical"):
