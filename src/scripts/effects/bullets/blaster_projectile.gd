@@ -5,7 +5,7 @@ onready var blaster_projectile_explosion 	= preload("res://scenes/Effects/Projec
 onready var miniturret_projectile_explosion = preload("res://scenes/Effects/ProjectileEffects/MiniturretProjectileExplosion.tscn")
 
 var speed = 8
-var velocity = Vector3(0,0,0)
+var velocity = Vector3(0, 0, 0)
 
 export (String, "blaster", "miniturret") var weapon
 

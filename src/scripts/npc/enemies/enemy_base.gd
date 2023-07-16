@@ -13,12 +13,14 @@ var meta_name : String 		  = ""
 var velocity  : Vector3 	  = Vector3(0, 0, 0)
 
 var state_machine
+var animation_player
 var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	meta_name = "enemy"
 	state_machine = $EnemyAnimationTree.get("parameters/playback")
+	animation_player = $EnemyAnimationPlayer
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
 
@@ -30,37 +32,30 @@ func _process(_delta):
 	if (state_machine.get_current_node() == "Enemy_Damage"):
 		if (state_machine.get_current_play_position() >= 0.2):
 			state_machine.travel("Enemy_Idle")
+
 	# Enemy expiration after the health is 0.
 	if (enemy_health <= 0) : expire_enemy()
-
-	# Determine the direction to take
-	if direction == "Right" : $EnemySprite.flip_h = false
-	elif direction == "Left": $EnemySprite.flip_h = true
-
-func _physics_process(delta):
-	if not is_on_floor():
-		velocity.y = -4
-		state_machine.travel("Enemy_Fall")
-	else:
-		# When the enemy character is aware of the player's vicinity.
-		if alerted:
-			turn_enemy(player.translation.x, self.translation.x)
-		else:
-			state_machine.travel("Enemy_Idle")
-	move_and_slide(velocity, Vector3.UP)
 
 # Called when damage is dealt to the enemy.
 func damage_enemy(health : int):
 	enemy_health -= health
 
+# Decide the direction which the enemy takes.
+func decide_direction(d : String):
+	if d == "Right" : 
+		$EnemySprite.flip_h = false
+		self.scale.x = 1
+	elif d == "Left": 
+		$EnemySprite.flip_h = true
+		self.scale.x = -1
+
+# Turn enemy towards the player once he's alerted.
 func turn_enemy(player_x : float, enemy_x : float):
 	if (player_x > enemy_x):
 		direction = "Right"
-		self.scale.x = 1
 		walk(3)
 	elif (player_x < enemy_x):
 		direction = "Left"
-		self.scale.x = -1
 		walk(-3)
 
 # Called when enemy's health is 0.
@@ -109,13 +104,10 @@ func _on_Enemy_mouse_exited():
 
 # Act when the distance is adequate to the player.
 func _on_DetectDistance_body_entered(body):
-	if (body == player): print("Detection when entering: ", in_range)
 	if (body == player && alerted):
 		in_range = true
 
 # Act when the distance is too far to the player.
 func _on_DetectDistance_body_exited(body):
-	if (body == player): print("Detection when exiting:  ", in_range)
 	if (body == player && alerted):
 		in_range = false
-		turn_enemy(player.translation.x, self.translation.x)

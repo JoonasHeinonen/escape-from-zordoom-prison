@@ -44,7 +44,7 @@ var timer 								 = Timer.new()
 var ray_origin  		  				 = Vector3()
 var ray_end 			  				 = Vector3()
 var random 				  				 = RandomNumberGenerator.new()
-var fire_Rate			  				 = 3
+var fire_Rate 			  				 = 3
 
 ### INHERITED FUNCTIONS FROM GODOT.
 
@@ -444,7 +444,7 @@ func shoot_edge_blaster():
 # Shooting functionality for the blitz gun.
 func shoot_blitz_gun():
 	$Audio/BlizGun.play()
-	#bullet spread
+	# Bullet spread.
 	for index in fire_Rate:
 		var bullet = blitz_gun_projectile.instance()
 		bullet.translation.x = 3

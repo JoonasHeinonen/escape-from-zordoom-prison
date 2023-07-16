@@ -1,10 +1,12 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/npc/enemies/boss_base.gd" type="Script" id=2]
 [ext_resource path="res://src/scripts/npc/enemies/enemy_raycast.gd" type="Script" id=3]
+[ext_resource path="res://resources/images/weapons/enemy/girdeux_flamethrower.png" type="Texture" id=4]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="SphereShape" id=29]
+radius = 1.75
 
 [sub_resource type="Animation" id=6]
 resource_name = "Enemy_Damage"
@@ -55,7 +57,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=18]
 resource_name = "Girdeux_TurnHead"
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("EnemySprite:frame")
 tracks/0/interp = 1
@@ -121,6 +122,10 @@ animation = "Girdeux_TurnHead"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
 [sub_resource type="AnimationNodeStateMachine" id=3]
 states/Enemy_Damage/node = SubResource( 7 )
 states/Enemy_Damage/position = Vector2( 497, 43 )
@@ -129,12 +134,12 @@ states/Enemy_Fall/position = Vector2( 497, 217 )
 states/Enemy_Idle/node = SubResource( 8 )
 states/Enemy_Idle/position = Vector2( 92, 43 )
 states/Enemy_Walk/node = SubResource( 13 )
-states/Enemy_Walk/position = Vector2( 92, 217 )
+states/Enemy_Walk/position = Vector2( 92, 262 )
 states/Girdeux_TurnHead/node = SubResource( 19 )
-states/Girdeux_TurnHead/position = Vector2( 296, 217 )
-transitions = [ "Enemy_Idle", "Enemy_Damage", SubResource( 9 ), "Enemy_Damage", "Enemy_Idle", SubResource( 10 ), "Enemy_Idle", "Enemy_Walk", SubResource( 14 ), "Enemy_Walk", "Enemy_Idle", SubResource( 15 ), "Enemy_Walk", "Enemy_Damage", SubResource( 16 ), "Enemy_Damage", "Enemy_Walk", SubResource( 17 ), "Enemy_Idle", "Girdeux_TurnHead", SubResource( 20 ), "Girdeux_TurnHead", "Enemy_Idle", SubResource( 21 ), "Enemy_Idle", "Enemy_Fall", SubResource( 24 ), "Enemy_Fall", "Enemy_Idle", SubResource( 25 ) ]
+states/Girdeux_TurnHead/position = Vector2( 306, 262 )
+transitions = [ "Enemy_Idle", "Enemy_Damage", SubResource( 9 ), "Enemy_Damage", "Enemy_Idle", SubResource( 10 ), "Enemy_Idle", "Enemy_Walk", SubResource( 14 ), "Enemy_Walk", "Enemy_Idle", SubResource( 15 ), "Enemy_Walk", "Enemy_Damage", SubResource( 16 ), "Enemy_Damage", "Enemy_Walk", SubResource( 17 ), "Enemy_Idle", "Girdeux_TurnHead", SubResource( 20 ), "Girdeux_TurnHead", "Enemy_Idle", SubResource( 21 ), "Enemy_Idle", "Enemy_Fall", SubResource( 24 ), "Enemy_Fall", "Enemy_Idle", SubResource( 25 ), "Girdeux_TurnHead", "Enemy_Walk", SubResource( 27 ), "Enemy_Walk", "Girdeux_TurnHead", SubResource( 28 ) ]
 start_node = "Enemy_Idle"
-graph_offset = Vector2( -172, -7 )
+graph_offset = Vector2( -110, 118 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
@@ -150,11 +155,11 @@ armored = true
 enemy_health = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1.2, 0, 0, 0, 1.05, 0, 0, 0, 0.2, 0, -0.15, 0 )
-shape = SubResource( 2 )
+transform = Transform( 0.6, 0, 0, 0, 1.05, 0, 0, 0, 0.2, 0, -0.15, 0 )
+shape = SubResource( 29 )
 
 [node name="EnemySprite" type="Sprite3D" parent="."]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+transform = Transform( -4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
 billboard = 1
 texture = ExtResource( 1 )
 hframes = 7
@@ -179,20 +184,38 @@ parameters/playback = SubResource( 4 )
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.1, 0, 0, 0 )
 shape = SubResource( 11 )
 
+[node name="DetectDistance" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="DetectDistance"]
+transform = Transform( 5, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 26 )
+
 [node name="RayCast" type="RayCast" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668297, 0.518436, 0 )
 enabled = true
 cast_to = Vector3( 10, 0, 0 )
 script = ExtResource( 3 )
 
-[node name="DetectDistance" type="Area" parent="."]
+[node name="Flamethrower" type="Spatial" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0.1 )
 
-[node name="CollisionShape" type="CollisionShape" parent="DetectDistance"]
-transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 26 )
+[node name="FlamethrowerSprite" type="Sprite3D" parent="Flamethrower"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0706029, -0.110141, 0 )
+double_sided = false
+texture = ExtResource( 4 )
+
+[node name="FlamethrowerPos" type="Position3D" parent="Flamethrower/FlamethrowerSprite"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.329299, -0.0263703, 0 )
+
+[node name="FlamethrowerTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="TurnTimer" type="Timer" parent="."]
 
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
 [connection signal="body_entered" from="DetectDistance" to="." method="_on_DetectDistance_body_entered"]
 [connection signal="body_exited" from="DetectDistance" to="." method="_on_DetectDistance_body_exited"]
+[connection signal="timeout" from="FlamethrowerTimer" to="." method="_on_FlamethrowerTimer_timeout"]
+[connection signal="timeout" from="TurnTimer" to="." method="_on_TurnTimer_timeout"]
