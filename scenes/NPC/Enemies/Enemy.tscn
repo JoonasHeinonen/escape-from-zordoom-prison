@@ -54,7 +54,7 @@ states/Enemy_Idle/node = SubResource( 8 )
 states/Enemy_Idle/position = Vector2( 92, 43 )
 transitions = [ "Enemy_Idle", "Enemy_Damage", SubResource( 9 ), "Enemy_Damage", "Enemy_Idle", SubResource( 10 ) ]
 start_node = "Enemy_Idle"
-graph_offset = Vector2( 10, 26 )
+graph_offset = Vector2( -99, -69 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
