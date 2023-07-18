@@ -36,6 +36,10 @@ func _process(_delta):
 	# Enemy expiration after the health is 0.
 	if (enemy_health <= 0) : expire_enemy()
 
+func _physics_process(delta):
+	if not is_on_floor() : velocity.y = -4
+	move_and_slide(velocity, Vector3.UP)
+
 # Called when damage is dealt to the enemy.
 func damage_enemy(health : int):
 	enemy_health -= health

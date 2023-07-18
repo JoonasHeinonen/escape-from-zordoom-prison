@@ -131,16 +131,16 @@ animation = "Girdeux_TurnHead"
 states/Enemy_Damage/node = SubResource( 7 )
 states/Enemy_Damage/position = Vector2( 497, 43 )
 states/Enemy_Fall/node = SubResource( 23 )
-states/Enemy_Fall/position = Vector2( 497, 217 )
+states/Enemy_Fall/position = Vector2( 497, 262 )
 states/Enemy_Idle/node = SubResource( 8 )
 states/Enemy_Idle/position = Vector2( 92, 43 )
 states/Enemy_Walk/node = SubResource( 13 )
 states/Enemy_Walk/position = Vector2( 92, 262 )
 states/Girdeux_TurnHead/node = SubResource( 19 )
-states/Girdeux_TurnHead/position = Vector2( 306, 262 )
+states/Girdeux_TurnHead/position = Vector2( -94, 153 )
 transitions = [ "Enemy_Idle", "Enemy_Damage", SubResource( 9 ), "Enemy_Damage", "Enemy_Idle", SubResource( 10 ), "Enemy_Idle", "Enemy_Walk", SubResource( 14 ), "Enemy_Walk", "Enemy_Idle", SubResource( 15 ), "Enemy_Walk", "Enemy_Damage", SubResource( 16 ), "Enemy_Damage", "Enemy_Walk", SubResource( 17 ), "Enemy_Idle", "Girdeux_TurnHead", SubResource( 20 ), "Girdeux_TurnHead", "Enemy_Idle", SubResource( 21 ), "Enemy_Idle", "Enemy_Fall", SubResource( 24 ), "Enemy_Fall", "Enemy_Idle", SubResource( 25 ), "Girdeux_TurnHead", "Enemy_Walk", SubResource( 27 ), "Enemy_Walk", "Girdeux_TurnHead", SubResource( 28 ) ]
 start_node = "Enemy_Idle"
-graph_offset = Vector2( -110, 118 )
+graph_offset = Vector2( -252.141, -42.6492 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
@@ -200,7 +200,7 @@ cast_to = Vector3( 10, 0, 0 )
 script = ExtResource( 3 )
 
 [node name="Flamethrower" type="Spatial" parent="."]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 4.35212, 0, 0.1 )
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0.1 )
 
 [node name="FlamethrowerSprite" type="Sprite3D" parent="Flamethrower"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0706029, -0.110141, 0 )
@@ -226,6 +226,9 @@ wait_time = 0.1
 
 [node name="TurnTimer" type="Timer" parent="."]
 
+[node name="DamageCooloffTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
@@ -235,3 +238,4 @@ wait_time = 0.1
 [connection signal="body_entered" from="Weakspot" to="." method="_on_Weakspot_body_entered"]
 [connection signal="timeout" from="FlamethrowerTimer" to="." method="_on_FlamethrowerTimer_timeout"]
 [connection signal="timeout" from="TurnTimer" to="." method="_on_TurnTimer_timeout"]
+[connection signal="timeout" from="DamageCooloffTimer" to="." method="_on_DamageCooloffTimer_timeout"]

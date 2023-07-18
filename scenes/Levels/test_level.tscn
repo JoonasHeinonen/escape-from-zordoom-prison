@@ -261,7 +261,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 46.4708, -10.2011, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -3.14097, 2.39589, 0 )
 axis_lock_motion_x = false
 axis_lock_motion_y = false
 move_lock_x = false
