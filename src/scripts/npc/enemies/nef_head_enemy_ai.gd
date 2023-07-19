@@ -103,11 +103,7 @@ func add_active_radical():
 	if (!self.has_node("GreenTargetRadical")):
 		var g_t_r = radical.instance()
 		self.add_child(g_t_r)
-		#var right_scale = 1 / scale.x
-		#g_t_r.scale = Vector3(right_scale,right_scale,right_scale)
 		print(self.has_node("target_radical"))
-#		if self.has_node("target_radical"):
-#			g_t_r.global_translation = $Sprite3D.global_translation
 			
 			
 # Removes an active radical.
