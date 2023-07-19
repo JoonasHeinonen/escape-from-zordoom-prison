@@ -103,11 +103,11 @@ func add_active_radical():
 	if (!self.has_node("GreenTargetRadical")):
 		var g_t_r = radical.instance()
 		self.add_child(g_t_r)
-		var right_scale = 1 / scale.x
-		g_t_r.scale = Vector3(right_scale,right_scale,right_scale)
+		#var right_scale = 1 / scale.x
+		#g_t_r.scale = Vector3(right_scale,right_scale,right_scale)
 		print(self.has_node("target_radical"))
-		if self.has_node("target_radical"):
-			g_t_r.transform = $target_radical.transform
+#		if self.has_node("target_radical"):
+#			g_t_r.global_translation = $Sprite3D.global_translation
 			
 			
 # Removes an active radical.
@@ -120,6 +120,7 @@ func remove_active_radical():
 			c.queue_free()
 # Act when the mouse has entered the base.
 func _on_nef_head_mouse_entered():
+	return
 	add_active_radical()
 
 func _on_nef_head_mouse_exited():

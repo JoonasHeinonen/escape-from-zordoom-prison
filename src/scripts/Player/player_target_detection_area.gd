@@ -8,13 +8,19 @@ func _on_TargetDetectionArea_body_entered(body):
 		body.get_meta("type") == "destroyable" ||
 		body.get_meta("type") == "enemy"
 	):
-		var g_t_r = radical.instance()
+		var g_t_r
 		var b_c   = body.get_children()
 		
 		for c in b_c:
 			if (!c.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
+				g_t_r = radical.instance()
 				body.add_child(g_t_r)
-		g_t_r.global_transform = body.global_transform
+		# see if the boss will be affected by the targeting
+		if (body.get_meta("type") == "destroyable"):
+			g_t_r.global_transform = body.get_child(0).global_transform
+		if (body.get_meta("type") == "enemy"):
+			g_t_r.global_transform = body.get_child(5).global_transform
+		g_t_r.scale = Vector3(1,1,1)
 
 # When a body containing the proper tag exits the area.
 func _on_TargetDetectionArea_body_exited(body):

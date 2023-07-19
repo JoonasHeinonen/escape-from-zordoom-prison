@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/Collectibles/weapon_collectible.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/NPC/Friendly/slim_cognito.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Player/player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Blocks & World/Player/player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=9]
 [ext_resource path="res://resources/images/environment/haerkonen.jpg" type="Texture" id=10]
 [ext_resource path="res://resources/images/ui/enter_key.png" type="Texture" id=11]
@@ -119,7 +119,7 @@ texture = ExtResource( 11 )
 [node name="enemies" type="Node" parent="npc"]
 
 [node name="nef_head" parent="npc/enemies" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.8568, -14.5241, -0.129245 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.1417, -13.9944, 0 )
 
 [node name="Enemy" parent="npc/enemies" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0205, -1.01605, 0 )
