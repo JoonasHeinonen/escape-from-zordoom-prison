@@ -16,8 +16,6 @@ func _on_TargetDetectionArea_body_entered(body):
 				g_t_r = radical.instance()
 				body.add_child(g_t_r)
 		# see if the boss will be affected by the targeting
-		# have it so that it filters out what is a enemy or a destroyable
-		#have it so that the mouse enters a enemy or a destroyable and the radical shows up
 		if (body.get_meta("type") == "destroyable"):
 			g_t_r.global_transform = body.get_child(0).global_transform
 		if (body.get_meta("type") == "enemy"):
