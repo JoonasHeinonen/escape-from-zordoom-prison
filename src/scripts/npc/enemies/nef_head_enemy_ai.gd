@@ -1,7 +1,6 @@
 extends "res://src/scripts/npc/enemies/enemy_base.gd"
 
 onready var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
-onready var animation_player = $EnemyAnimationPlayer
 onready var ray = $EnemySprite/player_finding
 
 var value : int  = 0

@@ -54,7 +54,7 @@ var random = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	global_transform.origin = Globle.spawn_point
+	#global_transform.origin = Globle.spawn_point
 	$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
 
 	# Set the state machine and the active sprite.
@@ -233,16 +233,35 @@ func _process(delta):
 		rivet_arm.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_arm.show()
 	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
 
+	# Hide the boss fight UI.
+	if !boss_fight_active : $PlayerUI/ui_boss_data.visible = false
+
 	# Heal the player after collecting the nodes.
 	heal_player()
 
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
-	
+
 	# Set the bolts in the vendor.
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
+
+# Prepare the UI and the game for a boss fight.
+func init_boss_fight(
+	boss_name : String,
+	boss_health,
+	boss_data_name : String,
+	boss_max_health : int
+):
+	var boss_hud_img_path = "res://resources/images/characters/npc/enemies/bosses/" + boss_data_name + "_boss_fight_icon.png"
+	# Prepare the UI.
+	if boss_fight_active: 
+		$PlayerUI/ui_boss_data/BossHealthBar.value = int(boss_health)
+		$PlayerUI/ui_boss_data.visible = true
+		$PlayerUI/ui_boss_data/BossHealthPercentage.text = str(int(boss_health)) + " %"
+		$PlayerUI/ui_boss_data/CenterContainer/BossName.text = boss_name
+		$PlayerUI/ui_boss_data/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
 
 # Sets all the items to the vendor, i.e. determine all the weapons for sale.
 func set_vendor_weapons(weapons_for_sale):
@@ -448,7 +467,7 @@ func shoot_edge_blaster():
 # Shooting functionality for the blitz gun.
 func shoot_blitz_gun():
 	$Audio/BlizGun.play()
-	#bullet spread
+	# Bullet spread.
 	for index in fire_Rate:
 		var bullet = blitz_gun_projectile.instance()
 		bullet.translation.x = 3

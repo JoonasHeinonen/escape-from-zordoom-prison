@@ -123,7 +123,10 @@ texture = ExtResource( 11 )
 
 [node name="enemies" type="Node" parent="npc"]
 
-[node name="nef_head" parent="npc/enemies" instance=ExtResource( 6 )]
+[node name="Girdeux" parent="npc/enemies" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0152, -11.7162, 0 )
+
+[node name="nef_head" parent="npc/enemies" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.1417, -13.9944, 0 )
 
 [node name="Enemy" parent="npc/enemies" instance=ExtResource( 15 )]
@@ -134,6 +137,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0 )
 
 [node name="Enemy3" parent="npc/enemies" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.57, -9.41359, 0 )
+
+[node name="Enemy4" parent="npc/enemies" instance=ExtResource( 15 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.6422, -9.59246, 0 )
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 12 )
