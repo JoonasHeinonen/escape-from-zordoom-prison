@@ -36,8 +36,9 @@ var jump = 5
 var bolt = 0
 var health_node_counter = 0
 
-var alive = true
-var ui_notification = false
+var alive : bool = true
+var ui_notification : bool = false
+var boss_fight_active :bool = false
 var in_teleport_radius : bool = false
 
 # Weapon variables, if player has such weapon.
