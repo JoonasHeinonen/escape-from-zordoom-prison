@@ -2,51 +2,53 @@ extends KinematicBody
 
 class_name Player
 
-const RANDOM_ANGLE		  				 = PI / 2.0
+const RANDOM_ANGLE = PI / 2.0
 
-onready var projectile 	  				 = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
-onready var blitz_gun_projectile 		 = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
-onready var bolt_sparkle 		 		 = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
-onready var gravity_bomb_projectile 	 = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
-onready var negotiator_projectile 		 = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
+onready var projectile = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
+onready var blitz_gun_projectile = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
+onready var bolt_sparkle = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
+onready var gravity_bomb_projectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
+onready var negotiator_projectile = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
 onready var miniturret_packed_projectile = preload("res://scenes/Projectiles/MiniturretPackedProjectile.tscn")
-onready var gun_btn 	  		 		 = preload("res://scenes/UI/VendorWeaponButton.tscn")
+onready var gun_btn = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
-onready var angela_arm 					 = $AngelaArm
-onready var rivet_arm 					 = $RivetArm
-onready var camera 		  				 = $Camera
-onready var ui_timer 					 = $PlayerUI/ui_notification/Ui_Timer
-onready var ui_containers 				 = [
+onready var angela_arm = $AngelaArm
+onready var rivet_arm = $RivetArm
+onready var camera = $Camera
+onready var ui_timer = $PlayerUI/ui_notification/Ui_Timer
+onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
 	$PlayerUI/VendorContainer
 ]
-onready var hand_instance_src 			 = "res://resources/images/characters/player/"
+onready var hand_instance_src = "res://resources/images/characters/player/"
 
-export var speed 		  				 = 1
+export var speed = 1
 
 var hand_instance : Sprite3D
 var gun_instance
 var state_machine
 
-var velocity 			  		 		 = Vector3(0,0,0)
+var velocity = Vector3(0 ,0 ,0)
 
-var gravity 			  				 = 4
-var jump 				  				 = 5
-var bolt 				  				 = 0
+var gravity = 4
+var jump = 5
+var bolt = 0
+var health_node_counter = 0
 
-var alive 				  				 = true
-var ui_notification						 = false
-var health_node_counter 		  = 0
+var alive = true
+var ui_notification = false
+var in_teleport_radius : bool = false
 
 # Weapon variables, if player has such weapon.
-var current_weapon 		  				 = null
+var current_weapon = null
 
-var timer 								 = Timer.new()
-var ray_origin  		  				 = Vector3()
-var ray_end 			  				 = Vector3()
-var random 				  				 = RandomNumberGenerator.new()
-var fire_Rate			  				 = 3
+var fire_Rate = 3
+
+var timer = Timer.new()
+var ray_origin = Vector3()
+var ray_end = Vector3()
+var random = RandomNumberGenerator.new()
 
 ### INHERITED FUNCTIONS FROM GODOT.
 
