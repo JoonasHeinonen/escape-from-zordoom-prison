@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Destructibles/Crates/bolt_crate.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://resources/images/ui/r_n_c__Final_ammo.png" type="Texture" id=18]
 [ext_resource path="res://src/scripts/UI/checkpoint_ui.gd" type="Script" id=19]
 [ext_resource path="res://src/scripts/Player/New SpawnPoint.gd" type="Script" id=20]
+[ext_resource path="res://scenes/NPC/Friendly/mia.tscn" type="PackedScene" id=21]
 
 [sub_resource type="PanoramaSky" id=20]
 radiance_size = 4
@@ -98,6 +99,9 @@ transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 19.995, -2.001, -1.4 )
 [node name="npc" type="Node" parent="."]
 
 [node name="friendly" type="Node" parent="npc"]
+
+[node name="Mia" parent="npc/friendly" instance=ExtResource( 21 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 28.3122, -2.80309, 0 )
 
 [node name="npc" type="Area" parent="npc/friendly"]
 transform = Transform( 1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 7.1613, 0.0711673, -1.50097 )
