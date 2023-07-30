@@ -1,46 +1,25 @@
-extends KinematicBody
+extends "res://src/scripts/npc/enemies/enemy_base.gd"
 
+onready var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
+onready var animation_player = $EnemyAnimationPlayer
+onready var ray = $EnemySprite/player_finding
 
-var motion = Vector3()
-
-var gravity = 0
-
-var direction = 1
-
-var is_moving_left = true
-
-var speed = -90
-
-var target: Player = null
-
-var value  = 0
-
-onready var ray =$Sprite3D/player_finding
-
-var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
-
-onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
-
+var value : int  = 0
+var attack_delay : int = 2
+var can_shoot : bool = true
+var is_moving_left : bool = true
+var target : Player = null
 var attack = null
-
-var attack_delay = 2
-
 var timer = null
 
-var can_shoot = true
+# Timer that has it so that it only shoots one bullet at a time after the player in in range.
 
-var state_machine
-
-export var enemy_health : int = 10
-
-var meta_name : String 		  = ""
-
-onready var animation_Player  = $AnimationPlayer
-
-#timer that has it so that it only shoots one bullet at a time after the player in in range
-
-# fix lock on redical 
+# Fix lock on redical.
 func _ready():
+	element = elements.AIR
+	gravity = 0
+	direction = 1
+	speed = -90
 	timer = Timer.new()
 	timer.connect("timeout", self, "nef_head_shoot_time")
 	timer.wait_time = 1
@@ -48,49 +27,32 @@ func _ready():
 	add_child(timer)
 	timer.start()
 	meta_name = "nef_head"
-	state_machine = $AnimationTree.get("parameters/playback")
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
 
-	
-func _process(_delta):
-	# Enemy expiration after the health is 0.
-	
-	if (state_machine.get_current_node() == "Enemy_Damage"):
-		if (state_machine.get_current_play_position() >= 0.2):
-			state_machine.travel("Enemy_Idle")
-	if (enemy_health <= 0) : expire_enemy()
-	
-	
 func _physics_process(delta):
-	motion.y = gravity
-	
-	motion.x = speed * direction
-	move_and_slide(motion * delta)
-	# changes direction 
+	# Changes the direction .
 	for i in get_slide_count():
 		var slide_collision = get_slide_collision(i)
 		var collider = slide_collision.get_collider()
 		if  is_on_wall() :
-			$AnimationPlayer.play("Enemy_Turn_Right")
+			$EnemyAnimationPlayer.play("Enemy_Turn_Right")
 			speed *= -1
 			value += 1
 			ray.set_rotation_degrees(Vector3(0,0,90.237))
 			$laser_muzzle.set_rotation_degrees(Vector3(0,180,0))
 		if  is_on_wall() and value == 2:
-			$AnimationPlayer.play("Enemy_Turn_Left")
+			$EnemyAnimationPlayer.play("Enemy_Turn_Left")
 			value = 0
 			ray.set_rotation_degrees(Vector3(0,0,-89.21))
 			$laser_muzzle.set_rotation_degrees(Vector3(0,0,0))
-	
 
 func nef_head_shoot_time():
 	can_shoot = true
 
-	
 func _on_player_finding_player_seen():
-	# has it so that the projectile only shoots once every few secs
-	if  can_shoot:
+	# Has it so that the projectile only shoots once every few secs
+	if can_shoot:
 		attack = laser_attack_scene.instance()
 		get_parent().add_child(attack)
 		attack.global_translation = $laser_muzzle.global_translation
@@ -98,16 +60,9 @@ func _on_player_finding_player_seen():
 		can_shoot = false
 		timer.start()
 
-
-func expire_enemy():
-	queue_free()
-
-# Called when damage is dealt to the enemy.
-func damage_enemy(health : int):
-	enemy_health -= health
-
+# Called when an area overlaps with the NEF's area.
 func _on_AreaEnemy_area_entered(area):
 	if (area.name == "ProjectileExplosionArea"):
 		state_machine.travel("Enemy_Damage")
 		damage_enemy(2)
-		animation_Player.play("Enemy_Damage")
+		animation_player.play("Enemy_Damage")

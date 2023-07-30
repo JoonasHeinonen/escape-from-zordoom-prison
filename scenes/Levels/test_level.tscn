@@ -128,7 +128,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0205, -1.01605, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0 )
 
 [node name="Enemy3" parent="npc/enemies" instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.57, -10.9409, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.57, -9.41359, 0 )
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 12 )
@@ -171,7 +171,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3403, -3.63197, 0.27 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9223, -2.89695, 0.27 )
 
 [node name="BoltCrate8" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9173, -1.1757, 0.27 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.1048, -11.0882, 0.27 )
 
 [node name="BoltCrate9" parent="destructibles/crates" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7824, -2.89695, 0.27 )
@@ -264,7 +264,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -0.73226, 1.70542, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 36.3726, -10.4649, 0 )
 collision_layer = 5
 collision_mask = 5
 axis_lock_motion_x = false
