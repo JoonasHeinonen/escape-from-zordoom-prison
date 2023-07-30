@@ -1,16 +1,22 @@
 extends KinematicBody
 
-onready var radical 		  = preload("res://scenes/UI/GreenTargetRadical.tscn")
+onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
+
+enum elements {GROUND, WATER, AIR}
 
 export(String, "Right", "Left") var direction
 export var armored      : bool = false
-export var enemy_health : int  = 10
-export var enemy_speed  : int  = 10
+export var enemy_health : int = 10
+export var enemy_speed : int = 10
 
 var alerted   : bool 		  = false
 var in_range  : bool 		  = false
-var meta_name : String 		  = ""
-var velocity  : Vector3 	  = Vector3(0, 0, 0)
+
+var gravity : int
+var speed : int
+var meta_name : String = ""
+var velocity = Vector3(0, 0, 0)
+var element = null
 
 var state_machine
 var animation_player
@@ -18,6 +24,7 @@ var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	element = elements.GROUND
 	meta_name = "enemy"
 	state_machine = $EnemyAnimationTree.get("parameters/playback")
 	animation_player = $EnemyAnimationPlayer
@@ -36,9 +43,16 @@ func _process(_delta):
 	# Enemy expiration after the health is 0.
 	if (enemy_health <= 0) : expire_enemy()
 
+# Called every frame.
 func _physics_process(delta):
-	if not is_on_floor() : velocity.y = -4
-	move_and_slide(velocity, Vector3.UP)
+	match (element):
+		elements.GROUND:
+			if not is_on_floor() : velocity.y = -4
+			move_and_slide(velocity, Vector3.UP)
+		elements.AIR:
+			velocity.y = gravity
+			velocity.x = speed * direction
+			move_and_slide(velocity * delta)
 
 # Called when damage is dealt to the enemy.
 func damage_enemy(health : int):
@@ -72,6 +86,8 @@ func add_active_radical():
 	var g_t_r = radical.instance()
 	if (!self.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
 		self.add_child(g_t_r)
+		g_t_r.global_transform = $EnemySprite.global_transform
+		g_t_r.scale = Vector3(1, 1, 1)
 
 # Removes an active radical.
 func remove_active_radical():

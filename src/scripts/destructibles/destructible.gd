@@ -118,6 +118,7 @@ func add_active_radical():
 	var g_t_r = radical.instance()
 	if (!self.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
 		self.add_child(g_t_r)
+		g_t_r.scale = Vector3(1, 1, 1)
 
 func remove_active_radical():
 	var d_l = self.get_children()

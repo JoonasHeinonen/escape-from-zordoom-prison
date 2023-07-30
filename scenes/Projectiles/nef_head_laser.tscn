@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" type="Texture" id=1]
+[ext_resource path="res://src/scripts/npc/enemies/nef_laser.gd" type="Script" id=2]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.757, 1, 1 )
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 16 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "laser"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 18 ]
+}
+
+[node name="laser" type="Spatial"]
+
+[node name="Area" type="Area" parent="."]
+script = ExtResource( 2 )
+
+[node name="Sprite3D" type="Sprite3D" parent="Area"]
+transform = Transform( 3.33004, 0, 0, 0, 3.33004, 0, 0, 0, 1, 0, -0.0240717, 0 )
+texture = ExtResource( 1 )
+hframes = 8
+vframes = 4
+frame = 16
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( -0.265581, 0, 0, 0, -0.265581, 0, 0, 0, 0.336862, 0.0133593, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Area/Sprite3D")
+anims/RESET = SubResource( 3 )
+anims/laser = SubResource( 2 )
+
+[connection signal="body_entered" from="Area" to="Area" method="_on_KinematicBody_body_entered"]

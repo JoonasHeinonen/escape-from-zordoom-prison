@@ -503,7 +503,7 @@ collision_mask = 0
 script = ExtResource( 38 )
 
 [node name="TargetDetectionRaycast" type="CollisionShape" parent="TargetDetectionArea"]
-transform = Transform( 5, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0 )
+transform = Transform( 3, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 50 )
 
 [node name="MeshInstance" type="MeshInstance" parent="."]
@@ -527,6 +527,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
+frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
