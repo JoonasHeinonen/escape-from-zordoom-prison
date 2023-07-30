@@ -14,7 +14,7 @@ func _ready():
 	define_target_teleport()
 	for c in get_parent().get_children():
 		if c.name == target_teleport:
-			target_teleport_location = Vector3(c.translation.x, c.translation.y, 0)
+			target_teleport_location = Vector3(c.translation.x, c.translation.y + 0.3, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
