@@ -1,0 +1,243 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png" type="Texture" id=1]
+[ext_resource path="res://src/scripts/npc/enemies/boss_base.gd" type="Script" id=2]
+[ext_resource path="res://src/scripts/npc/enemies/enemy_raycast.gd" type="Script" id=3]
+[ext_resource path="res://resources/images/weapons/enemy/girdeux_flamethrower.png" type="Texture" id=4]
+[ext_resource path="res://resources/images/weapons/enemy/girdeux_flametank.png" type="Texture" id=5]
+
+[sub_resource type="SphereShape" id=29]
+radius = 1.75
+
+[sub_resource type="Animation" id=6]
+resource_name = "Enemy_Damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemySprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=22]
+resource_name = "Enemy_Fall"
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 10 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Enemy_Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=35]
+resource_name = "Girdeux_Shoot"
+length = 0.1
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "Girdeux_TurnHead"
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 7, 8, 9, 8, 7, 0 ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "Girdeux_Walk"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("EnemySprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3, 4, 5, 0 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=23]
+animation = "Enemy_Fall"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Enemy_Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "Girdeux_Walk"
+
+[sub_resource type="AnimationNodeAnimation" id=36]
+animation = "Girdeux_Shoot"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=34]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+
+[sub_resource type="AnimationNodeStateMachine" id=3]
+states/Enemy_Fall/node = SubResource( 23 )
+states/Enemy_Fall/position = Vector2( 92, 67 )
+states/Enemy_Idle/node = SubResource( 8 )
+states/Enemy_Idle/position = Vector2( 92, -68 )
+states/Enemy_Walk/node = SubResource( 13 )
+states/Enemy_Walk/position = Vector2( 342, -68 )
+states/Girdeux_Shoot/node = SubResource( 36 )
+states/Girdeux_Shoot/position = Vector2( 342, 67 )
+transitions = [ "Enemy_Idle", "Enemy_Walk", SubResource( 31 ), "Enemy_Walk", "Enemy_Idle", SubResource( 32 ), "Enemy_Fall", "Enemy_Idle", SubResource( 33 ), "Enemy_Idle", "Enemy_Fall", SubResource( 34 ), "Enemy_Idle", "Girdeux_Shoot", SubResource( 37 ), "Girdeux_Shoot", "Enemy_Idle", SubResource( 38 ) ]
+start_node = "Enemy_Idle"
+graph_offset = Vector2( -140.367, -99.1264 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+
+[sub_resource type="BoxShape" id=11]
+
+[sub_resource type="BoxShape" id=26]
+
+[sub_resource type="BoxShape" id=30]
+
+[node name="Girdeux" type="KinematicBody"]
+axis_lock_motion_z = true
+move_lock_z = true
+script = ExtResource( 2 )
+armored = true
+enemy_health = 4
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 0.6, 0, 0, 0, 1.05, 0, 0, 0, 0.2, 0, -0.15, 0 )
+shape = SubResource( 29 )
+
+[node name="EnemySprite" type="Sprite3D" parent="."]
+transform = Transform( -4, 0, 0, 0, -4, 0, 0, 0, -4, 0, 0, 0 )
+billboard = 1
+texture = ExtResource( 1 )
+hframes = 7
+vframes = 2
+frame = 6
+
+[node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Enemy_Damage = SubResource( 6 )
+anims/Enemy_Fall = SubResource( 22 )
+anims/Enemy_Idle = SubResource( 5 )
+anims/Girdeux_Shoot = SubResource( 35 )
+anims/Girdeux_TurnHead = SubResource( 18 )
+anims/Girdeux_Walk = SubResource( 12 )
+
+[node name="EnemyAnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 3 )
+anim_player = NodePath("../EnemyAnimationPlayer")
+active = true
+parameters/playback = SubResource( 4 )
+
+[node name="AreaEnemy" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="AreaEnemy"]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.1, 0, 0, 0 )
+shape = SubResource( 11 )
+
+[node name="DetectDistance" type="Area" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="DetectDistance"]
+transform = Transform( 5, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0 )
+shape = SubResource( 26 )
+
+[node name="RayCast" type="RayCast" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668297, 0.518436, 0 )
+enabled = true
+cast_to = Vector3( 10, 0, 0 )
+script = ExtResource( 3 )
+
+[node name="Flamethrower" type="Spatial" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0.1 )
+
+[node name="FlamethrowerSprite" type="Sprite3D" parent="Flamethrower"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0706029, -0.110141, 0 )
+double_sided = false
+texture = ExtResource( 4 )
+
+[node name="FlamethrowerPos" type="Position3D" parent="Flamethrower/FlamethrowerSprite"]
+transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.329299, -0.0263703, 0 )
+
+[node name="Weakspot" type="Area" parent="."]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Weakspot"]
+transform = Transform( 0.1, 0, 0, 0, 0.4, 0, 0, 0, 1, -0.261055, -0.0572883, 0 )
+shape = SubResource( 30 )
+
+[node name="FlameTankSprite" type="Sprite3D" parent="Weakspot"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15, 0, 0 )
+texture = ExtResource( 5 )
+
+[node name="FlamethrowerTimer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="TurnTimer" type="Timer" parent="."]
+
+[node name="DamageCooloffTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
+[connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
+[connection signal="body_entered" from="DetectDistance" to="." method="_on_DetectDistance_body_entered"]
+[connection signal="body_exited" from="DetectDistance" to="." method="_on_DetectDistance_body_exited"]
+[connection signal="area_entered" from="Weakspot" to="." method="_on_Weakspot_area_entered"]
+[connection signal="body_entered" from="Weakspot" to="." method="_on_Weakspot_body_entered"]
+[connection signal="timeout" from="FlamethrowerTimer" to="." method="_on_FlamethrowerTimer_timeout"]
+[connection signal="timeout" from="TurnTimer" to="." method="_on_TurnTimer_timeout"]
+[connection signal="timeout" from="DamageCooloffTimer" to="." method="_on_DamageCooloffTimer_timeout"]

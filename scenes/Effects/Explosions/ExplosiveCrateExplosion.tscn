@@ -113,12 +113,12 @@ autostart = true
 [node name="ExplosionEffectiveRadius" type="Area" parent="."]
 
 [node name="CollisionShape" type="CollisionShape" parent="ExplosionEffectiveRadius"]
-transform = Transform( 0.574336, 0, 0, 0, 0.574336, 0, 0, 0, 0.574336, 0, 0, 0 )
+transform = Transform( 1.20262, 0, 0, 0, 1.20262, 0, 0, 0, 1.20262, 0, 0, 0 )
 shape = SubResource( 11 )
 
 [node name="OmniLight" type="OmniLight" parent="."]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
-omni_range = 0.748951
+omni_range = 1.74098
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/ExplosionEffectiveRadius = SubResource( 14 )

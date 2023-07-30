@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -43,6 +43,7 @@
 [ext_resource path="res://resources/images/ui/r_n_c__Final_ammo.png" type="Texture" id=41]
 [ext_resource path="res://scenes/Transitions/fade_in.tscn" type="PackedScene" id=42]
 [ext_resource path="res://src/scripts/Player/PlayerCamera.gd" type="Script" id=43]
+[ext_resource path="res://resources/images/ui/boss_fight_icon_empty.png" type="Texture" id=44]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -460,6 +461,14 @@ bg_color = Color( 0, 0, 0, 0.490196 )
 
 [sub_resource type="StyleBoxFlat" id=22]
 bg_color = Color( 0.14493, 0.522855, 0.570801, 0.372549 )
+
+[sub_resource type="StyleBoxFlat" id=65]
+bg_color = Color( 1, 0, 0, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id=66]
+bg_color = Color( 0.341176, 0, 0, 1 )
+corner_detail = 1
 
 [sub_resource type="BoxShape" id=23]
 
@@ -1241,6 +1250,105 @@ text = "You got xxx ammo for xxx"
 
 [node name="Ui_Timer" type="Timer" parent="PlayerUI/ui_notification"]
 wait_time = 3.0
+
+[node name="ui_boss_data" type="Control" parent="PlayerUI"]
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerUI/ui_boss_data"]
+margin_right = 1280.0
+margin_bottom = 80.0
+
+[node name="BossHealthPanelWest" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 409.5, 66 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 34 )
+
+[node name="BossHealthPanelEast" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 839.5, 66 )
+scale = Vector2( -0.2, -0.2 )
+texture = ExtResource( 34 )
+
+[node name="BossHealthPanel" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 624.5, 66 )
+scale = Vector2( 2.77333, 0.2 )
+texture = ExtResource( 33 )
+
+[node name="BossHealthPanelPercentageWest" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 779.375, 29.75 )
+scale = Vector2( 0.25, -0.25 )
+texture = ExtResource( 34 )
+
+[node name="BossHealthPanelPercentageEast" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 857.375, 29.75 )
+scale = Vector2( -0.25, -0.25 )
+texture = ExtResource( 34 )
+
+[node name="BossHealthPanelPercentage" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 818.375, 29.75 )
+scale = Vector2( 0.4, 0.25 )
+texture = ExtResource( 33 )
+
+[node name="BossIconEast" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 926.75, 43.5 )
+scale = Vector2( -0.5, -0.5 )
+texture = ExtResource( 34 )
+
+[node name="BossIconWest" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 854.75, 43.5 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 34 )
+
+[node name="BossIcon" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 890.75, 43.5 )
+scale = Vector2( 0.232, 0.5 )
+texture = ExtResource( 33 )
+
+[node name="BossIconHolder" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+position = Vector2( 889.75, 43.5 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 44 )
+
+[node name="BossName" type="Label" parent="PlayerUI/ui_boss_data/CenterContainer"]
+margin_left = 415.0
+margin_top = 30.0
+margin_right = 865.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 450, 0 )
+theme = ExtResource( 35 )
+text = "BOSSNAME"
+valign = 1
+uppercase = true
+
+[node name="BossHealthPercentage" type="Label" parent="PlayerUI/ui_boss_data"]
+margin_left = 785.375
+margin_top = 19.75
+margin_right = 851.375
+margin_bottom = 39.75
+theme = ExtResource( 35 )
+text = "100 %"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="BossHealthBar" type="ProgressBar" parent="PlayerUI/ui_boss_data"]
+margin_left = 420.0
+margin_top = 54.0
+margin_right = 830.0
+margin_bottom = 79.0
+custom_styles/fg = SubResource( 65 )
+custom_styles/bg = SubResource( 66 )
+step = 1.0
+percent_visible = false
 
 [node name="Node" type="Node" parent="."]
 
