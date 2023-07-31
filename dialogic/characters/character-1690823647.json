@@ -4,12 +4,12 @@
 	"display_name": "",
 	"display_name_bool": false,
 	"id": "character-1690823647.json",
-	"mirror_portraits": false,
+	"mirror_portraits": true,
 	"name": "Mia",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": 0,
+	"offset_y": -200,
 	"portraits": [
 		{
 			"name": "Default",
