@@ -40,6 +40,8 @@ var alive : bool = true
 var ui_notification : bool = false
 var boss_fight_active :bool = false
 var in_teleport_radius : bool = false
+var player_double_jump : bool = false
+var player_double_jump_used : bool = false
 
 # Weapon variables, if player has such weapon.
 var current_weapon = null
@@ -97,6 +99,11 @@ func _ready():
 	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
 
 func _physics_process(delta):
+	# Reset double jump while on the ground.
+	if is_on_floor():
+		player_double_jump = false
+		player_double_jump_used = false
+
 	var current = state_machine.get_current_node()
 
 	# Decide the weapons
@@ -163,8 +170,19 @@ func _physics_process(delta):
 		else:
 			velocity.x = lerp(velocity.x,0,0.1)
 			state_machine.travel("Player_Still")
-		if is_on_floor() and Input.is_action_just_pressed("jump"):
+		if is_on_floor() and Input.is_action_pressed("jump"):
 			velocity.y = jump
+		# Double jump logic.
+		if !player_double_jump_used:
+			if (Input.is_action_just_pressed("jump") &&
+				player_double_jump &&
+				!is_on_floor()
+			):
+				velocity.y = jump
+				player_double_jump = false
+				player_double_jump_used = true
+			if (Input.is_action_just_released("jump") && !is_on_floor()):
+				player_double_jump = true
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
