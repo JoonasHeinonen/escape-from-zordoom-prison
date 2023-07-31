@@ -1,7 +1,12 @@
 extends Area
 
-var active = false
-var value  = 0
+export(String, "Mia", "Null NPC", "Girdeux") var character_name
+
+var active : bool = false
+var npc_dialog_value : int = 0
+var mia_dialog_value : int = 0
+var girdeux_dialog_value : int = 0
+
 var dialog
 
 # Called when the node enters the scene tree for the first time.
@@ -13,68 +18,74 @@ func _ready():
 func _input(event):
 	if (Globle.player_character == "Angela"):
 		if get_node_or_null('DialogNode') == null:
-				if Input.is_action_just_pressed("ui_accept") and active==true: 
-					match(value):
-						(0):
-							get_tree().paused=true
-							var dialog=Dialogic.start('timeline-1')
-							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
-							dialog.connect('timeline_end',self,'unpause')
-							add_child(dialog)
-							print(active)
-						(2):
-						
-							get_tree().paused=true
-							var dialog=Dialogic.start('timeline-2')
-							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
-							dialog.connect('timeline_end',self,'unpause')
-							add_child(dialog)
-							print(active)
-						(4):
-						
-							get_tree().paused=true
-							var dialog=Dialogic.start('timeline-3')
-							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
-							dialog.connect('timeline_end',self,'unpause')
-							add_child(dialog)
-							print(active)
-					value+=1
-					if value>4 and active == true:
-						value=4
-						active=false
+			if Input.is_action_just_pressed("ui_accept") and active: 
+				match(character_name):
+					"Mia":
+						match(mia_dialog_value):
+							(0):
+								commence_dialog('timeline-Mia-angela-1')
+						mia_dialog_value += 1
+						if mia_dialog_value > 0 and active:
+							mia_dialog_value = 1
+							active = false
+					"Null NPC":
+						match(npc_dialog_value):
+							(0):
+								commence_dialog('timeline-1')
+							(2):
+								commence_dialog('timeline-2')
+							(4):
+								commence_dialog('timeline-3')
+						npc_dialog_value += 1
+						if npc_dialog_value > 4 and active:
+							npc_dialog_value = 4
+							active = false
+					"Girdeux":
+						girdeux_dialog_value += 1
+						if girdeux_dialog_value > 0 and active:
+							girdeux_dialog_value = 0
+							active = false
 	if (Globle.player_character == "Rivet"): 
 		if get_node_or_null('DialogNode') == null:
-				if Input.is_action_just_pressed("ui_accept") and active == true: 
-					match(value):
-						(0):
-							get_tree().paused=true
-							var dialog=Dialogic.start('timeLine-Rivet-1')
-							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
-							dialog.connect('timeline_end',self,'unpause')
-							add_child(dialog)
-							print(active)
-						(2):
-							get_tree().paused=true
-							var dialog=Dialogic.start('timeLine-Rivet-2')
-							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
-							dialog.connect('timeline_end',self,'unpause')
-							add_child(dialog)
-							print(active)
-						(4):
-							get_tree().paused=true
-							var dialog=Dialogic.start('timeLine-Rivet-3')
-							dialog.pause_mode=Node.PAUSE_MODE_PROCESS
-							dialog.connect('timeline_end',self,'unpause')
-							add_child(dialog)
-							print(active)
-					value+=1
-					if value>4 and active==true:
-						value=4
-						active=false
+			if Input.is_action_just_pressed("ui_accept") and active == true: 
+				match(character_name):
+					"Mia":
+						match(mia_dialog_value):
+							(0):
+								commence_dialog('timeline-Mia-Rivet-1')
+								mia_dialog_value += 1
+								if mia_dialog_value > 0 and active:
+									mia_dialog_value = 1
+									active = false
+					"Null NPC":
+						match(npc_dialog_value):
+							(0):
+								commence_dialog('timeLine-Rivet-1')
+							(2):
+								commence_dialog('timeLine-Rivet-2')
+							(4):
+								commence_dialog('timeLine-Rivet-3')
+						npc_dialog_value += 1
+						if npc_dialog_value > 4 and active:
+							npc_dialog_value = 4
+							active = false
+					"Girdeux":
+						girdeux_dialog_value += 1
+						if girdeux_dialog_value > 4 and active:
+							girdeux_dialog_value = 4
+							active = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$EnterButton.visible = active
+
+## Commences the dialog, pauses the game.
+func commence_dialog(timeline : String):
+	get_tree().paused = true
+	var dialog = Dialogic.start(timeline)
+	dialog.pause_mode = Node.PAUSE_MODE_PROCESS
+	dialog.connect('timeline_end',self,'unpause')
+	add_child(dialog)
 
 # Unpauses the game timeline.
 func unpause(timeline_name):

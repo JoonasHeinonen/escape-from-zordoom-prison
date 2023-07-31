@@ -107,6 +107,7 @@ transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -30.7372, 7.20484, 0 )
 [node name="npc" type="Area" parent="npc/friendly"]
 transform = Transform( 1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 7.1613, 0.0711673, -1.50097 )
 script = ExtResource( 9 )
+character_name = "Null NPC"
 
 [node name="MeshInstance" type="MeshInstance" parent="npc/friendly/npc"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162291, -2.54972 )
@@ -276,7 +277,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 36.3726, -10.4649, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -23.2207, 8.97025, 0 )
 collision_layer = 5
 collision_mask = 5
 axis_lock_motion_x = false

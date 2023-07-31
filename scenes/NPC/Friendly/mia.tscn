@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://resources/images/characters/npc/mia.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/npc/friendly/character.gd" type="Script" id=2]
+[ext_resource path="res://resources/images/ui/enter_key.png" type="Texture" id=3]
+[ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=4]
 
 [sub_resource type="BoxShape" id=1]
+
+[sub_resource type="BoxShape" id=2]
 
 [node name="Mia" type="KinematicBody"]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
@@ -18,3 +22,16 @@ billboard = 1
 texture = ExtResource( 1 )
 hframes = 10
 vframes = 2
+
+[node name="Area" type="Area" parent="."]
+script = ExtResource( 4 )
+character_name = "Mia"
+
+[node name="DiscussionRadius" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, -1.40976e-08, 0, 1.40976e-08, 1, 0, 0, 0 )
+shape = SubResource( 2 )
+
+[node name="EnterButton" type="Sprite3D" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0 )
+billboard = 1
+texture = ExtResource( 3 )
