@@ -11,7 +11,7 @@
 			"portrait": "Default",
 			"portrait_definition": "",
 			"position": {
-				"0": false,
+				"0": true,
 				"1": false,
 				"2": false,
 				"3": false,
@@ -24,7 +24,7 @@
 			"character": "character-1660859986.json",
 			"event_id": "dialogic_001",
 			"portrait": "",
-			"text": "Greetings! What are you doing here?"
+			"text": "Hello."
 		},
 		{
 			"animation": "[Default]",
@@ -37,7 +37,7 @@
 			"portrait": "Default",
 			"portrait_definition": "",
 			"position": {
-				"0": false,
+				"0": true,
 				"1": false,
 				"2": false,
 				"3": false,
@@ -71,6 +71,52 @@
 			"event_id": "dialogic_001",
 			"portrait": "",
 			"text": "Hey, uhhh... The portal is broken to my home world. Do you know any alternative route to my home world, Lorian?"
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1690823647.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 1,
+			"z_index": 0
+		},
+		{
+			"animation": "[Default]",
+			"animation_length": 0,
+			"change_mirror_portrait": false,
+			"change_z_index": false,
+			"character": "character-1660859986.json",
+			"event_id": "dialogic_002",
+			"mirror_portrait": false,
+			"portrait": "Default",
+			"portrait_definition": "",
+			"position": {
+				"0": false,
+				"1": false,
+				"2": false,
+				"3": false,
+				"4": false
+			},
+			"type": 0,
+			"z_index": 0
+		},
+		{
+			"character": "character-1660859986.json",
+			"event_id": "dialogic_001",
+			"portrait": "",
+			"text": "Lorian? I hane never heard of it."
 		}
 	],
 	"metadata": {

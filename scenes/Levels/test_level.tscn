@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Destructibles/Crates/bolt_crate.tscn" type="PackedScene" id=2]
@@ -38,6 +38,8 @@ tonemap_mode = 2
 tonemap_white = 14.0
 dof_blur_far_distance = 1.0
 dof_blur_far_transition = 4.69
+
+[sub_resource type="BoxShape" id=21]
 
 [sub_resource type="CapsuleMesh" id=13]
 
@@ -97,6 +99,16 @@ light_specular = 0.595
 [node name="slim_cognito" parent="." instance=ExtResource( 5 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 19.995, -2.001, -1.4 )
 
+[node name="invisable_enemy_wall" type="Node" parent="."]
+
+[node name="StaticBody" type="StaticBody" parent="invisable_enemy_wall"]
+transform = Transform( 0.568555, 0, 0, 0, 3.94289, 0, 0, 0, 1, 19.088, -13.835, 0 )
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape" type="CollisionShape" parent="invisable_enemy_wall/StaticBody"]
+shape = SubResource( 21 )
+
 [node name="npc" type="Node" parent="."]
 
 [node name="friendly" type="Node" parent="npc"]
@@ -126,10 +138,12 @@ texture = ExtResource( 11 )
 [node name="enemies" type="Node" parent="npc"]
 
 [node name="Girdeux" parent="npc/enemies" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9485, -23.2602, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9485, -22.3002, 0 )
 
 [node name="nef_head" parent="npc/enemies" instance=ExtResource( 22 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6929, -13.7823, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6929, -14.4326, 0 )
+collision_layer = 9
+collision_mask = 9
 
 [node name="Enemy" parent="npc/enemies" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0205, -1.01605, 0 )
@@ -139,9 +153,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0 )
 
 [node name="Enemy3" parent="npc/enemies" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 49.57, -9.41359, 0 )
-
-[node name="Enemy4" parent="npc/enemies" instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 43.6422, -9.59246, 0 )
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource( 12 )
@@ -288,7 +299,7 @@ move_lock_y = false
 [node name="teleports" type="Node" parent="."]
 
 [node name="Teleport_A1" parent="teleports" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -15.8972, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.626, -23.8973, 0 )
 teleport_index = "First"
 
 [node name="Teleport_A2" parent="teleports" instance=ExtResource( 7 )]
