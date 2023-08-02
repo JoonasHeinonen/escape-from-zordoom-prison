@@ -10,4 +10,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Stops following the player once the player's dead.
-	if (!player.alive) : self.set_as_toplevel(true)
+	if (player.player_health <= 0) : self.set_as_toplevel(true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=2]
+[gd_scene load_steps=99 format=2]
 
 [ext_resource path="res://resources/models/tiles/incubator_lab/TempleWall_002.material" type="Material" id=1]
 [ext_resource path="res://resources/models/tiles/incubator_lab/ZordoomConcrete.material" type="Material" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://resources/models/tiles/incubator_lab/RedBeacon.material" type="Material" id=13]
 [ext_resource path="res://resources/models/tiles/incubator_lab/Void.material" type="Material" id=14]
 [ext_resource path="res://resources/models/tiles/incubator_lab/PrisonCellWall.material" type="Material" id=15]
+[ext_resource path="res://resources/models/tiles/incubator_lab/CyanFloor.material" type="Material" id=16]
+[ext_resource path="res://resources/models/tiles/incubator_lab/DarkBlueFloor.material" type="Material" id=17]
 
 [sub_resource type="ArrayMesh" id=28]
 resource_name = "tiles_rock_Cube025"
@@ -1260,6 +1262,36 @@ surfaces/0 = {
 
 [sub_resource type="BoxShape" id=631]
 
+[sub_resource type="ArrayMesh" id=632]
+resource_name = "cyan_floor_block_Cube036"
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 2, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 63, 0, 60, 255, 59, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 127, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 126, 63, 0, 0, 0, 60, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 63, 255, 59, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 126, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 126, 63, 0, 0, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 127, 63, 0, 0, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 127, 127, 130, 63, 0, 60, 255, 59, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 127, 127, 130, 63, 255, 59, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 126, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 127, 63, 255, 59, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 126, 63, 0, 60, 255, 59, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 126, 1, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 126, 63, 255, 59, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 126, 63, 0, 60, 255, 59, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 126, 1, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 127, 63, 0, 60, 255, 59, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 127, 130, 63, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 126, 1, 0, 60, 255, 59, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 127, 130, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 126, 63, 255, 59, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 126, 1, 255, 59, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0 ),
+"blend_shape_data": [  ],
+"format": 2194711,
+"index_count": 36,
+"material": ExtResource( 16 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 24
+}
+
+[sub_resource type="ArrayMesh" id=633]
+resource_name = "dark_blue_floor_block_Cube041"
+surfaces/0 = {
+"aabb": AABB( -1, -1, -1, 2, 2, 2.00001 ),
+"array_data": PoolByteArray( 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 129, 0, 0, 63, 0, 60, 255, 59, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 127, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 126, 63, 0, 0, 0, 60, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 129, 0, 0, 63, 255, 59, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 126, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 126, 63, 0, 0, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 129, 0, 0, 63, 0, 0, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 127, 63, 0, 0, 0, 60, 0, 0, 128, 191, 0, 0, 128, 191, 0, 0, 128, 191, 127, 127, 130, 63, 0, 60, 255, 59, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 129, 0, 0, 63, 0, 0, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 127, 127, 130, 63, 255, 59, 0, 0, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 126, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 129, 127, 63, 255, 59, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 0, 0, 126, 63, 0, 60, 255, 59, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 63, 127, 0, 126, 1, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 126, 63, 255, 59, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 0, 127, 126, 63, 0, 60, 255, 59, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 63, 127, 0, 126, 1, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 0, 129, 127, 63, 0, 60, 255, 59, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 127, 130, 63, 0, 0, 0, 60, 0, 0, 128, 63, 0, 0, 128, 191, 0, 0, 128, 191, 127, 0, 126, 1, 0, 60, 255, 59, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 127, 130, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 0, 127, 126, 63, 255, 59, 0, 0, 0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 128, 191, 127, 0, 126, 1, 255, 59, 0, 0 ),
+"array_index_data": PoolByteArray( 0, 0, 9, 0, 3, 0, 0, 0, 6, 0, 9, 0, 8, 0, 21, 0, 10, 0, 8, 0, 19, 0, 21, 0, 20, 0, 17, 0, 23, 0, 20, 0, 14, 0, 17, 0, 13, 0, 4, 0, 15, 0, 13, 0, 2, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0 ),
+"blend_shape_data": [  ],
+"format": 2194711,
+"index_count": 36,
+"material": ExtResource( 17 ),
+"primitive": 4,
+"skeleton_aabb": [  ],
+"vertex_count": 24
+}
+
 [node name="mesh_library_tiles" type="Spatial"]
 
 [node name="Rock" type="MeshInstance" parent="."]
@@ -1673,3 +1705,21 @@ mesh = SubResource( 628 )
 [node name="CollisionShape" type="CollisionShape" parent="PrisonCouch2/StaticBody"]
 transform = Transform( 1, 0, 0, 0, 0.2, 0, 0, 0, 1, 0, 0.2, 0 )
 shape = SubResource( 631 )
+
+[node name="CyanFloorBlock" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, 0, 9.6 )
+mesh = SubResource( 632 )
+
+[node name="StaticBody" type="StaticBody" parent="CyanFloorBlock"]
+
+[node name="CollisionShape" type="CollisionShape" parent="CyanFloorBlock/StaticBody"]
+shape = SubResource( 184 )
+
+[node name="DarkBlueBlock" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4.4, 0, 11.8 )
+mesh = SubResource( 633 )
+
+[node name="StaticBody" type="StaticBody" parent="DarkBlueBlock"]
+
+[node name="CollisionShape" type="CollisionShape" parent="DarkBlueBlock/StaticBody"]
+shape = SubResource( 184 )

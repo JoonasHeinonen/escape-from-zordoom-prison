@@ -34,9 +34,10 @@ var velocity = Vector3(0 ,0 ,0)
 var gravity = 4
 var jump = 5
 var bolt = 0
+var player_health = 4
+var player_max_health
 var health_node_counter = 0
 
-var alive : bool = true
 var ui_notification : bool = false
 var boss_fight_active :bool = false
 var in_teleport_radius : bool = false
@@ -59,6 +60,8 @@ var random = RandomNumberGenerator.new()
 func _ready():
 	#global_transform.origin = Globle.spawn_point
 	$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
+	player_max_health = player_health
+	player_health = 3
 
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):
@@ -94,6 +97,7 @@ func _ready():
 	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
 		current_weapon = "edge_blaster"
+
 	set_vendor_weapons(Globle.weapons_for_sale)
 	# The spawn code for the player
 	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
@@ -133,7 +137,7 @@ func _physics_process(delta):
 		_:
 			gun_instance.hide()
 
-	if alive && !Globle.player_inventory:
+	if player_health > 0 && !Globle.player_inventory:
 		# Melee attack.
 		if Input.is_action_pressed("ui_melee_attack"):
 			# Disable Rivet's melee attack for now.
@@ -226,7 +230,7 @@ func _process(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	# Play fade in effect if the player's dead.
-	if !alive:
+	if player_health == 0:
 		$PlayerUI.hide()
 		$FadeIn.show()
 		$FadeIn.fade_in()
@@ -255,8 +259,9 @@ func _process(delta):
 	# Hide the boss fight UI.
 	if !boss_fight_active : $PlayerUI/ui_boss_data.visible = false
 
-	# Heal the player after collecting the nodes.
+	# Heal the player after collecting the nodes. Also update the UI.
 	heal_player()
+	update_health_ui()
 
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
@@ -407,6 +412,11 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
 
+# Update the health data on UI.
+func update_health_ui():
+	$PlayerUI/InGameUI/Health/HealthHas.text = str(player_health)
+	$PlayerUI/InGameUI/Health/HealthMax.text = str(player_max_health)
+
 # Play the audio for collecting a collectible resource.
 func collect_bolt(index : int, type : String):
 	# Create the bolt sparkle once a bolt is collected.
@@ -445,6 +455,12 @@ func heal_player():
 		print("1 block of health restored.") 
 		# TODO Increase the health once the health logic has been implemented.
 		health_node_counter = 0
+		player_health += 2
+		if (player_health > player_max_health):
+			player_health = player_max_health
+
+# Damage player.
+func damage_player(damage : int) : player_health -= damage
 
 # UI notification message.
 func ui_notification_msg():
@@ -687,7 +703,7 @@ func _on_WeaponSlot8_pressed():
 # When the player enters another collision area.
 func _on_CollisionArea_area_entered(area):
 	if area.name == "death":
-		alive = false
+		player_health = 0
 
 # Run when FadeIn fade is finished.
 func _on_FadeIn_fade_finished():
