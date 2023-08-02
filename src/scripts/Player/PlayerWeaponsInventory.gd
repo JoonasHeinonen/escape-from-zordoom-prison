@@ -32,7 +32,8 @@ func _input(event):
 		if event.is_action_pressed("ui_inventory"):
 			determine_pause(true, 0, false)
 			show()
-			determine_active_item(player.current_weapon)
+			if (player.current_weapon != null):
+				determine_active_item(player.current_weapon)
 		if event.is_action_released("ui_inventory"):
 			determine_pause(false, 1, true)
 			hide()
@@ -46,7 +47,7 @@ func _input(event):
 							# Pick the player's weapon directly from the inventory.
 							match weapon_slot.name:
 								"WeaponSlot1":
-									player.current_weapon = "blaster"
+									player.current_weapon = "edge_blaster"
 								"WeaponSlot2":
 									player.current_weapon = "blitz_gun"
 								"WeaponSlot3":

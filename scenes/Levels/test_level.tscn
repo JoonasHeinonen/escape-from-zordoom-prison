@@ -76,18 +76,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8.79584, 0.08, 0 )
 [node name="bolt" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64725, 0, 0 )
 
-[node name="WeaponCollectible" parent="." instance=ExtResource( 4 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0.49699, 8.44525, 0 )
-weapon = "negotiator"
-
-[node name="WeaponCollectible2" parent="." instance=ExtResource( 4 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 2.79358, -1.05825, 0 )
-weapon = "blitz_gun"
-
-[node name="WeaponCollectible3" parent="." instance=ExtResource( 4 )]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 12.2247, 4.45104, 0 )
-weapon = "ry3no"
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 16 )
 
@@ -308,6 +296,20 @@ teleport_index = "First"
 [node name="Teleport_A2" parent="teleports" instance=ExtResource( 7 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6881, 6.10404, 0 )
 teleport_index = "Second"
+
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="WeaponCollectible" parent="Collectibles" instance=ExtResource( 4 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0.49699, 8.44525, 0 )
+weapon = "negotiator"
+
+[node name="WeaponCollectible2" parent="Collectibles" instance=ExtResource( 4 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 2.79358, -1.05825, 0 )
+weapon = "blitz_gun"
+
+[node name="WeaponCollectible3" parent="Collectibles" instance=ExtResource( 4 )]
+transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 12.2247, 4.45104, 0 )
+weapon = "ry3no"
 
 [connection signal="body_entered" from="area_of_death/death" to="area_of_death/death" method="_on_death_body_entered"]
 [connection signal="body_entered" from="checkpoint/New SpawnPoint" to="checkpoint/New SpawnPoint" method="_on_New_SpawnPoint_body_entered"]

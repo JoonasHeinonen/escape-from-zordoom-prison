@@ -40,7 +40,7 @@ var weapons_for_sale 	= [
 	"sheepinator",
 	"miniturret_glove"
 ]
-var current_weapons  	= ["edge_blaster", "gravity_bomb" , "negotiator", "miniturret_glove"]
+var current_weapons  	= []
 
 var player_inventory 	= false
 var vendor_open 	 	= false

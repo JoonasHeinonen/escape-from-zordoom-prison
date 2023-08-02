@@ -368,6 +368,7 @@ func set_weapon_metadata(button: Button, res: TextureRect, weapon_name: String):
 func change_weapon_texture(weapon_name: String):
 	var weapon_sprite_path = "res://resources/images/weapons/" + weapon_name + ".png"
 	gun_instance.texture = load(weapon_sprite_path)
+	gun_instance.show()
 
 # Walking functionality.
 func walk(vel, scale, mesh_translation):
