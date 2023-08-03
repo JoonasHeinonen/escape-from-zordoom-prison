@@ -61,7 +61,6 @@ func _ready():
 	#global_transform.origin = Globle.spawn_point
 	$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
 	player_max_health = player_health
-	player_health = 3
 
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):
