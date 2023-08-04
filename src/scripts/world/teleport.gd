@@ -38,15 +38,16 @@ func define_target_teleport():
 
 ## To teleport the player to the target teleport.
 func teleport_player():
-	print(self.name, " to ", target_teleport)
-	player.translation = target_teleport_location
+	if (!player.boss_fight_active):
+		print(self.name, " to ", target_teleport)
+		player.translation = target_teleport_location
 
-func _on_TekeportationArea_body_entered(body):
+func _on_TeleportationArea_body_entered(body):
 	if body.name == "player":
 		player_in_teleport_radius = true
 		player = body
 
-func _on_TekeportationArea_body_exited(body):
+func _on_TeleportationArea_body_exited(body):
 	if body.name == "player":
 		player_in_teleport_radius = false
 		player = null

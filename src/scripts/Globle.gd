@@ -1,11 +1,13 @@
 extends Node
-#have to autoload the script in the project to get the globle script to work
-#source: https://www.youtube.com/watch?v=6e9I_e8aHD4
 
-# 3-dimensional array containing all the necessary data for each weapon.
-# Subarray 0: Weapon names & identifiers.
-# Subarray 1: Weapon prices.
-# Subarray 2: Weapon descriptions for the vendor.
+## Need to autoload the script in the project to get the globle script to work
+## source: https://www.youtube.com/watch?v=6e9I_e8aHD4
+
+## 2-dimensional array containing all the necessary data for each weapon.
+## Subarray 0: Weapon names & identifiers.
+## Subarray 1: Weapon prices.
+## Subarray 2: Weapon descriptions for the vendor.
+## Subarray 3: Weapon maximum ammunition
 const WPNS = [
 	[
 		"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
@@ -23,14 +25,19 @@ const WPNS = [
 		"The RY3NO is a brown weapon with an large and thick barrel. It contains six protruding spikes surrounding its main nozzle, and has a left-hand grip. The RYNOCIRATOR appears very similar, though both the barrel, stock, and the spikes have gained an extra layer of armor, and the nozzle is smaller as well.",
 		"The Sheepinator in Going Commando is a black pistol with glowing orange accents. It fires two spiralling orange beams which function as a single beam. The Black Sheepinator is a longer carbine, with greater orange accents and a left-hand grip.",
 		"It is a glove that can plant small gun turrets which target and fire lasers at enemies automatically, and self-destruct (harmlessly) upon exhausting their ammunition."
+	],
+	[
+		65, 40, 8, 12, 8, 25, -1, 15
 	]
 ]
 
-var player_character 	= "Rivet"
+var player_character = "Rivet"
+# TODO Fix the player_weapons_ammo at some point to be WPNS[3].
+var player_weapons_ammo = [65, 40, 8, 12, 8, 25, -1, 15]
 
-var bolts 			 	= 0
+var bolts = 0
 
-var weapons_for_sale 	= [
+var weapons_for_sale = [
 	"edge_blaster",
 	"blitz_gun",
 	"gravity_bomb",
@@ -40,14 +47,17 @@ var weapons_for_sale 	= [
 	"sheepinator",
 	"miniturret_glove"
 ]
-var current_weapons  	= ["edge_blaster"]
+var current_weapons = [
+	"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
+	"pulse_rifle", "ry3no", "sheepinator", "miniturret_glove"
+]
 
-var player_inventory 	= false
-var vendor_open 	 	= false
-var vendor_active 	 	= false
-var melee_attack 		= false
+var player_inventory = false
+var vendor_open = false
+var vendor_active = false
+var melee_attack = false
 
-var menu_to_return 		= "none"
+var menu_to_return = "none"
 
 var spawn_point = Vector3(0 ,0, 0)
 
@@ -55,11 +65,11 @@ var spawn_point = Vector3(0 ,0, 0)
 func update_spawn(new_point):
 	spawn_point = new_point
 
-# Not sure if we need this instance_node
-func instance_node(node,location,parent):
-	var node_instance=node.instance()
+# Not sure if we need this instance_node.
+func instance_node(node, location, parent):
+	var node_instance = node.instance()
 	parent.add_child(node_instance)
-	node_instance.global_position=location
+	node_instance.global_position = location
 	return node_instance
 
 # Updates the vendor after purchasing an item.
