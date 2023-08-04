@@ -87,7 +87,35 @@ func _physics_process(delta):
 							bod.collect_bolt(random.randi_range(0, 2), "bolt")
 							queue_free()
 						"ammo":
-							bod.ui_notification_msg()
+							randomize()
+							var wpn : String = Globle.current_weapons[randi() % Globle.current_weapons.size()]
+							var ammo : int = 0
+							match(wpn):
+								"edge_blaster":
+									ammo = 16
+									Globle.player_weapons_ammo[0] += ammo
+								"blitz_gun":
+									ammo = 8
+									Globle.player_weapons_ammo[1] += ammo
+								"gravity_bomb":
+									ammo = 2
+									Globle.player_weapons_ammo[2] += ammo
+								"negotiator":
+									ammo = 1
+									Globle.player_weapons_ammo[3] += ammo
+								"pulse_rifle":
+									ammo = 2
+									Globle.player_weapons_ammo[4] += ammo
+								"ry3no":
+									ammo = 1
+									Globle.player_weapons_ammo[5] += ammo
+								"sheepinator":
+									ammo = 0
+									Globle.player_weapons_ammo[6] += ammo
+								"miniturret_glove":
+									ammo = 3
+									Globle.player_weapons_ammo[7] += ammo
+							bod.ui_notification_msg(ammo, wpn)
 							bod.collect_bolt(random.randi_range(0, 1), "ammo")
 							queue_free()
 						"nanotech_node":

@@ -468,8 +468,10 @@ func heal_player():
 func damage_player(damage : int) : player_health -= damage
 
 # UI notification message.
-func ui_notification_msg():
+func ui_notification_msg(ammo : int, weapon_name : String):
+	var msg : String = "You got %s ammo for %s"
 	$PlayerUI/ui_notification/CanvasLayer/Ui_notification.show()
+	$PlayerUI/ui_notification/CanvasLayer/Ui_notification/ui_ammo.text = msg % [ammo, weapon_name]
 	ui_timer.start()
 	ui_notification = true
 
@@ -623,7 +625,6 @@ func _on_ShootTimer_timeout():
 
 ## Update the ammo UI.
 func update_ammo_ui(has_ammo : int, max_ammo : int):
-	print(Globle.WPNS[3])
 	$PlayerUI/InGameUI/Ammo/AmmoHas.text = str(has_ammo)
 	$PlayerUI/InGameUI/Ammo/AmmoMax.text = str(max_ammo)
 
