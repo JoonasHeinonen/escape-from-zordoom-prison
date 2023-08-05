@@ -46,8 +46,7 @@ func _ready():
 # Called during the physics processing step of the main loop.
 func _physics_process(delta):
 	# Makes the bolts fall due to the y axis
-	if !get_magnet:
-		translation.y
+	if !get_magnet : translation.y
 
 	# Hide the particles for nanotech nodes.
 	if (emit_trail):
@@ -73,10 +72,10 @@ func _physics_process(delta):
 						translation += (get_parent().get_node("player").translation - translation) / 10
 			else:
 				translation += (get_parent().get_node("player").translation - translation) / 10
-		var bodies2 = get_overlapping_bodies()
-		for bod in bodies2:
-			# This adds the bolt amount to the player.
-			if bod.name == "player":
+		var sub_bodies = get_overlapping_bodies()
+		for sub_body in sub_bodies:
+			# Checks that the body is 'player'.
+			if sub_body.name == "player":
 				# Makes sure that every number is random
 				random.randomize()
 				var count_boults = get_parent().get_node("player").bolt + random.randi_range(10, 100)
@@ -84,10 +83,10 @@ func _physics_process(delta):
 				Globle.bolts += count_boults
 				
 				# Plays the bolt sound on the player's instance.
-				if bod.has_method("collect_bolt"):
+				if sub_body.has_method("collect_collectible"):
 					match(type):
 						"bolt":
-							bod.collect_bolt(random.randi_range(0, 2), "bolt")
+							sub_body.collect_collectible(random.randi_range(0, 2), "bolt")
 							queue_free()
 						"ammo":
 							for wpn in Globle.WPNS[3].size():
@@ -96,44 +95,43 @@ func _physics_process(delta):
 										if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
 											var wpn_name : String = Globle.current_weapons[randi() % Globle.current_weapons.size()]
 											if (wpn_name == "sheepinator") : wpn_name = Globle.current_weapons[randi() % Globle.current_weapons.size()]
-											var ammo : int = 0
-											define_refillable_wpn(wpn_name, ammo, bod)
+											define_refillable_wpn(wpn_name, sub_body)
 						"nanotech_node":
-							if (bod.player_health < bod.player_max_health):
+							if (sub_body.player_health < sub_body.player_max_health):
 								var effects : Node = null
 								var h_l = health_light.instance()
-								if (bod.has_node("Effects")):
-									effects = bod.get_node("Effects")
+								if (sub_body.has_node("Effects")):
+									effects = sub_body.get_node("Effects")
 									effects.add_child(h_l)
 								queue_free()
 
 ## Define the weapon to be refilled.
-func define_refillable_wpn(wpn_name : String, ammo : int, body : KinematicBody):
+func define_refillable_wpn(wpn_name : String, body : KinematicBody):
 	match(wpn_name):
 		"edge_blaster":
-			check_weapon_stats(0, 0, 16)
+			check_weapon_stats(wpn_name, 0, body, 16)
 		"blitz_gun":
-			check_weapon_stats(1, 1, 8)
+			check_weapon_stats(wpn_name, 1, body, 8)
 		"gravity_bomb":
-			check_weapon_stats(2, 2, 2)
+			check_weapon_stats(wpn_name, 2, body, 2)
 		"negotiator":
-			check_weapon_stats(3, 3, 1)
+			check_weapon_stats(wpn_name, 3, body, 1)
 		"pulse_rifle":
-			check_weapon_stats(4, 4, 2)
+			check_weapon_stats(wpn_name, 4, body, 2)
 		"ry3no":
-			check_weapon_stats(5, 5, 1)
+			check_weapon_stats(wpn_name, 5, body, 1)
 		"sheepinator":
 			pass
 		"miniturret_glove":
-			check_weapon_stats(7, 7, 3)
-	body.ui_notification_msg(ammo, wpn_name)
-	body.collect_bolt(random.randi_range(0, 1), "ammo")
-	queue_free()
+			check_weapon_stats(wpn_name, 7, body, 3)
 
 ## Check the weapon statistics.
-func check_weapon_stats(p_w_a_index : int, wpns_index : int, ammo : int):
-	if (Globle.player_weapons_ammo[p_w_a_index] < Globle.WPNS[3][wpns_index]):
-		if (Globle.player_weapons_ammo[p_w_a_index] < Globle.WPNS[3][wpns_index]):
-			Globle.player_weapons_ammo[p_w_a_index] = Globle.WPNS[3][wpns_index]
+func check_weapon_stats(wpn_name : String, index : int, body : KinematicBody, ammo : int):
+	if (Globle.player_weapons_ammo[index] < Globle.WPNS[3][index]):
+		if (Globle.player_weapons_ammo[index] < Globle.WPNS[3][index]):
+			Globle.player_weapons_ammo[index] = Globle.WPNS[3][index]
 		else:
-			Globle.player_weapons_ammo[p_w_a_index] += ammo
+			Globle.player_weapons_ammo[index] += ammo
+	body.ui_notification_msg(ammo, wpn_name)
+	body.collect_collectible(random.randi_range(0, 1), "ammo")
+	queue_free()

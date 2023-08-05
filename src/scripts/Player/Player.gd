@@ -424,7 +424,7 @@ func update_health_ui():
 	$PlayerUI/InGameUI/Health/HealthMax.text = str(player_max_health)
 
 # Play the audio for collecting a collectible resource.
-func collect_bolt(index : int, type : String):
+func collect_collectible(index : int, type : String):
 	# Create the bolt sparkle once a bolt is collected.
 	var b_s = bolt_sparkle.instance()
 	b_s.global_transform = $CollisionShape.global_transform
