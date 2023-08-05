@@ -14,13 +14,13 @@ dest_files=[ "res://.import/enter_key.png-731e21d55ecbbcbd1ed67dfe64b84512.stex"
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=true
-flags/filter=true
+flags/repeat=0
+flags/filter=false
 flags/mipmaps=true
 flags/anisotropic=false
 flags/srgb=1

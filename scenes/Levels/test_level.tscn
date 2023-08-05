@@ -62,10 +62,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4071, -11.2671, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1608, -1.54334, 0 )
 
 [node name="ammo_can4" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.0121, 7.00113, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9706, -1.60882, 0 )
 
 [node name="ammo_can3" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 39.9202, 6.96641, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32.8648, -0.926043, 0 )
+
+[node name="ammo_can7" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 33.8141, 0.888173, 0 )
+
+[node name="ammo_can8" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 35.6239, 0.822694, 0 )
+
+[node name="ammo_can9" parent="." instance=ExtResource( 14 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 40.5181, 1.50547, 0 )
 
 [node name="bolt2" parent="." instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8738, 0.612113, 0 )
@@ -279,7 +288,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 22.7539, 3.76525, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 20.8075, -0.921243, 0 )
 collision_layer = 5
 collision_mask = 5
 axis_lock_motion_x = false

@@ -6,17 +6,16 @@ onready var projectile = $TrailParticles
 
 export (String, "bolt", "ammo", "nanotech_node") var type
 
-var emit_trail = false
-var get_magnet = false
+var active : bool = false
+var getMagnet : bool = false
+var emit_trail : bool = false
+var get_magnet : bool = false
+
+var collectible_image_path : String = "res://resources/images/collectibles/"
 
 # var position = Vector3()
 var timer = Timer.new()
-
-var active = false
-var getMagnet = false
-
 var random = RandomNumberGenerator.new() # Adding random number.
-var collectible_image_path = "res://resources/images/collectibles/"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -46,8 +45,8 @@ func _ready():
 
 # Called during the physics processing step of the main loop.
 func _physics_process(delta):
+	# Makes the bolts fall due to the y axis
 	if !get_magnet:
-		# Makes the bolts fall due to the y axis
 		translation.y
 
 	# Hide the particles for nanotech nodes.
@@ -68,6 +67,10 @@ func _physics_process(delta):
 						t_p.global_transform = s.global_transform
 						get_parent().add_child(t_p)
 					queue_free()
+			elif (type == "ammo"):
+				for wpn in Globle.WPNS[3].size():
+					if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
+						pass # translation += (get_parent().get_node("player").translation - translation) / 10
 			else:
 				translation += (get_parent().get_node("player").translation - translation) / 10
 		var bodies2 = get_overlapping_bodies()
@@ -87,37 +90,48 @@ func _physics_process(delta):
 							bod.collect_bolt(random.randi_range(0, 2), "bolt")
 							queue_free()
 						"ammo":
-							randomize()
-							var wpn : String = Globle.current_weapons[randi() % Globle.current_weapons.size()]
-							var ammo : int = 0
-							match(wpn):
-								"edge_blaster":
-									ammo = 16
-									Globle.player_weapons_ammo[0] += ammo
-								"blitz_gun":
-									ammo = 8
-									Globle.player_weapons_ammo[1] += ammo
-								"gravity_bomb":
-									ammo = 2
-									Globle.player_weapons_ammo[2] += ammo
-								"negotiator":
-									ammo = 1
-									Globle.player_weapons_ammo[3] += ammo
-								"pulse_rifle":
-									ammo = 2
-									Globle.player_weapons_ammo[4] += ammo
-								"ry3no":
-									ammo = 1
-									Globle.player_weapons_ammo[5] += ammo
-								"sheepinator":
-									ammo = 0
-									Globle.player_weapons_ammo[6] += ammo
-								"miniturret_glove":
-									ammo = 3
-									Globle.player_weapons_ammo[7] += ammo
-							bod.ui_notification_msg(ammo, wpn)
-							bod.collect_bolt(random.randi_range(0, 1), "ammo")
-							queue_free()
+							for wpn in Globle.WPNS[3].size():
+								if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
+									if (Globle.current_weapons[wpn] == Globle.WPNS[0][wpn]):
+										if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
+											randomize()
+											var wpn_name : String = Globle.current_weapons[randi() % Globle.current_weapons.size()]
+											var ammo : int = 0
+											match(wpn_name):
+												"edge_blaster":
+													if (Globle.player_weapons_ammo[0] < Globle.WPNS[3][0]):
+														ammo = 16
+														Globle.player_weapons_ammo[0] += ammo
+												"blitz_gun":
+													if (Globle.player_weapons_ammo[1] < Globle.WPNS[3][1]):
+														ammo = 8
+														Globle.player_weapons_ammo[1] += ammo
+												"gravity_bomb":
+													if (Globle.player_weapons_ammo[2] < Globle.WPNS[3][2]):
+														ammo = 2
+														Globle.player_weapons_ammo[2] += ammo
+												"negotiator":
+													if (Globle.player_weapons_ammo[3] < Globle.WPNS[3][3]):
+														ammo = 1
+														Globle.player_weapons_ammo[3] += ammo
+												"pulse_rifle":
+													if (Globle.player_weapons_ammo[4] < Globle.WPNS[3][4]):
+														ammo = 2
+														Globle.player_weapons_ammo[4] += ammo
+												"ry3no":
+													if (Globle.player_weapons_ammo[5] < Globle.WPNS[3][5]):
+														ammo = 1
+														Globle.player_weapons_ammo[5] += ammo
+												"sheepinator":
+													ammo = 0
+													Globle.player_weapons_ammo[6] += ammo
+												"miniturret_glove":
+													if (Globle.player_weapons_ammo[7] < Globle.WPNS[3][7]):
+														ammo = 3
+														Globle.player_weapons_ammo[7] += ammo
+											bod.ui_notification_msg(ammo, wpn_name)
+											bod.collect_bolt(random.randi_range(0, 1), "ammo")
+											queue_free()
 						"nanotech_node":
 							if (bod.player_health < bod.player_max_health):
 								var effects : Node = null
