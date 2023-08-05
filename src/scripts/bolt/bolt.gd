@@ -70,7 +70,7 @@ func _physics_process(delta):
 			elif (type == "ammo"):
 				for wpn in Globle.WPNS[3].size():
 					if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
-						pass # translation += (get_parent().get_node("player").translation - translation) / 10
+						translation += (get_parent().get_node("player").translation - translation) / 10
 			else:
 				translation += (get_parent().get_node("player").translation - translation) / 10
 		var bodies2 = get_overlapping_bodies()
@@ -79,9 +79,9 @@ func _physics_process(delta):
 			if bod.name == "player":
 				# Makes sure that every number is random
 				random.randomize()
-				var countBoults = get_parent().get_node("player").bolt + random.randi_range(10, 100)
+				var count_boults = get_parent().get_node("player").bolt + random.randi_range(10, 100)
 				# Grabes the bolt amout
-				Globle.bolts += countBoults
+				Globle.bolts += count_boults
 				
 				# Plays the bolt sound on the player's instance.
 				if bod.has_method("collect_bolt"):
@@ -94,44 +94,10 @@ func _physics_process(delta):
 								if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
 									if (Globle.current_weapons[wpn] == Globle.WPNS[0][wpn]):
 										if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
-											randomize()
 											var wpn_name : String = Globle.current_weapons[randi() % Globle.current_weapons.size()]
+											if (wpn_name == "sheepinator") : wpn_name = Globle.current_weapons[randi() % Globle.current_weapons.size()]
 											var ammo : int = 0
-											match(wpn_name):
-												"edge_blaster":
-													if (Globle.player_weapons_ammo[0] < Globle.WPNS[3][0]):
-														ammo = 16
-														Globle.player_weapons_ammo[0] += ammo
-												"blitz_gun":
-													if (Globle.player_weapons_ammo[1] < Globle.WPNS[3][1]):
-														ammo = 8
-														Globle.player_weapons_ammo[1] += ammo
-												"gravity_bomb":
-													if (Globle.player_weapons_ammo[2] < Globle.WPNS[3][2]):
-														ammo = 2
-														Globle.player_weapons_ammo[2] += ammo
-												"negotiator":
-													if (Globle.player_weapons_ammo[3] < Globle.WPNS[3][3]):
-														ammo = 1
-														Globle.player_weapons_ammo[3] += ammo
-												"pulse_rifle":
-													if (Globle.player_weapons_ammo[4] < Globle.WPNS[3][4]):
-														ammo = 2
-														Globle.player_weapons_ammo[4] += ammo
-												"ry3no":
-													if (Globle.player_weapons_ammo[5] < Globle.WPNS[3][5]):
-														ammo = 1
-														Globle.player_weapons_ammo[5] += ammo
-												"sheepinator":
-													ammo = 0
-													Globle.player_weapons_ammo[6] += ammo
-												"miniturret_glove":
-													if (Globle.player_weapons_ammo[7] < Globle.WPNS[3][7]):
-														ammo = 3
-														Globle.player_weapons_ammo[7] += ammo
-											bod.ui_notification_msg(ammo, wpn_name)
-											bod.collect_bolt(random.randi_range(0, 1), "ammo")
-											queue_free()
+											define_refillable_wpn(wpn_name, ammo, bod)
 						"nanotech_node":
 							if (bod.player_health < bod.player_max_health):
 								var effects : Node = null
@@ -140,3 +106,34 @@ func _physics_process(delta):
 									effects = bod.get_node("Effects")
 									effects.add_child(h_l)
 								queue_free()
+
+## Define the weapon to be refilled.
+func define_refillable_wpn(wpn_name : String, ammo : int, body : KinematicBody):
+	match(wpn_name):
+		"edge_blaster":
+			check_weapon_stats(0, 0, 16)
+		"blitz_gun":
+			check_weapon_stats(1, 1, 8)
+		"gravity_bomb":
+			check_weapon_stats(2, 2, 2)
+		"negotiator":
+			check_weapon_stats(3, 3, 1)
+		"pulse_rifle":
+			check_weapon_stats(4, 4, 2)
+		"ry3no":
+			check_weapon_stats(5, 5, 1)
+		"sheepinator":
+			pass
+		"miniturret_glove":
+			check_weapon_stats(7, 7, 3)
+	body.ui_notification_msg(ammo, wpn_name)
+	body.collect_bolt(random.randi_range(0, 1), "ammo")
+	queue_free()
+
+## Check the weapon statistics.
+func check_weapon_stats(p_w_a_index : int, wpns_index : int, ammo : int):
+	if (Globle.player_weapons_ammo[p_w_a_index] < Globle.WPNS[3][wpns_index]):
+		if (Globle.player_weapons_ammo[p_w_a_index] < Globle.WPNS[3][wpns_index]):
+			Globle.player_weapons_ammo[p_w_a_index] = Globle.WPNS[3][wpns_index]
+		else:
+			Globle.player_weapons_ammo[p_w_a_index] += ammo
