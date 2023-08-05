@@ -1,10 +1,11 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/scripts/npc/enemies/boss_base.gd" type="Script" id=2]
 [ext_resource path="res://src/scripts/npc/enemies/enemy_raycast.gd" type="Script" id=3]
 [ext_resource path="res://resources/images/weapons/enemy/girdeux_flamethrower.png" type="Texture" id=4]
 [ext_resource path="res://resources/images/weapons/enemy/girdeux_flametank.png" type="Texture" id=5]
+[ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=6]
 
 [sub_resource type="SphereShape" id=29]
 radius = 1.75
@@ -167,7 +168,6 @@ billboard = 1
 texture = ExtResource( 1 )
 hframes = 7
 vframes = 2
-frame = 6
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Enemy_Damage = SubResource( 6 )
@@ -184,6 +184,8 @@ active = true
 parameters/playback = SubResource( 4 )
 
 [node name="AreaEnemy" type="Area" parent="."]
+script = ExtResource( 6 )
+character_name = "Girdeux"
 
 [node name="CollisionShape" type="CollisionShape" parent="AreaEnemy"]
 transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.1, 0, 0, 0 )
@@ -234,6 +236,8 @@ wait_time = 3.0
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
+[connection signal="body_entered" from="AreaEnemy" to="AreaEnemy" method="_on_NPC_body_entered"]
+[connection signal="body_exited" from="AreaEnemy" to="AreaEnemy" method="_on_NPC_body_exited"]
 [connection signal="body_entered" from="DetectDistance" to="." method="_on_DetectDistance_body_entered"]
 [connection signal="body_exited" from="DetectDistance" to="." method="_on_DetectDistance_body_exited"]
 [connection signal="area_entered" from="Weakspot" to="." method="_on_Weakspot_area_entered"]

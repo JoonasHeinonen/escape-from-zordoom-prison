@@ -11,7 +11,18 @@
 				"character-1690823647.json"
 			],
 			"folders": {
+				"Bosses": {
+					"files": [
+						"character-1691268889.json"
+					],
+					"folders": {
 
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				}
 			},
 			"metadata": {
 				"color": null,
@@ -51,7 +62,8 @@
 				"timeline-1681658674.json",
 				"timeline-1681659431.json",
 				"timeline-1690823931.json",
-				"timeline-1690824169.json"
+				"timeline-1690824169.json",
+				"timeline-1691269048.json"
 			],
 			"folders": {
 

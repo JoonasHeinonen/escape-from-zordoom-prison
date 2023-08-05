@@ -7,10 +7,13 @@ var npc_dialog_value : int = 0
 var mia_dialog_value : int = 0
 var girdeux_dialog_value : int = 0
 
+var player
 var dialog
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if (character_name == "Girdeux"):
+		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
 	connect("body_entered", self, "_on_NPC_body_entered")
 	connect("body_exited", self, "_on_NPC_body_exited")
 
@@ -40,11 +43,6 @@ func _input(event):
 						if npc_dialog_value > 4 and active:
 							npc_dialog_value = 4
 							active = false
-					"Girdeux":
-						girdeux_dialog_value += 1
-						if girdeux_dialog_value > 0 and active:
-							girdeux_dialog_value = 0
-							active = false
 	if (Globle.player_character == "Rivet"): 
 		if get_node_or_null('DialogNode') == null:
 			if Input.is_action_just_pressed("ui_accept") and active == true: 
@@ -69,15 +67,34 @@ func _input(event):
 						if npc_dialog_value > 4 and active:
 							npc_dialog_value = 4
 							active = false
-					"Girdeux":
-						girdeux_dialog_value += 1
-						if girdeux_dialog_value > 4 and active:
-							girdeux_dialog_value = 4
-							active = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$EnterButton.visible = active
+	if (self.has_node("EnterButton")):
+		$EnterButton.visible = active
+	# Automated dialogic logic is defined here.
+	if (Globle.player_character == "Rivet"): 
+		match(character_name):
+			"Girdeux":
+				if (player.boss_fight_active):
+					match(girdeux_dialog_value):
+						(0):
+							commence_dialog('timeline-girdeux')
+					girdeux_dialog_value += 1
+					if girdeux_dialog_value > 4 and active:
+						girdeux_dialog_value = 4
+						active = false
+	elif (Globle.player_character == "Angela"):
+		match(character_name):
+			"Girdeux":
+				if (player.boss_fight_active):
+					match(girdeux_dialog_value):
+						(0):
+							commence_dialog('timeline-girdeux')
+					girdeux_dialog_value += 1
+					if girdeux_dialog_value > 4 and active:
+						girdeux_dialog_value = 4
+						active = false
 
 ## Commences the dialog, pauses the game.
 func commence_dialog(timeline : String):

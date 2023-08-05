@@ -31,6 +31,8 @@ var state_machine
 
 var velocity = Vector3(0 ,0 ,0)
 
+var current_boss_name : String = ""
+
 var gravity = 4
 var jump = 5
 var bolt = 0
@@ -285,6 +287,7 @@ func init_boss_fight(
 	boss_max_health : int
 ):
 	var boss_hud_img_path = "res://resources/images/characters/npc/enemies/bosses/" + boss_data_name + "_boss_fight_icon.png"
+	current_boss_name = boss_name
 	# Prepare the UI.
 	if boss_fight_active: 
 		$PlayerUI/ui_boss_data/BossHealthBar.value = int(boss_health)
