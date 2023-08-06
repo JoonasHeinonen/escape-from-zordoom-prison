@@ -17,7 +17,6 @@ var timer = null
 func _ready():
 	element = elements.AIR
 	gravity = 0
-	direction = 1
 	speed = -90
 	timer = Timer.new()
 	timer.connect("timeout", self, "nef_head_shoot_time")
