@@ -31,7 +31,7 @@ const WPNS = [
 	]
 ]
 
-var player_character = "Rivet"
+var player_character = "Angela"
 # TODO Fix the player_weapons_ammo at some point to be WPNS[3].
 var player_weapons_ammo = [65, 40, 8, 12, 8, 25, -1, 15]
 

@@ -20,6 +20,7 @@ func _ready():
 	player = get_parent().get_parent().get_parent().get_node('player')
 
 func _physics_process(delta):
+	# When the boss is alerted.
 	if alerted && !in_range:
 		$FlamethrowerTimer.start()
 		$TurnTimer.start()
@@ -36,6 +37,11 @@ func _physics_process(delta):
 		else:
 			state_machine.travel("Enemy_Idle")
 	if alerted && in_range : state_machine.travel("Girdeux_Shoot")
+
+	# Do the jump logic after the boss is on wall.
+	if (is_on_wall()):
+		velocity.y = 20
+
 	move_and_slide(velocity, Vector3.UP)
 	
 func turn_head():
