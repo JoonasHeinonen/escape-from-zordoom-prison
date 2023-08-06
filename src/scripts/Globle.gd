@@ -31,12 +31,12 @@ const WPNS = [
 	]
 ]
 
-var player_character = "Angela"
 # TODO Fix the player_weapons_ammo at some point to be WPNS[3].
+var current_weapons = [
+	"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
+	"pulse_rifle", "ry3no", "sheepinator", "miniturret_glove"
+]
 var player_weapons_ammo = [65, 40, 8, 12, 8, 25, -1, 15]
-
-var bolts = 0
-
 var weapons_for_sale = [
 	"edge_blaster",
 	"blitz_gun",
@@ -47,23 +47,21 @@ var weapons_for_sale = [
 	"sheepinator",
 	"miniturret_glove"
 ]
-var current_weapons = [
-	"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
-	"pulse_rifle", "ry3no", "sheepinator", "miniturret_glove"
-]
 
-var player_inventory = false
-var vendor_open = false
-var vendor_active = false
 var melee_attack = false
+var player_inventory = false
+var vendor_active = false
+var vendor_open = false
+
+var bolts = 0
 
 var menu_to_return = "none"
+var player_character = "Angela"
 
 var spawn_point = Vector3(0 ,0, 0)
 
-# This func updates the postion of the spawn point that player starts in
-func update_spawn(new_point):
-	spawn_point = new_point
+## This func updates the postion of the spawn point that player starts in
+func update_spawn(new_point) : spawn_point = new_point
 
 # Not sure if we need this instance_node.
 func instance_node(node, location, parent):
@@ -72,7 +70,7 @@ func instance_node(node, location, parent):
 	node_instance.global_position = location
 	return node_instance
 
-# Updates the vendor after purchasing an item.
+## Updates the vendor after purchasing an item.
 func update_vendor():
 	var wpn_index : int = -1
 	for wpn_for_sale in weapons_for_sale:

@@ -1,11 +1,11 @@
 extends "res://src/scripts/npc/enemies/enemy_base.gd"
 
 onready var flame_projectile = preload("res://scenes/Projectiles/enemy_projectiles/flame.tscn")
-onready var explosion 		 = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
-onready var girdeux_body 	 = preload("res://scenes/NPC/Enemies/Bosses/GirdeuxBody.tscn")
+onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
+onready var girdeux_body = preload("res://scenes/NPC/Enemies/Bosses/GirdeuxBody.tscn")
 
-var damaged : bool 			 = false
-var max_health : int 		 = 0
+var damaged : bool = false
+var max_health : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

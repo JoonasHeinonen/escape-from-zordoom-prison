@@ -167,7 +167,7 @@ __meta__ = {
 }
 
 [node name="ArchDoors" parent="GridMap" instance=ExtResource( 16 )]
-transform = Transform( 0.999988, -0.00491553, 0.000144883, 0.00491564, 0.999988, -0.000747258, -0.0001412, 0.000747962, 1, 16.8183, -22.2771, -0.118112 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -16, 0 )
 
 [node name="destructibles" type="Node" parent="."]
 
