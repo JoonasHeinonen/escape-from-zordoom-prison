@@ -1,7 +1,6 @@
 extends KinematicBody
-
+#enter button is all wrong may have to redue it
 func _ready():
-	#loads texture through code
 	
 	pass # Replace with function body.
 

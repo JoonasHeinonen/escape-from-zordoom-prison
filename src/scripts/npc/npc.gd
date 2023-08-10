@@ -57,9 +57,7 @@ func _input(event):
 						npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if (self.has_node("EnterButton")):
-		$EnterButton.visible = active
+
 	# Automated dialogic logic is defined here.
 	if (Globle.player_character == "Rivet"): 
 		match(character_name):
