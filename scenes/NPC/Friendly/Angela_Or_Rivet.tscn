@@ -1,21 +1,37 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://resources/images/characters/player/angela/angela_sheet_init_finished.png" type="Texture" id=2]
 [ext_resource path="res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png" type="Texture" id=3]
 [ext_resource path="res://resources/images/ui/enter_key.png" type="Texture" id=4]
 
 [sub_resource type="BoxShape" id=1]
+
+[sub_resource type="BoxShape" id=2]
 
 [node name="NPC_Angela_Rivet" type="KinematicBody"]
 transform = Transform( -0.999967, 0, -0.00815064, 0, 1, 0, 0.00815064, 0, -0.999967, 0, 0, 0 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 shape = SubResource( 1 )
+disabled = true
 
-[node name="enter_button" type="Sprite3D" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.32344, 0 )
-texture = ExtResource( 4 )
+[node name="Angela_sprite" type="Sprite3D" parent="."]
+visible = false
+texture = ExtResource( 2 )
+hframes = 10
+vframes = 4
 
-[node name="Rivet_sprit" type="Sprite3D" parent="."]
+[node name="Rivet_sprite" type="Sprite3D" parent="."]
+visible = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
+
+[node name="Area" type="Area" parent="."]
+
+[node name="enter_button" type="Sprite3D" parent="Area"]
+transform = Transform( -1, 0, -8.75443e-08, 0, 1, 0, 8.75443e-08, 0, -1, 0, 0.32344, 0 )
+texture = ExtResource( 4 )
+
+[node name="DiscussionRadius" type="CollisionShape" parent="Area"]
+shape = SubResource( 2 )

@@ -135,8 +135,6 @@ texture = ExtResource( 11 )
 
 [node name="NPC_Angela_Rivet" parent="npc/friendly" instance=ExtResource( 23 )]
 transform = Transform( -3.5442, 0, -0.0288885, 0, 3.54432, 0, 0.00815064, 0, -0.999967, 55.1396, 0.926322, 0.0621955 )
-collision_layer = 0
-collision_mask = 0
 
 [node name="enemies" type="Node" parent="npc"]
 
