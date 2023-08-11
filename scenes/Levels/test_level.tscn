@@ -114,11 +114,6 @@ shape = SubResource( 21 )
 [node name="Mia" parent="npc/friendly" instance=ExtResource( 21 )]
 transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -30.7372, 7.20484, 0 )
 
-[node name="Angela_Or_Rivet" parent="npc/friendly" instance=ExtResource( 23 )]
-transform = Transform( -3.97947, 0.0257759, 0.00164065, 0, -0.252868, 3.97275, 0.102816, 0.997647, 0.0635009, 62.0885, -10.7785, -0.333966 )
-collision_layer = 0
-collision_mask = 0
-
 [node name="npc" type="Area" parent="npc/friendly"]
 transform = Transform( 1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 7.1613, 0.0711673, -1.50097 )
 script = ExtResource( 9 )
@@ -137,6 +132,11 @@ shape = SubResource( 14 )
 transform = Transform( 7.2616, 0, 0, 0, 1.29238, -4.59346, 0, -4.59346, 73.1668, 0, 0, 0 )
 billboard = 1
 texture = ExtResource( 11 )
+
+[node name="NPC_Angela_Rivet" parent="npc/friendly" instance=ExtResource( 23 )]
+transform = Transform( -3.5442, 0, -0.0288885, 0, 3.54432, 0, 0.00815064, 0, -0.999967, 55.1396, 0.926322, 0.0621955 )
+collision_layer = 0
+collision_mask = 0
 
 [node name="enemies" type="Node" parent="npc"]
 
@@ -291,7 +291,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 56.8281, -10.9429, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 51.5427, 0.985622, -0.000826359 )
 collision_layer = 5
 collision_mask = 5
 axis_lock_motion_x = false
