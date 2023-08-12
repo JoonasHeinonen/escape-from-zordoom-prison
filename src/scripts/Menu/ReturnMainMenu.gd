@@ -1,10 +1,9 @@
 extends Control
 
-onready var main_menu 			= get_parent().get_node("MainMenu")
+onready var main_menu = get_parent().get_node("MainMenu")
 
-onready var index_btn 			= $CenterContainer/VBoxContainer/BackButton
-onready var sec_index_btn 		= $CenterContainer/VBoxContainer/VBoxContainer/BackButton
-
+var index_btn
+var sec_index_btn
 var btn_to_return_to
 
 export (String, "StartGame", "LoadGame", "Options") var menus
@@ -12,6 +11,9 @@ export (String, "StartGame", "LoadGame", "Options") var menus
 # When gets pressed.
 func _on_BackButton_pressed():
 	$Audio/Click.play()
+	if (self.has_node('CenterContainer')) : index_btn = $CenterContainer/VBoxContainer/BackButton
+	if (self.has_node('CenterContainer')) : sec_index_btn = $CenterContainer/VBoxContainer/VBoxContainer/BackButton
+
 	match(get_tree().get_current_scene().get_name()):
 		"MainMenu":
 			self.visible = false

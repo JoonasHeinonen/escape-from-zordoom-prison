@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/Destructibles/Crates/explosive_crate.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Destructibles/Crates/bolt_crate.tscn" type="PackedScene" id=2]
@@ -8,9 +8,8 @@
 [ext_resource path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Blocks & World/Doors/Teleport.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/Blocks & World/Player/player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=9]
+[ext_resource path="res://scenes/NPC/Friendly/null_npc.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/images/environment/haerkonen.jpg" type="Texture" id=10]
-[ext_resource path="res://resources/images/ui/enter_key.png" type="Texture" id=11]
 [ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=12]
 [ext_resource path="res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Collectibles/ammo_can.tscn" type="PackedScene" id=14]
@@ -41,10 +40,6 @@ dof_blur_far_distance = 1.0
 dof_blur_far_transition = 4.69
 
 [sub_resource type="BoxShape" id=21]
-
-[sub_resource type="CapsuleMesh" id=13]
-
-[sub_resource type="BoxShape" id=14]
 
 [sub_resource type="BoxShape" id=18]
 extents = Vector3( 1.1457, 1, 1 )
@@ -111,29 +106,12 @@ shape = SubResource( 21 )
 
 [node name="friendly" type="Node" parent="npc"]
 
-[node name="Mia" parent="npc/friendly" instance=ExtResource( 21 )]
-transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -30.7372, 7.20484, 0 )
-
 [node name="Angela_Or_Rivet" parent="npc/friendly" instance=ExtResource( 23 )]
 
-[node name="npc" type="Area" parent="npc/friendly"]
-transform = Transform( 1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 7.1613, 0.0711673, -1.50097 )
-script = ExtResource( 9 )
-character_name = "Null NPC"
+[node name="Mia" parent="npc/friendly" instance=ExtResource( 21 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -30.223, 7.20073, -1.0241 )
 
-[node name="MeshInstance" type="MeshInstance" parent="npc/friendly/npc"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162291, -2.54972 )
-mesh = SubResource( 13 )
-skeleton = NodePath("../../..")
-
-[node name="CollisionShape" type="CollisionShape" parent="npc/friendly/npc"]
-transform = Transform( 1.488, 0, 0, 0, 3.171, 0, 0, 4.47035e-08, 1, 0, 0.174326, -2.73879 )
-shape = SubResource( 14 )
-
-[node name="EnterButton" type="Sprite3D" parent="npc/friendly/npc"]
-transform = Transform( 7.2616, 0, 0, 0, 1.29238, -4.59346, 0, -4.59346, 73.1668, 0, 0, 0 )
-billboard = 1
-texture = ExtResource( 11 )
+[node name="npc" parent="npc/friendly" instance=ExtResource( 9 )]
 
 [node name="enemies" type="Node" parent="npc"]
 
@@ -299,11 +277,11 @@ move_lock_y = false
 [node name="teleports" type="Node" parent="."]
 
 [node name="Teleport_A1" parent="teleports" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.626, -23.8973, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.626, -23.8999, 0 )
 teleport_index = "First"
 
 [node name="Teleport_A2" parent="teleports" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6881, 6.10404, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6881, 6.10031, 0 )
 teleport_index = "Second"
 
 [node name="Collectibles" type="Node" parent="."]

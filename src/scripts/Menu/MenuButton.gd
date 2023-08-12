@@ -2,16 +2,30 @@ extends Button
 
 export var scene_to_load : String
 
-onready var character_selection = get_parent().get_parent().get_parent().get_parent().get_node("CharacterSelection")
-onready var load_game 			= get_parent().get_parent().get_parent().get_parent().get_node("LoadGame")
-onready var options 			= get_parent().get_parent().get_parent().get_parent().get_node("Options")
-onready var main_menu 			= get_parent().get_parent().get_parent()
+onready var root_scene = get_parent().get_parent().get_parent() # Mainly, main menu.
 
-onready var c_s_r_b 			= get_parent().get_parent().get_parent().get_parent().get_node("CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton")
-onready var l_g_r_b 			= get_parent().get_parent().get_parent().get_parent().get_node("LoadGame/CenterContainer/VBoxContainer/BackButton")
-onready var o_r_b 				= get_parent().get_parent().get_parent().get_parent().get_node("Options/CenterContainer/VBoxContainer/BackButton")
+var character_selection
+var load_game
+var options
+
+var c_s_r_b
+var l_g_r_b
+var o_r_b
 
 func _ready():
+	if (root_scene.get_parent().has_node("CharacterSelection")):
+		character_selection = root_scene.get_parent().get_node("CharacterSelection")
+	if (root_scene.get_parent().has_node("LoadGame")):
+		load_game = root_scene.get_parent().get_node("LoadGame")
+	if (root_scene.get_parent().has_node("Options")):
+		options = root_scene.get_parent().get_node("Options")
+	if (root_scene.get_parent().has_node("CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton")):
+		c_s_r_b = root_scene.get_parent().get_node("CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton")
+	if (root_scene.get_parent().has_node("LoadGame/CenterContainer/VBoxContainer/BackButton")):
+		l_g_r_b = root_scene.get_parent().get_node("LoadGame/CenterContainer/VBoxContainer/BackButton")
+	if (root_scene.get_parent().has_node("Options/CenterContainer/VBoxContainer/BackButton")):
+		o_r_b = root_scene.get_parent().get_node("Options/CenterContainer/VBoxContainer/BackButton")
+
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
@@ -30,7 +44,7 @@ func set_scene_to_load(scl):
 # Swap the visible menu nodes.
 func set_menu_nodes(control : Control, index_button : Button):
 	control.visible   = true
-	main_menu.visible = false
+	root_scene.visible = false
 	index_button.grab_focus()
 
 func _on_LevelButton_pressed():
