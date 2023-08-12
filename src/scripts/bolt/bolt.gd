@@ -78,16 +78,15 @@ func _physics_process(delta):
 		for sub_body in sub_bodies:
 			# Checks that the body is 'player'.
 			if sub_body.name == "player":
-				# Makes sure that every number is random
-				random.randomize()
-				var count_boults = get_parent().get_node("player").bolt + random.randi_range(10, 100)
-				# Grabes the bolt amout
-				Globle.bolts += count_boults
-				
 				# Plays the bolt sound on the player's instance.
 				if sub_body.has_method("collect_collectible"):
 					match(type):
 						"bolt":
+							# Makes sure that every number is random
+							random.randomize()
+							var count_boults = get_parent().get_node("player").bolt + random.randi_range(5, 10)
+							# Grabes the bolt amout
+							Globle.bolts += count_boults
 							sub_body.collect_collectible(random.randi_range(0, 2), "bolt")
 							queue_free()
 						"ammo":
