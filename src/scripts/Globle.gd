@@ -56,7 +56,7 @@ var vendor_open = false
 var bolts = 0
 
 var menu_to_return = "none"
-var player_character = "Angela"
+var player_character = "Rivet"
 
 var spawn_point = Vector3(0 ,0, 0)
 
