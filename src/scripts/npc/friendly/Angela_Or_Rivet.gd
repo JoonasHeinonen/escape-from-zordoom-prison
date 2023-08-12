@@ -6,6 +6,6 @@ func _ready():
 
 func _input(event):
 	if (Globle.player_character == "Angela"):
-		$CharacterSprite_Angela.hide()
+		$Rivet_sprite.show()
 	if (Globle.player_character == "Rivet"):
-		$CharacterSprite_Rivet.hide()
+		$Angela_sprite.show()

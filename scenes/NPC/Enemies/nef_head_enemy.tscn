@@ -198,6 +198,7 @@ states/Enemy_Damage/position = Vector2( 408, 83 )
 states/Enemy_Idle/node = SubResource( 36 )
 states/Enemy_Idle/position = Vector2( 161, 83 )
 transitions = [ "Enemy_Idle", "Enemy_Damage", SubResource( 37 ), "Enemy_Damage", "Enemy_Idle", SubResource( 38 ) ]
+start_node = "Enemy_Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 

@@ -1,11 +1,13 @@
 extends Area
 
-export(String, "Mia", "Null NPC", "Girdeux") var character_name
+export(String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet") var character_name
 
 var active : bool = false
 var npc_dialog_value : int = 0
 var mia_dialog_value : int = 0
 var girdeux_dialog_value : int = 0
+# clean up varable to have lower case
+var NPC_Angela_Rivet_dialog_value : int = 0
 
 var player
 var dialog
@@ -16,7 +18,10 @@ func _ready():
 		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
 	connect("body_entered", self, "_on_NPC_body_entered")
 	connect("body_exited", self, "_on_NPC_body_exited")
-
+	
+func _process(delta):
+	if (self.has_node("EnterButton")):
+		$EnterButton.visible = active
 # Called when there is an input event.
 func _input(event):
 	if (Globle.player_character == "Angela"):
@@ -37,6 +42,12 @@ func _input(event):
 							(4):
 								commence_dialog('timeline-3')
 						npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
+					"NPC_Angela_Rivet":
+							match(NPC_Angela_Rivet_dialog_value):
+								(0):
+									commence_dialog('timeline_Rivet_npc_1')
+							NPC_Angela_Rivet_dialog_value = process_dialog_value(NPC_Angela_Rivet_dialog_value, 2)
+							
 	if (Globle.player_character == "Rivet"): 
 		if get_node_or_null('DialogNode') == null:
 			if Input.is_action_just_pressed("ui_accept") and active == true: 
@@ -55,7 +66,11 @@ func _input(event):
 							(4):
 								commence_dialog('timeLine-Rivet-3')
 						npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
-
+					"NPC_Angela_Rivet":
+							match(NPC_Angela_Rivet_dialog_value):
+								(0):
+									commence_dialog('timeline_Angela_npc_1')
+							NPC_Angela_Rivet_dialog_value = process_dialog_value(NPC_Angela_Rivet_dialog_value, 2)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 	# Automated dialogic logic is defined here.
@@ -75,6 +90,8 @@ func _input(event):
 						(0):
 							commence_dialog('timeline-girdeux')
 					girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 4)
+	
+							
 
 ## Process the dialog values for dialogs.
 func process_dialog_value(dialog_value : int, max_value : int):
