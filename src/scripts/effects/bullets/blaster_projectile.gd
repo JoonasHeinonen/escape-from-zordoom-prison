@@ -1,19 +1,15 @@
-extends RigidBody
+extends ProjectileBase
 
 onready var projectile_effect 				= preload("res://scenes/Effects/ProjectileEffects/BlasterProjectileEffect.tscn")
 onready var blaster_projectile_explosion 	= preload("res://scenes/Effects/ProjectileEffects/BlasterProjectileExplosion.tscn")
 onready var miniturret_projectile_explosion = preload("res://scenes/Effects/ProjectileEffects/MiniturretProjectileExplosion.tscn")
 
-var speed = 8
-var velocity = Vector3(0, 0, 0)
-
 export (String, "blaster", "miniturret") var weapon
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$KillTimer.connect("timeout", self, "_on_KillTimer_timeout")
-	$KillTimer.start()
-
+	velocity = Vector3(0, 0, 0)
+	speed = 8
 	# Set the combustion effect, if the projectile is blaster.
 	if (weapon == "blaster"):
 		$CombustionTimer.connect("timeout", self, "_on_CombustionTimer_timeout")
@@ -38,10 +34,6 @@ func _on_Area_body_entered(body):
 			explosion.global_transform = $Explosion.global_transform
 			explosion.rotation = Vector3.ZERO
 			queue_free()
-
-# Run when KillTimer has timed out.
-func _on_KillTimer_timeout():
-	queue_free()
 
 # Run when CombustionTimer has timed out.
 func _on_CombustionTimer_timeout():

@@ -63,6 +63,6 @@ func _physics_process(delta):
 				queue_free()
 
 # Changes the texture of the gun.
-func set_weapon_image(weapon_name: String):
-	var weapon_sprite_path = "res://resources/images/weapons/" + weapon_name + ".png"
+func set_weapon_image(wpn_name: String):
+	var weapon_sprite_path = "res://resources/images/weapons/" + wpn_name + ".png"
 	sprite.texture = load(weapon_sprite_path)

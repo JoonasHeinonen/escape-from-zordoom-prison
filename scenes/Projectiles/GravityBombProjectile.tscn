@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/images/effects/projectiles/gravity_bomb_projectile.png" type="Texture" id=1]
-[ext_resource path="res://src/scripts/effects/bullets/GravityBombProjectile.gd" type="Script" id=2]
+[ext_resource path="res://src/scripts/effects/bullets/gravity_bomb_projectile.gd" type="Script" id=2]
 
 [sub_resource type="PhysicsMaterial" id=2]
 bounce = 0.5
@@ -29,7 +29,7 @@ disabled = true
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.289351, 0, 0 )
 
 [node name="KillTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 6.0
 autostart = true
 
 [node name="GravityBombArea" type="Area" parent="."]

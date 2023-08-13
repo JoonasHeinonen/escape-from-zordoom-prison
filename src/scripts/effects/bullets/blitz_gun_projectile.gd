@@ -1,22 +1,15 @@
-extends RigidBody
-#make spread move then code hit box
-#https://www.youtube.com/watch?v=2G41KECXXn4
-#look at this for trying to get bullet 1 to move
-var speed = 8
-var velocity = Vector3(0,0,0)
+extends ProjectileBase
+# Make spread move then code hit box.
+# https://www.youtube.com/watch?v=2G41KECXXn4
+# Look at this for trying to get bullet 1 to move
 
 onready var projectile_effect = preload("res://scenes/Effects/ProjectileEffects/BlasterProjectileEffect.tscn")
 onready var projectile_explosion = preload("res://scenes/Effects/ProjectileEffects/BlitzGunProjectileExplosion.tscn")
 
 func _ready():
-	$KillTimer.connect("timeout", self, "_on_KillTimer_timeout")
-	$KillTimer.start()
+	velocity = Vector3(0, 0, 0)
+	speed = 8
 	set_physics_process(true)
-	pass
-
-# Run when KillTimer has timed out.
-func _on_KillTimer_timeout():
-	queue_free()
 
 func _physics_process(delta):
 	velocity.x = speed * delta * 1

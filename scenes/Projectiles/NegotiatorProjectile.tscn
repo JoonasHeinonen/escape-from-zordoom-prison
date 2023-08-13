@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://src/scripts/effects/bullets/Negotiator_Projectile.gd" type="Script" id=2]
+[ext_resource path="res://src/scripts/effects/bullets/negotiator_projectile.gd" type="Script" id=2]
 
 [sub_resource type="StreamTexture" id=3]
-flags = 23
+flags = 19
 load_path = "res://.import/negotiator_projectile.png-12bd8a70a7b5b584b87fa823f4394543.s3tc.stex"
 
 [sub_resource type="BoxShape" id=1]
@@ -29,7 +29,7 @@ disabled = true
 transform = Transform( 0.999946, 0.0103496, 0, -0.0103496, 0.999946, 0, 0, 0, 1, 0.321947, 0, 0 )
 
 [node name="KillTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 6.0
 autostart = true
 
 [node name="ProjectileArea" type="Area" parent="."]

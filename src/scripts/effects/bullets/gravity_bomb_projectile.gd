@@ -1,17 +1,14 @@
-extends RigidBody
+extends ProjectileBase
 
 onready var gravity_bomb_explosion = preload("res://scenes/Effects/ProjectileEffects/GravityBombExplosion.tscn")
 onready var minigun_turret 		   = preload("res://scenes/NPC/Friendly/miniturret.tscn")
 
 export (String, "gravity_bomb_projectile", "miniturret_projectile") var projectile_type
 
-var velocity = Vector3(1, -1, 0)
-
 # https://www.youtube.com/watch?v=p6OQ7XVsiKw
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$KillTimer.connect("timeout", self, "_on_KillTimer_timeout")
-	$KillTimer.start()
+	velocity = Vector3(1, -1, 0)
 	apply_impulse(Vector3.ZERO,velocity * 8)
 
 #https://www.youtube.com/watch?v=F1Fyj3Lh_Pc&t=239s
