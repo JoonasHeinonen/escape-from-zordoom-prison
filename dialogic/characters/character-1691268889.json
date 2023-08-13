@@ -5,11 +5,11 @@
 	"display_name_bool": false,
 	"id": "character-1691268889.json",
 	"mirror_portraits": false,
-	"name": "girdeux",
+	"name": "Girdeux",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": 0,
+	"offset_y": -200,
 	"portraits": [
 		{
 			"name": "Default",
@@ -17,5 +17,5 @@
 		}
 	],
 	"scale": 100,
-	"theme": ""
+	"theme": "default-theme.cfg"
 }

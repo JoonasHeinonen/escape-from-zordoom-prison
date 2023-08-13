@@ -128,11 +128,12 @@ func define_refillable_wpn(wpn_name : String, body : KinematicBody):
 
 ## Check the weapon statistics.
 func check_weapon_stats(wpn_name : String, index : int, body : KinematicBody, ammo : int):
-	if (Globle.player_weapons_ammo[index] < Globle.WPNS[3][index]):
-		if (Globle.player_weapons_ammo[index] < Globle.WPNS[3][index]):
-			Globle.player_weapons_ammo[index] = Globle.WPNS[3][index]
-		else:
-			Globle.player_weapons_ammo[index] += ammo
-	body.ui_notification_msg(ammo, wpn_name)
+	var dynamic_ammo = ammo - ((Globle.player_weapons_ammo[index] + ammo) - Globle.WPNS[3][index])
+	if (dynamic_ammo >= ammo) : dynamic_ammo = ammo
+	if (Globle.player_weapons_ammo[index] > Globle.WPNS[3][index]):
+		Globle.player_weapons_ammo[index] = Globle.WPNS[3][index]
+	else:
+		Globle.player_weapons_ammo[index] += dynamic_ammo
+	body.ui_notification_msg(dynamic_ammo, wpn_name)
 	body.collect_collectible(random.randi_range(0, 1), "ammo")
 	queue_free()
