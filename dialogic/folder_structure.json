@@ -7,10 +7,22 @@
 			"files": [
 				"character-1660859944.json",
 				"character-1660859986.json",
-				"character-1681588545.json"
+				"character-1681588545.json",
+				"character-1690823647.json"
 			],
 			"folders": {
+				"Bosses": {
+					"files": [
+						"character-1691268889.json"
+					],
+					"folders": {
 
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				}
 			},
 			"metadata": {
 				"color": null,
@@ -46,12 +58,25 @@
 				"timeline-1660859960.json",
 				"timeline-1660862297.json",
 				"timeline-1661043200.json",
-				"timeline-1681588556.json",
-				"timeline-1681658674.json",
-				"timeline-1681659431.json"
+				"timeline-1690823931.json",
+				"timeline-1690824169.json",
+				"timeline-1691269048.json"
 			],
 			"folders": {
+				"npc_basic": {
+					"files": [
+						"timeline-1681588556.json",
+						"timeline-1681658674.json",
+						"timeline-1681659431.json"
+					],
+					"folders": {
 
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				}
 			},
 			"metadata": {
 				"color": null,

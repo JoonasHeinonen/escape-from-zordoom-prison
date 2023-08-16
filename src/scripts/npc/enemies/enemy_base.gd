@@ -2,15 +2,15 @@ extends KinematicBody
 
 onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
-enum elements {GROUND, WATER, AIR}
+enum elements {GROUND, WATER, AIR, STATIC}
 
 export(String, "Right", "Left") var direction
-export var armored      : bool = false
+export var armored : bool = false
 export var enemy_health : int = 10
 export var enemy_speed : int = 10
 
-var alerted   : bool 		  = false
-var in_range  : bool 		  = false
+var alerted : bool = false
+var in_range : bool = false
 
 var gravity : int
 var speed : int
@@ -24,7 +24,7 @@ var player
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	element = elements.GROUND
+	element = elements.STATIC
 	meta_name = "enemy"
 	state_machine = $EnemyAnimationTree.get("parameters/playback")
 	animation_player = $EnemyAnimationPlayer
@@ -49,13 +49,21 @@ func _physics_process(delta):
 		elements.GROUND:
 			if not is_on_floor() : velocity.y = -4
 			move_and_slide(velocity, Vector3.UP)
+		elements.STATIC:
+			if not is_on_floor() : velocity.y = -4
+			move_and_slide(velocity, Vector3.UP)
 		elements.AIR:
 			velocity.y = gravity
-			velocity.x = speed * direction
+			velocity.x = speed * 1
 			move_and_slide(velocity * delta)
 
 # Called when damage is dealt to the enemy.
 func damage_enemy(health : int):
+	if (element == elements.STATIC):
+		if (player.translation.x > self.translation.x):
+			decide_direction("Left")
+		elif (player.translation.x < self.translation.x):
+			decide_direction("Right")
 	enemy_health -= health
 
 # Decide the direction which the enemy takes.
@@ -67,7 +75,7 @@ func decide_direction(d : String):
 		$EnemySprite.flip_h = true
 		self.scale.x = -1
 
-# Turn enemy towards the player once he's alerted.
+## Turn enemy towards the player once he's alerted.
 func turn_enemy(player_x : float, enemy_x : float):
 	if (player_x > enemy_x):
 		direction = "Right"

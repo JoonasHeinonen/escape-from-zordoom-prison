@@ -1,14 +1,16 @@
 extends "res://src/scripts/npc/enemies/enemy_base.gd"
 
 onready var flame_projectile = preload("res://scenes/Projectiles/enemy_projectiles/flame.tscn")
-onready var explosion 		 = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
-onready var girdeux_body 	 = preload("res://scenes/NPC/Enemies/Bosses/GirdeuxBody.tscn")
+onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
+onready var girdeux_body = preload("res://scenes/NPC/Enemies/Bosses/GirdeuxBody.tscn")
 
-var damaged : bool 			 = false
-var max_health : int 		 = 0
+var damaged : bool = false
+var player_is_nearby : bool = false
+var max_health : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	element = elements.GROUND
 	# Determine the boss's health according to the name given.
 	match self.name:
 		"Girdeux":
@@ -20,6 +22,7 @@ func _ready():
 	player = get_parent().get_parent().get_parent().get_node('player')
 
 func _physics_process(delta):
+	# When the boss is alerted.
 	if alerted && !in_range:
 		$FlamethrowerTimer.start()
 		$TurnTimer.start()
@@ -36,6 +39,11 @@ func _physics_process(delta):
 		else:
 			state_machine.travel("Enemy_Idle")
 	if alerted && in_range : state_machine.travel("Girdeux_Shoot")
+
+	# Do the jump logic after the boss is on wall.
+	if (is_on_wall() && !player_is_nearby):
+		velocity.y = 20
+
 	move_and_slide(velocity, Vector3.UP)
 	
 func turn_head():
@@ -90,3 +98,11 @@ func _on_Weakspot_area_entered(area):
 
 func _on_Weakspot_body_entered(body):
 	pass
+
+func _on_AreaEnemy_body_entered(body):
+	if (body.name == "player"):
+		player_is_nearby = true
+
+func _on_AreaEnemy_body_exited(body):
+	if (body.name == "player"):
+		player_is_nearby = false

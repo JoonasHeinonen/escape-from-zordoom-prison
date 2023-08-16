@@ -5,11 +5,11 @@
 	"display_name_bool": false,
 	"id": "character-1660859944.json",
 	"mirror_portraits": false,
-	"name": "npc1",
+	"name": "NPC",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": 0,
+	"offset_y": -200,
 	"portraits": [
 		{
 			"name": "Default",

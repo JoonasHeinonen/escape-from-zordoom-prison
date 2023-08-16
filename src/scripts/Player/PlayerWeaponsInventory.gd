@@ -20,7 +20,7 @@ func _ready():
 	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# Hide / show the mouse and the active aiming radical.
 	if (self.visible):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -32,7 +32,8 @@ func _input(event):
 		if event.is_action_pressed("ui_inventory"):
 			determine_pause(true, 0, false)
 			show()
-			determine_active_item(player.current_weapon)
+			if (player.current_weapon != null):
+				determine_active_item(player.current_weapon)
 		if event.is_action_released("ui_inventory"):
 			determine_pause(false, 1, true)
 			hide()
@@ -40,13 +41,12 @@ func _input(event):
 			if Globle.player_inventory:
 				for weapon_slot in weapon_slots:
 					if (weapon_slot.has_focus()):
-						var texture : TextureRect
 						var slot_texture = weapon_slot.get_node("SlotTexture")
 						if slot_texture.texture != null:
 							# Pick the player's weapon directly from the inventory.
 							match weapon_slot.name:
 								"WeaponSlot1":
-									player.current_weapon = "blaster"
+									player.current_weapon = "edge_blaster"
 								"WeaponSlot2":
 									player.current_weapon = "blitz_gun"
 								"WeaponSlot3":

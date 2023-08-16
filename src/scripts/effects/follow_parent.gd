@@ -1,9 +1,9 @@
 extends Particles
 
 onready var expire_timer = $ExpireTimer
-onready var player 		 = get_parent().get_parent()
+onready var player = get_parent().get_parent()
 
-var parent 				 = null
+var parent = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,17 +1,17 @@
 extends Area
 
-onready var sprite  = $Sprite3D
-onready var player  = $Player
+onready var sprite = $Sprite3D
+onready var player = get_parent().get_parent().get_node("player")
 
 export(String, "edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
 	"pulse_rifle", "ry3no", "sheepinator") var weapon
 
-var get_magnet 	  	= false
+var get_magnet = false
 
 var weapon_name
 
 # Adding a random number.
-var random 	  = RandomNumberGenerator.new()
+var random = RandomNumberGenerator.new()
 
 func _ready():
 	# Destroy the object, if the item already exists in the inventory.
@@ -46,7 +46,7 @@ func _physics_process(delta):
 	for body in bodies:
 		if body.name == "AreaPlayer":
 			get_magnet = true
-			translation += (get_parent().get_node("player").translation-translation) / 5
+			translation += (player.translation-translation) / 5
 		var bodies2 = get_overlapping_bodies()
 		for bod in bodies2:
 			# Adds the item to the player's inventory.
@@ -57,9 +57,12 @@ func _physics_process(delta):
 					if wpn_for_sale == weapon:
 						Globle.weapons_for_sale.remove(wpn_index)
 				Globle.current_weapons.append(weapon)
+				if (player.current_weapon == null):
+					player.current_weapon = weapon
+					player.change_weapon_texture(weapon)
 				queue_free()
 
 # Changes the texture of the gun.
-func set_weapon_image(weapon_name: String):
-	var weapon_sprite_path = "res://resources/images/weapons/" + weapon_name + ".png"
+func set_weapon_image(wpn_name: String):
+	var weapon_sprite_path = "res://resources/images/weapons/" + wpn_name + ".png"
 	sprite.texture = load(weapon_sprite_path)

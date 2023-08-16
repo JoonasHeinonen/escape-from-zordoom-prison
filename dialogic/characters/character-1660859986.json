@@ -5,17 +5,17 @@
 	"display_name_bool": false,
 	"id": "character-1660859986.json",
 	"mirror_portraits": false,
-	"name": "angela",
+	"name": "Angela",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": 0,
+	"offset_y": -200,
 	"portraits": [
 		{
 			"name": "Default",
 			"path": "res://resources/images/characters/player/angela/angela_talking_head1.png"
 		}
 	],
-	"scale": 40,
+	"scale": 100,
 	"theme": "default-theme.cfg"
 }

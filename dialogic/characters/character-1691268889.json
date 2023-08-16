@@ -1,0 +1,21 @@
+{
+	"color": "#ffff0000",
+	"description": "",
+	"display_name": "",
+	"display_name_bool": false,
+	"id": "character-1691268889.json",
+	"mirror_portraits": false,
+	"name": "Girdeux",
+	"nickname": "",
+	"nickname_bool": false,
+	"offset_x": 0,
+	"offset_y": -200,
+	"portraits": [
+		{
+			"name": "Default",
+			"path": "res://resources/images/characters/npc/enemies/bosses/girdeux_talking_head1.png"
+		}
+	],
+	"scale": 100,
+	"theme": "default-theme.cfg"
+}
