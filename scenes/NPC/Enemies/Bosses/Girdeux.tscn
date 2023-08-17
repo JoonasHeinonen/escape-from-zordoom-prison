@@ -198,7 +198,7 @@ transform = Transform( 5, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 26 )
 
 [node name="RayCast" type="RayCast" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668297, 0.518436, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.668297, 0.318436, 0 )
 enabled = true
 cast_to = Vector3( 10, 0, 0 )
 script = ExtResource( 3 )
@@ -236,8 +236,8 @@ wait_time = 3.0
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
-[connection signal="body_entered" from="AreaEnemy" to="AreaEnemy" method="_on_NPC_body_entered"]
-[connection signal="body_exited" from="AreaEnemy" to="AreaEnemy" method="_on_NPC_body_exited"]
+[connection signal="body_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_body_entered"]
+[connection signal="body_exited" from="AreaEnemy" to="." method="_on_AreaEnemy_body_exited"]
 [connection signal="body_entered" from="DetectDistance" to="." method="_on_DetectDistance_body_entered"]
 [connection signal="body_exited" from="DetectDistance" to="." method="_on_DetectDistance_body_exited"]
 [connection signal="area_entered" from="Weakspot" to="." method="_on_Weakspot_area_entered"]

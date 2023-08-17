@@ -1,14 +1,12 @@
-extends RigidBody
+extends ProjectileBase
 
-var speed = 8
-var velocity = Vector3(0,0,0)
 onready var projectile_explosion = preload("res://scenes/Effects/ProjectileEffects/NegotiatorExplosion.tscn")
 
 func _ready():
-	$KillTimer.connect("timeout", self, "_on_KillTimer_timeout")
-	$KillTimer.start()
+	velocity = Vector3(0, 0, 0)
 
 func _physics_process(delta):
+	speed = 16
 	velocity.x = speed * delta * 1
 	translate(velocity)
 

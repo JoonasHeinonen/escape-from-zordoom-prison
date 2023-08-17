@@ -14,7 +14,6 @@ onready var gun_btn = preload("res://scenes/UI/VendorWeaponButton.tscn")
 
 onready var angela_arm = $AngelaArm
 onready var rivet_arm = $RivetArm
-onready var camera = $Camera
 onready var ui_timer = $PlayerUI/ui_notification/Ui_Timer
 onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
@@ -238,7 +237,7 @@ func _process(delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	# Play fade in effect if the player's dead.
-	if player_health == 0:
+	if player_health <= 0:
 		$PlayerUI.hide()
 		$FadeIn.show()
 		$FadeIn.fade_in()
@@ -385,7 +384,7 @@ func change_weapon_texture(weapon_name : String):
 	gun_instance.show()
 
 # Walking functionality.
-func walk(vel, scale, mesh_translation):
+func walk(vel, scale, _mesh_translation):
 	state_machine.travel("Player_Walk")
 	velocity.x = vel
 	if (Globle.player_character == "Angela"):

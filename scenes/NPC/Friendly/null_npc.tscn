@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=1]
+[ext_resource path="res://resources/images/ui/enter_key.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleMesh" id=13]
+
+[sub_resource type="BoxShape" id=14]
+
+[node name="npc" type="Area"]
+transform = Transform( 1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 7.1613, 0.0711673, -1.50097 )
+script = ExtResource( 1 )
+character_name = "Null NPC"
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162291, -2.54972 )
+mesh = SubResource( 13 )
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1.488, 0, 0, 0, 3.171, 0, 0, 4.47035e-08, 1, 0, 0.174326, -2.73879 )
+shape = SubResource( 14 )
+
+[node name="EnterButton" type="Sprite3D" parent="."]
+transform = Transform( 7.2616, 0, 0, 0, 1.29238, -4.59346, 0, -4.59346, 73.1668, 0, 0, 0 )
+billboard = 1
+texture = ExtResource( 2 )

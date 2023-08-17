@@ -28,11 +28,9 @@ func _ready():
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Changes the direction .
 	for i in get_slide_count():
-		var slide_collision = get_slide_collision(i)
-		var collider = slide_collision.get_collider()
 		if  is_on_wall() :
 			$EnemyAnimationPlayer.play("Enemy_Turn_Right")
 			speed *= -1

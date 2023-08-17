@@ -5,6 +5,7 @@ onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateE
 onready var girdeux_body = preload("res://scenes/NPC/Enemies/Bosses/GirdeuxBody.tscn")
 
 var damaged : bool = false
+var player_is_nearby : bool = false
 var max_health : int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -40,7 +41,7 @@ func _physics_process(delta):
 	if alerted && in_range : state_machine.travel("Girdeux_Shoot")
 
 	# Do the jump logic after the boss is on wall.
-	if (is_on_wall()):
+	if (is_on_wall() && !player_is_nearby):
 		velocity.y = 20
 
 	move_and_slide(velocity, Vector3.UP)
@@ -97,3 +98,11 @@ func _on_Weakspot_area_entered(area):
 
 func _on_Weakspot_body_entered(body):
 	pass
+
+func _on_AreaEnemy_body_entered(body):
+	if (body.name == "player"):
+		player_is_nearby = true
+
+func _on_AreaEnemy_body_exited(body):
+	if (body.name == "player"):
+		player_is_nearby = false

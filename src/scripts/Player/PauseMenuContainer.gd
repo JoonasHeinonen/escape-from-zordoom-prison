@@ -11,7 +11,7 @@ func _ready():
 	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if (self.visible):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

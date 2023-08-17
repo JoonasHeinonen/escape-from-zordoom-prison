@@ -36,7 +36,7 @@ func _ready():
 	for button in $CenterContainer/Buttons.get_children():
 		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	camera.rotation += Vector3(0.001, 0.002, 0)
 
 # Loads the scene defined to a particular button.
