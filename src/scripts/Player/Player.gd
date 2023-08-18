@@ -44,6 +44,7 @@ var boss_fight_active : bool = false
 var in_teleport_radius : bool = false
 var player_double_jump : bool = false
 var player_double_jump_used : bool = false
+var player_is_aiming_with_rifle : bool = false
 
 # Weapon variables, if player has such weapon.
 var current_weapon = null
@@ -96,7 +97,7 @@ func _ready():
 	
 	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
-		current_weapon = "edge_blaster"
+		current_weapon = "pulse_rifle"
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	# The spawn code for the player
@@ -144,7 +145,7 @@ func _physics_process(delta):
 		_:
 			gun_instance.hide()
 
-	if player_health > 0 && !Globle.player_inventory:
+	if player_health > 0 && !Globle.player_inventory && !player_is_aiming_with_rifle:
 		# Melee attack.
 		if Input.is_action_pressed("ui_melee_attack"):
 			# Disable Rivet's melee attack for now.
@@ -197,11 +198,13 @@ func _physics_process(delta):
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
-
-	#  Rivet's melee attack
-	if Globle.player_character == "Rivet":
-		if Input.is_action_just_released("ui_melee_attack"):
-			Globle.melee_attack = false
+	
+	# Aim, but when the current weapon is pulse rifle.
+	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
+		if (current_weapon == "pulse_rifle"):
+			player_is_aiming_with_rifle = true
+	elif Input.is_action_just_released("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
+			player_is_aiming_with_rifle = false
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta

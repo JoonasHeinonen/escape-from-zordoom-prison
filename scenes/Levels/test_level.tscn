@@ -54,7 +54,7 @@ extents = Vector3( 1.1457, 1, 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4071, -11.2671, 0 )
 
 [node name="ammo_can5" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1608, -1.54334, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4892, -30.4048, 0 )
 
 [node name="ammo_can4" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9706, -1.60882, 0 )
@@ -127,7 +127,7 @@ collision_layer = 9
 collision_mask = 9
 
 [node name="Enemy" parent="npc/enemies" instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0205, -1.01605, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100346, -2.61302, 0 )
 
 [node name="Enemy2" parent="npc/enemies" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0 )
@@ -269,7 +269,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -15.822, -14.809, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 0 )
 collision_layer = 5
 collision_mask = 5
 axis_lock_motion_x = false
