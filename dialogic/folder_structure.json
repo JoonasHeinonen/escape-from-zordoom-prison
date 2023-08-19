@@ -8,7 +8,8 @@
 				"character-1660859944.json",
 				"character-1660859986.json",
 				"character-1681588545.json",
-				"character-1690823647.json"
+				"character-1690823647.json",
+				"character-1691861071.json"
 			],
 			"folders": {
 				"Bosses": {
@@ -26,7 +27,7 @@
 			},
 			"metadata": {
 				"color": null,
-				"folded": false
+				"folded": true
 			}
 		},
 		"Definitions": {
@@ -63,6 +64,19 @@
 				"timeline-1691269048.json"
 			],
 			"folders": {
+				"Rivet": {
+					"files": [
+						"timeline-1691861093.json",
+						"timeline-1691863217.json"
+					],
+					"folders": {
+
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
+					}
+				},
 				"npc_basic": {
 					"files": [
 						"timeline-1681588556.json",
@@ -74,7 +88,7 @@
 					},
 					"metadata": {
 						"color": null,
-						"folded": false
+						"folded": true
 					}
 				}
 			},
