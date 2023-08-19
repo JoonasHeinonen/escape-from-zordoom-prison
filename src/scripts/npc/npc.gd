@@ -18,10 +18,12 @@ func _ready():
 		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
 	connect("body_entered", self, "_on_NPC_body_entered")
 	connect("body_exited", self, "_on_NPC_body_exited")
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active
+		
 # Called when there is an input event.
 func _input(event):
 	if (Globle.player_character == "Angela"):
@@ -71,7 +73,6 @@ func _input(event):
 							(0):
 								commence_dialog('timeline_Angela_npc_1')
 						npc_Angela_Rivet_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 2)
-
 
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active
