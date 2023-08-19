@@ -43,10 +43,10 @@ func _input(event):
 								commence_dialog('timeline-3')
 						npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
 					"NPC_Angela_Rivet":
-							match(npc_Angela_Rivet_dialog_value):
-								(0):
-									commence_dialog('timeline_Rivet_npc_1')
-							npc_Angela_Rivet_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 2)
+						match(npc_Angela_Rivet_dialog_value):
+							(0):
+								commence_dialog('timeline_Rivet_npc_1')
+						npc_Angela_Rivet_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 2)
 							
 	if (Globle.player_character == "Rivet"): 
 		if get_node_or_null('DialogNode') == null:
@@ -67,10 +67,10 @@ func _input(event):
 								commence_dialog('timeLine-Rivet-3')
 						npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
 					"NPC_Angela_Rivet":
-							match(npc_Angela_Rivet_dialog_value):
-								(0):
-									commence_dialog('timeline_Angela_npc_1')
-							npc_Angela_Rivet_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 2)
+						match(npc_Angela_Rivet_dialog_value):
+							(0):
+								commence_dialog('timeline_Angela_npc_1')
+						npc_Angela_Rivet_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 2)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 	# Automated dialogic logic is defined here.
@@ -90,8 +90,6 @@ func _input(event):
 						(0):
 							commence_dialog('timeline-girdeux')
 					girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 4)
-	
-							
 
 ## Process the dialog values for dialogs.
 func process_dialog_value(dialog_value : int, max_value : int):
