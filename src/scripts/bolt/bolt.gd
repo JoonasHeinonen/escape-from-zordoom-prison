@@ -46,7 +46,7 @@ func _ready():
 			$Sprite3D.set_texture(resource)
 
 # Called during the physics processing step of the main loop.
-func _physics_process(delta):
+func _physics_process(_delta):
 	# Makes the bolts fall due to the y axis
 	if !get_magnet : translation.y
 

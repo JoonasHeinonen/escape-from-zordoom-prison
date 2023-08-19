@@ -1,22 +1,24 @@
 extends Control
 
-onready var player       = get_parent().get_parent()
-onready var weapon_slots = [
-	$MenuContainer/WeaponSlot1,
-	$MenuContainer/WeaponSlot2,
-	$MenuContainer/WeaponSlot3,
-	$MenuContainer/WeaponSlot4,
-	$MenuContainer/WeaponSlot5,
-	$MenuContainer/WeaponSlot6,
-	$MenuContainer/WeaponSlot7,
-	$MenuContainer/WeaponSlot8,
-]
+onready var player = get_parent().get_parent()
 
-var time_scale_target    = 1
-var interpolation        = 1
+var weapon_slots = []
+
+var time_scale_target = 1
+var interpolation = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	weapon_slots = [
+		$MenuContainer/WeaponSlot1,
+		$MenuContainer/WeaponSlot2,
+		$MenuContainer/WeaponSlot3,
+		$MenuContainer/WeaponSlot4,
+		$MenuContainer/WeaponSlot5,
+		$MenuContainer/WeaponSlot6,
+		$MenuContainer/WeaponSlot7,
+		$MenuContainer/WeaponSlot8,
+	]
 	hide()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
