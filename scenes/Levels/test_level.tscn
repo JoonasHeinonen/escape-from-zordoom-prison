@@ -6,15 +6,15 @@
 [ext_resource path="res://scenes/Collectibles/weapon_collectible.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/NPC/Friendly/slim_cognito.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Blocks & World/Doors/Teleport.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Blocks & World/Player/player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/BlocksNWorld/Player/player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/NPC/Friendly/null_npc.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/images/environment/haerkonen.jpg" type="Texture" id=10]
 [ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=12]
 [ext_resource path="res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Collectibles/ammo_can.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/NPC/Enemies/Enemy.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/Blocks & World/Doors/ArchDoors.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/BlocksNWorld/Doors/ArchDoors.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Destructibles/Crates/health_crate.tscn" type="PackedScene" id=17]
 [ext_resource path="res://resources/images/ui/r_n_c__Final_ammo.png" type="Texture" id=18]
 [ext_resource path="res://src/scripts/UI/checkpoint_ui.gd" type="Script" id=19]
@@ -269,7 +269,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 34.1132, -13.5129, 0 )
 collision_layer = 5
 collision_mask = 5
 axis_lock_motion_x = false

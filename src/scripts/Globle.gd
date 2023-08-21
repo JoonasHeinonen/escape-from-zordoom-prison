@@ -33,7 +33,7 @@ const WPNS = [
 
 # TODO Fix the player_weapons_ammo at some point to be WPNS[3].
 var current_weapons = [
-	"pulse_rifle"
+	"pulse_rifle", "edge_blaster"
 ]
 var player_weapons_ammo = [65, 40, 8, 12, 8, 25, -1, 15]
 var weapons_for_sale = [

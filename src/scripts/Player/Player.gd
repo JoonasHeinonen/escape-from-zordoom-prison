@@ -27,6 +27,7 @@ export var speed = 1
 var hand_instance : Sprite3D
 var gun_instance
 var state_machine
+var animation_player
 
 var velocity = Vector3(0 ,0 ,0)
 
@@ -39,12 +40,13 @@ var player_health = 4
 var player_max_health
 var health_node_counter = 0
 
-var ui_notification : bool = false
 var boss_fight_active : bool = false
 var in_teleport_radius : bool = false
 var player_double_jump : bool = false
 var player_double_jump_used : bool = false
 var player_is_aiming_with_rifle : bool = false
+var player_is_just_damaged : bool = false
+var ui_notification : bool = false
 
 # Weapon variables, if player has such weapon.
 var current_weapon = null
@@ -54,6 +56,7 @@ var fire_Rate = 3
 var timer = Timer.new()
 var ray_origin = Vector3()
 var ray_end = Vector3()
+var mouse_line : MeshInstance
 var random = RandomNumberGenerator.new()
 
 ### INHERITED FUNCTIONS FROM GODOT.
@@ -67,6 +70,7 @@ func _ready():
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):
 		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")
+		animation_player = $RivetAnimationPlayer
 		state_machine = $RivetAnimationTree.get("parameters/playback")
 		gun_instance = $RivetArm/HandInstance/Hand/WeaponPlaceHolder
 		hand_instance = $RivetArm/HandInstance/Hand
@@ -78,6 +82,7 @@ func _ready():
 		hand_instance.set_texture(g_i_s)
 	elif (Globle.player_character == "Angela"):
 		var g_i_s = load(hand_instance_src + "angela/angela_weapon.png")
+		animation_player = $AngelaAnimationPlayer
 		state_machine = $AngelaAnimationTree.get("parameters/playback")
 		gun_instance  = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder
 		hand_instance = $AngelaArm/HandInstance/Hand
@@ -94,7 +99,7 @@ func _ready():
 	$ShootTimer.start()
 	$PlayerUI/InventoryContainer.visible = false
 	walk(0, 1, -0.1)
-	
+
 	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
 		current_weapon = "pulse_rifle"
@@ -198,11 +203,12 @@ func _physics_process(delta):
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
-	
+
 	# Aim, but when the current weapon is pulse rifle.
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
 			player_is_aiming_with_rifle = true
+			call_deferred("pulse_rifle_point")
 	elif Input.is_action_just_released("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 			player_is_aiming_with_rifle = false
 
@@ -224,10 +230,10 @@ func _physics_process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var y_position = self.global_transform.origin.y
-	
+
 	# Get current physics state.
 	var space_state = get_world().direct_space_state
-	
+
 	# Weapon slot index.
 	var slot_index = 1
 
@@ -251,6 +257,8 @@ func _process(delta):
 		var screen_pos = get_viewport().get_camera().unproject_position(angela_arm.global_transform.origin)
 		var mouse_pos = get_viewport().get_mouse_position()
 		var angle = screen_pos.angle_to_point(mouse_pos)
+		print(mouse_pos.x)
+		print(mouse_pos.y)
 		angela_arm.rotation.x = 0
 		angela_arm.rotation.y = 0
 		angela_arm.rotation.z = -angle + offset
@@ -311,7 +319,7 @@ func set_vendor_weapons(weapons_for_sale):
 		var unwanted_chars = ["_"]
 		var btn = gun_btn.instance()
 		btn.set_wpn_for_sale(wpn_for_sale)
-		
+
 		# Takes the chars from the wpn_for_sale.
 		for c in unwanted_chars:
 			wpn_name = wpn_for_sale.replace(c, " ")
@@ -406,6 +414,7 @@ func purchase_weapon(wpn_price : int, wpn, btn):
 		$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 	else:
 		print("Insufficient funds...")
+		## TODO Replace with a UI notification message.
 
 # Updates the vendor data once a weapon is highlighted.
 func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
@@ -416,7 +425,7 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	for c in unwanted_chars:
 		wpn_name_to_label = wpn_name.replace(c, " ")
 	wpn_name_to_label = wpn_name_to_label.to_upper()
-	
+
 	var weapon_sprite_path = "res://resources/images/weapons/vendor/" + wpn_name + "_vendor.png"
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/HBoxContainer/WeaponPrice.text = str(wpn_price)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponDescription.text = str(wpn_desc)
@@ -470,7 +479,12 @@ func heal_player():
 			player_health = player_max_health
 
 # Damage player.
-func damage_player(damage : int) : player_health -= damage
+func damage_player(damage : int):
+	if (!player_is_just_damaged):
+		player_is_just_damaged = true
+		animation_player.play("Player_Damage")
+		player_health -= damage
+		$DamageCooloffTimer.start()
 
 # UI notification message.
 func ui_notification_msg(ammo : int, weapon_name : String):
@@ -745,3 +759,6 @@ func _on_CollisionArea_area_entered(area):
 # Run when FadeIn fade is finished.
 func _on_FadeIn_fade_finished():
 	get_tree().reload_current_scene()
+
+func _on_DamageCooloffTimer_timeout():
+	player_is_just_damaged = false

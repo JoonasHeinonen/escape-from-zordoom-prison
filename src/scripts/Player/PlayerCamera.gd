@@ -20,13 +20,8 @@ func _physics_process(delta):
 
 	# Also, temporarily stop following player if taking aim with the pulse rifle.
 	if (player.player_is_aiming_with_rifle):
-		## https://www.youtube.com/watch?v=t_kfgDDJg10&ab_channel=JohnnyRouddro
 		var position2D = get_viewport().get_mouse_position()
-		var drop_plane : Plane = Plane(Vector3(
-				0, 
-				0, 
-				1
-			), -20)
+		var drop_plane : Plane = Plane(Vector3(0, 0, 1), -20)
 		var position3D = drop_plane.intersects_ray(
 			self.project_ray_origin(position2D),
 			self.project_ray_normal(position2D))

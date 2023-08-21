@@ -1,5 +1,7 @@
 extends KinematicBody
 
+class_name EnemyBase
+
 onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
 enum elements {GROUND, WATER, AIR, STATIC}
@@ -12,15 +14,15 @@ export var enemy_speed : int = 10
 var alerted : bool = false
 var in_range : bool = false
 
-var gravity : int
-var speed : int
-var meta_name : String = ""
-var velocity = Vector3(0, 0, 0)
 var element = null
+var gravity : int
+var meta_name : String = ""
+var speed : int
+var velocity = Vector3(0, 0, 0)
 
-var state_machine
 var animation_player
 var player
+var state_machine
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

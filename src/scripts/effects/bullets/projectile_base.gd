@@ -6,6 +6,7 @@ var speed = 0
 
 var velocity
 
+# Called when the node enters the scene tree for the first time.
 func _ready():
 	$KillTimer.connect("timeout", self, "_on_KillTimer_timeout")
 	$KillTimer.start()

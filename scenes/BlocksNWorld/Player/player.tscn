@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=103 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -62,6 +62,22 @@ radius = 2.29378
 [sub_resource type="QuadMesh" id=21]
 
 [sub_resource type="PointMesh" id=20]
+
+[sub_resource type="Animation" id=67]
+resource_name = "Player_Damage"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AngelaSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=15]
 resource_name = "Player_Fall"
@@ -315,6 +331,9 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 0.5 )
 }
 
+[sub_resource type="AnimationNodeAnimation" id=68]
+animation = "Player_Damage"
+
 [sub_resource type="AnimationNodeAnimation" id=40]
 animation = "Player_Fall"
 
@@ -339,7 +358,13 @@ animation = "Player_Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=49]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+
 [sub_resource type="AnimationNodeStateMachine" id=13]
+states/Player_Damage/node = SubResource( 68 )
+states/Player_Damage/position = Vector2( -50, 44 )
 states/Player_Fall/node = SubResource( 40 )
 states/Player_Fall/position = Vector2( 153, 152 )
 states/Player_Melee/node = SubResource( 41 )
@@ -348,11 +373,27 @@ states/Player_Still/node = SubResource( 42 )
 states/Player_Still/position = Vector2( 153, 44 )
 states/Player_Walk/node = SubResource( 43 )
 states/Player_Walk/position = Vector2( 369, 44 )
-transitions = [ "Player_Still", "Player_Walk", SubResource( 44 ), "Player_Walk", "Player_Still", SubResource( 45 ), "Player_Still", "Player_Fall", SubResource( 46 ), "Player_Fall", "Player_Still", SubResource( 47 ), "Player_Still", "Player_Melee", SubResource( 48 ), "Player_Melee", "Player_Still", SubResource( 49 ) ]
+transitions = [ "Player_Still", "Player_Walk", SubResource( 44 ), "Player_Walk", "Player_Still", SubResource( 45 ), "Player_Still", "Player_Fall", SubResource( 46 ), "Player_Fall", "Player_Still", SubResource( 47 ), "Player_Still", "Player_Melee", SubResource( 48 ), "Player_Melee", "Player_Still", SubResource( 49 ), "Player_Damage", "Player_Still", SubResource( 69 ), "Player_Still", "Player_Damage", SubResource( 70 ) ]
 start_node = "Player_Still"
-graph_offset = Vector2( -150.359, -8 )
+graph_offset = Vector2( -156.359, -65 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
+
+[sub_resource type="Animation" id=71]
+resource_name = "Player_Damage"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("RivetSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=32]
 resource_name = "Player_Fall"
@@ -418,6 +459,9 @@ tracks/0/keys = {
 "values": [ 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=72]
+animation = "Player_Damage"
+
 [sub_resource type="AnimationNodeAnimation" id=33]
 animation = "Player_Fall"
 
@@ -442,7 +486,25 @@ animation = "Player_Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=64]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=73]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=74]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=78]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=79]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+
 [sub_resource type="AnimationNodeStateMachine" id=28]
+states/Player_Damage/node = SubResource( 72 )
+states/Player_Damage/position = Vector2( 390, -24 )
 states/Player_Fall/node = SubResource( 33 )
 states/Player_Fall/position = Vector2( 511, 84 )
 states/Player_Melee/node = SubResource( 57 )
@@ -451,8 +513,9 @@ states/Player_Still/node = SubResource( 58 )
 states/Player_Still/position = Vector2( 285, 84 )
 states/Player_Walk/node = SubResource( 52 )
 states/Player_Walk/position = Vector2( 285, 184 )
-transitions = [ "Player_Still", "Player_Fall", SubResource( 59 ), "Player_Fall", "Player_Still", SubResource( 60 ), "Player_Still", "Player_Melee", SubResource( 61 ), "Player_Melee", "Player_Still", SubResource( 62 ), "Player_Still", "Player_Walk", SubResource( 63 ), "Player_Walk", "Player_Still", SubResource( 64 ) ]
+transitions = [ "Player_Still", "Player_Fall", SubResource( 59 ), "Player_Fall", "Player_Still", SubResource( 60 ), "Player_Still", "Player_Melee", SubResource( 61 ), "Player_Melee", "Player_Still", SubResource( 62 ), "Player_Still", "Player_Walk", SubResource( 63 ), "Player_Walk", "Player_Still", SubResource( 64 ), "Player_Damage", "Player_Still", SubResource( 73 ), "Player_Still", "Player_Damage", SubResource( 74 ), "Player_Damage", "Player_Walk", SubResource( 75 ), "Player_Walk", "Player_Damage", SubResource( 76 ), "Player_Damage", "Player_Melee", SubResource( 77 ), "Player_Melee", "Player_Damage", SubResource( 78 ), "Player_Fall", "Player_Damage", SubResource( 79 ), "Player_Damage", "Player_Fall", SubResource( 80 ) ]
 start_node = "Player_Still"
+graph_offset = Vector2( -84, -93 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=29]
 
@@ -527,9 +590,10 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
+frame = 19
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.221415, -0.0698602, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -537,7 +601,7 @@ light_specular = 0.2
 spot_range = 0.43704
 
 [node name="SpotLight2" type="SpotLight" parent="AngelaSprite"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382073, -0.547632, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0157429, -0.446967, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -545,7 +609,7 @@ light_specular = 0.2
 spot_range = 0.43704
 
 [node name="SpotLight3" type="SpotLight" parent="AngelaSprite"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235502, -0.54609, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50632, -0.179795, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -581,6 +645,7 @@ transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1
 transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
 
 [node name="AngelaAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Player_Damage = SubResource( 67 )
 anims/Player_Fall = SubResource( 15 )
 anims/Player_Melee = SubResource( 24 )
 anims/Player_Still = SubResource( 8 )
@@ -631,6 +696,7 @@ transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1
 transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
 
 [node name="RivetAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Player_Damage = SubResource( 71 )
 anims/Player_Fall = SubResource( 32 )
 anims/Player_Melee = SubResource( 54 )
 anims/Player_Still = SubResource( 30 )
@@ -1357,6 +1423,8 @@ percent_visible = false
 wait_time = 0.5
 autostart = true
 
+[node name="DamageCooloffTimer" type="Timer" parent="."]
+
 [node name="PlayerHit_box" type="Area" parent="."]
 transform = Transform( 1.76495, 0, 0, 0, 2.53835, 0, 0, 0, 1, 0.0593457, 0.347264, 0 )
 collision_layer = 2
@@ -1468,3 +1536,4 @@ script = ExtResource( 43 )
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
 [connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
+[connection signal="timeout" from="DamageCooloffTimer" to="." method="_on_DamageCooloffTimer_timeout"]
