@@ -93,6 +93,16 @@ _global_script_classes=[ {
 "class": "ProjectileBase",
 "language": "GDScript",
 "path": "res://src/scripts/effects/bullets/projectile_base.gd"
+}, {
+"base": "RayCast",
+"class": "SnipingRayCast",
+"language": "GDScript",
+"path": "res://src/scripts/effects/sniping_raycast.gd"
+}, {
+"base": "RayCast",
+"class": "SnipingRaycast",
+"language": "GDScript",
+"path": "res://src/scripts/effects/sniping_infrared_raycast.gd"
 } ]
 _global_script_class_icons={
 "BossBase": "",
@@ -111,7 +121,9 @@ _global_script_class_icons={
 "HistoryRow": "",
 "Player": "",
 "PlayerHit_box": "",
-"ProjectileBase": ""
+"ProjectileBase": "",
+"SnipingRayCast": "",
+"SnipingRaycast": ""
 }
 
 [application]

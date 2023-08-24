@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=2]
+[gd_scene load_steps=107 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -44,6 +44,8 @@
 [ext_resource path="res://scenes/Transitions/fade_in.tscn" type="PackedScene" id=42]
 [ext_resource path="res://src/scripts/Player/PlayerCamera.gd" type="Script" id=43]
 [ext_resource path="res://resources/images/ui/boss_fight_icon_empty.png" type="Texture" id=44]
+[ext_resource path="res://resources/images/weapons/pulse_rifle.png" type="Texture" id=45]
+[ext_resource path="res://src/scripts/effects/sniping_raycast.gd" type="Script" id=46]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -379,6 +381,21 @@ graph_offset = Vector2( -156.359, -65 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
+[sub_resource type="CylinderMesh" id=81]
+flip_faces = true
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.02
+
+[sub_resource type="SpatialMaterial" id=82]
+flags_transparent = true
+albedo_color = Color( 1, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 10.0
+emission_operator = 0
+emission_on_uv2 = false
+
 [sub_resource type="Animation" id=71]
 resource_name = "Player_Damage"
 length = 0.4
@@ -590,10 +607,10 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
-frame = 19
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.221415, -0.0698602, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -601,7 +618,7 @@ light_specular = 0.2
 spot_range = 0.43704
 
 [node name="SpotLight2" type="SpotLight" parent="AngelaSprite"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0157429, -0.446967, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382073, -0.547632, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -609,7 +626,7 @@ light_specular = 0.2
 spot_range = 0.43704
 
 [node name="SpotLight3" type="SpotLight" parent="AngelaSprite"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.50632, -0.179795, 0.10579 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235502, -0.54609, 0.10579 )
 light_color = Color( 1, 0.482353, 0.482353, 1 )
 light_energy = 0.5
 light_indirect_energy = 0.5
@@ -666,7 +683,7 @@ double_sided = false
 texture = ExtResource( 36 )
 hframes = 10
 vframes = 4
-frame = 3
+frame = 1
 
 [node name="RivetArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
@@ -687,13 +704,22 @@ texture = ExtResource( 6 )
 transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
 pixel_size = 0.04
 shaded = true
-texture = ExtResource( 5 )
+texture = ExtResource( 45 )
 
 [node name="blitzGunMuzzle" type="Position3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0 )
 
 [node name="WeaponMuzzle" type="Position3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
+
+[node name="SnipingRayCast" type="RayCast" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
+transform = Transform( -4.37114e-08, 1, -7.10188e-15, -1, -4.37114e-08, -7.10188e-15, 8.88178e-15, -8.88179e-15, 1, 0.601581, 0.0447457, 0 )
+cast_to = Vector3( 0, 10000, 0 )
+script = ExtResource( 46 )
+
+[node name="SnipingMeshInstance" type="MeshInstance" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder/SnipingRayCast"]
+mesh = SubResource( 81 )
+material/0 = SubResource( 82 )
 
 [node name="RivetAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Player_Damage = SubResource( 71 )

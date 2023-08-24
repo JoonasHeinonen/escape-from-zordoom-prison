@@ -257,8 +257,6 @@ func _process(delta):
 		var screen_pos = get_viewport().get_camera().unproject_position(angela_arm.global_transform.origin)
 		var mouse_pos = get_viewport().get_mouse_position()
 		var angle = screen_pos.angle_to_point(mouse_pos)
-		print(mouse_pos.x)
-		print(mouse_pos.y)
 		angela_arm.rotation.x = 0
 		angela_arm.rotation.y = 0
 		angela_arm.rotation.z = -angle + offset
