@@ -4,23 +4,25 @@ class_name Player
 
 const RANDOM_ANGLE = PI / 2.0
 
+onready var gravity_bomb_projectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
 onready var projectile = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
 onready var blitz_gun_projectile = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
 onready var bolt_sparkle = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
-onready var gravity_bomb_projectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
 onready var negotiator_projectile = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
 onready var miniturret_packed_projectile = preload("res://scenes/Projectiles/MiniturretPackedProjectile.tscn")
 onready var gun_btn = preload("res://scenes/UI/VendorWeaponButton.tscn")
+onready var hand_instance_src = "res://resources/images/characters/player/"
 
 onready var angela_arm = $AngelaArm
 onready var rivet_arm = $RivetArm
+onready var shoot_timer = $ShootTimer
+onready var sniping_radical = $SnipingRadical
 onready var ui_timer = $PlayerUI/ui_notification/Ui_Timer
 onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
 	$PlayerUI/VendorContainer
 ]
-onready var hand_instance_src = "res://resources/images/characters/player/"
 
 export var speed = 1
 
@@ -33,9 +35,9 @@ var velocity = Vector3(0 ,0 ,0)
 
 var current_boss_name : String = ""
 
+var bolt = 0
 var gravity = 4
 var jump = 5
-var bolt = 0
 var player_health = 4
 var player_max_health
 var health_node_counter = 0
@@ -48,15 +50,15 @@ var player_is_aiming_with_rifle : bool = false
 var player_is_just_damaged : bool = false
 var ui_notification : bool = false
 
-# Weapon variables, if player has such weapon.
-var current_weapon = null
+# Weapon variables.
+var sniping_ray
 
-var fire_Rate = 3
+var current_weapon = null
+var sniping_raycast = null
+
+var fire_rate : int = 3
 
 var timer = Timer.new()
-var ray_origin = Vector3()
-var ray_end = Vector3()
-var mouse_line : MeshInstance
 var random = RandomNumberGenerator.new()
 
 ### INHERITED FUNCTIONS FROM GODOT.
@@ -74,6 +76,7 @@ func _ready():
 		state_machine = $RivetAnimationTree.get("parameters/playback")
 		gun_instance = $RivetArm/HandInstance/Hand/WeaponPlaceHolder
 		hand_instance = $RivetArm/HandInstance/Hand
+		sniping_raycast = $RivetArm/HandInstance/Hand/WeaponPlaceHolder/SnipingRayCast
 		$AngelaArm/HandInstance/Hand/WeaponPlaceHolder.hide()
 		$AngelaSprite.hide()
 		$RivetSprite.show()
@@ -86,6 +89,7 @@ func _ready():
 		state_machine = $AngelaAnimationTree.get("parameters/playback")
 		gun_instance  = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder
 		hand_instance = $AngelaArm/HandInstance/Hand
+		sniping_raycast = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/SnipingRayCast
 		$RivetArm/HandInstance/Hand/WeaponPlaceHolder.hide()
 		$AngelaSprite.show()
 		$RivetSprite.hide()
@@ -95,8 +99,8 @@ func _ready():
 	hand_instance.scale.y = -20
 
 	ui_timer.connect("timeout", self, "_on_UI_Timer_timeout")
-	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
-	$ShootTimer.start()
+	shoot_timer.connect("timeout", self, "_on_ShootTimer_timeout")
+	shoot_timer.start()
 	$PlayerUI/InventoryContainer.visible = false
 	walk(0, 1, -0.1)
 
@@ -208,9 +212,15 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
 			player_is_aiming_with_rifle = true
-			call_deferred("pulse_rifle_point")
 	elif Input.is_action_just_released("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 			player_is_aiming_with_rifle = false
+	# Hide the sniping raycast when not aiming.
+	if (!player_is_aiming_with_rifle):
+		sniping_raycast.hide()
+		sniping_radical.hide()
+	else:
+		sniping_raycast.show()
+		sniping_radical.show()
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -242,6 +252,8 @@ func _process(delta):
 		if (ui_container.visible):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		elif (player_is_aiming_with_rifle):
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -257,12 +269,12 @@ func _process(delta):
 		var screen_pos = get_viewport().get_camera().unproject_position(angela_arm.global_transform.origin)
 		var mouse_pos = get_viewport().get_mouse_position()
 		var angle = screen_pos.angle_to_point(mouse_pos)
-		angela_arm.rotation.x = 0
-		angela_arm.rotation.y = 0
-		angela_arm.rotation.z = -angle + offset
-		rivet_arm.rotation.x = 0
-		rivet_arm.rotation.y = 0
-		rivet_arm.rotation.z = -angle + offset
+		if (current_weapon != "pulse_rifle" && !player_is_aiming_with_rifle):
+			rotate_arm(0, 0, -angle + offset)
+		elif (current_weapon == "pulse_rifle" && player_is_aiming_with_rifle):
+			rotate_arm(0, 0, -angle + offset)
+		elif (current_weapon == "pulse_rifle" && !player_is_aiming_with_rifle):
+			rotate_arm(0, 0, 0)
 
 	# Hide the hand gun when doing a melee attack.
 	if Globle.player_character == "Angela":
@@ -401,6 +413,15 @@ func walk(vel, scale, _mesh_translation):
 	elif (Globle.player_character == "Rivet"):
 		$RivetSprite.scale.x = scale
 
+## Rotate the arm.
+func rotate_arm(x_val : float, y_val : float, z_val : float):
+	angela_arm.rotation.x = x_val
+	angela_arm.rotation.y = y_val
+	angela_arm.rotation.z = z_val
+	rivet_arm.rotation.x = x_val
+	rivet_arm.rotation.y = y_val
+	rivet_arm.rotation.z = z_val
+
 # Purchases weapon when a weapon button is pressed.
 func purchase_weapon(wpn_price : int, wpn, btn):
 	if (Globle.bolts >= wpn_price):
@@ -518,17 +539,17 @@ func determine_weapon_muzzle(player : String, bullet):
 
 # Shooting functionality for the edge blaster.
 func shoot_edge_blaster():
+	$Audio/Weapons/EdgeBlaster.play()
 	var bullet = projectile.instance()
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
 	determine_weapon_muzzle(Globle.player_character, bullet)
-	$Audio/EdgeBlaster.play()
 
 # Shooting functionality for the blitz gun.
 func shoot_blitz_gun():
-	$Audio/BlizGun.play()
+	$Audio/Weapons/BlizGun.play()
 	# Bullet spread.
-	for index in fire_Rate:
+	for index in fire_rate:
 		var bullet = blitz_gun_projectile.instance()
 		bullet.translation.x = 3
 		get_parent().add_child(bullet)
@@ -537,7 +558,7 @@ func shoot_blitz_gun():
 
 # Shooting functionality for the gravity bomb.
 func shoot_gravity_bomb():
-	$Audio/GravityBomb.play()
+	$Audio/Weapons/GravityBomb.play()
 	var bullet = gravity_bomb_projectile.instance()
 	bullet.translation.x = 3
 	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
@@ -547,7 +568,7 @@ func shoot_gravity_bomb():
 	
 # Shooting functionality for the negotiator.
 func shoot_negotiator():
-	$Audio/theNegotiator.play()
+	$Audio/Weapons/theNegotiator.play()
 	var bullet = negotiator_projectile.instance()
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
@@ -555,7 +576,9 @@ func shoot_negotiator():
 
 # Shooting functionality for the pulse rifle.
 func shoot_pulse_rifle():
-	print("Marksmanship excercised with the pulse rifle.")
+	if (player_is_aiming_with_rifle):
+		$Audio/Weapons/PulseRifle.play()
+		print("Marksmanship excercised with the pulse rifle.")
 
 # Shooting functionality for the ry3no.
 func shoot_ry3no():
@@ -597,48 +620,45 @@ func _on_ShootTimer_timeout():
 			"edge_blaster":
 				if (Globle.player_weapons_ammo[0] > 0):
 					shoot_edge_blaster()
-					$ShootTimer.start()
-					Globle.player_weapons_ammo[0] -= 1
-					update_ammo_ui(Globle.player_weapons_ammo[0], Globle.WPNS[3][0])
+					shoot_gun(0.15, 0)
 			"blitz_gun":
 				if (Globle.player_weapons_ammo[1] > 0):
 					shoot_blitz_gun()
-					$ShootTimer.start()
-					Globle.player_weapons_ammo[1] -= 1
-					update_ammo_ui(Globle.player_weapons_ammo[1], Globle.WPNS[3][1])
+					shoot_gun(0.75, 1)
 			"gravity_bomb":
 				if (Globle.player_weapons_ammo[2] > 0):
 					shoot_gravity_bomb()
-					$ShootTimer.start()
-					Globle.player_weapons_ammo[2] -= 1
-					update_ammo_ui(Globle.player_weapons_ammo[2], Globle.WPNS[3][2])
+					shoot_gun(2, 2)
 			"negotiator":
 				if (Globle.player_weapons_ammo[3] > 0):
 					shoot_negotiator()
-					$ShootTimer.start()
-					Globle.player_weapons_ammo[3] -= 1
-					update_ammo_ui(Globle.player_weapons_ammo[3], Globle.WPNS[3][3])
+					shoot_gun(1, 3)
 			"pulse_rifle":
 				if (Globle.player_weapons_ammo[4] > 0):
 					shoot_pulse_rifle()
-					$ShootTimer.start()
-					Globle.player_weapons_ammo[4] -= 1
-					update_ammo_ui(Globle.player_weapons_ammo[4], Globle.WPNS[3][4])
+					shoot_gun(2, 4)
 			"ry3no":
 				if (Globle.player_weapons_ammo[5] > 0):
 					shoot_ry3no()
-					$ShootTimer.start()
-					Globle.player_weapons_ammo[5] -= 1
-					update_ammo_ui(Globle.player_weapons_ammo[5], Globle.WPNS[3][5])
+					shoot_gun(1, 5)
 			"sheepinator":
 				shoot_sheepinator()
-				$ShootTimer.start()
+				shoot_timer.start()
+				shoot_timer.wait_time = 2
 			"miniturret_glove":
 				if (Globle.player_weapons_ammo[7] > 0):
 					shoot_miniturret_glove()
-					$ShootTimer.start()
-					Globle.player_weapons_ammo[7] -= 1
-					update_ammo_ui(Globle.player_weapons_ammo[7], Globle.WPNS[3][7])
+					shoot_gun(1, 7)
+
+## Set the shoot timer's wait time and the ammunition of the weapon UI.
+func shoot_gun(wait_time : float, index : int):
+	shoot_timer.start()
+	shoot_timer.wait_time = wait_time
+	if (current_weapon != "pulse_rifle" && !player_is_aiming_with_rifle):
+		Globle.player_weapons_ammo[index] -= 1
+	elif (current_weapon == "pulse_rifle" && player_is_aiming_with_rifle):
+		Globle.player_weapons_ammo[index] -= 1
+	update_ammo_ui(Globle.player_weapons_ammo[index], Globle.WPNS[3][index])
 
 ## Update the ammo UI.
 func update_ammo_ui(has_ammo : int, max_ammo : int):

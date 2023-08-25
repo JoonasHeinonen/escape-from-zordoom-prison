@@ -15,7 +15,7 @@
 [ext_resource path="res://src/scripts/UI/bolt_count.gd" type="Script" id=13]
 [ext_resource path="res://src/scripts/Player/PlayerWeaponsInventory.gd" type="Script" id=14]
 [ext_resource path="res://src/scripts/Player/PlayerHit_box.gd" type="Script" id=15]
-[ext_resource path="res://resources/audio/weapons/player/edge_blaster.wav" type="AudioStream" id=16]
+[ext_resource path="res://resources/audio/weapons/player/edge_blaster_0.wav" type="AudioStream" id=16]
 [ext_resource path="res://resources/audio/collectibles/bolt_collect_1.wav" type="AudioStream" id=17]
 [ext_resource path="res://resources/audio/collectibles/bolt_collect_0.wav" type="AudioStream" id=18]
 [ext_resource path="res://resources/audio/collectibles/bolt_collect_2.wav" type="AudioStream" id=19]
@@ -45,7 +45,9 @@
 [ext_resource path="res://src/scripts/Player/PlayerCamera.gd" type="Script" id=43]
 [ext_resource path="res://resources/images/ui/boss_fight_icon_empty.png" type="Texture" id=44]
 [ext_resource path="res://resources/images/weapons/pulse_rifle.png" type="Texture" id=45]
-[ext_resource path="res://src/scripts/effects/sniping_raycast.gd" type="Script" id=46]
+[ext_resource path="res://scenes/BlocksNWorld/Player/sniping_raycast.tscn" type="PackedScene" id=46]
+[ext_resource path="res://resources/models/ui_elements/green_target_radical_pulse_rifle.glb" type="PackedScene" id=47]
+[ext_resource path="res://resources/audio/weapons/player/pulse_rifle.wav" type="AudioStream" id=48]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -381,21 +383,6 @@ graph_offset = Vector2( -156.359, -65 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=14]
 
-[sub_resource type="CylinderMesh" id=81]
-flip_faces = true
-top_radius = 0.02
-bottom_radius = 0.02
-height = 0.02
-
-[sub_resource type="SpatialMaterial" id=82]
-flags_transparent = true
-albedo_color = Color( 1, 0, 0, 1 )
-emission_enabled = true
-emission = Color( 1, 0, 0, 1 )
-emission_energy = 10.0
-emission_operator = 0
-emission_on_uv2 = false
-
 [sub_resource type="Animation" id=71]
 resource_name = "Player_Damage"
 length = 0.4
@@ -607,7 +594,6 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
-frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -661,6 +647,9 @@ transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1
 [node name="WeaponMuzzle" type="Position3D" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
 
+[node name="SnipingRayCast" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder" instance=ExtResource( 46 )]
+transform = Transform( -4.37114e-08, 1, -7.10543e-15, -1, -4.37114e-08, -3.55271e-15, 0, -8.8818e-15, 1, -0.837188, -0.157588, -1.3411e-07 )
+
 [node name="AngelaAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Player_Damage = SubResource( 67 )
 anims/Player_Fall = SubResource( 15 )
@@ -696,7 +685,7 @@ mesh = SubResource( 20 )
 skeleton = NodePath("../../RivetSprite")
 
 [node name="Hand" type="Sprite3D" parent="RivetArm/HandInstance"]
-transform = Transform( 20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
+transform = Transform( 20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, -1.61559e-27, 1, 2.25974, -0.0573018, -0.01 )
 shaded = true
 texture = ExtResource( 6 )
 
@@ -712,14 +701,8 @@ transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1
 [node name="WeaponMuzzle" type="Position3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
 transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
 
-[node name="SnipingRayCast" type="RayCast" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
-transform = Transform( -4.37114e-08, 1, -7.10188e-15, -1, -4.37114e-08, -7.10188e-15, 8.88178e-15, -8.88179e-15, 1, 0.601581, 0.0447457, 0 )
-cast_to = Vector3( 0, 10000, 0 )
-script = ExtResource( 46 )
-
-[node name="SnipingMeshInstance" type="MeshInstance" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder/SnipingRayCast"]
-mesh = SubResource( 81 )
-material/0 = SubResource( 82 )
+[node name="SnipingRayCast" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder" instance=ExtResource( 46 )]
+transform = Transform( -4.37114e-08, 1, -7.10188e-15, -1, -4.37114e-08, -7.10188e-15, 8.88178e-15, -8.88179e-15, 1, -0.837188, -0.157588, 0 )
 
 [node name="RivetAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Player_Damage = SubResource( 71 )
@@ -1446,7 +1429,6 @@ percent_visible = false
 [node name="Node2" type="Node" parent="."]
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 0.5
 autostart = true
 
 [node name="DamageCooloffTimer" type="Timer" parent="."]
@@ -1465,16 +1447,21 @@ shape = SubResource( 23 )
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="GravityBomb" type="AudioStreamPlayer" parent="Audio"]
+[node name="Weapons" type="Node" parent="Audio"]
+
+[node name="PulseRifle" type="AudioStreamPlayer" parent="Audio/Weapons"]
+stream = ExtResource( 48 )
+
+[node name="GravityBomb" type="AudioStreamPlayer" parent="Audio/Weapons"]
 stream = ExtResource( 37 )
 
-[node name="BlizGun" type="AudioStreamPlayer" parent="Audio"]
+[node name="BlizGun" type="AudioStreamPlayer" parent="Audio/Weapons"]
 stream = ExtResource( 28 )
 
-[node name="theNegotiator" type="AudioStreamPlayer" parent="Audio"]
+[node name="theNegotiator" type="AudioStreamPlayer" parent="Audio/Weapons"]
 stream = ExtResource( 40 )
 
-[node name="EdgeBlaster" type="AudioStreamPlayer" parent="Audio"]
+[node name="EdgeBlaster" type="AudioStreamPlayer" parent="Audio/Weapons"]
 stream = ExtResource( 16 )
 
 [node name="Body" type="Node" parent="Audio"]
@@ -1529,14 +1516,6 @@ stream = ExtResource( 39 )
 
 [node name="HealthNode0" type="AudioStreamPlayer" parent="Audio/Collectibles/HealthNode"]
 
-[node name="SnipingRadical" type="Sprite3D" parent="."]
-texture = ExtResource( 34 )
-
-[node name="Spatial" type="Spatial" parent="SnipingRadical"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138 )
-
-[node name="Camera" type="Camera" parent="SnipingRadical/Spatial"]
-
 [node name="PlayerCamera" type="Spatial" parent="."]
 transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 7.138 )
 
@@ -1544,6 +1523,17 @@ transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 7.1
 transform = Transform( 1.06181, 0, 0, 0, 1.06181, 0, 0, 0, 1.06181, 0, 0, 0 )
 current = true
 script = ExtResource( 43 )
+
+[node name="SnipingRadical" type="Sprite3D" parent="."]
+visible = false
+
+[node name="SnipingRadical3D" parent="SnipingRadical" instance=ExtResource( 47 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0 )
+
+[node name="Spatial" type="Spatial" parent="SnipingRadical"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138 )
+
+[node name="Camera" type="Camera" parent="SnipingRadical/Spatial"]
 
 [connection signal="area_entered" from="ColliisionArea" to="." method="_on_CollisionArea_area_entered"]
 [connection signal="body_entered" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_entered"]
