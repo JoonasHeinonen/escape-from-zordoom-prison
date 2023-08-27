@@ -1,8 +1,8 @@
 extends ProjectileBase
 
-onready var projectile_effect 				= preload("res://scenes/Effects/ProjectileEffects/BlasterProjectileEffect.tscn")
-onready var blaster_projectile_explosion 	= preload("res://scenes/Effects/ProjectileEffects/BlasterProjectileExplosion.tscn")
+onready var blaster_projectile_explosion = preload("res://scenes/Effects/ProjectileEffects/BlasterProjectileExplosion.tscn")
 onready var miniturret_projectile_explosion = preload("res://scenes/Effects/ProjectileEffects/MiniturretProjectileExplosion.tscn")
+onready var projectile_effect = preload("res://scenes/Effects/ProjectileEffects/BlasterProjectileEffect.tscn")
 
 export (String, "blaster", "miniturret") var weapon
 

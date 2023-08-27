@@ -10,6 +10,7 @@ onready var blitz_gun_projectile = preload("res://scenes/Projectiles/BlitzGunPro
 onready var bolt_sparkle = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
 onready var negotiator_projectile = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
 onready var miniturret_packed_projectile = preload("res://scenes/Projectiles/MiniturretPackedProjectile.tscn")
+onready var pulse_rifle_projectile = preload("res://scenes/Projectiles/PulseRifleProjectile.tscn")
 onready var gun_btn = preload("res://scenes/UI/VendorWeaponButton.tscn")
 onready var hand_instance_src = "res://resources/images/characters/player/"
 
@@ -131,26 +132,34 @@ func _physics_process(delta):
 		"edge_blaster":
 			change_weapon_texture("edge_blaster")
 			update_ammo_ui(Globle.player_weapons_ammo[0], Globle.WPNS[3][0])
+			shoot_timer.wait_time = Globle.WPNS[4][0]
 		"blitz_gun":
 			change_weapon_texture("blitz_gun")
 			update_ammo_ui(Globle.player_weapons_ammo[1], Globle.WPNS[3][1])
+			shoot_timer.wait_time = Globle.WPNS[4][1]
 		"gravity_bomb":
 			change_weapon_texture("gravity_bomb")
 			update_ammo_ui(Globle.player_weapons_ammo[2], Globle.WPNS[3][2])
+			shoot_timer.wait_time = Globle.WPNS[4][2]
 		"negotiator":
 			change_weapon_texture("negotiator")
 			update_ammo_ui(Globle.player_weapons_ammo[3], Globle.WPNS[3][3])
+			shoot_timer.wait_time = Globle.WPNS[4][3]
 		"pulse_rifle":
 			change_weapon_texture("pulse_rifle")
 			update_ammo_ui(Globle.player_weapons_ammo[4], Globle.WPNS[3][4])
+			shoot_timer.wait_time = Globle.WPNS[4][4]
 		"ry3no":
 			change_weapon_texture("ry3no")
 			update_ammo_ui(Globle.player_weapons_ammo[5], Globle.WPNS[3][5])
+			shoot_timer.wait_time = Globle.WPNS[4][5]
 		"sheepinator":
 			change_weapon_texture("sheepinator")
+			shoot_timer.wait_time = Globle.WPNS[4][6]
 		"miniturret_glove":
 			change_weapon_texture("miniturret_glove")
 			update_ammo_ui(Globle.player_weapons_ammo[7], Globle.WPNS[3][7])
+			shoot_timer.wait_time = Globle.WPNS[4][7]
 		_:
 			gun_instance.hide()
 
@@ -223,7 +232,7 @@ func _physics_process(delta):
 		sniping_radical.show()
 
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		# velocity.y -= gravity * delta
 		state_machine.travel("Player_Fall")
 		# Angela's melee attack
 		if Globle.player_character == "Angela":
@@ -578,7 +587,11 @@ func shoot_negotiator():
 func shoot_pulse_rifle():
 	if (player_is_aiming_with_rifle):
 		$Audio/Weapons/PulseRifle.play()
-		print("Marksmanship excercised with the pulse rifle.")
+		var projectile = pulse_rifle_projectile.instance()
+		projectile.translation.x = 10
+		get_parent().add_child(projectile)
+		projectile.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+
 
 # Shooting functionality for the ry3no.
 func shoot_ry3no():
@@ -620,27 +633,27 @@ func _on_ShootTimer_timeout():
 			"edge_blaster":
 				if (Globle.player_weapons_ammo[0] > 0):
 					shoot_edge_blaster()
-					shoot_gun(0.15, 0)
+					shoot_gun(0)
 			"blitz_gun":
 				if (Globle.player_weapons_ammo[1] > 0):
 					shoot_blitz_gun()
-					shoot_gun(0.75, 1)
+					shoot_gun(1)
 			"gravity_bomb":
 				if (Globle.player_weapons_ammo[2] > 0):
 					shoot_gravity_bomb()
-					shoot_gun(2, 2)
+					shoot_gun(2)
 			"negotiator":
 				if (Globle.player_weapons_ammo[3] > 0):
 					shoot_negotiator()
-					shoot_gun(1, 3)
+					shoot_gun(3)
 			"pulse_rifle":
 				if (Globle.player_weapons_ammo[4] > 0):
 					shoot_pulse_rifle()
-					shoot_gun(2, 4)
+					shoot_gun(4)
 			"ry3no":
 				if (Globle.player_weapons_ammo[5] > 0):
 					shoot_ry3no()
-					shoot_gun(1, 5)
+					shoot_gun(5)
 			"sheepinator":
 				shoot_sheepinator()
 				shoot_timer.start()
@@ -648,12 +661,12 @@ func _on_ShootTimer_timeout():
 			"miniturret_glove":
 				if (Globle.player_weapons_ammo[7] > 0):
 					shoot_miniturret_glove()
-					shoot_gun(1, 7)
+					shoot_gun(7)
 
 ## Set the shoot timer's wait time and the ammunition of the weapon UI.
-func shoot_gun(wait_time : float, index : int):
+func shoot_gun(index : int):
 	shoot_timer.start()
-	shoot_timer.wait_time = wait_time
+	shoot_timer.wait_time = Globle.WPNS[4][index]
 	if (current_weapon != "pulse_rifle" && !player_is_aiming_with_rifle):
 		Globle.player_weapons_ammo[index] -= 1
 	elif (current_weapon == "pulse_rifle" && player_is_aiming_with_rifle):
