@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/Blocks & World/Player/player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="Environment" id=1]
 ambient_light_color = Color( 1, 1, 1, 1 )
@@ -18,7 +19,7 @@ environment = SubResource( 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.852, 11.7113, 4.79282 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 1.99217, -0.901535 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 1.99217, 1.17262 )
 collision_layer = 5
 collision_mask = 5
 axis_lock_motion_x = false
@@ -45,3 +46,27 @@ shape = SubResource( 2 )
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody_2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.993702, 0 )
 mesh = SubResource( 3 )
+
+[node name="npc_background_1" type="Node" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="npc_background_1"]
+transform = Transform( 3.08242, 0, 0, 0, 3.08242, 0, 0, 0, 1, -15.6056, 1.41675, -1.30583 )
+texture = ExtResource( 2 )
+
+[node name="npc_background_2" type="Node" parent="."]
+
+[node name="npc_test_1" type="Sprite3D" parent="npc_background_2"]
+transform = Transform( 2.43476, 0, 0, 0, 2.43476, 0, 0, 0, 1, 5.41808, 1.26008, 7.12397 )
+texture = ExtResource( 2 )
+
+[node name="npc_test_2" type="Sprite3D" parent="npc_background_2"]
+transform = Transform( 2.43476, 0, 0, 0, 2.43476, 0, 0, 0, 1, 0.204225, 1.26008, 7.12397 )
+texture = ExtResource( 2 )
+
+[node name="npc_test_3" type="Sprite3D" parent="npc_background_2"]
+transform = Transform( 2.43476, 0, 0, 0, 2.43476, 0, 0, 0, 1, -6.53601, 1.26008, 7.12397 )
+texture = ExtResource( 2 )
+
+[node name="npc_test_4" type="Sprite3D" parent="npc_background_2"]
+transform = Transform( 2.43476, 0, 0, 0, 2.43476, 0, 0, 0, 1, -10.1881, 1.26008, 7.12397 )
+texture = ExtResource( 2 )
