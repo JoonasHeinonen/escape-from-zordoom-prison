@@ -5,15 +5,15 @@
 	"display_name_bool": false,
 	"id": "character-1691861071.json",
 	"mirror_portraits": false,
-	"name": "character-1691861071.json",
+	"name": "Shark_Man",
 	"nickname": "",
 	"nickname_bool": false,
 	"offset_x": 0,
-	"offset_y": 0,
+	"offset_y": -200,
 	"portraits": [
 		{
 			"name": "Default",
-			"path": ""
+			"path": "res://resources/images/characters/npc/vox_talking_head_resize2.png"
 		}
 	],
 	"scale": 100,

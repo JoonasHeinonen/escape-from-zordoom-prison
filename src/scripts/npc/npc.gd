@@ -1,6 +1,6 @@
 extends Area
 
-export(String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet") var character_name
+export(String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_Man") var character_name
 
 var active : bool = false
 var npc_dialog_value : int = 0
@@ -8,6 +8,7 @@ var mia_dialog_value : int = 0
 var girdeux_dialog_value : int = 0
 # clean up varable to have lower case
 var npc_Angela_Rivet_dialog_value : int = 0
+var Shark_Man_dialog_value : int = 0
 
 var player
 var dialog
@@ -49,6 +50,13 @@ func _input(event):
 							(0):
 								commence_dialog('timeline_Rivet_npc_1')
 						npc_Angela_Rivet_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 2)
+						# Shark_man talking Angela part.
+					"Shark_Man":
+						match(Shark_Man_dialog_value):
+							(0):
+								commence_dialog('timerline-Shark_Man-Angela-1')
+						Shark_Man_dialog_value  = process_dialog_value(Shark_Man_dialog_value, 0)
+						
 							
 	if (Globle.player_character == "Rivet"): 
 		if get_node_or_null('DialogNode') == null:
