@@ -1,24 +1,34 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=1]
 [ext_resource path="res://resources/images/characters/npc/shark_man.png" type="Texture" id=2]
 [ext_resource path="res://resources/images/ui/enter_key.png" type="Texture" id=3]
+[ext_resource path="res://src/scripts/npc/friendly/character.gd" type="Script" id=4]
 
 [sub_resource type="BoxShape" id=9]
+extents = Vector3( 0.350342, 1, 1 )
 
-[node name="shark_man" type="Area"]
-script = ExtResource( 1 )
-character_name = "Shark_Man"
+[sub_resource type="BoxShape" id=10]
+extents = Vector3( 3.28593, 1.75351, 3.26532 )
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="shark_man" type="KinematicBody"]
+script = ExtResource( 4 )
+
+[node name="CharacterSprite" type="Sprite3D" parent="."]
 transform = Transform( 3.08242, 0, 0, 0, 3.08242, 0, 0, 0, 1, 0, 0, 0 )
 texture = ExtResource( 2 )
 hframes = 5
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 5.40268, 0.221055, 0, -0.129346, 3.16127, 0, 0, 0, 3.30453, 0, 0, 0 )
 shape = SubResource( 9 )
 
-[node name="EnterButton" type="Sprite3D" parent="."]
+[node name="Area" type="Area" parent="."]
+script = ExtResource( 1 )
+character_name = "Shark_Man"
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 10 )
+
+[node name="EnterButton" type="Sprite3D" parent="Area"]
 transform = Transform( 6.31449, 0, 0, 0, 6.31449, 0, 0, 0, 1, -0.129704, 2.84347, 0 )
 texture = ExtResource( 3 )

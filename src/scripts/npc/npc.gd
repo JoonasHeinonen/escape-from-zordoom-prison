@@ -55,7 +55,9 @@ func _input(event):
 						match(Shark_Man_dialog_value):
 							(0):
 								commence_dialog('timerline-Shark_Man-Angela-1')
+								# TODO see if we can use this part for the arena level
 						Shark_Man_dialog_value  = process_dialog_value(Shark_Man_dialog_value, 0)
+						Globle.arena_menu_open = true
 						
 							
 	if (Globle.player_character == "Rivet"): 

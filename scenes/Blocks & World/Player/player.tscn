@@ -301,7 +301,7 @@ tracks/6/path = NodePath("Audio/Body/Step")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
-tracks/6/enabled = true
+tracks/6/enabled = false
 tracks/6/keys = {
 "clips": [ {
 "end_offset": 0.0,
@@ -527,6 +527,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -1349,6 +1350,34 @@ custom_styles/bg = SubResource( 66 )
 step = 1.0
 percent_visible = false
 
+[node name="ArenaMenu" type="Control" parent="PlayerUI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Panel" type="Panel" parent="PlayerUI/ArenaMenu"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -500.0
+margin_top = -220.0
+margin_right = 500.0
+margin_bottom = 220.0
+custom_styles/panel = SubResource( 19 )
+
+[node name="ArenaButton" type="Button" parent="PlayerUI/ArenaMenu"]
+margin_right = 1280.0
+margin_bottom = 120.0
+theme = ExtResource( 4 )
+text = "label"
+
+[node name="Audio" type="Node" parent="PlayerUI/ArenaMenu/ArenaButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/ArenaButton/Audio"]
+stream = ExtResource( 24 )
+
+[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/ArenaButton/Audio"]
+stream = ExtResource( 27 )
+
 [node name="Node" type="Node" parent="."]
 
 [node name="Node2" type="Node" parent="."]
@@ -1387,6 +1416,7 @@ stream = ExtResource( 16 )
 
 [node name="Step" type="AudioStreamPlayer" parent="Audio/Body"]
 stream = ExtResource( 20 )
+stream_paused = true
 
 [node name="Melee" type="Node" parent="Audio"]
 
@@ -1460,3 +1490,5 @@ script = ExtResource( 43 )
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
 [connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
+[connection signal="focus_exited" from="PlayerUI/ArenaMenu/ArenaButton" to="PlayerUI/ArenaMenu/ArenaButton" method="_on_VendorWeaponButton_focus_exited"]
+[connection signal="pressed" from="PlayerUI/ArenaMenu/ArenaButton" to="PlayerUI/ArenaMenu/ArenaButton" method="_on_VendorWeaponButton_pressed"]

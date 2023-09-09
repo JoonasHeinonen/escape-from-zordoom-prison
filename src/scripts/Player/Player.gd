@@ -18,7 +18,8 @@ onready var ui_timer = $PlayerUI/ui_notification/Ui_Timer
 onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
-	$PlayerUI/VendorContainer
+	$PlayerUI/VendorContainer,
+	$PlayerUI/ArenaMenu
 ]
 onready var hand_instance_src = "res://resources/images/characters/player/"
 
@@ -144,7 +145,7 @@ func _physics_process(delta):
 		_:
 			gun_instance.hide()
 
-	if player_health > 0 && !Globle.player_inventory:
+	if player_health > 0 && !Globle.player_inventory && !Globle.arena_menu_open:
 		# Melee attack.
 		if Input.is_action_pressed("ui_melee_attack"):
 			# Disable Rivet's melee attack for now.
@@ -194,6 +195,8 @@ func _physics_process(delta):
 				player_double_jump_used = true
 			if (Input.is_action_just_released("jump") && !is_on_floor()):
 				player_double_jump = true
+
+	if Globle.arena_menu_open : velocity.x = 0
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
@@ -265,7 +268,10 @@ func _process(delta):
 
 	# Hide the boss fight UI.
 	if !boss_fight_active : $PlayerUI/ui_boss_data.visible = false
-
+	
+	# Arena menu.
+	if Globle.arena_menu_open : $PlayerUI/ArenaMenu.visible = true
+	
 	# Heal the player after collecting the nodes. Also update the UI.
 	heal_player()
 	update_health_ui()
