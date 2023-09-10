@@ -232,7 +232,7 @@ func _physics_process(delta):
 		sniping_radical.show()
 
 	if not is_on_floor():
-		# velocity.y -= gravity * delta
+		velocity.y -= gravity * delta
 		state_machine.travel("Player_Fall")
 		# Angela's melee attack
 		if Globle.player_character == "Angela":
@@ -278,6 +278,7 @@ func _process(delta):
 		var screen_pos = get_viewport().get_camera().unproject_position(angela_arm.global_transform.origin)
 		var mouse_pos = get_viewport().get_mouse_position()
 		var angle = screen_pos.angle_to_point(mouse_pos)
+
 		if (current_weapon != "pulse_rifle" && !player_is_aiming_with_rifle):
 			rotate_arm(0, 0, -angle + offset)
 		elif (current_weapon == "pulse_rifle" && player_is_aiming_with_rifle):
@@ -589,6 +590,8 @@ func shoot_pulse_rifle():
 		$Audio/Weapons/PulseRifle.play()
 		var projectile = pulse_rifle_projectile.instance()
 		projectile.translation.x = 10
+		projectile.transform.x = -1
+		projectile.transofrm.y = -1
 		get_parent().add_child(projectile)
 		projectile.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 
