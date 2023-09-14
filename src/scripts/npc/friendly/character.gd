@@ -25,3 +25,4 @@ func turn_character(player_x : float, character_x : float):
 	elif (player_x < character_x):
 		direction = "Left"
 # TODO cant seem to click on anything after doing the menu
+# TODO take a look at weapon invtory.gd

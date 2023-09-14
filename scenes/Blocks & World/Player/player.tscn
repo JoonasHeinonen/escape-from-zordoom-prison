@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=2]
+[gd_scene load_steps=90 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://scenes/Transitions/fade_in.tscn" type="PackedScene" id=42]
 [ext_resource path="res://src/scripts/Player/PlayerCamera.gd" type="Script" id=43]
 [ext_resource path="res://resources/images/ui/boss_fight_icon_empty.png" type="Texture" id=44]
+[ext_resource path="res://src/scripts/npc/ArenaMenu.gd" type="Script" id=45]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -1351,24 +1352,27 @@ step = 1.0
 percent_visible = false
 
 [node name="ArenaMenu" type="Control" parent="PlayerUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 45 )
+
+[node name="Panel" type="Panel" parent="PlayerUI/ArenaMenu"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="Panel" type="Panel" parent="PlayerUI/ArenaMenu"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 margin_left = -500.0
-margin_top = -220.0
+margin_top = -119.0
 margin_right = 500.0
-margin_bottom = 220.0
+margin_bottom = 321.0
 custom_styles/panel = SubResource( 19 )
 
 [node name="ArenaButton" type="Button" parent="PlayerUI/ArenaMenu"]
-margin_right = 1280.0
-margin_bottom = 120.0
+margin_left = 478.0
+margin_top = 97.0
+margin_right = 855.0
+margin_bottom = 217.0
 theme = ExtResource( 4 )
-text = "label"
+text = "fight_1"
 
 [node name="Audio" type="Node" parent="PlayerUI/ArenaMenu/ArenaButton"]
 
@@ -1376,6 +1380,22 @@ text = "label"
 stream = ExtResource( 24 )
 
 [node name="Move" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/ArenaButton/Audio"]
+stream = ExtResource( 27 )
+
+[node name="ExitButton" type="Button" parent="PlayerUI/ArenaMenu/ArenaButton"]
+margin_left = 9.0
+margin_top = 299.0
+margin_right = 386.0
+margin_bottom = 419.0
+theme = ExtResource( 4 )
+text = "Exit"
+
+[node name="Audio" type="Node" parent="PlayerUI/ArenaMenu/ArenaButton/ExitButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/ArenaButton/ExitButton/Audio"]
+stream = ExtResource( 24 )
+
+[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/ArenaButton/ExitButton/Audio"]
 stream = ExtResource( 27 )
 
 [node name="Node" type="Node" parent="."]
@@ -1492,3 +1512,5 @@ script = ExtResource( 43 )
 [connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
 [connection signal="focus_exited" from="PlayerUI/ArenaMenu/ArenaButton" to="PlayerUI/ArenaMenu/ArenaButton" method="_on_VendorWeaponButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/ArenaMenu/ArenaButton" to="PlayerUI/ArenaMenu/ArenaButton" method="_on_VendorWeaponButton_pressed"]
+[connection signal="focus_exited" from="PlayerUI/ArenaMenu/ArenaButton/ExitButton" to="PlayerUI/ArenaMenu/ArenaButton/ExitButton" method="_on_VendorWeaponButton_focus_exited"]
+[connection signal="pressed" from="PlayerUI/ArenaMenu/ArenaButton/ExitButton" to="PlayerUI/ArenaMenu/ArenaButton/ExitButton" method="_on_VendorWeaponButton_pressed"]
