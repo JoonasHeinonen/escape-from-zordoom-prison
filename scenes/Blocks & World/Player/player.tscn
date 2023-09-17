@@ -528,7 +528,6 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
-frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -1216,42 +1215,6 @@ text = "There are many variations of passages of Lorem Ipsum available, but the 
 autowrap = true
 clip_text = true
 
-[node name="ui_notification" type="Control" parent="PlayerUI"]
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI/ui_notification"]
-layer = 3
-
-[node name="Ui_notification" type="CenterContainer" parent="PlayerUI/ui_notification/CanvasLayer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -4.0
-margin_top = -124.0
-margin_right = -4.0
-margin_bottom = -124.0
-
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
-margin_left = 217.0
-margin_top = 218.0
-margin_right = 1062.0
-margin_bottom = 502.0
-texture = ExtResource( 41 )
-
-[node name="ui_ammo" type="RichTextLabel" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
-margin_left = 440.0
-margin_top = 335.0
-margin_right = 840.0
-margin_bottom = 385.0
-rect_min_size = Vector2( 400, 50 )
-bbcode_enabled = true
-bbcode_text = "[center]You got xxx ammo for xxx[/center]"
-text = "You got xxx ammo for xxx"
-
-[node name="Ui_Timer" type="Timer" parent="PlayerUI/ui_notification"]
-wait_time = 3.0
-
 [node name="ui_boss_data" type="Control" parent="PlayerUI"]
 margin_right = 1280.0
 margin_bottom = 720.0
@@ -1351,9 +1314,46 @@ custom_styles/bg = SubResource( 66 )
 step = 1.0
 percent_visible = false
 
+[node name="ui_notification" type="Control" parent="PlayerUI"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI/ui_notification"]
+layer = 3
+
+[node name="Ui_notification" type="CenterContainer" parent="PlayerUI/ui_notification/CanvasLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -4.0
+margin_top = -124.0
+margin_right = -4.0
+margin_bottom = -124.0
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
+margin_left = 217.0
+margin_top = 218.0
+margin_right = 1062.0
+margin_bottom = 502.0
+texture = ExtResource( 41 )
+
+[node name="ui_ammo" type="RichTextLabel" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
+margin_left = 440.0
+margin_top = 335.0
+margin_right = 840.0
+margin_bottom = 385.0
+rect_min_size = Vector2( 400, 50 )
+bbcode_enabled = true
+bbcode_text = "[center]You got xxx ammo for xxx[/center]"
+text = "You got xxx ammo for xxx"
+
+[node name="Ui_Timer" type="Timer" parent="PlayerUI/ui_notification"]
+wait_time = 3.0
+
 [node name="ArenaMenu" type="Control" parent="PlayerUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 45 )
 
 [node name="Panel" type="Panel" parent="PlayerUI/ArenaMenu"]
@@ -1366,36 +1366,47 @@ margin_right = 500.0
 margin_bottom = 321.0
 custom_styles/panel = SubResource( 19 )
 
-[node name="ArenaButton" type="Button" parent="PlayerUI/ArenaMenu"]
-margin_left = 478.0
-margin_top = 97.0
-margin_right = 855.0
-margin_bottom = 217.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/ArenaMenu"]
+anchor_left = 0.3
+anchor_top = 0.5
+anchor_right = 0.6
+anchor_bottom = 0.5
+margin_right = 40.0
+margin_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ArenaButton" type="Button" parent="PlayerUI/ArenaMenu/VBoxContainer"]
+margin_right = 424.0
+margin_bottom = 59.0
+focus_neighbour_top = NodePath("../ExitButton")
+focus_neighbour_bottom = NodePath("../ExitButton")
 theme = ExtResource( 4 )
 text = "fight_1"
 
-[node name="Audio" type="Node" parent="PlayerUI/ArenaMenu/ArenaButton"]
+[node name="Audio" type="Node" parent="PlayerUI/ArenaMenu/VBoxContainer/ArenaButton"]
 
-[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/ArenaButton/Audio"]
+[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/VBoxContainer/ArenaButton/Audio"]
 stream = ExtResource( 24 )
 
-[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/ArenaButton/Audio"]
+[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/VBoxContainer/ArenaButton/Audio"]
 stream = ExtResource( 27 )
 
-[node name="ExitButton" type="Button" parent="PlayerUI/ArenaMenu/ArenaButton"]
-margin_left = 9.0
-margin_top = 299.0
-margin_right = 386.0
-margin_bottom = 419.0
+[node name="ExitButton" type="Button" parent="PlayerUI/ArenaMenu/VBoxContainer"]
+margin_top = 63.0
+margin_right = 424.0
+margin_bottom = 122.0
+focus_neighbour_top = NodePath("../ArenaButton")
+focus_neighbour_bottom = NodePath("../ArenaButton")
 theme = ExtResource( 4 )
 text = "Exit"
 
-[node name="Audio" type="Node" parent="PlayerUI/ArenaMenu/ArenaButton/ExitButton"]
+[node name="Audio" type="Node" parent="PlayerUI/ArenaMenu/VBoxContainer/ExitButton"]
 
-[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/ArenaButton/ExitButton/Audio"]
+[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/VBoxContainer/ExitButton/Audio"]
 stream = ExtResource( 24 )
 
-[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/ArenaButton/ExitButton/Audio"]
+[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/ArenaMenu/VBoxContainer/ExitButton/Audio"]
 stream = ExtResource( 27 )
 
 [node name="Node" type="Node" parent="."]
@@ -1510,7 +1521,6 @@ script = ExtResource( 43 )
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
 [connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
-[connection signal="focus_exited" from="PlayerUI/ArenaMenu/ArenaButton" to="PlayerUI/ArenaMenu/ArenaButton" method="_on_VendorWeaponButton_focus_exited"]
-[connection signal="pressed" from="PlayerUI/ArenaMenu/ArenaButton" to="PlayerUI/ArenaMenu/ArenaButton" method="_on_VendorWeaponButton_pressed"]
-[connection signal="focus_exited" from="PlayerUI/ArenaMenu/ArenaButton/ExitButton" to="PlayerUI/ArenaMenu/ArenaButton/ExitButton" method="_on_VendorWeaponButton_focus_exited"]
-[connection signal="pressed" from="PlayerUI/ArenaMenu/ArenaButton/ExitButton" to="PlayerUI/ArenaMenu/ArenaButton/ExitButton" method="_on_VendorWeaponButton_pressed"]
+[connection signal="visibility_changed" from="PlayerUI/ArenaMenu" to="PlayerUI/ArenaMenu" method="_on_ArenaMenu_visibility_changed"]
+[connection signal="pressed" from="PlayerUI/ArenaMenu/VBoxContainer/ArenaButton" to="PlayerUI/ArenaMenu" method="_on_ArenaButton_pressed"]
+[connection signal="pressed" from="PlayerUI/ArenaMenu/VBoxContainer/ExitButton" to="PlayerUI/ArenaMenu" method="_on_ExitButton_pressed"]

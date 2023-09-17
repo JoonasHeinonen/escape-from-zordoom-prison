@@ -51,3 +51,7 @@ func vendor_process(var open: bool, var pause: bool):
 	Globle.update_vendor()
 	get_tree().paused = open
 	get_parent().set_process_input(pause)
+
+
+func _on_ExitButton_pressed():
+	pass # Replace with function body.

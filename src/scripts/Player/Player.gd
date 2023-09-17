@@ -267,10 +267,10 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
 
 	# Hide the boss fight UI.
-	if !boss_fight_active : $PlayerUI/ui_boss_data.visible = false
+	if !boss_fight_active : $PlayerUI/ui_boss_data.hide()
 	
 	# Arena menu.
-	if Globle.arena_menu_open : $PlayerUI/ArenaMenu.visible = true
+	if Globle.arena_menu_open : $PlayerUI/ArenaMenu.open()
 	
 	# Heal the player after collecting the nodes. Also update the UI.
 	heal_player()
@@ -281,6 +281,8 @@ func _process(delta):
 
 	# Set the bolts in the vendor.
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
+
+
 
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
 
