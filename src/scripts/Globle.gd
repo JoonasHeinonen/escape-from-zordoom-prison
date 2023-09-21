@@ -79,3 +79,10 @@ func update_vendor():
 		wpn_index += 1
 		if current_weapons.has(wpn_for_sale):
 			weapons_for_sale.remove(wpn_index)
+# make a function called open_pause_menue
+
+#function called open_dialog menue
+
+# functiion called open_dialog menue
+
+#idea maybe refacter to most interactions etc to the globle to be easier to write code and find bugs.

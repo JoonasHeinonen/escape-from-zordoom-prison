@@ -528,6 +528,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -1399,6 +1400,7 @@ margin_bottom = 122.0
 focus_neighbour_top = NodePath("../ArenaButton")
 focus_neighbour_bottom = NodePath("../ArenaButton")
 theme = ExtResource( 4 )
+action_mode = 0
 text = "Exit"
 
 [node name="Audio" type="Node" parent="PlayerUI/ArenaMenu/VBoxContainer/ExitButton"]

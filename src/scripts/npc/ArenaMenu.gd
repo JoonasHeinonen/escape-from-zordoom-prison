@@ -40,9 +40,11 @@ func _on_ExitButton_pressed():
 
 func _on_ArenaMenu_visibility_changed():
 	if (self.visible):
+		print("test")
 		#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		pass # Replace with function body.
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 # open the menue
 func open():
@@ -50,9 +52,8 @@ func open():
 		is_open = true
 		show()
 		print("open")
-		area_button.grab_focus()
+		
 #exit out of the menue
 func close():
-	if is_open:
-		is_open = false
-		hide()
+	Globle.arena_menu_open = false
+	hide()
