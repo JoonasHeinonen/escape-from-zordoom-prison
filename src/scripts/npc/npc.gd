@@ -57,9 +57,11 @@ func _input(event):
 								commence_dialog('timerline-Shark_Man-Angela-1')
 								# TODO see if we can use this part for the arena level
 						Shark_Man_dialog_value  = process_dialog_value(Shark_Man_dialog_value, 0)
+						#when the player askes the shark man another time the menu doesnt show up again.
+						#Whyyyyyyyy doesn't it resart this though :((((
 						Globle.arena_menu_open = true
 						
-							
+												
 	if (Globle.player_character == "Rivet"): 
 		if get_node_or_null('DialogNode') == null:
 			if Input.is_action_just_pressed("ui_accept") and active == true: 

@@ -55,5 +55,8 @@ func open():
 		
 #exit out of the menue
 func close():
+	is_open = false
 	Globle.arena_menu_open = false
+	print('close')
+	print(Globle.arena_menu_open)
 	hide()
