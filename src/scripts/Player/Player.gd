@@ -2,6 +2,8 @@ extends KinematicBody
 
 class_name Player
 
+signal update_player_position_to_camera(new_aiming_radical)
+
 const RANDOM_ANGLE = PI / 2.0
 
 onready var gravity_bomb_projectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
@@ -220,6 +222,7 @@ func _physics_process(delta):
 	# Aim, but when the current weapon is pulse rifle.
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
+			update_player_position_to_camera()
 			player_is_aiming_with_rifle = true
 	elif Input.is_action_just_released("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 			player_is_aiming_with_rifle = false
@@ -306,6 +309,8 @@ func _process(delta):
 
 	# Set the bolts in the vendor.
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
+
+
 
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
 
@@ -590,8 +595,6 @@ func shoot_pulse_rifle():
 		$Audio/Weapons/PulseRifle.play()
 		var projectile = pulse_rifle_projectile.instance()
 		projectile.translation.x = 10
-		projectile.transform.x = -1
-		projectile.transofrm.y = -1
 		get_parent().add_child(projectile)
 		projectile.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 
@@ -752,6 +755,10 @@ func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
 				Globle.WPNS[1][7],
 				Globle.WPNS[2][7]
 			)
+
+# Resets the sniping position.
+func update_player_position_to_camera():
+	emit_signal("update_player_position_to_camera", player_health)
 
 # Change weapon to Edge Blaster.
 func _on_WeaponSlot1_pressed():

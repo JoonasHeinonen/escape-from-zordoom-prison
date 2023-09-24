@@ -50,6 +50,7 @@ shape = SubResource( 1 )
 disabled = true
 
 [node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0 )
 material_override = SubResource( 4 )
 amount = 1000
 lifetime = 5.0
