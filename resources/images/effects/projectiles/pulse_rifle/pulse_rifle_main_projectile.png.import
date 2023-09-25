@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/icon-triangle-placeholder.png-5dc9d2e7f17015bb310afb954edf9eda.s3tc.stex"
-path.etc2="res://.import/icon-triangle-placeholder.png-5dc9d2e7f17015bb310afb954edf9eda.etc2.stex"
+path.s3tc="res://.import/pulse_rifle_main_projectile.png-831ea975070978ed181726ba0eef4537.s3tc.stex"
+path.etc2="res://.import/pulse_rifle_main_projectile.png-831ea975070978ed181726ba0eef4537.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://scenes/UI/icon-triangle-placeholder.png"
-dest_files=[ "res://.import/icon-triangle-placeholder.png-5dc9d2e7f17015bb310afb954edf9eda.s3tc.stex", "res://.import/icon-triangle-placeholder.png-5dc9d2e7f17015bb310afb954edf9eda.etc2.stex" ]
+source_file="res://resources/images/effects/projectiles/pulse_rifle/pulse_rifle_main_projectile.png"
+dest_files=[ "res://.import/pulse_rifle_main_projectile.png-831ea975070978ed181726ba0eef4537.s3tc.stex", "res://.import/pulse_rifle_main_projectile.png-831ea975070978ed181726ba0eef4537.etc2.stex" ]
 
 [params]
 
