@@ -1,4 +1,5 @@
 extends KinematicBody
+# TODO Remove this script!
 
 func _ready():
 	$"../KillTimer".connect("timeout", self, "_on_KillTimer_timeout")
