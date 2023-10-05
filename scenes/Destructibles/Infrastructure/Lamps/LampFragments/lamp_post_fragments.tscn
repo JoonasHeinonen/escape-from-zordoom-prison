@@ -3,7 +3,7 @@
 [ext_resource path="res://resources/models/destructibles/infrastructure/LampPost.material" type="Material" id=1]
 [ext_resource path="res://resources/models/destructibles/infrastructure/Lamp.material" type="Material" id=2]
 [ext_resource path="res://src/scripts/destructibles/destructible_fragments.gd" type="Script" id=3]
-[ext_resource path="res://resources/audio/environment/destructibles/crate_0.wav" type="AudioStream" id=5]
+[ext_resource path="res://resources/audio/environment/destructibles/vase_0.wav" type="AudioStream" id=4]
 
 [sub_resource type="ArrayMesh" id=4]
 resource_name = "lamp_post_broken_Cube002"
@@ -115,8 +115,9 @@ wait_time = 3.0
 
 [node name="Audio" type="Node" parent="LampCenter"]
 
-[node name="DestroySound" type="AudioStreamPlayer" parent="LampCenter/Audio"]
-stream = ExtResource( 5 )
+[node name="DestroySound" type="AudioStreamPlayer3D" parent="LampCenter/Audio"]
+stream = ExtResource( 4 )
+unit_db = 20.0
 
 [node name="LampTop" type="RigidBody" parent="."]
 transform = Transform( 0.999067, 0.0431835, 0, -0.0431835, 0.999067, 0, 0, 0, 1, 0, 2.88361, 0 )
