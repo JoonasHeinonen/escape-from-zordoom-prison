@@ -43,7 +43,7 @@ func set_scene_to_load(scl):
 
 # Swap the visible menu nodes.
 func set_menu_nodes(control : Control, index_button : Button):
-	control.visible   = true
+	control.visible = true
 	root_scene.visible = false
 	index_button.grab_focus()
 

@@ -8,7 +8,4 @@ func _process(delta):
 	if pm.color.a < 0.0:
 		pm.color.a = 0.0
 	print(pm.color.a)
-	#control the fade of the sprite but only can happen once.
-	
-func _ready():
-	pass
+	# Control the fade of the sprite but only can happen once.

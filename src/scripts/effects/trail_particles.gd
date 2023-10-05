@@ -10,7 +10,7 @@ func _physics_process(delta):
 func _on_TrailParticles_body_entered(body):
 	if (body.name == "player"):
 		var effects : Node = null
-		var h_l 		   = health_light.instance()
+		var h_l = health_light.instance()
 		if (body.has_node("Effects")):
 			effects = body.get_node("Effects")
 			effects.add_child(h_l)

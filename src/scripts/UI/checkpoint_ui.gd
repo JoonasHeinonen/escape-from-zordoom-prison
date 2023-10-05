@@ -1,7 +1,7 @@
 extends Area
 
-var active 						 = false
-var ui_notification 			 = false
+var active = false
+var ui_notification = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

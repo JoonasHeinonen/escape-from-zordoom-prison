@@ -3,7 +3,7 @@ extends Spatial
 export (String, "crate_destroy", "lamp_post_destroy", "health_destroy") var sound_name
 
 onready var destroy_sound = $Audio/DestroySound
-onready var root_src 	  = "res://resources/audio/environment/destructibles/"
+onready var root_src = "res://resources/audio/environment/destructibles/"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

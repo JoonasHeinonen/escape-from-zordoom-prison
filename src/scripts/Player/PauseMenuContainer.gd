@@ -1,7 +1,7 @@
 extends Control
 
-onready var return_btn   = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
-onready var exit_btn 	 = $VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton
+onready var return_btn = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
+onready var exit_btn = $VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton
 
 var btns : Array = [return_btn, exit_btn]
 

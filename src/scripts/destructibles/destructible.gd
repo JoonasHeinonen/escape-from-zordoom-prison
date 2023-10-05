@@ -1,38 +1,38 @@
 extends KinematicBody
 
-onready var bolt_instance 		   = preload("res://scenes/Collectibles/bolt.tscn")
-onready var bolt_crate_fragments   = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
+onready var bolt_instance = preload("res://scenes/Collectibles/bolt.tscn")
+onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
 onready var health_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/health_crate_fragments.tscn")
-onready var lamp_post_fragments    = preload("res://scenes/Destructibles/Infrastructure/Lamps/LampFragments/lamp_post_fragments.tscn")
-onready var crate_destroy_effect   = preload("res://scenes/Effects/Collectibles//CrateDestroyed.tscn")
-onready var radical 			   = preload("res://scenes/UI/GreenTargetRadical.tscn")
+onready var lamp_post_fragments = preload("res://scenes/Destructibles/Infrastructure/Lamps/LampFragments/lamp_post_fragments.tscn")
+onready var crate_destroy_effect = preload("res://scenes/Effects/Collectibles//CrateDestroyed.tscn")
+onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
 export (String, "bolt_crate", "lamp_post", "explosive_crate", "health_crate") var scene_type
 
-var random 						   = RandomNumberGenerator.new()
-var velocity 			  		   = Vector3(0, 0, 0)
-var active : bool 				   = false
-var meta_type : String 			   = ""
-var meta_name : String 			   = ""
-var fragment_scene : PackedScene   = null
+var random = RandomNumberGenerator.new()
+var velocity = Vector3(0, 0, 0)
+var active : bool = false
+var meta_type : String = ""
+var meta_name : String = ""
+var fragment_scene : PackedScene = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	match (scene_type):
 		"lamp_post":
-			meta_type 	   = "infra_destroyable"
-			meta_name 	   = "lamp post"
+			meta_type = "infra_destroyable"
+			meta_name = "lamp post"
 			fragment_scene = lamp_post_fragments
 		"bolt_crate":
-			meta_type 	   = "destroyable" 
-			meta_name 	   = "bolt crate"
+			meta_type = "destroyable" 
+			meta_name = "bolt crate"
 			fragment_scene = bolt_crate_fragments
 		"explosive_crate":
-			meta_type 	   = "destroyable" 
-			meta_name 	   = "bolt crate"
+			meta_type = "destroyable" 
+			meta_name = "bolt crate"
 		"health_crate":
-			meta_type 	   = "destroyable" 
-			meta_name 	   = "health crate"
+			meta_type = "destroyable" 
+			meta_name = "health crate"
 			fragment_scene = health_crate_fragments
 
 	self.set_meta("type", meta_type)

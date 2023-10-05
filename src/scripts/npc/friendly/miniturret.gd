@@ -1,21 +1,21 @@
 extends KinematicBody
 
-onready var projectile 			  = preload("res://scenes/Projectiles/MiniturretProjectile.tscn")
+onready var projectile = preload("res://scenes/Projectiles/MiniturretProjectile.tscn")
 
-onready var miniturret_gun 	  	  = $MiniturretGun
+onready var miniturret_gun = $MiniturretGun
 
-var body_target 				  = null
-var turn_direction 	 : String
-var state_machine 	 : AnimationNodeStateMachinePlayback
+var body_target = null
+var turn_direction : String
+var state_machine : AnimationNodeStateMachinePlayback
 
-var miniturret_ammo  : int 		  = 12
-var turn_increment 	 : float 	  = 0.05
-var locked_on_target : bool 	  = false
+var miniturret_ammo : int = 12
+var turn_increment : float = 0.05
+var locked_on_target : bool = false
 
-var directions 		 : Array 	  = ["up", "down"]
+var directions : Array = ["up", "down"]
 
-var velocity 					  = Vector3(0, 0, 0)
-var random 	  					  = RandomNumberGenerator.new()
+var velocity = Vector3(0, 0, 0)
+var random = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,26 +1,26 @@
 extends Control
 
-onready var new_game_button 	= $CenterContainer/Buttons/NewGameButton
-onready var load_game_button 	= $CenterContainer/Buttons/LoadGameButton
-onready var options_button 		= $CenterContainer/Buttons/OptionsButton
+onready var new_game_button = $CenterContainer/Buttons/NewGameButton
+onready var load_game_button = $CenterContainer/Buttons/LoadGameButton
+onready var options_button = $CenterContainer/Buttons/OptionsButton
 
-onready var camera 				= get_parent().get_node("Camera")
+onready var camera = get_parent().get_node("Camera")
 onready var character_Selection = get_parent().get_node("CharacterSelection")
-onready var load_game 			= get_parent().get_node("LoadGame")
-onready var options 			= get_parent().get_node("Options")
+onready var load_game = get_parent().get_node("LoadGame")
+onready var options = get_parent().get_node("Options")
 
-var random 	  					= RandomNumberGenerator.new()
+var random = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	random.randomize()
 	$Audio/Click.play()
 
-	get_tree().paused 			= false
-	self.visible 				= true
+	get_tree().paused = false
+	self.visible = true
 	character_Selection.visible = false
-	options.visible 			= false
-	load_game.visible 			= false
+	options.visible = false
+	load_game.visible = false
 
 	# Set the active button.
 	match Globle.menu_to_return:
