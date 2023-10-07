@@ -78,6 +78,7 @@ func _input(event):
 					"NPC_Angela_Rivet":
 						match(npc_Angela_Rivet_dialog_value):
 							(0):
+								#re-due menue logic
 								commence_dialog('timeline_Angela_npc_1')
 						npc_Angela_Rivet_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 2)
 

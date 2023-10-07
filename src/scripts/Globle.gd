@@ -55,6 +55,8 @@ var melee_attack = false
 var player_inventory = false
 var vendor_active = false
 var vendor_open = false
+var arena_menu_open = false
+var arena_menu_active = false
 
 var bolts = 0
 
