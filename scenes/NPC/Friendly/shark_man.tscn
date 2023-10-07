@@ -22,6 +22,7 @@ disabled = true
 [node name="Area" type="Area" parent="."]
 transform = Transform( 1.14803, 0, 0, 0, 1.14803, 0, 0, 0, 1, 0, 0.676993, 0 )
 script = ExtResource( 3 )
+character_name = "Shark_man"
 
 [node name="EnterButton" type="Sprite3D" parent="Area"]
 billboard = 1

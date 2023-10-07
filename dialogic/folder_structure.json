@@ -9,7 +9,9 @@
 				"character-1660859986.json",
 				"character-1681588545.json",
 				"character-1690823647.json",
-				"character-1691861071.json"
+				"character-1691861071.json",
+				"character-1696719927.json",
+				"character-1696720583.json"
 			],
 			"folders": {
 				"Bosses": {
@@ -27,7 +29,7 @@
 			},
 			"metadata": {
 				"color": null,
-				"folded": true
+				"folded": false
 			}
 		},
 		"Definitions": {
@@ -74,7 +76,7 @@
 					},
 					"metadata": {
 						"color": null,
-						"folded": false
+						"folded": true
 					}
 				},
 				"npc_basic": {
@@ -89,6 +91,18 @@
 					"metadata": {
 						"color": null,
 						"folded": true
+					}
+				},
+				"shark_man": {
+					"files": [
+						"timeline-1696719879.json"
+					],
+					"folders": {
+
+					},
+					"metadata": {
+						"color": null,
+						"folded": false
 					}
 				}
 			},
