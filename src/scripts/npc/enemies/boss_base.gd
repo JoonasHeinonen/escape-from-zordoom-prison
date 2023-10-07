@@ -1,6 +1,4 @@
-extends EnemyBase
-
-class_name BossBase
+extends "res://src/scripts/npc/enemies/enemy_base.gd"
 
 onready var flame_projectile = preload("res://scenes/Projectiles/enemy_projectiles/flame.tscn")
 onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
@@ -91,7 +89,6 @@ func _on_DamageCooloffTimer_timeout():
 func _on_Weakspot_area_entered(area):
 	var expl = explosion.instance()
 	if area.name == "ProjectileExplosionArea" && !damaged:
-		animation_player.play("Enemy_Damage")
 		damage_enemy(1)
 		damaged = true
 		$DamageCooloffTimer.start()

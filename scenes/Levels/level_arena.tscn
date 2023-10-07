@@ -100,6 +100,3 @@ width = 52.179
 height = 9.38768
 depth = 3.61038
 material = SubResource( 7 )
-[gd_scene format=2]
-
-[node name="Spatial" type="Spatial"]

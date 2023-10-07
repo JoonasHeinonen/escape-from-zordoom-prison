@@ -6,15 +6,15 @@
 [ext_resource path="res://scenes/Collectibles/weapon_collectible.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/NPC/Friendly/slim_cognito.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/BlocksNWorld/Player/player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/Blocks & World/Doors/Teleport.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Blocks & World/Player/player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/NPC/Friendly/null_npc.tscn" type="PackedScene" id=9]
 [ext_resource path="res://resources/images/environment/haerkonen.jpg" type="Texture" id=10]
 [ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=12]
 [ext_resource path="res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/Collectibles/ammo_can.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/NPC/Enemies/Enemy.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scenes/BlocksNWorld/Doors/ArchDoors.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/Blocks & World/Doors/ArchDoors.tscn" type="PackedScene" id=16]
 [ext_resource path="res://scenes/Destructibles/Crates/health_crate.tscn" type="PackedScene" id=17]
 [ext_resource path="res://resources/images/ui/r_n_c__Final_ammo.png" type="Texture" id=18]
 [ext_resource path="res://src/scripts/UI/checkpoint_ui.gd" type="Script" id=19]
@@ -54,7 +54,7 @@ extents = Vector3( 1.1457, 1, 1 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4071, -11.2671, 0 )
 
 [node name="ammo_can5" parent="." instance=ExtResource( 14 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4892, -30.4048, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1608, -1.54334, 0 )
 
 [node name="ammo_can4" parent="." instance=ExtResource( 14 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 27.9706, -1.60882, 0 )
@@ -127,7 +127,7 @@ collision_layer = 9
 collision_mask = 9
 
 [node name="Enemy" parent="npc/enemies" instance=ExtResource( 15 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.100346, -2.61302, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0205, -1.01605, 0 )
 
 [node name="Enemy2" parent="npc/enemies" instance=ExtResource( 15 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0 )
@@ -167,19 +167,19 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5761, -1.11023, 0 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4.03642, -0.381383, 0 )
 
 [node name="BoltCrate5" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.569, -3.57654, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5693, -3.63197, 0.27 )
 
 [node name="BoltCrate6" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.34, -3.57654, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3403, -3.63197, 0.27 )
 
 [node name="BoltCrate7" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.922, -2.67517, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9223, -2.89695, 0.27 )
 
 [node name="BoltCrate8" parent="destructibles/crates" instance=ExtResource( 2 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 44.1048, -11.0882, 0.27 )
 
 [node name="BoltCrate9" parent="destructibles/crates" instance=ExtResource( 2 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.782, -2.675, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7824, -2.89695, 0.27 )
 
 [node name="HealthCrate" parent="destructibles/crates" instance=ExtResource( 17 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4373, 0, 0 )
@@ -190,7 +190,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0501, 0, 0 )
 [node name="explosive_crates" type="Node" parent="destructibles"]
 
 [node name="ExplosiveCrate" parent="destructibles/explosive_crates" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.206, -3.57654, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2058, -3.632, 0.274 )
 
 [node name="ExplosiveCrate2" parent="destructibles/explosive_crates" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5133, 0.361917, 0 )
@@ -269,7 +269,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0.468811, 0.0481787, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -6.60757, 0.612284, 0 )
 collision_layer = 5
 collision_mask = 5
 axis_lock_motion_x = false

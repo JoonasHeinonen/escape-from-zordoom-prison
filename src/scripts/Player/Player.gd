@@ -2,24 +2,18 @@ extends KinematicBody
 
 class_name Player
 
-signal update_player_position_to_camera(new_aiming_radical)
-
 const RANDOM_ANGLE = PI / 2.0
 
-onready var gravity_bomb_projectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
 onready var projectile = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
 onready var blitz_gun_projectile = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
 onready var bolt_sparkle = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
+onready var gravity_bomb_projectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
 onready var negotiator_projectile = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
 onready var miniturret_packed_projectile = preload("res://scenes/Projectiles/MiniturretPackedProjectile.tscn")
-onready var pulse_rifle_projectile = preload("res://scenes/Projectiles/PulseRifleProjectile.tscn")
 onready var gun_btn = preload("res://scenes/UI/VendorWeaponButton.tscn")
-onready var hand_instance_src = "res://resources/images/characters/player/"
 
 onready var angela_arm = $AngelaArm
 onready var rivet_arm = $RivetArm
-onready var shoot_timer = $ShootTimer
-onready var sniping_radical = $SnipingRadical
 onready var ui_timer = $PlayerUI/ui_notification/Ui_Timer
 onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
@@ -27,42 +21,39 @@ onready var ui_containers = [
 	$PlayerUI/VendorContainer,
 	$PlayerUI/ArenaMenu
 ]
+onready var hand_instance_src = "res://resources/images/characters/player/"
 
 export var speed = 1
 
 var hand_instance : Sprite3D
 var gun_instance
 var state_machine
-var animation_player
 
 var velocity = Vector3(0 ,0 ,0)
 
 var current_boss_name : String = ""
 
-var bolt = 0
 var gravity = 4
 var jump = 5
+var bolt = 0
 var player_health = 4
 var player_max_health
 var health_node_counter = 0
 
+var ui_notification : bool = false
 var boss_fight_active : bool = false
 var in_teleport_radius : bool = false
 var player_double_jump : bool = false
 var player_double_jump_used : bool = false
-var player_is_aiming_with_rifle : bool = false
-var player_is_just_damaged : bool = false
-var ui_notification : bool = false
 
-# Weapon variables.
-var sniping_ray
-
+# Weapon variables, if player has such weapon.
 var current_weapon = null
-var sniping_raycast = null
 
-var fire_rate : int = 3
+var fire_Rate = 3
 
 var timer = Timer.new()
+var ray_origin = Vector3()
+var ray_end = Vector3()
 var random = RandomNumberGenerator.new()
 
 ### INHERITED FUNCTIONS FROM GODOT.
@@ -76,11 +67,9 @@ func _ready():
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):
 		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")
-		animation_player = $RivetAnimationPlayer
 		state_machine = $RivetAnimationTree.get("parameters/playback")
 		gun_instance = $RivetArm/HandInstance/Hand/WeaponPlaceHolder
 		hand_instance = $RivetArm/HandInstance/Hand
-		sniping_raycast = $RivetArm/HandInstance/Hand/WeaponPlaceHolder/SnipingRayCast
 		$AngelaArm/HandInstance/Hand/WeaponPlaceHolder.hide()
 		$AngelaSprite.hide()
 		$RivetSprite.show()
@@ -89,11 +78,9 @@ func _ready():
 		hand_instance.set_texture(g_i_s)
 	elif (Globle.player_character == "Angela"):
 		var g_i_s = load(hand_instance_src + "angela/angela_weapon.png")
-		animation_player = $AngelaAnimationPlayer
 		state_machine = $AngelaAnimationTree.get("parameters/playback")
 		gun_instance  = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder
 		hand_instance = $AngelaArm/HandInstance/Hand
-		sniping_raycast = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/SnipingRayCast
 		$RivetArm/HandInstance/Hand/WeaponPlaceHolder.hide()
 		$AngelaSprite.show()
 		$RivetSprite.hide()
@@ -103,14 +90,14 @@ func _ready():
 	hand_instance.scale.y = -20
 
 	ui_timer.connect("timeout", self, "_on_UI_Timer_timeout")
-	shoot_timer.connect("timeout", self, "_on_ShootTimer_timeout")
-	shoot_timer.start()
+	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
+	$ShootTimer.start()
 	$PlayerUI/InventoryContainer.visible = false
 	walk(0, 1, -0.1)
-
+	
 	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
-		current_weapon = "pulse_rifle"
+		current_weapon = "edge_blaster"
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	# The spawn code for the player
@@ -135,38 +122,30 @@ func _physics_process(delta):
 		"edge_blaster":
 			change_weapon_texture("edge_blaster")
 			update_ammo_ui(Globle.player_weapons_ammo[0], Globle.WPNS[3][0])
-			shoot_timer.wait_time = Globle.WPNS[4][0]
 		"blitz_gun":
 			change_weapon_texture("blitz_gun")
 			update_ammo_ui(Globle.player_weapons_ammo[1], Globle.WPNS[3][1])
-			shoot_timer.wait_time = Globle.WPNS[4][1]
 		"gravity_bomb":
 			change_weapon_texture("gravity_bomb")
 			update_ammo_ui(Globle.player_weapons_ammo[2], Globle.WPNS[3][2])
-			shoot_timer.wait_time = Globle.WPNS[4][2]
 		"negotiator":
 			change_weapon_texture("negotiator")
 			update_ammo_ui(Globle.player_weapons_ammo[3], Globle.WPNS[3][3])
-			shoot_timer.wait_time = Globle.WPNS[4][3]
 		"pulse_rifle":
 			change_weapon_texture("pulse_rifle")
 			update_ammo_ui(Globle.player_weapons_ammo[4], Globle.WPNS[3][4])
-			shoot_timer.wait_time = Globle.WPNS[4][4]
 		"ry3no":
 			change_weapon_texture("ry3no")
 			update_ammo_ui(Globle.player_weapons_ammo[5], Globle.WPNS[3][5])
-			shoot_timer.wait_time = Globle.WPNS[4][5]
 		"sheepinator":
 			change_weapon_texture("sheepinator")
-			shoot_timer.wait_time = Globle.WPNS[4][6]
 		"miniturret_glove":
 			change_weapon_texture("miniturret_glove")
 			update_ammo_ui(Globle.player_weapons_ammo[7], Globle.WPNS[3][7])
-			shoot_timer.wait_time = Globle.WPNS[4][7]
 		_:
 			gun_instance.hide()
 
-	if player_health > 0 && !Globle.player_inventory && !player_is_aiming_with_rifle:
+	if player_health > 0 && !Globle.player_inventory && !Globle.arena_menu_open:
 		# Melee attack.
 		if Input.is_action_pressed("ui_melee_attack"):
 			# Disable Rivet's melee attack for now.
@@ -222,20 +201,10 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
 
-	# Aim, but when the current weapon is pulse rifle.
-	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
-		if (current_weapon == "pulse_rifle"):
-			update_player_position_to_camera()
-			player_is_aiming_with_rifle = true
-	elif Input.is_action_just_released("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
-			player_is_aiming_with_rifle = false
-	# Hide the sniping raycast when not aiming.
-	if (!player_is_aiming_with_rifle):
-		sniping_raycast.hide()
-		sniping_radical.hide()
-	else:
-		sniping_raycast.show()
-		sniping_radical.show()
+	#  Rivet's melee attack
+	if Globle.player_character == "Rivet":
+		if Input.is_action_just_released("ui_melee_attack"):
+			Globle.melee_attack = false
 
 	if not is_on_floor():
 		velocity.y -= gravity * delta
@@ -255,10 +224,10 @@ func _physics_process(delta):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var y_position = self.global_transform.origin.y
-
+	
 	# Get current physics state.
 	var space_state = get_world().direct_space_state
-
+	
 	# Weapon slot index.
 	var slot_index = 1
 
@@ -266,8 +235,6 @@ func _process(delta):
 	for ui_container in ui_containers:
 		if (ui_container.visible):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		elif (player_is_aiming_with_rifle):
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -284,13 +251,12 @@ func _process(delta):
 		var screen_pos = get_viewport().get_camera().unproject_position(angela_arm.global_transform.origin)
 		var mouse_pos = get_viewport().get_mouse_position()
 		var angle = screen_pos.angle_to_point(mouse_pos)
-
-		if (current_weapon != "pulse_rifle" && !player_is_aiming_with_rifle):
-			rotate_arm(0, 0, -angle + offset)
-		elif (current_weapon == "pulse_rifle" && player_is_aiming_with_rifle):
-			rotate_arm(0, 0, -angle + offset)
-		elif (current_weapon == "pulse_rifle" && !player_is_aiming_with_rifle):
-			rotate_arm(0, 0, 0)
+		angela_arm.rotation.x = 0
+		angela_arm.rotation.y = 0
+		angela_arm.rotation.z = -angle + offset
+		rivet_arm.rotation.x = 0
+		rivet_arm.rotation.y = 0
+		rivet_arm.rotation.z = -angle + offset
 
 	# Hide the hand gun when doing a melee attack.
 	if Globle.player_character == "Angela":
@@ -350,7 +316,7 @@ func set_vendor_weapons(weapons_for_sale):
 		var unwanted_chars = ["_"]
 		var btn = gun_btn.instance()
 		btn.set_wpn_for_sale(wpn_for_sale)
-
+		
 		# Takes the chars from the wpn_for_sale.
 		for c in unwanted_chars:
 			wpn_name = wpn_for_sale.replace(c, " ")
@@ -434,15 +400,6 @@ func walk(vel, scale, _mesh_translation):
 	elif (Globle.player_character == "Rivet"):
 		$RivetSprite.scale.x = scale
 
-## Rotate the arm.
-func rotate_arm(x_val : float, y_val : float, z_val : float):
-	angela_arm.rotation.x = x_val
-	angela_arm.rotation.y = y_val
-	angela_arm.rotation.z = z_val
-	rivet_arm.rotation.x = x_val
-	rivet_arm.rotation.y = y_val
-	rivet_arm.rotation.z = z_val
-
 # Purchases weapon when a weapon button is pressed.
 func purchase_weapon(wpn_price : int, wpn, btn):
 	if (Globle.bolts >= wpn_price):
@@ -454,7 +411,6 @@ func purchase_weapon(wpn_price : int, wpn, btn):
 		$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 	else:
 		print("Insufficient funds...")
-		## TODO Replace with a UI notification message.
 
 # Updates the vendor data once a weapon is highlighted.
 func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
@@ -465,7 +421,7 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	for c in unwanted_chars:
 		wpn_name_to_label = wpn_name.replace(c, " ")
 	wpn_name_to_label = wpn_name_to_label.to_upper()
-
+	
 	var weapon_sprite_path = "res://resources/images/weapons/vendor/" + wpn_name + "_vendor.png"
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/HBoxContainer/WeaponPrice.text = str(wpn_price)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponDescription.text = str(wpn_desc)
@@ -519,12 +475,7 @@ func heal_player():
 			player_health = player_max_health
 
 # Damage player.
-func damage_player(damage : int):
-	if (!player_is_just_damaged):
-		player_is_just_damaged = true
-		animation_player.play("Player_Damage")
-		player_health -= damage
-		$DamageCooloffTimer.start()
+func damage_player(damage : int) : player_health -= damage
 
 # UI notification message.
 func ui_notification_msg(ammo : int, weapon_name : String):
@@ -560,17 +511,17 @@ func determine_weapon_muzzle(player : String, bullet):
 
 # Shooting functionality for the edge blaster.
 func shoot_edge_blaster():
-	$Audio/Weapons/EdgeBlaster.play()
 	var bullet = projectile.instance()
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
 	determine_weapon_muzzle(Globle.player_character, bullet)
+	$Audio/EdgeBlaster.play()
 
 # Shooting functionality for the blitz gun.
 func shoot_blitz_gun():
-	$Audio/Weapons/BlizGun.play()
+	$Audio/BlizGun.play()
 	# Bullet spread.
-	for index in fire_rate:
+	for index in fire_Rate:
 		var bullet = blitz_gun_projectile.instance()
 		bullet.translation.x = 3
 		get_parent().add_child(bullet)
@@ -579,7 +530,7 @@ func shoot_blitz_gun():
 
 # Shooting functionality for the gravity bomb.
 func shoot_gravity_bomb():
-	$Audio/Weapons/GravityBomb.play()
+	$Audio/GravityBomb.play()
 	var bullet = gravity_bomb_projectile.instance()
 	bullet.translation.x = 3
 	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
@@ -589,7 +540,7 @@ func shoot_gravity_bomb():
 	
 # Shooting functionality for the negotiator.
 func shoot_negotiator():
-	$Audio/Weapons/theNegotiator.play()
+	$Audio/theNegotiator.play()
 	var bullet = negotiator_projectile.instance()
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
@@ -597,13 +548,7 @@ func shoot_negotiator():
 
 # Shooting functionality for the pulse rifle.
 func shoot_pulse_rifle():
-	if (player_is_aiming_with_rifle):
-		$Audio/Weapons/PulseRifle.play()
-		var projectile = pulse_rifle_projectile.instance()
-		projectile.translation.x = 10
-		get_parent().add_child(projectile)
-		projectile.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
-
+	print("Marksmanship excercised with the pulse rifle.")
 
 # Shooting functionality for the ry3no.
 func shoot_ry3no():
@@ -645,45 +590,48 @@ func _on_ShootTimer_timeout():
 			"edge_blaster":
 				if (Globle.player_weapons_ammo[0] > 0):
 					shoot_edge_blaster()
-					shoot_gun(0)
+					$ShootTimer.start()
+					Globle.player_weapons_ammo[0] -= 1
+					update_ammo_ui(Globle.player_weapons_ammo[0], Globle.WPNS[3][0])
 			"blitz_gun":
 				if (Globle.player_weapons_ammo[1] > 0):
 					shoot_blitz_gun()
-					shoot_gun(1)
+					$ShootTimer.start()
+					Globle.player_weapons_ammo[1] -= 1
+					update_ammo_ui(Globle.player_weapons_ammo[1], Globle.WPNS[3][1])
 			"gravity_bomb":
 				if (Globle.player_weapons_ammo[2] > 0):
 					shoot_gravity_bomb()
-					shoot_gun(2)
+					$ShootTimer.start()
+					Globle.player_weapons_ammo[2] -= 1
+					update_ammo_ui(Globle.player_weapons_ammo[2], Globle.WPNS[3][2])
 			"negotiator":
 				if (Globle.player_weapons_ammo[3] > 0):
 					shoot_negotiator()
-					shoot_gun(3)
+					$ShootTimer.start()
+					Globle.player_weapons_ammo[3] -= 1
+					update_ammo_ui(Globle.player_weapons_ammo[3], Globle.WPNS[3][3])
 			"pulse_rifle":
 				if (Globle.player_weapons_ammo[4] > 0):
 					shoot_pulse_rifle()
-					shoot_gun(4)
+					$ShootTimer.start()
+					Globle.player_weapons_ammo[4] -= 1
+					update_ammo_ui(Globle.player_weapons_ammo[4], Globle.WPNS[3][4])
 			"ry3no":
 				if (Globle.player_weapons_ammo[5] > 0):
 					shoot_ry3no()
-					shoot_gun(5)
+					$ShootTimer.start()
+					Globle.player_weapons_ammo[5] -= 1
+					update_ammo_ui(Globle.player_weapons_ammo[5], Globle.WPNS[3][5])
 			"sheepinator":
 				shoot_sheepinator()
-				shoot_timer.start()
-				shoot_timer.wait_time = 2
+				$ShootTimer.start()
 			"miniturret_glove":
 				if (Globle.player_weapons_ammo[7] > 0):
 					shoot_miniturret_glove()
-					shoot_gun(7)
-
-## Set the shoot timer's wait time and the ammunition of the weapon UI.
-func shoot_gun(index : int):
-	shoot_timer.start()
-	shoot_timer.wait_time = Globle.WPNS[4][index]
-	if (current_weapon != "pulse_rifle" && !player_is_aiming_with_rifle):
-		Globle.player_weapons_ammo[index] -= 1
-	elif (current_weapon == "pulse_rifle" && player_is_aiming_with_rifle):
-		Globle.player_weapons_ammo[index] -= 1
-	update_ammo_ui(Globle.player_weapons_ammo[index], Globle.WPNS[3][index])
+					$ShootTimer.start()
+					Globle.player_weapons_ammo[7] -= 1
+					update_ammo_ui(Globle.player_weapons_ammo[7], Globle.WPNS[3][7])
 
 ## Update the ammo UI.
 func update_ammo_ui(has_ammo : int, max_ammo : int):
@@ -762,10 +710,6 @@ func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
 				Globle.WPNS[2][7]
 			)
 
-# Resets the sniping position.
-func update_player_position_to_camera():
-	emit_signal("update_player_position_to_camera", player_health)
-
 # Change weapon to Edge Blaster.
 func _on_WeaponSlot1_pressed():
 	current_weapon = "edge_blaster"
@@ -806,6 +750,3 @@ func _on_CollisionArea_area_entered(area):
 # Run when FadeIn fade is finished.
 func _on_FadeIn_fade_finished():
 	get_tree().reload_current_scene()
-
-func _on_DamageCooloffTimer_timeout():
-	player_is_just_damaged = false

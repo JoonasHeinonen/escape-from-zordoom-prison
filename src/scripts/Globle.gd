@@ -8,7 +8,6 @@ extends Node
 ## Subarray 1: Weapon prices.
 ## Subarray 2: Weapon descriptions for the vendor.
 ## Subarray 3: Weapon maximum ammunition
-## Subarray 4: Weapon wait time
 const WPNS = [
 	[
 		"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
@@ -29,15 +28,13 @@ const WPNS = [
 	],
 	[
 		65, 40, 8, 12, 8, 25, -1, 15
-	],
-	[
-		0.15, 0.75, 2, 1, 2, 1, 2, 1
 	]
 ]
 
 # TODO Fix the player_weapons_ammo at some point to be WPNS[3].
 var current_weapons = [
-	"pulse_rifle", "edge_blaster"
+	"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
+	"pulse_rifle", "ry3no", "sheepinator", "miniturret_glove"
 ]
 var player_weapons_ammo = [65, 40, 8, 12, 8, 25, -1, 15]
 var weapons_for_sale = [
