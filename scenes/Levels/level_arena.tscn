@@ -9,6 +9,7 @@
 
 [node name="CSGBox" type="CSGBox" parent="."]
 width = 18.9028
+depth = 6.1806
 
 [node name="StaticBody" type="StaticBody" parent="CSGBox"]
 
@@ -26,3 +27,4 @@ move_lock_x = false
 move_lock_y = false
 
 [node name="shark_man" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2.96302, 0, 0, 0, 2.96302, 0, 0, 0, 1, -5.06696, 2.72997, 0 )
