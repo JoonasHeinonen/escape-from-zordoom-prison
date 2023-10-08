@@ -56,6 +56,7 @@ func _input(event):
 							(0):
 								commence_dialog('timeline__Angela_shark_man')
 						shark_man_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 0)
+						Globle.arena_menu_open = true
 							
 	if (Globle.player_character == "Rivet"): 
 		if get_node_or_null('DialogNode') == null:

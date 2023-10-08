@@ -2,7 +2,7 @@ extends Control
 
 
 onready var player     = get_parent().get_parent()
-onready var area_button = $buttons/ArenaButton
+onready var arena_button = $buttons/ArenaButton
 onready var exit_button = $buttons/ExitButton
 var is_open = false
 
@@ -10,11 +10,7 @@ var is_open = false
 func _ready():
 	hide()
 
-func _process(_delta):
-	# Hide / show the mouse and the active aiming radical.
-	if (Globle.arena_menu_active == true):
-			Arena_Menu_process(true, false)
-			open()
+
 
 func _input(event):
 	if (!Globle.arena_menu_open):
@@ -34,9 +30,15 @@ func open():
 		is_open = true
 		show()
 		print("open")
-		area_button.grab_focus()
+		arena_button.grab_focus()
 #exit out of the menue
 func close():
-	if is_open:
-		is_open = false
-		hide()
+	is_open = false
+	Globle.arena_menu_open = false
+	print('close')
+	print(Globle.arena_menu_open)
+	hide()
+
+func _on_ExitButton_pressed():
+	close()
+	pass # Replace with function body.
