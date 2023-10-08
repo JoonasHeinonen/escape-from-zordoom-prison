@@ -300,6 +300,10 @@ func _process(delta):
 	# Hide the boss fight UI.
 	if !boss_fight_active : $PlayerUI/ui_boss_data.visible = false
 
+	# Arena menu.
+	if Globle.arena_menu_open : $PlayerUI/ArenaMenu.open()
+
+
 	# Heal the player after collecting the nodes. Also update the UI.
 	heal_player()
 	update_health_ui()
