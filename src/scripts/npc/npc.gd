@@ -52,7 +52,7 @@ func _input(event):
 								commence_dialog('timeline_Rivet_npc_1')
 						npc_Angela_Rivet_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 2)
 					"Shark_man":
-						match(npc_Angela_Rivet_dialog_value):
+						match(shark_man_dialog_value):
 							(0):
 								commence_dialog('timeline__Angela_shark_man')
 						shark_man_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 0)
@@ -82,6 +82,13 @@ func _input(event):
 								#re-due menue logic
 								commence_dialog('timeline_Angela_npc_1')
 						npc_Angela_Rivet_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 2)
+					"Shark_man":
+						match(shark_man_dialog_value):
+							(0):
+								#re-due menue logic
+								commence_dialog('timeline_Rivet_shark_man')
+						shark_man_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 0)
+						Globle.arena_menu_open = true
 
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active

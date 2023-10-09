@@ -121,6 +121,7 @@ func _ready():
 	if (get_parent().has_node("arena")):
 		arena = get_parent().get_node("arena")
 		if (arena.has_node("PlayerSpawnArena")):
+			#$arena/PlayerSpawnArena
 			pass
 
 func _physics_process(delta):
