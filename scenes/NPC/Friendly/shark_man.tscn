@@ -29,4 +29,5 @@ billboard = 1
 texture = ExtResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1.92759, 0, 0, 0 )
 shape = SubResource( 3 )

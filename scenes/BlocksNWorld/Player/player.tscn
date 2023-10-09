@@ -616,7 +616,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
-frame = 2
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -1171,7 +1171,6 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="ReturnToGameButton" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
-visible = false
 margin_right = 1140.0
 margin_bottom = 59.0
 shortcut_in_tooltip = false
@@ -1460,9 +1459,10 @@ script = ExtResource( 49 )
 [node name="Panel" type="Panel" parent="PlayerUI/Arena_menu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -122.034
+margin_left = -9.0
+margin_top = -122.0
 margin_right = 14.0
-margin_bottom = 156.966
+margin_bottom = 157.0
 custom_styles/panel = SubResource( 19 )
 
 [node name="buttons" type="VBoxContainer" parent="PlayerUI/Arena_menu"]
@@ -1626,5 +1626,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138 )
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
 [connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
+[connection signal="pressed" from="PlayerUI/Arena_menu/buttons/ArenaButton" to="PlayerUI/Arena_menu" method="_on_ArenaButton_pressed"]
 [connection signal="pressed" from="PlayerUI/Arena_menu/buttons/ExitButton" to="PlayerUI/Arena_menu" method="_on_ExitButton_pressed"]
 [connection signal="timeout" from="DamageCooloffTimer" to="." method="_on_DamageCooloffTimer_timeout"]

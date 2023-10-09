@@ -114,6 +114,14 @@ func _ready():
 	set_vendor_weapons(Globle.weapons_for_sale)
 	# The spawn code for the player
 	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
+	
+	# create a if statement that tries and finds the arena level in the PlayerSpawnArena
+	# need to get the postion of the playerSpawnArena
+	var arena
+	if (get_parent().has_node("arena")):
+		arena = get_parent().get_node("arena")
+		if (arena.has_node("PlayerSpawnArena")):
+			pass
 
 func _physics_process(delta):
 	# Reset double jump while on the ground.
