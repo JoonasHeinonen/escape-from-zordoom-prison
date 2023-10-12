@@ -116,6 +116,16 @@ func _ready():
 	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
 
 func _physics_process(delta):
+	# Set the audio nodes position to share the same position as the player.
+	for audio_container_child in $Audio.get_children():
+		for audio_child in audio_container_child.get_children():
+			if audio_child is AudioStreamPlayer3D:
+				audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+		if audio_container_child.name == "Collectibles":
+			for audio_sub_child in audio_container_child.get_children():
+				for audio_child in audio_sub_child.get_children():
+					audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+
 	# Reset double jump while on the ground.
 	if is_on_floor():
 		player_double_jump = false

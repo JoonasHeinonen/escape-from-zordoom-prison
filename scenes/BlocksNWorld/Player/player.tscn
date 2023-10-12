@@ -693,7 +693,7 @@ double_sided = false
 texture = ExtResource( 36 )
 hframes = 10
 vframes = 4
-frame = 3
+frame = 1
 
 [node name="RivetArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
@@ -1470,40 +1470,49 @@ shape = SubResource( 23 )
 
 [node name="Weapons" type="Node" parent="Audio"]
 
-[node name="PulseRifle" type="AudioStreamPlayer" parent="Audio/Weapons"]
+[node name="PulseRifle" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
 stream = ExtResource( 48 )
+unit_db = 80.0
 
-[node name="GravityBomb" type="AudioStreamPlayer" parent="Audio/Weapons"]
+[node name="GravityBomb" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
 stream = ExtResource( 37 )
+unit_db = 80.0
 
-[node name="BlizGun" type="AudioStreamPlayer" parent="Audio/Weapons"]
+[node name="BlizGun" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
 stream = ExtResource( 28 )
+unit_db = 80.0
 
-[node name="theNegotiator" type="AudioStreamPlayer" parent="Audio/Weapons"]
+[node name="theNegotiator" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
 stream = ExtResource( 40 )
+unit_db = 80.0
 
-[node name="EdgeBlaster" type="AudioStreamPlayer" parent="Audio/Weapons"]
+[node name="EdgeBlaster" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
 stream = ExtResource( 16 )
+unit_db = 80.0
 
 [node name="Body" type="Node" parent="Audio"]
 
-[node name="Step" type="AudioStreamPlayer" parent="Audio/Body"]
+[node name="Step" type="AudioStreamPlayer3D" parent="Audio/Body"]
 stream = ExtResource( 20 )
-volume_db = -80.0
+unit_db = 80.0
 
 [node name="Melee" type="Node" parent="Audio"]
 
-[node name="Melee0" type="AudioStreamPlayer" parent="Audio/Melee"]
+[node name="Melee0" type="AudioStreamPlayer3D" parent="Audio/Melee"]
 stream = ExtResource( 25 )
+unit_db = 80.0
 
-[node name="Melee1" type="AudioStreamPlayer" parent="Audio/Melee"]
+[node name="Melee1" type="AudioStreamPlayer3D" parent="Audio/Melee"]
 stream = ExtResource( 23 )
+unit_db = 80.0
 
-[node name="Melee2" type="AudioStreamPlayer" parent="Audio/Melee"]
+[node name="Melee2" type="AudioStreamPlayer3D" parent="Audio/Melee"]
 stream = ExtResource( 22 )
+unit_db = 80.0
 
-[node name="Melee3" type="AudioStreamPlayer" parent="Audio/Melee"]
+[node name="Melee3" type="AudioStreamPlayer3D" parent="Audio/Melee"]
 stream = ExtResource( 26 )
+unit_db = 80.0
 
 [node name="UI" type="Node" parent="Audio"]
 
@@ -1517,26 +1526,32 @@ stream = ExtResource( 27 )
 
 [node name="Bolt" type="Node" parent="Audio/Collectibles"]
 
-[node name="Bolt0" type="AudioStreamPlayer" parent="Audio/Collectibles/Bolt"]
+[node name="Bolt0" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Bolt"]
 stream = ExtResource( 18 )
+unit_db = 80.0
 
-[node name="Bolt1" type="AudioStreamPlayer" parent="Audio/Collectibles/Bolt"]
+[node name="Bolt1" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Bolt"]
 stream = ExtResource( 17 )
+unit_db = 80.0
 
-[node name="Bolt2" type="AudioStreamPlayer" parent="Audio/Collectibles/Bolt"]
+[node name="Bolt2" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Bolt"]
 stream = ExtResource( 19 )
+unit_db = 80.0
 
 [node name="Ammo" type="Node" parent="Audio/Collectibles"]
 
-[node name="Ammo0" type="AudioStreamPlayer" parent="Audio/Collectibles/Ammo"]
+[node name="Ammo0" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Ammo"]
 stream = ExtResource( 18 )
+unit_db = 80.0
 
-[node name="Ammo1" type="AudioStreamPlayer" parent="Audio/Collectibles/Ammo"]
+[node name="Ammo1" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Ammo"]
 stream = ExtResource( 39 )
+unit_db = 80.0
 
 [node name="HealthNode" type="Node" parent="Audio/Collectibles"]
 
-[node name="HealthNode0" type="AudioStreamPlayer" parent="Audio/Collectibles/HealthNode"]
+[node name="HealthNode0" type="AudioStreamPlayer3D" parent="Audio/Collectibles/HealthNode"]
+unit_db = 80.0
 
 [node name="PlayerCamera" type="Spatial" parent="."]
 transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 7.138 )
