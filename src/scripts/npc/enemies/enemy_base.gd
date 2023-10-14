@@ -24,6 +24,7 @@ var animation_player
 var player
 var state_machine
 
+var is_dead = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	element = elements.STATIC
@@ -88,6 +89,8 @@ func turn_enemy(player_x : float, enemy_x : float):
 
 # Called when enemy's health is 0.
 func expire_enemy():
+	is_dead = true
+	get_tree().call_group("arena_menu_group", "check_nef_head_is_dead")
 	queue_free()
 	# TODO add enemy death animation.
 

@@ -47,8 +47,8 @@ transform = Transform( 1.25042, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 transform = Transform( 7.28995, 0, 0, 0, 1, 0, 0, 0, 3.01394, 0, 0, 0 )
 shape = SubResource( 2 )
 
-[node name="PlayerSpawnArena" type="Spatial" parent="." groups=["arenaSpawnPosition"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9.83671, 3.27432, 17.7074 )
+[node name="PlayerSpawnArena" type="Position3D" parent="." groups=["arenaSpawnPosition"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2105, 3.27432, 17.7074 )
 
 [node name="badGuySpawn1" type="Position3D" parent="." groups=["badGuySpawn1"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5.00996, 2.93476, 17.8241 )
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.77801, 2.93476, 17.8241 )
