@@ -1,4 +1,4 @@
-extends "res://src/scripts/npc/enemies/enemy_base.gd"
+extends EnemyBase
 
 onready var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
 onready var ray = $EnemySprite/player_finding

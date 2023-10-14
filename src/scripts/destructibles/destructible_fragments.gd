@@ -22,6 +22,12 @@ func _ready():
 	$KillTimer.connect("timeout", self, "_on_KillTimer_timeout")
 	$ExpireTimer.start()
 
+func _physics_process(delta):
+	# Checks if the node has audio node.
+	if (self.has_node("Audio")):
+		for audio_child in $Audio.get_children():
+			audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+
 # Crate fragments expiration.
 func _on_ExpireTimer_timeout():
 	queue_free()

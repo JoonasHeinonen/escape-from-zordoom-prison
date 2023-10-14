@@ -42,6 +42,11 @@ func _physics_process(delta):
 	velocity.y = -4
 	move_and_slide(velocity, Vector3.UP)
 
+	# Checks if the node has audio node.
+	if (self.has_node("Audio")):
+		for audio_child in $Audio.get_children():
+			audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+
 # Detects the collisions on this scene.
 func _on_BoltCrate_body_entered(body):
 	if body.name == "BlasterProjectileExplosion" || body.name == "ExplosionEffectiveRadius":

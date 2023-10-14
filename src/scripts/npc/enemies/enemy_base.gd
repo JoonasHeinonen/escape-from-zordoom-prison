@@ -59,6 +59,11 @@ func _physics_process(delta):
 			velocity.x = speed * 1
 			move_and_slide(velocity * delta)
 
+	# Checks if the node has audio node.
+	if (self.has_node("Audio")):
+		for audio_child in $Audio.get_children():
+			audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+
 # Called when damage is dealt to the enemy.
 func damage_enemy(health : int):
 	if (element == elements.STATIC):

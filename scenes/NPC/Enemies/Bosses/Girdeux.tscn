@@ -168,7 +168,6 @@ billboard = 1
 texture = ExtResource( 1 )
 hframes = 7
 vframes = 2
-frame = 6
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Enemy_Damage = SubResource( 6 )

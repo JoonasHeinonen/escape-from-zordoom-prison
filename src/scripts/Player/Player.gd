@@ -121,6 +121,7 @@ func _physics_process(delta):
 		for audio_child in audio_container_child.get_children():
 			if audio_child is AudioStreamPlayer3D:
 				audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+		# TODO Swap this to if audio_container_child.name != "UI":
 		if audio_container_child.name == "Collectibles":
 			for audio_sub_child in audio_container_child.get_children():
 				for audio_child in audio_sub_child.get_children():
