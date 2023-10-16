@@ -61,7 +61,7 @@ var arena_menu_active = false
 var bolts = 0
 
 var menu_to_return = "none"
-var player_character = "Rivet"
+var player_character = "Angela"
 
 var spawn_point = Vector3(0 ,0, 0)
 

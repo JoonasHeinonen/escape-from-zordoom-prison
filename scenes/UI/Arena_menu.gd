@@ -41,8 +41,7 @@ func close():
 #https://www.youtube.com/watch?v=rZRVb5rkALM
 func _on_ExitButton_pressed():
 	close()
-	pass # Replace with function body.
-
+	 
 
 func _on_ArenaButton_pressed():
 	var nodes = get_tree().get_nodes_in_group("arenaSpawnPosition")
@@ -50,17 +49,24 @@ func _on_ArenaButton_pressed():
 		player.global_transform.origin = nodes[0].global_transform.origin
 		spawn_bad_guys_fight_1()
 	close()
-	
-
+	#these fuctions handle the fight_1 
+	#we have lad the ground work to expaned and add on where we can do as many fights/challenges as we can code in this one script!
+	#if possible we could refacter this into less fuctions but idk
 func spawn_bad_guys_fight_1():
 	var nodes = get_tree().get_nodes_in_group("badGuySpawn1")
 	var badGuy = bad_guy_nef_head.instance()
 	nodes[0].add_child(badGuy)
+	
 # this checks and see if the nef head in the arena is killed by the player
 func check_nef_head_is_dead():
 	var nodes = get_tree().get_nodes_in_group("nef_head")
 	for node in nodes:
 		if !node.is_dead :
 			return 
-	print("check")
-	
+	fight_1_player_wins()
+#player returns to shark man and the fight starts over again.
+func fight_1_player_wins():
+	var nodes = get_tree().get_nodes_in_group("playerReturnPostion")
+	if nodes:
+		player.global_transform.origin = nodes[0].global_transform.origin
+	Globle.bolts = 100
