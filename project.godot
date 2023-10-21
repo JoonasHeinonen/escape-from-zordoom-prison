@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "EnemyBase",
+"class": "BossBase",
+"language": "GDScript",
+"path": "res://src/scripts/npc/enemies/boss_base.gd"
+}, {
 "base": "Area",
 "class": "Crate_hurt_Box",
 "language": "GDScript",
@@ -18,6 +23,11 @@ _global_script_classes=[ {
 "class": "DTS",
 "language": "GDScript",
 "path": "res://addons/dialogic/Localization/translation_service.gd"
+}, {
+"base": "KinematicBody",
+"class": "Destructible",
+"language": "GDScript",
+"path": "res://src/scripts/destructibles/destructible.gd"
 }, {
 "base": "Node",
 "class": "Dialogic",
@@ -100,8 +110,10 @@ _global_script_classes=[ {
 "path": "res://src/scripts/effects/sniping_infrared_raycast.gd"
 } ]
 _global_script_class_icons={
+"BossBase": "",
 "Crate_hurt_Box": "",
 "DTS": "",
+"Destructible": "",
 "Dialogic": "",
 "DialogicAnimaPropertiesHelper": "",
 "DialogicAnimaResources": "",

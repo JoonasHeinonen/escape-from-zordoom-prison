@@ -11,7 +11,6 @@ onready var options = get_parent().get_node("Options")
 
 var random = RandomNumberGenerator.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	random.randomize()
 	$Audio/Click.play()
@@ -22,7 +21,6 @@ func _ready():
 	options.visible = false
 	load_game.visible = false
 
-	# Set the active button.
 	match Globle.menu_to_return:
 		"LoadGame":
 			load_game_button.grab_focus()
@@ -39,12 +37,10 @@ func _ready():
 func _physics_process(_delta):
 	camera.rotation += Vector3(0.001, 0.002, 0)
 
-# Loads the scene defined to a particular button.
 func _on_Button_pressed(scene_to_load):
 	print("Scene: " + scene_to_load)
 	get_tree().change_scene(scene_to_load)
 
-# Run when FadeIn fade is finished.
 func _on_FadeIn_fade_finished():
 	pass # Leave this empty, for now.
 

@@ -6,52 +6,47 @@ onready var flame_projectile = preload("res://scenes/Projectiles/enemy_projectil
 onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
 onready var girdeux_body = preload("res://scenes/NPC/Enemies/Bosses/GirdeuxBody.tscn")
 
-var damaged : bool = false
-var player_is_nearby : bool = false
+var is_damaged : bool = false
+var is_player_nearby : bool = false
 var max_health : int = 0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	element = elements.GROUND
-	# Determine the boss's health according to the name given.
+
 	match self.name:
 		"Girdeux":
 			enemy_health = 4
 		_:
 			enemy_health = 1
-
 	max_health = enemy_health
 	player = get_parent().get_parent().get_parent().get_node('player')
 
 func _physics_process(delta):
-	# When the boss is alerted.
-	if alerted && !in_range:
+	if is_alerted and !is_in_range:
 		$FlamethrowerTimer.start()
 		$TurnTimer.start()
 	if not is_on_floor():
 		velocity.y = -4
 		state_machine.travel("Enemy_Fall")
 	else:
-		# When the enemy character is aware of the player's vicinity.
-		if alerted:
+		if is_alerted:
 			var health_data : float = (float(enemy_health) / float(max_health)) * 100
 			player.boss_fight_active = true
 			player.init_boss_fight(self.name, health_data, self.name.to_lower(), max_health)
 			turn_enemy(player.translation.x, self.translation.x)
 		else:
 			state_machine.travel("Enemy_Idle")
-	if alerted && in_range : state_machine.travel("Girdeux_Shoot")
+	if is_alerted and is_in_range : state_machine.travel("Girdeux_Shoot")
 
 	# Do the jump logic after the boss is on wall.
-	if (is_on_wall() && !player_is_nearby):
+	if (is_on_wall() and !is_player_nearby):
 		velocity.y = 20
-
 	move_and_slide(velocity, Vector3.UP)
 	
 func turn_head():
 	state_machine.travel("Girdeux_TurnHead")
 	if (
-		state_machine.get_current_node() == "Girdeux_TurnHead" && 
+		state_machine.get_current_node() == "Girdeux_TurnHead" and
 		state_machine.get_current_play_position() == 1
 	):
 		state_machine.travel("Enemy_Walk")
@@ -64,7 +59,6 @@ func shoot_flames():
 	if direction == "Left": flame.set_particle_size(-1)
 	elif direction == "Right": flame.set_particle_size(1)
 
-# Called when boss's health is 0.
 func expire_enemy():
 	player.boss_fight_active = false
 	match self.name:
@@ -74,7 +68,6 @@ func expire_enemy():
 			pass
 	queue_free()
 
-# Generate the body for a defeated boss type.
 func generate_body(body : Object):
 	get_parent().add_child(body)
 	body.global_transform = self.global_transform
@@ -86,14 +79,14 @@ func _on_TurnTimer_timeout():
 	decide_direction(direction)
 
 func _on_DamageCooloffTimer_timeout():
-	damaged = false
+	is_damaged = false
 
 func _on_Weakspot_area_entered(area):
 	var expl = explosion.instance()
-	if area.name == "ProjectileExplosionArea" && !damaged:
+	if area.name == "ProjectileExplosionArea" and !is_damaged:
 		animation_player.play("Enemy_Damage")
 		damage_enemy(1)
-		damaged = true
+		is_damaged = true
 		$DamageCooloffTimer.start()
 		get_parent().add_child(expl)
 		expl.scale = Vector3(3, 3, 3)
@@ -104,8 +97,8 @@ func _on_Weakspot_body_entered(body):
 
 func _on_AreaEnemy_body_entered(body):
 	if (body.name == "player"):
-		player_is_nearby = true
+		is_player_nearby = true
 
 func _on_AreaEnemy_body_exited(body):
 	if (body.name == "player"):
-		player_is_nearby = false
+		is_player_nearby = false

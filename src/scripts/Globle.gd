@@ -64,17 +64,15 @@ var player_character = "Angela"
 
 var spawn_point = Vector3(0 ,0, 0)
 
-## This func updates the postion of the spawn point that player starts in
 func update_spawn(new_point) : spawn_point = new_point
 
-# Not sure if we need this instance_node.
+## TODO Not sure if we need this instance_node.
 func instance_node(node, location, parent):
 	var node_instance = node.instance()
 	parent.add_child(node_instance)
 	node_instance.global_position = location
 	return node_instance
 
-## Updates the vendor after purchasing an item.
 func update_vendor():
 	var wpn_index : int = -1
 	for wpn_for_sale in weapons_for_sale:

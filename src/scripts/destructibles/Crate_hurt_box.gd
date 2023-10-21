@@ -3,7 +3,7 @@ extends Area
 
 func _init() -> void:
 	collision_layer = 0
-	collision_mask  = 2
+	collision_mask = 2
 
 func _ready() -> void: 
 	connect("area_entered", self, "_on_area_entered")
@@ -21,6 +21,7 @@ func _on_area_exit(hitbox : PlayerHit_box) -> void:
 	elif owner.has_method("no_damage"):
 		owner.no_damage(0)
 
+## TODO Do we need this function in the first place?
 func _on_Crate_hurt_Box_body_entered(body):
 	if body.name == "BilzGunProjectile":
 		pass

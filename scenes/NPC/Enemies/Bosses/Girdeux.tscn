@@ -155,7 +155,7 @@ graph_offset = Vector2( -140.367, -99.1264 )
 axis_lock_motion_z = true
 move_lock_z = true
 script = ExtResource( 2 )
-armored = true
+is_armored = true
 enemy_health = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="."]

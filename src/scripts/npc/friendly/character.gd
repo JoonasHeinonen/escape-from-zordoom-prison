@@ -4,11 +4,9 @@ export(String, "Right", "Left") var direction
 
 var player
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_parent().get_parent().get_parent().get_node('player')
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	match (direction):
 		"Right":

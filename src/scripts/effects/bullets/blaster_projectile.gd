@@ -6,7 +6,6 @@ onready var projectile_effect = preload("res://scenes/Effects/ProjectileEffects/
 
 export (String, "blaster", "miniturret") var weapon
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	velocity = Vector3(0, 0, 0)
 	speed = 8

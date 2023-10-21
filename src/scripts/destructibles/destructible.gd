@@ -1,5 +1,7 @@
 extends KinematicBody
 
+class_name Destructible
+
 onready var bolt_instance = preload("res://scenes/Collectibles/bolt.tscn")
 onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
 onready var health_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/health_crate_fragments.tscn")
@@ -11,12 +13,11 @@ export (String, "bolt_crate", "lamp_post", "explosive_crate", "health_crate") va
 
 var random = RandomNumberGenerator.new()
 var velocity = Vector3(0, 0, 0)
-var active : bool = false
+var is_active : bool = false
 var meta_type : String = ""
 var meta_name : String = ""
 var fragment_scene : PackedScene = null
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	match (scene_type):
 		"lamp_post":
@@ -42,22 +43,18 @@ func _physics_process(delta):
 	velocity.y = -4
 	move_and_slide(velocity, Vector3.UP)
 
-	# Checks if the node has audio node.
 	if (self.has_node("Audio")):
 		for audio_child in $Audio.get_children():
 			audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
 
-# Detects the collisions on this scene.
-func _on_BoltCrate_body_entered(body):
-	if body.name == "BlasterProjectileExplosion" || body.name == "ExplosionEffectiveRadius":
-		hide()
-
-# Detects the collisions on this scene.
-func _on_Area_area_entered(body):
-	if body.name == "ProjectileExplosionArea" || body.name == "ExplosionEffectiveRadius":
+func _process(delta):
+	if (
+		scene_type != "explosive_crate" and 
+		scene_type != "health_crate" and 
+		Globle.melee_attack and is_active
+	):
 		createBolts()
 
-# Generates a random position for the bolt.
 func generate_bolt_position(x_axis, y_axis):
 	var div = 0.3
 
@@ -68,22 +65,12 @@ func generate_bolt_position(x_axis, y_axis):
 	return Vector3(x, y, 0)
 	
 func take_damage(amount:int)-> void:
-	active = true
+	is_active = true
 	
 func no_damage(amount:int)-> void:
-	active = false
+	is_active = false
 # TODO Also need to get the box to explode and to get bolts(?)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if (
-		scene_type != "explosive_crate" && 
-		scene_type != "health_crate" && 
-		Globle.melee_attack && active
-	):
-		createBolts()
-
-# Creates the default 3 bolts for the destroyed crate.
 func createBolts():
 	for i in 3:
 		var bolt = bolt_instance.instance()
@@ -98,10 +85,8 @@ func createBolts():
 	destruction_effect()
 	queue_free()
 
-# Emit the destruction effect.
 func destruction_effect():
 	var d_e = null
-	# Matches the scene and the correct effect to that scene.
 	match (scene_type):
 		"lamp_post":
 			# d_e = lamp_post_destroy_effect.instance()
@@ -113,7 +98,6 @@ func destruction_effect():
 			get_parent().get_parent().get_parent().add_child(d_e)
 			d_e.global_transform = global_transform
 
-# Creates the fragments.
 func create_fragments():
 	var fragments = fragment_scene.instance()
 	get_parent().get_parent().get_parent().add_child(fragments)
@@ -130,6 +114,14 @@ func remove_active_radical():
 	for c in d_l:
 		if (c.name == "GreenTargetRadical"):
 			c.queue_free()
+
+func _on_BoltCrate_body_entered(body):
+	if body.name == "BlasterProjectileExplosion" || body.name == "ExplosionEffectiveRadius":
+		hide()
+
+func _on_Area_area_entered(body):
+	if body.name == "ProjectileExplosionArea" || body.name == "ExplosionEffectiveRadius":
+		createBolts()
 
 func _on_BoltCrate_mouse_entered():
 	add_active_radical()

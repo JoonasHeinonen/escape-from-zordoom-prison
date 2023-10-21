@@ -7,18 +7,15 @@ var projectile
 
 export (String, "bolt", "ammo", "nanotech_node") var type
 
-var active : bool = false
-var getMagnet : bool = false
-var emit_trail : bool = false
-var get_magnet : bool = false
+var does_emit_trail : bool = false
+var does_get_magnet : bool = false
 
 var collectible_image_path : String = "res://resources/images/collectibles/"
 
 # var position = Vector3()
 var timer = Timer.new()
-var random = RandomNumberGenerator.new() # Adding random number.
+var random = RandomNumberGenerator.new()
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	random.randomize()
 	var bolt_index = str(random.randi_range(0,2))
@@ -28,7 +25,7 @@ func _ready():
 	if (self.has_node('TrailParticles')):
 		projectile = $TrailParticles
 
-	# Matches the type of the collectible.
+	# Determine the type of the collectible.
 	match (type):
 		"bolt":
 			match bolt_index:
@@ -48,10 +45,9 @@ func _ready():
 # Called during the physics processing step of the main loop.
 func _physics_process(_delta):
 	# Makes the bolts fall due to the y axis
-	if !get_magnet : translation.y
+	if !does_get_magnet : translation.y
 
-	# Hide the particles for nanotech nodes.
-	if (emit_trail):
+	if (does_emit_trail):
 		$Particles.hide()
 		$Particles2.hide()
 
@@ -59,10 +55,9 @@ func _physics_process(_delta):
 	for body in bodies:
 		if body.name == "AreaPlayer":
 			var player = body.get_parent()
-			get_magnet = true
-			if (type == "nanotech_node"):
-				if (player.player_health < player.player_max_health):
-					emit_trail = true
+			does_get_magnet = true
+			if (type == "nanotech_node" and player.player_health < player.player_max_health):
+					does_emit_trail = true
 					for s in $Spots.get_children():
 						var t_p = trail_particle.instance()
 						t_p.global_transform = s.global_transform
@@ -76,27 +71,24 @@ func _physics_process(_delta):
 				translation += (get_parent().get_node("player").translation - translation) / 10
 		var sub_bodies = get_overlapping_bodies()
 		for sub_body in sub_bodies:
-			# Checks that the body is 'player'.
 			if sub_body.name == "player":
 				# Plays the bolt sound on the player's instance.
 				if sub_body.has_method("collect_collectible"):
 					match(type):
 						"bolt":
-							# Makes sure that every number is random
 							random.randomize()
 							var count_boults = get_parent().get_node("player").bolt + random.randi_range(5, 10)
-							# Grabes the bolt amout
 							Globle.bolts += count_boults
 							sub_body.collect_collectible(random.randi_range(0, 2), "bolt")
 							queue_free()
+
 						"ammo":
 							for wpn in Globle.WPNS[3].size():
-								if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
-									if (Globle.current_weapons[wpn] == Globle.WPNS[0][wpn]):
-										if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
-											var wpn_name : String = Globle.current_weapons[randi() % Globle.current_weapons.size()]
-											if (wpn_name == "sheepinator") : wpn_name = Globle.current_weapons[randi() % Globle.current_weapons.size()]
-											define_refillable_wpn(wpn_name, sub_body)
+								if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn] and Globle.current_weapons[wpn] == Globle.WPNS[0][wpn] and Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
+									var wpn_name : String = Globle.current_weapons[randi() % Globle.current_weapons.size()]
+									if (wpn_name == "sheepinator") : wpn_name = Globle.current_weapons[randi() % Globle.current_weapons.size()]
+									define_refillable_wpn(wpn_name, sub_body)
+
 						"nanotech_node":
 							if (sub_body.player_health < sub_body.player_max_health):
 								var effects : Node = null
@@ -106,7 +98,6 @@ func _physics_process(_delta):
 									effects.add_child(h_l)
 								queue_free()
 
-## Define the weapon to be refilled.
 func define_refillable_wpn(wpn_name : String, body : KinematicBody):
 	match(wpn_name):
 		"edge_blaster":
@@ -126,7 +117,6 @@ func define_refillable_wpn(wpn_name : String, body : KinematicBody):
 		"miniturret_glove":
 			check_weapon_stats(wpn_name, 7, body, 3)
 
-## Check the weapon statistics.
 func check_weapon_stats(wpn_name : String, index : int, body : KinematicBody, ammo : int):
 	var dynamic_ammo = ammo - ((Globle.player_weapons_ammo[index] + ammo) - Globle.WPNS[3][index])
 	if (dynamic_ammo >= ammo) : dynamic_ammo = ammo

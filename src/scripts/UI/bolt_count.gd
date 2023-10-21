@@ -1,10 +1,8 @@
 extends Label
 
-# Displays the amout on the player screen.
 func _process(_delta):
 	text = format_bolt_amount(Globle.bolts)
 
-# Format bolts in a correct manner.
 func format_bolt_amount(bolts : int) -> String:
 	var str_bolts : String = str(bolts)
 

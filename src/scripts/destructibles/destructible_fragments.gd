@@ -5,9 +5,7 @@ export (String, "crate_destroy", "lamp_post_destroy", "health_destroy") var soun
 onready var destroy_sound = $Audio/DestroySound
 onready var root_src = "res://resources/audio/environment/destructibles/"
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	# Match the sound name with the correct audio file.
 	match sound_name:
 		"crate_destroy":
 			destroy_sound.set_stream(load(root_src + "crate_0.wav"))
@@ -23,15 +21,12 @@ func _ready():
 	$ExpireTimer.start()
 
 func _physics_process(delta):
-	# Checks if the node has audio node.
 	if (self.has_node("Audio")):
 		for audio_child in $Audio.get_children():
 			audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
 
-# Crate fragments expiration.
 func _on_ExpireTimer_timeout():
 	queue_free()
 
-# Used when the fadeout is in the place.
 func _on_KillTimer_timeout():
 	pass
