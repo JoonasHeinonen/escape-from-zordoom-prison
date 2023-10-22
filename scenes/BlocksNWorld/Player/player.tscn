@@ -571,6 +571,10 @@ move_lock_x = true
 move_lock_y = true
 script = ExtResource( 1 )
 speed = 200
+check_point_enabled = false
+
+[node name="PlayerSpawnPoint" type="Position3D" parent="."]
+transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
 
 [node name="ColliisionArea" type="Area" parent="."]
 

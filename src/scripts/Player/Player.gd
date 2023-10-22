@@ -65,13 +65,21 @@ var timer = Timer.new()
 var random = RandomNumberGenerator.new()
 
 ### INHERITED FUNCTIONS FROM GODOT.
-
+var player_location 
+var spawn_point
+export var check_point_enabled = true
 # Called when the node enters the scene tree for the first time.
+# make a new spawn called player spawn
 func _ready():
-	#global_transform.origin = Globle.spawn_point
+	# spawn point refactored
+	# do not make a checkpoint that is 0 0 0 in a vector 3
+	if check_point_enabled == true:
+		global_transform.origin = Globle.spawn_point
+	if Globle.spawn_point != Vector3.ZERO:
+		global_transform.origin = Globle.spawn_point
 	$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
 	player_max_health = player_health
-
+	
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):
 		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")
@@ -814,6 +822,7 @@ func _on_CollisionArea_area_entered(area):
 # Run when FadeIn fade is finished.
 func _on_FadeIn_fade_finished():
 	get_tree().reload_current_scene()
-
+	
+	
 func _on_DamageCooloffTimer_timeout():
 	player_is_just_damaged = false

@@ -22,7 +22,7 @@ transform = Transform( 10.0911, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 1 )
 
 [node name="player" parent="." instance=ExtResource( 1 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 5.75784, 2.93775, 0.634376 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 10.3379, 2.93775, 0.634376 )
 collision_layer = 5
 collision_mask = 5
 axis_lock_motion_x = false
@@ -48,7 +48,7 @@ transform = Transform( 7.28995, 0, 0, 0, 1, 0, 0, 0, 3.01394, 0, 0, 0 )
 shape = SubResource( 2 )
 
 [node name="PlayerSpawnArena" type="Position3D" parent="." groups=["arenaSpawnPosition"]]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2105, 3.27432, 17.7074 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8952, 3.27432, 17.7074 )
 
 [node name="badGuySpawn1" type="Position3D" parent="." groups=["badGuySpawn1"]]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.77801, 2.93476, 17.8241 )
