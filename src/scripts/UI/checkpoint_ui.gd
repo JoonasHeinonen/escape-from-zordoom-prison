@@ -1,7 +1,6 @@
 extends Area
 
-var active = false
-var ui_notification = false
+var is_active = false
 
 func _ready():
 	connect("body_entered", self, "_on_checkpoint_body_entered")
@@ -11,11 +10,11 @@ func _ready():
 func _on_checkpoint_body_entered(body):
 	if body.name == "player":
 		$checkpoint/Ui_notification.show()
-		active = true
+		is_active = true
 
 func _on_checkpoint_body_exited(body):
 	if body.name == "player":
-		active = false
+		is_active = false
 		$checkpoint/Ui_notification.hide()
 		$checkpoint.hide()
 		queue_free()

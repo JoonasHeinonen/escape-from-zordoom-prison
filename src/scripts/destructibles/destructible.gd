@@ -35,7 +35,6 @@ func _ready():
 			meta_type = "destroyable" 
 			meta_name = "health crate"
 			fragment_scene = health_crate_fragments
-
 	self.set_meta("type", meta_type)
 	self.set_meta("name", meta_name)
 
@@ -61,13 +60,13 @@ func generate_bolt_position(x_axis, y_axis):
 	random.randomize()
 	var x = random.randf_range(x_axis - div, x_axis + div)
 	var y = random.randf_range(y_axis - div, y_axis + div)
-	
+
 	return Vector3(x, y, 0)
-	
-func take_damage(amount:int)-> void:
+
+func take_damage(amount:int) -> void:
 	is_active = true
 	
-func no_damage(amount:int)-> void:
+func no_damage(amount:int) -> void:
 	is_active = false
 # TODO Also need to get the box to explode and to get bolts(?)
 
@@ -86,7 +85,7 @@ func createBolts():
 	queue_free()
 
 func destruction_effect():
-	var d_e = null
+	var destruction_effect_instance = null
 	match (scene_type):
 		"lamp_post":
 			# d_e = lamp_post_destroy_effect.instance()
@@ -94,20 +93,20 @@ func destruction_effect():
 			# d_e.global_transform = global_transform
 			pass
 		"bolt_crate":
-			d_e = crate_destroy_effect.instance()
-			get_parent().get_parent().get_parent().add_child(d_e)
-			d_e.global_transform = global_transform
+			destruction_effect_instance = crate_destroy_effect.instance()
+			get_parent().get_parent().get_parent().add_child(destruction_effect_instance)
+			destruction_effect_instance.global_transform = global_transform
 
 func create_fragments():
-	var fragments = fragment_scene.instance()
-	get_parent().get_parent().get_parent().add_child(fragments)
-	fragments.global_transform = global_transform
+	var fragment_scene_instance = fragment_scene.instance()
+	get_parent().get_parent().get_parent().add_child(fragment_scene_instance)
+	fragment_scene_instance.global_transform = global_transform
 
 func add_active_radical():
-	var g_t_r = radical.instance()
+	var green_target_radical = radical.instance()
 	if (!self.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
-		self.add_child(g_t_r)
-		g_t_r.scale = Vector3(1, 1, 1)
+		self.add_child(green_target_radical)
+		green_target_radical.scale = Vector3(1, 1, 1)
 
 func remove_active_radical():
 	var d_l = self.get_children()

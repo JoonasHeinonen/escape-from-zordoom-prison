@@ -10,7 +10,6 @@ var player
 func _ready():
 	player = get_parent().get_parent().get_node('player')
 
-## Disable the door collision shapes.
 func swap_collision_shapes_values():
 	for c_s in collision_shapes:
 		c_s.disabled = !c_s.disabled

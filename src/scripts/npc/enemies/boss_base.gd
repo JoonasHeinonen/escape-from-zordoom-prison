@@ -52,12 +52,12 @@ func turn_head():
 		state_machine.travel("Enemy_Walk")
 
 func shoot_flames():
-	var flame = flame_projectile.instance()
-	flame.translation.x = 3
-	get_parent().add_child(flame)
-	flame.global_transform = $Flamethrower/FlamethrowerSprite/FlamethrowerPos.global_transform
-	if direction == "Left": flame.set_particle_size(-1)
-	elif direction == "Right": flame.set_particle_size(1)
+	var flame_instance = flame_projectile.instance()
+	flame_instance.translation.x = 3
+	get_parent().add_child(flame_instance)
+	flame_instance.global_transform = $Flamethrower/FlamethrowerSprite/FlamethrowerPos.global_transform
+	if direction == "Left": flame_instance.set_particle_size(-1)
+	elif direction == "Right": flame_instance.set_particle_size(1)
 
 func expire_enemy():
 	player.boss_fight_active = false
@@ -82,15 +82,15 @@ func _on_DamageCooloffTimer_timeout():
 	is_damaged = false
 
 func _on_Weakspot_area_entered(area):
-	var expl = explosion.instance()
+	var explosion_instance = explosion.instance()
 	if area.name == "ProjectileExplosionArea" and !is_damaged:
 		animation_player.play("Enemy_Damage")
 		damage_enemy(1)
 		is_damaged = true
 		$DamageCooloffTimer.start()
-		get_parent().add_child(expl)
-		expl.scale = Vector3(3, 3, 3)
-		expl.global_transform = self.global_transform
+		get_parent().add_child(explosion_instance)
+		explosion_instance.scale = Vector3(3, 3, 3)
+		explosion_instance.global_transform = self.global_transform
 
 func _on_Weakspot_body_entered(body):
 	pass
