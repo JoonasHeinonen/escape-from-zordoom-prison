@@ -8,7 +8,21 @@
 [node name="Options" instance=ExtResource( 1 )]
 menus = "Options"
 
-[node name="BackButton" parent="CenterContainer/VBoxContainer" index="0"]
+[node name="VBoxContainer" parent="CenterContainer" index="0"]
+margin_left = 593.0
+margin_top = 316.0
+margin_right = 687.0
+margin_bottom = 403.0
+
+[node name="CheckBox" type="CheckBox" parent="CenterContainer/VBoxContainer" index="0"]
+margin_right = 94.0
+margin_bottom = 24.0
+text = "Fullscreen"
+
+[node name="BackButton" parent="CenterContainer/VBoxContainer" index="1"]
+margin_top = 28.0
+margin_right = 94.0
+margin_bottom = 87.0
 script = ExtResource( 4 )
 
 [node name="Audio" type="Node" parent="CenterContainer/VBoxContainer/BackButton" index="0"]

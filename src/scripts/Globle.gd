@@ -52,6 +52,7 @@ var weapons_for_sale = [
 	"miniturret_glove"
 ]
 
+var game_fullscreen = false
 var melee_attack = false
 var player_inventory = false
 var vendor_active = false
