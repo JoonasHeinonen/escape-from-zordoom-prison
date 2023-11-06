@@ -51,6 +51,7 @@ transform = Transform( 0.905213, -1.34887e-08, 0.424958, -0.237879, 0.828647, 0.
 environment = SubResource( 16 )
 
 [node name="MainMenu" type="Control" parent="."]
+visible = false
 margin_right = 1280.0
 margin_bottom = 720.0
 grow_horizontal = 2
@@ -301,7 +302,6 @@ stream = ExtResource( 8 )
 stream = ExtResource( 9 )
 
 [node name="Options" type="Control" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -314,13 +314,19 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options/CenterContainer"]
 margin_left = 514.0
-margin_top = 330.0
+margin_top = 316.0
 margin_right = 766.0
-margin_bottom = 389.0
+margin_bottom = 403.0
+
+[node name="ScreenCheckBox" type="CheckBox" parent="Options/CenterContainer/VBoxContainer"]
+margin_right = 252.0
+margin_bottom = 24.0
+text = "Fullscreen"
 
 [node name="BackButton" type="Button" parent="Options/CenterContainer/VBoxContainer"]
-margin_right = 86.0
-margin_bottom = 59.0
+margin_top = 28.0
+margin_right = 252.0
+margin_bottom = 87.0
 mouse_filter = 2
 theme = ExtResource( 11 )
 text = "BACK (OPTIONS)"
@@ -342,8 +348,8 @@ stream = ExtResource( 8 )
 stream = ExtResource( 9 )
 
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_NewGameButton_focus_exited"]
-[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MainMenuButton_pressed"]
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/LoadGameButton" to="MainMenu/CenterContainer/Buttons/LoadGameButton" method="_on_LoadGameButton_focus_exited"]
 [connection signal="pressed" from="MainMenu/CenterContainer/Buttons/LoadGameButton" to="MainMenu/CenterContainer/Buttons/LoadGameButton" method="_on_MainMenuButton_pressed"]
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/OptionsButton" to="MainMenu/CenterContainer/Buttons/OptionsButton" method="_on_OptionsButton_focus_exited"]
@@ -355,5 +361,6 @@ stream = ExtResource( 9 )
 [connection signal="pressed" from="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton" to="CharacterSelection" method="_on_BackButton_pressed"]
 [connection signal="focus_exited" from="LoadGame/CenterContainer/VBoxContainer/BackButton" to="LoadGame/CenterContainer/VBoxContainer/BackButton" method="_on_BackButton_focus_exited"]
 [connection signal="pressed" from="LoadGame/CenterContainer/VBoxContainer/BackButton" to="LoadGame" method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Options/CenterContainer/VBoxContainer/ScreenCheckBox" to="Options" method="_on_ScreenCheckBox_pressed"]
 [connection signal="focus_exited" from="Options/CenterContainer/VBoxContainer/BackButton" to="Options/CenterContainer/VBoxContainer/BackButton" method="_on_BackButton_focus_exited"]
 [connection signal="pressed" from="Options/CenterContainer/VBoxContainer/BackButton" to="Options" method="_on_BackButton_pressed"]
