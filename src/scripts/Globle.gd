@@ -68,6 +68,7 @@ var spawn_point = Vector3(0 ,0, 0)
 func update_spawn(new_point) : spawn_point = new_point
 
 func _process(delta):
+	print(OS.get_real_window_size())
 	if (game_fullscreen):
 		OS.window_fullscreen = true
 	elif (!game_fullscreen):

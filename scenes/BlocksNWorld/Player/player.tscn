@@ -913,6 +913,174 @@ theme = ExtResource( 35 )
 text = "0"
 valign = 1
 
+[node name="FullscreenInGameUI" type="Control" parent="PlayerUI"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 640.0
+margin_bottom = 360.0
+mouse_filter = 2
+
+[node name="Bolts" type="Control" parent="PlayerUI/FullscreenInGameUI"]
+margin_left = 1570.0
+margin_top = 930.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="IconPlaceHolder" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Bolts"]
+position = Vector2( 232, 38 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 32 )
+
+[node name="BoltSprite" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Bolts/IconPlaceHolder"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 12 )
+
+[node name="BoltsPanel" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Bolts"]
+position = Vector2( 71.75, 23 )
+scale = Vector2( 1.38333, 0.3 )
+texture = ExtResource( 33 )
+
+[node name="BoltsPanelWest" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Bolts"]
+position = Vector2( -43, 23 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 34 )
+
+[node name="BoltsPanelEast" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Bolts"]
+position = Vector2( 186, 23 )
+rotation = 3.14159
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 34 )
+
+[node name="bolts" type="Label" parent="PlayerUI/FullscreenInGameUI/Bolts"]
+margin_left = -30.0
+margin_top = -2.0
+margin_right = 170.0
+margin_bottom = 48.0
+theme = ExtResource( 35 )
+text = "100"
+align = 2
+valign = 1
+script = ExtResource( 13 )
+
+[node name="Ammo" type="Control" parent="PlayerUI/FullscreenInGameUI"]
+margin_left = 1570.0
+margin_top = 25.0
+margin_right = 1920.0
+margin_bottom = 175.0
+
+[node name="IconPlaceHolder" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Ammo"]
+position = Vector2( 232, 37 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 32 )
+
+[node name="AmmoSprite" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Ammo/IconPlaceHolder"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 29 )
+
+[node name="AmmoPanel2" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Ammo"]
+position = Vector2( 99, 22 )
+scale = Vector2( 1.02, 0.3 )
+texture = ExtResource( 33 )
+
+[node name="AmmoPanelWest" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Ammo"]
+position = Vector2( 12, 22 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 34 )
+
+[node name="AmmoPanelEast" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Ammo"]
+position = Vector2( 186, 22 )
+rotation = -6.28319
+scale = Vector2( -0.3, -0.3 )
+texture = ExtResource( 34 )
+
+[node name="AmmoHas" type="Label" parent="PlayerUI/FullscreenInGameUI/Ammo"]
+margin_right = 80.0
+margin_bottom = 50.0
+theme = ExtResource( 35 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="AmmoBy" type="Label" parent="PlayerUI/FullscreenInGameUI/Ammo"]
+margin_left = 80.0
+margin_right = 120.0
+margin_bottom = 50.0
+theme = ExtResource( 35 )
+custom_colors/font_color = Color( 0.25098, 0.443137, 0.470588, 0.784314 )
+text = "/"
+align = 1
+valign = 1
+
+[node name="AmmoMax" type="Label" parent="PlayerUI/FullscreenInGameUI/Ammo"]
+margin_left = 120.0
+margin_right = 200.0
+margin_bottom = 50.0
+theme = ExtResource( 35 )
+custom_colors/font_color = Color( 0.25098, 0.443137, 0.470588, 0.784314 )
+text = "0"
+valign = 1
+
+[node name="Health" type="Control" parent="PlayerUI/FullscreenInGameUI"]
+margin_top = 25.0
+margin_right = 350.0
+margin_bottom = 175.0
+
+[node name="IconPlaceHolder" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Health"]
+position = Vector2( 106, 37 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 32 )
+
+[node name="HealthSprite" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Health/IconPlaceHolder"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 31 )
+
+[node name="HealthPanel2" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Health"]
+position = Vector2( 200.25, 22 )
+scale = Vector2( 0.5, 0.3 )
+texture = ExtResource( 33 )
+
+[node name="HealthPanelWest" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Health"]
+position = Vector2( 152, 22 )
+scale = Vector2( 0.3, -0.3 )
+texture = ExtResource( 34 )
+
+[node name="HealthPanelEast" type="Sprite" parent="PlayerUI/FullscreenInGameUI/Health"]
+position = Vector2( 249, 22 )
+rotation = -3.14159
+scale = Vector2( 0.3, -0.3 )
+texture = ExtResource( 34 )
+
+[node name="HealthHas" type="Label" parent="PlayerUI/FullscreenInGameUI/Health"]
+margin_left = 150.25
+margin_top = -3.0
+margin_right = 195.25
+margin_bottom = 47.0
+theme = ExtResource( 35 )
+text = "0"
+align = 2
+valign = 1
+
+[node name="HealthBy" type="Label" parent="PlayerUI/FullscreenInGameUI/Health"]
+margin_left = 195.25
+margin_top = -3.0
+margin_right = 205.25
+margin_bottom = 47.0
+theme = ExtResource( 35 )
+text = "/"
+align = 1
+valign = 1
+
+[node name="HealthMax" type="Label" parent="PlayerUI/FullscreenInGameUI/Health"]
+margin_left = 205.25
+margin_top = -3.0
+margin_right = 250.25
+margin_bottom = 47.0
+theme = ExtResource( 35 )
+text = "0"
+valign = 1
+
 [node name="InventoryContainer" type="Control" parent="PlayerUI"]
 pause_mode = 2
 visible = false
@@ -1310,14 +1478,14 @@ text = "There are many variations of passages of Lorem Ipsum available, but the 
 autowrap = true
 clip_text = true
 
-[node name="ui_notification" type="Control" parent="PlayerUI"]
+[node name="UINotification" type="Control" parent="PlayerUI"]
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI/ui_notification"]
+[node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI/UINotification"]
 layer = 3
 
-[node name="Ui_notification" type="CenterContainer" parent="PlayerUI/ui_notification/CanvasLayer"]
+[node name="Ui_notification" type="CenterContainer" parent="PlayerUI/UINotification/CanvasLayer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1326,14 +1494,14 @@ margin_top = -124.0
 margin_right = -4.0
 margin_bottom = -124.0
 
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/UINotification/CanvasLayer/Ui_notification"]
 margin_left = 217.0
 margin_top = 218.0
 margin_right = 1062.0
 margin_bottom = 502.0
 texture = ExtResource( 41 )
 
-[node name="ui_ammo" type="RichTextLabel" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
+[node name="ui_ammo" type="RichTextLabel" parent="PlayerUI/UINotification/CanvasLayer/Ui_notification"]
 margin_left = 440.0
 margin_top = 335.0
 margin_right = 840.0
@@ -1343,77 +1511,78 @@ bbcode_enabled = true
 bbcode_text = "[center]You got xxx ammo for xxx[/center]"
 text = "You got xxx ammo for xxx"
 
-[node name="Ui_Timer" type="Timer" parent="PlayerUI/ui_notification"]
+[node name="Ui_Timer" type="Timer" parent="PlayerUI/UINotification"]
 wait_time = 3.0
 
-[node name="ui_boss_data" type="Control" parent="PlayerUI"]
+[node name="UIBossData" type="Control" parent="PlayerUI"]
+visible = false
 margin_right = 1280.0
 margin_bottom = 720.0
 
-[node name="CenterContainer" type="CenterContainer" parent="PlayerUI/ui_boss_data"]
+[node name="CenterContainer" type="CenterContainer" parent="PlayerUI/UIBossData"]
 margin_right = 1280.0
 margin_bottom = 80.0
 
-[node name="BossHealthPanelWest" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossHealthPanelWest" type="Sprite" parent="PlayerUI/UIBossData/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
 position = Vector2( 409.5, 66 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 34 )
 
-[node name="BossHealthPanelEast" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossHealthPanelEast" type="Sprite" parent="PlayerUI/UIBossData/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
 position = Vector2( 839.5, 66 )
 scale = Vector2( -0.2, -0.2 )
 texture = ExtResource( 34 )
 
-[node name="BossHealthPanel" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossHealthPanel" type="Sprite" parent="PlayerUI/UIBossData/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
 position = Vector2( 624.5, 66 )
 scale = Vector2( 2.77333, 0.2 )
 texture = ExtResource( 33 )
 
-[node name="BossHealthPanelPercentageWest" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossHealthPanelPercentageWest" type="Sprite" parent="PlayerUI/UIBossData/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
 position = Vector2( 779.375, 29.75 )
 scale = Vector2( 0.25, -0.25 )
 texture = ExtResource( 34 )
 
-[node name="BossHealthPanelPercentageEast" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossHealthPanelPercentageEast" type="Sprite" parent="PlayerUI/UIBossData/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
 position = Vector2( 857.375, 29.75 )
 scale = Vector2( -0.25, -0.25 )
 texture = ExtResource( 34 )
 
-[node name="BossHealthPanelPercentage" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossHealthPanelPercentage" type="Sprite" parent="PlayerUI/UIBossData/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
 position = Vector2( 818.375, 29.75 )
 scale = Vector2( 0.4, 0.25 )
 texture = ExtResource( 33 )
 
-[node name="BossIconEast" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossIconEast" type="Sprite" parent="PlayerUI/UIBossData/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
 position = Vector2( 926.75, 43.5 )
 scale = Vector2( -0.5, -0.5 )
 texture = ExtResource( 34 )
 
-[node name="BossIconWest" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossIconWest" type="Sprite" parent="PlayerUI/UIBossData/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
 position = Vector2( 854.75, 43.5 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 34 )
 
-[node name="BossIcon" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossIcon" type="Sprite" parent="PlayerUI/UIBossData/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
 position = Vector2( 890.75, 43.5 )
 scale = Vector2( 0.232, 0.5 )
 texture = ExtResource( 33 )
 
-[node name="BossIconHolder" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossIconHolder" type="Sprite" parent="PlayerUI/UIBossData/CenterContainer"]
 position = Vector2( 889.75, 43.5 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 44 )
 
-[node name="BossName" type="Label" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossName" type="Label" parent="PlayerUI/UIBossData/CenterContainer"]
 margin_left = 415.0
 margin_top = 30.0
 margin_right = 865.0
@@ -1424,7 +1593,7 @@ text = "BOSSNAME"
 valign = 1
 uppercase = true
 
-[node name="BossHealthPercentage" type="Label" parent="PlayerUI/ui_boss_data"]
+[node name="BossHealthPercentage" type="Label" parent="PlayerUI/UIBossData"]
 margin_left = 785.375
 margin_top = 19.75
 margin_right = 851.375
@@ -1435,7 +1604,7 @@ align = 1
 valign = 1
 uppercase = true
 
-[node name="BossHealthBar" type="ProgressBar" parent="PlayerUI/ui_boss_data"]
+[node name="BossHealthBar" type="ProgressBar" parent="PlayerUI/UIBossData"]
 margin_left = 420.0
 margin_top = 54.0
 margin_right = 830.0

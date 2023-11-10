@@ -20,7 +20,7 @@ onready var angela_arm = $AngelaArm
 onready var rivet_arm = $RivetArm
 onready var shoot_timer = $ShootTimer
 onready var sniping_radical = $SnipingRadical
-onready var ui_timer = $PlayerUI/ui_notification/Ui_Timer
+onready var ui_timer = $PlayerUI/UINotification/Ui_Timer
 onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
@@ -288,7 +288,7 @@ func _process(delta):
 		rivet_arm.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_arm.show()
 	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
 
-	if !boss_fight_active : $PlayerUI/ui_boss_data.visible = false
+	if !boss_fight_active : $PlayerUI/UIBossData.visible = false
 
 	heal_player()
 	update_health_ui()
@@ -307,11 +307,11 @@ func init_boss_fight(
 	current_boss_name = boss_name
 
 	if boss_fight_active: 
-		$PlayerUI/ui_boss_data/BossHealthBar.value = int(boss_health)
-		$PlayerUI/ui_boss_data.visible = true
-		$PlayerUI/ui_boss_data/BossHealthPercentage.text = str(int(boss_health)) + " %"
-		$PlayerUI/ui_boss_data/CenterContainer/BossName.text = boss_name
-		$PlayerUI/ui_boss_data/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
+		$PlayerUI/UIBossData/BossHealthBar.value = int(boss_health)
+		$PlayerUI/UIBossData.visible = true
+		$PlayerUI/UIBossData/BossHealthPercentage.text = str(int(boss_health)) + " %"
+		$PlayerUI/UIBossData/CenterContainer/BossName.text = boss_name
+		$PlayerUI/UIBossData/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
 
 func set_vendor_weapons(weapons_for_sale):
 	var vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
@@ -443,6 +443,8 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 func update_health_ui():
 	$PlayerUI/InGameUI/Health/HealthHas.text = str(player_health)
 	$PlayerUI/InGameUI/Health/HealthMax.text = str(player_max_health)
+	$PlayerUI/FullscreenInGameUI/Health/HealthHas.text = str(player_health)
+	$PlayerUI/FullscreenInGameUI/Health/HealthMax.text = str(player_max_health)
 
 func collect_collectible(index : int, type : String):
 	# Create the bolt sparkle once a bolt is collected.
@@ -491,8 +493,8 @@ func damage_player(damage : int):
 
 func ui_notification_msg(ammo : int, weapon_name : String):
 	var msg : String = "You got %s ammo for %s"
-	$PlayerUI/ui_notification/CanvasLayer/Ui_notification.show()
-	$PlayerUI/ui_notification/CanvasLayer/Ui_notification/ui_ammo.text = msg % [ammo, weapon_name]
+	$PlayerUI/UINotification/CanvasLayer/Ui_notification.show()
+	$PlayerUI/UINotification/CanvasLayer/Ui_notification/ui_ammo.text = msg % [ammo, weapon_name]
 	ui_timer.start()
 	ui_notification = true
 
@@ -585,7 +587,7 @@ func debug_rotation_values(x, y, z):
 func _on_UI_Timer_timeout():
 	if (ui_notification):
 		ui_notification = false
-		$PlayerUI/ui_notification/CanvasLayer/Ui_notification.hide()
+		$PlayerUI/UINotification/CanvasLayer/Ui_notification.hide()
 
 func _on_ShootTimer_timeout():
 	if Input.is_action_pressed("ui_ranged_attack") && !Input.is_action_pressed("ui_melee_attack"):
@@ -635,6 +637,8 @@ func shoot_gun(index : int):
 func update_ammo_ui(has_ammo : int, max_ammo : int):
 	$PlayerUI/InGameUI/Ammo/AmmoHas.text = str(has_ammo)
 	$PlayerUI/InGameUI/Ammo/AmmoMax.text = str(max_ammo)
+	$PlayerUI/FullscreenInGameUI/Ammo/AmmoHas.text = str(has_ammo)
+	$PlayerUI/FullscreenInGameUI/Ammo/AmmoMax.text = str(max_ammo)
 
 func _on_Vendor_Choice_pressed(button, wpn):
 	match (wpn):

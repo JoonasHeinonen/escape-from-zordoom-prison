@@ -6,6 +6,9 @@ func _ready():
 	Input.set_custom_mouse_cursor(active_radical, Input.CURSOR_ARROW)
 
 func _process(delta):
+	# Fullscreen (1920, 1080)
+	# Windowed   (1296, 759)
+
 	if ($InventoryContainer.visible):
 		$InGameUI.hide()
 	elif ($PauseMenuContainer.visible):
@@ -13,4 +16,9 @@ func _process(delta):
 	elif ($VendorContainer.visible):
 		$InGameUI.hide()
 	else:
-		$InGameUI.show()
+		if (Globle.game_fullscreen):
+			$InGameUI.hide()
+			$FullscreenInGameUI.show()
+		elif (!Globle.game_fullscreen):
+			$InGameUI.show()
+			$FullscreenInGameUI.hide()
