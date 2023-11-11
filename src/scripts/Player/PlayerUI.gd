@@ -8,13 +8,15 @@ func _ready():
 func _process(delta):
 	# Fullscreen (1920, 1080)
 	# Windowed   (1296, 759)
-
 	if ($InventoryContainer.visible):
 		$InGameUI.hide()
+		$FullscreenInGameUI.hide()
 	elif ($PauseMenuContainer.visible):
 		$InGameUI.hide()
+		$FullscreenInGameUI.hide()
 	elif ($VendorContainer.visible):
 		$InGameUI.hide()
+		$FullscreenInGameUI.hide()
 	else:
 		if (Globle.game_fullscreen):
 			$InGameUI.hide()

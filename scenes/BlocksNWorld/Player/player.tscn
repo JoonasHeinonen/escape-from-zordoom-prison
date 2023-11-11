@@ -693,7 +693,7 @@ double_sided = false
 texture = ExtResource( 36 )
 hframes = 10
 vframes = 4
-frame = 1
+frame = 3
 
 [node name="RivetArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
@@ -1608,6 +1608,107 @@ uppercase = true
 margin_left = 420.0
 margin_top = 54.0
 margin_right = 830.0
+margin_bottom = 79.0
+custom_styles/fg = SubResource( 65 )
+custom_styles/bg = SubResource( 66 )
+step = 1.0
+percent_visible = false
+
+[node name="FullscreenUIBossData" type="Control" parent="PlayerUI"]
+visible = false
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="CenterContainer" type="CenterContainer" parent="PlayerUI/FullscreenUIBossData"]
+margin_left = 320.0
+margin_right = 1600.0
+margin_bottom = 80.0
+
+[node name="BossHealthPanelWest" type="Sprite" parent="PlayerUI/FullscreenUIBossData/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 409.5, 66 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 34 )
+
+[node name="BossHealthPanelEast" type="Sprite" parent="PlayerUI/FullscreenUIBossData/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 839.5, 66 )
+scale = Vector2( -0.2, -0.2 )
+texture = ExtResource( 34 )
+
+[node name="BossHealthPanel" type="Sprite" parent="PlayerUI/FullscreenUIBossData/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 624.5, 66 )
+scale = Vector2( 2.77333, 0.2 )
+texture = ExtResource( 33 )
+
+[node name="BossHealthPanelPercentageWest" type="Sprite" parent="PlayerUI/FullscreenUIBossData/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 779.375, 29.75 )
+scale = Vector2( 0.25, -0.25 )
+texture = ExtResource( 34 )
+
+[node name="BossHealthPanelPercentageEast" type="Sprite" parent="PlayerUI/FullscreenUIBossData/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 857.375, 29.75 )
+scale = Vector2( -0.25, -0.25 )
+texture = ExtResource( 34 )
+
+[node name="BossHealthPanelPercentage" type="Sprite" parent="PlayerUI/FullscreenUIBossData/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 818.375, 29.75 )
+scale = Vector2( 0.4, 0.25 )
+texture = ExtResource( 33 )
+
+[node name="BossIconEast" type="Sprite" parent="PlayerUI/FullscreenUIBossData/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 926.75, 43.5 )
+scale = Vector2( -0.5, -0.5 )
+texture = ExtResource( 34 )
+
+[node name="BossIconWest" type="Sprite" parent="PlayerUI/FullscreenUIBossData/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 854.75, 43.5 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 34 )
+
+[node name="BossIcon" type="Sprite" parent="PlayerUI/FullscreenUIBossData/CenterContainer"]
+modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
+position = Vector2( 890.75, 43.5 )
+scale = Vector2( 0.232, 0.5 )
+texture = ExtResource( 33 )
+
+[node name="BossIconHolder" type="Sprite" parent="PlayerUI/FullscreenUIBossData/CenterContainer"]
+position = Vector2( 889.75, 43.5 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 44 )
+
+[node name="BossName" type="Label" parent="PlayerUI/FullscreenUIBossData/CenterContainer"]
+margin_left = 415.0
+margin_top = 30.0
+margin_right = 865.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 450, 0 )
+theme = ExtResource( 35 )
+text = "BOSSNAME"
+valign = 1
+uppercase = true
+
+[node name="BossHealthPercentage" type="Label" parent="PlayerUI/FullscreenUIBossData"]
+margin_left = 1105.38
+margin_top = 19.75
+margin_right = 1171.38
+margin_bottom = 39.75
+theme = ExtResource( 35 )
+text = "100 %"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="BossHealthBar" type="ProgressBar" parent="PlayerUI/FullscreenUIBossData"]
+margin_left = 740.0
+margin_top = 54.0
+margin_right = 1150.0
 margin_bottom = 79.0
 custom_styles/fg = SubResource( 65 )
 custom_styles/bg = SubResource( 66 )

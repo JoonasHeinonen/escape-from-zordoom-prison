@@ -288,7 +288,11 @@ func _process(delta):
 		rivet_arm.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_arm.show()
 	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
 
-	if !boss_fight_active : $PlayerUI/UIBossData.visible = false
+	if !boss_fight_active: 
+		if (Globle.game_fullscreen):
+			$PlayerUI/FullscreenUIBossData.visible = false
+		elif (!Globle.game_fullscreen):
+			$PlayerUI/UIBossData.visible = false
 
 	heal_player()
 	update_health_ui()
@@ -307,11 +311,18 @@ func init_boss_fight(
 	current_boss_name = boss_name
 
 	if boss_fight_active: 
-		$PlayerUI/UIBossData/BossHealthBar.value = int(boss_health)
-		$PlayerUI/UIBossData.visible = true
-		$PlayerUI/UIBossData/BossHealthPercentage.text = str(int(boss_health)) + " %"
-		$PlayerUI/UIBossData/CenterContainer/BossName.text = boss_name
-		$PlayerUI/UIBossData/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
+		if (Globle.game_fullscreen):
+			$PlayerUI/FullscreenUIBossData/BossHealthBar.value = int(boss_health)
+			$PlayerUI/FullscreenUIBossData.visible = true
+			$PlayerUI/FullscreenUIBossData/BossHealthPercentage.text = str(int(boss_health)) + " %"
+			$PlayerUI/FullscreenUIBossData/CenterContainer/BossName.text = boss_name
+			$PlayerUI/FullscreenUIBossData/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
+		elif (!Globle.game_fullscreen):
+			$PlayerUI/UIBossData/BossHealthBar.value = int(boss_health)
+			$PlayerUI/UIBossData.visible = true
+			$PlayerUI/UIBossData/BossHealthPercentage.text = str(int(boss_health)) + " %"
+			$PlayerUI/UIBossData/CenterContainer/BossName.text = boss_name
+			$PlayerUI/UIBossData/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
 
 func set_vendor_weapons(weapons_for_sale):
 	var vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
