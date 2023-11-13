@@ -10,6 +10,10 @@ func _ready():
 	hide()
 
 func _process(_delta):
+	if (Globle.game_fullscreen):
+		self.rect_size = Vector2(1920, 1080)
+	elif (!Globle.game_fullscreen):
+		self.rect_size = Vector2(1280, 720)
 	if (self.visible):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)

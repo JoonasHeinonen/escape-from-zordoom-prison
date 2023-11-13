@@ -31,6 +31,8 @@ script = ExtResource( 2 )
 [node name="CenterContainer" type="CenterContainer" parent="LevelViewUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelViewUI/CenterContainer"]
 margin_left = 530.0

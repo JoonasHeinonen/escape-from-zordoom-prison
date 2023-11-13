@@ -34,6 +34,12 @@ func _ready():
 		$CenterContainer/VBoxContainer/CenterRow/Buttons/LevelList.add_child(level)
 	back_button.grab_focus()
 
+func _process(delta):
+	if (Globle.game_fullscreen):
+		$CenterContainer.rect_size = Vector2(1920, 1080)
+	elif (!Globle.game_fullscreen):
+		$CenterContainer.rect_size = Vector2(1280, 720)
+
 func list_levels(path):
 	var files = []
 	var dir = Directory.new()

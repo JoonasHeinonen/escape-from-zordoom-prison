@@ -4,14 +4,15 @@ onready var player     = get_parent().get_parent()
 onready var return_btn = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
 onready var btns       = $WeaponsForSale/CenterRow/Buttons
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	return_btn.grab_focus()
 	hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	# Hide / show the mouse and the active aiming radical.
+	if (Globle.game_fullscreen):
+		self.rect_size = Vector2(1920, 1080)
+	elif (!Globle.game_fullscreen):
+		self.rect_size = Vector2(1280, 720)
 	if (self.visible):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
