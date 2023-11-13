@@ -16,6 +16,13 @@ func _ready():
 		else:
 			screen_check_box.pressed = true
 
+func _process(delta):
+	if (self.name == "CharacterSelection"):
+		if (Globle.game_fullscreen):
+			$LabelCenterContainer.rect_size = Vector2(1920, 610)
+		elif (!Globle.game_fullscreen):
+			$LabelCenterContainer.rect_size = Vector2(1280, 240)
+
 func _on_BackButton_pressed():
 	$Audio/Click.play()
 	if (self.has_node('CenterContainer')) : index_btn = $CenterContainer/VBoxContainer/BackButton

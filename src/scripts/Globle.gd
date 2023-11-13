@@ -52,7 +52,7 @@ var weapons_for_sale = [
 	"miniturret_glove"
 ]
 
-var game_fullscreen = false
+var game_fullscreen = true
 var melee_attack = false
 var player_inventory = false
 var vendor_active = false
@@ -68,7 +68,6 @@ var spawn_point = Vector3(0 ,0, 0)
 func update_spawn(new_point) : spawn_point = new_point
 
 func _process(delta):
-	print(OS.get_real_window_size())
 	if (game_fullscreen):
 		OS.window_fullscreen = true
 	elif (!game_fullscreen):

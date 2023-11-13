@@ -8,6 +8,7 @@ onready var camera = get_parent().get_node("Camera")
 onready var character_Selection = get_parent().get_node("CharacterSelection")
 onready var load_game = get_parent().get_node("LoadGame")
 onready var options = get_parent().get_node("Options")
+onready var main_menu = get_parent().get_node("MainMenu")
 
 var random = RandomNumberGenerator.new()
 
@@ -16,7 +17,7 @@ func _ready():
 	$Audio/Click.play()
 
 	get_tree().paused = false
-	self.visible = true
+	main_menu.visible = false
 	character_Selection.visible = false
 	options.visible = false
 	load_game.visible = false
@@ -33,6 +34,15 @@ func _ready():
 
 	for button in $CenterContainer/Buttons.get_children():
 		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
+
+func _process(delta):
+	if (self.name == "MainMenu"):
+		if (Globle.game_fullscreen):
+			$CenterContainer.rect_size = Vector2(1920, 1080)
+			$LabelCenterContainer.rect_size = Vector2(1920, 700)
+		elif (!Globle.game_fullscreen):
+			$CenterContainer.rect_size = Vector2(1280, 720)
+			$LabelCenterContainer.rect_size = Vector2(1280, 360)
 
 func _physics_process(_delta):
 	camera.rotation += Vector3(0.001, 0.002, 0)
