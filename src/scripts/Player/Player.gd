@@ -24,7 +24,8 @@ onready var ui_timer = $PlayerUI/UINotification/Ui_Timer
 onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
-	$PlayerUI/VendorContainer
+	$PlayerUI/VendorContainer,
+	$PlayerUI/FullscreenVendorContainer
 ]
 
 export var speed = 1
@@ -298,6 +299,7 @@ func _process(delta):
 	update_health_ui()
 	set_weapons_to_inventory(Globle.current_weapons)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
+	$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
 
@@ -325,7 +327,12 @@ func init_boss_fight(
 			$PlayerUI/UIBossData/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
 
 func set_vendor_weapons(weapons_for_sale):
-	var vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
+	var vendor_node = null
+
+	if (Globle.game_fullscreen):
+		vendor_node = $PlayerUI/FullscreenVendorContainer/WeaponsForSale/CenterRow/Buttons
+	elif (!Globle.game_fullscreen):
+		vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
 
 	for v_n in vendor_node.get_children():
 		vendor_node.remove_child(v_n)
@@ -346,6 +353,7 @@ func set_vendor_weapons(weapons_for_sale):
 		btn.connect("pressed", self, "_on_Vendor_Choice_pressed", [btn, btn.wpn_for_sale])
 		btn.connect("focus_entered", self, "_on_VendorWeaponButton_focus_entered", [btn, btn.wpn_for_sale])
 		$PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons.add_child(btn)
+		$PlayerUI/FullscreenVendorContainer/WeaponsForSale/CenterRow/Buttons.add_child(btn)
 
 func set_weapons_to_inventory(weapons):
 	for weapon in weapons:
@@ -432,6 +440,7 @@ func purchase_weapon(wpn_price : int, wpn, btn):
 		btn.queue_free()
 		set_vendor_weapons(Globle.weapons_for_sale)
 		$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
+		$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 	else:
 		print("Insufficient funds...")
 		## TODO Replace with a UI notification message.
@@ -450,6 +459,10 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponDescription.text = str(wpn_desc)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
+	$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/HBoxContainer/WeaponPrice.text = str(wpn_price)
+	$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/WeaponDescription.text = str(wpn_desc)
+	$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
+	$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
 
 func update_health_ui():
 	$PlayerUI/InGameUI/Health/HealthHas.text = str(player_health)
