@@ -72,7 +72,7 @@ func _process(delta):
 	elif (!game_fullscreen):
 		OS.window_fullscreen = false
 
-## TODO Not sure if we need this instance_node.
+## TODO Not sure if we need this function.
 func instance_node(node, location, parent):
 	var node_instance = node.instance()
 	parent.add_child(node_instance)

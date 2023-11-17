@@ -338,6 +338,10 @@ func set_vendor_weapons(weapons_for_sale):
 		vendor_node.remove_child(v_n)
 		v_n.queue_free()
 
+	set_vendor_weapons_data(weapons_for_sale, $PlayerUI/FullscreenVendorContainer/WeaponsForSale/CenterRow/Buttons)
+	set_vendor_weapons_data(weapons_for_sale, $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons)
+
+func set_vendor_weapons_data(weapons_for_sale, data):
 	for wpn_for_sale in weapons_for_sale:
 		var wpn_name = ""
 		var unwanted_chars = ["_"]
@@ -352,8 +356,7 @@ func set_vendor_weapons(weapons_for_sale):
 		btn.set_label(wpn_name)
 		btn.connect("pressed", self, "_on_Vendor_Choice_pressed", [btn, btn.wpn_for_sale])
 		btn.connect("focus_entered", self, "_on_VendorWeaponButton_focus_entered", [btn, btn.wpn_for_sale])
-		$PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons.add_child(btn)
-		$PlayerUI/FullscreenVendorContainer/WeaponsForSale/CenterRow/Buttons.add_child(btn)
+		data.add_child(btn)
 
 func set_weapons_to_inventory(weapons):
 	for weapon in weapons:
