@@ -44,11 +44,14 @@ func _input(event):
 				wpn_name = wpn_name.to_lower()
 				print(wpn_name)
 				player._on_Vendor_Choice_pressed(btn, wpn_name)
-#	if event.is_action_pressed("ui_esc"):
-#		if (Globle.vendor_open):
-#			if (Globle.vendor_active == false):
-#				vendor_process(false, true)
-#				hide()
+	if event.is_action_pressed("ui_esc"):
+		if (Globle.vendor_active):
+			vendor_process(false, false)
+			hide()
+	if event.is_action_released("ui_esc"):
+		if (Globle.vendor_active):
+			player_ui.get_node("PauseMenuContainer").hide()
+			vendor_process(false, false)
 
 func _on_ReturnToGameButton_pressed():
 	hide()

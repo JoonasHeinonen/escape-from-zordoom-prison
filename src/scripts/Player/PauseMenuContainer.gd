@@ -10,6 +10,8 @@ func _ready():
 	hide()
 
 func _process(_delta):
+	if (Globle.vendor_active):
+		self.hide()
 	if (Globle.game_fullscreen):
 		self.rect_size = Vector2(1920, 1080)
 	elif (!Globle.game_fullscreen):
