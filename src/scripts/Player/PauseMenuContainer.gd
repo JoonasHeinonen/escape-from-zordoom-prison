@@ -1,13 +1,10 @@
 extends Control
 
 onready var return_btn = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
+onready var screen_check_box = $VBoxContainer/CenterRow/Buttons/ScreenCheckBox
 onready var exit_btn = $VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton
 
 var btns : Array = [return_btn, exit_btn]
-
-func _ready():
-	return_btn.grab_focus()
-	hide()
 
 func _process(_delta):
 	if (Globle.vendor_active):
@@ -32,7 +29,9 @@ func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		if (return_btn.has_focus()):
 			_on_ReturnToGameButton_pressed()
-		elif (exit_btn.has_focus()):
+		if (screen_check_box.has_focus()):
+			_on_ScreenCheckBox_pressed()
+		if (exit_btn.has_focus()):
 			_on_ReturnToMainMenuButton_pressed()
 
 func _on_ReturnToGameButton_pressed():
@@ -42,3 +41,10 @@ func _on_ReturnToGameButton_pressed():
 func _on_ReturnToMainMenuButton_pressed():
 	Globle.menu_to_return = "StartGame"
 	get_tree().change_scene("res://scenes/Menu/MainMenu.tscn")
+
+func _on_ScreenCheckBox_pressed():
+	## TODO Try to figure a way how to keep this unpaused.
+	hide()
+	get_tree().paused = false
+	screen_check_box.grab_focus()
+	Globle.game_fullscreen = !Globle.game_fullscreen

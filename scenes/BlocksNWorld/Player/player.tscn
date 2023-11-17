@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=2]
+[gd_scene load_steps=112 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -48,6 +48,7 @@
 [ext_resource path="res://scenes/BlocksNWorld/Player/sniping_raycast.tscn" type="PackedScene" id=46]
 [ext_resource path="res://resources/models/ui_elements/GreenSnipingTargetRadicalMaterial.material" type="Material" id=47]
 [ext_resource path="res://resources/audio/weapons/player/pulse_rifle.wav" type="AudioStream" id=48]
+[ext_resource path="res://src/scripts/UI/screen_check_box.gd" type="Script" id=49]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -615,6 +616,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
+frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -1271,6 +1273,12 @@ margin_bottom = 138.0
 mouse_filter = 2
 shortcut_in_tooltip = false
 text = "RETURN"
+
+[node name="ScreenCheckBox" type="CheckBox" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons"]
+margin_right = 252.0
+margin_bottom = 24.0
+text = "Fullscreen"
+script = ExtResource( 49 )
 
 [node name="ReturnToMainMenuButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 7 )]
 margin_top = 142.0
@@ -2067,6 +2075,8 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138 )
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8" to="." method="_on_WeaponSlot8_pressed"]
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" method="_on_ReturnToGameButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToGameButton_pressed"]
+[connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ScreenCheckBox" to="PlayerUI/PauseMenuContainer" method="_on_ScreenCheckBox_pressed"]
+[connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ScreenCheckBox" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ScreenCheckBox" method="_on_ScreenCheckBox_pressed"]
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
 [connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/scripts/Menu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/scripts/UI/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://src/scripts/UI/screen_check_box.gd" type="Script" id=3]
 [ext_resource path="res://src/scripts/Menu/MenuButton.gd" type="Script" id=5]
 [ext_resource path="res://scenes/Transitions/fade_in.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/fonts/rg-future-italic.tres" type="DynamicFont" id=7]
@@ -338,6 +339,7 @@ margin_bottom = 403.0
 margin_right = 252.0
 margin_bottom = 24.0
 text = "Fullscreen"
+script = ExtResource( 3 )
 
 [node name="BackButton" type="Button" parent="Options/CenterContainer/VBoxContainer"]
 margin_top = 28.0
@@ -377,6 +379,6 @@ stream = ExtResource( 9 )
 [connection signal="pressed" from="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton" to="CharacterSelection" method="_on_BackButton_pressed"]
 [connection signal="focus_exited" from="LoadGame/CenterContainer/VBoxContainer/BackButton" to="LoadGame/CenterContainer/VBoxContainer/BackButton" method="_on_BackButton_focus_exited"]
 [connection signal="pressed" from="LoadGame/CenterContainer/VBoxContainer/BackButton" to="LoadGame" method="_on_BackButton_pressed"]
-[connection signal="pressed" from="Options/CenterContainer/VBoxContainer/ScreenCheckBox" to="Options" method="_on_ScreenCheckBox_pressed"]
+[connection signal="pressed" from="Options/CenterContainer/VBoxContainer/ScreenCheckBox" to="Options/CenterContainer/VBoxContainer/ScreenCheckBox" method="_on_ScreenCheckBox_pressed"]
 [connection signal="focus_exited" from="Options/CenterContainer/VBoxContainer/BackButton" to="Options/CenterContainer/VBoxContainer/BackButton" method="_on_BackButton_focus_exited"]
 [connection signal="pressed" from="Options/CenterContainer/VBoxContainer/BackButton" to="Options" method="_on_BackButton_pressed"]

@@ -8,14 +8,6 @@ var btn_to_return_to
 
 export (String, "StartGame", "LoadGame", "Options") var menus
 
-func _ready():
-	if (self.name == "Options"):
-		var screen_check_box = $CenterContainer/VBoxContainer/ScreenCheckBox
-		if !Globle.game_fullscreen:
-			screen_check_box.pressed = false
-		else:
-			screen_check_box.pressed = true
-
 func _process(delta):
 	if (self.name == "CharacterSelection"):
 		if (Globle.game_fullscreen):
@@ -53,7 +45,3 @@ func _on_BackButton_focus_exited():
 
 func _on_BackButtonCS_focus_exited():
 	$Audio/Move.play()
-
-func _on_ScreenCheckBox_pressed():
-	if (self.name == "Options"):
-		Globle.game_fullscreen = !Globle.game_fullscreen
