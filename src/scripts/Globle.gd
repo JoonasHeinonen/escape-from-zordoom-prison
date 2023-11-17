@@ -37,8 +37,7 @@ const WPNS = [
 
 # TODO Fix the player_weapons_ammo at some point to be WPNS[3].
 var current_weapons = [
-	"edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
-		"pulse_rifle", "ry3no", "sheepinator", "miniturret_glove"
+	"edge_blaster"
 ]
 var player_weapons_ammo = [65, 40, 8, 12, 8, 25, -1, 15]
 var weapons_for_sale = [
@@ -52,7 +51,7 @@ var weapons_for_sale = [
 	"miniturret_glove"
 ]
 
-var game_fullscreen = false
+var game_fullscreen = true
 var melee_attack = false
 var player_inventory = false
 var vendor_active = false

@@ -2,10 +2,17 @@ extends Control
 
 onready var player = get_parent().get_parent()
 onready var player_ui = get_parent()
-onready var return_btn = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
 onready var btns = $WeaponsForSale/CenterRow/Buttons
+onready var windowed_return_btn = player_ui.get_node("VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton")
+onready var fullscreen_return_btn = player_ui.get_node("FullscreenVendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton")
+
+var return_btn = windowed_return_btn
 
 func _ready():
+	if (Globle.game_fullscreen):
+		return_btn = fullscreen_return_btn
+	elif (!Globle.game_fullscreen):
+		return_btn = windowed_return_btn
 	return_btn.grab_focus()
 	hide()
 

@@ -693,7 +693,7 @@ double_sided = false
 texture = ExtResource( 36 )
 hframes = 10
 vframes = 4
-frame = 1
+frame = 3
 
 [node name="RivetArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
@@ -1486,11 +1486,10 @@ autowrap = true
 clip_text = true
 
 [node name="FullscreenVendorContainer" type="Control" parent="PlayerUI"]
-visible = false
 margin_left = 70.0
 margin_top = 70.0
-margin_right = 1210.0
-margin_bottom = 650.0
+margin_right = 1850.0
+margin_bottom = 1010.0
 mouse_filter = 2
 script = ExtResource( 10 )
 
@@ -1517,28 +1516,28 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -570.0
-margin_top = -290.0
-margin_right = 570.0
-margin_bottom = -230.0
+margin_left = -890.0
+margin_top = -470.0
+margin_right = 890.0
+margin_bottom = -410.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="CenterRow" type="HBoxContainer" parent="PlayerUI/FullscreenVendorContainer/VBoxContainer"]
-margin_right = 1140.0
+margin_right = 1780.0
 margin_bottom = 60.0
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="PlayerUI/FullscreenVendorContainer/VBoxContainer/CenterRow"]
-margin_right = 1140.0
+margin_right = 1780.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="ReturnToGameButton" parent="PlayerUI/FullscreenVendorContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
-margin_right = 1140.0
+margin_right = 1780.0
 margin_bottom = 59.0
 shortcut_in_tooltip = false
 text = "LEAVE VENDOR"
