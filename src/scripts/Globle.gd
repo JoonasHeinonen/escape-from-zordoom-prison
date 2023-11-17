@@ -57,7 +57,7 @@ var player_inventory = false
 var vendor_active = false
 var vendor_open = false
 
-var bolts = 0
+var bolts = 300000
 
 var menu_to_return = "none"
 var player_character = "Angela"
