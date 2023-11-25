@@ -470,8 +470,6 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 func update_health_ui():
 	$PlayerUI/InGameUI/Health/HealthHas.text = str(player_health)
 	$PlayerUI/InGameUI/Health/HealthMax.text = str(player_max_health)
-	$PlayerUI/FullscreenInGameUI/Health/HealthHas.text = str(player_health)
-	$PlayerUI/FullscreenInGameUI/Health/HealthMax.text = str(player_max_health)
 
 func collect_collectible(index : int, type : String):
 	# Create the bolt sparkle once a bolt is collected.
@@ -664,8 +662,6 @@ func shoot_gun(index : int):
 func update_ammo_ui(has_ammo : int, max_ammo : int):
 	$PlayerUI/InGameUI/Ammo/AmmoHas.text = str(has_ammo)
 	$PlayerUI/InGameUI/Ammo/AmmoMax.text = str(max_ammo)
-	$PlayerUI/FullscreenInGameUI/Ammo/AmmoHas.text = str(has_ammo)
-	$PlayerUI/FullscreenInGameUI/Ammo/AmmoMax.text = str(max_ammo)
 
 func _on_Vendor_Choice_pressed(button, wpn):
 	match (wpn):
