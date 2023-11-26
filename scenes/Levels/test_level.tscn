@@ -250,16 +250,16 @@ margin_right = -3.0
 margin_bottom = -218.0
 
 [node name="TextureRect" type="TextureRect" parent="checkpoint/Area/checkpoint/Ui_notification"]
-margin_left = 327.0
+margin_left = 217.0
 margin_top = 218.0
-margin_right = 1172.0
+margin_right = 1062.0
 margin_bottom = 502.0
 texture = ExtResource( 18 )
 
 [node name="checkbox" type="RichTextLabel" parent="checkpoint/Area/checkpoint/Ui_notification"]
-margin_left = 550.0
+margin_left = 440.0
 margin_top = 335.0
-margin_right = 950.0
+margin_right = 840.0
 margin_bottom = 385.0
 rect_min_size = Vector2( 400, 50 )
 bbcode_enabled = true
@@ -269,7 +269,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource( 8 )]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 15.4688, 3.0482, 0 )
+transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -15.2027, -13.942, 0 )
 collision_layer = 5
 collision_mask = 5
 axis_lock_motion_x = false

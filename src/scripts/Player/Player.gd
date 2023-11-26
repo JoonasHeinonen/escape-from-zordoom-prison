@@ -290,16 +290,14 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
 
 	if !boss_fight_active: 
-		if (Globle.game_fullscreen):
-			$PlayerUI/FullscreenUIBossData.visible = false
-		elif (!Globle.game_fullscreen):
-			$PlayerUI/UIBossData.visible = false
+		$PlayerUI/UIBossData.visible = false
 
 	heal_player()
 	update_health_ui()
 	set_weapons_to_inventory(Globle.current_weapons)
-	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 	$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
+	$PlayerUI/UIBossData/UIBossDataCenterContainer.rect_size = Vector2(get_viewport().size.x, 180)
+	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
 
@@ -313,18 +311,11 @@ func init_boss_fight(
 	current_boss_name = boss_name
 
 	if boss_fight_active: 
-		if (Globle.game_fullscreen):
-			$PlayerUI/FullscreenUIBossData/BossHealthBar.value = int(boss_health)
-			$PlayerUI/FullscreenUIBossData.visible = true
-			$PlayerUI/FullscreenUIBossData/BossHealthPercentage.text = str(int(boss_health)) + " %"
-			$PlayerUI/FullscreenUIBossData/CenterContainer/BossName.text = boss_name
-			$PlayerUI/FullscreenUIBossData/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
-		elif (!Globle.game_fullscreen):
-			$PlayerUI/UIBossData/BossHealthBar.value = int(boss_health)
-			$PlayerUI/UIBossData.visible = true
-			$PlayerUI/UIBossData/BossHealthPercentage.text = str(int(boss_health)) + " %"
-			$PlayerUI/UIBossData/CenterContainer/BossName.text = boss_name
-			$PlayerUI/UIBossData/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
+		$PlayerUI/UIBossData.visible = true
+		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossHealthBar.value = int(boss_health)
+		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossHealthPercentage.text = str(int(boss_health)) + " %"
+		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
+		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossName.text = boss_name
 
 func set_vendor_weapons(weapons_for_sale):
 	var vendor_node = null
