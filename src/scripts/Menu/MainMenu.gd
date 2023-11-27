@@ -1,4 +1,4 @@
-extends Control
+extends MenuSceneControlBase
 
 onready var new_game_button = $CenterContainer/Buttons/NewGameButton
 onready var load_game_button = $CenterContainer/Buttons/LoadGameButton
@@ -36,13 +36,7 @@ func _ready():
 		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
 
 func _process(delta):
-	if (self.name == "MainMenu"):
-		if (Globle.game_fullscreen):
-			$CenterContainer.rect_size = Vector2(1920, 1080)
-			$LabelCenterContainer.rect_size = Vector2(1920, 700)
-		elif (!Globle.game_fullscreen):
-			$CenterContainer.rect_size = Vector2(1280, 720)
-			$LabelCenterContainer.rect_size = Vector2(1280, 360)
+	alignment = "Full alignment"
 
 func _physics_process(_delta):
 	camera.rotation += Vector3(0.001, 0.002, 0)

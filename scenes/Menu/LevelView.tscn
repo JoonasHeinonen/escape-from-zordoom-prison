@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=1]
 [ext_resource path="res://src/scripts/Menu/addon/LevelListing.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=7]
 [ext_resource path="res://resources/images/characters/player/angela/angela_sheet_init_finished.png" type="Texture" id=8]
 [ext_resource path="res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png" type="Texture" id=9]
+[ext_resource path="res://src/scripts/UI/menu_scene_control_base.gd" type="Script" id=10]
 
 [node name="LevelView" type="Spatial"]
 
@@ -27,12 +28,15 @@ margin_right = 1280.0
 margin_bottom = 720.0
 mouse_filter = 2
 script = ExtResource( 2 )
+alignment = "Full alignment"
 
 [node name="CenterContainer" type="CenterContainer" parent="LevelViewUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 10 )
+alignment = "Full alignment"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelViewUI/CenterContainer"]
 margin_left = 530.0

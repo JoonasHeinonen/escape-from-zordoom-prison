@@ -25,7 +25,6 @@ onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
 	$PlayerUI/VendorContainer,
-	$PlayerUI/FullscreenVendorContainer
 ]
 
 export var speed = 1
@@ -295,7 +294,6 @@ func _process(delta):
 	heal_player()
 	update_health_ui()
 	set_weapons_to_inventory(Globle.current_weapons)
-	$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 	$PlayerUI/UIBossData/UIBossDataCenterContainer.rect_size = Vector2(get_viewport().size.x, 180)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 
@@ -318,18 +316,12 @@ func init_boss_fight(
 		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossName.text = boss_name
 
 func set_vendor_weapons(weapons_for_sale):
-	var vendor_node = null
-
-	if (Globle.game_fullscreen):
-		vendor_node = $PlayerUI/FullscreenVendorContainer/WeaponsForSale/CenterRow/Buttons
-	elif (!Globle.game_fullscreen):
-		vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
+	var vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
 
 	for v_n in vendor_node.get_children():
 		vendor_node.remove_child(v_n)
 		v_n.queue_free()
 
-	set_vendor_weapons_data(weapons_for_sale, $PlayerUI/FullscreenVendorContainer/WeaponsForSale/CenterRow/Buttons)
 	set_vendor_weapons_data(weapons_for_sale, $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons)
 
 func set_vendor_weapons_data(weapons_for_sale, data):
@@ -434,7 +426,6 @@ func purchase_weapon(wpn_price : int, wpn, btn):
 		btn.queue_free()
 		set_vendor_weapons(Globle.weapons_for_sale)
 		$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
-		$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 	else:
 		print("Insufficient funds...")
 		## TODO Replace with a UI notification message.
@@ -453,10 +444,6 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponDescription.text = str(wpn_desc)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
-	$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/HBoxContainer/WeaponPrice.text = str(wpn_price)
-	$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/WeaponDescription.text = str(wpn_desc)
-	$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
-	$PlayerUI/FullscreenVendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
 
 func update_health_ui():
 	$PlayerUI/InGameUI/Health/HealthHas.text = str(player_health)

@@ -1,4 +1,4 @@
-extends Control
+extends MenuSceneControlBase
 
 onready var return_btn = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
 onready var screen_check_box = $VBoxContainer/CenterRow/Buttons/ScreenCheckBox

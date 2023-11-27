@@ -3,20 +3,24 @@ extends Control
 onready var player = get_parent().get_parent()
 onready var player_ui = get_parent()
 onready var btns = $WeaponsForSale/CenterRow/Buttons
-onready var windowed_return_btn = player_ui.get_node("VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton")
-onready var fullscreen_return_btn = player_ui.get_node("FullscreenVendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton")
-
-var return_btn = windowed_return_btn
+onready var vendor_background_panel = $VendorBackgroundPanel
+onready var vendor_panel = $VendorPanel
+onready var return_btn = player_ui.get_node("VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton")
 
 func _ready():
-	if (Globle.game_fullscreen):
-		return_btn = fullscreen_return_btn
-	elif (!Globle.game_fullscreen):
-		return_btn = windowed_return_btn
 	return_btn.grab_focus()
 	hide()
 
 func _process(_delta):
+	if (self.name == "VendorContainer"):
+		vendor_background_panel.rect_size = Vector2(
+			get_viewport().size.x,
+			get_viewport().size.y
+		)
+		vendor_panel.rect_size = Vector2(
+			get_viewport().size.x - 140,
+			get_viewport().size.y - 140
+		)
 	if (self.visible):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -27,14 +31,7 @@ func _input(event):
 			return_btn.grab_focus()
 			if (Globle.vendor_active == true):
 				vendor_process(true, false)
-				if (Globle.game_fullscreen):
-					player_ui.get_node("FullscreenVendorContainer").show()
-					player_ui.get_node("VendorContainer").hide()
-					print("Fullscreen")
-				elif (!Globle.game_fullscreen):
-					player_ui.get_node("FullscreenVendorContainer").hide()
-					player_ui.get_node("VendorContainer").show()
-					print("Not fullscreen")
+				player_ui.get_node("VendorContainer").show()
 		if (Globle.vendor_open):
 			if (Globle.vendor_active == false):
 				vendor_process(false, true)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://src/scripts/Menu/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://src/scripts/UI/main_menu.gd" type="Script" id=2]
 [ext_resource path="res://src/scripts/UI/screen_check_box.gd" type="Script" id=3]
+[ext_resource path="res://src/scripts/UI/menu_scene_control_base.gd" type="Script" id=4]
 [ext_resource path="res://src/scripts/Menu/MenuButton.gd" type="Script" id=5]
 [ext_resource path="res://scenes/Transitions/fade_in.tscn" type="PackedScene" id=6]
 [ext_resource path="res://resources/fonts/rg-future-italic.tres" type="DynamicFont" id=7]
@@ -52,7 +53,6 @@ transform = Transform( 0.905213, -1.34887e-08, 0.424958, -0.237879, 0.828647, 0.
 environment = SubResource( 16 )
 
 [node name="MainMenu" type="Control" parent="."]
-visible = false
 margin_right = 1280.0
 margin_bottom = 720.0
 grow_horizontal = 2
@@ -67,6 +67,8 @@ margin_right = 1280.0
 margin_bottom = 360.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 4 )
+alignment = "Vertical alignment"
 
 [node name="Label" type="Label" parent="MainMenu/LabelCenterContainer"]
 margin_left = 408.0
@@ -181,10 +183,12 @@ stream = ExtResource( 9 )
 visible = false
 
 [node name="CharacterSelection" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 12 )
+alignment = "Full alignment"
 menus = "StartGame"
 
 [node name="LabelCenterContainer" type="CenterContainer" parent="CharacterSelection"]
@@ -192,6 +196,8 @@ margin_right = 1280.0
 margin_bottom = 240.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource( 4 )
+alignment = "Vertical alignment"
 
 [node name="Label" type="Label" parent="CharacterSelection/LabelCenterContainer"]
 margin_left = 461.0
@@ -209,16 +215,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CharacterSelection/CenterContainer"]
-margin_left = 430.0
+margin_left = 540.0
 margin_top = 195.0
-margin_right = 850.0
+margin_right = 960.0
 margin_bottom = 525.0
 rect_min_size = Vector2( 420, 330 )
 custom_styles/panel = SubResource( 17 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelection/CenterContainer"]
+margin_left = 110.0
 margin_top = 203.0
-margin_right = 1280.0
+margin_right = 1390.0
 margin_bottom = 516.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CharacterSelection/CenterContainer/VBoxContainer"]
@@ -282,6 +289,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 12 )
+alignment = "Full alignment"
 menus = "LoadGame"
 
 [node name="CenterContainer" type="CenterContainer" parent="LoadGame"]
@@ -289,9 +297,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LoadGame/CenterContainer"]
-margin_left = 494.0
+margin_left = 604.0
 margin_top = 330.0
-margin_right = 785.0
+margin_right = 895.0
 margin_bottom = 389.0
 
 [node name="BackButton" type="Button" parent="LoadGame/CenterContainer/VBoxContainer"]
@@ -323,6 +331,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 script = ExtResource( 12 )
+alignment = "Full alignment"
 menus = "Options"
 
 [node name="CenterContainer" type="CenterContainer" parent="Options"]
@@ -330,9 +339,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options/CenterContainer"]
-margin_left = 514.0
+margin_left = 624.0
 margin_top = 316.0
-margin_right = 766.0
+margin_right = 876.0
 margin_bottom = 403.0
 
 [node name="ScreenCheckBox" type="CheckBox" parent="Options/CenterContainer/VBoxContainer"]

@@ -1,4 +1,4 @@
-extends Control
+extends MenuSceneControlBase
 
 onready var player = get_parent().get_parent()
 

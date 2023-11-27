@@ -1,4 +1,4 @@
-extends Control
+extends MenuSceneControlBase
 
 onready var level_button = preload("res://scenes/Menu/Materials/LevelButton.tscn")
 onready var back_button = $CenterContainer/VBoxContainer/BackButton
