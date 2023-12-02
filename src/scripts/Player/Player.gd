@@ -316,13 +316,13 @@ func init_boss_fight(
 		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossName.text = boss_name
 
 func set_vendor_weapons(weapons_for_sale):
-	var vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
+	var vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/WeaponsForSaleButtons
 
 	for v_n in vendor_node.get_children():
 		vendor_node.remove_child(v_n)
 		v_n.queue_free()
 
-	set_vendor_weapons_data(weapons_for_sale, $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons)
+	set_vendor_weapons_data(weapons_for_sale, $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/WeaponsForSaleButtons)
 
 func set_vendor_weapons_data(weapons_for_sale, data):
 	for wpn_for_sale in weapons_for_sale:
@@ -443,7 +443,7 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/HBoxContainer/WeaponPrice.text = str(wpn_price)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponDescription.text = str(wpn_desc)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
-	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
+	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/HBoxContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
 
 func update_health_ui():
 	$PlayerUI/InGameUI/Health/HealthHas.text = str(player_health)

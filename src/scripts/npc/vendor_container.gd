@@ -2,10 +2,17 @@ extends Control
 
 onready var player = get_parent().get_parent()
 onready var player_ui = get_parent()
-onready var btns = $WeaponsForSale/CenterRow/Buttons
+onready var wpns_for_sale_btns = $WeaponsForSale/CenterRow/WeaponsForSaleButtons
 onready var vendor_background_panel = $VendorBackgroundPanel
 onready var vendor_panel = $VendorPanel
-onready var return_btn = player_ui.get_node("VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton")
+onready var return_btn_container = $ReturnToGameButtonContainer
+onready var return_btn = $ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton
+onready var weapon_description_panel = $WeaponDescriptionPanel
+onready var weapon_description_panel_children = [
+	$WeaponDescriptionPanel/WpnImageContainer,
+	$WeaponDescriptionPanel/WeaponDescription
+]
+onready var weapon_description_panel_hboxcontainer = $WeaponDescriptionPanel/WpnImageContainer/HBoxContainer
 
 func _ready():
 	return_btn.grab_focus()
@@ -21,6 +28,15 @@ func _process(_delta):
 			get_viewport().size.x - 140,
 			get_viewport().size.y - 140
 		)
+		return_btn_container.rect_size = Vector2(
+			get_viewport().size.x - 140,
+			return_btn_container.rect_size.y
+		)
+		weapon_description_panel.margin_right = get_viewport().size.x - 140
+		weapon_description_panel.margin_bottom = get_viewport().size.y - 140
+		for child in weapon_description_panel_children:
+			child.rect_size.x = get_viewport().size.x - 600
+		weapon_description_panel_hboxcontainer.rect_size.x = get_viewport().size.x - 600
 	if (self.visible):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -37,7 +53,7 @@ func _input(event):
 				vendor_process(false, true)
 				hide()
 	if event.is_action_pressed("ui_accept"):
-		for btn in btns.get_children():
+		for btn in wpns_for_sale_btns.get_children():
 			if btn.has_focus():
 				var wpn_name = btn.text
 				var unwanted_chars = [" "]

@@ -156,7 +156,7 @@ Globle="*res://src/scripts/Globle.gd"
 
 [display]
 
-window/size/width=1500
+window/size/width=1280
 window/size/height=720
 window/size/resizable=false
 

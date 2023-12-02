@@ -1157,7 +1157,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_styles/panel = SubResource( 22 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
+[node name="ReturnToGameButtonContainer" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1170,30 +1170,30 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="CenterRow" type="HBoxContainer" parent="PlayerUI/VendorContainer/VBoxContainer"]
+[node name="CenterRow" type="HBoxContainer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer"]
 margin_right = 1140.0
 margin_bottom = 60.0
 size_flags_vertical = 3
 
-[node name="Buttons" type="VBoxContainer" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow"]
+[node name="Buttons" type="VBoxContainer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow"]
 margin_right = 1140.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ReturnToGameButton" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
+[node name="ReturnToGameButton" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
 margin_right = 1140.0
 margin_bottom = 59.0
 shortcut_in_tooltip = false
 text = "LEAVE VENDOR"
 
-[node name="Audio2" type="Node" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton"]
+[node name="Audio2" type="Node" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton"]
 
-[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
+[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
 stream = ExtResource( 24 )
 
-[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
+[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
 stream = ExtResource( 27 )
 
 [node name="WeaponsForSale" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
@@ -1214,7 +1214,7 @@ margin_right = 380.0
 margin_bottom = 500.0
 size_flags_vertical = 3
 
-[node name="Buttons" type="VBoxContainer" parent="PlayerUI/VendorContainer/WeaponsForSale/CenterRow"]
+[node name="WeaponsForSaleButtons" type="VBoxContainer" parent="PlayerUI/VendorContainer/WeaponsForSale/CenterRow"]
 margin_right = 380.0
 margin_bottom = 500.0
 size_flags_horizontal = 3
@@ -1262,7 +1262,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 700, 140 )
 
-[node name="WpnImageBackground" type="Panel" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer"]
+margin_right = 700.0
+margin_bottom = 140.0
+alignment = 1
+
+[node name="WpnImageBackground" type="Panel" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/HBoxContainer"]
 self_modulate = Color( 0.027451, 0.886275, 1, 0 )
 margin_left = 280.0
 margin_right = 420.0
@@ -1272,7 +1277,7 @@ grow_vertical = 2
 rect_min_size = Vector2( 140, 140 )
 theme = ExtResource( 4 )
 
-[node name="WpnImage" type="TextureRect" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground"]
+[node name="WpnImage" type="TextureRect" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/HBoxContainer/WpnImageBackground"]
 margin_right = 140.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 140, 140 )
@@ -1346,16 +1351,16 @@ margin_right = -4.0
 margin_bottom = -124.0
 
 [node name="TextureRect" type="TextureRect" parent="PlayerUI/UINotification/CanvasLayer/Ui_notification"]
-margin_left = 327.0
+margin_left = 217.0
 margin_top = 218.0
-margin_right = 1172.0
+margin_right = 1062.0
 margin_bottom = 502.0
 texture = ExtResource( 41 )
 
 [node name="ui_ammo" type="RichTextLabel" parent="PlayerUI/UINotification/CanvasLayer/Ui_notification"]
-margin_left = 550.0
+margin_left = 440.0
 margin_top = 335.0
-margin_right = 950.0
+margin_right = 840.0
 margin_bottom = 385.0
 rect_min_size = Vector2( 400, 50 )
 bbcode_enabled = true
@@ -1623,5 +1628,5 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138 )
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ScreenCheckBox" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ScreenCheckBox" method="_on_ScreenCheckBox_pressed"]
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
-[connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
+[connection signal="pressed" from="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
 [connection signal="timeout" from="DamageCooloffTimer" to="." method="_on_DamageCooloffTimer_timeout"]
