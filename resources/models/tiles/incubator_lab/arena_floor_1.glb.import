@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/railing_floor_1.glb-ce51e91cbbfb680fba42e0a2a8d188c0.scn"
+path="res://.import/arena_floor_1.glb-8df22bc7a8a08614880434b845800788.scn"
 
 [deps]
 
-source_file="res://resources/models/tiles/incubator_lab/railing_floor_1.glb"
-dest_files=[ "res://.import/railing_floor_1.glb-ce51e91cbbfb680fba42e0a2a8d188c0.scn" ]
+source_file="res://resources/models/tiles/incubator_lab/arena_floor_1.glb"
+dest_files=[ "res://.import/arena_floor_1.glb-8df22bc7a8a08614880434b845800788.scn" ]
 
 [params]
 
