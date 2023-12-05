@@ -5,7 +5,6 @@ var player_camera
 var sniping_radical
 var sniping_radical_camera
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process(true)
 	player = get_parent().get_parent()
@@ -13,15 +12,10 @@ func _ready():
 	sniping_radical = get_parent().get_parent().get_node("SnipingRadical")
 	sniping_radical_camera = get_parent().get_parent().get_node("SnipingRadical/Spatial/Camera")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	# Stops following the player once the player's dead.
 	if (player.player_health <= 0) : self.set_as_toplevel(true)
 	
-	# Also, temporarily stop following player if taking aim with the pulse rifle.
 	if (player.player_is_aiming_with_rifle):
-		# Sniping radical is in wrong position. You should reset.
-		# func reset sniping radical => When the player's updated, call this function.
 		var position2D = get_viewport().get_mouse_position()
 		var drop_plane : Plane = Plane(Vector3(0, 0, 1), -20)
 		var position3D = drop_plane.intersects_ray(

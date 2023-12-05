@@ -1,17 +1,42 @@
 extends Control
 
-onready var player     = get_parent().get_parent()
-onready var return_btn = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
-onready var btns       = $WeaponsForSale/CenterRow/Buttons
+onready var player = get_parent().get_parent()
+onready var player_ui = get_parent()
+onready var wpns_for_sale_btns = $WeaponsForSale/CenterRow/WeaponsForSaleButtons
+onready var vendor_background_panel = $VendorBackgroundPanel
+onready var vendor_panel = $VendorPanel
+onready var return_btn_container = $ReturnToGameButtonContainer
+onready var return_btn = $ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton
+onready var weapon_description_panel = $WeaponDescriptionPanel
+onready var weapon_description_panel_children = [
+	$WeaponDescriptionPanel/WpnImageContainer,
+	$WeaponDescriptionPanel/WeaponDescription
+]
+onready var weapon_description_panel_hboxcontainer = $WeaponDescriptionPanel/WpnImageContainer/HBoxContainer
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	return_btn.grab_focus()
 	hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	# Hide / show the mouse and the active aiming radical.
+	if (self.name == "VendorContainer"):
+		vendor_background_panel.rect_size = Vector2(
+			get_viewport().size.x,
+			get_viewport().size.y
+		)
+		vendor_panel.rect_size = Vector2(
+			get_viewport().size.x - 140,
+			get_viewport().size.y - 140
+		)
+		return_btn_container.rect_size = Vector2(
+			get_viewport().size.x - 140,
+			return_btn_container.rect_size.y
+		)
+		weapon_description_panel.margin_right = get_viewport().size.x - 140
+		weapon_description_panel.margin_bottom = get_viewport().size.y - 140
+		for child in weapon_description_panel_children:
+			child.rect_size.x = get_viewport().size.x - 600
+		weapon_description_panel_hboxcontainer.rect_size.x = get_viewport().size.x - 600
 	if (self.visible):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -22,13 +47,13 @@ func _input(event):
 			return_btn.grab_focus()
 			if (Globle.vendor_active == true):
 				vendor_process(true, false)
-				show()
+				player_ui.get_node("VendorContainer").show()
 		if (Globle.vendor_open):
 			if (Globle.vendor_active == false):
 				vendor_process(false, true)
 				hide()
 	if event.is_action_pressed("ui_accept"):
-		for btn in btns.get_children():
+		for btn in wpns_for_sale_btns.get_children():
 			if btn.has_focus():
 				var wpn_name = btn.text
 				var unwanted_chars = [" "]
@@ -39,14 +64,20 @@ func _input(event):
 				wpn_name = wpn_name.to_lower()
 				print(wpn_name)
 				player._on_Vendor_Choice_pressed(btn, wpn_name)
+	if event.is_action_pressed("ui_esc"):
+		if (Globle.vendor_active):
+			vendor_process(false, false)
+			hide()
+	if event.is_action_released("ui_esc"):
+		if (Globle.vendor_active):
+			player_ui.get_node("PauseMenuContainer").hide()
+			vendor_process(false, false)
 
-# Called when ReturnToGameButton is pressed.
 func _on_ReturnToGameButton_pressed():
 	hide()
 	get_tree().paused = false
 	Globle.vendor_active = false
 
-# Pauses/unpauses the game and opens/closes the vendor system.
 func vendor_process(var open: bool, var pause: bool):
 	Globle.update_vendor()
 	get_tree().paused = open

@@ -1,27 +1,24 @@
-extends Control
+extends MenuSceneControlBase
 
-onready var level_button  = preload("res://scenes/Menu/Materials/LevelButton.tscn")
-onready var back_button   = $CenterContainer/VBoxContainer/BackButton
+onready var level_button = preload("res://scenes/Menu/Materials/LevelButton.tscn")
+onready var back_button = $CenterContainer/VBoxContainer/BackButton
 onready var angela_sprite = get_parent().get_node("Angela/AngelaSprite")
-onready var rivet_sprite  = get_parent().get_node("Rivet/RivetSprite")
+onready var rivet_sprite = get_parent().get_node("Rivet/RivetSprite")
 
-var scene 				  = null
-var levels 				  = []
-var unwanted_chars 		  = ["_",".tscn"]
+var scene = null
+var levels = []
+var unwanted_chars = ["_",".tscn"]
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	levels = list_levels("res://scenes/Levels")
 
-	# Determine the sprites of the characters.
 	if (Globle.player_character == "Rivet"):
-		rivet_sprite.frame  = 27
+		rivet_sprite.frame = 27
 		angela_sprite.frame = 9
 	elif (Globle.player_character == "Angela"):
-		rivet_sprite.frame  = 9
+		rivet_sprite.frame = 9
 		angela_sprite.frame = 25
 
-	# Iterates through the levels.
 	for level_name in levels:
 		var level = level_button.instance()
 		level.set_scene_to_load("res://scenes/Levels/" + level_name)
@@ -37,17 +34,12 @@ func _ready():
 		$CenterContainer/VBoxContainer/CenterRow/Buttons/LevelList.add_child(level)
 	back_button.grab_focus()
 
-# Loads the scene defined to a particular button.
-func _on_Button_pressed(scene_to_load):
-	scene = scene_to_load
-	$FadeIn.show()
-	$FadeIn.fade_in()
+func _process(delta):
+	if (Globle.game_fullscreen):
+		$CenterContainer.rect_size = Vector2(1920, 1080)
+	elif (!Globle.game_fullscreen):
+		$CenterContainer.rect_size = Vector2(1280, 720)
 
-# Run when FadeIn fade is finished.
-func _on_FadeIn_fade_finished():
-	get_tree().change_scene(scene)
-
-# Lists all the levels.
 func list_levels(path):
 	var files = []
 	var dir = Directory.new()
@@ -60,7 +52,14 @@ func list_levels(path):
 			break
 		elif file.ends_with(".tscn"):
 			files.append(file)
-
 	dir.list_dir_end()
 
 	return files
+
+func _on_Button_pressed(scene_to_load):
+	scene = scene_to_load
+	$FadeIn.show()
+	$FadeIn.fade_in()
+
+func _on_FadeIn_fade_finished():
+	get_tree().change_scene(scene)

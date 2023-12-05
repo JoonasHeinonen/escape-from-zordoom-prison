@@ -155,7 +155,7 @@ graph_offset = Vector2( -140.367, -99.1264 )
 axis_lock_motion_z = true
 move_lock_z = true
 script = ExtResource( 2 )
-armored = true
+is_armored = true
 enemy_health = 4
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
@@ -168,7 +168,6 @@ billboard = 1
 texture = ExtResource( 1 )
 hframes = 7
 vframes = 2
-frame = 6
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Enemy_Damage = SubResource( 6 )

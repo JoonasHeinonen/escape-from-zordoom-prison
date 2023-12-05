@@ -20,11 +20,11 @@ onready var angela_arm = $AngelaArm
 onready var rivet_arm = $RivetArm
 onready var shoot_timer = $ShootTimer
 onready var sniping_radical = $SnipingRadical
-onready var ui_timer = $PlayerUI/ui_notification/Ui_Timer
+onready var ui_timer = $PlayerUI/UINotification/Ui_Timer
 onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
-	$PlayerUI/VendorContainer
+	$PlayerUI/VendorContainer,
 ]
 
 export var speed = 1
@@ -53,7 +53,6 @@ var player_is_aiming_with_rifle : bool = false
 var player_is_just_damaged : bool = false
 var ui_notification : bool = false
 
-# Weapon variables.
 var sniping_ray
 
 var current_weapon = null
@@ -66,7 +65,6 @@ var random = RandomNumberGenerator.new()
 
 ### INHERITED FUNCTIONS FROM GODOT.
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	#global_transform.origin = Globle.spawn_point
 	$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
@@ -107,15 +105,24 @@ func _ready():
 	$PlayerUI/InventoryContainer.visible = false
 	walk(0, 1, -0.1)
 
-	# Set the current weapon as edge blaster, if it's available.
 	if Globle.current_weapons.size() > 0:
 		current_weapon = "pulse_rifle"
 
 	set_vendor_weapons(Globle.weapons_for_sale)
-	# The spawn code for the player
 	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
 
 func _physics_process(delta):
+	# Set the audio nodes position to share the same position as the player.
+	for audio_container_child in $Audio.get_children():
+		for audio_child in audio_container_child.get_children():
+			if audio_child is AudioStreamPlayer3D:
+				audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+		# TODO Swap this to if audio_container_child.name != "UI":
+		if audio_container_child.name == "Collectibles":
+			for audio_sub_child in audio_container_child.get_children():
+				for audio_child in audio_sub_child.get_children():
+					audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+
 	# Reset double jump while on the ground.
 	if is_on_floor():
 		player_double_jump = false
@@ -166,9 +173,7 @@ func _physics_process(delta):
 			gun_instance.hide()
 
 	if player_health > 0 && !Globle.player_inventory && !player_is_aiming_with_rifle:
-		# Melee attack.
 		if Input.is_action_pressed("ui_melee_attack"):
-			# Disable Rivet's melee attack for now.
 			if Globle.player_character == "Rivet":
 				state_machine.travel("Player_Melee")
 				if (state_machine.get_current_play_position() > 0.3):
@@ -204,7 +209,6 @@ func _physics_process(delta):
 			state_machine.travel("Player_Still")
 		if is_on_floor() and Input.is_action_pressed("jump"):
 			velocity.y = jump
-		# Double jump logic.
 		if !player_double_jump_used:
 			if (Input.is_action_just_pressed("jump") &&
 				player_double_jump &&
@@ -219,14 +223,12 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
 
-	# Aim, but when the current weapon is pulse rifle.
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
 			update_player_position_to_camera()
 			player_is_aiming_with_rifle = true
 	elif Input.is_action_just_released("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 			player_is_aiming_with_rifle = false
-	# Hide the sniping raycast when not aiming.
 	if (!player_is_aiming_with_rifle):
 		sniping_raycast.hide()
 		sniping_radical.hide()
@@ -237,11 +239,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 		state_machine.travel("Player_Fall")
-		# Angela's melee attack
 		if Globle.player_character == "Angela":
 			if Input.is_action_pressed("ui_melee_attack"):
 				state_machine.travel("Player_Melee")
-		#   Rivet's melee attack
 		if Globle.player_character == "Rivet":
 			if Input.is_action_pressed("ui_melee_attack"):
 				state_machine.travel("Player_Melee")
@@ -249,17 +249,11 @@ func _physics_process(delta):
 	set_vendor_weapons(Globle.weapons_for_sale)
 	move_and_slide(velocity, Vector3.UP)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var y_position = self.global_transform.origin.y
-
-	# Get current physics state.
 	var space_state = get_world().direct_space_state
-
-	# Weapon slot index.
 	var slot_index = 1
 
-	# Hide / show the mouse and the active aiming radical.
 	for ui_container in ui_containers:
 		if (ui_container.visible):
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -269,7 +263,6 @@ func _process(delta):
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
-	# Play fade in effect if the player's dead.
 	if player_health <= 0:
 		$PlayerUI.hide()
 		$FadeIn.show()
@@ -289,32 +282,23 @@ func _process(delta):
 		elif (current_weapon == "pulse_rifle" && !player_is_aiming_with_rifle):
 			rotate_arm(0, 0, 0)
 
-	# Hide the hand gun when doing a melee attack.
 	if Globle.player_character == "Angela":
 		angela_arm.hide() if Input.is_action_pressed("ui_melee_attack") else angela_arm.show()
-	# Disable Rivet's melee attack for now.
 	if Globle.player_character == "Rivet":
 		rivet_arm.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_arm.show()
 	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
 
-	# Hide the boss fight UI.
-	if !boss_fight_active : $PlayerUI/ui_boss_data.visible = false
+	if !boss_fight_active: 
+		$PlayerUI/UIBossData.visible = false
 
-	# Heal the player after collecting the nodes. Also update the UI.
 	heal_player()
 	update_health_ui()
-
-	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
-
-	# Set the bolts in the vendor.
+	$PlayerUI/UIBossData/UIBossDataCenterContainer.rect_size = Vector2(get_viewport().size.x, 180)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
-
-
 
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
 
-# Prepare the UI and the game for a boss fight.
 func init_boss_fight(
 	boss_name : String,
 	boss_health,
@@ -323,22 +307,24 @@ func init_boss_fight(
 ):
 	var boss_hud_img_path = "res://resources/images/characters/npc/enemies/bosses/" + boss_data_name + "_boss_fight_icon.png"
 	current_boss_name = boss_name
-	# Prepare the UI.
-	if boss_fight_active: 
-		$PlayerUI/ui_boss_data/BossHealthBar.value = int(boss_health)
-		$PlayerUI/ui_boss_data.visible = true
-		$PlayerUI/ui_boss_data/BossHealthPercentage.text = str(int(boss_health)) + " %"
-		$PlayerUI/ui_boss_data/CenterContainer/BossName.text = boss_name
-		$PlayerUI/ui_boss_data/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
 
-# Sets all the items to the vendor, i.e. determine all the weapons for sale.
+	if boss_fight_active: 
+		$PlayerUI/UIBossData.visible = true
+		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossHealthBar.value = int(boss_health)
+		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossHealthPercentage.text = str(int(boss_health)) + " %"
+		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossIconHolder.texture = load(boss_hud_img_path)
+		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossName.text = boss_name
+
 func set_vendor_weapons(weapons_for_sale):
-	var vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons
+	var vendor_node = $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/WeaponsForSaleButtons
 
 	for v_n in vendor_node.get_children():
 		vendor_node.remove_child(v_n)
 		v_n.queue_free()
 
+	set_vendor_weapons_data(weapons_for_sale, $PlayerUI/VendorContainer/WeaponsForSale/CenterRow/WeaponsForSaleButtons)
+
+func set_vendor_weapons_data(weapons_for_sale, data):
 	for wpn_for_sale in weapons_for_sale:
 		var wpn_name = ""
 		var unwanted_chars = ["_"]
@@ -353,9 +339,8 @@ func set_vendor_weapons(weapons_for_sale):
 		btn.set_label(wpn_name)
 		btn.connect("pressed", self, "_on_Vendor_Choice_pressed", [btn, btn.wpn_for_sale])
 		btn.connect("focus_entered", self, "_on_VendorWeaponButton_focus_entered", [btn, btn.wpn_for_sale])
-		$PlayerUI/VendorContainer/WeaponsForSale/CenterRow/Buttons.add_child(btn)
+		data.add_child(btn)
 
-# Sets all the in the inventory.
 func set_weapons_to_inventory(weapons):
 	for weapon in weapons:
 		if (weapon == "edge_blaster"):
@@ -407,19 +392,16 @@ func set_weapons_to_inventory(weapons):
 				"miniturret_glove"
 			)
 
-# Sets the weapon metadata for the inventory.
 func set_weapon_metadata(button: Button, res: TextureRect, weapon_name: String):
 	var weapon_sprite_path = "res://resources/images/weapons/" + weapon_name + ".png"
 	res.texture = load(weapon_sprite_path)
 	button.disabled = false
 
-# Changes the texture of the gun in the hand.
 func change_weapon_texture(weapon_name : String):
 	var weapon_sprite_path = "res://resources/images/weapons/" + weapon_name + ".png"
 	gun_instance.texture = load(weapon_sprite_path)
 	gun_instance.show()
 
-# Walking functionality.
 func walk(vel, scale, _mesh_translation):
 	state_machine.travel("Player_Walk")
 	velocity.x = vel
@@ -428,7 +410,6 @@ func walk(vel, scale, _mesh_translation):
 	elif (Globle.player_character == "Rivet"):
 		$RivetSprite.scale.x = scale
 
-## Rotate the arm.
 func rotate_arm(x_val : float, y_val : float, z_val : float):
 	angela_arm.rotation.x = x_val
 	angela_arm.rotation.y = y_val
@@ -437,7 +418,6 @@ func rotate_arm(x_val : float, y_val : float, z_val : float):
 	rivet_arm.rotation.y = y_val
 	rivet_arm.rotation.z = z_val
 
-# Purchases weapon when a weapon button is pressed.
 func purchase_weapon(wpn_price : int, wpn, btn):
 	if (Globle.bolts >= wpn_price):
 		Globle.current_weapons.append(wpn)
@@ -450,7 +430,6 @@ func purchase_weapon(wpn_price : int, wpn, btn):
 		print("Insufficient funds...")
 		## TODO Replace with a UI notification message.
 
-# Updates the vendor data once a weapon is highlighted.
 func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	var wpn_name_to_label = ""
 	var unwanted_chars = ["_"]
@@ -464,14 +443,12 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/HBoxContainer/WeaponPrice.text = str(wpn_price)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponDescription.text = str(wpn_desc)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
-	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
+	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/HBoxContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
 
-# Update the health data on UI.
 func update_health_ui():
 	$PlayerUI/InGameUI/Health/HealthHas.text = str(player_health)
 	$PlayerUI/InGameUI/Health/HealthMax.text = str(player_max_health)
 
-# Play the audio for collecting a collectible resource.
 func collect_collectible(index : int, type : String):
 	# Create the bolt sparkle once a bolt is collected.
 	var b_s = bolt_sparkle.instance()
@@ -480,7 +457,6 @@ func collect_collectible(index : int, type : String):
 	b_s.translation.z = 0.1
 	get_parent().add_child(b_s)
 
-	# For playing the randomized collectible collection sound effect.
 	match (type):
 		"bolt":
 			match index:
@@ -502,7 +478,6 @@ func collect_collectible(index : int, type : String):
 				_:
 					$Audio/Collectibles/Ammo/Ammo0.play()
 
-# Restore 1 block of player health after collecting 4 nodes.
 func heal_player():
 	# Adds health if 4 nodes are collected.
 	if (health_node_counter == 4):
@@ -512,7 +487,6 @@ func heal_player():
 		if (player_health > player_max_health):
 			player_health = player_max_health
 
-# Damage player.
 func damage_player(damage : int):
 	if (!player_is_just_damaged):
 		player_is_just_damaged = true
@@ -520,15 +494,13 @@ func damage_player(damage : int):
 		player_health -= damage
 		$DamageCooloffTimer.start()
 
-# UI notification message.
 func ui_notification_msg(ammo : int, weapon_name : String):
 	var msg : String = "You got %s ammo for %s"
-	$PlayerUI/ui_notification/CanvasLayer/Ui_notification.show()
-	$PlayerUI/ui_notification/CanvasLayer/Ui_notification/ui_ammo.text = msg % [ammo, weapon_name]
+	$PlayerUI/UINotification/CanvasLayer/Ui_notification.show()
+	$PlayerUI/UINotification/CanvasLayer/Ui_notification/ui_ammo.text = msg % [ammo, weapon_name]
 	ui_timer.start()
 	ui_notification = true
 
-# Play the audio for the melee.
 func play_melee_sound(melee_index : int):
 	match melee_index:
 		0:
@@ -542,8 +514,7 @@ func play_melee_sound(melee_index : int):
 		_:
 			$Audio/Melee/Melee0.play()
 
-# Determine whose weapon muzzle to use.
-func determine_weapon_muzzle(player : String, bullet):
+func determine_character_weapon_muzzle(player : String, bullet):
 	match player:
 		"Angela":
 			bullet.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
@@ -552,15 +523,13 @@ func determine_weapon_muzzle(player : String, bullet):
 		_:
 			pass
 
-# Shooting functionality for the edge blaster.
 func shoot_edge_blaster():
 	$Audio/Weapons/EdgeBlaster.play()
 	var bullet = projectile.instance()
 	bullet.translation.x = 3
 	get_parent().add_child(bullet)
-	determine_weapon_muzzle(Globle.player_character, bullet)
+	determine_character_weapon_muzzle(Globle.player_character, bullet)
 
-# Shooting functionality for the blitz gun.
 func shoot_blitz_gun():
 	$Audio/Weapons/BlizGun.play()
 	# Bullet spread.
@@ -568,10 +537,9 @@ func shoot_blitz_gun():
 		var bullet = blitz_gun_projectile.instance()
 		bullet.translation.x = 3
 		get_parent().add_child(bullet)
-		determine_weapon_muzzle(Globle.player_character, bullet)
+		determine_character_weapon_muzzle(Globle.player_character, bullet)
 		bullet.rotate(Vector3(0,0,1),(randf()-.5)*RANDOM_ANGLE)
 
-# Shooting functionality for the gravity bomb.
 func shoot_gravity_bomb():
 	$Audio/Weapons/GravityBomb.play()
 	var bullet = gravity_bomb_projectile.instance()
@@ -579,9 +547,8 @@ func shoot_gravity_bomb():
 	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
 	get_parent().add_child(bullet)
 	bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
-	determine_weapon_muzzle(Globle.player_character, bullet)
+	determine_character_weapon_muzzle(Globle.player_character, bullet)
 	
-# Shooting functionality for the negotiator.
 func shoot_negotiator():
 	$Audio/Weapons/theNegotiator.play()
 	var bullet = negotiator_projectile.instance()
@@ -589,7 +556,6 @@ func shoot_negotiator():
 	get_parent().add_child(bullet)
 	bullet.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 
-# Shooting functionality for the pulse rifle.
 func shoot_pulse_rifle():
 	if (player_is_aiming_with_rifle):
 		$Audio/Weapons/PulseRifle.play()
@@ -598,27 +564,22 @@ func shoot_pulse_rifle():
 		get_parent().add_child(projectile)
 		projectile.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 
-
-# Shooting functionality for the ry3no.
 func shoot_ry3no():
 	print("RY3NO!")
 
-# Shooting functionality for the sheepinator.
 func shoot_sheepinator():
 	print("Sheepinator used. All enemies are converted into sheeps.")
 
-# Shooting functionality for the miniturret glove.
 func shoot_miniturret_glove():
 	var bullet = miniturret_packed_projectile.instance()
 	bullet.translation.x = 3
 	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
 	get_parent().add_child(bullet)
 	bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
-	determine_weapon_muzzle(Globle.player_character, bullet)
+	determine_character_weapon_muzzle(Globle.player_character, bullet)
 
 ### FUNCTIONS USED FUR DEBUGGING THE PLAYER SCENE. NOT USED IN THE FINAL PRODUCT.
 
-# Used to debug the rotation values.
 func debug_rotation_values(x, y, z):
 	var values = "Rotation values: %s %s %s."	
 	var args = values % [x, y, z]
@@ -626,13 +587,11 @@ func debug_rotation_values(x, y, z):
 
 ### THE SIGNAL FUNCTIONS FOR THE `PLAYER.GD`.
 
-# This function hides the UI notification according to the wait time.
 func _on_UI_Timer_timeout():
 	if (ui_notification):
 		ui_notification = false
-		$PlayerUI/ui_notification/CanvasLayer/Ui_notification.hide()
+		$PlayerUI/UINotification/CanvasLayer/Ui_notification.hide()
 
-# Limits the shooting rate.
 func _on_ShootTimer_timeout():
 	if Input.is_action_pressed("ui_ranged_attack") && !Input.is_action_pressed("ui_melee_attack"):
 		match current_weapon:
@@ -669,7 +628,6 @@ func _on_ShootTimer_timeout():
 					shoot_miniturret_glove()
 					shoot_gun(7)
 
-## Set the shoot timer's wait time and the ammunition of the weapon UI.
 func shoot_gun(index : int):
 	shoot_timer.start()
 	shoot_timer.wait_time = Globle.WPNS[4][index]
@@ -679,12 +637,10 @@ func shoot_gun(index : int):
 		Globle.player_weapons_ammo[index] -= 1
 	update_ammo_ui(Globle.player_weapons_ammo[index], Globle.WPNS[3][index])
 
-## Update the ammo UI.
 func update_ammo_ui(has_ammo : int, max_ammo : int):
 	$PlayerUI/InGameUI/Ammo/AmmoHas.text = str(has_ammo)
 	$PlayerUI/InGameUI/Ammo/AmmoMax.text = str(max_ammo)
 
-# Loads the scene defined to a particular button.
 func _on_Vendor_Choice_pressed(button, wpn):
 	match (wpn):
 		"edge_blaster":
@@ -704,7 +660,6 @@ func _on_Vendor_Choice_pressed(button, wpn):
 		"miniturret_glove":
 			purchase_weapon(Globle.WPNS[1][7], wpn, button)
 
-# Acts when a vendor weapon button is highlighted.
 func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
 	match (wpn):
 		"edge_blaster":
@@ -756,48 +711,37 @@ func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
 				Globle.WPNS[2][7]
 			)
 
-# Resets the sniping position.
 func update_player_position_to_camera():
 	emit_signal("update_player_position_to_camera", player_health)
 
-# Change weapon to Edge Blaster.
 func _on_WeaponSlot1_pressed():
 	current_weapon = "edge_blaster"
 
-# Change weapon to Blitz Gun.
 func _on_WeaponSlot2_pressed():
 	current_weapon = "blitz_gun"
 
-# Change weapon to Gravity Bomb
 func _on_WeaponSlot3_pressed():
 	current_weapon = "gravity_bomb"
 
-# Change weapon to Negotiator.
 func _on_WeaponSlot4_pressed():
 	current_weapon = "negotiator"
 
-# Change weapon to Pulse Rifle.
 func _on_WeaponSlot5_pressed():
 	current_weapon = "pulse_rifle"
 
-# Change weapon to RY3NO.
 func _on_WeaponSlot6_pressed():
 	current_weapon = "ry3no"
 
-# Change weapon to Sheepinator.
 func _on_WeaponSlot7_pressed():
 	current_weapon = "sheepinator"
 
-# Empty, for now
 func _on_WeaponSlot8_pressed():
 	current_weapon = "miniturret_glove"
 
-# When the player enters another collision area.
 func _on_CollisionArea_area_entered(area):
 	if area.name == "death":
 		player_health = 0
 
-# Run when FadeIn fade is finished.
 func _on_FadeIn_fade_finished():
 	get_tree().reload_current_scene()
 

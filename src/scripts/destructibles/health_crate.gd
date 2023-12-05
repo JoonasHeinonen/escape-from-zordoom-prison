@@ -1,20 +1,17 @@
-extends "res://src/scripts/destructibles/destructible.gd"
+extends Destructible
 
 onready var nanotech_node = preload("res://scenes/Collectibles/nanotech_node.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Globle.melee_attack && active:
+	if Globle.melee_attack && is_active:
 		generate_health_node()
 		queue_free()
 
-# Detects the collisions on this scene.
 func _on_Area_area_entered(body):
-	if body.name == "ProjectileExplosionArea" || body.name == "ExplosionEffectiveRadius":
+	if body.name == "ProjectileExplosionArea" or body.name == "ExplosionEffectiveRadius":
 		generate_health_node()
 		queue_free()
 
-# Generates the nanotech node for player to collect
 func generate_health_node():
 	# TODO Generate the health crate splinters.
 	create_fragments()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=2]
+[gd_scene load_steps=112 format=2]
 
 [ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://icon.png" type="Texture" id=2]
@@ -48,6 +48,7 @@
 [ext_resource path="res://scenes/BlocksNWorld/Player/sniping_raycast.tscn" type="PackedScene" id=46]
 [ext_resource path="res://resources/models/ui_elements/GreenSnipingTargetRadicalMaterial.material" type="Material" id=47]
 [ext_resource path="res://resources/audio/weapons/player/pulse_rifle.wav" type="AudioStream" id=48]
+[ext_resource path="res://src/scripts/UI/screen_check_box.gd" type="Script" id=49]
 
 [sub_resource type="BoxShape" id=5]
 
@@ -615,6 +616,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
+frame = 2
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -693,7 +695,7 @@ double_sided = false
 texture = ExtResource( 36 )
 hframes = 10
 vframes = 4
-frame = 3
+frame = 1
 
 [node name="RivetArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
@@ -750,51 +752,10 @@ script = ExtResource( 30 )
 
 [node name="InGameUI" type="Control" parent="PlayerUI"]
 pause_mode = 2
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-
-[node name="Bolts" type="Control" parent="PlayerUI/InGameUI"]
-margin_left = 930.0
-margin_top = 570.0
-margin_right = 1280.0
-margin_bottom = 720.0
-
-[node name="IconPlaceHolder" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
-position = Vector2( 232, 38 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 32 )
-
-[node name="BoltSprite" type="Sprite" parent="PlayerUI/InGameUI/Bolts/IconPlaceHolder"]
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 12 )
-
-[node name="BoltsPanel" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
-position = Vector2( 71.75, 23 )
-scale = Vector2( 1.38333, 0.3 )
-texture = ExtResource( 33 )
-
-[node name="BoltsPanelWest" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
-position = Vector2( -43, 23 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 34 )
-
-[node name="BoltsPanelEast" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
-position = Vector2( 186, 23 )
-rotation = 3.14159
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 34 )
-
-[node name="bolts" type="Label" parent="PlayerUI/InGameUI/Bolts"]
-margin_left = -30.0
-margin_top = -2.0
-margin_right = 170.0
-margin_bottom = 48.0
-theme = ExtResource( 35 )
-text = "100"
-align = 2
-valign = 1
-script = ExtResource( 13 )
 
 [node name="Ammo" type="Control" parent="PlayerUI/InGameUI"]
 margin_left = 930.0
@@ -853,6 +814,48 @@ theme = ExtResource( 35 )
 custom_colors/font_color = Color( 0.25098, 0.443137, 0.470588, 0.784314 )
 text = "0"
 valign = 1
+
+[node name="Bolts" type="Control" parent="PlayerUI/InGameUI"]
+margin_left = 930.0
+margin_top = 570.0
+margin_right = 1280.0
+margin_bottom = 720.0
+
+[node name="IconPlaceHolder" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
+position = Vector2( 232, 38 )
+scale = Vector2( 0.6, 0.6 )
+texture = ExtResource( 32 )
+
+[node name="BoltSprite" type="Sprite" parent="PlayerUI/InGameUI/Bolts/IconPlaceHolder"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 12 )
+
+[node name="BoltsPanel" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
+position = Vector2( 71.75, 23 )
+scale = Vector2( 1.38333, 0.3 )
+texture = ExtResource( 33 )
+
+[node name="BoltsPanelWest" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
+position = Vector2( -43, 23 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 34 )
+
+[node name="BoltsPanelEast" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
+position = Vector2( 186, 23 )
+rotation = 3.14159
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 34 )
+
+[node name="bolts" type="Label" parent="PlayerUI/InGameUI/Bolts"]
+margin_left = -30.0
+margin_top = -2.0
+margin_right = 170.0
+margin_bottom = 48.0
+theme = ExtResource( 35 )
+text = "100"
+align = 2
+valign = 1
+script = ExtResource( 13 )
 
 [node name="Health" type="Control" parent="PlayerUI/InGameUI"]
 margin_top = 25.0
@@ -926,14 +929,15 @@ margin_right = 140.0
 margin_bottom = 140.0
 mouse_filter = 2
 script = ExtResource( 14 )
+alignment = "Full alignment"
 
 [node name="Panel" type="Panel" parent="PlayerUI/InventoryContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -500.0
-margin_top = -220.0
-margin_right = 500.0
-margin_bottom = 220.0
+margin_left = -1250.0
+margin_top = -661.0
+margin_right = 1374.0
+margin_bottom = 715.0
 custom_styles/panel = SubResource( 19 )
 
 [node name="MenuContainer" type="GridContainer" parent="PlayerUI/InventoryContainer"]
@@ -1058,12 +1062,11 @@ stretch_mode = 4
 
 [node name="PauseMenuContainer" type="Control" parent="PlayerUI"]
 visible = false
-margin_left = 500.0
-margin_top = 220.0
-margin_right = 780.0
-margin_bottom = 500.0
+margin_right = 1280.0
+margin_bottom = 720.0
 mouse_filter = 2
 script = ExtResource( 9 )
+alignment = "Full alignment"
 
 [node name="Panel" type="Panel" parent="PlayerUI/PauseMenuContainer"]
 anchor_right = 1.0
@@ -1105,6 +1108,12 @@ mouse_filter = 2
 shortcut_in_tooltip = false
 text = "RETURN"
 
+[node name="ScreenCheckBox" type="CheckBox" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons"]
+margin_right = 252.0
+margin_bottom = 24.0
+text = "Fullscreen"
+script = ExtResource( 49 )
+
 [node name="ReturnToMainMenuButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 7 )]
 margin_top = 142.0
 margin_right = 280.0
@@ -1121,7 +1130,6 @@ stream = ExtResource( 24 )
 stream = ExtResource( 27 )
 
 [node name="VendorContainer" type="Control" parent="PlayerUI"]
-visible = false
 margin_left = 70.0
 margin_top = 70.0
 margin_right = 1210.0
@@ -1129,7 +1137,7 @@ margin_bottom = 650.0
 mouse_filter = 2
 script = ExtResource( 10 )
 
-[node name="Panel" type="Panel" parent="PlayerUI/VendorContainer"]
+[node name="VendorBackgroundPanel" type="Panel" parent="PlayerUI/VendorContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -70.0
@@ -1138,14 +1146,18 @@ margin_right = 70.0
 margin_bottom = 70.0
 custom_styles/panel = SubResource( 19 )
 
+[node name="VendorCenterContainer" type="CenterContainer" parent="PlayerUI/VendorContainer"]
+margin_right = 1140.0
+margin_bottom = 580.0
+
 [node name="VendorPanel" type="Panel" parent="PlayerUI/VendorContainer"]
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 1160.0
-margin_bottom = 600.0
+margin_right = 1140.0
+margin_bottom = 580.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_styles/panel = SubResource( 22 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
+[node name="ReturnToGameButtonContainer" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -1154,32 +1166,34 @@ margin_left = -570.0
 margin_top = -290.0
 margin_right = 570.0
 margin_bottom = -230.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
-[node name="CenterRow" type="HBoxContainer" parent="PlayerUI/VendorContainer/VBoxContainer"]
+[node name="CenterRow" type="HBoxContainer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer"]
 margin_right = 1140.0
 margin_bottom = 60.0
 size_flags_vertical = 3
 
-[node name="Buttons" type="VBoxContainer" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow"]
+[node name="Buttons" type="VBoxContainer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow"]
 margin_right = 1140.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ReturnToGameButton" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
+[node name="ReturnToGameButton" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
 margin_right = 1140.0
 margin_bottom = 59.0
 shortcut_in_tooltip = false
 text = "LEAVE VENDOR"
 
-[node name="Audio2" type="Node" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton"]
+[node name="Audio2" type="Node" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton"]
 
-[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
+[node name="Click" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
 stream = ExtResource( 24 )
 
-[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
+[node name="Move" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
 stream = ExtResource( 27 )
 
 [node name="WeaponsForSale" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
@@ -1191,6 +1205,8 @@ margin_left = -570.0
 margin_top = -210.0
 margin_right = -190.0
 margin_bottom = 290.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 alignment = 1
 
 [node name="CenterRow" type="HBoxContainer" parent="PlayerUI/VendorContainer/WeaponsForSale"]
@@ -1198,7 +1214,7 @@ margin_right = 380.0
 margin_bottom = 500.0
 size_flags_vertical = 3
 
-[node name="Buttons" type="VBoxContainer" parent="PlayerUI/VendorContainer/WeaponsForSale/CenterRow"]
+[node name="WeaponsForSaleButtons" type="VBoxContainer" parent="PlayerUI/VendorContainer/WeaponsForSale/CenterRow"]
 margin_right = 380.0
 margin_bottom = 500.0
 size_flags_horizontal = 3
@@ -1209,6 +1225,8 @@ margin_left = 400.0
 margin_top = 80.0
 margin_right = 1140.0
 margin_bottom = 580.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 custom_styles/panel = SubResource( 22 )
 
 [node name="CurrentBolts" type="HBoxContainer" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel"]
@@ -1244,7 +1262,12 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 700, 140 )
 
-[node name="WpnImageBackground" type="Panel" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer"]
+margin_right = 700.0
+margin_bottom = 140.0
+alignment = 1
+
+[node name="WpnImageBackground" type="Panel" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/HBoxContainer"]
 self_modulate = Color( 0.027451, 0.886275, 1, 0 )
 margin_left = 280.0
 margin_right = 420.0
@@ -1254,7 +1277,7 @@ grow_vertical = 2
 rect_min_size = Vector2( 140, 140 )
 theme = ExtResource( 4 )
 
-[node name="WpnImage" type="TextureRect" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/WpnImageBackground"]
+[node name="WpnImage" type="TextureRect" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/HBoxContainer/WpnImageBackground"]
 margin_right = 140.0
 margin_bottom = 140.0
 rect_min_size = Vector2( 140, 140 )
@@ -1310,14 +1333,15 @@ text = "There are many variations of passages of Lorem Ipsum available, but the 
 autowrap = true
 clip_text = true
 
-[node name="ui_notification" type="Control" parent="PlayerUI"]
+[node name="UINotification" type="Control" parent="PlayerUI"]
+visible = false
 margin_right = 40.0
 margin_bottom = 40.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI/ui_notification"]
+[node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI/UINotification"]
 layer = 3
 
-[node name="Ui_notification" type="CenterContainer" parent="PlayerUI/ui_notification/CanvasLayer"]
+[node name="Ui_notification" type="CenterContainer" parent="PlayerUI/UINotification/CanvasLayer"]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1326,14 +1350,14 @@ margin_top = -124.0
 margin_right = -4.0
 margin_bottom = -124.0
 
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/UINotification/CanvasLayer/Ui_notification"]
 margin_left = 217.0
 margin_top = 218.0
 margin_right = 1062.0
 margin_bottom = 502.0
 texture = ExtResource( 41 )
 
-[node name="ui_ammo" type="RichTextLabel" parent="PlayerUI/ui_notification/CanvasLayer/Ui_notification"]
+[node name="ui_ammo" type="RichTextLabel" parent="PlayerUI/UINotification/CanvasLayer/Ui_notification"]
 margin_left = 440.0
 margin_top = 335.0
 margin_right = 840.0
@@ -1343,103 +1367,107 @@ bbcode_enabled = true
 bbcode_text = "[center]You got xxx ammo for xxx[/center]"
 text = "You got xxx ammo for xxx"
 
-[node name="Ui_Timer" type="Timer" parent="PlayerUI/ui_notification"]
+[node name="Ui_Timer" type="Timer" parent="PlayerUI/UINotification"]
 wait_time = 3.0
 
-[node name="ui_boss_data" type="Control" parent="PlayerUI"]
+[node name="UIBossData" type="Control" parent="PlayerUI"]
+visible = false
 margin_right = 1280.0
-margin_bottom = 720.0
+margin_bottom = 180.0
 
-[node name="CenterContainer" type="CenterContainer" parent="PlayerUI/ui_boss_data"]
+[node name="UIBossDataCenterContainer" type="CenterContainer" parent="PlayerUI/UIBossData"]
 margin_right = 1280.0
-margin_bottom = 80.0
+margin_bottom = 180.0
 
-[node name="BossHealthPanelWest" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="PlayerUI/UIBossData/UIBossDataCenterContainer"]
+margin_left = 415.0
+margin_top = 80.0
+margin_right = 865.0
+margin_bottom = 100.0
+
+[node name="BossHealthPanelWest" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 409.5, 66 )
+position = Vector2( 0, 66 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 34 )
 
-[node name="BossHealthPanelEast" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossHealthPanelEast" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 839.5, 66 )
+position = Vector2( 430, 66 )
 scale = Vector2( -0.2, -0.2 )
 texture = ExtResource( 34 )
 
-[node name="BossHealthPanel" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossHealthPanel" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 624.5, 66 )
+position = Vector2( 215, 66 )
 scale = Vector2( 2.77333, 0.2 )
 texture = ExtResource( 33 )
 
-[node name="BossHealthPanelPercentageWest" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossHealthPanelPercentageWest" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 779.375, 29.75 )
+position = Vector2( 369.875, 29.75 )
 scale = Vector2( 0.25, -0.25 )
 texture = ExtResource( 34 )
 
-[node name="BossHealthPanelPercentageEast" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossHealthPanelPercentageEast" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 857.375, 29.75 )
+position = Vector2( 447.875, 29.75 )
 scale = Vector2( -0.25, -0.25 )
 texture = ExtResource( 34 )
 
-[node name="BossHealthPanelPercentage" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossHealthPanelPercentage" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 818.375, 29.75 )
+position = Vector2( 408.875, 29.75 )
 scale = Vector2( 0.4, 0.25 )
 texture = ExtResource( 33 )
 
-[node name="BossIconEast" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossIconEast" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 926.75, 43.5 )
+position = Vector2( 517.25, 43.5 )
 scale = Vector2( -0.5, -0.5 )
 texture = ExtResource( 34 )
 
-[node name="BossIconWest" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossIconWest" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 854.75, 43.5 )
+position = Vector2( 445.25, 43.5 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 34 )
 
-[node name="BossIcon" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
+[node name="BossIcon" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
 modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 890.75, 43.5 )
+position = Vector2( 481.25, 43.5 )
 scale = Vector2( 0.232, 0.5 )
 texture = ExtResource( 33 )
 
-[node name="BossIconHolder" type="Sprite" parent="PlayerUI/ui_boss_data/CenterContainer"]
-position = Vector2( 889.75, 43.5 )
+[node name="BossIconHolder" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+position = Vector2( 480.25, 43.5 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 44 )
 
-[node name="BossName" type="Label" parent="PlayerUI/ui_boss_data/CenterContainer"]
-margin_left = 415.0
-margin_top = 30.0
-margin_right = 865.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 450, 0 )
-theme = ExtResource( 35 )
-text = "BOSSNAME"
-valign = 1
-uppercase = true
-
-[node name="BossHealthPercentage" type="Label" parent="PlayerUI/ui_boss_data"]
-margin_left = 785.375
-margin_top = 19.75
-margin_right = 851.375
-margin_bottom = 39.75
+[node name="BossHealthPercentage" type="Label" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+margin_left = 203.0
+margin_right = 246.0
+margin_bottom = 20.0
 theme = ExtResource( 35 )
 text = "100 %"
 align = 1
 valign = 1
 uppercase = true
 
-[node name="BossHealthBar" type="ProgressBar" parent="PlayerUI/ui_boss_data"]
-margin_left = 420.0
-margin_top = 54.0
-margin_right = 830.0
-margin_bottom = 79.0
+[node name="BossName" type="Label" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+margin_right = 450.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 450, 0 )
+theme = ExtResource( 35 )
+text = "BOSSNAME"
+valign = 1
+uppercase = true
+
+[node name="BossHealthBar" type="ProgressBar" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+margin_left = 224.0
+margin_top = 9.0
+margin_right = 225.0
+margin_bottom = 10.0
 custom_styles/fg = SubResource( 65 )
 custom_styles/bg = SubResource( 66 )
 step = 1.0
@@ -1470,40 +1498,49 @@ shape = SubResource( 23 )
 
 [node name="Weapons" type="Node" parent="Audio"]
 
-[node name="PulseRifle" type="AudioStreamPlayer" parent="Audio/Weapons"]
+[node name="PulseRifle" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
 stream = ExtResource( 48 )
+unit_db = 80.0
 
-[node name="GravityBomb" type="AudioStreamPlayer" parent="Audio/Weapons"]
+[node name="GravityBomb" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
 stream = ExtResource( 37 )
+unit_db = 80.0
 
-[node name="BlizGun" type="AudioStreamPlayer" parent="Audio/Weapons"]
+[node name="BlizGun" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
 stream = ExtResource( 28 )
+unit_db = 80.0
 
-[node name="theNegotiator" type="AudioStreamPlayer" parent="Audio/Weapons"]
+[node name="theNegotiator" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
 stream = ExtResource( 40 )
+unit_db = 80.0
 
-[node name="EdgeBlaster" type="AudioStreamPlayer" parent="Audio/Weapons"]
+[node name="EdgeBlaster" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
 stream = ExtResource( 16 )
+unit_db = 80.0
 
 [node name="Body" type="Node" parent="Audio"]
 
-[node name="Step" type="AudioStreamPlayer" parent="Audio/Body"]
+[node name="Step" type="AudioStreamPlayer3D" parent="Audio/Body"]
 stream = ExtResource( 20 )
-volume_db = -80.0
+unit_db = 80.0
 
 [node name="Melee" type="Node" parent="Audio"]
 
-[node name="Melee0" type="AudioStreamPlayer" parent="Audio/Melee"]
+[node name="Melee0" type="AudioStreamPlayer3D" parent="Audio/Melee"]
 stream = ExtResource( 25 )
+unit_db = 80.0
 
-[node name="Melee1" type="AudioStreamPlayer" parent="Audio/Melee"]
+[node name="Melee1" type="AudioStreamPlayer3D" parent="Audio/Melee"]
 stream = ExtResource( 23 )
+unit_db = 80.0
 
-[node name="Melee2" type="AudioStreamPlayer" parent="Audio/Melee"]
+[node name="Melee2" type="AudioStreamPlayer3D" parent="Audio/Melee"]
 stream = ExtResource( 22 )
+unit_db = 80.0
 
-[node name="Melee3" type="AudioStreamPlayer" parent="Audio/Melee"]
+[node name="Melee3" type="AudioStreamPlayer3D" parent="Audio/Melee"]
 stream = ExtResource( 26 )
+unit_db = 80.0
 
 [node name="UI" type="Node" parent="Audio"]
 
@@ -1517,26 +1554,32 @@ stream = ExtResource( 27 )
 
 [node name="Bolt" type="Node" parent="Audio/Collectibles"]
 
-[node name="Bolt0" type="AudioStreamPlayer" parent="Audio/Collectibles/Bolt"]
+[node name="Bolt0" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Bolt"]
 stream = ExtResource( 18 )
+unit_db = 80.0
 
-[node name="Bolt1" type="AudioStreamPlayer" parent="Audio/Collectibles/Bolt"]
+[node name="Bolt1" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Bolt"]
 stream = ExtResource( 17 )
+unit_db = 80.0
 
-[node name="Bolt2" type="AudioStreamPlayer" parent="Audio/Collectibles/Bolt"]
+[node name="Bolt2" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Bolt"]
 stream = ExtResource( 19 )
+unit_db = 80.0
 
 [node name="Ammo" type="Node" parent="Audio/Collectibles"]
 
-[node name="Ammo0" type="AudioStreamPlayer" parent="Audio/Collectibles/Ammo"]
+[node name="Ammo0" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Ammo"]
 stream = ExtResource( 18 )
+unit_db = 80.0
 
-[node name="Ammo1" type="AudioStreamPlayer" parent="Audio/Collectibles/Ammo"]
+[node name="Ammo1" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Ammo"]
 stream = ExtResource( 39 )
+unit_db = 80.0
 
 [node name="HealthNode" type="Node" parent="Audio/Collectibles"]
 
-[node name="HealthNode0" type="AudioStreamPlayer" parent="Audio/Collectibles/HealthNode"]
+[node name="HealthNode0" type="AudioStreamPlayer3D" parent="Audio/Collectibles/HealthNode"]
+unit_db = 80.0
 
 [node name="PlayerCamera" type="Spatial" parent="."]
 transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 7.138 )
@@ -1581,7 +1624,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138 )
 [connection signal="pressed" from="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8" to="." method="_on_WeaponSlot8_pressed"]
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" method="_on_ReturnToGameButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToGameButton_pressed"]
+[connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ScreenCheckBox" to="PlayerUI/PauseMenuContainer" method="_on_ScreenCheckBox_pressed"]
+[connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ScreenCheckBox" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ScreenCheckBox" method="_on_ScreenCheckBox_pressed"]
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
-[connection signal="pressed" from="PlayerUI/VendorContainer/VBoxContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
+[connection signal="pressed" from="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
 [connection signal="timeout" from="DamageCooloffTimer" to="." method="_on_DamageCooloffTimer_timeout"]
