@@ -40,7 +40,8 @@ autostart = true
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="HealthNode" type="AudioStreamPlayer" parent="Audio"]
+[node name="HealthNode" type="AudioStreamPlayer3D" parent="Audio"]
 stream = ExtResource( 3 )
+unit_db = 80.0
 
 [connection signal="timeout" from="ExpireTimer" to="." method="_on_ExpireTimer_timeout"]

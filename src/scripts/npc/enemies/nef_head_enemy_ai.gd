@@ -1,4 +1,4 @@
-extends "res://src/scripts/npc/enemies/enemy_base.gd"
+extends EnemyBase
 
 onready var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
 onready var ray = $EnemySprite/player_finding
@@ -29,7 +29,6 @@ func _ready():
 	self.set_meta("name", "enemy")
 
 func _physics_process(_delta):
-	# Changes the direction .
 	for i in get_slide_count():
 		if  is_on_wall() :
 			$EnemyAnimationPlayer.play("Enemy_Turn_Right")
@@ -47,7 +46,6 @@ func nef_head_shoot_time():
 	can_shoot = true
 
 func _on_player_finding_player_seen():
-	# Has it so that the projectile only shoots once every few secs
 	if can_shoot:
 		attack = laser_attack_scene.instance()
 		get_parent().add_child(attack)
@@ -56,7 +54,6 @@ func _on_player_finding_player_seen():
 		can_shoot = false
 		timer.start()
 
-# Called when an area overlaps with the NEF's area.
 func _on_AreaEnemy_area_entered(area):
 	if (area.name == "ProjectileExplosionArea"):
 		state_machine.travel("Enemy_Damage")

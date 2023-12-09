@@ -1,14 +1,12 @@
 extends Label
 
-# Displays the amout on the player screen.
 func _process(_delta):
 	text = format_bolt_amount(Globle.bolts)
 
-# Format bolts in a correct manner.
 func format_bolt_amount(bolts : int) -> String:
-	var str_bolts : String = str(bolts)
+	var bolts_string : String = str(bolts)
 
 	# Set the comma to the each 3rd place on the string.
-	for c in range(str_bolts.length() -3, 0, -3):
-		str_bolts = str_bolts.insert(c, ",")
-	return str_bolts
+	for c in range(bolts_string.length() -3, 0, -3):
+		bolts_string = bolts_string.insert(c, ",")
+	return bolts_string

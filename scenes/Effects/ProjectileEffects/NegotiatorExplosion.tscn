@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://resources/images/effects/explosions_n_fire/explosion.png" type="Texture" id=1]
-[ext_resource path="res://src/scripts/effects/explosions/Negotiator_explosion.gd" type="Script" id=2]
+[ext_resource path="res://src/scripts/effects/explosions/explosive_projectile_explosion.gd" type="Script" id=2]
 [ext_resource path="res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd" type="Script" id=3]
 
 [sub_resource type="SpatialMaterial" id=2]

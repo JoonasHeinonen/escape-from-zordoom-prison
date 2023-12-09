@@ -113,11 +113,13 @@ wait_time = 0.3
 
 [node name="Audio" type="Node" parent="."]
 
-[node name="Deploy" type="AudioStreamPlayer" parent="Audio"]
+[node name="Deploy" type="AudioStreamPlayer3D" parent="Audio"]
 stream = ExtResource( 5 )
+unit_db = 80.0
 
-[node name="MiniturretGun" type="AudioStreamPlayer" parent="Audio"]
+[node name="MiniturretGun" type="AudioStreamPlayer3D" parent="Audio"]
 stream = ExtResource( 4 )
+unit_db = 80.0
 
 [connection signal="body_entered" from="TargetDetectionArea" to="." method="_on_TargetDetectionArea_body_entered"]
 [connection signal="body_exited" from="TargetDetectionArea" to="." method="_on_TargetDetectionArea_body_exited"]

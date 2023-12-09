@@ -1,4 +1,4 @@
-extends Control
+extends MenuSceneControlBase
 
 onready var main_menu = get_parent().get_node("MainMenu")
 
@@ -8,7 +8,6 @@ var btn_to_return_to
 
 export (String, "StartGame", "LoadGame", "Options") var menus
 
-# When gets pressed.
 func _on_BackButton_pressed():
 	$Audio/Click.play()
 	if (self.has_node('CenterContainer')) : index_btn = $CenterContainer/VBoxContainer/BackButton

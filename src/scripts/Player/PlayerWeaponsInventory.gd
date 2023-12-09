@@ -1,4 +1,4 @@
-extends Control
+extends MenuSceneControlBase
 
 onready var player = get_parent().get_parent()
 
@@ -7,7 +7,6 @@ var weapon_slots = []
 var time_scale_target = 1
 var interpolation = 1
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	weapon_slots = [
 		$MenuContainer/WeaponSlot1,
@@ -21,15 +20,12 @@ func _ready():
 	]
 	hide()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	# Hide / show the mouse and the active aiming radical.
 	if (self.visible):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
-	# All the input actions for game's pausing functionality.
 	if (!get_tree().paused):
 		if event.is_action_pressed("ui_inventory"):
 			determine_pause(true, 0, false)
@@ -45,7 +41,6 @@ func _input(event):
 					if (weapon_slot.has_focus()):
 						var slot_texture = weapon_slot.get_node("SlotTexture")
 						if slot_texture.texture != null:
-							# Pick the player's weapon directly from the inventory.
 							match weapon_slot.name:
 								"WeaponSlot1":
 									player.current_weapon = "edge_blaster"
@@ -74,14 +69,12 @@ func _physics_process(delta):
 		interpolation += delta
 	Engine.time_scale = lerp(Engine.time_scale, time_scale_target, interpolation)
 
-# Custom function to determine pausing functionality.
 func determine_pause(inventory : bool, scale : int, process_input : bool):
 	Globle.player_inventory = inventory
 	time_scale_target       = scale
 	Engine.time_scale       = scale
 	get_parent().set_process_input(process_input)
 
-# To grab focus on the active inventory menu item.
 func determine_active_item(weapon : String):
 	match weapon:
 		"edge_blaster":

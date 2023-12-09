@@ -6,15 +6,14 @@ onready var projectile_effect = preload("res://scenes/Effects/ProjectileEffects/
 
 export (String, "blaster", "miniturret") var weapon
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	velocity = Vector3(0, 0, 0)
 	speed = 8
-	# Set the combustion effect, if the projectile is blaster.
+
 	if (weapon == "blaster"):
 		$CombustionTimer.connect("timeout", self, "_on_CombustionTimer_timeout")
 		$CombustionTimer.start()
-		effect()
+		emit_blaster_combustion_effect()
 
 func _physics_process(delta):
 	velocity.x = speed * delta * 1
@@ -35,13 +34,11 @@ func _on_Area_body_entered(body):
 			explosion.rotation = Vector3.ZERO
 			queue_free()
 
-# Run when CombustionTimer has timed out.
 func _on_CombustionTimer_timeout():
-	effect()
+	emit_blaster_combustion_effect()
 	$CombustionTimer.start()
 
-# Emits the combustion of the blaster projectile.
-func effect():
+func emit_blaster_combustion_effect():
 	var eff = projectile_effect.instance()
 	eff.translation.x = 3
 	$Combustion.add_child(eff)

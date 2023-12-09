@@ -29,7 +29,6 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
-# Quits the game.
 func _on_QuitGameButton_pressed():
 	get_tree().quit()
 
@@ -37,13 +36,12 @@ func _on_QuitGameButton_pressed():
 func set_label(replace_text = $MenuButton.text):
 	self.text = replace_text
 
-# Set the scene to be changed to.
 func set_scene_to_load(scl):
 	self.scene_to_load = scl
 
 # Swap the visible menu nodes.
 func set_menu_nodes(control : Control, index_button : Button):
-	control.visible   = true
+	control.visible = true
 	root_scene.visible = false
 	index_button.grab_focus()
 

@@ -7,14 +7,10 @@ export(String, "edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
 	"pulse_rifle", "ry3no", "sheepinator") var weapon
 
 var get_magnet = false
-
 var weapon_name
-
-# Adding a random number.
 var random = RandomNumberGenerator.new()
 
 func _ready():
-	# Destroy the object, if the item already exists in the inventory.
 	for i in Globle.current_weapons:
 		if (i == weapon):
 			queue_free()
@@ -62,7 +58,6 @@ func _physics_process(delta):
 					player.change_weapon_texture(weapon)
 				queue_free()
 
-# Changes the texture of the gun.
 func set_weapon_image(wpn_name: String):
 	var weapon_sprite_path = "res://resources/images/weapons/" + wpn_name + ".png"
 	sprite.texture = load(weapon_sprite_path)
