@@ -69,17 +69,16 @@ var player_location
 var spawn_point
 export var check_point_enabled = true
 # Called when the node enters the scene tree for the first time.
-# make a new spawn called player spawn
+# Make a new spawn called player spawn.
 func _ready():
-	# spawn point refactored
-	# do not make a checkpoint that is 0 0 0 in a vector 3
+	# Spawn point refactored.
+	# Do not make a checkpoint that is 0 0 0 in a vector 3.
 	if check_point_enabled == true:
 		global_transform.origin = Globle.spawn_point
 	if Globle.spawn_point != Vector3.ZERO:
 		global_transform.origin = Globle.spawn_point
 	$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
 	player_max_health = player_health
-	
 	# Set the state machine and the active sprite.
 	if (Globle.player_character == "Rivet"):
 		var g_i_s = load(hand_instance_src + "rivet/rivet_weapon.png")
@@ -122,15 +121,13 @@ func _ready():
 	set_vendor_weapons(Globle.weapons_for_sale)
 	# The spawn code for the player
 	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
-	
-	# create a if statement that tries and finds the arena level in the PlayerSpawnArena
-	# need to get the postion of the playerSpawnArena
+	# Create a if statement that tries and finds the arena level in the PlayerSpawnArena.
+	# Need to get the postion of the playerSpawnArena.
 	var arena
 	if (get_parent().has_node("arena")):
 		arena = get_parent().get_node("arena")
-		if (arena.has_node("PlayerSpawnArena")):
-			#$arena/PlayerSpawnArena
-			pass
+		#if (arena.has_node("PlayerSpawnArena")):
+			#pass
 
 func _physics_process(delta):
 	# Reset double jump while on the ground.
@@ -318,14 +315,10 @@ func _process(delta):
 	if !boss_fight_active : $PlayerUI/ui_boss_data.visible = false
 
 	# Arena menu.
-	
-	if Globle.arena_menu_open : $PlayerUI/Arena_menu.open()
-
-
+	if Globle.arena_menu_open : $PlayerUI/Arena_menu.opens_Menue()
 	# Heal the player after collecting the nodes. Also update the UI.
 	heal_player()
 	update_health_ui()
-
 	# Determine inventory items.
 	set_weapons_to_inventory(Globle.current_weapons)
 
@@ -822,7 +815,6 @@ func _on_CollisionArea_area_entered(area):
 # Run when FadeIn fade is finished.
 func _on_FadeIn_fade_finished():
 	get_tree().reload_current_scene()
-	
 	
 func _on_DamageCooloffTimer_timeout():
 	player_is_just_damaged = false

@@ -31,7 +31,6 @@ func _ready():
 func _physics_process(_delta):
 	# Changes the direction .
 	for i in get_slide_count():
-	
 		if  is_on_wall() :
 			$EnemyAnimationPlayer.play("Enemy_Turn_Right")
 			speed *= -1

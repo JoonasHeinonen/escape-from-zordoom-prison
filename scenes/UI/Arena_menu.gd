@@ -6,7 +6,6 @@ onready var arena_button = $buttons/ArenaButton
 onready var exit_button = $buttons/ExitButton
 const bad_guy_nef_head = preload("res://scenes/NPC/Enemies/nef_head_enemy.tscn")
 var is_open = false
-
 var bad_guys_is_dead = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,23 +23,22 @@ func Arena_Menu_process(var open: bool, var pause: bool):
 	get_tree().paused = open
 	get_parent().set_process_input(pause)
 
-# open the menue
-func open():
+# Open the menue.
+func opens_Menue():
 	if not is_open:
 		is_open = true
 		show()
-		print("open")
 		arena_button.grab_focus()
+
 #exit out of the menue
-func close():
+func close_Menu():
 	is_open = false
 	Globle.arena_menu_open = false
-	print('close')
 	print(Globle.arena_menu_open)
 	hide()
-#https://www.youtube.com/watch?v=rZRVb5rkALM
-func _on_ExitButton_pressed():
-	close()
+
+func on_ExitButton_pressed():
+	close_Menu()
 	 
 
 func _on_ArenaButton_pressed():
@@ -48,10 +46,10 @@ func _on_ArenaButton_pressed():
 	if nodes:
 		player.global_transform.origin = nodes[0].global_transform.origin
 		spawn_bad_guys_fight_1()
-	close()
+	close_Menu()
 	#these fuctions handle the fight_1 
 	#we have lad the ground work to expaned and add on where we can do as many fights/challenges as we can code in this one script!
-	#if possible we could refacter this into less fuctions but idk
+	
 func spawn_bad_guys_fight_1():
 	var nodes = get_tree().get_nodes_in_group("badGuySpawn1")
 	var badGuy = bad_guy_nef_head.instance()
@@ -63,9 +61,9 @@ func check_nef_head_is_dead():
 	for node in nodes:
 		if !node.is_dead :
 			return 
-	fight_1_player_wins()
+	player_wins_fight_1()
 #player returns to shark man and the fight starts over again.
-func fight_1_player_wins():
+func player_wins_fight_1():
 	var nodes = get_tree().get_nodes_in_group("playerReturnPostion")
 	if nodes:
 		player.global_transform.origin = nodes[0].global_transform.origin

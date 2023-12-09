@@ -1,6 +1,6 @@
 extends Area
 
-export(String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet","Shark_man") var character_name
+export(String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_man") var character_name
 
 var active : bool = false
 var npc_dialog_value : int = 0
@@ -79,13 +79,13 @@ func _input(event):
 					"NPC_Angela_Rivet":
 						match(npc_Angela_Rivet_dialog_value):
 							(0):
-								#re-due menue logic
+								#Re-due menue logic.
 								commence_dialog('timeline_Angela_npc_1')
 						npc_Angela_Rivet_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 2)
 					"Shark_man":
 						match(shark_man_dialog_value):
 							(0):
-								#re-due menue logic
+								#Re-due menue logic.
 								commence_dialog('timeline_Rivet_shark_man')
 						shark_man_dialog_value = process_dialog_value(npc_Angela_Rivet_dialog_value, 0)
 						Globle.arena_menu_open = true

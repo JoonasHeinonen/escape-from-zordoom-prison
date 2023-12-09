@@ -63,15 +63,10 @@ var bolts = 0
 var menu_to_return = "none"
 var player_character = "Angela"
 
-
-	
-
 var spawn_point = Vector3(0 ,0, 0)
-# try and get some help on this issue
-#var player_location
 
-## This func updates the postion of the spawn point that player starts in
-func update_spawn(new_point) : 
+# This function updates the postion of the spawn point that player starts in
+func update_spawn(new_point): 
 	 spawn_point = new_point 
 
 # Not sure if we need this instance_node.
