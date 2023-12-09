@@ -301,7 +301,7 @@ func _process(delta):
 	if !boss_fight_active: 
 		$PlayerUI/UIBossData.visible = false
 
-	if Globle.arena_menu_open : $PlayerUI/Arena_menu.opens_Menue()
+	if Globle.arena_menu_open : $PlayerUI/Arena_menu.opens_Menu()
 	heal_player()
 	update_health_ui()
 	set_weapons_to_inventory(Globle.current_weapons)

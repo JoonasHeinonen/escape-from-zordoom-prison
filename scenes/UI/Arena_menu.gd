@@ -1,70 +1,78 @@
 extends Control
 
+var badGuy
+var nodes
 
-onready var player     = get_parent().get_parent()
-onready var arena_button = $buttons/ArenaButton
-onready var exit_button = $buttons/ExitButton
-const bad_guy_nef_head = preload("res://scenes/NPC/Enemies/nef_head_enemy.tscn")
 var is_open = false
-var bad_guys_is_dead = false
+var open : bool
+var pause : bool
+
+onready var arena_button = $buttons/ArenaButton
+onready var player     = get_parent().get_parent()
+onready var exit_button = $buttons/ExitButton
+
+const bad_guy_nef_head = preload("res://scenes/NPC/Enemies/nef_head_enemy.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	hide()
 	
 func _input(event):
 	if (!Globle.arena_menu_open):
-			#return_btn.grab_focus()
-			if (Globle.arena_menu_active == true):
-				Arena_Menu_process(true, false)
-				show()
+		if (Globle.arena_menu_active == true):
+			Arena_Menu_process(true, false)
+			show()
 
-func Arena_Menu_process(var open: bool, var pause: bool):
+func Arena_Menu_process(open, pause):
 	Globle.update_vendor()
 	get_tree().paused = open
 	get_parent().set_process_input(pause)
 
-# Open the menue.
-func opens_Menue():
+# Opens the menu.
+func opens_Menu():
 	if not is_open:
 		is_open = true
-		show()
 		arena_button.grab_focus()
+		show()
 
-#exit out of the menue
+#Exits out of the menu.
 func close_Menu():
 	is_open = false
 	Globle.arena_menu_open = false
-	print(Globle.arena_menu_open)
 	hide()
 
-func on_ExitButton_pressed():
+func _on_ExitButton_pressed():
 	close_Menu()
 	 
-
 func _on_ArenaButton_pressed():
-	var nodes = get_tree().get_nodes_in_group("arenaSpawnPosition")
+	nodes = get_tree().get_nodes_in_group("arenaSpawnPosition")
+	
 	if nodes:
 		player.global_transform.origin = nodes[0].global_transform.origin
-		spawn_bad_guys_fight_1()
-	close_Menu()
-	#these fuctions handle the fight_1 
-	#we have lad the ground work to expaned and add on where we can do as many fights/challenges as we can code in this one script!
+		spawn_bad_guys_in_fight_1()
 	
-func spawn_bad_guys_fight_1():
-	var nodes = get_tree().get_nodes_in_group("badGuySpawn1")
-	var badGuy = bad_guy_nef_head.instance()
+	close_Menu()
+	
+#These fuctions handle the fight_1 we have laid the ground work to expaned 
+#and add on where we can do as many fights/challenges as we can code in this one script!
+func spawn_bad_guys_in_fight_1():
+	nodes = get_tree().get_nodes_in_group("badGuySpawn1")
+	badGuy = bad_guy_nef_head.instance()
 	nodes[0].add_child(badGuy)
 	
-# this checks and see if the nef head in the arena is killed by the player
+# This checks and see if the bad guy/guys in the arena is killed by the player.
 func check_nef_head_is_dead():
-	var nodes = get_tree().get_nodes_in_group("nef_head")
+	nodes = get_tree().get_nodes_in_group("nef_head")
+	
 	for node in nodes:
-		if !node.is_dead :
-			return 
-	player_wins_fight_1()
-#player returns to shark man and the fight starts over again.
+		if node.is_dead:
+			player_wins_fight_1()
+			return
+#Player returns to shark man and the fight starts over again.
 func player_wins_fight_1():
-	var nodes = get_tree().get_nodes_in_group("playerReturnPostion")
+	nodes = get_tree().get_nodes_in_group("playerReturnPostion")
+	
 	if nodes:
 		player.global_transform.origin = nodes[0].global_transform.origin
-	Globle.bolts = 100
+	
+	Globle.bolts += 100
