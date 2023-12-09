@@ -11,7 +11,7 @@ onready var arena_button = $buttons/ArenaButton
 onready var player = get_parent().get_parent()
 onready var exit_button = $buttons/ExitButton
 
-const bad_guy_nef_head = preload("res://scenes/NPC/Enemies/nef_head_enemy.tscn")
+const nef_head_preload = preload("res://scenes/NPC/Enemies/nef_head_enemy.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,10 +20,10 @@ func _ready():
 func _input(event):
 	if (!Globle.arena_menu_open):
 		if (Globle.arena_menu_active == true):
-			open_and_closes_Arena_Menu(true, false)
+			arena_menu_process(true, false)
 			show()
 
-func open_and_closes_Arena_Menu(has_open, has_pause):
+func arena_menu_process(has_open, has_pause):
 	Globle.update_vendor()
 	get_tree().paused = has_open
 	get_parent().set_process_input(has_pause)
@@ -46,24 +46,21 @@ func _on_ExitButton_pressed():
 	 
 func _on_ArenaButton_pressed():
 	nodes = get_tree().get_nodes_in_group("arenaSpawnPosition")
-	
 	if nodes:
 		player.global_transform.origin = nodes[0].global_transform.origin
 		spawn_bad_guys_in_fight_1()
-	
 	close_Menu()
 	
 #These fuctions handle the fight_1 we have laid the ground work to expaned 
 #and add on where we can do as many fights/challenges as we can code in this one script!
 func spawn_bad_guys_in_fight_1():
 	nodes = get_tree().get_nodes_in_group("badGuySpawn1")
-	bad_guy_instance = bad_guy_nef_head.instance()
+	bad_guy_instance = nef_head_preload.instance()
 	nodes[0].add_child(bad_guy_instance)
 	
 # This checks and see if the bad guy/guys in the arena is killed by the player.
-func check_nef_head_is_dead():
+func check_current_enemies():
 	nodes = get_tree().get_nodes_in_group("nef_head")
-	
 	for node in nodes:
 		if node.is_dead:
 			player_wins_fight_1()
@@ -72,8 +69,6 @@ func check_nef_head_is_dead():
 #Player returns to shark man and the fight starts over again.
 func player_wins_fight_1():
 	nodes = get_tree().get_nodes_in_group("playerReturnPostion")
-	
 	if nodes:
 		player.global_transform.origin = nodes[0].global_transform.origin
-	
 	Globle.bolts += 100

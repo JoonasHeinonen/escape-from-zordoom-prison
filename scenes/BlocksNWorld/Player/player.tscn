@@ -48,8 +48,9 @@
 [ext_resource path="res://scenes/BlocksNWorld/Player/sniping_raycast.tscn" type="PackedScene" id=46]
 [ext_resource path="res://resources/models/ui_elements/GreenSnipingTargetRadicalMaterial.material" type="Material" id=47]
 [ext_resource path="res://resources/audio/weapons/player/pulse_rifle.wav" type="AudioStream" id=48]
-[ext_resource path="res://scenes/UI/Arena_menu.gd" type="Script" id=49]
+[ext_resource path="res://src/scripts/UI/arena_menu.gd" type="Script" id=49]
 [ext_resource path="res://src/scripts/UI/screen_check_box.gd" type="Script" id=50]
+
 
 [sub_resource type="BoxShape" id=5]
 
