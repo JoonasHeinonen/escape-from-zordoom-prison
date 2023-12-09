@@ -3,11 +3,11 @@ extends Area
 export(String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_man") var character_name
 
 var active : bool = false
+
 var npc_dialog_value : int = 0
 var mia_dialog_value : int = 0
 var girdeux_dialog_value : int = 0
 var npc_angela_rivet_dialog_value : int = 0
-
 var shark_man_dialog_value : int = 0
 
 var player
@@ -24,7 +24,7 @@ func _process(delta):
 		$EnterButton.visible = active
 
 func _input(event):
-	if (Globle.player_character == "Angela"):
+	if (Globle.player_character == "Angela" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active):
 		if get_node_or_null('DialogNode') == null:
 			if Input.is_action_just_pressed("ui_accept") and active: 
 				match(character_name):

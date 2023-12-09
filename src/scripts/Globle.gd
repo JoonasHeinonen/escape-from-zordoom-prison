@@ -3,7 +3,7 @@ extends Node
 ## Need to autoload the script in the project to get the globle script to work
 ## source: https://www.youtube.com/watch?v=6e9I_e8aHD4
 
-## 2-dimensional array containing all the necessary data for each weapon.
+## 4-dimensional array containing all the necessary data for each weapon.
 ## Subarray 0: Weapon names & identifiers.
 ## Subarray 1: Weapon prices.
 ## Subarray 2: Weapon descriptions for the vendor.
@@ -51,13 +51,13 @@ var weapons_for_sale = [
 	"miniturret_glove"
 ]
 
+var arena_menu_active = false
+var arena_menu_open = false
 var game_fullscreen = false
 var melee_attack = false
 var player_inventory = false
 var vendor_active = false
 var vendor_open = false
-var arena_menu_open = false
-var arena_menu_active = false
 
 var bolts = 0
 
