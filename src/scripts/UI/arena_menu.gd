@@ -62,8 +62,8 @@ func check_current_enemies():
 	nodes = get_tree().get_nodes_in_group("nef_head")
 	for node in nodes:
 		if !node.is_dead:
-			player_wins_fight_1()
 			return
+	player_wins_fight_1()
 
 
 func player_wins_fight_1():
