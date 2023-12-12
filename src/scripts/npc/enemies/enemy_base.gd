@@ -82,7 +82,7 @@ func turn_enemy(player_x : float, enemy_x : float):
 
 func expire_enemy():
 	is_dead = true
-	get_tree().call_group("arena_menu_group", "check_nef_head_is_dead")
+	get_tree().call_group("arena_menu_group", "check_current_enemies")
 	queue_free()
 	# TODO add enemy death animation.
 
