@@ -49,8 +49,6 @@
 [ext_resource path="res://resources/models/ui_elements/GreenSnipingTargetRadicalMaterial.material" type="Material" id=47]
 [ext_resource path="res://resources/audio/weapons/player/pulse_rifle.wav" type="AudioStream" id=48]
 [ext_resource path="res://src/scripts/UI/arena_menu.gd" type="Script" id=49]
-[ext_resource path="res://src/scripts/UI/screen_check_box.gd" type="Script" id=50]
-
 
 [sub_resource type="BoxShape" id=5]
 
@@ -572,8 +570,8 @@ axis_lock_motion_y = true
 move_lock_x = true
 move_lock_y = true
 script = ExtResource( 1 )
-speed = 200
 check_point_enabled = false
+speed = 200
 
 [node name="PlayerSpawnPoint" type="Position3D" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
@@ -622,7 +620,7 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
-frame = 2
+frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -1503,7 +1501,7 @@ margin_top = 133.0
 margin_right = 81.4
 margin_bottom = 255.0
 
-[node name="ArenaButton" type="Button" parent="PlayerUI/Arena_menu/buttons"]
+[node name="fight1" type="Button" parent="PlayerUI/Arena_menu/buttons"]
 margin_right = 380.0
 margin_bottom = 59.0
 theme = ExtResource( 4 )
@@ -1673,6 +1671,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138 )
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
 [connection signal="pressed" from="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
-[connection signal="pressed" from="PlayerUI/Arena_menu/buttons/ArenaButton" to="PlayerUI/Arena_menu" method="_on_ArenaButton_pressed"]
+[connection signal="pressed" from="PlayerUI/Arena_menu/buttons/fight1" to="PlayerUI/Arena_menu" method="_on_ArenaButton_pressed"]
 [connection signal="pressed" from="PlayerUI/Arena_menu/buttons/ExitButton" to="PlayerUI/Arena_menu" method="_on_ExitButton_pressed"]
 [connection signal="timeout" from="DamageCooloffTimer" to="." method="_on_DamageCooloffTimer_timeout"]
