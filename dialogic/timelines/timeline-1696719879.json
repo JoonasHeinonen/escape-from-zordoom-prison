@@ -11,11 +11,11 @@
 			"portrait": "Default",
 			"portrait_definition": "",
 			"position": {
-				"0": false,
+				"0": true,
 				"1": false,
 				"2": false,
 				"3": false,
-				"4": true
+				"4": false
 			},
 			"type": 0,
 			"z_index": 0
@@ -31,7 +31,7 @@
 			"animation_length": 0,
 			"change_mirror_portrait": false,
 			"change_z_index": false,
-			"character": "",
+			"character": "character-1696719927.json",
 			"event_id": "dialogic_002",
 			"mirror_portrait": false,
 			"portrait": "",
@@ -103,11 +103,11 @@
 			"portrait": "Default",
 			"portrait_definition": "",
 			"position": {
-				"0": false,
+				"0": true,
 				"1": false,
 				"2": false,
 				"3": false,
-				"4": true
+				"4": false
 			},
 			"type": 0,
 			"z_index": 0
@@ -195,11 +195,11 @@
 			"portrait": "Default",
 			"portrait_definition": "",
 			"position": {
-				"0": false,
+				"0": true,
 				"1": false,
 				"2": false,
 				"3": false,
-				"4": true
+				"4": false
 			},
 			"type": 0,
 			"z_index": 0
