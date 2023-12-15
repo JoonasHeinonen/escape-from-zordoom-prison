@@ -15,7 +15,7 @@ var nodes = null
 
 func _ready():
 	hide()
-	
+
 func _input(event):
 	if (!Globle.arena_menu_open):
 		if (Globle.arena_menu_active == true):
