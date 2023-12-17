@@ -1,35 +1,35 @@
-extends KinematicBody
+extends CharacterBody3D
 
 class_name Player
 
-signal update_player_position_to_camera(new_aiming_radical)
+# signal update_player_position_to_camera(new_aiming_radical)
 
 const RANDOM_ANGLE = PI / 2.0
 
-onready var gravity_bomb_projectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
-onready var projectile = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
-onready var blitz_gun_projectile = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
-onready var bolt_sparkle = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
-onready var negotiator_projectile = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
-onready var miniturret_packed_projectile = preload("res://scenes/Projectiles/MiniturretPackedProjectile.tscn")
-onready var pulse_rifle_projectile = preload("res://scenes/Projectiles/PulseRifleProjectile.tscn")
-onready var gun_btn = preload("res://scenes/UI/VendorWeaponButton.tscn")
-onready var hand_instance_src = "res://resources/images/characters/player/"
+@onready var gravity_bomb_projectile = preload("res://scenes/Projectiles/GravityBombProjectile.tscn")
+@onready var projectile = preload("res://scenes/Projectiles/BlasterProjectile.tscn")
+@onready var blitz_gun_projectile = preload("res://scenes/Projectiles/BlitzGunProjectile.tscn")
+@onready var bolt_sparkle = preload("res://scenes/Effects/Collectibles/BoltSparkle.tscn")
+@onready var negotiator_projectile = preload("res://scenes/Projectiles/NegotiatorProjectile.tscn")
+@onready var miniturret_packed_projectile = preload("res://scenes/Projectiles/MiniturretPackedProjectile.tscn")
+@onready var pulse_rifle_projectile = preload("res://scenes/Projectiles/PulseRifleProjectile.tscn")
+@onready var gun_btn = preload("res://scenes/UI/VendorWeaponButton.tscn")
+@onready var hand_instance_src = "res://resources/images/characters/player/"
 
-onready var angela_arm = $AngelaArm
-onready var rivet_arm = $RivetArm
-onready var shoot_timer = $ShootTimer
-onready var sniping_radical = $SnipingRadical
-onready var ui_timer = $PlayerUI/UINotification/Ui_Timer
-onready var ui_containers = [
+@onready var angela_arm = $AngelaArm
+@onready var rivet_arm = $RivetArm
+@onready var shoot_timer = $ShootTimer
+@onready var sniping_radical = $SnipingRadical
+@onready var ui_timer = $PlayerUI/UINotification/Ui_Timer
+@onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
 	$PlayerUI/VendorContainer,
 # $PlayerUI/ArenaMenu
 ]
 
-export var check_point_enabled = true
-export var speed = 1
+@export var check_point_enabled = true
+@export var speed = 1
 
 var animation_player
 var gun_instance
@@ -37,7 +37,7 @@ var hand_instance : Sprite3D
 var spawn_point
 var state_machine
 
-var velocity = Vector3(0 ,0 ,0)
+var player_velocity = Vector3(0 ,0 ,0)
 
 var current_boss_name : String = ""
 
@@ -73,7 +73,7 @@ func _ready():
 		global_transform.origin = Globle.spawn_point
 	if Globle.spawn_point != Vector3.ZERO:
 		global_transform.origin = Globle.spawn_point
-	$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
+	$PlayerHit_box.set_position(Vector3(0.649, 0, 0))
 	player_max_health = player_health
 
 	# Set the state machine and the active sprite.
@@ -105,8 +105,8 @@ func _ready():
 		hand_instance.set_texture(g_i_s)
 	hand_instance.scale.y = -20
 
-	ui_timer.connect("timeout", self, "_on_UI_Timer_timeout")
-	shoot_timer.connect("timeout", self, "_on_ShootTimer_timeout")
+	ui_timer.connect("timeout", Callable(self, "_on_UI_Timer_timeout"))
+	shoot_timer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
 	shoot_timer.start()
 	$PlayerUI/InventoryContainer.visible = false
 	walk(0, 1, -0.1)
@@ -127,12 +127,12 @@ func _physics_process(delta):
 	for audio_container_child in $Audio.get_children():
 		for audio_child in audio_container_child.get_children():
 			if audio_child is AudioStreamPlayer3D:
-				audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+				audio_child.position = Vector3(self.position.x, self.position.y, 0)
 		# TODO Swap this to if audio_container_child.name != "UI":
 		if audio_container_child.name == "Collectibles":
 			for audio_sub_child in audio_container_child.get_children():
 				for audio_child in audio_sub_child.get_children():
-					audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+					audio_child.position = Vector3(self.position.x, self.position.y, 0)
 
 	# Reset double jump while on the ground.
 	if is_on_floor():
@@ -191,41 +191,41 @@ func _physics_process(delta):
 					Globle.melee_attack = true
 				if (state_machine.get_current_play_position() >= 0.4):
 					Globle.melee_attack = false
-					if velocity.x > 0:
-						velocity.x -= 0.1
-					if velocity.x < 0:
-						velocity.x += 0.1
+					if player_velocity.x > 0:
+						player_velocity.x -= 0.1
+					if player_velocity.x < 0:
+						player_velocity.x += 0.1
 			if Globle.player_character == "Angela":
 				state_machine.travel("Player_Melee")
 				if (state_machine.get_current_play_position() > 0.3):
 					Globle.melee_attack = true
 				if (state_machine.get_current_play_position() >= 0.4):
 					Globle.melee_attack = false
-					if velocity.x > 0:
-						velocity.x -= 0.1
-					if velocity.x < 0:
-						velocity.x += 0.1
+					if player_velocity.x > 0:
+						player_velocity.x -= 0.1
+					if player_velocity.x < 0:
+						player_velocity.x += 0.1
 		elif Input.is_action_pressed("ui_right"):
 			walk(7, 1, -0.1)
 			$RivetArm/HandInstance/Hand.scale.y = -20
 			$AngelaArm/HandInstance/Hand.scale.y = -20
-			$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
+			$PlayerHit_box.set_position(Vector3(0.649, 0, 0))
 		elif Input.is_action_pressed("ui_left"):
 			walk(-7, -1, 0.1)
 			$RivetArm/HandInstance/Hand.scale.y = 20
 			$AngelaArm/HandInstance/Hand.scale.y = 20
-			$PlayerHit_box.set_translation(Vector3((-0.649 * 3.1), 0, 0))
+			$PlayerHit_box.set_position(Vector3((-0.649 * 3.1), 0, 0))
 		else:
-			velocity.x = lerp(velocity.x,0,0.1)
+			player_velocity.x = lerp(player_velocity.x,0,0.1)
 			state_machine.travel("Player_Still")
 		if is_on_floor() and Input.is_action_pressed("jump"):
-			velocity.y = jump
+			player_velocity.y = jump
 		if !player_double_jump_used:
 			if (Input.is_action_just_pressed("jump") &&
 				player_double_jump &&
 				!is_on_floor()
 			):
-				velocity.y = jump
+				player_velocity.y = jump
 				player_double_jump = false
 				player_double_jump_used = true
 			if (Input.is_action_just_released("jump") && !is_on_floor()):
@@ -248,7 +248,7 @@ func _physics_process(delta):
 		sniping_radical.show()
 
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		player_velocity.y -= gravity * delta
 		state_machine.travel("Player_Fall")
 		if Globle.player_character == "Angela":
 			if Input.is_action_pressed("ui_melee_attack"):
@@ -258,11 +258,13 @@ func _physics_process(delta):
 				state_machine.travel("Player_Melee")
 
 	set_vendor_weapons(Globle.weapons_for_sale)
-	move_and_slide(velocity, Vector3.UP)
+	set_velocity(player_velocity)
+	set_up_direction(Vector3.UP)
+	move_and_slide()
 
 func _process(delta):
 	var y_position = self.global_transform.origin.y
-	var space_state = get_world().direct_space_state
+	var space_state = get_world_3d().direct_space_state
 	var slot_index = 1
 
 	for ui_container in ui_containers:
@@ -282,7 +284,7 @@ func _process(delta):
 	# Button for melee is pressed once.
 	if !Globle.player_inventory:
 		var offset = -PI * 0.5
-		var screen_pos = get_viewport().get_camera().unproject_position(angela_arm.global_transform.origin)
+		var screen_pos = get_viewport().get_camera_3d().unproject_position(angela_arm.global_transform.origin)
 		var mouse_pos = get_viewport().get_mouse_position()
 		var angle = screen_pos.angle_to_point(mouse_pos)
 
@@ -306,7 +308,7 @@ func _process(delta):
 	heal_player()
 	update_health_ui()
 	set_weapons_to_inventory(Globle.current_weapons)
-	$PlayerUI/UIBossData/UIBossDataCenterContainer.rect_size = Vector2(get_viewport().size.x, 180)
+	$PlayerUI/UIBossData/UIBossDataCenterContainer.size = Vector2(get_viewport().size.x, 180)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 
 ### CUSTOM FUNCTIONS FOR THE PLAYER FUNCTIONALITY.
@@ -340,7 +342,7 @@ func set_vendor_weapons_data(weapons_for_sale, data):
 	for wpn_for_sale in weapons_for_sale:
 		var wpn_name = ""
 		var unwanted_chars = ["_"]
-		var btn = gun_btn.instance()
+		var btn = gun_btn.instantiate()
 		btn.set_wpn_for_sale(wpn_for_sale)
 
 		# Takes the chars from the wpn_for_sale.
@@ -349,8 +351,8 @@ func set_vendor_weapons_data(weapons_for_sale, data):
 		wpn_name = wpn_name.to_upper()
 
 		btn.set_label(wpn_name)
-		btn.connect("pressed", self, "_on_Vendor_Choice_pressed", [btn, btn.wpn_for_sale])
-		btn.connect("focus_entered", self, "_on_VendorWeaponButton_focus_entered", [btn, btn.wpn_for_sale])
+		btn.connect("pressed", Callable(self, "_on_Vendor_Choice_pressed").bind(btn, btn.wpn_for_sale))
+		btn.connect("focus_entered", Callable(self, "_on_VendorWeaponButton_focus_entered").bind(btn, btn.wpn_for_sale))
 		data.add_child(btn)
 
 func set_weapons_to_inventory(weapons):
@@ -416,7 +418,7 @@ func change_weapon_texture(weapon_name : String):
 
 func walk(vel, scale, _mesh_translation):
 	state_machine.travel("Player_Walk")
-	velocity.x = vel
+	player_velocity.x = vel
 	if (Globle.player_character == "Angela"):
 		$AngelaSprite.scale.x = scale
 	elif (Globle.player_character == "Rivet"):
@@ -463,10 +465,10 @@ func update_health_ui():
 
 func collect_collectible(index : int, type : String):
 	# Create the bolt sparkle once a bolt is collected.
-	var b_s = bolt_sparkle.instance()
-	b_s.global_transform = $CollisionShape.global_transform
+	var b_s = bolt_sparkle.instantiate()
+	b_s.global_transform = $CollisionShape3D.global_transform
 	b_s.scale = Vector3(1, 1, 1)
-	b_s.translation.z = 0.1
+	b_s.position.z = 0.1
 	get_parent().add_child(b_s)
 
 	match (type):
@@ -537,8 +539,8 @@ func determine_character_weapon_muzzle(player : String, bullet):
 
 func shoot_edge_blaster():
 	$Audio/Weapons/EdgeBlaster.play()
-	var bullet = projectile.instance()
-	bullet.translation.x = 3
+	var bullet = projectile.instantiate()
+	bullet.position.x = 3
 	get_parent().add_child(bullet)
 	determine_character_weapon_muzzle(Globle.player_character, bullet)
 
@@ -546,33 +548,33 @@ func shoot_blitz_gun():
 	$Audio/Weapons/BlizGun.play()
 	# Bullet spread.
 	for index in fire_rate:
-		var bullet = blitz_gun_projectile.instance()
-		bullet.translation.x = 3
+		var bullet = blitz_gun_projectile.instantiate()
+		bullet.position.x = 3
 		get_parent().add_child(bullet)
 		determine_character_weapon_muzzle(Globle.player_character, bullet)
 		bullet.rotate(Vector3(0,0,1),(randf()-.5)*RANDOM_ANGLE)
 
 func shoot_gravity_bomb():
 	$Audio/Weapons/GravityBomb.play()
-	var bullet = gravity_bomb_projectile.instance()
-	bullet.translation.x = 3
-	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
+	var bullet = gravity_bomb_projectile.instantiate()
+	bullet.position.x = 3
+	bullet.player_velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
 	get_parent().add_child(bullet)
 	bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
 	determine_character_weapon_muzzle(Globle.player_character, bullet)
 	
 func shoot_negotiator():
 	$Audio/Weapons/theNegotiator.play()
-	var bullet = negotiator_projectile.instance()
-	bullet.translation.x = 3
+	var bullet = negotiator_projectile.instantiate()
+	bullet.position.x = 3
 	get_parent().add_child(bullet)
 	bullet.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 
 func shoot_pulse_rifle():
 	if (player_is_aiming_with_rifle):
 		$Audio/Weapons/PulseRifle.play()
-		var projectile = pulse_rifle_projectile.instance()
-		projectile.translation.x = 10
+		var projectile = pulse_rifle_projectile.instantiate()
+		projectile.position.x = 10
 		get_parent().add_child(projectile)
 		projectile.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 
@@ -583,9 +585,9 @@ func shoot_sheepinator():
 	print("Sheepinator used. All enemies are converted into sheeps.")
 
 func shoot_miniturret_glove():
-	var bullet = miniturret_packed_projectile.instance()
-	bullet.translation.x = 3
-	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
+	var bullet = miniturret_packed_projectile.instantiate()
+	bullet.position.x = 3
+	bullet.player_velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
 	get_parent().add_child(bullet)
 	bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
 	determine_character_weapon_muzzle(Globle.player_character, bullet)

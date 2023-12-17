@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Ratchet_&_Clank_-_Going_Commando.iso_02070.wav-39edde9cd9a3bc9cfdf92552f836b670.sample"
+type="AudioStreamWAV"
+uid="uid://dkjmryr1fsicb"
+path="res://.godot/imported/Ratchet_&_Clank_-_Going_Commando.iso_02070.wav-39edde9cd9a3bc9cfdf92552f836b670.sample"
 
 [deps]
 
 source_file="res://resources/audio/environment/gambling/Ratchet_&_Clank_-_Going_Commando.iso_02070.wav"
-dest_files=[ "res://.import/Ratchet_&_Clank_-_Going_Commando.iso_02070.wav-39edde9cd9a3bc9cfdf92552f836b670.sample" ]
+dest_files=["res://.godot/imported/Ratchet_&_Clank_-_Going_Commando.iso_02070.wav-39edde9cd9a3bc9cfdf92552f836b670.sample"]
 
 [params]
 

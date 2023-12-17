@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/bolt_collect_2.wav-a3b800c3136b65fff9f599680575b924.sample"
+type="AudioStreamWAV"
+uid="uid://m2wgmf4ac21x"
+path="res://.godot/imported/bolt_collect_2.wav-a3b800c3136b65fff9f599680575b924.sample"
 
 [deps]
 
 source_file="res://resources/audio/collectibles/bolt_collect_2.wav"
-dest_files=[ "res://.import/bolt_collect_2.wav-a3b800c3136b65fff9f599680575b924.sample" ]
+dest_files=["res://.godot/imported/bolt_collect_2.wav-a3b800c3136b65fff9f599680575b924.sample"]
 
 [params]
 

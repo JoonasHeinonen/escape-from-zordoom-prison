@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/BlitzGun.wav-cd783ed4f400bd89c39ef9242812784a.sample"
+type="AudioStreamWAV"
+uid="uid://d4g0wpehu0w1y"
+path="res://.godot/imported/BlitzGun.wav-cd783ed4f400bd89c39ef9242812784a.sample"
 
 [deps]
 
 source_file="res://resources/audio/weapons/player/BlitzGun.wav"
-dest_files=[ "res://.import/BlitzGun.wav-cd783ed4f400bd89c39ef9242812784a.sample" ]
+dest_files=["res://.godot/imported/BlitzGun.wav-cd783ed4f400bd89c39ef9242812784a.sample"]
 
 [params]
 

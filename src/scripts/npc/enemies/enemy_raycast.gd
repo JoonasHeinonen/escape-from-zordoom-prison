@@ -1,4 +1,4 @@
-extends RayCast
+extends RayCast3D
 
 var enemy
 

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/switch_0.wav-b6a27b3542f8fd34137df73ed48d891f.sample"
+type="AudioStreamWAV"
+uid="uid://cabqgrt2pstes"
+path="res://.godot/imported/switch_0.wav-b6a27b3542f8fd34137df73ed48d891f.sample"
 
 [deps]
 
 source_file="res://resources/audio/environment/doors_elevators_teleports/switch_0.wav"
-dest_files=[ "res://.import/switch_0.wav-b6a27b3542f8fd34137df73ed48d891f.sample" ]
+dest_files=["res://.godot/imported/switch_0.wav-b6a27b3542f8fd34137df73ed48d891f.sample"]
 
 [params]
 

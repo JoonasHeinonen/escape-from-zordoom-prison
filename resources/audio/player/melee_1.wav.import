@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/melee_1.wav-d9e9036cc45494bf84b7fd3b6f9c5a54.sample"
+type="AudioStreamWAV"
+uid="uid://dk44xowu2i5bn"
+path="res://.godot/imported/melee_1.wav-d9e9036cc45494bf84b7fd3b6f9c5a54.sample"
 
 [deps]
 
 source_file="res://resources/audio/player/melee_1.wav"
-dest_files=[ "res://.import/melee_1.wav-d9e9036cc45494bf84b7fd3b6f9c5a54.sample" ]
+dest_files=["res://.godot/imported/melee_1.wav-d9e9036cc45494bf84b7fd3b6f9c5a54.sample"]
 
 [params]
 

@@ -6,8 +6,8 @@
 [ext_resource path="res://resources/audio/ui/button_navigate.wav" type="AudioStream" id=4]
 
 [node name="LevelButton" type="Button"]
-margin_right = 1280.0
-margin_bottom = 120.0
+offset_right = 1280.0
+offset_bottom = 120.0
 mouse_filter = 2
 theme = ExtResource( 2 )
 text = "label"

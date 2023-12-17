@@ -1,8 +1,8 @@
-extends RayCast
+extends RayCast3D
 
 class_name SnipingRayCast
 
-onready var beam_mesh = $SnipingMeshInstance
+@onready var beam_mesh = $SnipingMeshInstance
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,4 +17,4 @@ func _process(_delta):
 		cast_point = to_local(get_collision_point())
 
 		beam_mesh.mesh.height = cast_point.y
-		beam_mesh.translation.y = cast_point.y / 2
+		beam_mesh.position.y = cast_point.y / 2

@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://resources/images/effects/explosions_n_fire/explosion.png" type="Texture" id=1]
+[ext_resource path="res://resources/images/effects/explosions_n_fire/explosion.png" type="Texture2D" id=1]
 [ext_resource path="res://src/scripts/effects/explosions/explosive_projectile_explosion.gd" type="Script" id=2]
 [ext_resource path="res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd" type="Script" id=3]
 
-[sub_resource type="SpatialMaterial" id=2]
+[sub_resource type="StandardMaterial3D" id=2]
 flags_transparent = true
 flags_unshaded = true
 vertex_color_use_as_albedo = true
@@ -16,12 +16,12 @@ particles_anim_loop = false
 albedo_texture = ExtResource( 1 )
 
 [sub_resource type="Gradient" id=5]
-colors = PoolColorArray( 0.842773, 0.734332, 0.35143, 1, 0.963867, 0.424793, 0.0931864, 1 )
+colors = PackedColorArray( 0.842773, 0.734332, 0.35143, 1, 0.963867, 0.424793, 0.0931864, 1 )
 
-[sub_resource type="GradientTexture" id=6]
+[sub_resource type="GradientTexture2D" id=6]
 gradient = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=3]
+[sub_resource type="ParticleProcessMaterial" id=3]
 gravity = Vector3( 0, 0, 0 )
 angle = 180.0
 angle_random = 1.0
@@ -30,33 +30,33 @@ color_ramp = SubResource( 6 )
 
 [sub_resource type="QuadMesh" id=4]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape3D" id=1]
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape3D" id=7]
 
-[node name="Spatial" type="Spatial"]
+[node name="Node3D" type="Node3D"]
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
-[node name="KinematicBody" type="KinematicBody" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource( 2 )
 
-[node name="Particles" type="Particles" parent="KinematicBody"]
+[node name="Particles" type="Particles" parent="CharacterBody3D"]
 material_override = SubResource( 2 )
 amount = 20
 process_material = SubResource( 3 )
 draw_pass_1 = SubResource( 4 )
 
-[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource( 1 )
 disabled = true
 
-[node name="ProjectileExplosionArea" type="Area" parent="."]
-transform = Transform( 1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0 )
+[node name="ProjectileExplosionArea" type="Area3D" parent="."]
+transform = Transform3D( 1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0 )
 script = ExtResource( 3 )
 
-[node name="CollisionShape" type="CollisionShape" parent="ProjectileExplosionArea"]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileExplosionArea"]
+transform = Transform3D( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
 shape = SubResource( 7 )

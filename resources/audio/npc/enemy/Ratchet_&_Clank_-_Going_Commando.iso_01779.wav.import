@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Ratchet_&_Clank_-_Going_Commando.iso_01779.wav-46885bf3f4d991a44460790d5e0147d9.sample"
+type="AudioStreamWAV"
+uid="uid://dvakvv5w8kg4k"
+path="res://.godot/imported/Ratchet_&_Clank_-_Going_Commando.iso_01779.wav-46885bf3f4d991a44460790d5e0147d9.sample"
 
 [deps]
 
 source_file="res://resources/audio/npc/enemy/Ratchet_&_Clank_-_Going_Commando.iso_01779.wav"
-dest_files=[ "res://.import/Ratchet_&_Clank_-_Going_Commando.iso_01779.wav-46885bf3f4d991a44460790d5e0147d9.sample" ]
+dest_files=["res://.godot/imported/Ratchet_&_Clank_-_Going_Commando.iso_01779.wav-46885bf3f4d991a44460790d5e0147d9.sample"]
 
 [params]
 

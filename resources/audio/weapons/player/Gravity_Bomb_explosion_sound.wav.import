@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Gravity_Bomb_explosion_sound.wav-99b27cf0001dda42a96a58a4f0b79524.sample"
+type="AudioStreamWAV"
+uid="uid://c2v7quyvn6mm"
+path="res://.godot/imported/Gravity_Bomb_explosion_sound.wav-99b27cf0001dda42a96a58a4f0b79524.sample"
 
 [deps]
 
 source_file="res://resources/audio/weapons/player/Gravity_Bomb_explosion_sound.wav"
-dest_files=[ "res://.import/Gravity_Bomb_explosion_sound.wav-99b27cf0001dda42a96a58a4f0b79524.sample" ]
+dest_files=["res://.godot/imported/Gravity_Bomb_explosion_sound.wav-99b27cf0001dda42a96a58a4f0b79524.sample"]
 
 [params]
 

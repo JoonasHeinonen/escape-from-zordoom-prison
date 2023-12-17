@@ -70,9 +70,9 @@ func update_spawn(new_point) : spawn_point = new_point
 
 func _process(delta):
 	if (game_fullscreen):
-		OS.window_fullscreen = true
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (true) else Window.MODE_WINDOWED
 	elif (!game_fullscreen):
-		OS.window_fullscreen = false
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (false) else Window.MODE_WINDOWED
 
 ## TODO Not sure if we need this function.
 func instance_node(node, location, parent):

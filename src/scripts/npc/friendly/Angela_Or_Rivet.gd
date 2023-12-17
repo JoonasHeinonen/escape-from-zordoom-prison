@@ -1,4 +1,4 @@
-extends KinematicBody
+extends CharacterBody3D
 
 func _input(event):
 	if (Globle.player_character == "Angela"):

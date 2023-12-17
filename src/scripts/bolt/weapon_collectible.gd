@@ -1,10 +1,9 @@
-extends Area
+extends Area3D
 
-onready var sprite = $Sprite3D
-onready var player = get_parent().get_parent().get_node("player")
+@onready var sprite = $Sprite3D
+@onready var player = get_parent().get_parent().get_node("player")
 
-export(String, "edge_blaster", "blitz_gun", "gravity_bomb", "negotiator",
-	"pulse_rifle", "ry3no", "sheepinator") var weapon
+@export_enum("edge_blaster", "blitz_gun", "gravity_bomb", "negotiator", "pulse_rifle", "ry3no", "sheepinator") var weapon: String
 
 var get_magnet = false
 var weapon_name
@@ -36,13 +35,13 @@ func _physics_process(delta):
 	var x : int = 0
 	if !get_magnet:
 		# Makes the bolts fall due to the y axis.
-		translation.y
+		position.y
 
 	var bodies = get_overlapping_areas()
 	for body in bodies:
 		if body.name == "AreaPlayer":
 			get_magnet = true
-			translation += (player.translation-translation) / 5
+			position += (player.position-position) / 5
 		var bodies2 = get_overlapping_bodies()
 		for bod in bodies2:
 			# Adds the item to the player's inventory.

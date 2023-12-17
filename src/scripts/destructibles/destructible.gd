@@ -1,18 +1,18 @@
-extends KinematicBody
+extends CharacterBody3D
 
 class_name Destructible
 
-onready var bolt_instance = preload("res://scenes/Collectibles/bolt.tscn")
-onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
-onready var health_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/health_crate_fragments.tscn")
-onready var lamp_post_fragments = preload("res://scenes/Destructibles/Infrastructure/Lamps/LampFragments/lamp_post_fragments.tscn")
-onready var crate_destroy_effect = preload("res://scenes/Effects/Collectibles//CrateDestroyed.tscn")
-onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
+@onready var bolt_instance = preload("res://scenes/Collectibles/bolt.tscn")
+@onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
+@onready var health_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/health_crate_fragments.tscn")
+@onready var lamp_post_fragments = preload("res://scenes/Destructibles/Infrastructure/Lamps/LampFragments/lamp_post_fragments.tscn")
+@onready var crate_destroy_effect = preload("res://scenes/Effects/Collectibles//CrateDestroyed.tscn")
+@onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
-export (String, "bolt_crate", "lamp_post", "explosive_crate", "health_crate") var scene_type
+@export_enum("bolt_crate", "lamp_post", "explosive_crate", "health_crate") var scene_type: String
 
 var random = RandomNumberGenerator.new()
-var velocity = Vector3(0, 0, 0)
+var destructible_velocity = Vector3(0, 0, 0)
 var is_active : bool = false
 var meta_type : String = ""
 var meta_name : String = ""
@@ -39,12 +39,14 @@ func _ready():
 	self.set_meta("name", meta_name)
 
 func _physics_process(delta):
-	velocity.y = -4
-	move_and_slide(velocity, Vector3.UP)
+	destructible_velocity.y = -4
+	set_velocity(destructible_velocity)
+	set_up_direction(Vector3.UP)
+	move_and_slide()
 
 	if (self.has_node("Audio")):
 		for audio_child in $Audio.get_children():
-			audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+			audio_child.position = Vector3(self.position.x, self.position.y, 0)
 
 func _process(delta):
 	if (
@@ -77,8 +79,8 @@ func createBolts():
 		bolt.global_transform = global_transform
 		bolt.scale = Vector3(1, 1, 1) # Resets bolt back to its actual size.
 		bolt.transform.origin = generate_bolt_position(
-			bolt.translation[0],
-			bolt.translation[1]
+			bolt.position[0],
+			bolt.position[1]
 		)
 	create_fragments()
 	destruction_effect()
@@ -103,7 +105,7 @@ func create_fragments():
 	fragment_scene_instance.global_transform = global_transform
 
 func add_active_radical():
-	var green_target_radical = radical.instance()
+	var green_target_radical = radical.instantiate()
 	if (!self.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
 		self.add_child(green_target_radical)
 		green_target_radical.scale = Vector3(1, 1, 1)

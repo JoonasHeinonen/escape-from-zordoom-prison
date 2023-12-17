@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/vase_0.wav-989b3df43b786250ef865377941a3367.sample"
+type="AudioStreamWAV"
+uid="uid://eigirvyejmcg"
+path="res://.godot/imported/vase_0.wav-989b3df43b786250ef865377941a3367.sample"
 
 [deps]
 
 source_file="res://resources/audio/environment/destructibles/vase_0.wav"
-dest_files=[ "res://.import/vase_0.wav-989b3df43b786250ef865377941a3367.sample" ]
+dest_files=["res://.godot/imported/vase_0.wav-989b3df43b786250ef865377941a3367.sample"]
 
 [params]
 

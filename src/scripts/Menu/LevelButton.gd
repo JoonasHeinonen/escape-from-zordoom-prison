@@ -1,6 +1,6 @@
 extends MenuButton
 
-export (String) var scene_to_load
+@export (String) var scene_to_load
 
 func _ready():
 	pass

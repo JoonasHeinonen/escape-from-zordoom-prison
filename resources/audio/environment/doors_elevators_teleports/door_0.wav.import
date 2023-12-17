@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/door_0.wav-c7e75b2a7b1226dfd87f63144feccd74.sample"
+type="AudioStreamWAV"
+uid="uid://bp0k3l6fwym5g"
+path="res://.godot/imported/door_0.wav-c7e75b2a7b1226dfd87f63144feccd74.sample"
 
 [deps]
 
 source_file="res://resources/audio/environment/doors_elevators_teleports/door_0.wav"
-dest_files=[ "res://.import/door_0.wav-c7e75b2a7b1226dfd87f63144feccd74.sample" ]
+dest_files=["res://.godot/imported/door_0.wav-c7e75b2a7b1226dfd87f63144feccd74.sample"]
 
 [params]
 

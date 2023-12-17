@@ -3,16 +3,16 @@
 [ext_resource path="res://resources/models/destructibles/crates/HealthCrateMaterial.material" type="Material" id=1]
 [ext_resource path="res://resources/models/destructibles/crates/HealthCrateGlass.material" type="Material" id=2]
 [ext_resource path="res://src/scripts/destructibles/health_crate.gd" type="Script" id=3]
-[ext_resource path="res://resources/images/effects/health_crate/health_crate_node.png" type="Texture" id=4]
-[ext_resource path="res://resources/images/effects/health_crate/health_crate_node_multiple.png" type="Texture" id=5]
+[ext_resource path="res://resources/images/effects/health_crate/health_crate_node.png" type="Texture2D" id=4]
+[ext_resource path="res://resources/images/effects/health_crate/health_crate_node_multiple.png" type="Texture2D" id=5]
 [ext_resource path="res://src/scripts/destructibles/Crate_hurt_box.gd" type="Script" id=6]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "health_crate_Plane"
 surfaces/0 = {
 "aabb": AABB( -0.5, -0.55, -0.5, 1, 1.1, 1.00001 ),
-"array_data": PoolByteArray( 0, 0, 0, 191, 205, 204, 12, 191, 0, 0, 0, 63, 129, 0, 0, 127, 0, 0, 0, 60, 0, 0, 0, 191, 205, 204, 12, 191, 0, 0, 0, 63, 0, 0, 127, 193, 0, 0, 0, 60, 0, 0, 0, 191, 205, 204, 12, 63, 0, 0, 0, 63, 129, 0, 0, 127, 0, 60, 0, 60, 0, 0, 0, 191, 205, 204, 12, 63, 0, 0, 0, 63, 0, 0, 127, 193, 0, 60, 0, 60, 0, 0, 0, 191, 205, 204, 12, 191, 0, 0, 0, 191, 129, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 191, 205, 204, 12, 191, 0, 0, 0, 191, 127, 127, 127, 63, 0, 0, 0, 60, 0, 0, 0, 63, 205, 204, 12, 191, 0, 0, 0, 63, 0, 0, 127, 193, 0, 0, 0, 60, 0, 0, 0, 63, 205, 204, 12, 191, 0, 0, 0, 63, 127, 0, 127, 63, 0, 0, 0, 60, 0, 0, 0, 63, 205, 204, 12, 63, 0, 0, 0, 63, 0, 0, 127, 193, 0, 60, 0, 60, 0, 0, 0, 63, 205, 204, 12, 63, 0, 0, 0, 63, 127, 0, 127, 63, 0, 60, 0, 60, 0, 0, 0, 63, 205, 204, 12, 191, 0, 0, 0, 191, 127, 127, 127, 63, 0, 0, 0, 60, 0, 0, 0, 63, 205, 204, 12, 191, 0, 0, 0, 191, 127, 0, 127, 63, 0, 0, 0, 60, 0, 0, 0, 63, 205, 204, 12, 63, 0, 0, 0, 191, 127, 127, 127, 63, 0, 60, 0, 60, 0, 0, 0, 63, 205, 204, 12, 63, 0, 0, 0, 191, 127, 0, 127, 63, 0, 60, 0, 60, 0, 0, 0, 191, 205, 204, 12, 63, 0, 0, 0, 191, 129, 0, 0, 127, 0, 60, 0, 0, 0, 0, 0, 191, 205, 204, 12, 63, 0, 0, 0, 191, 127, 127, 127, 63, 0, 60, 0, 60 ),
-"array_index_data": PoolByteArray( 0, 0, 14, 0, 2, 0, 0, 0, 4, 0, 14, 0, 3, 0, 6, 0, 1, 0, 3, 0, 8, 0, 6, 0, 9, 0, 11, 0, 7, 0, 9, 0, 13, 0, 11, 0, 12, 0, 5, 0, 10, 0, 12, 0, 15, 0, 5, 0 ),
+"array_data": PackedByteArray( 0, 0, 0, 191, 205, 204, 12, 191, 0, 0, 0, 63, 129, 0, 0, 127, 0, 0, 0, 60, 0, 0, 0, 191, 205, 204, 12, 191, 0, 0, 0, 63, 0, 0, 127, 193, 0, 0, 0, 60, 0, 0, 0, 191, 205, 204, 12, 63, 0, 0, 0, 63, 129, 0, 0, 127, 0, 60, 0, 60, 0, 0, 0, 191, 205, 204, 12, 63, 0, 0, 0, 63, 0, 0, 127, 193, 0, 60, 0, 60, 0, 0, 0, 191, 205, 204, 12, 191, 0, 0, 0, 191, 129, 0, 0, 127, 0, 0, 0, 0, 0, 0, 0, 191, 205, 204, 12, 191, 0, 0, 0, 191, 127, 127, 127, 63, 0, 0, 0, 60, 0, 0, 0, 63, 205, 204, 12, 191, 0, 0, 0, 63, 0, 0, 127, 193, 0, 0, 0, 60, 0, 0, 0, 63, 205, 204, 12, 191, 0, 0, 0, 63, 127, 0, 127, 63, 0, 0, 0, 60, 0, 0, 0, 63, 205, 204, 12, 63, 0, 0, 0, 63, 0, 0, 127, 193, 0, 60, 0, 60, 0, 0, 0, 63, 205, 204, 12, 63, 0, 0, 0, 63, 127, 0, 127, 63, 0, 60, 0, 60, 0, 0, 0, 63, 205, 204, 12, 191, 0, 0, 0, 191, 127, 127, 127, 63, 0, 0, 0, 60, 0, 0, 0, 63, 205, 204, 12, 191, 0, 0, 0, 191, 127, 0, 127, 63, 0, 0, 0, 60, 0, 0, 0, 63, 205, 204, 12, 63, 0, 0, 0, 191, 127, 127, 127, 63, 0, 60, 0, 60, 0, 0, 0, 63, 205, 204, 12, 63, 0, 0, 0, 191, 127, 0, 127, 63, 0, 60, 0, 60, 0, 0, 0, 191, 205, 204, 12, 63, 0, 0, 0, 191, 129, 0, 0, 127, 0, 60, 0, 0, 0, 0, 0, 191, 205, 204, 12, 63, 0, 0, 0, 191, 127, 127, 127, 63, 0, 60, 0, 60 ),
+"array_index_data": PackedByteArray( 0, 0, 14, 0, 2, 0, 0, 0, 4, 0, 14, 0, 3, 0, 6, 0, 1, 0, 3, 0, 8, 0, 6, 0, 9, 0, 11, 0, 7, 0, 9, 0, 13, 0, 11, 0, 12, 0, 5, 0, 10, 0, 12, 0, 15, 0, 5, 0 ),
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 24,
@@ -34,13 +34,13 @@ surfaces/1 = {
 "vertex_count": 8964
 }
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape3D" id=2]
 
-[sub_resource type="BoxShape" id=14]
+[sub_resource type="BoxShape3D" id=14]
 
-[sub_resource type="BoxShape" id=15]
+[sub_resource type="BoxShape3D" id=15]
 
-[sub_resource type="SpatialMaterial" id=7]
+[sub_resource type="StandardMaterial3D" id=7]
 flags_unshaded = true
 vertex_color_use_as_albedo = true
 params_blend_mode = 1
@@ -51,13 +51,13 @@ particles_anim_loop = false
 albedo_texture = ExtResource( 4 )
 
 [sub_resource type="Gradient" id=10]
-offsets = PoolRealArray( 0, 0.315315, 0.756757 )
-colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
+offsets = PackedFloat32Array( 0, 0.315315, 0.756757 )
+colors = PackedColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=16]
+[sub_resource type="GradientTexture2D" id=16]
 gradient = SubResource( 10 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticleProcessMaterial" id=6]
 spread = 180.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 0.6
@@ -71,7 +71,7 @@ color_ramp = SubResource( 16 )
 [sub_resource type="QuadMesh" id=3]
 size = Vector2( 0.1, 0.1 )
 
-[sub_resource type="SpatialMaterial" id=12]
+[sub_resource type="StandardMaterial3D" id=12]
 flags_unshaded = true
 vertex_color_use_as_albedo = true
 params_blend_mode = 1
@@ -81,7 +81,7 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 albedo_texture = ExtResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=13]
+[sub_resource type="ParticleProcessMaterial" id=13]
 emission_shape = 1
 emission_sphere_radius = 0.12
 gravity = Vector3( 0, 0, 0 )
@@ -91,36 +91,36 @@ angle_random = 1.0
 [sub_resource type="QuadMesh" id=11]
 size = Vector2( 0.4, 0.4 )
 
-[node name="HealthCrate" type="KinematicBody"]
+[node name="HealthCrate" type="CharacterBody3D"]
 script = ExtResource( 3 )
 scene_type = "health_crate"
 
-[node name="HealthCrate" type="MeshInstance" parent="."]
-transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
+[node name="HealthCrate" type="MeshInstance3D" parent="."]
+transform = Transform3D( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
 mesh = SubResource( 1 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( 0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0, 0, 0 )
 shape = SubResource( 2 )
 
-[node name="Area" type="Area" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="Area"]
-transform = Transform( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.2, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D( 0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.2, 0, 0, 0 )
 shape = SubResource( 14 )
 
-[node name="Crate_hurt_Box" type="Area" parent="."]
-transform = Transform( 0.2, 0, 0, 0, 0.4, 0, 0, 0, 0.2, 0, 0, 0 )
+[node name="Crate_hurt_Box" type="Area3D" parent="."]
+transform = Transform3D( 0.2, 0, 0, 0, 0.4, 0, 0, 0, 0.2, 0, 0, 0 )
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 6 )
 
-[node name="CollisionShape" type="CollisionShape" parent="Crate_hurt_Box"]
-transform = Transform( 3.38165, 0, 0, 0, 1, 0, 0, 0, 1.24147, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Crate_hurt_Box"]
+transform = Transform3D( 3.38165, 0, 0, 0, 1, 0, 0, 0, 1.24147, 0, 0, 0 )
 shape = SubResource( 15 )
 
 [node name="Particles" type="Particles" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0494768, 0 )
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0494768, 0 )
 material_override = SubResource( 7 )
 local_coords = false
 process_material = SubResource( 6 )
@@ -133,5 +133,5 @@ draw_pass_1 = SubResource( 11 )
 
 [connection signal="mouse_entered" from="." to="." method="_on_BoltCrate_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_BoltCrate_mouse_exited"]
-[connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_Area_area_entered"]
 [connection signal="body_entered" from="Crate_hurt_Box" to="Crate_hurt_Box" method="_on_Crate_hurt_Box_body_entered"]

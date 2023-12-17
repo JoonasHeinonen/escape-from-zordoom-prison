@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/theNegotiator.wav-86a6d5bef867597689334830151f154f.sample"
+type="AudioStreamWAV"
+uid="uid://ywr62nlwcfhh"
+path="res://.godot/imported/theNegotiator.wav-86a6d5bef867597689334830151f154f.sample"
 
 [deps]
 
 source_file="res://resources/audio/weapons/player/theNegotiator.wav"
-dest_files=[ "res://.import/theNegotiator.wav-86a6d5bef867597689334830151f154f.sample" ]
+dest_files=["res://.godot/imported/theNegotiator.wav-86a6d5bef867597689334830151f154f.sample"]
 
 [params]
 

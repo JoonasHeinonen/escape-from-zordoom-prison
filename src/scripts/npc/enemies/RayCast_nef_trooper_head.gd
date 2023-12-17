@@ -1,6 +1,6 @@
-extends RayCast
+extends RayCast3D
 
-onready var  laser_attack =  preload("res://scenes/Projectiles/nef_head_laser.tscn")
+@onready var  laser_attack =  preload("res://scenes/Projectiles/nef_head_laser.tscn")
 
 var target: Player = null
 
