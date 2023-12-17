@@ -4,9 +4,6 @@ onready var player = get_parent().get_parent()
 
 var weapon_slots = []
 
-var time_scale_target = 1
-var interpolation = 1
-
 func _ready():
 	weapon_slots = [
 		$MenuContainer/WeaponSlot1,
@@ -71,8 +68,8 @@ func _physics_process(delta):
 
 func determine_pause(inventory : bool, scale : int, process_input : bool):
 	Globle.player_inventory = inventory
-	time_scale_target       = scale
-	Engine.time_scale       = scale
+	time_scale_target = scale
+	Engine.time_scale = scale
 	get_parent().set_process_input(process_input)
 
 func determine_active_item(weapon : String):

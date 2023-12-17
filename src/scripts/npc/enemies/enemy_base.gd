@@ -12,6 +12,7 @@ export var enemy_health : int = 10
 export var enemy_speed : int = 10
 
 var is_alerted : bool = false
+var is_dead : bool = false
 var is_in_range : bool = false
 
 var element = null
@@ -80,6 +81,8 @@ func turn_enemy(player_x : float, enemy_x : float):
 		walk(-3)
 
 func expire_enemy():
+	is_dead = true
+	get_tree().call_group("arena_menu_group", "check_current_enemies")
 	queue_free()
 	# TODO add enemy death animation.
 

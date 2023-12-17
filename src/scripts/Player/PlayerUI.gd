@@ -33,5 +33,7 @@ func _process(delta):
 		$InGameUI.hide()
 	elif ($VendorContainer.visible):
 		$InGameUI.hide()
+	elif ($ArenaMenu.visible):
+		$InGameUI.hide()
 	else:
 		$InGameUI.show()

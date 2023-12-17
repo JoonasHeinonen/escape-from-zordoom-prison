@@ -1,13 +1,14 @@
 extends Area
 
-export(String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet") var character_name
+export(String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_man") var character_name
 
 var active : bool = false
+
 var npc_dialog_value : int = 0
 var mia_dialog_value : int = 0
 var girdeux_dialog_value : int = 0
-# clean up varable to have lower case
 var npc_angela_rivet_dialog_value : int = 0
+var shark_man_dialog_value : int = 0
 
 var player
 var dialog
@@ -24,12 +25,41 @@ func _process(delta):
 
 func _input(event):
 	if (Globle.player_character == "Angela" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active):
+		if get_node_or_null('DialogNode') == null:
+			if Input.is_action_just_pressed("ui_accept") and active: 
+				match(character_name):
+					"Mia":
+						match(mia_dialog_value):
+							(0):
+								commence_dialog('timeline-Mia-angela-1')
+								mia_dialog_value = process_dialog_value(mia_dialog_value, 0)
+					"Null NPC":
+						match(npc_dialog_value):
+							(0):
+								commence_dialog('timeline-1')
+							(2):
+								commence_dialog('timeline-2')
+							(4):
+								commence_dialog('timeline-3')
+								npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
+					"NPC_Angela_Rivet":
+						match(npc_angela_rivet_dialog_value):
+							(0):
+								commence_dialog('timeline_Rivet_npc_1')
+								npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
+					"Shark_man":
+						match(shark_man_dialog_value):
+							(0):
+								commence_dialog('timeline__Angela_shark_man')
+						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
+						Globle.arena_menu_open = true
+	if (Globle.player_character == "Rivet" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active == true):
 		match(character_name):
 			"Mia":
 				match(mia_dialog_value):
 					(0):
-						commence_dialog('timeline-Mia-angela-1')
-				mia_dialog_value = process_dialog_value(mia_dialog_value, 0)
+						commence_dialog('timeline-Mia-Rivet-1')
+						mia_dialog_value = process_dialog_value(mia_dialog_value, 0)
 			"Null NPC":
 				match(npc_dialog_value):
 					(0):
@@ -44,28 +74,44 @@ func _input(event):
 					(0):
 						commence_dialog('timeline_Rivet_npc_1')
 				npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
-
-	if (Globle.player_character == "Rivet" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active == true):
-		match(character_name):
-			"Mia":
-				match(mia_dialog_value):
+			"Shark_man":
+				match(shark_man_dialog_value):
 					(0):
-						commence_dialog('timeline-Mia-Rivet-1')
-						mia_dialog_value = process_dialog_value(mia_dialog_value, 0)
-			"Null NPC":
-				match(npc_dialog_value):
-					(0):
-						commence_dialog('timeLine-Rivet-1')
-					(2):
-						commence_dialog('timeLine-Rivet-2')
-					(4):
-						commence_dialog('timeLine-Rivet-3')
-				npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
-			"NPC_Angela_Rivet":
-				match(npc_angela_rivet_dialog_value):
-					(0):
-						commence_dialog('timeline_Angela_npc_1')
-				npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
+						commence_dialog('timeline_Rivet_shark_man')
+				shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
+				Globle.arena_menu_open = true
+	if (Globle.player_character == "Rivet"):
+		if get_node_or_null('DialogNode') == null:
+			if Input.is_action_just_pressed("ui_accept") and active == true: 
+				match(character_name):
+					"Mia":
+						match(mia_dialog_value):
+							(0):
+								commence_dialog('timeline-Mia-Rivet-1')
+								mia_dialog_value = process_dialog_value(mia_dialog_value, 0)
+					"Null NPC":
+						match(npc_dialog_value):
+							(0):
+								commence_dialog('timeLine-Rivet-1')
+							(2):
+								commence_dialog('timeLine-Rivet-2')
+							(4):
+								commence_dialog('timeLine-Rivet-3')
+						npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
+					"NPC_Angela_Rivet":
+						match(npc_angela_rivet_dialog_value):
+							(0):
+								#Re-due menue logic.
+								commence_dialog('timeline_Angela_npc_1')
+						npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
+					"Shark_man":
+						match(shark_man_dialog_value):
+							(0):
+								#Re-due menue logic.
+								print(Globle.player_character)
+								commence_dialog('timeline_Rivet_shark_man')
+						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
+						Globle.arena_menu_open = true
 
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active

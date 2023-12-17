@@ -25,14 +25,17 @@ onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
 	$PlayerUI/VendorContainer,
+# $PlayerUI/ArenaMenu
 ]
 
+export var check_point_enabled = true
 export var speed = 1
 
-var hand_instance : Sprite3D
-var gun_instance
-var state_machine
 var animation_player
+var gun_instance
+var hand_instance : Sprite3D
+var spawn_point
+var state_machine
 
 var velocity = Vector3(0 ,0 ,0)
 
@@ -66,7 +69,10 @@ var random = RandomNumberGenerator.new()
 ### INHERITED FUNCTIONS FROM GODOT.
 
 func _ready():
-	#global_transform.origin = Globle.spawn_point
+	if check_point_enabled == true:
+		global_transform.origin = Globle.spawn_point
+	if Globle.spawn_point != Vector3.ZERO:
+		global_transform.origin = Globle.spawn_point
 	$PlayerHit_box.set_translation(Vector3(0.649, 0, 0))
 	player_max_health = player_health
 
@@ -110,6 +116,11 @@ func _ready():
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
+	# Create a if statement that tries and finds the arena level in the PlayerSpawnArena.
+	# Need to get the postion of the playerSpawnArena.
+	var arena
+	if (get_parent().has_node("arena")):
+		arena = get_parent().get_node("arena")
 
 func _physics_process(delta):
 	# Set the audio nodes position to share the same position as the player.
@@ -291,6 +302,7 @@ func _process(delta):
 	if !boss_fight_active: 
 		$PlayerUI/UIBossData.visible = false
 
+	if Globle.arena_menu_open : $PlayerUI/ArenaMenu.opens_menu()
 	heal_player()
 	update_health_ui()
 	set_weapons_to_inventory(Globle.current_weapons)
