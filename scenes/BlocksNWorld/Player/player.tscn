@@ -698,7 +698,7 @@ double_sided = false
 texture = ExtResource( 36 )
 hframes = 10
 vframes = 4
-frame = 3
+frame = 1
 
 [node name="RivetArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
@@ -1527,7 +1527,7 @@ margin_top = 239.0
 margin_right = 280.0
 margin_bottom = 298.0
 theme = ExtResource( 4 )
-text = "fight_1"
+text = "Fight1"
 
 [node name="ExitButton" type="Button" parent="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons"]
 margin_top = 302.0

@@ -38,16 +38,6 @@ func close_menu():
 	arena_menu_process(false, true)
 	hide()
 
-func _on_ExitButton_pressed():
-	close_menu()
-
-func _on_ArenaButton_pressed():
-	nodes = get_tree().get_nodes_in_group("arenaSpawnPosition")
-	if nodes:
-		player.global_transform.origin = nodes[0].global_transform.origin
-		spawn_bad_guys_in_fight()
-	close_menu()
-
 func spawn_bad_guys_in_fight():
 	nodes = get_tree().get_nodes_in_group("badGuySpawn1")
 	bad_guy_instance = nef_head_preload.instance()
@@ -65,3 +55,13 @@ func player_wins_fight():
 	if nodes:
 		player.global_transform.origin = nodes[0].global_transform.origin
 	Globle.bolts += 100
+
+func _on_ExitButton_pressed():
+	close_menu()
+
+func _on_ArenaButton_pressed():
+	nodes = get_tree().get_nodes_in_group("arenaSpawnPosition")
+	if nodes:
+		player.global_transform.origin = nodes[0].global_transform.origin
+		spawn_bad_guys_in_fight()
+	close_menu()

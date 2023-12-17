@@ -25,7 +25,7 @@ onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
 	$PlayerUI/VendorContainer,
-	# $PlayerUI/ArenaMenu
+# $PlayerUI/ArenaMenu
 ]
 
 export var check_point_enabled = true

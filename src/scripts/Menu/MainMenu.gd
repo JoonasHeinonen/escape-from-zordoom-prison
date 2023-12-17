@@ -5,7 +5,7 @@ onready var load_game_button = $CenterContainer/Buttons/LoadGameButton
 onready var options_button = $CenterContainer/Buttons/OptionsButton
 
 onready var camera = get_parent().get_node("Camera")
-onready var character_Selection = get_parent().get_node("CharacterSelection")
+onready var character_selection = get_parent().get_node("CharacterSelection")
 onready var load_game = get_parent().get_node("LoadGame")
 onready var options = get_parent().get_node("Options")
 onready var main_menu = get_parent().get_node("MainMenu")
@@ -18,7 +18,7 @@ func _ready():
 
 	get_tree().paused = false
 	main_menu.visible = false
-	character_Selection.visible = false
+	character_selection.visible = false
 	options.visible = false
 	load_game.visible = false
 
