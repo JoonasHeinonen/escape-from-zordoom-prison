@@ -25,6 +25,7 @@ onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
 	$PlayerUI/VendorContainer,
+	# $PlayerUI/ArenaMenu
 ]
 
 export var check_point_enabled = true
@@ -301,7 +302,7 @@ func _process(delta):
 	if !boss_fight_active: 
 		$PlayerUI/UIBossData.visible = false
 
-	if Globle.arena_menu_open : $PlayerUI/Arena_menu.opens_menu()
+	if Globle.arena_menu_open : $PlayerUI/ArenaMenu.opens_menu()
 	heal_player()
 	update_health_ui()
 	set_weapons_to_inventory(Globle.current_weapons)

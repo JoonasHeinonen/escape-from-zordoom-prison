@@ -7,6 +7,9 @@ export (String, "Full alignment", "Horizontal alignment", "Vertical alignment") 
 var rect_size_x = self.rect_size.x
 var rect_size_y = self.rect_size.y
 
+var time_scale_target = 1
+var interpolation = 1
+
 func _process(delta):
 	match alignment:
 		"Full alignment":

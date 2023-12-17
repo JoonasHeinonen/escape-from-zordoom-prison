@@ -620,7 +620,6 @@ double_sided = false
 texture = ExtResource( 3 )
 hframes = 10
 vframes = 4
-frame = 1
 
 [node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
@@ -699,7 +698,7 @@ double_sided = false
 texture = ExtResource( 36 )
 hframes = 10
 vframes = 4
-frame = 1
+frame = 3
 
 [node name="RivetArm" type="MeshInstance" parent="."]
 transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
@@ -1105,23 +1104,24 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="ReturnToGameButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
-margin_top = 79.0
+margin_top = 65.0
 margin_right = 280.0
-margin_bottom = 138.0
+margin_bottom = 124.0
 mouse_filter = 2
 shortcut_in_tooltip = false
 text = "RETURN"
 
 [node name="ScreenCheckBox" type="CheckBox" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons"]
-margin_right = 252.0
-margin_bottom = 24.0
+margin_top = 128.0
+margin_right = 280.0
+margin_bottom = 152.0
 text = "Fullscreen"
 script = ExtResource( 49 )
 
 [node name="ReturnToMainMenuButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 7 )]
-margin_top = 142.0
+margin_top = 156.0
 margin_right = 280.0
-margin_bottom = 201.0
+margin_bottom = 215.0
 mouse_filter = 2
 scene_to_load = ""
 
@@ -1134,6 +1134,7 @@ stream = ExtResource( 24 )
 stream = ExtResource( 27 )
 
 [node name="VendorContainer" type="Control" parent="PlayerUI"]
+visible = false
 margin_left = 70.0
 margin_top = 70.0
 margin_right = 1210.0
@@ -1477,40 +1478,61 @@ custom_styles/bg = SubResource( 66 )
 step = 1.0
 percent_visible = false
 
-[node name="Arena_menu" type="Control" parent="PlayerUI" groups=["arena_menu_group"]]
-margin_left = 9.0
-margin_top = 117.0
-margin_right = 1275.0
-margin_bottom = 558.0
+[node name="ArenaMenu" type="Control" parent="PlayerUI" groups=["arena_menu_group"]]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -640.0
+margin_top = -360.0
+margin_right = 640.0
+margin_bottom = 360.0
 script = ExtResource( 49 )
+alignment = "Full alignment"
 
-[node name="Panel" type="Panel" parent="PlayerUI/Arena_menu"]
+[node name="Panel" type="Panel" parent="PlayerUI/ArenaMenu"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -9.0
-margin_top = -122.0
-margin_right = 14.0
-margin_bottom = 157.0
+margin_left = -693.0
+margin_top = -269.0
+margin_right = 650.0
+margin_bottom = 544.0
 custom_styles/panel = SubResource( 19 )
 
-[node name="buttons" type="VBoxContainer" parent="PlayerUI/Arena_menu"]
-anchor_left = 0.3
-anchor_right = 0.6
-margin_left = 81.2
-margin_top = 133.0
-margin_right = 81.4
-margin_bottom = 255.0
+[node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/ArenaMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -140.0
+margin_top = -295.0
+margin_right = 140.0
+margin_bottom = 305.0
+rect_min_size = Vector2( 280, 600 )
 
-[node name="fight1" type="Button" parent="PlayerUI/Arena_menu/buttons"]
-margin_right = 380.0
-margin_bottom = 59.0
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/ArenaMenu/VBoxContainer"]
+margin_right = 280.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 280, 600 )
+
+[node name="FightButtons" type="VBoxContainer" parent="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer"]
+margin_right = 280.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 280, 0 )
+alignment = 1
+
+[node name="Fight1" type="Button" parent="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons"]
+margin_top = 239.0
+margin_right = 280.0
+margin_bottom = 298.0
 theme = ExtResource( 4 )
 text = "fight_1"
 
-[node name="ExitButton" type="Button" parent="PlayerUI/Arena_menu/buttons"]
-margin_top = 63.0
-margin_right = 380.0
-margin_bottom = 122.0
+[node name="ExitButton" type="Button" parent="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons"]
+margin_top = 302.0
+margin_right = 280.0
+margin_bottom = 361.0
 theme = ExtResource( 4 )
 action_mode = 0
 text = "Exit"
@@ -1671,6 +1693,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138 )
 [connection signal="focus_exited" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" method="_on_ReturnToMainMenuButton_focus_exited"]
 [connection signal="pressed" from="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton" to="PlayerUI/PauseMenuContainer" method="_on_ReturnToMainMenuButton_pressed"]
 [connection signal="pressed" from="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton" to="PlayerUI/VendorContainer" method="_on_ReturnToGameButton_pressed"]
-[connection signal="pressed" from="PlayerUI/Arena_menu/buttons/fight1" to="PlayerUI/Arena_menu" method="_on_ArenaButton_pressed"]
-[connection signal="pressed" from="PlayerUI/Arena_menu/buttons/ExitButton" to="PlayerUI/Arena_menu" method="_on_ExitButton_pressed"]
+[connection signal="pressed" from="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons/Fight1" to="PlayerUI/ArenaMenu" method="_on_ArenaButton_pressed"]
+[connection signal="pressed" from="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons/ExitButton" to="PlayerUI/ArenaMenu" method="_on_ExitButton_pressed"]
 [connection signal="timeout" from="DamageCooloffTimer" to="." method="_on_DamageCooloffTimer_timeout"]

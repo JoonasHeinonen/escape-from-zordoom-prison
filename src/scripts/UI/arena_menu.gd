@@ -1,4 +1,4 @@
-extends Control
+extends MenuSceneControlBase
 
 const nef_head_preload = preload("res://scenes/NPC/Enemies/nef_head_enemy.tscn")
 
@@ -6,9 +6,9 @@ var has_open : bool
 var has_pause : bool
 var check_is_open : bool = false
 
-onready var arena_button = $buttons/fight1
+onready var arena_button = $VBoxContainer/HBoxContainer/FightButtons/Fight1
 onready var player = get_parent().get_parent()
-onready var exit_button = $buttons/ExitButton
+onready var exit_button = $VBoxContainer/HBoxContainer/FightButtons/ExitButton
 
 var bad_guy_instance = null
 var nodes = null
@@ -16,26 +16,26 @@ var nodes = null
 func _ready():
 	hide()
 
-func _input(event):
-	if (!Globle.arena_menu_open):
-		if (Globle.arena_menu_active == true):
-			arena_menu_process(true, false)
-			show()
+func _process(delta):
+	if (Globle.arena_menu_open && self.visible):
+		arena_button.grab_focus()
 
-func arena_menu_process(has_open, has_pause):
+func arena_menu_process(is_vendor_open, is_paused):
 	Globle.update_vendor()
-	get_tree().paused = has_open
-	get_parent().set_process_input(has_pause)
+	get_tree().paused = is_vendor_open
+	get_parent().set_process_input(is_paused)
 
 func opens_menu():
 	if not check_is_open:
 		check_is_open = true
 		arena_button.grab_focus()
+		arena_menu_process(true, false)
 		show()
 		
 func close_menu():
 	check_is_open  = false
 	Globle.arena_menu_open = false
+	arena_menu_process(false, true)
 	hide()
 
 func _on_ExitButton_pressed():
