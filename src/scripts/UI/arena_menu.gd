@@ -2,16 +2,16 @@ extends Control
 
 const nef_head_preload = preload("res://scenes/NPC/Enemies/nef_head_enemy.tscn")
 
-var has_open : bool
-var has_pause : bool
-var check_is_open : bool = false
-
 onready var arena_button = $buttons/fight1
 onready var player = get_parent().get_parent()
 onready var exit_button = $buttons/ExitButton
 
 var bad_guy_instance = null
 var nodes = null
+
+var has_open : bool
+var has_pause : bool
+var check_is_open : bool = false
 
 func _ready():
 	hide()
