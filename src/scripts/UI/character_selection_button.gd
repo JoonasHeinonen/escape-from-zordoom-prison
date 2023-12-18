@@ -1,6 +1,6 @@
 extends "res://src/scripts/Menu/MenuButton.gd"
 
-@export (String, "Angela", "Rivet") var characters
+@export_enum("Angela", "Rivet") var characters : String
 var res_string: String = ""
 
 func _ready():

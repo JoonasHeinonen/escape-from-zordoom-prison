@@ -40,21 +40,8 @@ func _process(delta):
 	elif (!Globle.game_fullscreen):
 		$CenterContainer.size = Vector2(1280, 720)
 
-func list_levels(path):
-	var files = []
-	var dir = DirAccess.new()
-	dir.open(path)
-	dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
-
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif file.ends_with(".tscn"):
-			files.append(file)
-	dir.list_dir_end()
-
-	return files
+func list_levels(path): 
+	return DirAccess.get_files_at(path)
 
 func _on_Button_pressed(scene_to_load):
 	scene = scene_to_load

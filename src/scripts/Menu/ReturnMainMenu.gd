@@ -6,7 +6,7 @@ var index_btn
 var sec_index_btn
 var btn_to_return_to
 
-@export_enum( "StartGame", "LoadGame", "Options") var menus
+@export_enum( "StartGame", "LoadGame", "Options") var menus : String
 
 func _on_BackButton_pressed():
 	$Audio/Click.play()

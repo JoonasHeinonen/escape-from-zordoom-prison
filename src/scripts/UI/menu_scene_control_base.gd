@@ -2,7 +2,7 @@ extends Control
 
 class_name MenuSceneControlBase
 
-@export (String, "Full alignment", "Horizontal alignment", "Vertical alignment") var alignment
+@export_enum("Full alignment", "Horizontal alignment", "Vertical alignment") var alignment : String 
 
 var rect_size_x = self.size.x
 var rect_size_y = self.size.y

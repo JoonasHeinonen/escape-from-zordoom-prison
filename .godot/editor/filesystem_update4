@@ -13,3 +13,6 @@ res://src/theme/zordoom_ingameui_theme.tres
 res://scenes/Menu/MainMenu.tscn
 res://scenes/Menu/MenuScene.tscn
 res://src/scripts/Menu/ReturnMainMenu.gd
+res://src/scripts/UI/menu_scene_control_base.gd
+res://src/scripts/UI/character_selection_button.gd
+res://src/scripts/Menu/addon/LevelListing.gd
