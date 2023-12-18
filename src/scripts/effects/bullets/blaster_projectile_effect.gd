@@ -1,4 +1,4 @@
-extends KinematicBody
+extends CharacterBody3D
 
 var speed = -1
 var velocity = Vector3(0,0,0)

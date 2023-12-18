@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/concrete_0.wav-074ea0d4d3e6f0a48ba326ca0481f340.sample"
+type="AudioStreamWAV"
+uid="uid://gthub5l6iohn"
+path="res://.godot/imported/concrete_0.wav-074ea0d4d3e6f0a48ba326ca0481f340.sample"
 
 [deps]
 
 source_file="res://resources/audio/environment/destructibles/concrete_0.wav"
-dest_files=[ "res://.import/concrete_0.wav-074ea0d4d3e6f0a48ba326ca0481f340.sample" ]
+dest_files=["res://.godot/imported/concrete_0.wav-074ea0d4d3e6f0a48ba326ca0481f340.sample"]
 
 [params]
 

@@ -1,6 +1,6 @@
 extends Button
 
-export (String) var wpn_for_sale
+@export (String) var wpn_for_sale
 
 func set_label(replace_text = $VendorWeaponButton.text):
 	self.text = replace_text

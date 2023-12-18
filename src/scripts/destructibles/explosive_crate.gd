@@ -1,7 +1,7 @@
 extends Destructible
 
-onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
-onready var countdown = $Timer.time_left
+@onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
+@onready var countdown = $Timer.time_left
 
 var state_machine
 
@@ -20,8 +20,8 @@ func no_damage(amount : int) -> void:
 	is_active = false
 
 func generate_explosion():
-	var expl = explosion.instance()
-	expl.translation.x = 3
+	var expl = explosion.instantiate()
+	expl.position.x = 3
 	get_parent().add_child(expl)
 	expl.global_transform = $ExplosiveCrate.global_transform
 	queue_free()

@@ -1,18 +1,18 @@
+@tool
 # Alternative to [TranslationServer] that works inside the editor
 # This is a modified version of AnidemDex's TranslationService 
 # https://github.com/AnidemDex/Godot-TranslationService
 
-tool
 class_name DTS
 
 
 # Translates a message using translation catalogs configured in the Editor Settings.
 static func translate(message:String)->String:
-	var translation
+	var position
 	
-	translation = _get_translation(message)
+	position = _get_translation(message)
 	
-	return translation
+	return position
 
 
 # Each value is an Array of [PHashTranslation].
@@ -21,7 +21,7 @@ static func get_translations() -> Dictionary:
 	var translations = {}
 	
 	for resource in translations_resources:
-		var t:PHashTranslation = load('res://addons/dialogic/Localization/dialogic.' + resource + '.translation')
+		var t:OptimizedTranslation = load('res://addons/dialogic/Localization/dialogic.' + resource + '.position')
 		if translations.has(t.locale):
 			translations[t.locale].append(t)
 		else:
@@ -40,10 +40,10 @@ static func _get_translation(message)->String:
 	
 	var cases = translations.get(
 		locale, 
-		translations.get(default_fallback, [PHashTranslation.new()])
+		translations.get(default_fallback, [OptimizedTranslation.new()])
 		)
 	for case in cases:
-		returned_translation = (case as PHashTranslation).get_message(message)
+		returned_translation = (case as OptimizedTranslation).get_message(message)
 		if returned_translation:
 			break
 		else:

@@ -1,8 +1,8 @@
-extends KinematicBody
+extends CharacterBody3D
 
-onready var projectile = preload("res://scenes/Projectiles/MiniturretProjectile.tscn")
+@onready var projectile = preload("res://scenes/Projectiles/MiniturretProjectile.tscn")
 
-onready var miniturret_gun = $MiniturretGun
+@onready var miniturret_gun = $MiniturretGun
 
 var body_target = null
 var turn_direction : String
@@ -28,13 +28,13 @@ func _ready():
 	random.randomize()
 	turn_direction = directions[(random.randi_range(0, directions.size() - 1))]
 
-	$ExpireTimer.connect("timeout", self, "_on_ExpireTimer_timeout")
+	$ExpireTimer.connect("timeout", Callable(self, "_on_ExpireTimer_timeout"))
 	$ExpireTimer.start()
 
-	$TurnTimer.connect("timeout", self, "_on_TurnTimer_timeout")
+	$TurnTimer.connect("timeout", Callable(self, "_on_TurnTimer_timeout"))
 	$TurnTimer.start()
 
-	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
+	$ShootTimer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
 	$ShootTimer.start()
 
 	$Audio/Deploy.play()
@@ -51,7 +51,9 @@ func _process(delta):
 func _physics_process(delta):
 	state_machine.travel("Start")
 	velocity.y = -4
-	move_and_slide(velocity, Vector3.UP)
+	set_velocity(velocity)
+	set_up_direction(Vector3.UP)
+	move_and_slide()
 
 	if (is_locked_on_target):
 		# https://godotengine.org/qa/74812/rotate-kinematiccharacter3d-towards-another-object-only
@@ -70,7 +72,7 @@ func _on_TurnTimer_timeout():
 
 func _on_ShootTimer_timeout():
 	if (is_locked_on_target):
-		var bullet = projectile.instance()
+		var bullet = projectile.instantiate()
 		get_parent().add_child(bullet)
 		bullet.global_transform = $MiniturretGun/WeaponMuzzle.global_transform
 		$Audio/MiniturretGun.play()

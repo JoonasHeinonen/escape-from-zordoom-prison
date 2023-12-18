@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/demolition_crate_triggered.wav-39014eb50f3c2f16fee9d6fcf926b63f.sample"
+type="AudioStreamWAV"
+uid="uid://dma6fvhbfj2tl"
+path="res://.godot/imported/demolition_crate_triggered.wav-39014eb50f3c2f16fee9d6fcf926b63f.sample"
 
 [deps]
 
 source_file="res://resources/audio/environment/destructibles/demolition_crate_triggered.wav"
-dest_files=[ "res://.import/demolition_crate_triggered.wav-39014eb50f3c2f16fee9d6fcf926b63f.sample" ]
+dest_files=["res://.godot/imported/demolition_crate_triggered.wav-39014eb50f3c2f16fee9d6fcf926b63f.sample"]
 
 [params]
 

@@ -1,8 +1,8 @@
 extends Button
 
-export var scene_to_load : String
+@export var scene_to_load : String
 
-onready var root_scene = get_parent().get_parent().get_parent() # Mainly, main menu.
+@onready var root_scene = get_parent().get_parent().get_parent() # Mainly, main menu.
 
 var character_selection
 var load_game

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/death_2.wav-d3a484557a9350a8f2d85cce363ac984.sample"
+type="AudioStreamWAV"
+uid="uid://16vs221nf0wa"
+path="res://.godot/imported/death_2.wav-d3a484557a9350a8f2d85cce363ac984.sample"
 
 [deps]
 
 source_file="res://resources/audio/npc/enemy/death_2.wav"
-dest_files=[ "res://.import/death_2.wav-d3a484557a9350a8f2d85cce363ac984.sample" ]
+dest_files=["res://.godot/imported/death_2.wav-d3a484557a9350a8f2d85cce363ac984.sample"]
 
 [params]
 

@@ -1,7 +1,7 @@
 extends EnemyBase
 
-onready var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
-onready var ray = $EnemySprite/player_finding
+@onready var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
+@onready var ray = $EnemySprite/player_finding
 
 var value : int  = 0
 var attack_delay : int = 2
@@ -19,7 +19,7 @@ func _ready():
 	gravity = 0
 	speed = -90
 	timer = Timer.new()
-	timer.connect("timeout", self, "nef_head_shoot_time")
+	timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
 	timer.wait_time = 1
 	timer.one_shot = true
 	add_child(timer)
@@ -29,7 +29,7 @@ func _ready():
 	self.set_meta("name", "enemy")
 
 func _physics_process(_delta):
-	for i in get_slide_count():
+	for i in get_slide_collision_count():
 		if  is_on_wall() :
 			$EnemyAnimationPlayer.play("Enemy_Turn_Right")
 			speed *= -1
@@ -47,9 +47,9 @@ func nef_head_shoot_time():
 
 func _on_player_finding_player_seen():
 	if can_shoot:
-		attack = laser_attack_scene.instance()
+		attack = laser_attack_scene.instantiate()
 		get_parent().add_child(attack)
-		attack.global_translation = $laser_muzzle.global_translation
+		attack.global_position = $laser_muzzle.global_position
 		attack.global_rotation = $laser_muzzle.global_rotation
 		can_shoot = false
 		timer.start()

@@ -88,12 +88,12 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 19.995, -2.001, -1.4)
 
 [node name="invisable_enemy_wall" type="Node" parent="."]
 
-[node name="StaticBody" type="StaticBody3D" parent="invisable_enemy_wall"]
+[node name="StaticBody3D" type="StaticBody3D" parent="invisable_enemy_wall"]
 transform = Transform3D(0.568555, 0, 0, 0, 3.94289, 0, 0, 0, 1, 19.088, -13.835, 0)
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape" type="CollisionShape3D" parent="invisable_enemy_wall/StaticBody"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="invisable_enemy_wall/StaticBody3D"]
 shape = SubResource("21")
 
 [node name="npc" type="Node" parent="."]
@@ -218,33 +218,33 @@ script = ExtResource("20")
 transform = Transform3D(1.22962, 0, 0, 0, 1.22962, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("19")
 
-[node name="Area" type="Area3D" parent="checkpoint"]
+[node name="Area3D" type="Area3D" parent="checkpoint"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.95778, 0, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("19")
 
-[node name="CollisionShape" type="CollisionShape3D" parent="checkpoint/Area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="checkpoint/Area3D"]
 transform = Transform3D(3.19211, 0, 0, 0, 2.23192, 0, 0, 0, 1, 22, -13.8599, 0)
 shape = SubResource("17")
 
-[node name="checkpoint" type="CanvasLayer" parent="checkpoint/Area"]
+[node name="checkpoint" type="CanvasLayer" parent="checkpoint/Area3D"]
 layer = 3
 
-[node name="Ui_notification" type="CenterContainer" parent="checkpoint/Area/checkpoint"]
+[node name="Ui_notification" type="CenterContainer" parent="checkpoint/Area3D/checkpoint"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="TextureRect" type="TextureRect" parent="checkpoint/Area/checkpoint/Ui_notification"]
+[node name="TextureRect" type="TextureRect" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 layout_mode = 2
 
-[node name="checkbox" type="RichTextLabel" parent="checkpoint/Area/checkpoint/Ui_notification"]
+[node name="checkbox" type="RichTextLabel" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 layout_mode = 2
 bbcode_enabled = true
 text = "Checkpoint!"
 
-[node name="Timer" type="Timer" parent="checkpoint/Area/checkpoint/Ui_notification"]
+[node name="Timer" type="Timer" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource("8")]
 transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 15.8144, 0.600566, 0)

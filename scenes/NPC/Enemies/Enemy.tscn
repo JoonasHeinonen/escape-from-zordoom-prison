@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://resources/images/characters/npc/enemies/placeholder_enemy/placeholder_enemy.png" type="Texture" id=1]
+[ext_resource path="res://resources/images/characters/npc/enemies/placeholder_enemy/placeholder_enemy.png" type="Texture2D" id=1]
 [ext_resource path="res://src/scripts/npc/enemies/enemy_base.gd" type="Script" id=2]
 
-[sub_resource type="BoxShape" id=2]
+[sub_resource type="BoxShape3D" id=2]
 
 [sub_resource type="Animation" id=6]
 resource_name = "Enemy_Damage"
@@ -15,8 +15,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -31,8 +31,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
@@ -58,21 +58,21 @@ graph_offset = Vector2( -78, -48 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=4]
 
-[sub_resource type="BoxShape" id=11]
+[sub_resource type="BoxShape3D" id=11]
 
-[sub_resource type="BoxShape" id=12]
+[sub_resource type="BoxShape3D" id=12]
 
-[node name="Enemy" type="KinematicBody"]
+[node name="Enemy" type="CharacterBody3D"]
 axis_lock_motion_z = true
 move_lock_z = true
 script = ExtResource( 2 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0 )
 shape = SubResource( 2 )
 
 [node name="EnemySprite" type="Sprite3D" parent="."]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
+transform = Transform3D( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
 billboard = 1
 texture = ExtResource( 1 )
 
@@ -86,16 +86,16 @@ anim_player = NodePath("../EnemyAnimationPlayer")
 active = true
 parameters/playback = SubResource( 4 )
 
-[node name="AreaEnemy" type="Area" parent="."]
+[node name="AreaEnemy" type="Area3D" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="AreaEnemy"]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.1, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaEnemy"]
+transform = Transform3D( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.1, 0, 0, 0 )
 shape = SubResource( 11 )
 
-[node name="DetectDistance" type="Area" parent="."]
+[node name="DetectDistance" type="Area3D" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="DetectDistance"]
-transform = Transform( 5, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectDistance"]
+transform = Transform3D( 5, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0 )
 shape = SubResource( 12 )
 
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]

@@ -1,4 +1,4 @@
-extends Area
+extends Area3D
 
 func _on_New_SpawnPoint_body_entered(body):
 	if body.name == "player":

@@ -1,6 +1,6 @@
-extends StaticBody
+extends StaticBody3D
 
-export(String, "First", "Second") var teleport_index
+@export var teleport_index # (String, "First", "Second")
 
 var player_in_teleport_radius : bool = false
 
@@ -13,7 +13,7 @@ func _ready():
 	define_target_teleport()
 	for c in get_parent().get_children():
 		if c.name == target_teleport:
-			target_teleport_location = Vector3(c.translation.x, c.translation.y + 0.3, 0)
+			target_teleport_location = Vector3(c.position.x, c.position.y + 0.3, 0)
 
 func _process(delta):
 	if (player_in_teleport_radius and Input.is_action_just_pressed("ui_accept")):
@@ -33,7 +33,7 @@ func define_target_teleport():
 
 func teleport_player():
 	if (!player.boss_fight_active):
-		player.translation = target_teleport_location
+		player.position = target_teleport_location
 
 func _on_TeleportationArea_body_entered(body):
 	if body.name == "player":

@@ -1,6 +1,6 @@
 extends Particles
 
-var pm : ParticlesMaterial = process_material
+var pm : ParticleProcessMaterial = process_material
 
 func _process(delta):
 	pm.color.a -= delta * 1.0

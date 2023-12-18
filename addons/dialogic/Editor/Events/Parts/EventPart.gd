@@ -1,4 +1,4 @@
-tool
+@tool
 extends Control
 
 # has to be set by the parent before adding it to the tree

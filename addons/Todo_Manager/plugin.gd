@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorPlugin
 
 const DockScene := preload("res://addons/Todo_Manager/UI/Dock.tscn")
@@ -23,11 +23,11 @@ var combined_pattern : String
 var refresh_lock := false # makes sure _on_filesystem_changed only triggers once
 
 func _enter_tree() -> void:
-	_dockUI = DockScene.instance() as Control
+	_dockUI = DockScene.instantiate() as Control
 	add_control_to_bottom_panel(_dockUI, "TODO")
-	get_editor_interface().get_resource_filesystem().connect("filesystem_changed", self, "_on_filesystem_changed")
-	get_editor_interface().get_file_system_dock().connect("file_removed", self, "queue_remove")
-	get_editor_interface().get_script_editor().connect("editor_script_changed", self, "_on_active_script_changed")
+	get_editor_interface().get_resource_filesystem().connect("filesystem_changed", Callable(self, "_on_filesystem_changed"))
+	get_editor_interface().get_file_system_dock().connect("file_removed", Callable(self, "queue_remove"))
+	get_editor_interface().get_script_editor().connect("editor_script_changed", Callable(self, "_on_active_script_changed"))
 	_dockUI.plugin = self
 	combined_pattern = combine_patterns(_dockUI.patterns)
 	find_tokens_from_path(find_scripts())
@@ -68,7 +68,7 @@ func find_tokens(text: String, script_path: String) -> void:
 	#	if regex.compile("#\\s*\\bTODO\\b.*|#\\s*\\bHACK\\b.*") == OK:
 		if regex.compile(combined_pattern) == OK:
 			var result : Array = regex.search_all(text)
-			if result.empty():
+			if result.is_empty():
 				for i in _dockUI.todo_items.size():
 					if _dockUI.todo_items[i].script_path == script_path:
 						_dockUI.todo_items.remove(i)
@@ -163,7 +163,7 @@ func _on_filesystem_changed() -> void:
 func find_scripts() -> Array:
 	var scripts : Array
 	var directory_queue : Array
-	var dir : Directory = Directory.new()
+	var dir : DirAccess = DirAccess.new()
 	### FIRST PHASE ###
 	if dir.open("res://") == OK:
 		get_dir_contents(dir, scripts, directory_queue)
@@ -171,7 +171,7 @@ func find_scripts() -> Array:
 		printerr("TODO_Manager: There was an error during find_scripts() ### First Phase ###")
 	
 	### SECOND PHASE ###
-	while not directory_queue.empty():
+	while not directory_queue.is_empty():
 		if dir.change_dir(directory_queue[0]) == OK:
 			get_dir_contents(dir, scripts, directory_queue)
 		else:
@@ -196,8 +196,8 @@ func get_cached_todos(script_path: String) -> Array:
 	return []
 
 
-func get_dir_contents(dir: Directory, scripts: Array, directory_queue: Array) -> void:
-	dir.list_dir_begin(true, true)
+func get_dir_contents(dir: DirAccess, scripts: Array, directory_queue: Array) -> void:
+	dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 	var file_name : String = dir.get_next()
 	
 	while file_name != "":

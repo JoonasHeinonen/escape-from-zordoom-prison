@@ -1,10 +1,10 @@
 [gd_scene load_steps=17 format=2]
 
-[ext_resource path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" type="Texture" id=1]
+[ext_resource path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" type="Texture2D" id=1]
 [ext_resource path="res://src/scripts/npc/enemies/nef_head_enemy_ai.gd" type="Script" id=2]
 [ext_resource path="res://src/scripts/npc/enemies/RayCast_nef_trooper_head.gd" type="Script" id=3]
 
-[sub_resource type="CapsuleShape" id=30]
+[sub_resource type="CapsuleShape3D" id=30]
 radius = 0.123485
 height = 0.100412
 
@@ -18,8 +18,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.2 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
@@ -35,8 +35,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 0, 1, 2, 3 ]
 }
@@ -50,20 +50,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 12, 13, 14, 14 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../laser_muzzle:translation")
+tracks/1/path = NodePath("../laser_muzzle:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.6 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 1.39123, -0.0128105, 5.07366e-06 ), Vector3( 1.07494, -0.0126066, -2.69214e-07 ) ]
 }
@@ -77,20 +77,20 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 3, 4, 9, 10, 10 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../laser_muzzle:translation")
+tracks/1/path = NodePath("../laser_muzzle:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array( 0, 0.6 ),
+"transitions": PackedFloat32Array( 1, 1 ),
 "update": 0,
 "values": [ Vector3( 1.07494, -0.0126066, -2.69214e-07 ), Vector3( 1.39123, -0.0128105, 5.07366e-06 ) ]
 }
@@ -104,32 +104,32 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath(".:translation")
+tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 1.273, 0, 0 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../CollisionShape:translation")
+tracks/2/path = NodePath("../CollisionShape3D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 1.23528, -0.00802118, 0 ) ]
 }
@@ -140,32 +140,32 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 0, 0, -89.21 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("player_finding:translation")
+tracks/4/path = NodePath("player_finding:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( -0.0538642, 0, 0 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("../laser_muzzle:translation")
+tracks/5/path = NodePath("../laser_muzzle:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Vector3( 1.07494, -0.0126066, -2.69214e-07 ) ]
 }
@@ -176,8 +176,8 @@ tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
@@ -202,22 +202,22 @@ start_node = "Enemy_Idle"
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=25]
 
-[sub_resource type="BoxShape" id=33]
+[sub_resource type="BoxShape3D" id=33]
 extents = Vector3( 0.228851, 0.209648, 1 )
 
-[node name="nef_head" type="KinematicBody" groups=["nef_head"]]
+[node name="nef_head" type="CharacterBody3D" groups=["nef_head"]]
 axis_lock_motion_z = true
 move_lock_z = true
 script = ExtResource( 2 )
 
-[node name="target_radical" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113366, 0, 0 )
+[node name="target_radical" type="Marker3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113366, 0, 0 )
 
-[node name="laser_muzzle" type="Position3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07494, -0.0126066, -2.69214e-07 )
+[node name="laser_muzzle" type="Marker3D" parent="."]
+transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07494, -0.0126066, -2.69214e-07 )
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 0.2, 1.23528, -0.00802118, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D( 7, 0, 0, 0, 7, 0, 0, 0, 0.2, 1.23528, -0.00802118, 0 )
 shape = SubResource( 30 )
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
@@ -235,22 +235,22 @@ active = true
 parameters/playback = SubResource( 25 )
 
 [node name="EnemySprite" type="Sprite3D" parent="."]
-transform = Transform( 7, 7.5089e-11, -3.81988e-11, -7.5089e-11, 7, -7.63973e-11, 3.81988e-11, 7.63973e-11, 7, 1.273, 0, 0 )
+transform = Transform3D( 7, 7.5089e-11, -3.81988e-11, -7.5089e-11, 7, -7.63973e-11, 3.81988e-11, 7.63973e-11, 7, 1.273, 0, 0 )
 texture = ExtResource( 1 )
 hframes = 9
 vframes = 4
 
-[node name="player_finding" type="RayCast" parent="EnemySprite"]
-transform = Transform( 0.0137877, 0.999904, 0, -0.999904, 0.0137877, 0, 0, 0, 1, -0.0538642, 0, 0 )
+[node name="player_finding" type="RayCast3D" parent="EnemySprite"]
+transform = Transform3D( 0.0137877, 0.999904, 0, -0.999904, 0.0137877, 0, 0, 0, 1, -0.0538642, 0, 0 )
 enabled = true
 collision_mask = 3
 script = ExtResource( 3 )
 
-[node name="AreaEnemy" type="Area" parent="."]
-transform = Transform( 1, 1.0727e-11, -5.45697e-12, -1.0727e-11, 1, -1.09139e-11, 5.45697e-12, 1.09139e-11, 1, 0, 0, 0 )
+[node name="AreaEnemy" type="Area3D" parent="."]
+transform = Transform3D( 1, 1.0727e-11, -5.45697e-12, -1.0727e-11, 1, -1.09139e-11, 5.45697e-12, 1.09139e-11, 1, 0, 0, 0 )
 
-[node name="CollisionShape" type="CollisionShape" parent="AreaEnemy"]
-transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 0.1, 0, 0, 0 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaEnemy"]
+transform = Transform3D( 7, 0, 0, 0, 7, 0, 0, 0, 0.1, 0, 0, 0 )
 shape = SubResource( 33 )
 
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]

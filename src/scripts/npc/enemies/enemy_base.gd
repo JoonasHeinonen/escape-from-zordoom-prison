@@ -1,15 +1,15 @@
-extends KinematicBody
+extends CharacterBody3D
 
 class_name EnemyBase
 
-onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
+@onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
 enum elements {GROUND, WATER, AIR, STATIC}
 
-export(String, "Right", "Left") var direction
-export var is_armored : bool = false
-export var enemy_health : int = 10
-export var enemy_speed : int = 10
+@export var direction # (String, "Right", "Left")
+@export var is_armored : bool = false
+@export var enemy_health : int = 10
+@export var enemy_speed : int = 10
 
 var is_alerted : bool = false
 var is_dead : bool = false
@@ -43,24 +43,29 @@ func _physics_process(delta):
 	match (element):
 		elements.GROUND:
 			if not is_on_floor() : velocity.y = -4
-			move_and_slide(velocity, Vector3.UP)
+			set_velocity(velocity)
+			set_up_direction(Vector3.UP)
+			move_and_slide()
 		elements.STATIC:
 			if not is_on_floor() : velocity.y = -4
-			move_and_slide(velocity, Vector3.UP)
+			set_velocity(velocity)
+			set_up_direction(Vector3.UP)
+			move_and_slide()
 		elements.AIR:
 			velocity.y = gravity
 			velocity.x = speed * 1
-			move_and_slide(velocity * delta)
+			set_velocity(velocity * delta)
+			move_and_slide()
 
 	if (self.has_node("Audio")):
 		for audio_child in $Audio.get_children():
-			audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+			audio_child.position = Vector3(self.position.x, self.position.y, 0)
 
 func damage_enemy(health : int):
 	if (element == elements.STATIC):
-		if (player.translation.x > self.translation.x):
+		if (player.position.x > self.position.x):
 			decide_direction("Left")
-		elif (player.translation.x < self.translation.x):
+		elif (player.position.x < self.position.x):
 			decide_direction("Right")
 	enemy_health -= health
 
@@ -87,7 +92,7 @@ func expire_enemy():
 	# TODO add enemy death animation.
 
 func add_active_radical():
-	var g_t_r = radical.instance()
+	var g_t_r = radical.instantiate()
 	if (!self.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
 		self.add_child(g_t_r)
 		g_t_r.global_transform = $EnemySprite.global_transform

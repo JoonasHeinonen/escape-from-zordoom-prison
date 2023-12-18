@@ -28,9 +28,9 @@ func init(expression: String = '') -> void:
 func _ready():
 	if debug:
 		print('Character data loaded: ', character_data)
-		print(rect_position, $TextureRect.rect_size)
+		print(position, $TextureRect.size)
 	
-	$AnimationTween.connect('finished_animation', self, 'emit_signal', ['animation_finished'])
+	$AnimationTween.connect('finished_animation', Callable(self, 'emit_signal').bind('animation_finished'))
 
 
 func set_portrait(expression: String) -> void:
@@ -124,7 +124,7 @@ func move_to_position(position_offset):
 		'center_left': Vector2(-200, 0)}
 	
 	direction = position_offset
-	rect_position = positions[position_offset]
+	position = positions[position_offset]
 	
 	# Setting the scale of the portrait
 	var custom_scale = Vector2(1, 1)
@@ -134,15 +134,15 @@ func move_to_position(position_offset):
 				float(character_data['data']['scale']) / 100,
 				float(character_data['data']['scale']) / 100
 			)
-			rect_scale = custom_scale
+			scale = custom_scale
 		if character_data['data'].has('offset_x'):
-			rect_position += Vector2(
+			position += Vector2(
 				character_data['data']['offset_x'],
 				character_data['data']['offset_y']
 			)
 	
 	if $TextureRect.get('texture'):
-		rect_position -= Vector2(
+		position -= Vector2(
 			$TextureRect.texture.get_width() * 0.5,
 			$TextureRect.texture.get_height()
 		) * custom_scale
@@ -166,8 +166,8 @@ func animate(animation_name = '[No Animation]', time = 1, loop = 1, delete = fal
 		$AnimationTween.play($TextureRect, animation_name, time)
 	
 	if delete:
-		if !$AnimationTween.is_connected("tween_all_completed", self, "queue_free"):
-			$AnimationTween.connect("tween_all_completed", self, "queue_free")
+		if !$AnimationTween.is_connected("tween_all_completed", Callable(self, "queue_free")):
+			$AnimationTween.connect("tween_all_completed", Callable(self, "queue_free"))
 
 
 func focus():

@@ -9,21 +9,21 @@
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 
 [node name="CharacterSelectionButton" type="Button"]
-margin_left = 540.0
-margin_right = 740.0
-margin_bottom = 200.0
-rect_min_size = Vector2( 200, 250 )
+offset_left = 540.0
+offset_right = 740.0
+offset_bottom = 200.0
+custom_minimum_size = Vector2( 200, 250 )
 mouse_filter = 2
 theme = ExtResource( 1 )
 script = ExtResource( 4 )
 
 [node name="CharacterImage" type="TextureRect" parent="."]
-margin_left = 20.0
-margin_top = 20.0
-margin_right = 823.0
-margin_bottom = 827.0
-rect_min_size = Vector2( 160, 260 )
-rect_scale = Vector2( 0.2, 0.2 )
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 823.0
+offset_bottom = 827.0
+custom_minimum_size = Vector2( 160, 260 )
+scale = Vector2( 0.2, 0.2 )
 stretch_mode = 1
 
 [node name="Audio" type="Node" parent="."]
@@ -35,15 +35,15 @@ stream = ExtResource( 2 )
 stream = ExtResource( 3 )
 
 [node name="CharacterPanel" type="Panel" parent="."]
-margin_left = 20.0
-margin_top = 189.0
-margin_right = 180.0
-margin_bottom = 240.0
-custom_styles/panel = SubResource( 1 )
+offset_left = 20.0
+offset_top = 189.0
+offset_right = 180.0
+offset_bottom = 240.0
+theme_override_styles/panel = SubResource( 1 )
 
 [node name="CharacterName" type="Label" parent="CharacterPanel"]
-margin_right = 160.0
-margin_bottom = 60.0
+offset_right = 160.0
+offset_bottom = 60.0
 text = "ANGELA"
 align = 1
 valign = 1

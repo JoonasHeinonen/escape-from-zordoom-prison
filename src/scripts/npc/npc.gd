@@ -1,6 +1,6 @@
-extends Area
+extends Area3D
 
-export(String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_man") var character_name
+@export var character_name # (String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_man")
 
 var active : bool = false
 
@@ -16,8 +16,8 @@ var dialog
 func _ready():
 	if (character_name == "Girdeux"):
 		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
-	connect("body_entered", self, "_on_NPC_body_entered")
-	connect("body_exited", self, "_on_NPC_body_exited")
+	connect("body_entered", Callable(self, "_on_NPC_body_entered"))
+	connect("body_exited", Callable(self, "_on_NPC_body_exited"))
 
 func _process(delta):
 	if (self.has_node("EnterButton")):
@@ -143,8 +143,8 @@ func process_dialog_value(dialog_value : int, max_value : int):
 func commence_dialog(timeline : String):
 	get_tree().paused = true
 	var dialog = Dialogic.start(timeline)
-	dialog.pause_mode = Node.PAUSE_MODE_PROCESS
-	dialog.connect('timeline_end',self,'unpause')
+	dialog.process_mode = Node.PROCESS_MODE_ALWAYS
+	dialog.connect('timeline_end', Callable(self, 'unpause'))
 	add_child(dialog)
 
 # Unpauses the game timeline.
