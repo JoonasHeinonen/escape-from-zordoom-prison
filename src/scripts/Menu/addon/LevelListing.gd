@@ -42,8 +42,7 @@ func _process(delta):
 
 func list_levels(path):
 	var files = []
-	var dir = DirAccess.new()
-	dir.open(path)
+	var dir = DirAccess.open(path)
 	dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
 
 	while true:

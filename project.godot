@@ -20,6 +20,11 @@ config/icon="res://icon.png"
 Globle="*res://src/scripts/Globle.gd"
 Dialogic="*res://addons/dialogic/Other/DialogicGameHandler.gd"
 
+[dialogic]
+
+directories/dch_directory={}
+directories/dtl_directory={}
+
 [display]
 
 window/size/viewport_width=1280
