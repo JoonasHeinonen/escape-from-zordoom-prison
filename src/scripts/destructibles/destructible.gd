@@ -74,7 +74,7 @@ func no_damage(amount:int) -> void:
 
 func createBolts():
 	for i in 3:
-		var bolt = bolt_instance.instance()
+		var bolt = bolt_instance.instantiate()
 		get_parent().get_parent().get_parent().add_child(bolt)
 		bolt.global_transform = global_transform
 		bolt.scale = Vector3(1, 1, 1) # Resets bolt back to its actual size.
@@ -90,17 +90,17 @@ func destruction_effect():
 	var destruction_effect_instance = null
 	match (scene_type):
 		"lamp_post":
-			# d_e = lamp_post_destroy_effect.instance()
+			# d_e = lamp_post_destroy_effect.instantiate()
 			# get_parent().get_parent().get_parent().add_child(d_e)
 			# d_e.global_transform = global_transform
 			pass
 		"bolt_crate":
-			destruction_effect_instance = crate_destroy_effect.instance()
+			destruction_effect_instance = crate_destroy_effect.instantiate()
 			get_parent().get_parent().get_parent().add_child(destruction_effect_instance)
 			destruction_effect_instance.global_transform = global_transform
 
 func create_fragments():
-	var fragment_scene_instance = fragment_scene.instance()
+	var fragment_scene_instance = fragment_scene.instantiate()
 	get_parent().get_parent().get_parent().add_child(fragment_scene_instance)
 	fragment_scene_instance.global_transform = global_transform
 

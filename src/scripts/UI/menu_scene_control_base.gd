@@ -7,8 +7,8 @@ class_name MenuSceneControlBase
 var rect_size_x = self.size.x
 var rect_size_y = self.size.y
 
-var time_scale_target = 1
-var interpolation = 1
+var time_scale_target = 1.0
+var interpolation = 1.0
 
 func _process(delta):
 	match alignment:

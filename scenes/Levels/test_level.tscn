@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/slim_cognito.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/null_npc.tscn" id="9"]
 [ext_resource type="MeshLibrary" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
 [ext_resource type="PackedScene" path="res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn" id="13"]

@@ -92,7 +92,7 @@ func _physics_process(_delta):
 						"nanotech_node":
 							if (sub_body.player_health < sub_body.player_max_health):
 								var effects : Node = null
-								var health_light_instance = health_light.instance()
+								var health_light_instance = health_light.instantiate()
 								if (sub_body.has_node("Effects")):
 									effects = sub_body.get_node("Effects")
 									effects.add_child(health_light_instance)

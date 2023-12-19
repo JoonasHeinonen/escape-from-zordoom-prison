@@ -76,7 +76,7 @@ func _process(delta):
 
 ## TODO Not sure if we need this function.
 func instance_node(node, location, parent):
-	var node_instance = node.instance()
+	var node_instance = node.instantiate()
 	parent.add_child(node_instance)
 	node_instance.global_position = location
 	return node_instance
@@ -86,4 +86,4 @@ func update_vendor():
 	for wpn_for_sale in weapons_for_sale:
 		wpn_index += 1
 		if current_weapons.has(wpn_for_sale):
-			weapons_for_sale.remove(wpn_index)
+			weapons_for_sale.erase(wpn_index)

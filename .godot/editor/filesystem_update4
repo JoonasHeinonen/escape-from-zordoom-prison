@@ -6,3 +6,14 @@ res://src/theme/zordoom_theme.tres
 res://src/theme/zordoom_ingameui_theme.tres
 res://scenes/Menu/MainMenu.tscn
 res://src/scripts/Menu/addon/LevelListing.gd
+res://src/scripts/Player/Player.gd
+res://src/scripts/Player/PlayerWeaponsInventory.gd
+res://src/scripts/UI/menu_scene_control_base.gd
+res://src/scripts/npc/enemies/boss_base.gd
+res://scenes/Levels/level_arena.tscn
+res://scenes/BlocksNWorld/Player/player.tscn
+res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn
+res://src/scripts/Globle.gd
+res://src/scripts/destructibles/destructible.gd
+res://src/scripts/UI/arena_menu.gd
+res://src/scripts/bolt/bolt.gd

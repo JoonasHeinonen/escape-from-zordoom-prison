@@ -54,7 +54,7 @@ func turn_head():
 		state_machine.travel("Enemy_Walk")
 
 func shoot_flames():
-	var flame_instance = flame_projectile.instance()
+	var flame_instance = flame_projectile.instantiate()
 	flame_instance.position.x = 3
 	get_parent().add_child(flame_instance)
 	flame_instance.global_transform = $Flamethrower/FlamethrowerSprite/FlamethrowerPos.global_transform
@@ -84,7 +84,7 @@ func _on_DamageCooloffTimer_timeout():
 	is_damaged = false
 
 func _on_Weakspot_area_entered(area):
-	var explosion_instance = explosion.instance()
+	var explosion_instance = explosion.instantiate()
 	if area.name == "ProjectileExplosionArea" and !is_damaged:
 		animation_player.play("Enemy_Damage")
 		damage_enemy(1)

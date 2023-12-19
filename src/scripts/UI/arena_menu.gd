@@ -40,7 +40,7 @@ func close_menu():
 
 func spawn_bad_guys_in_fight():
 	nodes = get_tree().get_nodes_in_group("badGuySpawn1")
-	bad_guy_instance = nef_head_preload.instance()
+	bad_guy_instance = nef_head_preload.instantiate()
 	nodes[0].add_child(bad_guy_instance)
 
 func check_current_enemies():

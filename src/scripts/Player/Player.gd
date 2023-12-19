@@ -216,7 +216,7 @@ func _physics_process(delta):
 			$AngelaArm/HandInstance/Hand.scale.y = 20
 			$PlayerHit_box.set_position(Vector3((-0.649 * 3.1), 0, 0))
 		else:
-			player_velocity.x = lerp(player_velocity.x,0,0.1)
+			player_velocity.x = lerp(player_velocity.x, 0.0, 0.1)
 			state_machine.travel("Player_Still")
 		if is_on_floor() and Input.is_action_pressed("jump"):
 			player_velocity.y = jump
@@ -295,11 +295,18 @@ func _process(delta):
 		elif (current_weapon == "pulse_rifle" && !player_is_aiming_with_rifle):
 			rotate_arm(0, 0, 0)
 
+	# Trying to get a return value of a method that returns "void"
 	if Globle.player_character == "Angela":
-		angela_arm.hide() if Input.is_action_pressed("ui_melee_attack") else angela_arm.show()
+		if Input.is_action_pressed("ui_melee_attack"): 
+			angela_arm.hide()
+		else:
+			angela_arm.show()
 	if Globle.player_character == "Rivet":
-		rivet_arm.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_arm.show()
-	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))
+		if Input.is_action_pressed("ui_melee_attack"):
+			rivet_arm.hide()
+		else:
+			rivet_arm.show()
+	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0, 4))
 
 	if !boss_fight_active: 
 		$PlayerUI/UIBossData.visible = false
