@@ -1,8 +1,8 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1702871349
+::res://::1702958269
 default_bus_layout.tres::AudioBusLayout::-1::1702871335::0::1::::<><>::
-default_env.tres::Environment::219611424375106466::1702871335::0::1::::<><>::
-icon.png::CompressedTexture2D::1349545169909211679::1684793791::1702871387::1::::<><>::
+default_env.tres::Environment::219611424375106466::1702958269::0::1::::<><>::
+icon.png::CompressedTexture2D::1349545169909211679::1684793791::1702957743::1::::<><>::
 README.md::TextFile::-1::1684793791::0::1::::<><>::
 ::res://addons/::1696722100
 ::res://addons/dialogic/::1702838216
@@ -28,12 +28,12 @@ Welcome.md::TextFile::-1::1684793791::0::1::::<><>::
 ::res://addons/dialogic/Documentation/Content/Events/CustomEvents/::1684793791
 CreateCustomEvents.md::TextFile::-1::1684793791::0::1::::<><>::
 ImportCustomEvents.md::TextFile::-1::1684793791::0::1::::<><>::
-::res://addons/dialogic/Documentation/Content/Events/CustomEvents/Images/::1702838216
+::res://addons/dialogic/Documentation/Content/Events/CustomEvents/Images/::1702871387
 CreationProcess.PNG::CompressedTexture2D::3182582565049303255::1684793791::1702871387::1::::<><>::
 CustomEventsShowOff.PNG::CompressedTexture2D::5072632068496559496::1684793791::1702871387::1::::<><>::
 EventBlock.png::CompressedTexture2D::6436139007174124779::1684793791::1702871387::1::::<><>::
 EventBlock_EventData.PNG::CompressedTexture2D::4607163903050727749::1684793791::1702871387::1::::<><>::
-::res://addons/dialogic/Documentation/Content/Events/Images/::1702838216
+::res://addons/dialogic/Documentation/Content/Events/Images/::1702871387
 audio_event.png::CompressedTexture2D::31489617170092122::1684793791::1702871387::1::::<><>::
 Call_Node.PNG::CompressedTexture2D::4843113781605349215::1684793791::1702871387::1::::<><>::
 Event_Change_Timeline.PNG::CompressedTexture2D::6944198944068592183::1684793791::1702871387::1::::<><>::
@@ -68,7 +68,7 @@ resolution-small-dialog-big.md::TextFile::-1::1684793791::0::1::::<><>::
 Signals.md::TextFile::-1::1684793791::0::1::::<><>::
 touch-support-tutorial.md::TextFile::-1::1684793791::0::1::::<><>::
 why-not-graph-nodes.md::TextFile::-1::1684793791::0::1::::<><>::
-::res://addons/dialogic/Documentation/Content/Images/::1702838216
+::res://addons/dialogic/Documentation/Content/Images/::1702871387
 dialogic-hero-1.3.png::CompressedTexture2D::8240535598105179294::1684793791::1702871387::1::::<><>::
 ::res://addons/dialogic/Documentation/Content/Reference/::1684793791
 000.md::TextFile::-1::1684793791::0::1::::<><>::
@@ -77,7 +77,7 @@ Character.md::TextFile::-1::1684793791::0::1::::<><>::
 History.md::TextFile::-1::1684793791::0::1::::<><>::
 Theme.md::TextFile::-1::1684793791::0::1::::<><>::
 Timeline.md::TextFile::-1::1684793791::0::1::::<><>::
-::res://addons/dialogic/Documentation/Content/Reference/Images/::1702838216
+::res://addons/dialogic/Documentation/Content/Reference/Images/::1702871387
 history_button_positions.png::CompressedTexture2D::4658389867740187595::1684793791::1702871387::1::::<><>::
 history_character_color_example.png::CompressedTexture2D::4950467316090946778::1684793791::1702871387::1::::<><>::
 history_log_margin.png::CompressedTexture2D::6308013330357447059::1684793791::1702871387::1::::<><>::
@@ -95,7 +95,7 @@ Saving.md::TextFile::-1::1684793791::0::1::::<><>::
 Updating.md::TextFile::-1::1684793791::0::1::::<><>::
 Values.md::TextFile::-1::1684793791::0::1::::<><>::
 VoiceLines.md::TextFile::-1::1684793791::0::1::::<><>::
-::res://addons/dialogic/Documentation/Content/Tutorials/Images/::1702838216
+::res://addons/dialogic/Documentation/Content/Tutorials/Images/::1702871387
 Character_Editor_With_Portrait.PNG::CompressedTexture2D::8066380666571334307::1684793791::1702871387::1::::<><>::
 Dialogic_Tab.PNG::CompressedTexture2D::6032627999288439720::1684793791::1702871387::1::::<><>::
 Empty_Character_Editor.PNG::CompressedTexture2D::8790005761300326647::1684793791::1702871387::1::::<><>::
@@ -124,7 +124,7 @@ DocumentationH2.tres::FontFile::-1::1702871340::0::1::::<><>::res://addons/dialo
 DocumentationH3.tres::FontFile::-1::1702871340::0::1::::<><>::res://addons/dialogic/Documentation/Theme/Font/NotoSans-Bold.ttf
 DocumentationH4.tres::FontFile::-1::1702871340::0::1::::<><>::res://addons/dialogic/Documentation/Theme/Font/NotoSans-BoldItalic.ttf
 DocumentationH5.tres::FontFile::-1::1702871340::0::1::::<><>::res://addons/dialogic/Documentation/Theme/Font/NotoSans-Italic.ttf
-::res://addons/dialogic/Documentation/Theme/Font/::1702838216
+::res://addons/dialogic/Documentation/Theme/Font/::1702871386
 LICENSE.txt::TextFile::-1::1684793791::0::1::::<><>::
 NotoSans-Bold.ttf::FontFile::4394374565540158268::1684793791::1702871386::1::::<><>::
 NotoSans-BoldItalic.ttf::FontFile::6096308977612499875::1684793791::1702871386::1::::<><>::
@@ -271,8 +271,8 @@ TextEditor.tscn::PackedScene::-1::1702871340::0::1::::<><>::res://addons/dialogi
 ::res://addons/dialogic/Editor/Events/Parts/WaitSeconds/::1702838216
 EventPart_WaitSeconds.gd::GDScript::-1::1702871340::0::1::::<>Control<>::
 WaitSeconds.tscn::PackedScene::-1::1702871340::0::1::::<><>::res://addons/dialogic/Editor/Events/Parts/WaitSeconds/EventPart_WaitSeconds.gd<>res://addons/dialogic/Editor/Events/Parts/Text/GreyLabel.tscn<>res://addons/dialogic/Editor/Events/styles/InputFieldsStyle.tres<>res://addons/dialogic/Editor/Events/Parts/SpinBoxPreventDnD.gd
-::res://addons/dialogic/Editor/Events/styles/::1702838745
-InputFieldsStyle.tres::Theme::501980295477713132::1702871340::0::1::::<><>::
+::res://addons/dialogic/Editor/Events/styles/::1702957758
+InputFieldsStyle.tres::Theme::501980295477713132::1702957758::0::1::::<><>::
 ResourceMenuHover.tres::StyleBoxFlat::-1::1702871340::0::1::::<><>::
 ResourceMenuNormal.tres::StyleBoxFlat::-1::1702871340::0::1::::<><>::
 ResourceMenuPanelBackground.tres::StyleBoxFlat::-1::1702871340::0::1::::<><>::
@@ -325,7 +325,7 @@ TimelineTestingScene.tscn::PackedScene::-1::1702871340::0::1::::<><>::res://addo
 ValueEditor.gd::GDScript::-1::1702871340::0::1::::<>ScrollContainer<>::
 ValueEditor.tscn::PackedScene::-1::1702871340::0::1::::<><>::res://addons/dialogic/Editor/ValueEditor/ValueEditor.gd<>res://addons/dialogic/Editor/Common/TLabel.tscn
 ::res://addons/dialogic/Example Assets/::1684793791
-::res://addons/dialogic/Example Assets/backgrounds/::1702838216
+::res://addons/dialogic/Example Assets/backgrounds/::1702871387
 background-1.png::CompressedTexture2D::1284572101852917901::1684793791::1702871387::1::::<><>::
 background-2.png::CompressedTexture2D::6636596797150063532::1684793791::1702871387::1::::<><>::
 GlossaryBackground.tres::StyleBoxFlat::-1::1702871340::0::1::::<><>::
@@ -340,7 +340,7 @@ DefaultFont.tres::FontFile::-1::1702871340::0::1::::<><>::res://resources/fonts/
 DefaultItalicFont.tres::FontFile::-1::1702871340::0::1::::<><>::res://addons/dialogic/Example Assets/Fonts/Overlock/Overlock-Italic.ttf
 GlossaryFont.tres::FontFile::-1::1702871340::0::1::::<><>::res://addons/dialogic/Example Assets/Fonts/Overlock/Overlock-Black.ttf
 NameFont.tres::FontFile::-1::1702871340::0::1::::<><>::res://addons/dialogic/Example Assets/Fonts/Overlock/Overlock-Black.ttf
-::res://addons/dialogic/Example Assets/Fonts/Overlock/::1702838216
+::res://addons/dialogic/Example Assets/Fonts/Overlock/::1702871386
 OFL.txt::TextFile::-1::1684793791::0::1::::<><>::
 Overlock-Black.ttf::FontFile::10915889422557801::1684793791::1702871386::1::::<><>::
 Overlock-BlackItalic.ttf::FontFile::2046369786094376917::1684793791::1702871386::1::::<><>::
@@ -356,15 +356,15 @@ HistoryButton.tscn::PackedScene::-1::1702871340::0::1::::<><>::res://addons/dial
 HistoryReturnButton.tscn::PackedScene::-1::1702871340::0::1::::<><>::res://addons/dialogic/Example Assets/History/HistoryButton-theme.tres
 HistoryRow.gd::GDScript::-1::1702871340::0::1::::<>PanelContainer<>::
 HistoryRow.tscn::PackedScene::-1::1702871340::0::1::::<><>::res://addons/dialogic/Example Assets/History/HistoryRow.gd<>res://addons/dialogic/Example Assets/backgrounds/background-2.png
-::res://addons/dialogic/Example Assets/next-indicator/::1702838216
+::res://addons/dialogic/Example Assets/next-indicator/::1702871387
 next-indicator.png::CompressedTexture2D::6683332335066247076::1684793791::1702871387::1::::<><>::
-::res://addons/dialogic/Example Assets/portraits/::1702838216
+::res://addons/dialogic/Example Assets/portraits/::1702871387
 df-1.png::CompressedTexture2D::3617943930747443934::1684793791::1702871387::1::::<><>::
 df-2.png::CompressedTexture2D::8642341604379533066::1684793791::1702871387::1::::<><>::
 df-3.png::CompressedTexture2D::6916191784964773719::1684793791::1702871387::1::::<><>::
-::res://addons/dialogic/Example Assets/Sound Effects/::1702838216
+::res://addons/dialogic/Example Assets/Sound Effects/::1702871387
 Beep.wav::AudioStreamWAV::5188737816309324838::1684793791::1702871387::1::::<><>::
-::res://addons/dialogic/Example Assets/Sound Effects/Keyboard Noises/::1702838216
+::res://addons/dialogic/Example Assets/Sound Effects/Keyboard Noises/::1702871387
 LICENSE.txt::TextFile::-1::1684793791::0::1::::<><>::
 typing1.wav::AudioStreamWAV::3045000311630727877::1684793791::1702871387::1::::<><>::
 typing2.wav::AudioStreamWAV::274013758001018207::1684793791::1702871387::1::::<><>::
@@ -372,9 +372,9 @@ typing3.wav::AudioStreamWAV::7481871215824522180::1684793791::1702871387::1::::<
 typing4.wav::AudioStreamWAV::7183177713845813259::1684793791::1702871387::1::::<><>::
 typing5.wav::AudioStreamWAV::1071743581964262880::1684793791::1702871387::1::::<><>::
 ::res://addons/dialogic/Images/::1684793791
-::res://addons/dialogic/Images/Context Menus/::1702838216
+::res://addons/dialogic/Images/Context Menus/::1702871387
 Remove.svg::CompressedTexture2D::2501991233957829032::1684793791::1702871387::1::::<><>::
-::res://addons/dialogic/Images/Event Icons/::1702838216
+::res://addons/dialogic/Images/Event Icons/::1702871387
 character-join.svg::CompressedTexture2D::6179386110857270583::1684793791::1702871387::1::::<><>::
 character-leave.svg::CompressedTexture2D::9039289773959342818::1684793791::1702871387::1::::<><>::
 character.svg::CompressedTexture2D::839788325004984286::1684793791::1702871387::1::::<><>::
@@ -383,7 +383,7 @@ event-solid.svg::CompressedTexture2D::2420836790378073409::1684793791::170287138
 label.svg::CompressedTexture2D::4580188504374951002::1684793791::1702871387::1::::<><>::
 Portrait.svg::CompressedTexture2D::7517963247404643833::1684793791::1702871387::1::::<><>::
 warning.svg::CompressedTexture2D::7203134056063748968::1684793791::1702871387::1::::<><>::
-::res://addons/dialogic/Images/Event Icons/Main Icons/::1702838216
+::res://addons/dialogic/Images/Event Icons/Main Icons/::1702871387
 audio-event.svg::CompressedTexture2D::9130105298470050865::1684793791::1702871387::1::::<><>::
 background-music.svg::CompressedTexture2D::2528478539010667185::1684793791::1702871387::1::::<><>::
 call-node.svg::CompressedTexture2D::6534194741662502103::1684793791::1702871387::1::::<><>::
@@ -406,11 +406,11 @@ set-theme.svg::CompressedTexture2D::5257351587524447411::1684793791::1702871387:
 set-value.svg::CompressedTexture2D::9154739426692201152::1684793791::1702871387::1::::<><>::
 text-event.svg::CompressedTexture2D::790773634491542255::1684793791::1702871387::1::::<><>::
 wait-seconds.svg::CompressedTexture2D::6625302772787315911::1684793791::1702871387::1::::<><>::
-::res://addons/dialogic/Images/Pieces/::1702838216
+::res://addons/dialogic/Images/Pieces/::1702871387
 closed-icon.svg::CompressedTexture2D::8017805899409508973::1684793791::1702871387::1::::<><>::
 expand-icon.svg::CompressedTexture2D::3201241387246089344::1684793791::1702871387::1::::<><>::
 open-icon.svg::CompressedTexture2D::2433853174484770893::1684793791::1702871387::1::::<><>::
-::res://addons/dialogic/Images/Plugin/::1702838216
+::res://addons/dialogic/Images/Plugin/::1702871387
 placeholder.png::CompressedTexture2D::6538064251498279173::1684793791::1702871387::1::::<><>::
 plugin-editor-icon-dark-theme-0.75.svg::CompressedTexture2D::898937982839599755::1684793791::1702871387::1::::<><>::
 plugin-editor-icon-dark-theme-1.5.svg::CompressedTexture2D::5012409546093297937::1684793791::1702871387::1::::<><>::
@@ -427,7 +427,7 @@ plugin-editor-icon-light-theme-1.svg::CompressedTexture2D::8280681106166841746::
 plugin-editor-icon-light-theme-2.svg::CompressedTexture2D::7876191627150016353::1684793791::1702871387::1::::<><>::
 plugin-editor-icon-light-theme.svg::CompressedTexture2D::3655511478587654041::1684793791::1702871387::1::::<><>::
 white-texture.png::CompressedTexture2D::8975449504810500545::1684793791::1702871387::1::::<><>::
-::res://addons/dialogic/Images/Resources/::1702838216
+::res://addons/dialogic/Images/Resources/::1702871387
 character-1.25.svg::CompressedTexture2D::7010278666372992793::1684793791::1702871387::1::::<><>::
 character-2.svg::CompressedTexture2D::2796163038726448727::1684793791::1702871387::1::::<><>::
 character.svg::CompressedTexture2D::2777246588107203387::1684793791::1702871387::1::::<><>::
@@ -440,7 +440,7 @@ theme.svg::CompressedTexture2D::5865481722895433705::1684793791::1702871387::1::
 timeline-1.25.svg::CompressedTexture2D::3886649781310499736::1684793791::1702871387::1::::<><>::
 timeline-2.svg::CompressedTexture2D::3463001821654844790::1684793791::1702871387::1::::<><>::
 timeline.svg::CompressedTexture2D::2243062431906238155::1684793791::1702871387::1::::<><>::
-::res://addons/dialogic/Images/Toolbar/::1702838216
+::res://addons/dialogic/Images/Toolbar/::1702871387
 add-character-1.25.svg::CompressedTexture2D::3944317864017258647::1684793791::1702871387::1::::<><>::
 add-character-2.svg::CompressedTexture2D::5120047527804161889::1684793791::1702871387::1::::<><>::
 add-character.svg::CompressedTexture2D::1579388662699183724::1684793791::1702871387::1::::<><>::
@@ -456,7 +456,7 @@ add-theme.svg::CompressedTexture2D::3379162158178353290::1684793791::1702871387:
 add-timeline-1.25.svg::CompressedTexture2D::9023736050146106022::1684793791::1702871387::1::::<><>::
 add-timeline-2.svg::CompressedTexture2D::4075534286709277432::1684793791::1702871387::1::::<><>::
 add-timeline.svg::CompressedTexture2D::8693577703420695899::1684793791::1702871387::1::::<><>::
-::res://addons/dialogic/Images/Tutorials/::1702838216
+::res://addons/dialogic/Images/Tutorials/::1702871387
 arrow-down.svg::CompressedTexture2D::2186740464157213319::1684793791::1702871387::1::::<><>::
 ::res://addons/dialogic/Localization/::1702871354
 dialogic.csv::Translation::2837386724050692892::1684793791::1702871354::1::::<><>::
@@ -548,7 +548,7 @@ todoItem_class.gd::GDScript::-1::1702871339::0::1::::<>RefCounted<>::
 todo_class.gd::GDScript::-1::1702871339::0::1::::<>RefCounted<>::
 ::res://addons/Todo_Manager/doc/::1702838216
 example.gd::GDScript::-1::1702871339::0::1::::<>Node<>::
-::res://addons/Todo_Manager/doc/images/::1702838216
+::res://addons/Todo_Manager/doc/images/::1702871387
 example1.png::CompressedTexture2D::898626759405312613::1684793791::1702871387::1::::<><>::
 example2.png::CompressedTexture2D::4997793715583064126::1684793791::1702871387::1::::<><>::
 Instruct1.png::CompressedTexture2D::6715952700119104009::1684793791::1702871387::1::::<><>::
@@ -596,7 +596,7 @@ timeline-1696889975.json::JSON::-1::1702838243::0::1::::<><>::
 pull_request_template.md::TextFile::-1::1690858691::0::1::::<><>::
 ::res://resources/::1684793791
 ::res://resources/audio/::1684793791
-::res://resources/audio/collectibles/::1702838216
+::res://resources/audio/collectibles/::1702871387
 bolt_collect_0.wav::AudioStreamWAV::7449961373037321526::1684793791::1702871387::1::::<><>::
 bolt_collect_1.wav::AudioStreamWAV::6143582262497253117::1684793791::1702871387::1::::<><>::
 bolt_collect_2.wav::AudioStreamWAV::1966466004956147662::1684793791::1702871387::1::::<><>::
@@ -607,7 +607,7 @@ Ratchet_&_Clank_-_Going_Commando.iso_59400.wav::AudioStreamWAV::6573854949034885
 Ratchet_&_Clank_-_Going_Commando.iso_59460.wav::AudioStreamWAV::8209290477230239805::1684793791::1702871387::1::::<><>::
 Ratchet_&_Clank_-_Going_Commando.iso_59465.wav::AudioStreamWAV::8455484552984996164::1684793791::1702871387::1::::<><>::
 ::res://resources/audio/environment/::1684793791
-::res://resources/audio/environment/destructibles/::1702838216
+::res://resources/audio/environment/destructibles/::1702871387
 concrete_0.wav::AudioStreamWAV::460817073391822787::1684793791::1702871387::1::::<><>::
 crate_0.wav::AudioStreamWAV::3430959352518868431::1684793791::1702871387::1::::<><>::
 crate_1.wav::AudioStreamWAV::3581408264568778604::1684793791::1702871387::1::::<><>::
@@ -623,33 +623,33 @@ glass_7.wav::AudioStreamWAV::3811260411449640715::1684793791::1702871387::1::::<
 glass_8.wav::AudioStreamWAV::7309817993928680549::1684793791::1702871387::1::::<><>::
 glass_9.wav::AudioStreamWAV::6861448231960697645::1684793791::1702871387::1::::<><>::
 vase_0.wav::AudioStreamWAV::7491748845649554921::1684793791::1702871387::1::::<><>::
-::res://resources/audio/environment/doors_elevators_teleports/::1702838216
+::res://resources/audio/environment/doors_elevators_teleports/::1702871387
 door_0.wav::AudioStreamWAV::5963705184120310700::1684793791::1702871387::1::::<><>::
 door_1.wav::AudioStreamWAV::9089723917136527585::1684793791::1702871387::1::::<><>::
 door_2.wav::AudioStreamWAV::1454533001341944572::1684793791::1702871387::1::::<><>::
 door_3.wav::AudioStreamWAV::7641310739450104505::1684793791::1702871387::1::::<><>::
 switch_0.wav::AudioStreamWAV::8879659474352321716::1684793791::1702871387::1::::<><>::
-::res://resources/audio/environment/gambling/::1702838216
+::res://resources/audio/environment/gambling/::1702871387
 Ratchet_&_Clank_-_Going_Commando.iso_02067.wav::AudioStreamWAV::5853967925574720928::1684793791::1702871387::1::::<><>::
 Ratchet_&_Clank_-_Going_Commando.iso_02069.wav::AudioStreamWAV::6951711383588051994::1684793791::1702871387::1::::<><>::
 Ratchet_&_Clank_-_Going_Commando.iso_02070.wav::AudioStreamWAV::7377558848182486726::1684793791::1702871387::1::::<><>::
 Ratchet_&_Clank_-_Going_Commando.iso_02071.wav::AudioStreamWAV::2089259672407920285::1684793791::1702871387::1::::<><>::
 ::res://resources/audio/npc/::1684793791
-::res://resources/audio/npc/enemy/::1702838216
+::res://resources/audio/npc/enemy/::1702871387
 death_0.wav::AudioStreamWAV::2795408322115031100::1684793791::1702871387::1::::<><>::
 death_1.wav::AudioStreamWAV::402190327416370949::1684793791::1702871387::1::::<><>::
 death_2.wav::AudioStreamWAV::1890214307142171592::1684793791::1702871387::1::::<><>::
 Ratchet_&_Clank_-_Going_Commando.iso_01779.wav::AudioStreamWAV::3636686459831770167::1684793791::1702871387::1::::<><>::
 Ratchet_&_Clank_-_Going_Commando.iso_01780.wav::AudioStreamWAV::6080803206018369827::1684793791::1702871387::1::::<><>::
 Ratchet_&_Clank_-_Going_Commando.iso_01781.wav::AudioStreamWAV::6988904473643722298::1684793791::1702871387::1::::<><>::
-::res://resources/audio/npc/miniturret/::1702838216
+::res://resources/audio/npc/miniturret/::1702871387
 deploy.wav::AudioStreamWAV::7490409711281880160::1684793791::1702871387::1::::<><>::
 miniturret_gun.wav::AudioStreamWAV::521035053820178342::1684793791::1702871387::1::::<><>::
-::res://resources/audio/npc/vendor/::1702838216
+::res://resources/audio/npc/vendor/::1702871387
 vendor_open.wav::AudioStreamWAV::7614479180907121369::1684793791::1702871387::1::::<><>::
 vendor_purchase.wav::AudioStreamWAV::1430601709016393485::1684793791::1702871387::1::::<><>::
 vendor_quit.wav::AudioStreamWAV::1934926446290122954::1684793791::1702871387::1::::<><>::
-::res://resources/audio/player/::1702838216
+::res://resources/audio/player/::1702871387
 gravel_step_0.wav::AudioStreamWAV::7491042034883862466::1684793791::1702871387::1::::<><>::
 gravel_step_1.wav::AudioStreamWAV::4502375398244826101::1684793791::1702871387::1::::<><>::
 melee_0.wav::AudioStreamWAV::4833000603087874325::1684793791::1702871387::1::::<><>::
@@ -658,16 +658,16 @@ melee_2.wav::AudioStreamWAV::3314779447400011429::1684793791::1702871387::1::::<
 melee_3.wav::AudioStreamWAV::3545759926578791565::1684793791::1702871387::1::::<><>::
 step_0.wav::AudioStreamWAV::7908631570383475797::1684793791::1702871387::1::::<><>::
 step_1.wav::AudioStreamWAV::7828846390374981502::1684793791::1702871387::1::::<><>::
-::res://resources/audio/ui/::1702838216
+::res://resources/audio/ui/::1702871387
 button_click.wav::AudioStreamWAV::7653818695675656002::1684793791::1702871387::1::::<><>::
 button_navigate.wav::AudioStreamWAV::766992157148298155::1684793791::1702871387::1::::<><>::
 button_no.wav::AudioStreamWAV::5160386267083432121::1684793791::1702871387::1::::<><>::
 menu_open.wav::AudioStreamWAV::8712572431966918225::1684793791::1702871387::1::::<><>::
 Ratchet_&_Clank_-_Going_Commando.iso_00896.wav::AudioStreamWAV::315992211416974617::1684793791::1702871387::1::::<><>::
 ::res://resources/audio/weapons/::1684793791
-::res://resources/audio/weapons/enemy/::1702838216
+::res://resources/audio/weapons/enemy/::1702871387
 enemy_blaster.wav::AudioStreamWAV::8153531802909219197::1684793791::1702871387::1::::<><>::
-::res://resources/audio/weapons/player/::1702838216
+::res://resources/audio/weapons/player/::1702871387
 blaster.wav::AudioStreamWAV::2787589954643846277::1684793791::1702871387::1::::<><>::
 BlitzGun.wav::AudioStreamWAV::8707819345005980219::1684793791::1702871387::1::::<><>::
 edge_blaster.wav::AudioStreamWAV::8296400971562410405::1684793791::1702871387::1::::<><>::
@@ -680,7 +680,7 @@ Ratchet_&_Clank_-_Going_Commando.iso_01673.wav::AudioStreamWAV::6227142004972391
 Ratchet_&_Clank_-_Going_Commando.iso_59397.wav::AudioStreamWAV::4454561055146692270::1684793791::1702871387::1::::<><>::
 theNegotiator.wav::AudioStreamWAV::1767376644354262648::1684793791::1702871387::1::::<><>::
 weapon_upgrade.wav::AudioStreamWAV::913431785103472833::1684793791::1702871387::1::::<><>::
-::res://resources/fonts/::1702838745
+::res://resources/fonts/::1702871386
 lato-bold-ingameui.tres::FontFile::-1::1702871339::0::1::::<><>::res://resources/fonts/Lato-Bold.ttf
 Lato-Bold-InGameUI.ttf::FontFile::2003312439142166910::1684793791::1702871386::1::::<><>::
 lato-bold.tres::FontFile::-1::1702871339::0::1::::<><>::res://resources/fonts/Lato-Bold.ttf
@@ -693,69 +693,69 @@ rg-future-italic.otf::FontFile::9038454190235681560::1684793791::1702871386::1::
 rg-future-italic.tres::FontFile::-1::1702871339::0::1::::<><>::res://resources/fonts/rg-future-italic.otf
 ::res://resources/images/::1684793791
 ::res://resources/images/characters/::1684793791
-::res://resources/images/characters/npc/::1702838243
+::res://resources/images/characters/npc/::1702957743
 black_question_mark.png::CompressedTexture2D::991165922117062372::1684793791::1702871387::1::::<><>::
-mia.png::CompressedTexture2D::971418076313633371::1690858691::1702871387::1::::<><>::
+mia.png::CompressedTexture2D::971418076313633371::1690858691::1702957743::1::::<><>::
 mia_talking_head1.png::CompressedTexture2D::7111216169858263501::1690858691::1702871387::1::::<><>::
 shark_man_npc.png::CompressedTexture2D::5935943036999229993::1702838243::1702871387::1::::<><>::
 shark_man_talking_head_resize2.png::CompressedTexture2D::8754829036386056334::1702838243::1702871387::1::::<><>::
 ::res://resources/images/characters/npc/enemies/::1690742726
-::res://resources/images/characters/npc/enemies/bosses/::1702838216
+::res://resources/images/characters/npc/enemies/bosses/::1702957743
 girdeux_boss_fight_icon.png::CompressedTexture2D::8229476770491820899::1690742726::1702871387::1::::<><>::
-girdeux_sheet.png::CompressedTexture2D::1433846516826968891::1690742726::1702871387::1::::<><>::
+girdeux_sheet.png::CompressedTexture2D::1433846516826968891::1690742726::1702957743::1::::<><>::
 girdeux_sheet_armed.png::CompressedTexture2D::97524259796385762::1690742726::1702871387::1::::<><>::
 girdeux_talking_head1.png::CompressedTexture2D::220892969071118555::1692238097::1702871387::1::::<><>::
 girdeux_talking_head1_old.png::CompressedTexture2D::8397493300039013496::1692238097::1702871387::1::::<><>::
-::res://resources/images/characters/npc/enemies/Nef_trooper_head/::1702838216
-nef_trooper_head.png::CompressedTexture2D::2748725239831127198::1690741301::1702871387::1::::<><>::
-::res://resources/images/characters/npc/enemies/placeholder_enemy/::1702838216
-placeholder_enemy.png::CompressedTexture2D::7739465738570343469::1702144862::1702871387::1::::<><>::
+::res://resources/images/characters/npc/enemies/Nef_trooper_head/::1702957743
+nef_trooper_head.png::CompressedTexture2D::2748725239831127198::1690741301::1702957743::1::::<><>::
+::res://resources/images/characters/npc/enemies/placeholder_enemy/::1702957743
+placeholder_enemy.png::CompressedTexture2D::7739465738570343469::1702144862::1702957743::1::::<><>::
 ::res://resources/images/characters/player/::1684793791
-::res://resources/images/characters/player/angela/::1702838216
+::res://resources/images/characters/player/angela/::1702957743
 angela_character_selection.png::CompressedTexture2D::2031108207421724789::1684793791::1702871387::1::::<><>::
-angela_sheet_init_finished.png::CompressedTexture2D::692908577701022367::1684793791::1702871387::1::::<><>::
-angela_sheet_init_finished_holster_weapon.png::CompressedTexture2D::4817317312775028259::1684793791::1702871387::1::::<><>::
+angela_sheet_init_finished.png::CompressedTexture2D::692908577701022367::1684793791::1702957743::1::::<><>::
+angela_sheet_init_finished_holster_weapon.png::CompressedTexture2D::4817317312775028259::1684793791::1702957743::1::::<><>::
 angela_talking_head1.png::CompressedTexture2D::2961731842967725325::1690858691::1702871387::1::::<><>::
-angela_weapon.png::CompressedTexture2D::1907710779158793702::1684793791::1702871387::1::::<><>::
+angela_weapon.png::CompressedTexture2D::1907710779158793702::1684793791::1702957743::1::::<><>::
 angela_weapon_outdated.png::CompressedTexture2D::6129664615250263279::1684793791::1702871387::1::::<><>::
-::res://resources/images/characters/player/rivet/::1702838216
+::res://resources/images/characters/player/rivet/::1702957743
 rivet_character_selection.png::CompressedTexture2D::7607810443092563524::1684793791::1702871387::1::::<><>::
-rivet_sprite_sheet.png::CompressedTexture2D::6992974665290533611::1687195240::1702871387::1::::<><>::
-rivet_sprite_sheet_unarmed.png::CompressedTexture2D::3921869388063222804::1687195240::1702871387::1::::<><>::
+rivet_sprite_sheet.png::CompressedTexture2D::6992974665290533611::1687195240::1702957743::1::::<><>::
+rivet_sprite_sheet_unarmed.png::CompressedTexture2D::3921869388063222804::1687195240::1702957743::1::::<><>::
 rivet_talking_head1.png::CompressedTexture2D::1448540889337813090::1690858691::1702871387::1::::<><>::
 rivet_weapon.png::CompressedTexture2D::2814237029761693220::1684793791::1702871387::1::::<><>::
-::res://resources/images/collectibles/::1702838216
-ammo_can.png::CompressedTexture2D::1858744266247681389::1684793791::1702871387::1::::<><>::
-bolt_0.png::CompressedTexture2D::8891337853961223889::1684793791::1702871387::1::::<><>::
+::res://resources/images/collectibles/::1702957743
+ammo_can.png::CompressedTexture2D::1858744266247681389::1684793791::1702957743::1::::<><>::
+bolt_0.png::CompressedTexture2D::8891337853961223889::1684793791::1702957743::1::::<><>::
 bolt_1.png::CompressedTexture2D::194502551125571053::1684793791::1702871387::1::::<><>::
 bolt_2.png::CompressedTexture2D::5980352800119644598::1684793791::1702871387::1::::<><>::
 ::res://resources/images/effects/::1684793791
-::res://resources/images/effects/explosions_n_fire/::1702838216
-explosion.png::CompressedTexture2D::1055814229633544940::1684793791::1702871387::1::::<><>::
-Flame.png::CompressedTexture2D::2796854731917220308::1684793791::1702871387::1::::<><>::
-light.png::CompressedTexture2D::2557748742145484989::1684793791::1702871387::1::::<><>::
+::res://resources/images/effects/explosions_n_fire/::1702957743
+explosion.png::CompressedTexture2D::1055814229633544940::1684793791::1702957743::1::::<><>::
+Flame.png::CompressedTexture2D::2796854731917220308::1684793791::1702957743::1::::<><>::
+light.png::CompressedTexture2D::2557748742145484989::1684793791::1702957743::1::::<><>::
 sparkle.png::CompressedTexture2D::6417219458923271489::1684793791::1702871387::1::::<><>::
-::res://resources/images/effects/health_crate/::1702838216
-health_crate_node.png::CompressedTexture2D::1312191589537326832::1684793791::1702871387::1::::<><>::
-health_crate_node_multiple.png::CompressedTexture2D::8114487861462427685::1684793791::1702871387::1::::<><>::
-::res://resources/images/effects/projectiles/::1702838216
+::res://resources/images/effects/health_crate/::1702957743
+health_crate_node.png::CompressedTexture2D::1312191589537326832::1684793791::1702957743::1::::<><>::
+health_crate_node_multiple.png::CompressedTexture2D::8114487861462427685::1684793791::1702957743::1::::<><>::
+::res://resources/images/effects/projectiles/::1702871387
 gravity_bomb_projectile.png::CompressedTexture2D::8863643062443764180::1684793791::1702871387::1::::<><>::
 minigun_turret_packed.png::CompressedTexture2D::3438017763430468455::1684793791::1702871387::1::::<><>::
 negotiator_projectile.png::CompressedTexture2D::6301551678688206496::1684793791::1702871387::1::::<><>::
 projectile_blaster.png::CompressedTexture2D::984260313588870308::1684793791::1702871387::1::::<><>::
-::res://resources/images/effects/projectiles/miniturret/::1702838216
+::res://resources/images/effects/projectiles/miniturret/::1702871387
 miniturret_gun.png::CompressedTexture2D::4397784624612101792::1684793791::1702871387::1::::<><>::
 miniturret_stick.png::CompressedTexture2D::6007783077620663313::1684793791::1702871387::1::::<><>::
-::res://resources/images/effects/projectiles/pulse_rifle/::1702838216
+::res://resources/images/effects/projectiles/pulse_rifle/::1702871387
 pulse_rifle_effect.png::CompressedTexture2D::5701762304693824123::1696722100::1702871387::1::::<><>::
 pulse_rifle_main_projectile.png::CompressedTexture2D::8681411636371740659::1696722100::1702871387::1::::<><>::
-::res://resources/images/effects/projectile_effects/::1702838216
+::res://resources/images/effects/projectile_effects/::1702871387
 blaster_explosion.png::CompressedTexture2D::1069538322238228018::1684793791::1702871387::1::::<><>::
 BlitzGun_explosion .png::CompressedTexture2D::5445159800831280175::1684793791::1702871387::1::::<><>::
 BlitzGun_projectile.png::CompressedTexture2D::149111347318494061::1684793791::1702871387::1::::<><>::
 miniturret_collide_effect.png::CompressedTexture2D::1327943785807112521::1684793791::1702871387::1::::<><>::
 projectile_blaster_effect.png::CompressedTexture2D::3647976389791128104::1684793791::1702871387::1::::<><>::
-::res://resources/images/environment/::1702838216
+::res://resources/images/environment/::1702871387
 aurora_borealis.jpg::CompressedTexture2D::8395920804410722754::1684793791::1702871387::1::::<><>::
 city_sky.jpg::CompressedTexture2D::7315327882672706733::1684793791::1702871387::1::::<><>::
 haerkonen.jpg::CompressedTexture2D::7024619979704743380::1684793791::1702871387::1::::<><>::
@@ -765,15 +765,15 @@ stars2.png::CompressedTexture2D::7912317766796933199::1684793791::1702871387::1:
 stars.jpg::CompressedTexture2D::4430370513510969207::1684793791::1702871387::1::::<><>::
 test_hall.jpg::CompressedTexture2D::7733978847798771888::1684793791::1702871387::1::::<><>::
 ::res://resources/images/materials/::1684793791
-::res://resources/images/materials/images/::1702838216
+::res://resources/images/materials/images/::1702871387
 bolt_crate.png::CompressedTexture2D::1446034071768692712::1684793791::1702871387::1::::<><>::
 fade_out.png::CompressedTexture2D::6739455480739421425::1684793791::1702871387::1::::<><>::
 zordoom_concrete.png::CompressedTexture2D::4473441348196991060::1684793791::1702871386::1::::<><>::
 zordoom_rock.png::CompressedTexture2D::7614803663661550682::1684793791::1702871386::1::::<><>::
-::res://resources/images/ui/::1702838216
+::res://resources/images/ui/::1702957743
 active_aiming_radical.png::CompressedTexture2D::4649576223043555517::1687195240::1702871386::1::::<><>::
 boss_fight_icon_empty.png::CompressedTexture2D::6729842488404792417::1690742726::1702871386::1::::<><>::
-enter_key.png::CompressedTexture2D::7630313355448289365::1684793791::1702871386::1::::<><>::
+enter_key.png::CompressedTexture2D::7630313355448289365::1684793791::1702957743::1::::<><>::
 gdb-keyboard-2.png::CompressedTexture2D::7695578996066575656::1684793791::1702871386::1::::<><>::
 green_aiming_radical.png::CompressedTexture2D::8831633577977767541::1684793791::1702871386::1::::<><>::
 green_aiming_radical_pulse_rifle.png::CompressedTexture2D::7866526354201095759::1696722100::1702871386::1::::<><>::
@@ -781,19 +781,19 @@ r_n_c__Final_ammo.png::CompressedTexture2D::7492155936176064111::1684793791::170
 r_n_c__go_ammo.png::CompressedTexture2D::4606653675281709049::1684793791::1702871386::1::::<><>::
 r_n_c__uya_ammo.png::CompressedTexture2D::8278568840800078616::1684793791::1702871386::1::::<><>::
 ui_back.png::CompressedTexture2D::7033825486984157445::1684793791::1702871386::1::::<><>::
-::res://resources/images/weapons/::1702838216
-blitz_gun.png::CompressedTexture2D::5681791909513075396::1684793791::1702871386::1::::<><>::
-edge_blaster.png::CompressedTexture2D::6388607217184755599::1684793791::1702871386::1::::<><>::
+::res://resources/images/weapons/::1702957743
+blitz_gun.png::CompressedTexture2D::5681791909513075396::1684793791::1702957743::1::::<><>::
+edge_blaster.png::CompressedTexture2D::6388607217184755599::1684793791::1702957743::1::::<><>::
 gravity_bomb.png::CompressedTexture2D::2502435138962707689::1684793791::1702871386::1::::<><>::
 miniturret_glove.png::CompressedTexture2D::3933570444625086214::1684793791::1702871386::1::::<><>::
 negotiator.png::CompressedTexture2D::7420662795337482629::1684793791::1702871386::1::::<><>::
-pulse_rifle.png::CompressedTexture2D::7589230937590126451::1684793791::1702871386::1::::<><>::
+pulse_rifle.png::CompressedTexture2D::7589230937590126451::1684793791::1702957743::1::::<><>::
 ry3no.png::CompressedTexture2D::3525787030951471462::1684793791::1702871386::1::::<><>::
 sheepinator.png::CompressedTexture2D::830154567756345776::1684793791::1702871386::1::::<><>::
-::res://resources/images/weapons/enemy/::1702838216
-girdeux_flametank.png::CompressedTexture2D::4840135624363880632::1690742726::1702871386::1::::<><>::
-girdeux_flamethrower.png::CompressedTexture2D::1945652316752645063::1690742726::1702871386::1::::<><>::
-::res://resources/images/weapons/vendor/::1702838216
+::res://resources/images/weapons/enemy/::1702957743
+girdeux_flametank.png::CompressedTexture2D::4840135624363880632::1690742726::1702957743::1::::<><>::
+girdeux_flamethrower.png::CompressedTexture2D::1945652316752645063::1690742726::1702957743::1::::<><>::
+::res://resources/images/weapons/vendor/::1702871386
 blitz_gun_vendor.png::CompressedTexture2D::438242611468763869::1684793791::1702871386::1::::<><>::
 edge_blaster_vendor.png::CompressedTexture2D::1915604344901510813::1684793791::1702871386::1::::<><>::
 gravity_bomb_vendor.png::CompressedTexture2D::365569111695577641::1684793791::1702871386::1::::<><>::
@@ -802,15 +802,15 @@ negotiator_vendor.png::CompressedTexture2D::8970663841662509130::1684793791::170
 pulse_rifle_vendor.png::CompressedTexture2D::4198556500552469516::1684793791::1702871386::1::::<><>::
 ry3no_vendor.png::CompressedTexture2D::8060052150474298990::1684793791::1702871386::1::::<><>::
 sheepinator_vendor.png::CompressedTexture2D::2109862236844060632::1684793791::1702871386::1::::<><>::
-::res://resources/materials/::1702871339
-bolt_crate.tres::ShaderMaterial::4995979764848340889::1702871339::0::1::::<><>::
+::res://resources/materials/::1702871404
+bolt_crate.tres::ShaderMaterial::4995979764848340889::1702871404::0::1::::<><>::
 bolt_crate_fragments.material::ShaderMaterial::-1::1684793791::0::1::::<><>::res://resources/images/materials/images/bolt_crate.png
 bolt_crate_fragment_expire.tres::Shader::-1::1702871339::0::1::::<><>::
 bolt_crate_fragment_xpire.gdshader::Shader::-1::1702871339::0::1::::<><>::
 bolt_crate_noisetexture.tres::NoiseTexture2D::-1::1702871339::0::1::::<><>::
 ::res://resources/mesh_libraries/::1702838243
 incubator_lab_tiles.meshlib::MeshLibrary::-1::1702838243::0::1::::<><>::res://resources/models/tiles/incubator_lab/TempleWall_002.material<>res://resources/models/tiles/incubator_lab/ZordoomConcrete.material<>res://resources/models/tiles/incubator_lab/Rock.material<>res://resources/models/tiles/incubator_lab/bm_interior.material<>res://resources/models/tiles/incubator_lab/SilverCityStone.material<>res://resources/models/tiles/incubator_lab/TempleWallCorner.material<>res://resources/models/tiles/incubator_lab/MetalRoof.material<>res://resources/models/tiles/incubator_lab/Piperail.material<>res://resources/models/tiles/incubator_lab/SilverCitySandStone.material<>res://resources/models/tiles/incubator_lab/Arch.material<>res://resources/models/tiles/incubator_lab/LabFloor.material<>res://resources/models/tiles/incubator_lab/WarehouseWall.material<>res://resources/models/tiles/incubator_lab/RedBeacon.material<>res://resources/models/tiles/incubator_lab/Void.material<>res://resources/models/tiles/incubator_lab/PrisonCellWall.material<>res://resources/models/tiles/incubator_lab/CyanFloor.material<>res://resources/models/tiles/incubator_lab/DarkBlueFloor.material<>res://resources/models/tiles/incubator_lab/DarkCyanPatternWall.material<>res://resources/models/tiles/incubator_lab/DarkestCyanPatternWall.material<>res://resources/models/tiles/incubator_lab/CyanWall.material<>res://resources/models/tiles/incubator_lab/Material.material<>res://resources/models/tiles/incubator_lab/wall_metal_textures.material<>res://resources/models/tiles/incubator_lab/Material_001.material<>res://resources/models/tiles/incubator_lab/grey.material
-::res://resources/models/::1702871359
+::res://resources/models/::1702871386
 NeonGlow_003.material::StandardMaterial3D::-1::1691385098::0::1::::<><>::
 OrangeMetal.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
 SlimCognito.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
@@ -819,13 +819,13 @@ slim_cognito_slim_cognito.png::CompressedTexture2D::6127424384683914054::1702838
 teleportation_base.glb::PackedScene::3893627850533338856::1691385098::1702871358::1::::<><>::
 teleportation_base_teleport_texture.png::CompressedTexture2D::5828095346786197575::1702838588::1702871386::1::::<><>::
 TeleportTexture.material::StandardMaterial3D::-1::1691385098::0::1::::<><>::
-::res://resources/models/arena_assets/::1702871355
+::res://resources/models/arena_assets/::1702871386
 Material_004.material::StandardMaterial3D::-1::1702838243::0::1::::<><>::
 wall.glb::PackedScene::7066326596884397431::1702838243::1702871355::1::::<><>::
 wall_metal_textures.material::StandardMaterial3D::-1::1702838243::0::1::::<><>::
 wall_texture_pattern.jpg::CompressedTexture2D::7598421488512103880::1702838589::1702871386::1::::<><>::
 ::res://resources/models/destructibles/::1684793791
-::res://resources/models/destructibles/crates/::1702871380
+::res://resources/models/destructibles/crates/::1702871386
 BoltCrate.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
 bolt_crate.glb::PackedScene::8536773293421365065::1684793791::1702871380::1::::<><>::
 bolt_crate_blue_floor_normal_map.png::CompressedTexture2D::713502074239751057::1702838589::1702871386::1::::<><>::
@@ -842,7 +842,7 @@ health_crate.glb::PackedScene::3904787081214275786::1684793791::1702871366::1:::
 health_crate_fragments.glb::PackedScene::6712974909506724056::1684793791::1702871366::1::::<><>::
 health_crate_fragments_health_crate.png::CompressedTexture2D::1575897564154113128::1702838598::1702871386::1::::<><>::
 health_crate_health_crate.png::CompressedTexture2D::8483711858815776149::1702838598::1702871386::1::::<><>::
-::res://resources/models/destructibles/crates/bolt_crate_broken/::1702871379
+::res://resources/models/destructibles/crates/bolt_crate_broken/::1702871386
 BoltCrate.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
 crate_shattered_0.glb::PackedScene::2248218545030479575::1684793791::1702871356::1::::<><>::
 crate_shattered_0_blue_floor_normal_map.png::CompressedTexture2D::6655491292867439690::1702838598::1702871386::1::::<><>::
@@ -865,14 +865,14 @@ crate_shattered_5_bolt_crate.png::CompressedTexture2D::3591658871546730178::1702
 crate_shattered_6.glb::PackedScene::6943686452835351182::1684793791::1702871379::1::::<><>::
 crate_shattered_6_blue_floor_normal_map.png::CompressedTexture2D::1031238393995010101::1702838597::1702871386::1::::<><>::
 crate_shattered_6_bolt_crate.png::CompressedTexture2D::7511730259063459087::1702838597::1702871386::1::::<><>::
-::res://resources/models/destructibles/infrastructure/::1702871368
+::res://resources/models/destructibles/infrastructure/::1702871386
 Lamp.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
 LampPost.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
 lamp_post.glb::PackedScene::2285717027233428737::1684793791::1702871368::1::::<><>::
 lamp_post_broken.glb::PackedScene::9118095465517392487::1684793791::1702871368::1::::<><>::
 lamp_post_broken_lamp_post.png::CompressedTexture2D::9042051462842958726::1702838596::1702871386::1::::<><>::
 lamp_post_lamp_post.png::CompressedTexture2D::3415331266345518898::1702838596::1702871386::1::::<><>::
-::res://resources/models/paris_block_house/::1702871371
+::res://resources/models/paris_block_house/::1702871386
 Brick.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
 paris_block_house.glb::PackedScene::5828689542076567353::1684793791::1702871371::1::::<><>::
 paris_block_house_paris_house_chimney.png::CompressedTexture2D::6463020111478318806::1702838594::1702871386::1::::<><>::
@@ -891,7 +891,7 @@ Wall.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
 Wall_2.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
 Window.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
 ::res://resources/models/tiles/::1684793791
-::res://resources/models/tiles/incubator_lab/::1702871380
+::res://resources/models/tiles/incubator_lab/::1702871387
 arch.glb::PackedScene::5958272606457694827::1684793791::1702871379::1::::<><>::
 Arch.material::StandardMaterial3D::-1::1700430558::0::1::::<><>::
 arch_arch.png::CompressedTexture2D::1625439336659475988::1702838594::1702871386::1::::<><>::
@@ -1173,7 +1173,7 @@ warehouse_wall.glb::PackedScene::4275791590828074731::1684793791::1702871360::1:
 warehouse_wall_warehouse_wall.png::CompressedTexture2D::7027734836273435623::1702838590::1702871386::1::::<><>::
 ZordoomConcrete.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
 ZordoomDoor.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
-::res://resources/models/ui_elements/::1702871360
+::res://resources/models/ui_elements/::1702871386
 GreenSnipingTargetRadicalMaterial.material::StandardMaterial3D::-1::1696722100::0::1::::<><>::
 GreenTargetRadicalMaterial.material::StandardMaterial3D::-1::1684793791::0::1::::<><>::
 green_target_radical.glb::PackedScene::6402994535122020558::1684793791::1702871360::1::::<><>::
@@ -1227,24 +1227,24 @@ BlitzGunProjectileExplosion.tscn::PackedScene::-1::1702871335::0::1::::<><>::res
 GravityBombExplosion.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://resources/images/effects/explosions_n_fire/Flame.png<>res://src/scripts/effects/explosions/explosive_projectile_explosion.gd<>res://src/scripts/effects/explosions/Particles_fade_out.gd<>res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd
 MiniturretProjectileExplosion.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://resources/images/effects/projectile_effects/miniturret_collide_effect.png<>res://src/scripts/effects/explosions/explosive_projectile_explosion.gd<>res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd
 NegotiatorExplosion.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://resources/images/effects/explosions_n_fire/explosion.png<>res://src/scripts/effects/explosions/explosive_projectile_explosion.gd<>res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd
-::res://scenes/Levels/::1702838745
+::res://scenes/Levels/::1702957984
 another_amazing_scene.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://scenes/BlocksNWorld/Player/player.tscn
 incubator_lab.tscn::PackedScene::-1::1702871335::0::1::::<><>::
 level_arena.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://scenes/BlocksNWorld/Player/player.tscn<>res://scenes/NPC/Friendly/shark_man.tscn<>res://scenes/BlocksNWorld/ArenaWall.tscn<>res://resources/mesh_libraries/incubator_lab_tiles.meshlib
-test_level.tscn::PackedScene::105413500448427032::1702871335::0::1::::<><>::res://scenes/Destructibles/Crates/explosive_crate.tscn<>res://scenes/Destructibles/Crates/bolt_crate.tscn<>res://scenes/Collectibles/bolt.tscn<>res://scenes/Collectibles/weapon_collectible.tscn<>res://scenes/NPC/Friendly/slim_cognito.tscn<>res://scenes/NPC/Enemies/Bosses/Girdeux.tscn<>res://scenes/BlocksNWorld/Doors/Teleport.tscn<>res://scenes/BlocksNWorld/Player/player.tscn<>res://scenes/NPC/Friendly/null_npc.tscn<>res://resources/mesh_libraries/incubator_lab_tiles.meshlib<>res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn<>res://scenes/Collectibles/ammo_can.tscn<>res://scenes/NPC/Enemies/Enemy.tscn<>res://scenes/BlocksNWorld/Doors/ArchDoors.tscn<>res://scenes/Destructibles/Crates/health_crate.tscn<>res://src/scripts/UI/checkpoint_ui.gd<>res://src/scripts/Player/New SpawnPoint.gd<>res://scenes/NPC/Friendly/mia.tscn<>res://scenes/NPC/Enemies/nef_head_enemy.tscn<>res://scenes/NPC/Friendly/Angela_Or_Rivet.tscn
-::res://scenes/Menu/::1702838243
+test_level.tscn::PackedScene::105413500448427032::1702957984::0::1::::<><>::res://scenes/Destructibles/Crates/explosive_crate.tscn<>res://scenes/Destructibles/Crates/bolt_crate.tscn<>res://scenes/Collectibles/bolt.tscn<>res://scenes/Collectibles/weapon_collectible.tscn<>res://scenes/NPC/Friendly/slim_cognito.tscn<>res://scenes/NPC/Enemies/Bosses/Girdeux.tscn<>res://scenes/BlocksNWorld/Doors/Teleport.tscn<>res://scenes/BlocksNWorld/Player/player.tscn<>res://scenes/NPC/Friendly/null_npc.tscn<>res://resources/mesh_libraries/incubator_lab_tiles.meshlib<>res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn<>res://scenes/Collectibles/ammo_can.tscn<>res://scenes/NPC/Enemies/Enemy.tscn<>res://scenes/BlocksNWorld/Doors/ArchDoors.tscn<>res://scenes/Destructibles/Crates/health_crate.tscn<>res://src/scripts/UI/checkpoint_ui.gd<>res://src/scripts/Player/New SpawnPoint.gd<>res://scenes/NPC/Friendly/mia.tscn<>res://scenes/NPC/Enemies/nef_head_enemy.tscn<>res://scenes/NPC/Friendly/Angela_Or_Rivet.tscn
+::res://scenes/Menu/::1702958269
 LevelView.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/theme/zordoom_theme.tres<>res://src/scripts/Menu/addon/LevelListing.gd<>res://src/scripts/Menu/ReturnMainMenu.gd<>res://scenes/Transitions/fade_in.tscn<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav<>res://resources/mesh_libraries/incubator_lab_tiles.meshlib<>res://resources/images/characters/player/angela/angela_sheet_init_finished.png<>res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png<>res://src/scripts/UI/menu_scene_control_base.gd
 LoadGame.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://scenes/Menu/MenuScene.tscn<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav<>res://src/scripts/Menu/BackButton.gd<>res://src/theme/zordoom_theme.tres
-MainMenu.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/Menu/MainMenu.gd<>res://src/scripts/UI/main_menu.gd<>res://src/scripts/UI/screen_check_box.gd<>res://src/scripts/UI/menu_scene_control_base.gd<>res://src/scripts/Menu/MenuButton.gd<>res://scenes/Transitions/fade_in.tscn<>res://resources/fonts/rg-future-italic.tres<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav<>res://resources/images/environment/stars2.png<>res://src/theme/zordoom_theme.tres<>res://src/scripts/Menu/ReturnMainMenu.gd<>res://scenes/UI/CharacterSelectionButton.tscn
-MenuScene.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/Menu/ReturnMainMenu.gd<>res://src/theme/zordoom_theme.tres
+MainMenu.tscn::PackedScene::148954323817926480::1702958269::0::1::::<><>::res://src/scripts/Menu/MainMenu.gd<>res://src/scripts/UI/main_menu.gd<>res://src/scripts/UI/screen_check_box.gd<>res://src/scripts/UI/menu_scene_control_base.gd<>res://src/scripts/Menu/MenuButton.gd<>res://scenes/Transitions/fade_in.tscn<>res://resources/fonts/rg-future-italic.tres<>uid://dhbtjmxmjkjs1::::res://resources/audio/ui/button_click.wav<>uid://k6siptvlr716::::res://resources/audio/ui/button_navigate.wav<>uid://bk5epmeksv1nf::::res://src/theme/zordoom_theme.tres<>res://src/scripts/Menu/ReturnMainMenu.gd<>res://scenes/UI/CharacterSelectionButton.tscn
+MenuScene.tscn::PackedScene::6796901493627024044::1702958269::0::1::::<><>::res://src/scripts/Menu/ReturnMainMenu.gd<>uid://bk5epmeksv1nf::::res://src/theme/zordoom_theme.tres
 ::res://scenes/Menu/MainMenuButtons/::1702838216
 LoadGameButtonButton.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://scenes/Menu/Materials/MenuButton.tscn<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav
 NewGameButton.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://scenes/Menu/Materials/MenuButton.tscn<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav
 OptionsButton.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://scenes/Menu/Materials/MenuButton.tscn<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav
 QuitGameButton.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://scenes/Menu/Materials/MenuButton.tscn<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav
-::res://scenes/Menu/Materials/::1702838216
+::res://scenes/Menu/Materials/::1702957624
 LevelButton.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/Menu/MenuButton.gd<>res://src/theme/zordoom_resource_theme.tres<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav
-MenuButton.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/Menu/MenuButton.gd<>res://src/theme/zordoom_theme.tres
+MenuButton.tscn::PackedScene::-1::1702957624::0::1::::<><>::res://src/scripts/Menu/MenuButton.gd<>res://src/theme/zordoom_theme.tres
 ::res://scenes/Menu/PlayerMenuButtons/::1702838216
 ReturnToGameButton.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://resources/audio/ui/button_click.wav<>res://src/scripts/Menu/MenuButton.gd<>res://src/theme/zordoom_theme.tres<>res://resources/audio/ui/button_navigate.wav
 ReturnToMainMenuButton.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/Menu/MenuButton.gd<>res://src/theme/zordoom_theme.tres
@@ -1255,7 +1255,7 @@ nef_head_enemy.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://resources/
 ::res://scenes/NPC/Enemies/Bosses/::1702838216
 Girdeux.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png<>res://src/scripts/npc/enemies/boss_base.gd<>res://src/scripts/npc/enemies/enemy_raycast.gd<>res://resources/images/weapons/enemy/girdeux_flamethrower.png<>res://resources/images/weapons/enemy/girdeux_flametank.png<>res://src/scripts/npc/npc.gd
 GirdeuxBody.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png<>res://src/scripts/npc/enemies/body.gd
-::res://scenes/NPC/Friendly/::1702838243
+::res://scenes/NPC/Friendly/::1702871386
 Angela_Or_Rivet.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/npc/friendly/Angela_Or_Rivet.gd<>res://resources/images/characters/player/angela/angela_sheet_init_finished.png<>res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png<>res://resources/images/ui/enter_key.png<>res://src/scripts/npc/npc.gd
 mia.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://resources/images/characters/npc/mia.png<>res://src/scripts/npc/friendly/character.gd<>res://resources/images/ui/enter_key.png<>res://src/scripts/npc/npc.gd
 miniturret.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://resources/images/effects/projectiles/miniturret/miniturret_stick.png<>res://resources/images/effects/projectiles/miniturret/miniturret_gun.png<>res://src/scripts/npc/friendly/miniturret.gd<>res://resources/audio/npc/miniturret/miniturret_gun.wav<>res://resources/audio/npc/miniturret/deploy.wav
@@ -1276,11 +1276,11 @@ PulseRifleProjectile.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/
 flame.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/effects/bullets/enemy_bullets/flame_projectile.gd<>res://resources/images/effects/explosions_n_fire/Flame.png
 ::res://scenes/Transitions/::1702838216
 fade_in.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/UI/fade_in.gd
-::res://scenes/UI/::1702838216
+::res://scenes/UI/::1702957624
 ammo-icon.png::CompressedTexture2D::2047426082457971340::1684793792::1702871386::1::::<><>::
 bolt-icon.png::CompressedTexture2D::7962378835133132217::1684793792::1702871386::1::::<><>::
 BoltCounter.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/UI/bolt_count.gd<>res://resources/fonts/rg-future-italic.tres<>res://scenes/UI/bolt-icon.png
-CharacterSelectionButton.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/theme/zordoom_resource_theme.tres<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav<>res://src/scripts/UI/character_selection_button.gd
+CharacterSelectionButton.tscn::PackedScene::-1::1702957624::0::1::::<><>::res://src/theme/zordoom_resource_theme.tres<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav<>res://src/scripts/UI/character_selection_button.gd
 GreenTargetRadical.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://resources/models/ui_elements/GreenTargetRadicalMaterial.material
 health-icon.png::CompressedTexture2D::4501550725609496191::1684793792::1702871386::1::::<><>::
 icon-hexagon-placeholder.png::CompressedTexture2D::7356110757968594244::1684793792::1702871386::1::::<><>::
@@ -1323,15 +1323,15 @@ explosive_crate_explosion.gd::GDScript::-1::1702871335::0::1::::<>Node3D<>::
 explosive_projectile_explosion.gd::GDScript::-1::1702871335::0::1::::<>CharacterBody3D<>::
 Particles_fade_out.gd::GDScript::-1::1702871335::0::1::::<>Particles<>::
 ProjectileExplosionArea_timer.gd::GDScript::-1::1702871335::0::1::::<>Area3D<>::
-::res://src/scripts/Menu/::1702838243
+::res://src/scripts/Menu/::1702872553
 BackButton.gd::GDScript::-1::1702871335::0::1::::<>Button<>::
 LevelButton.gd::GDScript::-1::1702871335::0::1::::<>MenuButton<>::
 MainMenu.gd::GDScript::-1::1702871335::0::1::::<>MenuSceneControlBase<>::
 MenuButton.gd::GDScript::-1::1702871335::0::1::::<>Button<>::
-ReturnMainMenu.gd::GDScript::-1::1702871335::0::1::::<>MenuSceneControlBase<>::
+ReturnMainMenu.gd::GDScript::-1::1702872553::0::1::::<>MenuSceneControlBase<>::
 SaveGames.gd::GDScript::-1::1702871335::0::1::::<>Control<>::
-::res://src/scripts/Menu/addon/::1702838216
-LevelListing.gd::GDScript::-1::1702871335::0::1::::<>MenuSceneControlBase<>::
+::res://src/scripts/Menu/addon/::1702873448
+LevelListing.gd::GDScript::-1::1702873448::0::1::::<>MenuSceneControlBase<>::
 ::res://src/scripts/npc/::1702838243
 npc.gd::GDScript::-1::1702871335::0::1::::<>Area3D<>::
 vendor.gd::GDScript::-1::1702871335::0::1::::<>Area3D<>::
@@ -1358,21 +1358,21 @@ PlayerHit_box.gd::GDScript::-1::1702871335::0::1::::PlayerHit_box<>Area3D<>::
 PlayerUI.gd::GDScript::-1::1702871335::0::1::::<>Control<>::
 PlayerWeaponsInventory.gd::GDScript::-1::1702871335::0::1::::<>MenuSceneControlBase<>::
 player_target_detection_area.gd::GDScript::-1::1702871335::0::1::::<>Area3D<>::
-::res://src/scripts/UI/::1702838243
+::res://src/scripts/UI/::1702958267
 arena_menu.gd::GDScript::-1::1702871335::0::1::::<>MenuSceneControlBase<>::
 bolt_count.gd::GDScript::-1::1702871335::0::1::::<>Label<>::
-character_selection_button.gd::GDScript::-1::1702871335::0::1::::<>Button<>::
+character_selection_button.gd::GDScript::-1::1702958267::0::1::::<>Button<>::
 checkpoint_ui.gd::GDScript::-1::1702871335::0::1::::<>Area3D<>::
 fade_in.gd::GDScript::-1::1702871335::0::1::::<>ColorRect<>::
 main_menu.gd::GDScript::-1::1702871335::0::1::::<>MenuSceneBase<>::
 menu_scene_base.gd::GDScript::-1::1702871335::0::1::::MenuSceneBase<>Node3D<>::
-menu_scene_control_base.gd::GDScript::-1::1702871335::0::1::::MenuSceneControlBase<>Control<>::
+menu_scene_control_base.gd::GDScript::-1::1702872553::0::1::::MenuSceneControlBase<>Control<>::
 screen_check_box.gd::GDScript::-1::1702871335::0::1::::<>CheckBox<>::
 vendor_weapon_button.gd::GDScript::-1::1702871335::0::1::::<>Button<>::
 ::res://src/scripts/world/::1702838216
 arch_door.gd::GDScript::-1::1702871335::0::1::::<>Node3D<>::
 teleport.gd::GDScript::-1::1702871335::0::1::::<>StaticBody3D<>::
-::res://src/theme/::1702838745
-zordoom_ingameui_theme.tres::Theme::3074942968399061943::1702871335::0::1::::<><>::uid://bqphl04f734t1::::res://resources/fonts/lato-regular.tres<>res://resources/fonts/lato-bold-ingameui.tres
-zordoom_resource_theme.tres::Theme::6695521123806943982::1702871335::0::1::::<><>::uid://bqphl04f734t1::::res://resources/fonts/lato-regular.tres
-zordoom_theme.tres::Theme::3150510744513541039::1702871335::0::1::::<><>::uid://3mfryjottcb2::::res://resources/fonts/lato-light.tres
+::res://src/theme/::1702957758
+zordoom_ingameui_theme.tres::Theme::3074942968399061943::1702957758::0::1::::<><>::uid://bqphl04f734t1::::res://resources/fonts/lato-regular.tres<>res://resources/fonts/lato-bold-ingameui.tres
+zordoom_resource_theme.tres::Theme::6695521123806943982::1702957758::0::1::::<><>::uid://bqphl04f734t1::::res://resources/fonts/lato-regular.tres
+zordoom_theme.tres::Theme::3150510744513541039::1702957758::0::1::::<><>::uid://3mfryjottcb2::::res://resources/fonts/lato-light.tres

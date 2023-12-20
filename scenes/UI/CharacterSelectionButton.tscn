@@ -1,52 +1,53 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://b24816s3yscpy"]
 
-[ext_resource path="res://src/theme/zordoom_resource_theme.tres" type="Theme" id=1]
-[ext_resource path="res://resources/audio/ui/button_click.wav" type="AudioStream" id=2]
-[ext_resource path="res://resources/audio/ui/button_navigate.wav" type="AudioStream" id=3]
-[ext_resource path="res://src/scripts/UI/character_selection_button.gd" type="Script" id=4]
+[ext_resource type="Theme" uid="uid://c2nmiwn8xj48a" path="res://src/theme/zordoom_resource_theme.tres" id="1"]
+[ext_resource type="AudioStream" uid="uid://dhbtjmxmjkjs1" path="res://resources/audio/ui/button_click.wav" id="2"]
+[ext_resource type="AudioStream" uid="uid://k6siptvlr716" path="res://resources/audio/ui/button_navigate.wav" id="3"]
+[ext_resource type="Script" path="res://src/scripts/UI/character_selection_button.gd" id="4"]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.6, 0.6, 0.6, 0 )
+[sub_resource type="StyleBoxFlat" id="1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="CharacterSelectionButton" type="Button"]
+custom_minimum_size = Vector2(200, 250)
 offset_left = 540.0
 offset_right = 740.0
-offset_bottom = 200.0
-custom_minimum_size = Vector2( 200, 250 )
+offset_bottom = 250.0
 mouse_filter = 2
-theme = ExtResource( 1 )
-script = ExtResource( 4 )
+theme = ExtResource("1")
+script = ExtResource("4")
 
 [node name="CharacterImage" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(160, 260)
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
-offset_right = 823.0
+offset_right = 725.0
 offset_bottom = 827.0
-custom_minimum_size = Vector2( 160, 260 )
-scale = Vector2( 0.2, 0.2 )
+scale = Vector2(0.2, 0.2)
 stretch_mode = 1
 
 [node name="Audio" type="Node" parent="."]
 
 [node name="Click" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 2 )
+stream = ExtResource("2")
 
 [node name="Move" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource( 3 )
+stream = ExtResource("3")
 
 [node name="CharacterPanel" type="Panel" parent="."]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 189.0
 offset_right = 180.0
 offset_bottom = 240.0
-theme_override_styles/panel = SubResource( 1 )
+theme_override_styles/panel = SubResource("1")
 
 [node name="CharacterName" type="Label" parent="CharacterPanel"]
+layout_mode = 0
 offset_right = 160.0
 offset_bottom = 60.0
 text = "ANGELA"
-align = 1
-valign = 1
 uppercase = true
 
 [connection signal="focus_exited" from="." to="." method="_on_CharacterSelectionButton_focus_exited"]

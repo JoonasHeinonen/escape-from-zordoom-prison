@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://k6siptvlr716" path="res://resources/audio/ui/button_navigate.wav" id="9"]
 [ext_resource type="Theme" uid="uid://bk5epmeksv1nf" path="res://src/theme/zordoom_theme.tres" id="11"]
 [ext_resource type="Script" path="res://src/scripts/Menu/ReturnMainMenu.gd" id="12"]
-[ext_resource type="PackedScene" path="res://scenes/UI/CharacterSelectionButton.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://b24816s3yscpy" path="res://scenes/UI/CharacterSelectionButton.tscn" id="13"]
 
 [sub_resource type="Sky" id="15"]
 radiance_size = 4
@@ -159,6 +159,8 @@ stream = ExtResource("9")
 [node name="FadeIn" parent="MainMenu" instance=ExtResource("6")]
 visible = false
 layout_mode = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 
 [node name="CharacterSelection" type="Control" parent="."]
 visible = false
@@ -166,10 +168,12 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("12")
-alignment = "Full alignment"
 menus = "StartGame"
+alignment = "Full alignment"
 
 [node name="LabelCenterContainer" type="CenterContainer" parent="CharacterSelection"]
 layout_mode = 0
@@ -206,10 +210,12 @@ alignment = 1
 
 [node name="AngelaSelectionButton" parent="CharacterSelection/CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13")]
 layout_mode = 2
+characters = "Angela"
 scene_to_load = "res://scenes/Menu/LevelView.tscn"
 
 [node name="RivetSelectionButton" parent="CharacterSelection/CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13")]
 layout_mode = 2
+characters = "Rivet"
 scene_to_load = "res://scenes/Menu/LevelView.tscn"
 
 [node name="VBoxContainer" type="HBoxContainer" parent="CharacterSelection/CenterContainer/VBoxContainer"]
@@ -245,10 +251,12 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("12")
-alignment = "Full alignment"
 menus = "LoadGame"
+alignment = "Full alignment"
 
 [node name="CenterContainer" type="CenterContainer" parent="LoadGame"]
 layout_mode = 0
@@ -286,10 +294,12 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("12")
-alignment = "Full alignment"
 menus = "Options"
+alignment = "Full alignment"
 
 [node name="CenterContainer" type="CenterContainer" parent="Options"]
 layout_mode = 0
