@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1702958269
+::res://::1703128028
 default_bus_layout.tres::AudioBusLayout::-1::1702871335::0::1::::<><>::
-default_env.tres::Environment::219611424375106466::1702958269::0::1::::<><>::
+default_env.tres::Environment::219611424375106466::1703128028::0::1::::<><>::
 icon.png::CompressedTexture2D::1349545169909211679::1684793791::1702957743::1::::<><>::
 README.md::TextFile::-1::1684793791::0::1::::<><>::
 ::res://addons/::1696722100
@@ -271,8 +271,8 @@ TextEditor.tscn::PackedScene::-1::1702871340::0::1::::<><>::res://addons/dialogi
 ::res://addons/dialogic/Editor/Events/Parts/WaitSeconds/::1702838216
 EventPart_WaitSeconds.gd::GDScript::-1::1702871340::0::1::::<>Control<>::
 WaitSeconds.tscn::PackedScene::-1::1702871340::0::1::::<><>::res://addons/dialogic/Editor/Events/Parts/WaitSeconds/EventPart_WaitSeconds.gd<>res://addons/dialogic/Editor/Events/Parts/Text/GreyLabel.tscn<>res://addons/dialogic/Editor/Events/styles/InputFieldsStyle.tres<>res://addons/dialogic/Editor/Events/Parts/SpinBoxPreventDnD.gd
-::res://addons/dialogic/Editor/Events/styles/::1702957758
-InputFieldsStyle.tres::Theme::501980295477713132::1702957758::0::1::::<><>::
+::res://addons/dialogic/Editor/Events/styles/::1703126451
+InputFieldsStyle.tres::Theme::501980295477713132::1703126451::0::1::::<><>::
 ResourceMenuHover.tres::StyleBoxFlat::-1::1702871340::0::1::::<><>::
 ResourceMenuNormal.tres::StyleBoxFlat::-1::1702871340::0::1::::<><>::
 ResourceMenuPanelBackground.tres::StyleBoxFlat::-1::1702871340::0::1::::<><>::
@@ -761,7 +761,7 @@ city_sky.jpg::CompressedTexture2D::7315327882672706733::1684793791::1702871387::
 haerkonen.jpg::CompressedTexture2D::7024619979704743380::1684793791::1702871387::1::::<><>::
 nordic_sky.jpg::CompressedTexture2D::705434037656591974::1684793791::1702871387::1::::<><>::
 stars2.jpg::CompressedTexture2D::2715836814780185921::1684793791::1702871387::1::::<><>::
-stars2.png::CompressedTexture2D::7912317766796933199::1684793791::1702871387::1::::<><>::
+stars2.png::CompressedTexture2D::7912317766796933199::1684793791::1703128262::1::::<><>::
 stars.jpg::CompressedTexture2D::4430370513510969207::1684793791::1702871387::1::::<><>::
 test_hall.jpg::CompressedTexture2D::7733978847798771888::1684793791::1702871387::1::::<><>::
 ::res://resources/images/materials/::1684793791
@@ -1232,11 +1232,11 @@ another_amazing_scene.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://sce
 incubator_lab.tscn::PackedScene::-1::1702871335::0::1::::<><>::
 level_arena.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://scenes/BlocksNWorld/Player/player.tscn<>res://scenes/NPC/Friendly/shark_man.tscn<>res://scenes/BlocksNWorld/ArenaWall.tscn<>res://resources/mesh_libraries/incubator_lab_tiles.meshlib
 test_level.tscn::PackedScene::105413500448427032::1702957984::0::1::::<><>::res://scenes/Destructibles/Crates/explosive_crate.tscn<>res://scenes/Destructibles/Crates/bolt_crate.tscn<>res://scenes/Collectibles/bolt.tscn<>res://scenes/Collectibles/weapon_collectible.tscn<>res://scenes/NPC/Friendly/slim_cognito.tscn<>res://scenes/NPC/Enemies/Bosses/Girdeux.tscn<>res://scenes/BlocksNWorld/Doors/Teleport.tscn<>res://scenes/BlocksNWorld/Player/player.tscn<>res://scenes/NPC/Friendly/null_npc.tscn<>res://resources/mesh_libraries/incubator_lab_tiles.meshlib<>res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn<>res://scenes/Collectibles/ammo_can.tscn<>res://scenes/NPC/Enemies/Enemy.tscn<>res://scenes/BlocksNWorld/Doors/ArchDoors.tscn<>res://scenes/Destructibles/Crates/health_crate.tscn<>res://src/scripts/UI/checkpoint_ui.gd<>res://src/scripts/Player/New SpawnPoint.gd<>res://scenes/NPC/Friendly/mia.tscn<>res://scenes/NPC/Enemies/nef_head_enemy.tscn<>res://scenes/NPC/Friendly/Angela_Or_Rivet.tscn
-::res://scenes/Menu/::1702958269
+::res://scenes/Menu/::1703128027
 LevelView.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/theme/zordoom_theme.tres<>res://src/scripts/Menu/addon/LevelListing.gd<>res://src/scripts/Menu/ReturnMainMenu.gd<>res://scenes/Transitions/fade_in.tscn<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav<>res://resources/mesh_libraries/incubator_lab_tiles.meshlib<>res://resources/images/characters/player/angela/angela_sheet_init_finished.png<>res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png<>res://src/scripts/UI/menu_scene_control_base.gd
 LoadGame.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://scenes/Menu/MenuScene.tscn<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav<>res://src/scripts/Menu/BackButton.gd<>res://src/theme/zordoom_theme.tres
-MainMenu.tscn::PackedScene::148954323817926480::1702958269::0::1::::<><>::res://src/scripts/Menu/MainMenu.gd<>res://src/scripts/UI/main_menu.gd<>res://src/scripts/UI/screen_check_box.gd<>res://src/scripts/UI/menu_scene_control_base.gd<>res://src/scripts/Menu/MenuButton.gd<>res://scenes/Transitions/fade_in.tscn<>res://resources/fonts/rg-future-italic.tres<>uid://dhbtjmxmjkjs1::::res://resources/audio/ui/button_click.wav<>uid://k6siptvlr716::::res://resources/audio/ui/button_navigate.wav<>uid://bk5epmeksv1nf::::res://src/theme/zordoom_theme.tres<>res://src/scripts/Menu/ReturnMainMenu.gd<>res://scenes/UI/CharacterSelectionButton.tscn
-MenuScene.tscn::PackedScene::6796901493627024044::1702958269::0::1::::<><>::res://src/scripts/Menu/ReturnMainMenu.gd<>uid://bk5epmeksv1nf::::res://src/theme/zordoom_theme.tres
+MainMenu.tscn::PackedScene::148954323817926480::1703128027::0::1::::<><>::res://src/scripts/Menu/MainMenu.gd<>res://src/scripts/UI/main_menu.gd<>res://src/scripts/UI/screen_check_box.gd<>res://src/scripts/UI/menu_scene_control_base.gd<>res://src/scripts/Menu/MenuButton.gd<>res://scenes/Transitions/fade_in.tscn<>res://resources/fonts/rg-future-italic.tres<>uid://dhbtjmxmjkjs1::::res://resources/audio/ui/button_click.wav<>uid://k6siptvlr716::::res://resources/audio/ui/button_navigate.wav<>uid://bk5epmeksv1nf::::res://src/theme/zordoom_theme.tres<>res://src/scripts/Menu/ReturnMainMenu.gd<>uid://b24816s3yscpy::::res://scenes/UI/CharacterSelectionButton.tscn
+MenuScene.tscn::PackedScene::6796901493627024044::1703128027::0::1::::<><>::res://src/scripts/Menu/ReturnMainMenu.gd<>uid://bk5epmeksv1nf::::res://src/theme/zordoom_theme.tres
 ::res://scenes/Menu/MainMenuButtons/::1702838216
 LoadGameButtonButton.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://scenes/Menu/Materials/MenuButton.tscn<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav
 NewGameButton.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://scenes/Menu/Materials/MenuButton.tscn<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav
@@ -1276,11 +1276,11 @@ PulseRifleProjectile.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/
 flame.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/effects/bullets/enemy_bullets/flame_projectile.gd<>res://resources/images/effects/explosions_n_fire/Flame.png
 ::res://scenes/Transitions/::1702838216
 fade_in.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/UI/fade_in.gd
-::res://scenes/UI/::1702957624
+::res://scenes/UI/::1703128028
 ammo-icon.png::CompressedTexture2D::2047426082457971340::1684793792::1702871386::1::::<><>::
 bolt-icon.png::CompressedTexture2D::7962378835133132217::1684793792::1702871386::1::::<><>::
 BoltCounter.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://src/scripts/UI/bolt_count.gd<>res://resources/fonts/rg-future-italic.tres<>res://scenes/UI/bolt-icon.png
-CharacterSelectionButton.tscn::PackedScene::-1::1702957624::0::1::::<><>::res://src/theme/zordoom_resource_theme.tres<>res://resources/audio/ui/button_click.wav<>res://resources/audio/ui/button_navigate.wav<>res://src/scripts/UI/character_selection_button.gd
+CharacterSelectionButton.tscn::PackedScene::4343438165525837742::1703128028::0::1::::<><>::uid://c2nmiwn8xj48a::::res://src/theme/zordoom_resource_theme.tres<>uid://dhbtjmxmjkjs1::::res://resources/audio/ui/button_click.wav<>uid://k6siptvlr716::::res://resources/audio/ui/button_navigate.wav<>res://src/scripts/UI/character_selection_button.gd
 GreenTargetRadical.tscn::PackedScene::-1::1702871335::0::1::::<><>::res://resources/models/ui_elements/GreenTargetRadicalMaterial.material
 health-icon.png::CompressedTexture2D::4501550725609496191::1684793792::1702871386::1::::<><>::
 icon-hexagon-placeholder.png::CompressedTexture2D::7356110757968594244::1684793792::1702871386::1::::<><>::
@@ -1323,10 +1323,10 @@ explosive_crate_explosion.gd::GDScript::-1::1702871335::0::1::::<>Node3D<>::
 explosive_projectile_explosion.gd::GDScript::-1::1702871335::0::1::::<>CharacterBody3D<>::
 Particles_fade_out.gd::GDScript::-1::1702871335::0::1::::<>Particles<>::
 ProjectileExplosionArea_timer.gd::GDScript::-1::1702871335::0::1::::<>Area3D<>::
-::res://src/scripts/Menu/::1702872553
+::res://src/scripts/Menu/::1703039837
 BackButton.gd::GDScript::-1::1702871335::0::1::::<>Button<>::
 LevelButton.gd::GDScript::-1::1702871335::0::1::::<>MenuButton<>::
-MainMenu.gd::GDScript::-1::1702871335::0::1::::<>MenuSceneControlBase<>::
+MainMenu.gd::GDScript::-1::1703039837::0::1::::<>MenuSceneControlBase<>::
 MenuButton.gd::GDScript::-1::1702871335::0::1::::<>Button<>::
 ReturnMainMenu.gd::GDScript::-1::1702872553::0::1::::<>MenuSceneControlBase<>::
 SaveGames.gd::GDScript::-1::1702871335::0::1::::<>Control<>::
@@ -1358,10 +1358,10 @@ PlayerHit_box.gd::GDScript::-1::1702871335::0::1::::PlayerHit_box<>Area3D<>::
 PlayerUI.gd::GDScript::-1::1702871335::0::1::::<>Control<>::
 PlayerWeaponsInventory.gd::GDScript::-1::1702871335::0::1::::<>MenuSceneControlBase<>::
 player_target_detection_area.gd::GDScript::-1::1702871335::0::1::::<>Area3D<>::
-::res://src/scripts/UI/::1702958267
+::res://src/scripts/UI/::1703126451
 arena_menu.gd::GDScript::-1::1702871335::0::1::::<>MenuSceneControlBase<>::
 bolt_count.gd::GDScript::-1::1702871335::0::1::::<>Label<>::
-character_selection_button.gd::GDScript::-1::1702958267::0::1::::<>Button<>::
+character_selection_button.gd::GDScript::-1::1703126451::0::1::::<>Button<>::
 checkpoint_ui.gd::GDScript::-1::1702871335::0::1::::<>Area3D<>::
 fade_in.gd::GDScript::-1::1702871335::0::1::::<>ColorRect<>::
 main_menu.gd::GDScript::-1::1702871335::0::1::::<>MenuSceneBase<>::
@@ -1372,7 +1372,7 @@ vendor_weapon_button.gd::GDScript::-1::1702871335::0::1::::<>Button<>::
 ::res://src/scripts/world/::1702838216
 arch_door.gd::GDScript::-1::1702871335::0::1::::<>Node3D<>::
 teleport.gd::GDScript::-1::1702871335::0::1::::<>StaticBody3D<>::
-::res://src/theme/::1702957758
+::res://src/theme/::1703126451
 zordoom_ingameui_theme.tres::Theme::3074942968399061943::1702957758::0::1::::<><>::uid://bqphl04f734t1::::res://resources/fonts/lato-regular.tres<>res://resources/fonts/lato-bold-ingameui.tres
-zordoom_resource_theme.tres::Theme::6695521123806943982::1702957758::0::1::::<><>::uid://bqphl04f734t1::::res://resources/fonts/lato-regular.tres
-zordoom_theme.tres::Theme::3150510744513541039::1702957758::0::1::::<><>::uid://3mfryjottcb2::::res://resources/fonts/lato-light.tres
+zordoom_resource_theme.tres::Theme::6695521123806943982::1703126451::0::1::::<><>::uid://bqphl04f734t1::::res://resources/fonts/lato-regular.tres
+zordoom_theme.tres::Theme::3150510744513541039::1703126451::0::1::::<><>::uid://3mfryjottcb2::::res://resources/fonts/lato-light.tres

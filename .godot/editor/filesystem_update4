@@ -1,9 +1,8 @@
 res://default_env.tres
 res://scenes/Menu/MainMenu.tscn
 res://addons/dialogic/Editor/Events/styles/InputFieldsStyle.tres
+res://src/scripts/UI/character_selection_button.gd
 res://src/theme/zordoom_theme.tres
 res://src/theme/zordoom_resource_theme.tres
 res://scenes/Menu/MenuScene.tscn
-res://src/scripts/UI/character_selection_button.gd
-res://src/scripts/Menu/MainMenu.gd
 res://scenes/UI/CharacterSelectionButton.tscn
