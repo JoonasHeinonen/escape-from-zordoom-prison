@@ -615,6 +615,7 @@ modulate = Color(0, 0, 0, 1)
 pixel_size = 0.04
 shaded = true
 double_sided = false
+texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 4
@@ -642,7 +643,6 @@ spot_range = 0.43704
 
 [node name="AngelaArm" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139)
-visible = false
 mesh = SubResource("21")
 skeleton = NodePath("../AngelaSprite")
 
@@ -654,12 +654,14 @@ skeleton = NodePath("../../AngelaSprite")
 [node name="Hand" type="Sprite3D" parent="AngelaArm/HandInstance"]
 transform = Transform3D(20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01)
 shaded = true
+texture_filter = 0
 texture = ExtResource("6")
 
 [node name="WeaponPlaceHolder" type="Sprite3D" parent="AngelaArm/HandInstance/Hand"]
 transform = Transform3D(0.25, 6.893e-37, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01)
 pixel_size = 0.04
 shaded = true
+texture_filter = 0
 texture = ExtResource("5")
 
 [node name="blitzGunMuzzle" type="Marker3D" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder"]
@@ -690,6 +692,7 @@ modulate = Color(0, 0, 0, 1)
 pixel_size = 0.04
 shaded = true
 double_sided = false
+texture_filter = 0
 texture = ExtResource("36")
 hframes = 10
 vframes = 4
@@ -697,6 +700,7 @@ frame = 1
 
 [node name="RivetArm" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139)
+visible = false
 mesh = SubResource("21")
 skeleton = NodePath("../RivetSprite")
 
@@ -708,12 +712,14 @@ skeleton = NodePath("../../RivetSprite")
 [node name="Hand" type="Sprite3D" parent="RivetArm/HandInstance"]
 transform = Transform3D(20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, -1.61559e-27, 1, 2.25974, -0.0573018, -0.01)
 shaded = true
+texture_filter = 0
 texture = ExtResource("6")
 
 [node name="WeaponPlaceHolder" type="Sprite3D" parent="RivetArm/HandInstance/Hand"]
 transform = Transform3D(0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01)
 pixel_size = 0.04
 shaded = true
+texture_filter = 0
 texture = ExtResource("45")
 
 [node name="blitzGunMuzzle" type="Marker3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
@@ -747,6 +753,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("30")
 

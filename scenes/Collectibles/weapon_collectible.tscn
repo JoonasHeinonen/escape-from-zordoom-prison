@@ -1,26 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://bp5ijfq147flt"]
 
-[ext_resource path="res://resources/images/weapons/blitz_gun.png" type="Texture2D" id=1]
-[ext_resource path="res://src/scripts/bolt/weapon_collectible.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://d6um7t5vlabr" path="res://resources/images/weapons/blitz_gun.png" id="1"]
+[ext_resource type="Script" path="res://src/scripts/bolt/weapon_collectible.gd" id="2"]
 
-[sub_resource type="SphereShape3D" id=1]
+[sub_resource type="SphereShape3D" id="1"]
 
 [node name="WeaponCollectible" type="Area3D"]
-transform = Transform3D( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
-script = ExtResource( 2 )
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+script = ExtResource("2")
 weapon = "sheepinator"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1
 shaded = true
 double_sided = false
-texture = ExtResource( 1 )
+texture_filter = 0
+texture = ExtResource("1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.952473 )
-light_color = Color( 0.74902, 0.898039, 0.901961, 1 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.952473)
+light_color = Color(0.74902, 0.898039, 0.901961, 1)
 spot_range = 1.0
 spot_angle = 12.75
