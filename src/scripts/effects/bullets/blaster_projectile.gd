@@ -4,7 +4,7 @@ extends ProjectileBase
 @onready var miniturret_projectile_explosion = preload("res://scenes/Effects/ProjectileEffects/MiniturretProjectileExplosion.tscn")
 @onready var projectile_effect = preload("res://scenes/Effects/ProjectileEffects/BlasterProjectileEffect.tscn")
 
-@export (String, "blaster", "miniturret") var weapon
+@export_enum ( "blaster", "miniturret") var weapon : String
 
 func _ready():
 	velocity = Vector3(0, 0, 0)

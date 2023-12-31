@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 class_name Player
 
-signal update_player_position_to_camera(new_aiming_radical)
+signal update_the_player_position_to_camera(new_aiming_radical)
 
 const RANDOM_ANGLE = PI / 2.0
 
@@ -37,7 +37,7 @@ var hand_instance : Sprite3D
 var spawn_point
 var state_machine
 
-var velocity = Vector3(0 ,0 ,0)
+#var velocity = Vector3(0 ,0 ,0)
 
 var current_boss_name : String = ""
 
@@ -726,7 +726,7 @@ func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
 			)
 
 func update_player_position_to_camera():
-	emit_signal("update_player_position_to_camera", player_health)
+	emit_signal("update_the_player_position_to_camera", player_health)
 
 func _on_WeaponSlot1_pressed():
 	current_weapon = "edge_blaster"

@@ -6,7 +6,7 @@ class_name EnemyBase
 
 enum elements {GROUND, WATER, AIR, STATIC}
 
-@export var direction # (String, "Right", "Left")
+@export var direction : String # (String, "Right", "Left")
 @export var is_armored : bool = false
 @export var enemy_health : int = 10
 @export var enemy_speed : int = 10
@@ -19,7 +19,7 @@ var element = null
 var gravity : int
 var meta_name : String = ""
 var speed : int
-var velocity = Vector3(0, 0, 0)
+#var velocity = Vector3(0, 0, 0)
 
 var animation_player
 var player

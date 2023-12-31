@@ -6,3 +6,13 @@ res://src/theme/zordoom_theme.tres
 res://src/theme/zordoom_resource_theme.tres
 res://scenes/Menu/MenuScene.tscn
 res://scenes/UI/CharacterSelectionButton.tscn
+res://scenes/Effects/Collectibles/TrailParticles.tscn
+res://src/scripts/effects/explosions/Particles_fade_out.gd
+res://src/scripts/effects/bullets/blaster_projectile.gd
+res://src/scripts/effects/bullets/blaster_projectile_effect.gd
+res://src/scripts/npc/friendly/miniturret.gd
+res://src/scripts/UI/vendor_weapon_button.gd
+res://src/scripts/Player/Player.gd
+res://src/scripts/npc/enemies/enemy_base.gd
+res://src/scripts/npc/npc.gd
+res://addons/dialogic/Documentation/Nodes/DocsTreeHelper.gd

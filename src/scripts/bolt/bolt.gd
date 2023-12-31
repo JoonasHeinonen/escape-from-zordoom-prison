@@ -5,7 +5,7 @@ extends Area3D
 
 var projectile
 
-@export (String, "bolt", "ammo", "nanotech_node") var type
+@export_enum ( "bolt", "ammo", "nanotech_node") var type : String
 
 var does_emit_trail : bool = false
 var does_get_magnet : bool = false

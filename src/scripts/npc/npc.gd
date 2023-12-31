@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var character_name # (String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_man")
+@export var character_name : String # (String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_man")
 
 var active : bool = false
 

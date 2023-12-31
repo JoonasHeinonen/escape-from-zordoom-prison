@@ -1,4 +1,4 @@
-extends Particles
+extends GPUParticles3D
 
 var pm : ParticleProcessMaterial = process_material
 

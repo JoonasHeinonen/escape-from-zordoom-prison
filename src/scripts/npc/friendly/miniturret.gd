@@ -14,7 +14,7 @@ var is_locked_on_target : bool = false
 
 var directions : Array = ["up", "down"]
 
-var velocity = Vector3(0, 0, 0)
+#var velocity = Vector3(0, 0, 0)
 var random = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.

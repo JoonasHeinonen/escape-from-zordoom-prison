@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 var speed = -1
-var velocity = Vector3(0,0,0)
+#var velocity = Vector3(0,0,0)
 
 func _physics_process(delta):
 	velocity.x = speed * delta * 1
