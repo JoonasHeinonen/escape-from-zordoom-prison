@@ -216,7 +216,7 @@ func _physics_process(delta):
 			$AngelaArm/HandInstance/Hand.scale.y = 20
 			$PlayerHit_box.set_position(Vector3((-0.649 * 3.1), 0, 0))
 		else:
-			velocity.x = lerp(velocity.x,0,0.1)
+			velocity.x = lerpf(velocity.x,0,0.1)
 			state_machine.travel("Player_Still")
 		if is_on_floor() and Input.is_action_pressed("jump"):
 			velocity.y = jump
@@ -296,7 +296,13 @@ func _process(delta):
 			rotate_arm(0, 0, 0)
 
 	if Globle.player_character == "Angela":
-		angela_arm.hide() if Input.is_action_pressed("ui_melee_attack") else angela_arm.show()
+		#do not write one line if statment.
+		if Input.is_action_pressed("ui_melee_attack"):
+			angela_arm.hide()
+		else:
+			angela_arm.show()
+		#angela_arm.hide() if Input.is_action_pressed("ui_melee_attack") else angela_arm.show()
+		print(Input.is_action_pressed("ui_melee_attack"))
 	if Globle.player_character == "Rivet":
 		rivet_arm.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_arm.show()
 	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))

@@ -21,8 +21,12 @@ Globle="*res://src/scripts/Globle.gd"
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={}
+directories/dch_directory={
+"character": "res://dialogic/characters/character.dch"
+}
+directories/dtl_directory={
+"timeline": "res://dialogic/timelines/timeline.dtl"
+}
 
 [display]
 
