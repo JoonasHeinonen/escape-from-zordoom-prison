@@ -1,55 +1,57 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=9 format=3 uid="uid://buaaprwxodv3f"]
 
-[ext_resource path="res://resources/images/effects/projectile_effects/blaster_explosion.png" type="Texture2D" id=1]
-[ext_resource path="res://src/scripts/effects/bullets/blaster_projectile_explosion.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://c21oh44mondhn" path="res://resources/images/effects/projectile_effects/blaster_explosion.png" id="1"]
+[ext_resource type="Script" path="res://src/scripts/effects/bullets/blaster_projectile_explosion.gd" id="2"]
 
-[sub_resource type="BoxShape3D" id=1]
+[sub_resource type="BoxShape3D" id="1"]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id="4"]
 resource_name = "BlasterProjectileExplosion"
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.0542033, 0.11257, 0.169549, 0.227915 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.0542033, 0.11257, 0.169549, 0.227915),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
+"values": [0, 1, 2, 3, 4]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("OmniLight3D:omni_range")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.0597544, 0.18759 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.0597544, 0.18759),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ 0.1, 1.0, 0.9 ]
+"values": [0.1, 1.0, 0.9]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "BlasterProjectileExplosion"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aw265"]
+_data = {
+"BlasterProjectileExplosion": SubResource("4")
+}
 
-[sub_resource type="AnimationNodeStateMachine" id=2]
-states/BlasterProjectileExplosion/node = SubResource( 5 )
-states/BlasterProjectileExplosion/position = Vector2( 236, 73 )
-start_node = "BlasterProjectileExplosion"
+[sub_resource type="AnimationNodeAnimation" id="5"]
+animation = &"BlasterProjectileExplosion"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
+[sub_resource type="AnimationNodeStateMachine" id="2"]
+states/BlasterProjectileExplosion/node = SubResource("5")
+states/BlasterProjectileExplosion/position = Vector2(236, 73)
 
-[sub_resource type="BoxShape3D" id=6]
+[sub_resource type="BoxShape3D" id="6"]
 
 [node name="BlasterProjectileExplosion" type="CharacterBody3D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 disabled = true
 
 [node name="KillTimer" type="Timer" parent="."]
@@ -57,27 +59,31 @@ wait_time = 0.5
 autostart = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
-texture = ExtResource( 1 )
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("1")
 hframes = 5
-frame = 4
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/BlasterProjectileExplosion = SubResource( 4 )
+libraries = {
+"": SubResource("AnimationLibrary_aw265")
+}
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 2 )
+libraries = {
+"": SubResource("AnimationLibrary_aw265")
+}
+tree_root = SubResource("2")
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 3 )
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409 )
-omni_range = 0.403661
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409)
+omni_range = 0.968518
 
 [node name="ProjectileExplosionArea" type="Area3D" parent="."]
-transform = Transform3D( 1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0 )
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileExplosionArea"]
-transform = Transform3D( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
-shape = SubResource( 6 )
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("6")

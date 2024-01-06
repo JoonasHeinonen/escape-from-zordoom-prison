@@ -1,57 +1,62 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://b65fdy1jq38x8"]
 
-[ext_resource path="res://resources/images/effects/projectile_effects/projectile_blaster_effect.png" type="Texture2D" id=1]
-[ext_resource path="res://src/scripts/effects/bullets/blaster_projectile_effect.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://d22g7s2ju1pb4" path="res://resources/images/effects/projectile_effects/projectile_blaster_effect.png" id="1"]
+[ext_resource type="Script" path="res://src/scripts/effects/bullets/blaster_projectile_effect.gd" id="2"]
 
-[sub_resource type="BoxShape3D" id=1]
+[sub_resource type="BoxShape3D" id="1"]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id="2"]
 resource_name = "ProjectileEffect"
 length = 0.8
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 7, 6, 5, 4, 3, 2, 1, 0 ]
+"values": [7, 6, 5, 4, 3, 2, 1, 0]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "ProjectileEffect"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0nafm"]
+_data = {
+"ProjectileEffect": SubResource("2")
+}
 
-[sub_resource type="AnimationNodeStateMachine" id=3]
-states/ProjectileEffect/node = SubResource( 5 )
-states/ProjectileEffect/position = Vector2( 298, 109 )
-start_node = "ProjectileEffect"
+[sub_resource type="AnimationNodeAnimation" id="5"]
+animation = &"ProjectileEffect"
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=4]
+[sub_resource type="AnimationNodeStateMachine" id="3"]
+states/ProjectileEffect/node = SubResource("5")
+states/ProjectileEffect/position = Vector2(298, 109)
 
 [node name="Node3D" type="CharacterBody3D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D( 0.1, 0, 0, 0, 0.05, 0, 0, 0, 0.1, 0, 0, 0 )
-shape = SubResource( 1 )
+transform = Transform3D(0.1, 0, 0, 0, 0.05, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("1")
 disabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
-texture = ExtResource( 1 )
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("1")
 hframes = 8
 frame = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-playback_speed = 4.0
-anims/ProjectileEffect = SubResource( 2 )
+libraries = {
+"": SubResource("AnimationLibrary_0nafm")
+}
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 3 )
+libraries = {
+"": SubResource("AnimationLibrary_0nafm")
+}
+tree_root = SubResource("3")
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 4 )

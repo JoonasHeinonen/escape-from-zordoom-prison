@@ -1,33 +1,34 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://sjnnq61b7ie3"]
 
-[ext_resource path="res://resources/images/effects/projectiles/projectile_blaster.png" type="Texture2D" id=2]
-[ext_resource path="res://src/scripts/effects/bullets/blaster_projectile.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://ccrdwgsqafwxh" path="res://resources/images/effects/projectiles/projectile_blaster.png" id="2"]
+[ext_resource type="Script" path="res://src/scripts/effects/bullets/blaster_projectile.gd" id="3"]
 
-[sub_resource type="BoxShape3D" id=1]
+[sub_resource type="BoxShape3D" id="1"]
 
-[sub_resource type="BoxShape3D" id=2]
+[sub_resource type="BoxShape3D" id="2"]
 
 [node name="Projectile" type="RigidBody3D"]
-script = ExtResource( 3 )
+script = ExtResource("3")
 weapon = "blaster"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0 )
-shape = SubResource( 1 )
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+shape = SubResource("1")
 disabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
-texture = ExtResource( 2 )
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("2")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.336603 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.336603)
 
 [node name="Combustion" type="Marker3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
 
 [node name="Explosion" type="Marker3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.289351, 0, 0 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.289351, 0, 0)
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -40,8 +41,8 @@ autostart = true
 [node name="ProjectileArea" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileArea"]
-transform = Transform3D( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.3, 0, 0 )
-shape = SubResource( 2 )
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.3, 0, 0)
+shape = SubResource("2")
 
 [connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]
 [connection signal="body_entered" from="ProjectileArea" to="." method="_on_Area_body_entered"]

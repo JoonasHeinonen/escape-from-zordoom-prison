@@ -1,35 +1,35 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://bai1i21fmf78h"]
 
-[ext_resource path="res://resources/images/effects/explosions_n_fire/explosion.png" type="Texture2D" id=1]
-[ext_resource path="res://src/scripts/effects/explosions/explosive_crate_explosion.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://c6ro6ba32rt4a" path="res://resources/images/effects/explosions_n_fire/explosion.png" id="1"]
+[ext_resource type="Script" path="res://src/scripts/effects/explosions/explosive_crate_explosion.gd" id="2"]
 
-[sub_resource type="StandardMaterial3D" id=3]
-flags_transparent = true
-flags_unshaded = true
+[sub_resource type="StandardMaterial3D" id="3"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-params_blend_mode = 1
-albedo_texture = ExtResource( 1 )
+albedo_texture = ExtResource("1")
 
-[sub_resource type="Gradient" id=4]
-colors = PackedColorArray( 0.407843, 0.454902, 0.541176, 0.588235, 0, 0, 0, 0 )
+[sub_resource type="Gradient" id="4"]
+colors = PackedColorArray(0.407843, 0.454902, 0.541176, 0.588235, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture2D" id=5]
-gradient = SubResource( 4 )
+[sub_resource type="GradientTexture2D" id="5"]
+gradient = SubResource("4")
 
-[sub_resource type="ParticleProcessMaterial" id=1]
-gravity = Vector3( 0, 3, 0 )
-color_ramp = SubResource( 5 )
+[sub_resource type="ParticleProcessMaterial" id="1"]
+gravity = Vector3(0, 3, 0)
+color_ramp = SubResource("5")
 
-[sub_resource type="QuadMesh" id=2]
+[sub_resource type="QuadMesh" id="2"]
 
 [node name="CrateDestroyed" type="Node3D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
-[node name="Particles" type="Particles" parent="."]
-material_override = SubResource( 3 )
+[node name="Particles" type="GPUParticles3D" parent="."]
+material_override = SubResource("3")
 amount = 1
-process_material = SubResource( 1 )
-draw_pass_1 = SubResource( 2 )
+process_material = SubResource("1")
+draw_pass_1 = SubResource("2")
 
 [node name="ExpireTimer" type="Timer" parent="."]
 autostart = true

@@ -50,7 +50,7 @@ func _physics_process(delta):
 				for wpn_for_sale in Globle.weapons_for_sale:
 					wpn_index += 1
 					if wpn_for_sale == weapon:
-						Globle.weapons_for_sale.remove(wpn_index)
+						Globle.weapons_for_sale.erase(wpn_index)
 				Globle.current_weapons.append(weapon)
 				if (player.current_weapon == null):
 					player.current_weapon = weapon
