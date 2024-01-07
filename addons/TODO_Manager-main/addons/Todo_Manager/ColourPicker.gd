@@ -2,7 +2,8 @@
 extends HBoxContainer
 
 var colour : Color
-var title : String: set = set_title
+var title : String:
+	set = set_title
 var index : int
 
 @onready var colour_picker := $TODOColourPickerButton

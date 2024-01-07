@@ -15,6 +15,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.06696, 1.8004, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2.81515, 0, 0, 0, 2.81515, 0, 0, 0, 1, 0, 0, 0)
+texture_filter = 0
 texture = ExtResource("1")
 hframes = 5
 

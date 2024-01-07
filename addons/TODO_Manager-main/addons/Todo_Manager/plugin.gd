@@ -16,19 +16,24 @@ class TodoCacheValue:
 		self.todos = todos
 		self.last_modified_time = last_modified_time
 
-var todo_cache : Dictionary # { key: script_path, value: TodoCacheValue }
+var todo_cache : Dictionary # { key: script_path, value: TodoCacheValue } 
 var remove_queue : Array
 var combined_pattern : String
+var cased_patterns : Array[String]
 
 var refresh_lock := false # makes sure _on_filesystem_changed only triggers once
+
 
 func _enter_tree() -> void:
 	_dockUI = DockScene.instantiate() as Control
 	add_control_to_bottom_panel(_dockUI, "TODO")
-	get_editor_interface().get_resource_filesystem().connect("filesystem_changed", Callable(self, "_on_filesystem_changed"))
-	get_editor_interface().get_file_system_dock().connect("file_removed", Callable(self, "queue_remove"))
-	get_editor_interface().get_script_editor().connect("editor_script_changed", Callable(self, "_on_active_script_changed"))
+	get_editor_interface().get_resource_filesystem().connect("filesystem_changed", 
+			_on_filesystem_changed)
+	get_editor_interface().get_file_system_dock().connect("file_removed", queue_remove)
+	get_editor_interface().get_script_editor().connect("editor_script_changed",
+			_on_active_script_changed)
 	_dockUI.plugin = self
+
 	combined_pattern = combine_patterns(_dockUI.patterns)
 	find_tokens_from_path(find_scripts())
 	_dockUI.build_tree()
@@ -43,15 +48,13 @@ func _exit_tree() -> void:
 func queue_remove(file: String):
 	for i in _dockUI.todo_items.size() - 1:
 		if _dockUI.todo_items[i].script_path == file:
-			_dockUI.todo_items.remove(i)
+			_dockUI.todo_items.remove_at(i)
 
 
-func find_tokens_from_path(scripts: Array) -> void:
+func find_tokens_from_path(scripts: Array[String]) -> void:
 	for script_path in scripts:
-		var file := File.new()
-		file.open(script_path, File.READ)
+		var file := FileAccess.open(script_path, FileAccess.READ)
 		var contents := file.get_as_text()
-		file.close()
 		find_tokens(contents, script_path)
 
 func find_tokens_from_script(script: Resource) -> void:
@@ -60,18 +63,23 @@ func find_tokens_from_script(script: Resource) -> void:
 
 func find_tokens(text: String, script_path: String) -> void:
 	var cached_todos = get_cached_todos(script_path)
-	if (cached_todos.size() != 0):
+	if cached_todos.size() != 0:
+#		var i := 0
+#		for todo_item in _dockUI.todo_items:
+#			if todo_item.script_path == script_path:
+#				_dockUI.todo_items.remove_at(i)
+#			i += 1
 		var todo_item := TodoItem.new(script_path, cached_todos)
 		_dockUI.todo_items.append(todo_item)
 	else:
 		var regex = RegEx.new()
 	#	if regex.compile("#\\s*\\bTODO\\b.*|#\\s*\\bHACK\\b.*") == OK:
 		if regex.compile(combined_pattern) == OK:
-			var result : Array = regex.search_all(text)
+			var result : Array[RegExMatch] = regex.search_all(text)
 			if result.is_empty():
 				for i in _dockUI.todo_items.size():
 					if _dockUI.todo_items[i].script_path == script_path:
-						_dockUI.todo_items.remove(i)
+						_dockUI.todo_items.remove_at(i)
 				return # No tokens found
 			var match_found : bool
 			var i := 0
@@ -79,7 +87,7 @@ func find_tokens(text: String, script_path: String) -> void:
 				if todo_item.script_path == script_path:
 					match_found = true
 					var updated_todo_item := update_todo_item(todo_item, result, text, script_path)
-					_dockUI.todo_items.remove(i)
+					_dockUI.todo_items.remove_at(i)
 					_dockUI.todo_items.insert(i, updated_todo_item)
 					break
 				i += 1
@@ -87,7 +95,7 @@ func find_tokens(text: String, script_path: String) -> void:
 				_dockUI.todo_items.append(create_todo_item(result, text, script_path))
 
 
-func create_todo_item(regex_results: Array, text: String, script_path: String) -> TodoItem:
+func create_todo_item(regex_results: Array[RegExMatch], text: String, script_path: String) -> TodoItem:
 	var todo_item = TodoItem.new(script_path, [])
 	todo_item.script_path = script_path
 	var last_line_number := 0
@@ -115,7 +123,7 @@ func create_todo_item(regex_results: Array, text: String, script_path: String) -
 	return todo_item
 
 
-func update_todo_item(todo_item: TodoItem, regex_results: Array, text: String, script_path: String) -> TodoItem:
+func update_todo_item(todo_item: TodoItem, regex_results: Array[RegExMatch], text: String, script_path: String) -> TodoItem:
 	todo_item.todos.clear()
 	var lines := text.split("\n")
 	for r in regex_results:
@@ -160,12 +168,12 @@ func _on_filesystem_changed() -> void:
 			rescan_files(false)
 
 
-func find_scripts() -> Array:
-	var scripts : Array
-	var directory_queue : Array
-	var dir : DirAccess = DirAccess.new()
+func find_scripts() -> Array[String]:
+	var scripts : Array[String]
+	var directory_queue : Array[String]
+	var dir := DirAccess.open("res://")
 	### FIRST PHASE ###
-	if dir.open("res://") == OK:
+	if dir.get_open_error() == OK:
 		get_dir_contents(dir, scripts, directory_queue)
 	else:
 		printerr("TODO_Manager: There was an error during find_scripts() ### First Phase ###")
@@ -182,27 +190,26 @@ func find_scripts() -> Array:
 
 
 func cache_todos(todos: Array, script_path: String) -> void:
-	var file = File.new()
-	var last_modified_time = file.get_modified_time(script_path)
+	var last_modified_time = FileAccess.get_modified_time(script_path)
 	todo_cache[script_path] = TodoCacheValue.new(todos, last_modified_time)
 
 
 func get_cached_todos(script_path: String) -> Array:
 	if todo_cache.has(script_path):
 		var cached_value: TodoCacheValue = todo_cache[script_path]
-		var file = File.new()
-		if (cached_value.last_modified_time == file.get_modified_time(script_path)):
+		if cached_value.last_modified_time == FileAccess.get_modified_time(script_path):
 			return cached_value.todos
 	return []
 
-
-func get_dir_contents(dir: DirAccess, scripts: Array, directory_queue: Array) -> void:
-	dir.list_dir_begin() # TODOConverter3To4 fill missing arguments https://github.com/godotengine/godot/pull/40547
+func get_dir_contents(dir: DirAccess, scripts: Array[String], directory_queue: Array[String]) -> void:
+	dir.include_navigational = false
+	dir.include_hidden = false
+	dir.list_dir_begin()
 	var file_name : String = dir.get_next()
 	
 	while file_name != "":
 		if dir.current_is_dir():
-			if file_name == ".import" or filename == ".mono": # Skip .import folder which should never have scripts
+			if file_name == ".import" or file_name == ".mono": # Skip .import folder which should never have scripts
 				pass
 			else:
 				directory_queue.append(dir.get_current_dir() + "/" + file_name)
@@ -227,39 +234,40 @@ func rescan_files(clear_cache: bool) -> void:
 
 
 func combine_patterns(patterns: Array) -> String:
+	# Case Sensitivity
+	cased_patterns = []
+	for pattern in patterns:
+		if pattern[2] == _dockUI.CASE_INSENSITIVE:
+			cased_patterns.append(pattern[0].insert(0, "((?i)") + ")")
+		else: 
+			cased_patterns.append("(" + pattern[0] + ")")
+	
 	if patterns.size() == 1:
-		return patterns[0][0]
+		return cased_patterns[0]
 	else:
-#		var pattern_string : String
 		var pattern_string := "((\\/\\*)|(#|\\/\\/))\\s*("
 		for i in range(patterns.size()):
 			if i == 0:
-				pattern_string += patterns[i][0]
+				pattern_string += cased_patterns[i]
 			else:
-				pattern_string += "|" + patterns[i][0]
+				pattern_string += "|" + cased_patterns[i]
 		pattern_string += ")(?(2)[\\s\\S]*?\\*\\/|.*)"
-#			if i == 0:
-##				pattern_string = "#\\s*" + patterns[i][0] + ".*"		
-#				pattern_string = "((\\/\\*)|(#|\\/\\/))\\s*" + patterns[i][0] + ".*" 		# (?(2)[\\s\\S]*?\\*\\/|.*)
-#			else:
-##				pattern_string += "|" + "#\\s*" + patterns[i][0]  + ".*"
-#				pattern_string += "|" + "((\\/\\*)|(#|\\/\\/))\\s*" + patterns[i][0]  + ".*"
 		return pattern_string
 
 
 func create_todo(todo_string: String, script_path: String) -> Todo:
 	var todo := Todo.new()
 	var regex = RegEx.new()
-	for pattern in _dockUI.patterns:
-		if regex.compile(pattern[0]) == OK:
+	for pattern in cased_patterns:
+		if regex.compile(pattern) == OK:
 			var result : RegExMatch = regex.search(todo_string)
 			if result:
-				todo.pattern = pattern[0]
+				todo.pattern = pattern
 				todo.title = result.strings[0]
 			else:
 				continue
 		else:
-			printerr("Error compiling " + pattern[0])
+			printerr("Error compiling " + pattern)
 	
 	todo.content = todo_string
 	todo.script_path = script_path
