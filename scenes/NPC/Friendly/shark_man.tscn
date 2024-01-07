@@ -1,33 +1,38 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=6 format=3 uid="uid://dbbw0vqpqwku3"]
 
-[ext_resource path="res://resources/images/characters/npc/shark_man_npc.png" type="Texture2D" id=1]
-[ext_resource path="res://resources/images/ui/enter_key.png" type="Texture2D" id=2]
-[ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://cqtod5o7lnp7v" path="res://resources/images/characters/npc/shark_man_npc.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dgyge77y40fub" path="res://resources/images/ui/enter_key.png" id="2"]
+[ext_resource type="Script" path="res://src/scripts/npc/npc.gd" id="3"]
 
-[sub_resource type="BoxShape3D" id=2]
+[sub_resource type="BoxShape3D" id="2"]
+size = Vector3(1.52301, 3.23157, 2.7583)
 
-[sub_resource type="BoxShape3D" id=3]
+[sub_resource type="BoxShape3D" id="3"]
+size = Vector3(1.51868, 3.31726, 2.78516)
 
 [node name="shark_man" type="CharacterBody3D"]
-transform = Transform3D( 2.287, 0, 0, 0, 2.287, 0, 0, 0, 1, -5.06696, 1.8004, 0 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.06696, 1.8004, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-texture = ExtResource( 1 )
+transform = Transform3D(2.81515, 0, 0, 0, 2.81515, 0, 0, 0, 1, 0, 0, 0)
+texture = ExtResource("1")
 hframes = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource( 2 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.151031, -0.020673, 0.934326)
+shape = SubResource("2")
 disabled = true
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D( 1.14803, 0, 0, 0, 1.14803, 0, 0, 0, 1, 0, 0.676993, 0 )
-script = ExtResource( 3 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.676993, 0)
+script = ExtResource("3")
 character_name = "Shark_man"
 
 [node name="EnterButton" type="Sprite3D" parent="Area3D"]
+transform = Transform3D(3.12881, 0, 0, 0, 3.12881, 0, 0, 0, 1, -0.00982761, 1.06954, -0.038631)
 billboard = 1
-texture = ExtResource( 2 )
+texture = ExtResource("2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1.92759, 0, 0, 0 )
-shape = SubResource( 3 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.148865, -0.675667, 0.925434)
+shape = SubResource("3")

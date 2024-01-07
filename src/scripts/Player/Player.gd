@@ -302,7 +302,6 @@ func _process(delta):
 		else:
 			angela_arm.show()
 		#angela_arm.hide() if Input.is_action_pressed("ui_melee_attack") else angela_arm.show()
-		print(Input.is_action_pressed("ui_melee_attack"))
 	if Globle.player_character == "Rivet":
 		rivet_arm.hide() if Input.is_action_pressed("ui_melee_attack") else rivet_arm.show()
 	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0,4))

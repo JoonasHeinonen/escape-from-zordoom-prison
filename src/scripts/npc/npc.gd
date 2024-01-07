@@ -142,7 +142,7 @@ func process_dialog_value(dialog_value : int, max_value : int):
 
 func commence_dialog(timeline : String):
 	get_tree().paused = true
-	var dialog = Dialogic.start(timeline)
+	#var dialog = Dialogic.start(timeline)
 	dialog.process_mode = Node.PROCESS_MODE_ALWAYS
 	dialog.connect('timeline_end', Callable(self, 'unpause'))
 	add_child(dialog)
