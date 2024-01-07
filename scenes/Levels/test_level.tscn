@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://bvqbnb6c77jyo"]
+[gd_scene load_steps=29 format=3 uid="uid://bvqbnb6c77jyo"]
 
 [ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/explosive_crate.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cbxa27fdyekuf" path="res://resources/images/environment/haerkonen.jpg" id="1_vxvra"]
 [ext_resource type="PackedScene" uid="uid://c0ejcgkoe8mfq" path="res://scenes/Destructibles/Crates/bolt_crate.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/Collectibles/bolt.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dwn5g72i2nu6s" path="res://scenes/Collectibles/bolt.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bp5ijfq147flt" path="res://scenes/Collectibles/weapon_collectible.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/slim_cognito.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
@@ -11,28 +12,30 @@
 [ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/null_npc.tscn" id="9"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
 [ext_resource type="PackedScene" uid="uid://dn230pjm7jtlh" path="res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn" id="13"]
-[ext_resource type="PackedScene" path="res://scenes/Collectibles/ammo_can.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://bgdy24dvbfxun" path="res://scenes/Collectibles/ammo_can.tscn" id="14"]
 [ext_resource type="PackedScene" uid="uid://dvebyw8glgp0n" path="res://scenes/NPC/Enemies/Enemy.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Doors/ArchDoors.tscn" id="16"]
 [ext_resource type="PackedScene" uid="uid://c6043ke27yksk" path="res://scenes/Destructibles/Crates/health_crate.tscn" id="17"]
 [ext_resource type="Script" path="res://src/scripts/UI/checkpoint_ui.gd" id="19"]
 [ext_resource type="Script" path="res://src/scripts/Player/New SpawnPoint.gd" id="20"]
-[ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/mia.tscn" id="21"]
+[ext_resource type="PackedScene" uid="uid://dtrmi0l7bxn5l" path="res://scenes/NPC/Friendly/mia.tscn" id="21"]
 [ext_resource type="PackedScene" uid="uid://h6nugy4tsune" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
 [ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/Angela_Or_Rivet.tscn" id="23"]
 
-[sub_resource type="Sky" id="20"]
-radiance_size = 4
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qyk4u"]
+panorama = ExtResource("1_vxvra")
 
-[sub_resource type="Environment" id="16"]
+[sub_resource type="Sky" id="Sky_u38g0"]
+sky_material = SubResource("PanoramaSkyMaterial_qyk4u")
+
+[sub_resource type="Environment" id="Environment_f1r0c"]
 background_mode = 2
-sky = SubResource("20")
-sky_custom_fov = 90.0
+sky = SubResource("Sky_u38g0")
+ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.2
+ambient_light_energy = 0.15
 tonemap_mode = 2
-tonemap_white = 14.0
+glow_enabled = true
 
 [sub_resource type="BoxShape3D" id="21"]
 
@@ -44,6 +47,14 @@ size = Vector3(2.2914, 2, 2)
 [sub_resource type="BoxShape3D" id="17"]
 
 [node name="testLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f1r0c")
+
+[node name="Sun" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.894669, 0.190723, -0.40397, 0, 0.904284, 0.426932, 0.446729, -0.381963, 0.809035, -6.40719, 32.8095, 16.3808)
+light_energy = 0.2
+light_indirect_energy = 0.0
 
 [node name="ammo_can6" parent="." instance=ExtResource("14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.4071, -11.2671, 0)
@@ -74,14 +85,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.79584, 0.08, 0)
 
 [node name="bolt" parent="." instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64725, 0, 0)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("16")
-
-[node name="Sun" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.894669, 0.190723, -0.40397, 0, 0.904284, 0.426931, 0.446729, -0.381963, 0.809035, -6.40719, 32.8095, 16.3808)
-light_energy = 0.2
-light_indirect_energy = 0.0
 
 [node name="slim_cognito" parent="." instance=ExtResource("5")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 19.995, -2.001, -1.4)
@@ -253,7 +256,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource("8")]
-transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 15.8144, 0.600566, 0)
+transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -26.449, 7.60766, 0)
 collision_layer = 5
 collision_mask = 5
 

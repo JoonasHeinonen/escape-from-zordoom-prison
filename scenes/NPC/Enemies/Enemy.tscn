@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvebyw8glgp0n"]
+[gd_scene load_steps=15 format=3 uid="uid://dvebyw8glgp0n"]
 
 [ext_resource type="Texture2D" uid="uid://ddxtigvpt5hlm" path="res://resources/images/characters/npc/enemies/placeholder_enemy/placeholder_enemy.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/enemy_base.gd" id="2"]
@@ -36,6 +36,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EnemySprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jiyhe"]
 _data = {
@@ -53,13 +65,18 @@ animation = &"Enemy_Idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="10"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_msekq"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="3"]
+states/End/position = Vector2(719, -17)
 states/Enemy_Damage/node = SubResource("7")
 states/Enemy_Damage/position = Vector2(382, 43)
 states/Enemy_Idle/node = SubResource("8")
 states/Enemy_Idle/position = Vector2(92, 43)
-transitions = ["Enemy_Idle", "Enemy_Damage", SubResource("9"), "Enemy_Damage", "Enemy_Idle", SubResource("10")]
-graph_offset = Vector2(-78, -48)
+states/Start/position = Vector2(92, -36)
+transitions = ["Enemy_Idle", "Enemy_Damage", SubResource("9"), "Enemy_Damage", "Enemy_Idle", SubResource("10"), "Start", "Enemy_Idle", SubResource("AnimationNodeStateMachineTransition_msekq")]
+graph_offset = Vector2(-113, -77)
 
 [sub_resource type="BoxShape3D" id="11"]
 
@@ -69,12 +86,11 @@ graph_offset = Vector2(-78, -48)
 script = ExtResource("2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("2")
 
 [node name="EnemySprite" type="Sprite3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-modulate = Color(0, 0, 0, 1)
 billboard = 1
 texture_filter = 0
 texture = ExtResource("1")
@@ -94,13 +110,13 @@ anim_player = NodePath("../EnemyAnimationPlayer")
 [node name="AreaEnemy" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaEnemy"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("11")
 
 [node name="DetectDistance" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectDistance"]
-transform = Transform3D(5, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 6, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("12")
 
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
