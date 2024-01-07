@@ -20,7 +20,7 @@ func _ready():
 	$KillTimer.connect("timeout", Callable(self, "_on_KillTimer_timeout"))
 	$ExpireTimer.start()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if (self.has_node("Audio")):
 		for audio_child in $Audio.get_children():
 			audio_child.position = Vector3(self.position.x, self.position.y, 0)

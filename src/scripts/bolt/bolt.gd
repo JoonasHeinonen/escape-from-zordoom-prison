@@ -45,7 +45,8 @@ func _ready():
 # Called during the physics processing step of the main loop.
 func _physics_process(_delta):
 	# Makes the bolts fall due to the y axis
-	if !does_get_magnet : position.y
+#	if !does_get_magnet:
+#		position.y
 
 	if (does_emit_trail):
 		$Particles.hide()

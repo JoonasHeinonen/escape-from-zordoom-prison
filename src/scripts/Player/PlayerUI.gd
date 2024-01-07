@@ -12,7 +12,7 @@ var active_radical = load("res://resources/images/ui/active_aiming_radical.png")
 func _ready():
 	Input.set_custom_mouse_cursor(active_radical, Input.CURSOR_ARROW)
 
-func _process(delta):
+func _process(_delta):
 	for element in in_game_ui_right_elements:
 		if (element is Control):
 				element.offset_left = get_viewport().size.x - 350

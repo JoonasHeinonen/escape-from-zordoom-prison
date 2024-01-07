@@ -2,7 +2,7 @@ extends Destructible
 
 @onready var nanotech_node = preload("res://scenes/Collectibles/nanotech_node.tscn")
 
-func _process(delta):
+func _process(_delta):
 	if Globle.melee_attack && is_active:
 		generate_health_node()
 		queue_free()

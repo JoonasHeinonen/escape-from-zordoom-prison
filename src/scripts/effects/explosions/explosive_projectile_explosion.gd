@@ -4,7 +4,7 @@ func _ready():
 	$"../KillTimer".connect("timeout", Callable(self, "_on_KillTimer_timeout"))
 	$"../KillTimer".start()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	self.rotation.x = 0
 	self.rotation.y = 0
 	self.rotation.z = 0

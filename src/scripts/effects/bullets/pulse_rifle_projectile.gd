@@ -15,7 +15,7 @@ func _physics_process(delta):
 func _on_KillTimer_timeout():
 	queue_free()
 
-func _on_PulseProjectileArea_body_entered(body):
+func _on_PulseProjectileArea_body_entered(_body):
 	var explosion = blaster_projectile_explosion.instantiate()
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_transform = $Explosion.global_transform

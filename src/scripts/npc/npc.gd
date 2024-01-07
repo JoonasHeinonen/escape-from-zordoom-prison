@@ -19,11 +19,11 @@ func _ready():
 	connect("body_entered", Callable(self, "_on_NPC_body_entered"))
 	connect("body_exited", Callable(self, "_on_NPC_body_exited"))
 
-func _process(delta):
+func _process(_delta):
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active
 
-func _input(event):
+func _input(_event):
 	if (Globle.player_character == "Angela" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active):
 		if get_node_or_null('DialogNode') == null:
 			if Input.is_action_just_pressed("ui_accept") and active: 
@@ -116,22 +116,23 @@ func _input(event):
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active
 	# Automated dialogic logic is defined here.
-	if (Globle.player_character == "Rivet"): 
-		match(character_name):
-			"Girdeux":
-				if (player.boss_fight_active):
-					match(girdeux_dialog_value):
-						(0):
-							commence_dialog('timeline-girdeux')
-					girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 4)
-	elif (Globle.player_character == "Angela"):
-		match(character_name):
-			"Girdeux":
-				if (player.boss_fight_active):
-					match(girdeux_dialog_value):
-						(0):
-							commence_dialog('timeline-girdeux')
-					girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 4)
+	## TODO Uncomment this once the dialogic's been fixed.
+	#if (Globle.player_character == "Rivet"): 
+		#match(character_name):
+			#"Girdeux":
+				#if (player.boss_fight_active):
+					#match(girdeux_dialog_value):
+						#(0):
+							#commence_dialog('timeline-girdeux')
+					#girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 4)
+	#elif (Globle.player_character == "Angela"):
+		#match(character_name):
+			#"Girdeux":
+				#if (player.boss_fight_active):
+					#match(girdeux_dialog_value):
+						#(0):
+							#commence_dialog('timeline-girdeux')
+					#girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 4)
 
 func process_dialog_value(dialog_value : int, max_value : int):
 	dialog_value += 1
@@ -142,13 +143,13 @@ func process_dialog_value(dialog_value : int, max_value : int):
 
 func commence_dialog(timeline : String):
 	get_tree().paused = true
-	var dialog = Dialogic.start(timeline)
+	dialog = Dialogic.start(timeline)
 	dialog.process_mode = Node.PROCESS_MODE_ALWAYS
 	dialog.connect('timeline_end', Callable(self, 'unpause'))
 	add_child(dialog)
 
 # Unpauses the game timeline.
-func unpause(timeline_name):
+func unpause(_timeline_name):
 	get_tree().paused = false
 
 # Acts when the player has entered the NPC body.

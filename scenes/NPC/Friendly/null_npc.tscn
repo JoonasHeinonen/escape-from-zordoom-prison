@@ -1,27 +1,27 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://dq4w3pnkkitcj"]
 
-[ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=1]
-[ext_resource path="res://resources/images/ui/enter_key.png" type="Texture2D" id=2]
+[ext_resource type="Script" path="res://src/scripts/npc/npc.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dfq5w3da3sjfo" path="res://resources/images/ui/enter_key.png" id="2"]
 
-[sub_resource type="CapsuleMesh" id=13]
+[sub_resource type="CapsuleMesh" id="13"]
 
-[sub_resource type="BoxShape3D" id=14]
+[sub_resource type="BoxShape3D" id="14"]
 
 [node name="npc" type="Area3D"]
-transform = Transform3D( 1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 7.1613, 0.0711673, -1.50097 )
-script = ExtResource( 1 )
+transform = Transform3D(1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 7.1613, 0.0711673, -1.50097)
+script = ExtResource("1")
 character_name = "Null NPC"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162291, -2.54972 )
-mesh = SubResource( 13 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162291, -2.54972)
+mesh = SubResource("13")
 skeleton = NodePath("../../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D( 1.488, 0, 0, 0, 3.171, 0, 0, 4.47035e-08, 1, 0, 0.174326, -2.73879 )
-shape = SubResource( 14 )
+transform = Transform3D(1.488, 0, 0, 0, 3.171, 0, 0, 4.47035e-08, 1, 0, 0.174326, -2.73879)
+shape = SubResource("14")
 
 [node name="EnterButton" type="Sprite3D" parent="."]
-transform = Transform3D( 7.2616, 0, 0, 0, 1.29238, -4.59346, 0, -4.59346, 73.1668, 0, 0, 0 )
+transform = Transform3D(7.2616, 0, 0, 0, 1.29238, -4.59346, 0, -4.59346, 73.1668, 0, 0, 0)
 billboard = 1
-texture = ExtResource( 2 )
+texture = ExtResource("2")

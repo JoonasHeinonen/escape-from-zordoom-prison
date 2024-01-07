@@ -21,7 +21,7 @@ func _ready():
 	max_health = enemy_health
 	player = get_parent().get_parent().get_parent().get_node('player')
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_alerted and !is_in_range:
 		$FlamethrowerTimer.start()
 		$TurnTimer.start()
@@ -84,8 +84,8 @@ func _on_DamageCooloffTimer_timeout():
 	is_damaged = false
 
 func _on_Weakspot_area_entered(area):
-	var explosion_instance = explosion.instantiate()
 	if area.name == "ProjectileExplosionArea" and !is_damaged:
+		var explosion_instance = explosion.instantiate()
 		animation_player.play("Enemy_Damage")
 		damage_enemy(1)
 		is_damaged = true
@@ -94,7 +94,7 @@ func _on_Weakspot_area_entered(area):
 		explosion_instance.scale = Vector3(3, 3, 3)
 		explosion_instance.global_transform = self.global_transform
 
-func _on_Weakspot_body_entered(body):
+func _on_Weakspot_body_entered(_body):
 	pass
 
 func _on_AreaEnemy_body_entered(body):

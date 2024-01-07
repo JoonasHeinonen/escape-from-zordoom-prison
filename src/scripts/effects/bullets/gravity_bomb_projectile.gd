@@ -5,13 +5,13 @@ extends ProjectileBase
 
 @export_enum("gravity_bomb_projectile", "miniturret_projectile") var projectile_type: String
 
-# https://www.youtube.com/watch?v=p6OQ7XVsiKw
+## https://www.youtube.com/watch?v=p6OQ7XVsiKw
 func _ready():
 	velocity = Vector3(1, -1, 0)
 	apply_impulse(velocity * 8, Vector3.ZERO)
 
-#https://www.youtube.com/watch?v=F1Fyj3Lh_Pc&t=239s
-func _on_GravityBombArea_body_entered(body):
+## https://www.youtube.com/watch?v=F1Fyj3Lh_Pc&t=239s
+func _on_GravityBombArea_body_entered(_body):
 	match (projectile_type):
 		"gravity_bomb_projectile":
 			var explosion = gravity_bomb_explosion.instantiate()

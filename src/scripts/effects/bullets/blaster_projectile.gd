@@ -19,7 +19,7 @@ func _physics_process(delta):
 	velocity.x = speed * delta * 1
 	translate(velocity)
 
-func _on_Area_body_entered(body):
+func _on_Area_body_entered(_body):
 	match (weapon):
 		"blaster":
 			var explosion = blaster_projectile_explosion.instantiate()

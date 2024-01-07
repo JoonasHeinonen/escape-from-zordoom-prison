@@ -66,10 +66,10 @@ func _physics_process(delta):
 		interpolation += delta
 	Engine.time_scale = lerp(Engine.time_scale, 1.0, interpolation)
 
-func determine_pause(inventory : bool, scale : int, process_input : bool):
+func determine_pause(inventory : bool, _scale : int, process_input : bool):
 	Globle.player_inventory = inventory
-	time_scale_target = scale
-	Engine.time_scale = scale
+	time_scale_target = _scale
+	Engine.time_scale = _scale
 	get_parent().set_process_input(process_input)
 
 func determine_active_item(weapon : String):

@@ -715,7 +715,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("6")
 
 [node name="AngelaSprite" type="Sprite3D" parent="."]
-visible = false
 pixel_size = 0.04
 shaded = true
 double_sided = false
@@ -723,7 +722,6 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 4
-frame = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
@@ -750,8 +748,7 @@ light_specular = 0.2
 spot_range = 0.43704
 
 [node name="AngelaArm" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139)
-visible = false
+transform = Transform3D(0.1, 0, 0, 0, -0.1, 1.50996e-07, 0, -1.50996e-08, -1, 0, 0, -0.139)
 mesh = SubResource("21")
 skeleton = NodePath("../AngelaSprite")
 
@@ -796,6 +793,7 @@ anim_player = NodePath("../AngelaAnimationPlayer")
 
 [node name="RivetSprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0677329, 0, 0)
+visible = false
 pixel_size = 0.04
 shaded = true
 double_sided = false
@@ -807,6 +805,7 @@ frame = 1
 
 [node name="RivetArm" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139)
+visible = false
 mesh = SubResource("21")
 skeleton = NodePath("../RivetSprite")
 

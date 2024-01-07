@@ -40,7 +40,7 @@ func _ready():
 	$Audio/Deploy.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if (miniturret_ammo <= 0) : queue_free()
 	if (!is_locked_on_target):
 		if (turn_direction == "up"):
@@ -48,7 +48,7 @@ func _process(delta):
 		elif (turn_direction == "down"):
 			miniturret_gun.rotation.z += turn_increment
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	state_machine.travel("Start")
 	miniturret_velocity.y = -4
 	set_velocity(miniturret_velocity)

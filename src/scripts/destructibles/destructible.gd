@@ -38,7 +38,7 @@ func _ready():
 	self.set_meta("type", meta_type)
 	self.set_meta("name", meta_name)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	destructible_velocity.y = -4
 	set_velocity(destructible_velocity)
 	set_up_direction(Vector3.UP)
@@ -48,7 +48,7 @@ func _physics_process(delta):
 		for audio_child in $Audio.get_children():
 			audio_child.position = Vector3(self.position.x, self.position.y, 0)
 
-func _process(delta):
+func _process(_delta):
 	if (
 		scene_type != "explosive_crate" and 
 		scene_type != "health_crate" and 
@@ -65,10 +65,10 @@ func generate_bolt_position(x_axis, y_axis):
 
 	return Vector3(x, y, 0)
 
-func take_damage(amount:int) -> void:
+func take_damage(_amount : int) -> void:
 	is_active = true
 	
-func no_damage(amount:int) -> void:
+func no_damage(_amount : int) -> void:
 	is_active = false
 # TODO Also need to get the box to explode and to get bolts(?)
 

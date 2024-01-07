@@ -31,11 +31,10 @@ func _ready():
 		"sheepinator":
 			set_weapon_image("sheepinator")
 
-func _physics_process(delta):
-	var x : int = 0
-	if !get_magnet:
-		# Makes the bolts fall due to the y axis.
-		position.y
+func _physics_process(_delta):
+#	if !get_magnet:
+#		# Makes the bolts fall due to the y axis.
+#		position.y
 
 	var bodies = get_overlapping_areas()
 	for body in bodies:

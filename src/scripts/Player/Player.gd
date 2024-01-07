@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 class_name Player
 
-# signal update_player_position_to_camera(new_aiming_radical)
+#signal update_player_position_to_camera(new_aiming_radical)
 
 const RANDOM_ANGLE = PI / 2.0
 
@@ -112,15 +112,16 @@ func _ready():
 	walk(0, 1, -0.1)
 
 	if Globle.current_weapons.size() > 0:
-		current_weapon = "pulse_rifle"
+		current_weapon = "edge_blaster"
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
 	# Create a if statement that tries and finds the arena level in the PlayerSpawnArena.
 	# Need to get the postion of the playerSpawnArena.
-	var arena
+	var _arena
+
 	if (get_parent().has_node("arena")):
-		arena = get_parent().get_node("arena")
+		_arena = get_parent().get_node("arena")
 
 func _physics_process(delta):
 	# Set the audio nodes position to share the same position as the player.
@@ -139,7 +140,7 @@ func _physics_process(delta):
 		player_double_jump = false
 		player_double_jump_used = false
 
-	var current = state_machine.get_current_node()
+	var _current = state_machine.get_current_node()
 
 	# Decide the weapons
 	if Globle.current_weapons.size() > 0:
@@ -236,7 +237,7 @@ func _physics_process(delta):
 
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
-			update_player_position_to_camera()
+			#update_player_position_to_camera()
 			player_is_aiming_with_rifle = true
 	elif Input.is_action_just_released("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 			player_is_aiming_with_rifle = false
@@ -262,10 +263,10 @@ func _physics_process(delta):
 	set_up_direction(Vector3.UP)
 	move_and_slide()
 
-func _process(delta):
-	var y_position = self.global_transform.origin.y
-	var space_state = get_world_3d().direct_space_state
-	var slot_index = 1
+func _process(_delta):
+	var _y_position = self.global_transform.origin.y
+	var _space_state = get_world_3d().direct_space_state
+	var _slot_index = 1
 
 	for ui_container in ui_containers:
 		if (ui_container.visible):
@@ -324,7 +325,7 @@ func init_boss_fight(
 	boss_name : String,
 	boss_health,
 	boss_data_name : String,
-	boss_max_health : int
+	_boss_max_health : int
 ):
 	var boss_hud_img_path = "res://resources/images/characters/npc/enemies/bosses/" + boss_data_name + "_boss_fight_icon.png"
 	current_boss_name = boss_name
@@ -423,13 +424,13 @@ func change_weapon_texture(weapon_name : String):
 	gun_instance.texture = load(weapon_sprite_path)
 	gun_instance.show()
 
-func walk(vel, scale, _mesh_translation):
+func walk(vel, sprite_scale, _mesh_translation):
 	state_machine.travel("Player_Walk")
 	player_velocity.x = vel
 	if (Globle.player_character == "Angela"):
-		$AngelaSprite.scale.x = scale
+		$AngelaSprite.scale.x = sprite_scale
 	elif (Globle.player_character == "Rivet"):
-		$RivetSprite.scale.x = scale
+		$RivetSprite.scale.x = sprite_scale
 
 func rotate_arm(x_val : float, y_val : float, z_val : float):
 	angela_arm.rotation.x = x_val
@@ -580,7 +581,7 @@ func shoot_negotiator():
 func shoot_pulse_rifle():
 	if (player_is_aiming_with_rifle):
 		$Audio/Weapons/PulseRifle.play()
-		var projectile = pulse_rifle_projectile.instantiate()
+		projectile = pulse_rifle_projectile.instantiate()
 		projectile.position.x = 10
 		get_parent().add_child(projectile)
 		projectile.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
@@ -681,7 +682,7 @@ func _on_Vendor_Choice_pressed(button, wpn):
 		"miniturret_glove":
 			purchase_weapon(Globle.WPNS[1][7], wpn, button)
 
-func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
+func _on_VendorWeaponButton_focus_entered(_button: Button, wpn):
 	match (wpn):
 		"edge_blaster":
 			update_vendor_data(
@@ -732,8 +733,8 @@ func _on_VendorWeaponButton_focus_entered(button: Button, wpn):
 				Globle.WPNS[2][7]
 			)
 
-func update_player_position_to_camera():
-	emit_signal("update_player_position_to_camera", player_health)
+#func update_player_position_to_camera():
+#	emit_signal("update_player_position_to_camera", player_health)
 
 func _on_WeaponSlot1_pressed():
 	current_weapon = "edge_blaster"

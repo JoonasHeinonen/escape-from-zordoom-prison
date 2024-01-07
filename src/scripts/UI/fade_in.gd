@@ -2,7 +2,7 @@ extends ColorRect
 
 signal fade_finished
 
-func _process(delta):
+func _process(_delta):
 	if (Globle.game_fullscreen):
 		self.size = Vector2(1920, 1080)
 	elif (!Globle.game_fullscreen):

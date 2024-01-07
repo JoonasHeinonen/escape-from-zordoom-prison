@@ -16,7 +16,7 @@ var check_is_open : bool = false
 func _ready():
 	hide()
 
-func _process(delta):
+func _process(_delta):
 	if (Globle.arena_menu_open && self.visible):
 		arena_button.grab_focus()
 

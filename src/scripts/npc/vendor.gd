@@ -12,6 +12,6 @@ func _on_slim_cognito_body_exited(body):
 		Globle.vendor_active = false
 		active = false
 
-func _process(delta):
+func _process(_delta):
 	$EnterKey.visible = active
 	pass

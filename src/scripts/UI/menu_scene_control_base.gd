@@ -10,7 +10,7 @@ var rect_size_y = self.size.y
 var time_scale_target = 1.0
 var interpolation = 1.0
 
-func _process(delta):
+func _process(_delta):
 	match alignment:
 		"Full alignment":
 			self.size = Vector2(
