@@ -141,11 +141,15 @@ func process_dialog_value(dialog_value : int, max_value : int):
 	return dialog_value
 
 func commence_dialog(timeline : String):
-	get_tree().paused = true
-	var dialog = Dialogic.start(timeline)
-	dialog.process_mode = Node.PROCESS_MODE_ALWAYS
-	dialog.connect('timeline_end', Callable(self, 'unpause'))
-	add_child(dialog)
+	# when trying to pause the game we can get the menue but get another error called invalid call. Nonexistent function 'remove' in base array
+	get_tree().paused = false
+	Globle.arena_menu_open = true
+	print(Globle.arena_menu_open)
+	print(timeline)
+	#var dialog = Dialogic.start(timeline)
+	#dialog.process_mode = Node.PROCESS_MODE_ALWAYS
+	#dialog.connect('timeline_end', Callable(self, 'unpause'))
+	#add_child(dialog)
 
 # Unpauses the game timeline.
 func unpause(timeline_name):

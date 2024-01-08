@@ -28,6 +28,8 @@ func arena_menu_process(is_vendor_open, is_paused):
 func opens_menu():
 	if not check_is_open:
 		check_is_open = true
+		print("checks to see if the menue can open from here")
+		print(check_is_open)
 		arena_button.grab_focus()
 		arena_menu_process(true, false)
 		show()
@@ -40,7 +42,7 @@ func close_menu():
 
 func spawn_bad_guys_in_fight():
 	nodes = get_tree().get_nodes_in_group("badGuySpawn1")
-	bad_guy_instance = nef_head_preload.instance()
+	bad_guy_instance = nef_head_preload.instantiate()
 	nodes[0].add_child(bad_guy_instance)
 
 func check_current_enemies():

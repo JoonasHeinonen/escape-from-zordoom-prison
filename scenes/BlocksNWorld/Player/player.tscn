@@ -755,7 +755,6 @@ script = ExtResource("30")
 
 [node name="InGameUI" type="Control" parent="PlayerUI"]
 process_mode = 3
-visible = false
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1439,7 +1438,6 @@ layout_mode = 2
 step = 1.0
 
 [node name="ArenaMenu" type="Control" parent="PlayerUI" groups=["arena_menu_group"]]
-visible = false
 anchors_preset = 0
 anchor_left = 0.5
 anchor_top = 0.5

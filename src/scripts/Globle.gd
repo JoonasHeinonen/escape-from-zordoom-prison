@@ -86,4 +86,4 @@ func update_vendor():
 	for wpn_for_sale in weapons_for_sale:
 		wpn_index += 1
 		if current_weapons.has(wpn_for_sale):
-			weapons_for_sale.remove(wpn_index)
+			weapons_for_sale.remove_at(wpn_index)

@@ -7,10 +7,12 @@ res://src/theme/zordoom_ingameui_theme.tres
 res://scenes/Menu/MenuScene.tscn
 res://scenes/UI/CharacterSelectionButton.tscn
 res://scenes/Effects/Collectibles/TrailParticles.tscn
-res://scenes/Effects/Player/CollectHealthNode.tscn
 res://scenes/BlocksNWorld/Player/player.tscn
 res://scenes/Levels/level_arena.tscn
 res://scenes/NPC/Friendly/shark_man.tscn
-res://src/scripts/npc/npc.gd
-res://src/scripts/Player/Player.gd
 res://scenes/Menu/LevelView.tscn
+res://src/scripts/npc/npc.gd
+res://src/scripts/UI/arena_menu.gd
+res://dialogic/characters/character.dch
+res://src/scripts/Player/Player.gd
+res://src/scripts/Globle.gd

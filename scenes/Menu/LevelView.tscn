@@ -96,6 +96,8 @@ stream = ExtResource("6")
 [node name="FadeIn" parent="LevelViewUI" instance=ExtResource("4")]
 visible = false
 layout_mode = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -3)
