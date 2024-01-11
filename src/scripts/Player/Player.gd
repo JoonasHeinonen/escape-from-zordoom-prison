@@ -308,7 +308,6 @@ func _process(delta):
 
 	if !boss_fight_active: 
 		$PlayerUI/UIBossData.visible = false
-	printt("!!!!!!!!!!",Globle.arena_menu_open)
 	if Globle.arena_menu_open : $PlayerUI/ArenaMenu.opens_menu()
 	heal_player()
 	update_health_ui()

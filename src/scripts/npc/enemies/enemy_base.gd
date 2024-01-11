@@ -35,9 +35,13 @@ func _ready():
 	player = get_parent().get_parent().get_parent().get_node('player')
 
 func _process(_delta):
-	if (state_machine.get_current_node() == "Enemy_Damage" and state_machine.get_current_play_position() >= 0.2):
-		state_machine.travel("Enemy_Idle")
-	if (enemy_health <= 0) : expire_enemy()
+	# checks to see if the state_machine is null or not
+	if (is_instance_valid(state_machine)):
+		if (state_machine.get_current_node() == "Enemy_Damage" and state_machine.get_current_play_position() >= 0.2):
+			print(state_machine)
+			state_machine.travel("Enemy_Idle")
+		if (enemy_health <= 0): 
+			expire_enemy()
 
 func _physics_process(delta):
 	match (element):

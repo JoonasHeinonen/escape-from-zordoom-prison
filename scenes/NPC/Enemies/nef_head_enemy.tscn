@@ -1,257 +1,261 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=17 format=3 uid="uid://3j7oaadkmoi3"]
 
-[ext_resource path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" type="Texture2D" id=1]
-[ext_resource path="res://src/scripts/npc/enemies/nef_head_enemy_ai.gd" type="Script" id=2]
-[ext_resource path="res://src/scripts/npc/enemies/RayCast_nef_trooper_head.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://bffrdrgqtroi5" path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" id="1"]
+[ext_resource type="Script" path="res://src/scripts/npc/enemies/nef_head_enemy_ai.gd" id="2"]
+[ext_resource type="Script" path="res://src/scripts/npc/enemies/RayCast_nef_trooper_head.gd" id="3"]
 
-[sub_resource type="CapsuleShape3D" id=30]
-radius = 0.123485
+[sub_resource type="CapsuleShape3D" id="30"]
+radius = 0.050206
 height = 0.100412
 
-[sub_resource type="Animation" id=34]
+[sub_resource type="Animation" id="34"]
 resource_name = "Enemy_Damage"
 length = 0.4
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.2 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id="22"]
 resource_name = "Enemy_Idle"
 length = 0.5
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ 0, 1, 2, 3 ]
+"values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id="32"]
 resource_name = "Enemy_Turn_Left"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [ 12, 13, 14, 14 ]
+"values": [12, 13, 14, 14]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("../laser_muzzle:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.6 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector3( 1.39123, -0.0128105, 5.07366e-06 ), Vector3( 1.07494, -0.0126066, -2.69214e-07 ) ]
+"values": [Vector3(1.39123, -0.0128105, 5.07366e-06), Vector3(1.07494, -0.0126066, -2.69214e-07)]
 }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id="31"]
 resource_name = "Enemy_Turn_Right"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.1, 0.2, 0.3, 0.4 ),
-"transitions": PackedFloat32Array( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 3, 4, 9, 10, 10 ]
+"values": [3, 4, 9, 10, 10]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("../laser_muzzle:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.6 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector3( 1.07494, -0.0126066, -2.69214e-07 ), Vector3( 1.39123, -0.0128105, 5.07366e-06 ) ]
+"values": [Vector3(1.07494, -0.0126066, -2.69214e-07), Vector3(1.39123, -0.0128105, 5.07366e-06)]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id="23"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ 0 ]
+"values": [0]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector3( 1.273, 0, 0 ) ]
+"values": [Vector3(1.273, 0, 0)]
 }
 tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("../CollisionShape3D:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
 tracks/2/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector3( 1.23528, -0.00802118, 0 ) ]
+"values": [Vector3(1.23528, -0.00802118, 0)]
 }
 tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
 tracks/3/path = NodePath("player_finding:rotation_degrees")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
 tracks/3/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector3( 0, 0, -89.21 ) ]
+"values": [Vector3(0, 0, -89.21)]
 }
 tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
 tracks/4/path = NodePath("player_finding:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
 tracks/4/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector3( -0.0538642, 0, 0 ) ]
+"values": [Vector3(-0.0538642, 0, 0)]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("../laser_muzzle:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector3( 1.07494, -0.0126066, -2.69214e-07 ) ]
+"values": [Vector3(1.07494, -0.0126066, -2.69214e-07)]
 }
 tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath(".:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=35]
-animation = "Enemy_Damage"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b6ywp"]
+_data = {
+"Enemy_Damage": SubResource("34"),
+"Enemy_Idle": SubResource("22"),
+"Enemy_Turn_Left": SubResource("32"),
+"Enemy_Turn_Right": SubResource("31"),
+"RESET": SubResource("23")
+}
 
-[sub_resource type="AnimationNodeAnimation" id=36]
-animation = "Enemy_Idle"
+[sub_resource type="AnimationNodeAnimation" id="35"]
+animation = &"Enemy_Damage"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+[sub_resource type="AnimationNodeAnimation" id="36"]
+animation = &"Enemy_Idle"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+[sub_resource type="AnimationNodeStateMachineTransition" id="37"]
 
-[sub_resource type="AnimationNodeStateMachine" id=24]
-states/Enemy_Damage/node = SubResource( 35 )
-states/Enemy_Damage/position = Vector2( 408, 83 )
-states/Enemy_Idle/node = SubResource( 36 )
-states/Enemy_Idle/position = Vector2( 161, 83 )
-transitions = [ "Enemy_Idle", "Enemy_Damage", SubResource( 37 ), "Enemy_Damage", "Enemy_Idle", SubResource( 38 ) ]
-start_node = "Enemy_Idle"
+[sub_resource type="AnimationNodeStateMachineTransition" id="38"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=25]
+[sub_resource type="AnimationNodeStateMachine" id="24"]
+states/Enemy_Damage/node = SubResource("35")
+states/Enemy_Damage/position = Vector2(409, 83)
+states/Enemy_Idle/node = SubResource("36")
+states/Enemy_Idle/position = Vector2(161, 83)
+states/Start/position = Vector2(273, 144)
+transitions = ["Enemy_Idle", "Enemy_Damage", SubResource("37"), "Enemy_Damage", "Enemy_Idle", SubResource("38")]
 
-[sub_resource type="BoxShape3D" id=33]
-extents = Vector3( 0.228851, 0.209648, 1 )
+[sub_resource type="BoxShape3D" id="33"]
+size = Vector3(0.457702, 0.419296, 2)
 
 [node name="nef_head" type="CharacterBody3D" groups=["nef_head"]]
-axis_lock_motion_z = true
-move_lock_z = true
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="target_radical" type="Marker3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113366, 0, 0 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113366, 0, 0)
 
 [node name="laser_muzzle" type="Marker3D" parent="."]
-transform = Transform3D( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07494, -0.0126066, -2.69214e-07 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07494, -0.0126066, -2.69214e-07)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D( 7, 0, 0, 0, 7, 0, 0, 0, 0.2, 1.23528, -0.00802118, 0 )
-shape = SubResource( 30 )
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 0.2, 1.23528, -0.00802118, 0)
+shape = SubResource("30")
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../EnemySprite")
-anims/Enemy_Damage = SubResource( 34 )
-anims/Enemy_Idle = SubResource( 22 )
-anims/Enemy_Turn_Left = SubResource( 32 )
-anims/Enemy_Turn_Right = SubResource( 31 )
-anims/RESET = SubResource( 23 )
+libraries = {
+"": SubResource("AnimationLibrary_b6ywp")
+}
 
 [node name="EnemyAnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 24 )
+root_node = NodePath("../EnemySprite")
+libraries = {
+"": SubResource("AnimationLibrary_b6ywp")
+}
+tree_root = SubResource("24")
 anim_player = NodePath("../EnemyAnimationPlayer")
-active = true
-parameters/playback = SubResource( 25 )
 
 [node name="EnemySprite" type="Sprite3D" parent="."]
-transform = Transform3D( 7, 7.5089e-11, -3.81988e-11, -7.5089e-11, 7, -7.63973e-11, 3.81988e-11, 7.63973e-11, 7, 1.273, 0, 0 )
-texture = ExtResource( 1 )
+transform = Transform3D(7, 7.5089e-11, -3.81988e-11, -7.5089e-11, 7, -7.63973e-11, 3.81988e-11, 7.63973e-11, 7, 1.273, 0, 0)
+texture = ExtResource("1")
 hframes = 9
 vframes = 4
 
 [node name="player_finding" type="RayCast3D" parent="EnemySprite"]
-transform = Transform3D( 0.0137877, 0.999904, 0, -0.999904, 0.0137877, 0, 0, 0, 1, -0.0538642, 0, 0 )
-enabled = true
+transform = Transform3D(0.0137877, 0.999904, 0, -0.999904, 0.0137877, 0, 0, 0, 1, -0.0538642, 0, 0)
 collision_mask = 3
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="AreaEnemy" type="Area3D" parent="."]
-transform = Transform3D( 1, 1.0727e-11, -5.45697e-12, -1.0727e-11, 1, -1.09139e-11, 5.45697e-12, 1.09139e-11, 1, 0, 0, 0 )
+transform = Transform3D(1, 1.0727e-11, -5.45697e-12, -1.0727e-11, 1, -1.09139e-11, 5.45697e-12, 1.09139e-11, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaEnemy"]
-transform = Transform3D( 7, 0, 0, 0, 7, 0, 0, 0, 0.1, 0, 0, 0 )
-shape = SubResource( 33 )
+transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("33")
 
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
