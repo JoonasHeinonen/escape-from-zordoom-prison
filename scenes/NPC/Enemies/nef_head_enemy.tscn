@@ -1,12 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://3j7oaadkmoi3"]
+[gd_scene load_steps=21 format=3 uid="uid://3j7oaadkmoi3"]
 
 [ext_resource type="Texture2D" uid="uid://bffrdrgqtroi5" path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/nef_head_enemy_ai.gd" id="2"]
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/RayCast_nef_trooper_head.gd" id="3"]
 
 [sub_resource type="CapsuleShape3D" id="30"]
-radius = 0.050206
-height = 0.100412
+radius = 0.194807
+height = 0.389613
 
 [sub_resource type="Animation" id="34"]
 resource_name = "Enemy_Damage"
@@ -201,16 +201,29 @@ animation = &"Enemy_Idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="38"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rtae2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xcpds"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mp7cq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1orld"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="24"]
+states/End/position = Vector2(535, 203)
 states/Enemy_Damage/node = SubResource("35")
-states/Enemy_Damage/position = Vector2(409, 83)
+states/Enemy_Damage/position = Vector2(420, 83)
 states/Enemy_Idle/node = SubResource("36")
 states/Enemy_Idle/position = Vector2(161, 83)
-states/Start/position = Vector2(273, 144)
-transitions = ["Enemy_Idle", "Enemy_Damage", SubResource("37"), "Enemy_Damage", "Enemy_Idle", SubResource("38")]
+states/Start/position = Vector2(91, 203)
+transitions = ["Enemy_Idle", "Enemy_Damage", SubResource("37"), "Enemy_Damage", "Enemy_Idle", SubResource("38"), "Start", "Enemy_Idle", SubResource("AnimationNodeStateMachineTransition_rtae2"), "Start", "Enemy_Damage", SubResource("AnimationNodeStateMachineTransition_xcpds"), "Enemy_Idle", "End", SubResource("AnimationNodeStateMachineTransition_mp7cq"), "Enemy_Damage", "End", SubResource("AnimationNodeStateMachineTransition_1orld")]
 
 [sub_resource type="BoxShape3D" id="33"]
-size = Vector3(0.457702, 0.419296, 2)
+size = Vector3(2.70177, 0.759453, 2)
 
 [node name="nef_head" type="CharacterBody3D" groups=["nef_head"]]
 script = ExtResource("2")
@@ -222,7 +235,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113366, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07494, -0.0126066, -2.69214e-07)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 0.2, 1.23528, -0.00802118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23528, -0.00802118, 0)
 shape = SubResource("30")
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
@@ -241,6 +254,7 @@ anim_player = NodePath("../EnemyAnimationPlayer")
 
 [node name="EnemySprite" type="Sprite3D" parent="."]
 transform = Transform3D(7, 7.5089e-11, -3.81988e-11, -7.5089e-11, 7, -7.63973e-11, 3.81988e-11, 7.63973e-11, 7, 1.273, 0, 0)
+texture_filter = 0
 texture = ExtResource("1")
 hframes = 9
 vframes = 4
@@ -254,10 +268,11 @@ script = ExtResource("3")
 transform = Transform3D(1, 1.0727e-11, -5.45697e-12, -1.0727e-11, 1, -1.09139e-11, 5.45697e-12, 1.09139e-11, 1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaEnemy"]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(1, 5.95568e-23, 0, 5.95568e-23, 1, 0, 0, 0, 1, 1.17146, 0.296651, -5.09384e-12)
 shape = SubResource("33")
 
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="player_seen" from="EnemySprite/player_finding" to="." method="_on_player_finding_player_seen"]
 [connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
+[connection signal="body_entered" from="AreaEnemy" to="." method="_on_area_enemy_body_entered"]

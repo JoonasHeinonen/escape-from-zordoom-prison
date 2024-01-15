@@ -21,15 +21,16 @@ var meta_name : String = ""
 var speed : int
 #var velocity = Vector3(0, 0, 0)
 
-var animation_player
 var player
-var state_machine
+@onready var state_machine = $EnemyAnimationTree["parameters/playback"]
+@onready var animation_player : AnimationPlayer = $EnemyAnimationPlayer
 
 func _ready():
 	element = elements.STATIC
 	meta_name = "enemy"
-	state_machine = $EnemyAnimationTree.get("parameters/playback")
-	animation_player = $EnemyAnimationPlayer
+	#state_machine = $EnemyAnimationTree
+	#state_machine = $EnemyAnimationTree.get("parameters/playback")
+	#animation_player = $EnemyAnimationPlayer
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
 	player = get_parent().get_parent().get_parent().get_node('player')
@@ -37,7 +38,7 @@ func _ready():
 func _process(_delta):
 	# checks to see if the state_machine is null or not
 	if (is_instance_valid(state_machine)):
-		if (state_machine.get_current_node() == "Enemy_Damage" and state_machine.get_current_play_position() >= 0.2):
+		if animation_player.get_current_animation() == "Enemy_Damage" and animation_player.is_playing():
 			print(state_machine)
 			state_machine.travel("Enemy_Idle")
 		if (enemy_health <= 0): 
@@ -72,7 +73,7 @@ func damage_enemy(health : int):
 		elif (player.position.x < self.position.x):
 			decide_direction("Right")
 	enemy_health -= health
-
+	print(enemy_health)
 func decide_direction(d : String):
 	if d == "Right" : 
 		$EnemySprite.flip_h = false

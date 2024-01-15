@@ -55,7 +55,10 @@ func _on_player_finding_player_seen():
 		timer.start()
 
 func _on_AreaEnemy_area_entered(area):
-	if (area.name == "ProjectileExplosionArea"):
+	print("1")
+	if (area.name == "ProjectileArea"):
+		print("shoot")
 		state_machine.travel("Enemy_Damage")
 		damage_enemy(2)
 		animation_player.play("Enemy_Damage")
+		print(damage_enemy(2))

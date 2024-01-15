@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export var teleport_index # (String, "First", "Second")
+@export_enum("First" , "Second" ) var teleport_index :  String # (String, "First", "Second")
 
 var player_in_teleport_radius : bool = false
 
@@ -26,9 +26,9 @@ func define_target_teleport():
 
 	match teleport_index:
 		"First":
-			target_teleport_index = int(self.name[-1]) + 1
+			target_teleport_index += 1
 		"Second":
-			target_teleport_index = int(self.name[-1]) - 1
+			target_teleport_index  -= 1
 	target_teleport = cleaned_name + str(target_teleport_index)
 
 func teleport_player():

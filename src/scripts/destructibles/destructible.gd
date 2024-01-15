@@ -9,10 +9,10 @@ class_name Destructible
 @onready var crate_destroy_effect = preload("res://scenes/Effects/Collectibles//CrateDestroyed.tscn")
 @onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
-@export (String, "bolt_crate", "lamp_post", "explosive_crate", "health_crate") var scene_type
+@export_enum( "bolt_crate", "lamp_post", "explosive_crate", "health_crate") var scene_type : String
 
 var random = RandomNumberGenerator.new()
-var velocity = Vector3(0, 0, 0)
+#var velocity = Vector3(0, 0, 0)
 var is_active : bool = false
 var meta_type : String = ""
 var meta_name : String = ""
