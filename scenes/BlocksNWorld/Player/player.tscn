@@ -1482,11 +1482,13 @@ layout_mode = 2
 alignment = 1
 
 [node name="Fight1" type="Button" parent="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("4")
 text = "Fight1"
 
 [node name="ExitButton" type="Button" parent="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons"]
+unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("4")
 action_mode = 0

@@ -2,8 +2,10 @@ extends MenuSceneControlBase
 
 const nef_head_preload = preload("res://scenes/NPC/Enemies/nef_head_enemy.tscn")
 
-@onready var arena_button = $VBoxContainer/HBoxContainer/FightButtons/Fight1
-@onready var exit_button = $VBoxContainer/HBoxContainer/FightButtons/ExitButton
+#var arena_button = $VBoxContainer/HBoxContainer/FightButtons/Fight1
+@onready var arena_button= %Fight1
+#@onready var exit_button = $VBoxContainer/HBoxContainer/FightButtons/ExitButton
+@onready var exit_button = %ExitButton
 @onready var player = get_parent().get_parent()
 
 var bad_guy_instance = null
