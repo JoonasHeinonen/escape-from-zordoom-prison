@@ -79,6 +79,7 @@ func _on_ShootTimer_timeout():
 		miniturret_ammo -= 1
 
 func _on_TargetDetectionArea_body_entered(body):
+	print(body)
 	if (body.has_meta("type") && body.get_meta("type") == "enemy"):
 		is_locked_on_target = true
 		body_target = body

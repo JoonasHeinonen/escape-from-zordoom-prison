@@ -111,8 +111,18 @@ func _ready():
 	$PlayerUI/InventoryContainer.visible = false
 	walk(0, 1, -0.1)
 
+	"""
+	"edge_blaster",
+	"blitz_gun",
+	"gravity_bomb",
+	"negotiator",
+	"pulse_rifle",
+	"ry3no",
+	"sheepinator",
+	"miniturret_glove"
+	"""
 	if Globle.current_weapons.size() > 0:
-		current_weapon = "edge_blaster"
+		current_weapon = "blitz_gun"
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
@@ -566,7 +576,7 @@ func shoot_gravity_bomb():
 	$Audio/Weapons/GravityBomb.play()
 	var bullet = gravity_bomb_projectile.instantiate()
 	bullet.position.x = 3
-	bullet.player_velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
+	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
 	get_parent().add_child(bullet)
 	bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
 	determine_character_weapon_muzzle(Globle.player_character, bullet)
@@ -595,7 +605,7 @@ func shoot_sheepinator():
 func shoot_miniturret_glove():
 	var bullet = miniturret_packed_projectile.instantiate()
 	bullet.position.x = 3
-	bullet.player_velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
+	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
 	get_parent().add_child(bullet)
 	bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
 	determine_character_weapon_muzzle(Globle.player_character, bullet)

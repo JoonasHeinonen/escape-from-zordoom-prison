@@ -1,104 +1,99 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=3 uid="uid://cdtejo8m4q1dv"]
 
-[ext_resource path="res://resources/images/effects/projectiles/miniturret/miniturret_stick.png" type="Texture2D" id=1]
-[ext_resource path="res://resources/images/effects/projectiles/miniturret/miniturret_gun.png" type="Texture2D" id=2]
-[ext_resource path="res://src/scripts/npc/friendly/miniturret.gd" type="Script" id=3]
-[ext_resource path="res://resources/audio/npc/miniturret/miniturret_gun.wav" type="AudioStream" id=4]
-[ext_resource path="res://resources/audio/npc/miniturret/deploy.wav" type="AudioStream" id=5]
+[ext_resource type="Texture2D" uid="uid://p30u2bovshwi" path="res://resources/images/effects/projectiles/miniturret/miniturret_stick.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://ds61opx4o1crm" path="res://resources/images/effects/projectiles/miniturret/miniturret_gun.png" id="2"]
+[ext_resource type="Script" path="res://src/scripts/npc/friendly/miniturret.gd" id="3"]
+[ext_resource type="AudioStream" uid="uid://bg1wh83tiik3a" path="res://resources/audio/npc/miniturret/miniturret_gun.wav" id="4"]
+[ext_resource type="AudioStream" uid="uid://b2x2loe5ja13c" path="res://resources/audio/npc/miniturret/deploy.wav" id="5"]
 
-[sub_resource type="BoxShape3D" id=1]
+[sub_resource type="BoxShape3D" id="1"]
 
-[sub_resource type="BoxShape3D" id=3]
-extents = Vector3( 0.380435, 0.462217, 0.268627 )
+[sub_resource type="BoxShape3D" id="BoxShape3D_xon46"]
 
-[sub_resource type="QuadMesh" id=2]
+[sub_resource type="QuadMesh" id="2"]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 resource_name = "Start"
 length = 2.0
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("TargetDetectionArea/TargetDetectionRaycast:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.1, 2 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Vector3( 0.2, 0.2, 0.2 ), Vector3( 5, 3, 1 ), Vector3( 5, 3, 1 ) ]
+"values": [Vector3(0, 0, 0), Vector3(20, 20, 20)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TargetDetectionArea:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(20, 20, 20)]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "Start"
-length = 4.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("TargetDetectionArea/TargetDetectionRaycast:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PackedFloat32Array( 0, 3.8, 4 ),
-"transitions": PackedFloat32Array( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 5, 3, 1 ), Vector3( 10, 3, 1 ), Vector3( 0.2, 0.2, 0.2 ) ]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5vvx"]
+_data = {
+"Start": SubResource("6")
 }
 
-[sub_resource type="AnimationNodeAnimation" id=7]
-animation = "Start"
-
-[sub_resource type="AnimationNodeStateMachine" id=4]
-states/Start/node = SubResource( 7 )
-states/Start/position = Vector2( 318, 78 )
-start_node = "Start"
-
-[sub_resource type="AnimationNodeStateMachinePlayback" id=5]
+[sub_resource type="AnimationNodeStateMachine" id="4"]
+states/Start/position = Vector2(318, 78)
 
 [node name="Miniturret" type="CharacterBody3D"]
-transform = Transform3D( 3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0 )
-script = ExtResource( 3 )
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+script = ExtResource("3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D( 0.04, 0, 0, 0, 0.16, 0, 0, 0, 0.04, 0, 0, 0 )
-shape = SubResource( 1 )
+transform = Transform3D(0.08, 0, 0, 0, 0.32, 0, 0, 0, 0.08, 0, 0, 0)
+shape = SubResource("1")
 
 [node name="TargetDetectionArea" type="Area3D" parent="."]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 collision_layer = 3
 collision_mask = 0
 
 [node name="TargetDetectionRaycast" type="CollisionShape3D" parent="TargetDetectionArea"]
-transform = Transform3D( 5, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 3 )
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shape = SubResource("BoxShape3D_xon46")
 
 [node name="MiniturretGun" type="MeshInstance3D" parent="."]
-transform = Transform3D( 0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.00126624, 0.0491582, 0.003 )
-mesh = SubResource( 2 )
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.00126624, 0.0491582, 0.003)
+mesh = SubResource("2")
 
 [node name="MiniturretGunSprite" type="Sprite3D" parent="MiniturretGun"]
-transform = Transform3D( 20, 0, 0, 0, 20, 0, 0, 0, 20, 0.623, 0.014, 0.024 )
-texture = ExtResource( 2 )
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.623, 0.014, 0.024)
+texture_filter = 0
+texture = ExtResource("2")
 
 [node name="WeaponMuzzle" type="Marker3D" parent="MiniturretGun"]
-transform = Transform3D( 6, 1.06582e-14, 0, -1.06582e-14, 6, 0, 0, 0, 6, 4.82758, 0.0374426, 0 )
+transform = Transform3D(6, 1.06582e-14, 0, -1.06582e-14, 6, 0, 0, 0, 6, 4.82758, 0.0374426, 0)
 
 [node name="MiniturretStick" type="Sprite3D" parent="."]
 billboard = 1
-texture = ExtResource( 1 )
+texture_filter = 0
+texture = ExtResource("1")
 
 [node name="MiniturretAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Start = SubResource( 6 )
-
-[node name="MiniturretAnimationPlayer" type="AnimationPlayer" parent="MiniturretAnimationPlayer"]
-anims/Start = SubResource( 8 )
+libraries = {
+"": SubResource("AnimationLibrary_n5vvx")
+}
 
 [node name="MiniturretAnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 4 )
+libraries = {
+"": SubResource("AnimationLibrary_n5vvx")
+}
+tree_root = SubResource("4")
 anim_player = NodePath("../MiniturretAnimationPlayer")
-active = true
-parameters/playback = SubResource( 5 )
 
 [node name="ExpireTimer" type="Timer" parent="."]
 wait_time = 12.0
@@ -114,11 +109,11 @@ wait_time = 0.3
 [node name="Audio" type="Node" parent="."]
 
 [node name="Deploy" type="AudioStreamPlayer3D" parent="Audio"]
-stream = ExtResource( 5 )
+stream = ExtResource("5")
 volume_db = 80.0
 
 [node name="MiniturretGun" type="AudioStreamPlayer3D" parent="Audio"]
-stream = ExtResource( 4 )
+stream = ExtResource("4")
 volume_db = 80.0
 
 [connection signal="body_entered" from="TargetDetectionArea" to="." method="_on_TargetDetectionArea_body_entered"]

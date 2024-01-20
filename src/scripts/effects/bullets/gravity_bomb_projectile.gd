@@ -5,10 +5,19 @@ extends ProjectileBase
 
 @export_enum("gravity_bomb_projectile", "miniturret_projectile") var projectile_type: String
 
-## https://www.youtube.com/watch?v=p6OQ7XVsiKw
+##  
 func _ready():
-	velocity = Vector3(1, -1, 0)
+	if (projectile_type == "gravity_bomb_projectile"):
+		speed = 6
+	elif (projectile_type == "miniturret_projectile"):
+		speed = 3
+
+	velocity = Vector3(0, 0, 0)
 	apply_impulse(velocity * 8, Vector3.ZERO)
+
+func _physics_process(delta):
+	velocity.x = speed * delta * 1
+	translate(velocity)
 
 ## https://www.youtube.com/watch?v=F1Fyj3Lh_Pc&t=239s
 func _on_GravityBombArea_body_entered(_body):

@@ -68,9 +68,6 @@ func _physics_process(delta):
 
 func determine_pause(inventory : bool, _scale : int, process_input : bool):
 	Globle.player_inventory = inventory
-	time_scale_target = _scale
-	Engine.time_scale = _scale
-	get_parent().set_process_input(process_input)
 
 func determine_active_item(weapon : String):
 	match weapon:

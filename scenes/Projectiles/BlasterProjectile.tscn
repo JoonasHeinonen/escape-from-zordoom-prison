@@ -8,13 +8,13 @@
 [sub_resource type="BoxShape3D" id="2"]
 
 [node name="Projectile" type="RigidBody3D"]
+gravity_scale = 0.0
 script = ExtResource("3")
 weapon = "blaster"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
 shape = SubResource("1")
-disabled = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)

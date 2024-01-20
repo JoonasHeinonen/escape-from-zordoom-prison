@@ -24,6 +24,7 @@ gravity = Vector3(-2, -3, 0)
 [sub_resource type="QuadMesh" id="5"]
 
 [node name="Projectile" type="RigidBody3D"]
+gravity_scale = 0.0
 script = ExtResource("3")
 weapon = "miniturret"
 

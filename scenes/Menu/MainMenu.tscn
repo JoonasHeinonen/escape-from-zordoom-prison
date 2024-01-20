@@ -52,7 +52,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1")
-alignment = "Full alignment"
+alignment = "Vertical alignment"
 
 [node name="LabelCenterContainer" type="CenterContainer" parent="MainMenu"]
 layout_mode = 0
@@ -70,11 +70,14 @@ text = "ESCAPE FROM ZORDOOM"
 max_lines_visible = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("4")
+alignment = "Full alignment"
 
 [node name="PanelContainer" type="PanelContainer" parent="MainMenu/CenterContainer"]
 custom_minimum_size = Vector2(240, 270)

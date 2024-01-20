@@ -13,6 +13,7 @@ size = Vector3(1.24951, 0.94243, 2)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+gravity_scale = 0.0
 script = ExtResource("2")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

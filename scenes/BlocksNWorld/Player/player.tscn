@@ -865,7 +865,6 @@ script = ExtResource("30")
 
 [node name="InGameUI" type="Control" parent="PlayerUI"]
 process_mode = 3
-visible = false
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -906,27 +905,32 @@ texture = ExtResource("34")
 [node name="AmmoHas" type="Label" parent="PlayerUI/InGameUI/Ammo"]
 layout_mode = 0
 offset_right = 80.0
-offset_bottom = 50.0
+offset_bottom = 45.0
 theme = ExtResource("35")
 text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="AmmoBy" type="Label" parent="PlayerUI/InGameUI/Ammo"]
 layout_mode = 0
 offset_left = 80.0
 offset_right = 120.0
-offset_bottom = 50.0
+offset_bottom = 45.0
 theme = ExtResource("35")
 theme_override_colors/font_color = Color(0.25098, 0.443137, 0.470588, 0.784314)
 text = "/"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AmmoMax" type="Label" parent="PlayerUI/InGameUI/Ammo"]
 layout_mode = 0
 offset_left = 120.0
 offset_right = 200.0
-offset_bottom = 50.0
+offset_bottom = 45.0
 theme = ExtResource("35")
 theme_override_colors/font_color = Color(0.25098, 0.443137, 0.470588, 0.784314)
 text = "0"
+vertical_alignment = 1
 
 [node name="Bolts" type="Control" parent="PlayerUI/InGameUI"]
 anchors_preset = 0
@@ -963,11 +967,12 @@ texture = ExtResource("34")
 [node name="bolts" type="Label" parent="PlayerUI/InGameUI/Bolts"]
 layout_mode = 0
 offset_left = -30.0
-offset_top = -2.0
 offset_right = 170.0
-offset_bottom = 48.0
+offset_bottom = 46.0
 theme = ExtResource("35")
 text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("13")
 
 [node name="Health" type="Control" parent="PlayerUI/InGameUI"]
@@ -1003,30 +1008,34 @@ texture = ExtResource("34")
 
 [node name="HealthHas" type="Label" parent="PlayerUI/InGameUI/Health"]
 layout_mode = 0
-offset_left = 150.25
+offset_left = 150.0
 offset_top = -3.0
-offset_right = 195.25
-offset_bottom = 47.0
+offset_right = 195.0
+offset_bottom = 45.0
 theme = ExtResource("35")
 text = "0"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HealthBy" type="Label" parent="PlayerUI/InGameUI/Health"]
 layout_mode = 0
-offset_left = 195.25
+offset_left = 195.0
 offset_top = -3.0
-offset_right = 205.25
-offset_bottom = 47.0
+offset_right = 205.0
+offset_bottom = 45.0
 theme = ExtResource("35")
 text = "/"
+vertical_alignment = 1
 
 [node name="HealthMax" type="Label" parent="PlayerUI/InGameUI/Health"]
 layout_mode = 0
-offset_left = 205.25
+offset_left = 205.0
 offset_top = -3.0
-offset_right = 250.25
-offset_bottom = 47.0
+offset_right = 250.0
+offset_bottom = 45.0
 theme = ExtResource("35")
 text = "0"
+vertical_alignment = 1
 
 [node name="InventoryContainer" type="Control" parent="PlayerUI"]
 process_mode = 3
@@ -1069,6 +1078,7 @@ theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot1"]
+texture_filter = 1
 layout_mode = 0
 offset_right = 70.0
 offset_bottom = 70.0
@@ -1081,6 +1091,7 @@ theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot2"]
+texture_filter = 1
 layout_mode = 0
 offset_right = 70.0
 offset_bottom = 70.0
@@ -1093,6 +1104,7 @@ theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot3"]
+texture_filter = 1
 layout_mode = 0
 offset_right = 70.0
 offset_bottom = 70.0
@@ -1105,6 +1117,7 @@ theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot4"]
+texture_filter = 1
 layout_mode = 0
 offset_right = 70.0
 offset_bottom = 70.0
@@ -1121,6 +1134,7 @@ theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot5"]
+texture_filter = 1
 layout_mode = 0
 offset_right = 70.0
 offset_bottom = 70.0
@@ -1133,6 +1147,7 @@ theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot6"]
+texture_filter = 1
 layout_mode = 0
 offset_right = 70.0
 offset_bottom = 70.0
@@ -1145,6 +1160,7 @@ theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot7"]
+texture_filter = 1
 layout_mode = 0
 offset_right = 70.0
 offset_bottom = 70.0
@@ -1157,6 +1173,7 @@ theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8"]
+texture_filter = 1
 layout_mode = 0
 offset_right = 70.0
 offset_bottom = 70.0

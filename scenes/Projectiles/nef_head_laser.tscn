@@ -43,7 +43,7 @@ _data = {
 "laser": SubResource("2")
 }
 
-[node name="laser" type="Node3D"]
+[node name="Laser" type="Node3D"]
 
 [node name="Area3D" type="Area3D" parent="."]
 script = ExtResource("2")
