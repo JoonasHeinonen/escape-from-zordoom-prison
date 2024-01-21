@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" path="res://resources/models/destructibles/crates/BoltCrate.material" id="1"]
 [ext_resource type="Script" path="res://src/scripts/destructibles/destructible.gd" id="2"]
-[ext_resource type="Script" path="res://src/scripts/destructibles/Crate_hurt_box.gd" id="3"]
+[ext_resource type="Script" path="res://src/scripts/destructibles/crate_hurt_box.gd" id="3"]
 
 [sub_resource type="ArrayMesh" id="4"]
 resource_name = "bolt_crate_Cube003"
@@ -45,17 +45,17 @@ shape = SubResource("1")
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
 shape = SubResource("2")
 
-[node name="Crate_hurt_Box" type="Area3D" parent="."]
+[node name="CrateHurtBox" type="Area3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.4, 0, 0, 0, 0.2, 0, 0, 0)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Crate_hurt_Box"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrateHurtBox"]
 transform = Transform3D(6.764, 0, 0, 0, 2, 0, 0, 0, 2.482, 0, 0, 0)
 shape = SubResource("3")
 
 [connection signal="mouse_entered" from="." to="." method="_on_BoltCrate_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_BoltCrate_mouse_exited"]
 [connection signal="area_entered" from="Area3D" to="." method="_on_Area_area_entered"]
-[connection signal="body_entered" from="Crate_hurt_Box" to="Crate_hurt_Box" method="_on_Crate_hurt_Box_body_entered"]
+[connection signal="body_entered" from="CrateHurtBox" to="CrateHurtBox" method="_on_Crate_hurt_Box_body_entered"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" path="res://resources/models/destructibles/crates/ExplosiveCrate.material" id="1"]
 [ext_resource type="Script" path="res://src/scripts/destructibles/explosive_crate.gd" id="2"]
-[ext_resource type="Script" path="res://src/scripts/destructibles/Crate_hurt_box.gd" id="3"]
+[ext_resource type="Script" path="res://src/scripts/destructibles/crate_hurt_box.gd" id="3"]
 [ext_resource type="Material" path="res://resources/models/destructibles/crates/ExplosiveCrateTriggered.material" id="4"]
 [ext_resource type="AudioStream" uid="uid://csodnpwjgnkdq" path="res://resources/audio/environment/destructibles/demolition_crate_triggered.wav" id="5"]
 
@@ -143,13 +143,13 @@ shape = SubResource("1")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 shape = SubResource("2")
 
-[node name="Crate_hurt_Box" type="Area3D" parent="."]
+[node name="CrateHurtBox" type="Area3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.4, 0, 0, 0, 0.2, 0, 0, 0)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("3")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Crate_hurt_Box"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrateHurtBox"]
 transform = Transform3D(6.764, 0, 0, 0, 2, 0, 0, 0, 2.482, 0, 0, 0)
 shape = SubResource("3")
 

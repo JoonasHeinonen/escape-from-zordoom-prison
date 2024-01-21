@@ -62,7 +62,6 @@ func _input(event):
 				for c in unwanted_chars:
 					wpn_name = wpn_name.replace(c, "_")
 				wpn_name = wpn_name.to_lower()
-				print(wpn_name)
 				player._on_Vendor_Choice_pressed(btn, wpn_name)
 	if event.is_action_pressed("ui_esc"):
 		if (Globle.vendor_active):

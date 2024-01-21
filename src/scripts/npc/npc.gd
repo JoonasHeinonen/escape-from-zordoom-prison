@@ -107,8 +107,7 @@ func _input(_event):
 					"Shark_man":
 						match(shark_man_dialog_value):
 							(0):
-								#Re-due menue logic.
-								print(Globle.player_character)
+								# Re-due menue logic.
 								commence_dialog('timeline_Rivet_shark_man')
 						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 						Globle.arena_menu_open = true

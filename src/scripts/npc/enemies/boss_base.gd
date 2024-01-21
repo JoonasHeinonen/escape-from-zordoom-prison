@@ -26,6 +26,7 @@ func _physics_process(_delta):
 		$FlamethrowerTimer.start()
 		$TurnTimer.start()
 	if not is_on_floor():
+		print("Y: ", velocity.y)
 		velocity.y = -4
 		state_machine.travel("Enemy_Fall")
 	else:

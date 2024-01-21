@@ -1,4 +1,4 @@
-class_name PlayerHit_box
+class_name PlayerHitBox
 
 extends Area3D
 

@@ -73,13 +73,8 @@ var player_character = "Angela"
 
 var spawn_point = Vector3(0 ,0, 0)
 
-func update_spawn(new_point) : spawn_point = new_point
-
-func _process(_delta):
-	if (game_fullscreen):
-		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (true) else Window.MODE_WINDOWED
-	elif (!game_fullscreen):
-		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (false) else Window.MODE_WINDOWED
+func update_spawn(new_point):
+	spawn_point = new_point
 
 ## TODO Not sure if we need this function.
 func instance_node(node, location, parent):

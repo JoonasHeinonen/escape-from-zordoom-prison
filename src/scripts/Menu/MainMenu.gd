@@ -35,14 +35,13 @@ func _ready():
 	for button in $CenterContainer/Buttons.get_children():
 		button.connect("pressed", Callable(self, "_on_Button_pressed").bind(button.scene_to_load))
 
-func _process(delta):
+func _process(_delta):
 	alignment = "Full alignment"
 
 func _physics_process(_delta):
 	camera.rotation += Vector3(0.001, 0.002, 0)
 
 func _on_Button_pressed(scene_to_load):
-	print("Scene: " + scene_to_load)
 	get_tree().change_scene_to_file(scene_to_load)
 
 func _on_FadeIn_fade_finished():

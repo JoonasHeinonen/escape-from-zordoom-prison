@@ -459,8 +459,8 @@ func purchase_weapon(wpn_price : int, wpn, btn):
 		set_vendor_weapons(Globle.weapons_for_sale)
 		$PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts/CurrentBoltsLabel.text = str(Globle.bolts)
 	else:
-		print("Insufficient funds...")
 		## TODO Replace with a UI notification message.
+		print("Insufficient funds...")
 
 func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	var wpn_name_to_label = ""

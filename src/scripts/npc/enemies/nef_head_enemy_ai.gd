@@ -16,7 +16,6 @@ var timer = null
 # Fix lock on redical.
 func _ready():
 	element = elements.AIR
-	gravity = 0
 	speed = -90
 	timer = Timer.new()
 	timer.connect("timeout", Callable(self, "nef_head_shoot_time"))

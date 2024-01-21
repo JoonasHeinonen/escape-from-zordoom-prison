@@ -57,8 +57,6 @@ func _input(event):
 									player.current_weapon = "miniturret_glove"
 							determine_pause(false, 1, true)
 							hide()
-						else:
-							print(weapon_slot)
 						weapon_slot.grab_focus()
 
 func _physics_process(delta):
