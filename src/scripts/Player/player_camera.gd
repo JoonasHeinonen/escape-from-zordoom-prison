@@ -13,7 +13,8 @@ func _ready():
 	sniping_radical_camera = get_parent().get_parent().get_node("SnipingRadical/Node3D/Camera3D")
 
 func _physics_process(_delta):
-	if (player.player_health <= 0) : self.set_as_top_level(true)
+	if (player.player_health <= 0):
+		set_as_top_level(true)
 	
 	if (player.player_is_aiming_with_rifle):
 		var position2D = get_viewport().get_mouse_position()
