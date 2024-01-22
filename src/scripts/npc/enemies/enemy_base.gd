@@ -16,10 +16,9 @@ var is_dead : bool = false
 var is_in_range : bool = false
 
 var element = null
-var gravity : int
 var meta_name : String = ""
 var speed : int
-var enemy_velocity = Vector3(0, 0, 0)
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var animation_player = $EnemyAnimationPlayer
 var player
@@ -40,19 +39,21 @@ func _process(_delta):
 func _physics_process(delta):
 	match (element):
 		elements.GROUND:
-			if not is_on_floor() : enemy_velocity.y = -4
-			set_velocity(enemy_velocity)
+			if not is_on_floor():
+				velocity.y -= gravity * delta
+			set_velocity(velocity)
 			set_up_direction(Vector3.UP)
 			move_and_slide()
 		elements.STATIC:
-			if not is_on_floor() : enemy_velocity.y = -4
-			set_velocity(enemy_velocity)
+			if not is_on_floor():
+				velocity.y -= gravity * delta
+			set_velocity(velocity)
 			set_up_direction(Vector3.UP)
 			move_and_slide()
 		elements.AIR:
-			enemy_velocity.y = gravity
-			enemy_velocity.x = speed * 1
-			set_velocity(enemy_velocity * delta)
+			velocity.y = 0
+			velocity.x = speed * 1
+			set_velocity(velocity * delta)
 			move_and_slide()
 
 	if (self.has_node("Audio")):
@@ -105,10 +106,10 @@ func remove_active_radical():
 func walk(vel):
 	if !is_in_range:
 		state_machine.travel("Enemy_Walk")
-		enemy_velocity.x = vel
+		velocity.x = vel
 	else:
 		state_machine.travel("Enemy_Idle")
-		enemy_velocity.x = 0
+		velocity.x = 0
 
 func _on_AreaEnemy_area_entered(area):
 	if (area.name == "ProjectileExplosionArea"):
