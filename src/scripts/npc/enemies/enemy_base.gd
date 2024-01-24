@@ -59,7 +59,7 @@ func _physics_process(delta):
 		elements.AIR:
 			velocity.y = gravity
 			velocity.x = speed * 1
-			set_velocity(velocity * delta)
+			set_velocity(velocity)
 			move_and_slide()
 
 	if (self.has_node("Audio")):

@@ -11,13 +11,11 @@ var target : Player = null
 var attack = null
 var timer = null
 
-# Timer that has it so that it only shoots one bullet at a time after the player in in range.
-
 # Fix lock on redical.
 func _ready():
 	element = elements.AIR
-	gravity = 0
-	speed = -90
+	gravity = -4
+	speed = -2
 	timer = Timer.new()
 	timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
 	timer.wait_time = 1
@@ -29,10 +27,20 @@ func _ready():
 	self.set_meta("name", "enemy")
 
 func _physics_process(_delta):
+	# check to see if the collsion shape is on the floor of the level either through the EnemyBase
+	# or the nef_enemy_ai script
+	#this process is over writing the one in enemy base
+	#this will run the base enemy function vs the one in the nef_head_enemy script
+	super(_delta)
+	#if is_on_floor():
+		#print("true")
+	#else:
+		#print("false")
 	for i in get_slide_collision_count():
 		if  is_on_wall() :
 			$EnemyAnimationPlayer.play("Enemy_Turn_Right")
-			speed *= -1
+			enemy_speed = 90
+			move_and_slide()
 			value += 1
 			ray.set_rotation_degrees(Vector3(0,0,90.237))
 			$laser_muzzle.set_rotation_degrees(Vector3(0,180,0))
@@ -44,7 +52,7 @@ func _physics_process(_delta):
 
 func nef_head_shoot_time():
 	can_shoot = true
-
+#Refacter later
 func _on_player_finding_player_seen():
 	if can_shoot:
 		attack = laser_attack_scene.instantiate()
@@ -55,10 +63,7 @@ func _on_player_finding_player_seen():
 		timer.start()
 
 func _on_AreaEnemy_area_entered(area):
-	print("1")
 	if (area.name == "ProjectileArea"):
-		print("shoot")
 		state_machine.travel("Enemy_Damage")
 		damage_enemy(2)
 		animation_player.play("Enemy_Damage")
-		print(damage_enemy(2))

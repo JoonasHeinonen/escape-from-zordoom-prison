@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/RayCast_nef_trooper_head.gd" id="3"]
 
 [sub_resource type="CapsuleShape3D" id="30"]
-radius = 0.194807
-height = 0.389613
+radius = 1.14185
+height = 3.42323
 
 [sub_resource type="Animation" id="34"]
 resource_name = "Enemy_Damage"
@@ -223,9 +223,11 @@ states/Start/position = Vector2(91, 203)
 transitions = ["Enemy_Idle", "Enemy_Damage", SubResource("37"), "Enemy_Damage", "Enemy_Idle", SubResource("38"), "Start", "Enemy_Idle", SubResource("AnimationNodeStateMachineTransition_rtae2"), "Start", "Enemy_Damage", SubResource("AnimationNodeStateMachineTransition_xcpds"), "Enemy_Idle", "End", SubResource("AnimationNodeStateMachineTransition_mp7cq"), "Enemy_Damage", "End", SubResource("AnimationNodeStateMachineTransition_1orld")]
 
 [sub_resource type="BoxShape3D" id="33"]
-size = Vector3(2.70177, 0.759453, 2)
+size = Vector3(2.70177, 3.69416, 2)
 
 [node name="nef_head" type="CharacterBody3D" groups=["nef_head"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("2")
 
 [node name="target_radical" type="Marker3D" parent="."]
@@ -266,9 +268,13 @@ script = ExtResource("3")
 
 [node name="AreaEnemy" type="Area3D" parent="."]
 transform = Transform3D(1, 1.0727e-11, -5.45697e-12, -1.0727e-11, 1, -1.09139e-11, 5.45697e-12, 1.09139e-11, 1, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+gravity_point = true
+gravity = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaEnemy"]
-transform = Transform3D(1, 5.95568e-23, 0, 5.95568e-23, 1, 0, 0, 0, 1, 1.17146, 0.296651, -5.09384e-12)
+transform = Transform3D(1, 5.95568e-23, 0, 5.95568e-23, 1, 0, 0, 0, 1, 1.1714, -0.218465, 0.000673294)
 shape = SubResource("33")
 
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
