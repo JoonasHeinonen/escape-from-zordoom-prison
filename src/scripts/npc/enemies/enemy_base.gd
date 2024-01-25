@@ -9,6 +9,7 @@ enum elements {GROUND, WATER, AIR, STATIC}
 @export var direction : String # (String, "Right", "Left")
 @export var is_armored : bool = false
 @export var enemy_health : int = 10
+#why is this here if we have speed on line 22
 @export var enemy_speed : int = 10
 
 var is_alerted : bool = false

@@ -10,12 +10,15 @@ var is_moving_left : bool = true
 var target : Player = null
 var attack = null
 var timer = null
+# try and roate the ray cast without usint the animation player
+
 
 # Fix lock on redical.
+# refactor speed variable
 func _ready():
 	element = elements.AIR
 	gravity = -4
-	speed = -2
+	speed = 0
 	timer = Timer.new()
 	timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
 	timer.wait_time = 1
@@ -27,21 +30,22 @@ func _ready():
 	self.set_meta("name", "enemy")
 
 func _physics_process(_delta):
+	
 	# check to see if the collsion shape is on the floor of the level either through the EnemyBase
 	# or the nef_enemy_ai script
 	#this process is over writing the one in enemy base
 	#this will run the base enemy function vs the one in the nef_head_enemy script
 	super(_delta)
-	#if is_on_floor():
-		#print("true")
-	#else:
-		#print("false")
+	# need it so that it will see the player and stop.
+	# refacter where it Ray cast is looking around for the player.
 	for i in get_slide_collision_count():
 		if  is_on_wall() :
 			$EnemyAnimationPlayer.play("Enemy_Turn_Right")
-			enemy_speed = 90
+			# some how need enemy_speed to stop and kill the player
+			speed = 0
 			move_and_slide()
 			value += 1
+			# refacter so that it is more dyamic and scalable 
 			ray.set_rotation_degrees(Vector3(0,0,90.237))
 			$laser_muzzle.set_rotation_degrees(Vector3(0,180,0))
 		if  is_on_wall() and value == 2:
@@ -52,8 +56,14 @@ func _physics_process(_delta):
 
 func nef_head_shoot_time():
 	can_shoot = true
-#Refacter later
+# maybe have a fucntion where the nef head is looking for the player.
+#https://gamedevacademy.org/raycast3d-in-godot-complete-guide/#Adjusting_RayCast3D_Parameters
+#how do you get the rotation of the z a
 func _on_player_finding_player_seen():
+	ray.get_collider()
+	print("found player")
+	
+	speed = 2
 	if can_shoot:
 		attack = laser_attack_scene.instantiate()
 		get_parent().add_child(attack)
@@ -61,6 +71,7 @@ func _on_player_finding_player_seen():
 		attack.global_rotation = $laser_muzzle.global_rotation
 		can_shoot = false
 		timer.start()
+		
 
 func _on_AreaEnemy_area_entered(area):
 	if (area.name == "ProjectileArea"):
