@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://p30u2bovshwi" path="res://resources/images/effects/projectiles/miniturret/miniturret_stick.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://ds61opx4o1crm" path="res://resources/images/effects/projectiles/miniturret/miniturret_gun.png" id="2"]
 [ext_resource type="Script" path="res://src/scripts/npc/friendly/miniturret.gd" id="3"]
-[ext_resource type="AudioStream" uid="uid://bg1wh83tiik3a" path="res://resources/audio/npc/miniturret/miniturret_gun.wav" id="4"]
-[ext_resource type="AudioStream" uid="uid://b2x2loe5ja13c" path="res://resources/audio/npc/miniturret/deploy.wav" id="5"]
+[ext_resource type="AudioStream" uid="uid://d3sb2tvn7mknb" path="res://resources/audio/npc/miniturret/miniturret_gun.wav" id="4"]
+[ext_resource type="AudioStream" uid="uid://dp0gws21kco6c" path="res://resources/audio/npc/miniturret/deploy.wav" id="5"]
 
 [sub_resource type="BoxShape3D" id="1"]
 
@@ -51,6 +51,8 @@ states/Start/position = Vector2(318, 78)
 
 [node name="Miniturret" type="CharacterBody3D"]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+axis_lock_linear_z = true
+axis_lock_angular_z = true
 script = ExtResource("3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

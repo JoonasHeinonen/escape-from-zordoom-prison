@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c3nbx7l8pr3l4"]
 
-[ext_resource type="Texture2D" uid="uid://c4b1qsdkg7c6p" path="res://resources/images/characters/npc/shark_man_npc.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://dfq5w3da3sjfo" path="res://resources/images/ui/enter_key.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://o3ky4hrbyhx7" path="res://resources/images/characters/npc/shark_man_npc.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cr7qupmet1gp4" path="res://resources/images/ui/enter_key.png" id="2"]
 [ext_resource type="Script" path="res://src/scripts/npc/npc.gd" id="3"]
 
 [sub_resource type="BoxShape3D" id="2"]
@@ -9,7 +9,9 @@
 [sub_resource type="BoxShape3D" id="3"]
 
 [node name="shark_man" type="CharacterBody3D"]
-transform = Transform3D(2.287, 0, 0, 0, 2.287, 0, 0, 0, 1, -5.06696, 1.8004, 0)
+transform = Transform3D(2.287, 0, 0, 0, 2.287, 0, 0, 0, 1, 0, 0, 0)
+axis_lock_linear_z = true
+axis_lock_angular_z = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture_filter = 0

@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://dq4w3pnkkitcj"]
 
 [ext_resource type="Script" path="res://src/scripts/npc/npc.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://dfq5w3da3sjfo" path="res://resources/images/ui/enter_key.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cr7qupmet1gp4" path="res://resources/images/ui/enter_key.png" id="2"]
 
 [sub_resource type="CapsuleMesh" id="13"]
 
 [sub_resource type="BoxShape3D" id="14"]
 
 [node name="npc" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 7.1613, 0.0711673, -1.50097)
+transform = Transform3D(1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 0, 0, 0)
 script = ExtResource("1")
 character_name = "Null NPC"
 

@@ -1,42 +1,47 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=8 format=3 uid="uid://d0f72j8tyupdk"]
 
-[ext_resource path="res://src/scripts/npc/friendly/Angela_Or_Rivet.gd" type="Script" id=1]
-[ext_resource path="res://resources/images/characters/player/angela/angela_sheet_init_finished.png" type="Texture2D" id=2]
-[ext_resource path="res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png" type="Texture2D" id=3]
-[ext_resource path="res://resources/images/ui/enter_key.png" type="Texture2D" id=4]
-[ext_resource path="res://src/scripts/npc/npc.gd" type="Script" id=5]
+[ext_resource type="Script" path="res://src/scripts/npc/friendly/Angela_Or_Rivet.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bwfelc82veqon" path="res://resources/images/characters/player/angela/angela_sheet_init_finished.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://b57ih4ff35gl0" path="res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cr7qupmet1gp4" path="res://resources/images/ui/enter_key.png" id="4"]
+[ext_resource type="Script" path="res://src/scripts/npc/npc.gd" id="5"]
 
-[sub_resource type="BoxShape3D" id=1]
+[sub_resource type="BoxShape3D" id="1"]
 
-[sub_resource type="BoxShape3D" id=2]
+[sub_resource type="BoxShape3D" id="2"]
 
 [node name="NPC_Angela_Rivet" type="CharacterBody3D"]
-transform = Transform3D( -0.999967, 0, -0.00815064, 0, 1, 0, 0.00815064, 0, -0.999967, 0, 0, 0 )
-script = ExtResource( 1 )
+transform = Transform3D(-0.999967, 0, -0.00815064, 0, 1, 0, 0.00815064, 0, -0.999967, 0, 0, 0)
+axis_lock_linear_z = true
+axis_lock_angular_z = true
+script = ExtResource("1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource("1")
 disabled = true
 
 [node name="Angela_sprite" type="Sprite3D" parent="."]
 visible = false
-texture = ExtResource( 2 )
+texture_filter = 0
+texture = ExtResource("2")
 hframes = 10
 vframes = 4
 
 [node name="Rivet_sprite" type="Sprite3D" parent="."]
 visible = false
-texture = ExtResource( 3 )
+texture_filter = 0
+texture = ExtResource("3")
 hframes = 10
 vframes = 4
 
 [node name="Area3D" type="Area3D" parent="."]
-script = ExtResource( 5 )
+script = ExtResource("5")
 character_name = "NPC_Angela_Rivet"
 
 [node name="EnterButton" type="Sprite3D" parent="Area3D"]
-transform = Transform3D( -1, 0, -8.75443e-08, 0, 1, 0, 8.75443e-08, 0, -1, 0, 0.32344, 0 )
-texture = ExtResource( 4 )
+transform = Transform3D(-1, 0, -8.75443e-08, 0, 1, 0, 8.75443e-08, 0, -1, 0, 0.32344, 0)
+texture_filter = 0
+texture = ExtResource("4")
 
 [node name="DiscussionRadius" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource( 2 )
+shape = SubResource("2")
