@@ -12,5 +12,3 @@ res://scenes/NPC/Friendly/shark_man.tscn
 res://scenes/Menu/LevelView.tscn
 res://scenes/Levels/level_arena.tscn
 res://scenes/NPC/Enemies/Enemy.tscn
-res://src/scripts/npc/enemies/enemy_base.gd
-res://src/scripts/npc/enemies/RayCast_nef_trooper_head.gd

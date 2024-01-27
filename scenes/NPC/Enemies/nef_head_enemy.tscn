@@ -261,6 +261,9 @@ texture = ExtResource("1")
 hframes = 9
 vframes = 4
 
+[node name="ground_finding" type="RayCast3D" parent="EnemySprite"]
+transform = Transform3D(0.529639, 0.000453462, -0.0195452, -0.000108436, 0.529917, 0.00935601, 0.0195502, -0.00934564, 0.529557, -0.152841, 0.0354374, 1.53351e-13)
+
 [node name="player_finding" type="RayCast3D" parent="EnemySprite"]
 transform = Transform3D(0.0137877, 0.999904, 0, -0.999904, 0.0137877, 0, 0, 0, 1, -0.0538642, 0, 0)
 collision_mask = 3
@@ -279,6 +282,7 @@ shape = SubResource("33")
 
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
+[connection signal="player_not_seen" from="EnemySprite/player_finding" to="." method="_on_player_finding_player_not_seen"]
 [connection signal="player_seen" from="EnemySprite/player_finding" to="." method="_on_player_finding_player_seen"]
 [connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
 [connection signal="body_entered" from="AreaEnemy" to="." method="_on_area_enemy_body_entered"]
