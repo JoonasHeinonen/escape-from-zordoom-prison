@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://src/scripts/destructibles/explosive_crate.gd" id="2"]
 [ext_resource type="Script" path="res://src/scripts/destructibles/crate_hurt_box.gd" id="3"]
 [ext_resource type="Material" path="res://resources/models/destructibles/crates/ExplosiveCrateTriggered.material" id="4"]
-[ext_resource type="AudioStream" uid="uid://csodnpwjgnkdq" path="res://resources/audio/environment/destructibles/demolition_crate_triggered.wav" id="5"]
+[ext_resource type="AudioStream" uid="uid://cl2je6phpxfll" path="res://resources/audio/environment/destructibles/demolition_crate_triggered.wav" id="5"]
 
 [sub_resource type="ArrayMesh" id="7"]
 resource_name = "explosive_crate_Cube001"
@@ -125,6 +125,8 @@ transitions = ["Idle", "Activated", SubResource("11"), "Activated", "Idle", SubR
 [node name="ExplosiveCrate" type="CharacterBody3D"]
 collision_layer = 3
 collision_mask = 3
+axis_lock_linear_z = true
+axis_lock_angular_z = true
 script = ExtResource("2")
 scene_type = "explosive_crate"
 

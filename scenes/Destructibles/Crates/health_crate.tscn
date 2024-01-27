@@ -3,8 +3,8 @@
 [ext_resource type="Material" path="res://resources/models/destructibles/crates/HealthCrateMaterial.material" id="1"]
 [ext_resource type="Material" path="res://resources/models/destructibles/crates/HealthCrateGlass.material" id="2"]
 [ext_resource type="Script" path="res://src/scripts/destructibles/health_crate.gd" id="3"]
-[ext_resource type="Texture2D" uid="uid://sqi11t1p6res" path="res://resources/images/effects/health_crate/health_crate_node.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://dexduxfhrpou4" path="res://resources/images/effects/health_crate/health_crate_node_multiple.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dojwj84gcxl48" path="res://resources/images/effects/health_crate/health_crate_node.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://0nkpvk12ryk4" path="res://resources/images/effects/health_crate/health_crate_node_multiple.png" id="5"]
 [ext_resource type="Script" path="res://src/scripts/destructibles/crate_hurt_box.gd" id="6"]
 
 [sub_resource type="ArrayMesh" id="1"]
@@ -83,6 +83,8 @@ gravity = Vector3(0, 0, 0)
 size = Vector2(0.4, 0.4)
 
 [node name="HealthCrate" type="CharacterBody3D"]
+axis_lock_linear_z = true
+axis_lock_angular_z = true
 script = ExtResource("3")
 scene_type = "health_crate"
 
