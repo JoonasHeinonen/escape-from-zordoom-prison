@@ -35,13 +35,9 @@ func _physics_process(_delta):
 	#this will run the base enemy function vs the one in the nef_head_enemy script
 	super(_delta)
 	speed = 2
-	
+	# checks to see if there is a no floor
 	if not ground_finding_raycast.is_colliding():
 		speed = 0
-	# why is this collsion shape making it run....
-	# if we disable it is cant see the ground
-	# need it so that it will see the player and stop.
-	# refacter where it Ray cast is looking around for the player.
 	#for i in get_slide_collision_count():
 		#if  is_on_wall() :
 			#$EnemyAnimationPlayer.play("Enemy_Turn_Right")
@@ -63,7 +59,6 @@ func nef_head_shoot_time():
 # maybe have a fucntion where the nef head is looking for the player.
 #https://gamedevacademy.org/raycast3d-in-godot-complete-guide/#Adjusting_RayCast3D_Parameters
 #how do you get the rotation of the z a raycast
-# try again tomorrow :C
 func _on_player_finding_player_seen():
 	#print("found player")
 	speed = 1
