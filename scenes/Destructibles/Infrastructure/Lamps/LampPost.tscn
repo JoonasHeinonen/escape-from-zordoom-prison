@@ -3,7 +3,7 @@
 [ext_resource type="Material" path="res://resources/models/destructibles/infrastructure/Lamp.material" id="1"]
 [ext_resource type="Material" path="res://resources/models/destructibles/infrastructure/LampPost.material" id="2"]
 [ext_resource type="Script" path="res://src/scripts/destructibles/destructible.gd" id="3"]
-[ext_resource type="Texture2D" uid="uid://5mof37lcdo3i" path="res://resources/images/effects/explosions_n_fire/light.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://c46w322vupmcc" path="res://resources/images/effects/explosions_n_fire/light.png" id="5"]
 
 [sub_resource type="ArrayMesh" id="1"]
 resource_name = "lamp_post_Cube"

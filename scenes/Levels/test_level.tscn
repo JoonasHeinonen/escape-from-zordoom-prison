@@ -1,26 +1,26 @@
 [gd_scene load_steps=29 format=3 uid="uid://bvqbnb6c77jyo"]
 
-[ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/explosive_crate.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cbxa27fdyekuf" path="res://resources/images/environment/haerkonen.jpg" id="1_vxvra"]
-[ext_resource type="PackedScene" uid="uid://c0ejcgkoe8mfq" path="res://scenes/Destructibles/Crates/bolt_crate.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://c0ejcgkoe8mfq" path="res://scenes/Destructibles/Crates/BoltCrate.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dwn5g72i2nu6s" path="res://scenes/Collectibles/bolt.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bp5ijfq147flt" path="res://scenes/Collectibles/weapon_collectible.tscn" id="4"]
-[ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/slim_cognito.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/SlimCognito.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://d18jopbss2gd1" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
-[ext_resource type="PackedScene" uid="uid://dq4w3pnkkitcj" path="res://scenes/NPC/Friendly/null_npc.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://dq4w3pnkkitcj" path="res://scenes/NPC/Friendly/NullNPC.tscn" id="9"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
-[ext_resource type="PackedScene" uid="uid://dn230pjm7jtlh" path="res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://dn230pjm7jtlh" path="res://scenes/Destructibles/Infrastructure/Lamps/LampPost.tscn" id="13"]
 [ext_resource type="PackedScene" uid="uid://bgdy24dvbfxun" path="res://scenes/Collectibles/ammo_can.tscn" id="14"]
 [ext_resource type="PackedScene" uid="uid://dvebyw8glgp0n" path="res://scenes/NPC/Enemies/Enemy.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Doors/ArchDoors.tscn" id="16"]
-[ext_resource type="PackedScene" uid="uid://c6043ke27yksk" path="res://scenes/Destructibles/Crates/health_crate.tscn" id="17"]
+[ext_resource type="PackedScene" uid="uid://c6043ke27yksk" path="res://scenes/Destructibles/Crates/HealthCrate.tscn" id="17"]
 [ext_resource type="Script" path="res://src/scripts/UI/checkpoint_ui.gd" id="19"]
 [ext_resource type="Script" path="res://src/scripts/Player/player_new_spawn_point.gd" id="20"]
-[ext_resource type="PackedScene" uid="uid://dtrmi0l7bxn5l" path="res://scenes/NPC/Friendly/mia.tscn" id="21"]
+[ext_resource type="PackedScene" uid="uid://dtrmi0l7bxn5l" path="res://scenes/NPC/Friendly/Mia.tscn" id="21"]
 [ext_resource type="PackedScene" uid="uid://h6nugy4tsune" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
-[ext_resource type="PackedScene" uid="uid://d0f72j8tyupdk" path="res://scenes/NPC/Friendly/angela_or_rivet.tscn" id="23"]
+[ext_resource type="PackedScene" uid="uid://xguugwg5v2bh" path="res://scenes/NPC/Friendly/AngelaOrRivet.tscn" id="23"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qyk4u"]
 panorama = ExtResource("1_vxvra")
@@ -201,7 +201,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.00164, 1.08331, 0)
 [node name="infrastructure" type="Node" parent="destructibles"]
 
 [node name="LampPost" parent="destructibles/infrastructure" instance=ExtResource("13")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4.037, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -4.037, 0)
 
 [node name="area_of_death" type="Node" parent="."]
 

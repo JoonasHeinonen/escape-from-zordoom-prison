@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0f72j8tyupdk"]
+[gd_scene load_steps=8 format=3 uid="uid://xguugwg5v2bh"]
 
 [ext_resource type="Script" path="res://src/scripts/npc/friendly/Angela_Or_Rivet.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bwfelc82veqon" path="res://resources/images/characters/player/angela/angela_sheet_init_finished.png" id="2"]
@@ -10,7 +10,7 @@
 
 [sub_resource type="BoxShape3D" id="2"]
 
-[node name="NPC_Angela_Rivet" type="CharacterBody3D"]
+[node name="NPCAngelaOrRivet" type="CharacterBody3D"]
 transform = Transform3D(-0.999967, 0, -0.00815064, 0, 1, 0, 0.00815064, 0, -0.999967, 0, 0, 0)
 axis_lock_linear_z = true
 axis_lock_angular_z = true

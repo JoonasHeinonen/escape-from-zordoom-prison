@@ -3,9 +3,9 @@ extends CharacterBody3D
 class_name Destructible
 
 @onready var bolt_instance = preload("res://scenes/Collectibles/bolt.tscn")
-@onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
-@onready var health_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/health_crate_fragments.tscn")
-@onready var lamp_post_fragments = preload("res://scenes/Destructibles/Infrastructure/Lamps/LampFragments/lamp_post_fragments.tscn")
+@onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/BoltCrateFragments.tscn")
+@onready var health_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/HealthCrateFragments.tscn")
+@onready var lamp_post_fragments = preload("res://scenes/Destructibles/Infrastructure/Lamps/LampFragments/LampPostFragments.tscn")
 @onready var crate_destroy_effect = preload("res://scenes/Effects/Collectibles//CrateDestroyed.tscn")
 @onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 

@@ -7,7 +7,7 @@
 
 [sub_resource type="BoxShape3D" id="14"]
 
-[node name="npc" type="Area3D"]
+[node name="NPC" type="Area3D"]
 transform = Transform3D(1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 0, 0, 0)
 script = ExtResource("1")
 character_name = "Null NPC"
