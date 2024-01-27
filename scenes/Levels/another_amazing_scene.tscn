@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource path="res://scenes/BlocksNWorld/Player/player.tscn" type="PackedScene" id=1]
+[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/Player.tscn" id="1"]
+
 
 
 [node name="Node3D" type="Node3D"]

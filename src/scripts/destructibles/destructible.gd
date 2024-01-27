@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 class_name Destructible
 
-@onready var bolt_instance = preload("res://scenes/Collectibles/bolt.tscn")
+@onready var bolt_instance = preload("res://scenes/Collectibles/Bolt.tscn")
 @onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/BoltCrateFragments.tscn")
 @onready var health_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/HealthCrateFragments.tscn")
 @onready var lamp_post_fragments = preload("res://scenes/Destructibles/Infrastructure/Lamps/LampFragments/LampPostFragments.tscn")

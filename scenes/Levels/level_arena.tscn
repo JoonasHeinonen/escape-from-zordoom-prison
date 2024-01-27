@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvg78kfnmitvh"]
 
-[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/Player.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c3nbx7l8pr3l4" path="res://scenes/NPC/Friendly/shark_man.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/ArenaWall.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://deq5x6nf5jgqu" path="res://scenes/BlocksNWorld/ArenaWall.tscn" id="3"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="4"]
 
 [sub_resource type="BoxShape3D" id="1"]

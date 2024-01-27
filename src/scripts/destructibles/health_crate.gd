@@ -1,6 +1,6 @@
 extends Destructible
 
-@onready var nanotech_node = preload("res://scenes/Collectibles/nanotech_node.tscn")
+@onready var nanotech_node = preload("res://scenes/Collectibles/NanotechNode.tscn")
 
 func _process(_delta):
 	if Globle.melee_attack && is_active:

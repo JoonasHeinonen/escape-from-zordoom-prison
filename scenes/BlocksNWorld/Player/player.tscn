@@ -44,7 +44,7 @@
 [ext_resource type="Script" path="res://src/scripts/Player/player_camera.gd" id="43"]
 [ext_resource type="Texture2D" uid="uid://d0p2hw5a74abe" path="res://resources/images/ui/boss_fight_icon_empty.png" id="44"]
 [ext_resource type="Texture2D" uid="uid://buetcn3j6bmt8" path="res://resources/images/weapons/pulse_rifle.png" id="45"]
-[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Player/sniping_raycast.tscn" id="46"]
+[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Player/SnipingRaycast.tscn" id="46"]
 [ext_resource type="Material" path="res://resources/models/ui_elements/GreenSnipingTargetRadicalMaterial.material" id="47"]
 [ext_resource type="AudioStream" uid="uid://kmgyv27cmnrg" path="res://resources/audio/weapons/player/pulse_rifle.wav" id="48"]
 [ext_resource type="Script" path="res://src/scripts/UI/arena_menu.gd" id="49"]
