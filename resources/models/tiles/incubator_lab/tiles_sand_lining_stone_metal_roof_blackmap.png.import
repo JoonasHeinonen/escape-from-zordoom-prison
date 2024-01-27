@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br0e3kwvx7juq"
+uid="uid://clgyyp56iuif2"
 path.s3tc="res://.godot/imported/tiles_sand_lining_stone_metal_roof_blackmap.png-d0ac501a861653ff7261200ee8ead2a8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

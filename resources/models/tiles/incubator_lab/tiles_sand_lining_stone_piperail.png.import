@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c7q4tgqxlpg4c"
+uid="uid://cw2ah5ssr8qx"
 path.s3tc="res://.godot/imported/tiles_sand_lining_stone_piperail.png-1bb25653367965d7e03aa52edfc6d13e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

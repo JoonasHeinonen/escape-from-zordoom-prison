@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3ni3j4d2j62h"
+uid="uid://xr5iihuruj5v"
 path.s3tc="res://.godot/imported/tiles_pipe_02_pipe.png-f55bf0ba80562d0e4489cfe8e3cebdb5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dgn30agd6b51q"
+uid="uid://chx6ya5m6kxn7"
 path.s3tc="res://.godot/imported/tiles_door_arch_0_zordoom_concrete.png-78ff46f30de6da9feefdb8bb504d3086.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1hr6prllw0ry"
+uid="uid://l88fp3utdxim"
 path.s3tc="res://.godot/imported/tiles_metallic_warehouse_floor_lab_floor.png-058ece31ac8d061bfdb27d92b24b04aa.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drttfqiy2gab1"
+uid="uid://t4dan2jd7x0f"
 path.s3tc="res://.godot/imported/tiles_corner_roof_3_jumpwall_pattern_normal_map.png-3e15a1458ae0311efcc4af56ceaa58cd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

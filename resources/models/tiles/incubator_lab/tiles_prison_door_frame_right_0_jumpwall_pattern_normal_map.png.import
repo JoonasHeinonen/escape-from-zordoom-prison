@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i1qdq0vil7nd"
+uid="uid://dnd1wmqn47bic"
 path.s3tc="res://.godot/imported/tiles_prison_door_frame_right_0_jumpwall_pattern_normal_map.png-4283ebf7ab66de2f1c43ef4843201a41.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

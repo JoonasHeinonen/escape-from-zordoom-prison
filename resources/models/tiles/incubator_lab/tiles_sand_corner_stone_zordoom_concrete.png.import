@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8tfngqwt6rmx"
+uid="uid://cejlxg5mnand8"
 path.s3tc="res://.godot/imported/tiles_sand_corner_stone_zordoom_concrete.png-0cc49a4c17f7762a5d95a673cf87adca.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

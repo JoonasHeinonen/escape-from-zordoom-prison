@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cwdj2fnxa8twv"
+uid="uid://cudjtosldt5c4"
 path.s3tc="res://.godot/imported/dark_blue_floor_block_dark_blue_floor.png-cabf7ba39f6540b24d51f4090a50146e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

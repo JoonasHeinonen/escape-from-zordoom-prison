@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwmrr77vt6i26"
+uid="uid://c56jt8xs22phx"
 path.s3tc="res://.godot/imported/wall_texture_pattern.jpg-d329a091e41baa4f1d9c4b470e5d5072.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

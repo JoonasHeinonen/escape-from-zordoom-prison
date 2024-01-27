@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btflwle2kgilr"
+uid="uid://bhud0h7trcb"
 path.s3tc="res://.godot/imported/health_crate_fragments_health_crate.png-20c4d74c95983819990576f66801ed16.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

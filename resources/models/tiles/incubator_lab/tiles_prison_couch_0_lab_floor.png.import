@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn3fk5neuw8"
+uid="uid://v68j1vu0tqfg"
 path.s3tc="res://.godot/imported/tiles_prison_couch_0_lab_floor.png-4bbd4396cef76deb9e2138c7b613ec3a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

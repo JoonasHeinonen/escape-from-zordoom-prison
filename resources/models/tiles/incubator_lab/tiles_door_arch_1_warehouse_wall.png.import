@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2lbpmy6w0m4a"
+uid="uid://cbnby8qbfonj8"
 path.s3tc="res://.godot/imported/tiles_door_arch_1_warehouse_wall.png-daaf23e8684beb1359bc173de928c0ac.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

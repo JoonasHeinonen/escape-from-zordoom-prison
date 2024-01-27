@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ce3nbm8qbkq4a"
+uid="uid://bjtdgjnn1qkjb"
 path.s3tc="res://.godot/imported/tiles_sand_corner_stone_silver_city_sand_stone.png-97d5628d9155c98eeef9b882aede879a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

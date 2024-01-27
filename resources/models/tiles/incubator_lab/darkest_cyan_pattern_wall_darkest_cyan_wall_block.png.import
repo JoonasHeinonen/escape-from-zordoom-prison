@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdnim1cosajcv"
+uid="uid://dqio6y8xkakgi"
 path.s3tc="res://.godot/imported/darkest_cyan_pattern_wall_darkest_cyan_wall_block.png-525edd2e8e7abce156bfde9e7af95a63.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

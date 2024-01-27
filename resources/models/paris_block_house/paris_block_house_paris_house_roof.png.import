@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpps4k2r64ou7"
+uid="uid://c7g8bd47wlnad"
 path.s3tc="res://.godot/imported/paris_block_house_paris_house_roof.png-4c51e79c2de376a0e129185d05af085a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

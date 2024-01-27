@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bim44rth1b2rs"
+uid="uid://b5kj6my5am7xr"
 path.s3tc="res://.godot/imported/tiles_sand_pillar_piperail.png-4f55aadb30952097a617462aea8ad2b0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

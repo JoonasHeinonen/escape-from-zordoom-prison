@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bu7d1jfl0a1q1"
-path.s3tc="res://.godot/imported/bolt_2.png-0e5e1164f1b53913e7494ad243566547.s3tc.ctex"
+uid="uid://bnt67akpt5bdg"
+path="res://.godot/imported/bolt_2.png-0e5e1164f1b53913e7494ad243566547.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/collectibles/bolt_2.png"
-dest_files=["res://.godot/imported/bolt_2.png-0e5e1164f1b53913e7494ad243566547.s3tc.ctex"]
+dest_files=["res://.godot/imported/bolt_2.png-0e5e1164f1b53913e7494ad243566547.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

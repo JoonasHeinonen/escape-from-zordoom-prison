@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cauoqnggfls3i"
+uid="uid://dj0suwh7rtvdv"
 path.s3tc="res://.godot/imported/teleportation_base_teleport_texture.png-cfc3db9fecff89d5a9ea1d0e82fc4884.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

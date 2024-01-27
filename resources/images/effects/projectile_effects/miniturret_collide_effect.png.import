@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o34tvrb8b23j"
+uid="uid://bqelhpwus6djg"
 path.s3tc="res://.godot/imported/miniturret_collide_effect.png-116a53378608fce2f0b53ed07d32f892.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -26,8 +26,8 @@ mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
-process/fix_alpha_border=false
-process/premult_alpha=true
+process/fix_alpha_border=true
+process/premult_alpha=false
 process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false

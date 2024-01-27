@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctdg6ehyy5bb7"
+uid="uid://c2vygwanp6i37"
 path.s3tc="res://.godot/imported/tiles_sand_lining_stone_temple_wall.png-353c00a3e6adaa2d8855ae9418b42839.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

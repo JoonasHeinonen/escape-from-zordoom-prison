@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck07rkgx4tqxo"
+uid="uid://crmtpnw2kmu3x"
 path.s3tc="res://.godot/imported/tiles_prison_door_frame_1_temple_wall_blackmap.png-64a7a734723eec3c03ab108ba405d112.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

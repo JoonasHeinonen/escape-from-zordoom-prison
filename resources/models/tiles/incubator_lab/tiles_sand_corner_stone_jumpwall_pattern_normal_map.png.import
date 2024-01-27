@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cggca026kyk13"
+uid="uid://c3ml6osx1xksy"
 path.s3tc="res://.godot/imported/tiles_sand_corner_stone_jumpwall_pattern_normal_map.png-3f8213138603c51c29104df7181317b0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

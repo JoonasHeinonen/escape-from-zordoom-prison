@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brkkbdejfetex"
+uid="uid://c3jngc5rmcler"
 path.s3tc="res://.godot/imported/tiles_door_arch_0_piperail_blackmap.png-eaaa34d3452b852b4a77cc7eb187c620.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

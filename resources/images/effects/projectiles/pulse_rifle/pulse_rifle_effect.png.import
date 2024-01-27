@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brxdtdbgjh8i4"
-path.s3tc="res://.godot/imported/pulse_rifle_effect.png-88ca26ece4d81219aae08ee5225c8f3b.s3tc.ctex"
+uid="uid://chaf0u6whmnvf"
+path="res://.godot/imported/pulse_rifle_effect.png-88ca26ece4d81219aae08ee5225c8f3b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/effects/projectiles/pulse_rifle/pulse_rifle_effect.png"
-dest_files=["res://.godot/imported/pulse_rifle_effect.png-88ca26ece4d81219aae08ee5225c8f3b.s3tc.ctex"]
+dest_files=["res://.godot/imported/pulse_rifle_effect.png-88ca26ece4d81219aae08ee5225c8f3b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

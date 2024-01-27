@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0p0uajox44cm"
+uid="uid://dlapkjbund0oc"
 path.s3tc="res://.godot/imported/bolt_crate_blue_floor_normal_map.png-2437433e38b39fb760060a66151c1ab0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

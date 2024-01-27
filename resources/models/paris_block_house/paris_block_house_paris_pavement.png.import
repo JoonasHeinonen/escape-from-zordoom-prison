@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://pyhotor4blfy"
+uid="uid://bl2aqtnf3jtul"
 path.s3tc="res://.godot/imported/paris_block_house_paris_pavement.png-3da472283d62ba7df029cf3117fa1cfd.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

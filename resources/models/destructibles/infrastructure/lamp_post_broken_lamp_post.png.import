@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvwn585hipxnn"
+uid="uid://cyj7scaahgtal"
 path.s3tc="res://.godot/imported/lamp_post_broken_lamp_post.png-caaca9699b85887931797a56d13a6e7f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

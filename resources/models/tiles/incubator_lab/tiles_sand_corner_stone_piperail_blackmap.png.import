@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cifajlahp7v0q"
+uid="uid://dt48invjfb1hq"
 path.s3tc="res://.godot/imported/tiles_sand_corner_stone_piperail_blackmap.png-7d235bba42edb6720d91b0150d0949c1.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

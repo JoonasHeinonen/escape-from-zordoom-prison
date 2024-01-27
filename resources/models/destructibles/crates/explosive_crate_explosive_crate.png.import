@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dwv7r2fob4km1"
+uid="uid://c1guhxi2q50bh"
 path.s3tc="res://.godot/imported/explosive_crate_explosive_crate.png-95dfe19d34f4e9a43a5a7dc2b99b6598.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

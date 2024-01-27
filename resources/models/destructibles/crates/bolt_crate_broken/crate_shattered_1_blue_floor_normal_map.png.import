@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjopjgddpqqpp"
+uid="uid://b7ov1c3oarxtd"
 path.s3tc="res://.godot/imported/crate_shattered_1_blue_floor_normal_map.png-655e3769357e8cbb6d43a20dc4b1de9c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cntjham010d6"
+uid="uid://cjdo1kjol71tn"
 path.s3tc="res://.godot/imported/tiles_sand_pillar_zordoom_rock.png-543694e4265f58f8092ad22d8d5a23d3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

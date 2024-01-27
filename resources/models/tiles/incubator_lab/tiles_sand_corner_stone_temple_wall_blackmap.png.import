@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b71bbcfenq01w"
+uid="uid://c2sewt0ke6sv"
 path.s3tc="res://.godot/imported/tiles_sand_corner_stone_temple_wall_blackmap.png-8195c2cc70eccb0b9699fbe1615ee9f4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 

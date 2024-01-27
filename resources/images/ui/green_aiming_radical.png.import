@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0s5pgoqld60k"
-path.s3tc="res://.godot/imported/green_aiming_radical.png-b1fd5d5b37cd5993379c328280dec3ed.s3tc.ctex"
+uid="uid://cvobqd72d5raj"
+path="res://.godot/imported/green_aiming_radical.png-b1fd5d5b37cd5993379c328280dec3ed.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/ui/green_aiming_radical.png"
-dest_files=["res://.godot/imported/green_aiming_radical.png-b1fd5d5b37cd5993379c328280dec3ed.s3tc.ctex"]
+dest_files=["res://.godot/imported/green_aiming_radical.png-b1fd5d5b37cd5993379c328280dec3ed.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
