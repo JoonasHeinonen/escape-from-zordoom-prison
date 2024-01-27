@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://dxwctpghfi6x5"]
 
-[ext_resource type="AudioStream" uid="uid://d2w00guq5re60" path="res://resources/audio/environment/destructibles/crate_0.wav" id="8"]
+[ext_resource type="AudioStream" uid="uid://cc2f5l6i23xr6" path="res://resources/audio/environment/destructibles/crate_0.wav" id="8"]
 [ext_resource type="Script" path="res://src/scripts/destructibles/destructible_fragments.gd" id="9"]
 [ext_resource type="Material" path="res://resources/models/destructibles/crates/bolt_crate_broken/BoltCrate.material" id="10"]
 
@@ -126,6 +126,7 @@ _surfaces = [{
 }]
 
 [node name="bolt_crate_fragments" type="Node3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("9")
 sound_name = "crate_destroy"
 
@@ -135,10 +136,11 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="crate_shattered_0"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.305111, 0, 0.300488)
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, -0.305111, 0, 0.300488)
 shape = SubResource("1")
 
 [node name="BoltCrateSplinter0" type="MeshInstance3D" parent="crate_shattered_0"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("8")
 skin = SubResource("34")
 
@@ -148,10 +150,11 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="crate_shattered_1"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.305111, 0, 0.300488)
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0.305111, 0, 0.300488)
 shape = SubResource("2")
 
 [node name="BoltCrateSplinter1" type="MeshInstance3D" parent="crate_shattered_1"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("33")
 skin = SubResource("34")
 
@@ -161,10 +164,11 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="crate_shattered_2"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0.301891, 0, -0.301891)
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 0.301891, 0, -0.301891)
 shape = SubResource("3")
 
 [node name="BoltCrateSplinter2" type="MeshInstance3D" parent="crate_shattered_2"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("10")
 skin = SubResource("34")
 
@@ -174,10 +178,11 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="crate_shattered_3"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -0.30196, 0, -0.30196)
+transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, -0.30196, 0, -0.30196)
 shape = SubResource("4")
 
 [node name="BoltCrateSplinter3" type="MeshInstance3D" parent="crate_shattered_3"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("11")
 skin = SubResource("34")
 
@@ -187,10 +192,11 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="crate_shattered_4"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.706372, 0, 0)
+transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, -0.706372, 0, 0)
 shape = SubResource("5")
 
 [node name="BoltCrateSplinter4" type="MeshInstance3D" parent="crate_shattered_4"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("12")
 skin = SubResource("34")
 
@@ -200,10 +206,11 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="crate_shattered_5"]
-transform = Transform3D(0.3, 0, 0, 0, 0.05, 0, 0, 0, 0.3, -0.258823, -0.539215, 0)
+transform = Transform3D(0.36, 0, 0, 0, 0.06, 0, 0, 0, 0.36, -0.258823, -0.539215, 0)
 shape = SubResource("6")
 
 [node name="BoltCrateSplinter5" type="MeshInstance3D" parent="crate_shattered_5"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 mesh = SubResource("13")
 skin = SubResource("34")
 
@@ -213,11 +220,11 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="crate_shattered_6"]
-transform = Transform3D(0.3, 0, 0, 0, 0.1, 0, 0, 0, 0.3, 0.30196, 0.706372, 0)
+transform = Transform3D(0.36, 0, 0, 0, 0.12, 0, 0, 0, 0.36, 0.30196, 0.706372, 0)
 shape = SubResource("7")
 
 [node name="BoltCrateSplinter6" type="MeshInstance3D" parent="crate_shattered_6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.202141, 0)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.202141, 0)
 mesh = SubResource("32")
 skin = SubResource("34")
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dvebyw8glgp0n"]
 
-[ext_resource type="Texture2D" uid="uid://ddxtigvpt5hlm" path="res://resources/images/characters/npc/enemies/placeholder_enemy/placeholder_enemy.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cdh3p4ownuek8" path="res://resources/images/characters/npc/enemies/placeholder_enemy/placeholder_enemy.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/enemy_base.gd" id="2"]
 
 [sub_resource type="BoxShape3D" id="2"]

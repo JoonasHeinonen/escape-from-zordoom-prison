@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c0ejcgkoe8mfq" path="res://scenes/Destructibles/Crates/bolt_crate.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://dwn5g72i2nu6s" path="res://scenes/Collectibles/bolt.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bp5ijfq147flt" path="res://scenes/Collectibles/weapon_collectible.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/slim_cognito.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/slim_cognito.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://d18jopbss2gd1" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://src/scripts/Player/player_new_spawn_point.gd" id="20"]
 [ext_resource type="PackedScene" uid="uid://dtrmi0l7bxn5l" path="res://scenes/NPC/Friendly/mia.tscn" id="21"]
 [ext_resource type="PackedScene" uid="uid://h6nugy4tsune" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
-[ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/angela_or_rivet.tscn" id="23"]
+[ext_resource type="PackedScene" uid="uid://d0f72j8tyupdk" path="res://scenes/NPC/Friendly/angela_or_rivet.tscn" id="23"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qyk4u"]
 panorama = ExtResource("1_vxvra")
@@ -256,7 +256,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource("8")]
-transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -26.449, -18.5341, 0)
+transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -17.3127, 3.4659, 0)
 collision_layer = 5
 collision_mask = 5
 

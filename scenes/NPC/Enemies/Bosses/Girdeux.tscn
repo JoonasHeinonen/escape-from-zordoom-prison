@@ -1,10 +1,10 @@
 [gd_scene load_steps=30 format=3 uid="uid://chyk0cww0n2lb"]
 
-[ext_resource type="Texture2D" uid="uid://bhrgpbnuoxhx" path="res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://goldf0vxdwvc" path="res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/boss_base.gd" id="2"]
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/enemy_raycast.gd" id="3"]
-[ext_resource type="Texture2D" uid="uid://sm21xkcf2l3l" path="res://resources/images/weapons/enemy/girdeux_flamethrower.png" id="4"]
-[ext_resource type="Texture2D" uid="uid://dgru5eyjv1x36" path="res://resources/images/weapons/enemy/girdeux_flametank.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://dwdsn1lid1cvo" path="res://resources/images/weapons/enemy/girdeux_flamethrower.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://dlkpeh1y2rvxs" path="res://resources/images/weapons/enemy/girdeux_flametank.png" id="5"]
 [ext_resource type="Script" path="res://src/scripts/npc/npc.gd" id="6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_l50fh"]

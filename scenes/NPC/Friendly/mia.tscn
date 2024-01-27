@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dtrmi0l7bxn5l"]
 
-[ext_resource type="Texture2D" uid="uid://dc13m5toebhg2" path="res://resources/images/characters/npc/mia.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://co8rytf0hiyu3" path="res://resources/images/characters/npc/mia.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/npc/friendly/character.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://dfq5w3da3sjfo" path="res://resources/images/ui/enter_key.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cr7qupmet1gp4" path="res://resources/images/ui/enter_key.png" id="3"]
 [ext_resource type="Script" path="res://src/scripts/npc/npc.gd" id="4"]
 
 [sub_resource type="BoxShape3D" id="1"]
