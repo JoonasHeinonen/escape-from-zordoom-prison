@@ -39,7 +39,6 @@ scale_curve = SubResource("5")
 color_initial_ramp = SubResource("8")
 
 [sub_resource type="QuadMesh" id="3"]
-size = Vector2(0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="11"]
 
@@ -85,6 +84,7 @@ states/ExplosionEffectiveRadius/position = Vector2(219, 96)
 
 [node name="ExplosiveCrateExplosion" type="RigidBody3D"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+gravity_scale = 0.0
 script = ExtResource("2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

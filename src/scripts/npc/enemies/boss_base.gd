@@ -2,7 +2,7 @@ extends EnemyBase
 
 class_name BossBase
 
-@onready var flame_projectile = preload("res://scenes/Projectiles/enemy_projectiles/flame.tscn")
+@onready var flame_projectile = preload("res://scenes/Projectiles/EnemyProjectiles/Flame.tscn")
 @onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
 @onready var girdeux_body = preload("res://scenes/NPC/Enemies/Bosses/GirdeuxBody.tscn")
 
@@ -36,7 +36,8 @@ func _physics_process(_delta):
 			turn_enemy(player.position.x, self.position.x)
 		else:
 			state_machine.travel("Enemy_Idle")
-	if is_alerted and is_in_range : state_machine.travel("Girdeux_Shoot")
+	if is_alerted and is_in_range:
+		state_machine.travel("Girdeux_Shoot")
 
 	# Do the jump logic after the boss is on wall.
 	if (is_on_wall() and !is_player_nearby):

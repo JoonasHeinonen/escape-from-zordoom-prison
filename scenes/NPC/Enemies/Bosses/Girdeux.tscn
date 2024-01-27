@@ -7,8 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dgru5eyjv1x36" path="res://resources/images/weapons/enemy/girdeux_flametank.png" id="5"]
 [ext_resource type="Script" path="res://src/scripts/npc/npc.gd" id="6"]
 
-[sub_resource type="SphereShape3D" id="29"]
-radius = 1.75
+[sub_resource type="BoxShape3D" id="BoxShape3D_l50fh"]
 
 [sub_resource type="Animation" id="6"]
 resource_name = "Enemy_Damage"
@@ -223,13 +222,15 @@ graph_offset = Vector2(-140.367, -99.1264)
 [sub_resource type="BoxShape3D" id="30"]
 
 [node name="Girdeux" type="CharacterBody3D"]
+axis_lock_linear_z = true
+axis_lock_angular_z = true
 script = ExtResource("2")
 is_armored = true
 enemy_health = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.6, 0, 0, 0, 1.05, 0, 0, 0, 0.2, 0, -0.15, 0)
-shape = SubResource("29")
+transform = Transform3D(1.2, 0, 0, 0, 2.1, 0, 0, 0, 0.4, 0, -0.15, 0)
+shape = SubResource("BoxShape3D_l50fh")
 
 [node name="EnemySprite" type="Sprite3D" parent="."]
 transform = Transform3D(-4, 0, 0, 0, -4, 0, 0, 0, -4, 0, 0, 0)
@@ -256,13 +257,13 @@ script = ExtResource("6")
 character_name = "Girdeux"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaEnemy"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("11")
 
 [node name="DetectDistance" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectDistance"]
-transform = Transform3D(5, 0, 0, 0, 4, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(10, 0, 0, 0, 8, 0, 0, 0, 2, 0, 0, 0)
 shape = SubResource("26")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
@@ -286,7 +287,7 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.329299, -0.0263703, 0
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Weakspot"]
-transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 1, -0.261055, -0.0572883, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.8, 0, 0, 0, 2, -0.261055, -0.0572883, 0)
 shape = SubResource("30")
 
 [node name="FlameTankSprite" type="Sprite3D" parent="Weakspot"]
