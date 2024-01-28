@@ -7,10 +7,12 @@ extends EnemyBase
 var value : int  = 0
 var attack_delay : int = 2
 var can_shoot : bool = true
+var isFlipping : bool = false
 var is_moving_left : bool = true
 var target : Player = null
 var attack = null
 var timer = null
+
 # try and roate the ray cast without using the animation player
 
 
@@ -19,7 +21,7 @@ var timer = null
 func _ready():
 	element = elements.AIR
 	gravity = -4
-	speed = 0
+	speed = 4
 	timer = Timer.new()
 	timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
 	timer.wait_time = 1
@@ -29,15 +31,11 @@ func _ready():
 	meta_name = "nef_head"
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
+	player = get_parent().find_child("player")
 
 func _physics_process(_delta):
-	#this process is over writing the one in enemy base
-	#this will run the base enemy function vs the one in the nef_head_enemy script
 	super(_delta)
-	speed = 2
-	# checks to see if there is a no floor
-	if not ground_finding_raycast.is_colliding():
-		speed = 0
+	nef_head_movement()
 	#for i in get_slide_collision_count():
 		#if  is_on_wall() :
 			#$EnemyAnimationPlayer.play("Enemy_Turn_Right")
@@ -56,16 +54,19 @@ func _physics_process(_delta):
 
 func nef_head_shoot_time():
 	can_shoot = true
-# maybe have a fucntion where the nef head is looking for the player.
-#https://gamedevacademy.org/raycast3d-in-godot-complete-guide/#Adjusting_RayCast3D_Parameters
-#how do you get the rotation of the z a raycast
+
 func _on_player_finding_player_seen():
-	#print("found player")
-	speed = 1
-	# it keeps moving 
+
+	if player_finding_raycast.get_collider() == player:
+		speed = 0
+		print("track player")
 	if can_shoot:
+		#var global_ray_direction = player_finding_raycast.global_transform.basis.xform(player_finding_raycast.target_position).normalized()
 		attack = laser_attack_scene.instantiate()
+		#attack.velocity = global_ray_direction 
 		get_parent().add_child(attack)
+		
+		#attack.velocity = player_finding_raycast.position
 		attack.global_position = $laser_muzzle.global_position
 		attack.global_rotation = $laser_muzzle.global_rotation
 		can_shoot = false
@@ -84,5 +85,11 @@ func _on_AreaEnemy_area_entered(area):
 		animation_player.play("Enemy_Damage")
 
 
+func nef_head_movement():
+	if not ground_finding_raycast.is_colliding():
+		speed *= -1
+		# rotation the sprite with the math of pi
+		$EnemySprite.rotation.y += PI
+		isFlipping = true
 
 

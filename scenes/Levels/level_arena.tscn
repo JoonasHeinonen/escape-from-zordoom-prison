@@ -44,10 +44,10 @@ transform = Transform3D(1.29006, 0, 0, 0, 1.29006, 0, 0, 0, 1, -12.1107, 4.28945
 [node name="arena" type="Node" parent="."]
 
 [node name="PlayerSpawnArena" type="Marker3D" parent="." groups=["arenaSpawnPosition"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.20187, 3.27432, 17.7074)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.51705, 3.27432, 17.7074)
 
 [node name="badGuySpawn1" type="Marker3D" parent="." groups=["badGuySpawn1"]]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -16.4795, 4.01595, 17.8241)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.60588, 4.01595, 17.8241)
 
 [node name="PlayerSpawnArena_return" type="Marker3D" parent="." groups=["playerReturnPostion"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.487, 3.6295, 0.818525)

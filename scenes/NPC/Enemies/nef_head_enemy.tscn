@@ -262,7 +262,7 @@ hframes = 9
 vframes = 4
 
 [node name="ground_finding" type="RayCast3D" parent="EnemySprite"]
-transform = Transform3D(0.529639, 0.000453462, -0.0195452, -0.000108436, 0.529917, 0.00935601, 0.0195502, -0.00934564, 0.529557, -0.152841, 0.0354374, 1.53351e-13)
+transform = Transform3D(0.649558, 0.000556133, -0.0239706, -0.000132988, 0.649899, 0.0114744, 0.0239767, -0.0114616, 0.649457, -0.122368, 0.0354374, -1.29418e-14)
 
 [node name="player_finding" type="RayCast3D" parent="EnemySprite"]
 transform = Transform3D(0.0137877, 0.999904, 0, -0.999904, 0.0137877, 0, 0, 0, 1, -0.0538642, 0, 0)

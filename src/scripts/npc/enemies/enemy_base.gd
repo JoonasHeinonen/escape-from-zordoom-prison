@@ -59,6 +59,7 @@ func _physics_process(delta):
 			move_and_slide()
 		elements.AIR:
 			velocity.y = gravity
+			# try and use delta doe any velocity changes
 			velocity.x = speed * 1
 			set_velocity(velocity)
 			move_and_slide()
