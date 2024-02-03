@@ -21,7 +21,7 @@ var timer = null
 func _ready():
 	element = elements.AIR
 	gravity = -4
-	speed = 4
+	speed = 2
 	timer = Timer.new()
 	timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
 	timer.wait_time = 1
@@ -58,17 +58,17 @@ func nef_head_shoot_time():
 func _on_player_finding_player_seen():
 
 	if player_finding_raycast.get_collider() == player:
-		speed = 0
+		speed *= 0
 		print("track player")
 	if can_shoot:
-		#var global_ray_direction = player_finding_raycast.global_transform.basis.xform(player_finding_raycast.target_position).normalized()
+		#var global_ray_direction = player_finding_raycast.to_global(player_finding_raycast.target_position).normalized()
 		attack = laser_attack_scene.instantiate()
-		#attack.velocity = global_ray_direction 
+		attack.bullet_speed = 9
+		#checks the speed if it postive or negative
+		attack.is_left = speed > 0
+		#attack.velocity = global_ray_direction
 		get_parent().add_child(attack)
-		
-		#attack.velocity = player_finding_raycast.position
 		attack.global_position = $laser_muzzle.global_position
-		attack.global_rotation = $laser_muzzle.global_rotation
 		can_shoot = false
 		timer.start()
 		
@@ -76,7 +76,6 @@ func _on_player_finding_player_not_seen():
 	can_shoot = false
 	print("cant find player")
 	speed = 0
-	pass # Replace with function body.
 
 func _on_AreaEnemy_area_entered(area):
 	if (area.name == "ProjectileArea"):
