@@ -5,7 +5,7 @@ var velocity = Vector3(0,0,0)
 var is_left :bool = true
 
 func _physics_process(delta):
-	# checks to see if the bullet is left or right and changes it to a direction value
+	# checks to see if the bullet is left or right and changes it to a directional value
 	var direction = -1 if is_left else 1
 	velocity.x = bullet_speed * delta * 1 * direction
 	translate(velocity)
