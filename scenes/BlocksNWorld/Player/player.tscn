@@ -672,6 +672,8 @@ _data = {
 [node name="player" type="CharacterBody3D"]
 process_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0612217)
+axis_lock_linear_z = true
+axis_lock_angular_z = true
 script = ExtResource("1")
 check_point_enabled = false
 speed = 200

@@ -84,7 +84,7 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409)
-omni_range = 0.317878
+omni_range = 0.116063
 
 [node name="ProjectileExplosionArea" type="Area3D" parent="."]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)
