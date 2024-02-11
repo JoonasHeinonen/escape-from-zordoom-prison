@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bgdy24dvbfxun"]
 
-[ext_resource type="Texture2D" uid="uid://cr72xkrnfoq0y" path="res://resources/images/collectibles/ammo_can.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dk5xtodpnea3j" path="res://resources/images/collectibles/ammo_can.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/bolt/bolt.gd" id="2"]
 
 [sub_resource type="BoxShape3D" id="1"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bp5ijfq147flt"]
 
-[ext_resource type="Texture2D" uid="uid://d6um7t5vlabr" path="res://resources/images/weapons/blitz_gun.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://daoda4eja0osa" path="res://resources/images/weapons/blitz_gun.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/bolt/weapon_collectible.gd" id="2"]
 
 [sub_resource type="SphereShape3D" id="1"]

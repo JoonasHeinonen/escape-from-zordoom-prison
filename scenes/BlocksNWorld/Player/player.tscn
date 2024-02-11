@@ -850,7 +850,6 @@ anim_player = NodePath("../RivetAnimationPlayer")
 
 [node name="FadeIn" parent="." instance=ExtResource("42")]
 visible = false
-anchors_preset = 15
 
 [node name="PlayerUI" type="Control" parent="."]
 process_mode = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://buaaprwxodv3f"]
+[gd_scene load_steps=10 format=3 uid="uid://buaaprwxodv3f"]
 
 [ext_resource type="Texture2D" uid="uid://c21oh44mondhn" path="res://resources/images/effects/projectile_effects/blaster_explosion.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/effects/bullets/blaster_projectile_explosion.gd" id="2"]
@@ -41,9 +41,14 @@ _data = {
 [sub_resource type="AnimationNodeAnimation" id="5"]
 animation = &"BlasterProjectileExplosion"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p2tnl"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="2"]
 states/BlasterProjectileExplosion/node = SubResource("5")
-states/BlasterProjectileExplosion/position = Vector2(236, 73)
+states/BlasterProjectileExplosion/position = Vector2(292, 129)
+states/Start/position = Vector2(104, 129)
+transitions = ["Start", "BlasterProjectileExplosion", SubResource("AnimationNodeStateMachineTransition_p2tnl")]
 
 [sub_resource type="BoxShape3D" id="6"]
 
@@ -63,7 +68,7 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("1")
 hframes = 5
-frame = 1
+frame = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -79,7 +84,7 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409)
-omni_range = 0.968518
+omni_range = 0.317878
 
 [node name="ProjectileExplosionArea" type="Area3D" parent="."]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)

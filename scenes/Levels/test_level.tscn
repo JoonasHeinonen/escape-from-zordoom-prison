@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://cbxa27fdyekuf" path="res://resources/images/environment/haerkonen.jpg" id="1_vxvra"]
 [ext_resource type="PackedScene" uid="uid://c0ejcgkoe8mfq" path="res://scenes/Destructibles/Crates/BoltCrate.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/Collectibles/Bolt.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://dwn5g72i2nu6s" path="res://scenes/Collectibles/Bolt.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://bp5ijfq147flt" path="res://scenes/Collectibles/WeaponCollectible.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/SlimCognito.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
