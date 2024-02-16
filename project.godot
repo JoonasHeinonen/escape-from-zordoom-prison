@@ -18,14 +18,15 @@ config/icon="res://icon.png"
 [autoload]
 
 Globle="*res://src/scripts/Globle.gd"
+Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 
 [dialogic]
 
 directories/dch_directory={
-"character": "res://dialogic/characters/character.dch"
+"test_character": "res://addons/dialogic/Resources/test_character.dch"
 }
 directories/dtl_directory={
-"timeline__Angela_shark_man": "res://dialogic/timelines/timeline__Angela_shark_man.dtl"
+"test_timeline": "res://addons/dialogic/Resources/test_timeline.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=[]
