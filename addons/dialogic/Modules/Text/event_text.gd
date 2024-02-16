@@ -150,7 +150,7 @@ func _execute() -> void:
 		# We must skip text animation before we potentially return when there
 		# is a Choice event.
 		if dialogic.Input.auto_skip.enabled:
-			dialogic.Text.skip_text_animation()
+			dialogic.Text.skip_text_reveal()
 		else:
 			await dialogic.Text.text_finished
 
@@ -190,7 +190,7 @@ func _on_dialogic_input_action():
 	match state:
 		States.REVEALING:
 			if dialogic.Text.can_skip_text_reveal():
-				dialogic.Text.skip_text_animation()
+				dialogic.Text.skip_text_reveal()
 				dialogic.Input.stop()
 				dialogic.Input.block_input(ProjectSettings.get_setting('dialogic/text/text_reveal_skip_delay', 0.1))
 		_:
@@ -218,7 +218,7 @@ func _on_auto_skip_enable(enabled: bool):
 				advance.emit()
 
 		States.REVEALING:
-			dialogic.Text.skip_text_animation()
+			dialogic.Text.skip_text_reveal()
 
 
 ################################################################################

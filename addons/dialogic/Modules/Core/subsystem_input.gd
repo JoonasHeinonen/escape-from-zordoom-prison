@@ -110,7 +110,7 @@ func post_install() -> void:
 	input_block_timer.one_shot = true
 
 
-func stop() -> void:
+func stop_timers()-> void:
 	auto_advance.autoadvance_timer.stop()
 	input_block_timer.stop()
 	_auto_skip_timer_left = 0.0

@@ -31,7 +31,7 @@ class_name Dialogic
 ## @param dialog_scene_path		If you made a custom Dialog scene or moved it from its default path, you can specify its new path here.
 ## @param use_canvas_instead	Create the Dialog inside a canvas layer to make it show up regardless of the camera 2D/3D situation.
 ## @returns						A Dialog node to be added into the scene tree.
-static func start(Callable(timeline: String = '', default_timeline: String ='').bind(dialog_scene_path: String="res://addons/dialogic/Nodes/DialogNode.tscn"), use_canvas_instead=true):
+static func start(timeline: String = '', default_timeline: String = '', dialog_scene_path: String = "res://addons/dialogic/Nodes/DialogNode.tscn", use_canvas_instead: bool = true):
 	var dialog_scene = load(dialog_scene_path)
 	var dialog_node = null
 	var canvas_dialog_node = null

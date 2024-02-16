@@ -242,7 +242,7 @@ func set_text_reveal_skippable(skippable:= true, temp:=false) -> void:
 		dialogic.current_state_info['text_reveal_skippable']['enabled'] = skippable
 
 
-func can_skip_text_reveal() -> bool:
+func is_text_reveal_skippable()-> bool:
 	return dialogic.current_state_info['text_reveal_skippable']['enabled'] and dialogic.current_state_info['text_reveal_skippable'].get('temp_enabled', true)
 
 
@@ -317,7 +317,7 @@ func parse_text_modifiers(text:String, type:int=TextTypes.DIALOG_TEXT) -> String
 	return text
 
 
-func skip_text_animation() -> void:
+func skip_text_reveal() -> void:
 	for text_node in get_tree().get_nodes_in_group('dialogic_dialog_text'):
 		if text_node.is_visible_in_tree():
 			text_node.finish_text()
