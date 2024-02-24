@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdtejo8m4q1dv"]
+[gd_scene load_steps=14 format=3 uid="uid://cdtejo8m4q1dv"]
 
 [ext_resource type="Texture2D" uid="uid://p30u2bovshwi" path="res://resources/images/effects/projectiles/miniturret/miniturret_stick.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://ds61opx4o1crm" path="res://resources/images/effects/projectiles/miniturret/miniturret_gun.png" id="2"]
@@ -12,42 +12,42 @@
 
 [sub_resource type="QuadMesh" id="2"]
 
-[sub_resource type="Animation" id="6"]
-resource_name = "Start"
-length = 2.0
+[sub_resource type="Animation" id="Animation_mb5xc"]
+resource_name = "Activated"
+length = 0.5
 loop_mode = 1
-tracks/0/type = "value"
+tracks/0/type = "scale_3d"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TargetDetectionArea/TargetDetectionRaycast:scale")
+tracks/0/path = NodePath("TargetDetectionArea")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(20, 20, 20)]
-}
-tracks/1/type = "value"
+tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.5, 1, 6, 6, 6)
+tracks/1/type = "scale_3d"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("TargetDetectionArea:scale")
+tracks/1/path = NodePath("TargetDetectionArea/TargetDetectionRaycast")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(20, 20, 20)]
+tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.5, 1, 6, 6, 6)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nbenf"]
+_data = {
+"Activated": SubResource("Animation_mb5xc")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_n5vvx"]
-_data = {
-"Start": SubResource("6")
-}
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2is1j"]
+animation = &"Activated"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4pyl"]
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="4"]
+states/Activated/node = SubResource("AnimationNodeAnimation_2is1j")
+states/Activated/position = Vector2(318, 151)
+states/End/position = Vector2(899, 100)
 states/Start/position = Vector2(318, 78)
+transitions = ["Start", "Activated", SubResource("AnimationNodeStateMachineTransition_s4pyl")]
 
 [node name="Miniturret" type="CharacterBody3D"]
 transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
@@ -60,12 +60,12 @@ transform = Transform3D(0.08, 0, 0, 0, 0.32, 0, 0, 0, 0.08, 0, 0, 0)
 shape = SubResource("1")
 
 [node name="TargetDetectionArea" type="Area3D" parent="."]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+transform = Transform3D(1.14076, 0, 0, 0, 1.14076, 0, 0, 0, 1.14076, 0, 0, 0)
 collision_layer = 3
 collision_mask = 0
 
 [node name="TargetDetectionRaycast" type="CollisionShape3D" parent="TargetDetectionArea"]
-transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+transform = Transform3D(1.14076, 0, 0, 0, 1.14076, 0, 0, 0, 1.14076, 0, 0, 0)
 shape = SubResource("BoxShape3D_xon46")
 
 [node name="MiniturretGun" type="MeshInstance3D" parent="."]
@@ -87,12 +87,12 @@ texture = ExtResource("1")
 
 [node name="MiniturretAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_n5vvx")
+"": SubResource("AnimationLibrary_nbenf")
 }
 
 [node name="MiniturretAnimationTree" type="AnimationTree" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_n5vvx")
+"": SubResource("AnimationLibrary_nbenf")
 }
 tree_root = SubResource("4")
 anim_player = NodePath("../MiniturretAnimationPlayer")

@@ -4,6 +4,7 @@
 
 
 
+
 [node name="Node3D" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource( 1 )]

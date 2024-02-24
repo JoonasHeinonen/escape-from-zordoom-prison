@@ -21,10 +21,6 @@ var random = RandomNumberGenerator.new()
 func _ready():
 	state_machine = $MiniturretAnimationTree.get("parameters/playback")
 
-	# Set the rotation of the miniturret to default.
-	self.rotation.y = 0
-	self.rotation.z = 0
-
 	random.randomize()
 	turn_direction = directions[(random.randi_range(0, directions.size() - 1))]
 
@@ -49,7 +45,7 @@ func _process(_delta):
 			miniturret_gun.rotation.z += turn_increment
 
 func _physics_process(_delta):
-	state_machine.travel("Start")
+	state_machine.travel("Activated")
 	miniturret_velocity.y = -4
 	set_velocity(miniturret_velocity)
 	set_up_direction(Vector3.UP)
@@ -79,7 +75,6 @@ func _on_ShootTimer_timeout():
 		miniturret_ammo -= 1
 
 func _on_TargetDetectionArea_body_entered(body):
-	print(body)
 	if (body.has_meta("type") && body.get_meta("type") == "enemy"):
 		is_locked_on_target = true
 		body_target = body

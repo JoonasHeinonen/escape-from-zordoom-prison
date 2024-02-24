@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://deq5x6nf5jgqu" path="res://scenes/BlocksNWorld/ArenaWall.tscn" id="3"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="4"]
 
+
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(4.40028, 2, 2)
 

@@ -5,7 +5,6 @@ extends ProjectileBase
 
 @export_enum("gravity_bomb_projectile", "miniturret_projectile") var projectile_type: String
 
-##  
 func _ready():
 	if (projectile_type == "gravity_bomb_projectile"):
 		speed = 6
@@ -31,4 +30,7 @@ func _on_GravityBombArea_body_entered(_body):
 			var m_t = miniturret.instantiate()
 			get_tree().current_scene.add_child(m_t)
 			m_t.global_transform = self.global_transform
+			m_t.scale = Vector3(4, 4, 4)
+			m_t.rotation.y = 0
+			m_t.rotation.z = 0
 	queue_free()
