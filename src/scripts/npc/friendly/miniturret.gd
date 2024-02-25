@@ -74,6 +74,12 @@ func _on_ShootTimer_timeout():
 		$Audio/MiniturretGun.play()
 		miniturret_ammo -= 1
 
+## https://godotengine.org/qa/74812/rotate-kinematiccharacter3d-towards-another-object-only
+## Returns the difference between point a and point b and returns the difference.
+func get_angle(a : Vector2, b : Vector2):
+	var diff = Vector2(a.x - b.x, a.y - b.y)
+	return atan2(diff.y, diff.x)
+
 func _on_TargetDetectionArea_body_entered(body):
 	if (body.has_meta("type") && body.get_meta("type") == "enemy"):
 		is_locked_on_target = true
@@ -83,9 +89,3 @@ func _on_TargetDetectionArea_body_exited(body):
 	if (body.has_meta("type") && body.get_meta("type") == "enemy"):
 		is_locked_on_target = false
 		body_target = null
-
-# https://godotengine.org/qa/74812/rotate-kinematiccharacter3d-towards-another-object-only
-# Returns the difference between point a and point b and returns the difference.
-func get_angle(a : Vector2, b : Vector2):
-	var diff = Vector2(a.x - b.x, a.y - b.y)
-	return atan2(diff.y, diff.x)

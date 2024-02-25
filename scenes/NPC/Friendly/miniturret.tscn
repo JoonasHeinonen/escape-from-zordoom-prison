@@ -8,7 +8,7 @@
 
 [sub_resource type="BoxShape3D" id="1"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xon46"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gpmo"]
 
 [sub_resource type="QuadMesh" id="2"]
 
@@ -16,20 +16,6 @@
 resource_name = "Activated"
 length = 0.5
 loop_mode = 1
-tracks/0/type = "scale_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TargetDetectionArea")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.5, 1, 6, 6, 6)
-tracks/1/type = "scale_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TargetDetectionArea/TargetDetectionRaycast")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.5, 1, 6, 6, 6)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nbenf"]
 _data = {
@@ -59,14 +45,10 @@ script = ExtResource("3")
 transform = Transform3D(0.08, 0, 0, 0, 0.32, 0, 0, 0, 0.08, 0, 0, 0)
 shape = SubResource("1")
 
-[node name="TargetDetectionArea" type="Area3D" parent="."]
-transform = Transform3D(1.14076, 0, 0, 0, 1.14076, 0, 0, 0, 1.14076, 0, 0, 0)
-collision_layer = 3
-collision_mask = 0
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="TargetDetectionRaycast" type="CollisionShape3D" parent="TargetDetectionArea"]
-transform = Transform3D(1.14076, 0, 0, 0, 1.14076, 0, 0, 0, 1.14076, 0, 0, 0)
-shape = SubResource("BoxShape3D_xon46")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_7gpmo")
 
 [node name="MiniturretGun" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.00126624, 0.0491582, 0.003)
@@ -118,5 +100,5 @@ volume_db = 80.0
 stream = ExtResource("4")
 volume_db = 80.0
 
-[connection signal="body_entered" from="TargetDetectionArea" to="." method="_on_TargetDetectionArea_body_entered"]
-[connection signal="body_exited" from="TargetDetectionArea" to="." method="_on_TargetDetectionArea_body_exited"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_TargetDetectionArea_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_TargetDetectionArea_body_exited"]
