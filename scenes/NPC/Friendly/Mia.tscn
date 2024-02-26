@@ -28,11 +28,12 @@ vframes = 2
 script = ExtResource("4")
 character_name = "Mia"
 
-[node name="DiscussionRadius" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, -1.40976e-08, 0, 1.40976e-08, 1, 0, 0, 0)
-shape = SubResource("2")
-
 [node name="EnterButton" type="Sprite3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 billboard = 1
+texture_filter = 0
 texture = ExtResource("3")
+
+[node name="DiscussionRadius" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.40976e-08, 0, 1.40976e-08, 1, 0, 0, 0)
+shape = SubResource("2")

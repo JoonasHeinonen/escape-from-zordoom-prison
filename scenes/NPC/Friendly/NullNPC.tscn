@@ -6,22 +6,24 @@
 [sub_resource type="CapsuleMesh" id="13"]
 
 [sub_resource type="BoxShape3D" id="14"]
+size = Vector3(1, 1, 0.599707)
 
 [node name="NPC" type="Area3D"]
-transform = Transform3D(1, 0, 0, 0, -0.0635221, 0.99798, 0, -0.99798, -0.0635221, 0, 0, 0)
-script = ExtResource("1")
-character_name = "Null NPC"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162291, -2.54972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.162, 0)
 mesh = SubResource("13")
 skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.488, 0, 0, 0, 3.171, 0, 0, 4.47035e-08, 1, 0, 0.174326, -2.73879)
-shape = SubResource("14")
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1")
 
-[node name="EnterButton" type="Sprite3D" parent="."]
-transform = Transform3D(7.2616, 0, 0, 0, 1.29238, -4.59346, 0, -4.59346, 73.1668, 0, 0, 0)
+[node name="EnterButton" type="Sprite3D" parent="Area3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 1.49012e-08, 0, -1.49012e-08, 3, 0, 1.75, 0)
 billboard = 1
+texture_filter = 0
 texture = ExtResource("2")
+
+[node name="DiscussionRadius" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(4, 0, 0, 0, 4, -1.31578e-07, 0, 7.51872e-08, 7, 0, 0.174, 0)
+shape = SubResource("14")

@@ -1,5 +1,7 @@
 extends Area3D
 
+class_name NPC
+
 @export_enum("Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_man") var character_name: String
 
 var active : bool = false

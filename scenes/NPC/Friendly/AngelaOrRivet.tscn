@@ -39,7 +39,8 @@ script = ExtResource("5")
 character_name = "NPC_Angela_Rivet"
 
 [node name="EnterButton" type="Sprite3D" parent="Area3D"]
-transform = Transform3D(-1, 0, -8.75443e-08, 0, 1, 0, 8.75443e-08, 0, -1, 0, 0.32344, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.323, 0)
+billboard = 1
 texture_filter = 0
 texture = ExtResource("4")
 

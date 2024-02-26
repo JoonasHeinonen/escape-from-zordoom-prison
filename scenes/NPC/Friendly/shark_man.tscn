@@ -23,7 +23,7 @@ shape = SubResource("2")
 disabled = true
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1.14803, 0, 0, 0, 1.14803, 0, 0, 0, 1, 0, 0.676993, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.676993, 0)
 script = ExtResource("3")
 character_name = "Shark_man"
 

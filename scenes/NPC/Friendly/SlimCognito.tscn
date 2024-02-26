@@ -35,18 +35,22 @@ _surfaces = [{
 
 [node name="SlimCognito" type="Area3D"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
-script = ExtResource("3")
 
 [node name="Cylinder003" type="MeshInstance3D" parent="."]
 mesh = SubResource("1")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("3")
+
+[node name="EnterButton" type="Sprite3D" parent="Area3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 5.98807, 0.103)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("4")
+
+[node name="DiscussionRadius" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 6, 0, 2, 4)
 shape = SubResource("2")
 
-[node name="EnterKey" type="Sprite3D" parent="."]
-transform = Transform3D(8.77498, 0, 0, 0, 8.77498, 0, 0, 0, 1, 0, 6.07058, 0.103005)
-texture = ExtResource("4")
-
-[connection signal="body_entered" from="." to="." method="_on_slim_cognito_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_slim_cognito_body_exited"]
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_slim_cognito_body_entered"]
+[connection signal="body_exited" from="Area3D" to="Area3D" method="_on_slim_cognito_body_exited"]
