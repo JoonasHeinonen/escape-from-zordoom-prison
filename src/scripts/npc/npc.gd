@@ -18,7 +18,6 @@ func _ready():
 		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
 	connect("body_entered", Callable(self, "_on_NPC_body_entered"))
 	connect("body_exited", Callable(self, "_on_NPC_body_exited"))
-
 func _process(delta):
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active
@@ -50,10 +49,12 @@ func _input(event):
 					"Shark_man":
 						match(shark_man_dialog_value):
 							(0):
-								commence_dialog('timeline__Angela_shark_man')
-						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
-						Dialogic.start('chapterA')
-						Globle.arena_menu_open = true
+								print("checks dialogic")
+								commence_dialog('test_timeline')
+								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 1)
+							(1):
+								print(shark_man_dialog_value)
+								Globle.arena_menu_open = true
 	if (Globle.player_character == "Rivet" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active == true):
 		match(character_name):
 			"Mia":
@@ -79,6 +80,7 @@ func _input(event):
 				match(shark_man_dialog_value):
 					(0):
 						commence_dialog('timeline_Rivet_shark_man')
+						get_viewport().set_input_as_handled()
 				shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 				Globle.arena_menu_open = true
 	if (Globle.player_character == "Rivet"):
@@ -109,10 +111,8 @@ func _input(event):
 						match(shark_man_dialog_value):
 							(0):
 								#Re-due menue logic.
-								print(Globle.player_character)
 								commence_dialog('timeline_Rivet_shark_man')
 						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
-						Globle.arena_menu_open = true
 
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active
@@ -144,16 +144,17 @@ func process_dialog_value(dialog_value : int, max_value : int):
 func commence_dialog(timeline : String):
 	# when trying to pause the game we can get the menue but get another error called invalid call. Nonexistent function 'remove' in base array
 	get_tree().paused = false
-	Globle.arena_menu_open = true
+	var dialog = Dialogic.start(timeline)
+	get_viewport().set_input_as_handled()
+	#need to check and see if the arena menu is being called correctly 
+	dialog.process_mode = Node.PROCESS_MODE_ALWAYS
+	dialog.connect('timeline_ended', Callable(self, 'unpause'))
+	add_child(dialog)
 	print(Globle.arena_menu_open)
-	print(timeline)
-	#var dialog = Dialogic.start(timeline)
-	#dialog.process_mode = Node.PROCESS_MODE_ALWAYS
-	#dialog.connect('timeline_end', Callable(self, 'unpause'))
-	#add_child(dialog)
 
 # Unpauses the game timeline.
 func unpause(timeline_name):
+	print("checks if the menu shows up in this unpause function")
 	get_tree().paused = false
 
 # Acts when the player has entered the NPC body.

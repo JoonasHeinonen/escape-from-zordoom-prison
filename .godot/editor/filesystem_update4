@@ -1,8 +1,8 @@
-res://addons/dialogic/Resources/test_character.dch
-res://addons/dialogic/Resources/test_timeline.dtl
 res://default_env.tres
-res://src/scripts/UI/character_selection_button.gd
 res://scenes/Levels/level_arena.tscn
+res://src/scripts/UI/character_selection_button.gd
 res://src/theme/zordoom_theme.tres
 res://src/theme/zordoom_resource_theme.tres
 res://src/theme/zordoom_ingameui_theme.tres
+res://src/scripts/npc/npc.gd
+res://scenes/NPC/Friendly/shark_man.tscn

@@ -39,7 +39,6 @@ shape = SubResource("1")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.25247, 0.296367)
 
 [node name="shark_man" parent="." instance=ExtResource("2")]
-process_mode = 3
 transform = Transform3D(1.29006, 0, 0, 0, 1.29006, 0, 0, 0, 1, -12.1107, 4.28945, -1.68291)
 
 [node name="arena" type="Node" parent="."]

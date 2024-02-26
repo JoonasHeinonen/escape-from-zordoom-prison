@@ -1,3 +1,3 @@
 join test_character 1
-this is a test please god work end my misery
-join test_character 1
+test_character: this is a test please god work end my misery
+leave test_character
