@@ -1,7 +1,7 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1708905068
+::res://::1709352178
 default_bus_layout.tres::AudioBusLayout::-1::1702871335::0::1::::<><>::
-default_env.tres::Environment::219611424375106466::1708796274::0::1::::<><>::
+default_env.tres::Environment::219611424375106466::1709351966::0::1::::<><>::
 icon.png::CompressedTexture2D::1349545169909211679::1684793791::1702957743::1::::<><>::
 Node3D.gd::GDScript::-1::1708057495::0::1::::<>Node3D<>::
 README.md::TextFile::-1::1684793791::0::1::::<><>::
@@ -155,9 +155,9 @@ settings_translation.tscn::PackedScene::5295236732155278879::1708056083::0::1:::
 ::res://addons/dialogic/Editor/Theme/::1708056042
 MainTheme.tres::Theme::5934233903620397670::1708056042::0::1::::<><>::
 PickerTheme.tres::Theme::-1::1708056042::0::1::::<><>::
-::res://addons/dialogic/Editor/TimelineEditor/::1708056083
-test_timeline_scene.gd::GDScript::-1::1708056042::0::1::::<>Control<>::
-test_timeline_scene.tscn::PackedScene::1411608111636751797::1708056042::0::1::::<><>::res://addons/dialogic/Editor/TimelineEditor/test_timeline_scene.gd
+::res://addons/dialogic/Editor/TimelineEditor/::1709352119
+test_timeline_scene.gd::GDScript::-1::1709352119::0::1::::<>Control<>::
+test_timeline_scene.tscn::PackedScene::1411608111636751797::1709352119::0::1::::<><>::res://addons/dialogic/Editor/TimelineEditor/test_timeline_scene.gd
 timeline_editor.gd::GDScript::-1::1708056042::0::1::::<>DialogicEditor<>::
 timeline_editor.tscn::PackedScene::5970468661901911489::1708056083::0::1::::<><>::res://addons/dialogic/Editor/TimelineEditor/timeline_editor.gd<>uid://ysqbusmy0qma::::res://addons/dialogic/Editor/TimelineEditor/VisualEditor/timeline_editor_visual.tscn<>uid://dbpkta2tjsqim::::res://addons/dialogic/Editor/Common/hint_tooltip_icon.tscn<>uid://defdeav8rli6o::::res://addons/dialogic/Editor/TimelineEditor/TextEditor/timeline_editor_text.tscn<>res://addons/dialogic/Editor/TimelineEditor/TextEditor/syntax_highlighter.gd
 ::res://addons/dialogic/Editor/TimelineEditor/TextEditor/::1708056042
@@ -568,7 +568,7 @@ index.gd::GDScript::-1::1708056042::0::1::::<>DialogicIndexer<>::
 event_wait_input.gd::GDScript::-1::1708056042::0::1::::DialogicWaitInputEvent<>DialogicEvent<>::
 icon.svg::CompressedTexture2D::2766149336681406939::1708056042::1708056087::1::::<><>::
 index.gd::GDScript::-1::1708056042::0::1::::<>DialogicIndexer<>::
-::res://addons/dialogic/Resources/::1708057381
+::res://addons/dialogic/Resources/::1709352119
 character.gd::GDScript::-1::1708056042::0::1::::DialogicCharacter<>Resource<>::
 CharacterResourceLoader.gd::GDScript::-1::1708056042::0::1::::DialogicCharacterFormatLoader<>ResourceFormatLoader<>::
 CharacterResourceSaver.gd::GDScript::-1::1708056042::0::1::::DialogicCharacterFormatSaver<>ResourceFormatSaver<>::
@@ -577,8 +577,8 @@ dialogic_layout_layer.gd::GDScript::-1::1708056042::0::1::::DialogicLayoutLayer<
 dialogic_style.gd::GDScript::-1::1708056042::0::1::::DialogicStyle<>Resource<>::
 dialogic_style_layer.gd::GDScript::-1::1708056042::0::1::::DialogicStyleLayer<>Resource<>::
 event.gd::GDScript::-1::1708056042::0::1::::DialogicEvent<>Resource<>::
-test_character.dch::Resource::-1::1708056465::0::1::::<><>::
-test_timeline.dtl::Resource::-1::1708057381::0::1::::<><>::
+test_character.dch::Resource::-1::1709352119::0::1::::<><>::
+test_timeline.dtl::Resource::-1::1709352119::0::1::::<><>::
 timeline.gd::GDScript::-1::1708056042::0::1::::DialogicTimeline<>Resource<>::
 TimelineResourceLoader.gd::GDScript::-1::1708056042::0::1::::DialogicTimelineFormatLoader<>ResourceFormatLoader<>::
 TimelineResourceSaver.gd::GDScript::-1::1708056043::0::1::::DialogicTimelineFormatSaver<>ResourceFormatSaver<>::
@@ -1217,10 +1217,10 @@ BlitzGunProjectileExplosion.tscn::PackedScene::-1::1708056406::0::1::::<><>::res
 GravityBombExplosion.tscn::PackedScene::-1::1708056406::0::1::::<><>::res://resources/images/effects/explosions_n_fire/Flame.png<>res://src/scripts/effects/explosions/explosive_projectile_explosion.gd<>res://src/scripts/effects/explosions/Particles_fade_out.gd<>res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd
 MiniturretProjectileExplosion.tscn::PackedScene::-1::1708056406::0::1::::<><>::res://resources/images/effects/projectile_effects/miniturret_collide_effect.png<>res://src/scripts/effects/explosions/explosive_projectile_explosion.gd<>res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd
 NegotiatorExplosion.tscn::PackedScene::-1::1708056406::0::1::::<><>::res://resources/images/effects/explosions_n_fire/explosion.png<>res://src/scripts/effects/explosions/explosive_projectile_explosion.gd<>res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd
-::res://scenes/Levels/::1708796274
+::res://scenes/Levels/::1709351966
 another_amazing_scene.tscn::PackedScene::-1::1708056406::0::1::::<><>::res://scenes/BlocksNWorld/Player/player.tscn
 incubator_lab.tscn::PackedScene::-1::1708056406::0::1::::<><>::
-level_arena.tscn::PackedScene::7678953268847829428::1708796274::0::1::::<><>::uid://cjqxr4kfkj3ha::::res://scenes/BlocksNWorld/Player/player.tscn<>uid://dbbw0vqpqwku3::::res://scenes/NPC/Friendly/shark_man.tscn<>res://scenes/BlocksNWorld/ArenaWall.tscn<>res://resources/mesh_libraries/incubator_lab_tiles.meshlib
+level_arena.tscn::PackedScene::7678953268847829428::1709351966::0::1::::<><>::uid://cjqxr4kfkj3ha::::res://scenes/BlocksNWorld/Player/player.tscn<>uid://dbbw0vqpqwku3::::res://scenes/NPC/Friendly/shark_man.tscn<>res://scenes/BlocksNWorld/ArenaWall.tscn<>res://resources/mesh_libraries/incubator_lab_tiles.meshlib
 test_level.tscn::PackedScene::105413500448427032::1708056406::0::1::::<><>::res://scenes/Destructibles/Crates/explosive_crate.tscn<>res://scenes/Destructibles/Crates/bolt_crate.tscn<>res://scenes/Collectibles/bolt.tscn<>res://scenes/Collectibles/weapon_collectible.tscn<>res://scenes/NPC/Friendly/slim_cognito.tscn<>res://scenes/NPC/Enemies/Bosses/Girdeux.tscn<>res://scenes/BlocksNWorld/Doors/Teleport.tscn<>res://scenes/BlocksNWorld/Player/player.tscn<>res://scenes/NPC/Friendly/null_npc.tscn<>res://resources/mesh_libraries/incubator_lab_tiles.meshlib<>res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn<>res://scenes/Collectibles/ammo_can.tscn<>res://scenes/NPC/Enemies/Enemy.tscn<>res://scenes/BlocksNWorld/Doors/ArchDoors.tscn<>res://scenes/Destructibles/Crates/health_crate.tscn<>res://src/scripts/UI/checkpoint_ui.gd<>res://src/scripts/Player/New SpawnPoint.gd<>res://scenes/NPC/Friendly/mia.tscn<>res://scenes/NPC/Enemies/nef_head_enemy.tscn<>res://scenes/NPC/Friendly/Angela_Or_Rivet.tscn
 ::res://scenes/Menu/::1708057686
 LevelView.tscn::PackedScene::6284112291887000037::1708057686::0::1::::<><>::uid://bk5epmeksv1nf::::res://src/theme/zordoom_theme.tres<>res://src/scripts/Menu/addon/LevelListing.gd<>res://src/scripts/Menu/ReturnMainMenu.gd<>res://scenes/Transitions/fade_in.tscn<>uid://dhbtjmxmjkjs1::::res://resources/audio/ui/button_click.wav<>uid://k6siptvlr716::::res://resources/audio/ui/button_navigate.wav<>res://resources/mesh_libraries/incubator_lab_tiles.meshlib<>uid://j4wdrd4osj2v::::res://resources/images/characters/player/angela/angela_sheet_init_finished.png<>uid://bv41u65su31j1::::res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png<>res://src/scripts/UI/menu_scene_control_base.gd
@@ -1245,12 +1245,12 @@ nef_head_enemy.tscn::PackedScene::1985834966684797892::1708056406::0::1::::<><>:
 ::res://scenes/NPC/Enemies/Bosses/::1708056406
 Girdeux.tscn::PackedScene::-1::1708056406::0::1::::<><>::res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png<>res://src/scripts/npc/enemies/boss_base.gd<>res://src/scripts/npc/enemies/enemy_raycast.gd<>res://resources/images/weapons/enemy/girdeux_flamethrower.png<>res://resources/images/weapons/enemy/girdeux_flametank.png<>res://src/scripts/npc/npc.gd
 GirdeuxBody.tscn::PackedScene::-1::1708056406::0::1::::<><>::res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png<>res://src/scripts/npc/enemies/body.gd
-::res://scenes/NPC/Friendly/::1708796193
+::res://scenes/NPC/Friendly/::1709351966
 Angela_Or_Rivet.tscn::PackedScene::-1::1708056406::0::1::::<><>::res://src/scripts/npc/friendly/Angela_Or_Rivet.gd<>res://resources/images/characters/player/angela/angela_sheet_init_finished.png<>res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png<>res://resources/images/ui/enter_key.png<>res://src/scripts/npc/npc.gd
 mia.tscn::PackedScene::-1::1708056406::0::1::::<><>::res://resources/images/characters/npc/mia.png<>res://src/scripts/npc/friendly/character.gd<>res://resources/images/ui/enter_key.png<>res://src/scripts/npc/npc.gd
 miniturret.tscn::PackedScene::-1::1708056406::0::1::::<><>::res://resources/images/effects/projectiles/miniturret/miniturret_stick.png<>res://resources/images/effects/projectiles/miniturret/miniturret_gun.png<>res://src/scripts/npc/friendly/miniturret.gd<>res://resources/audio/npc/miniturret/miniturret_gun.wav<>res://resources/audio/npc/miniturret/deploy.wav
 null_npc.tscn::PackedScene::-1::1708056406::0::1::::<><>::res://src/scripts/npc/npc.gd<>res://resources/images/ui/enter_key.png
-shark_man.tscn::PackedScene::7232896819570893308::1708796193::0::1::::<><>::uid://cqtod5o7lnp7v::::res://resources/images/characters/npc/shark_man_npc.png<>uid://dgyge77y40fub::::res://resources/images/ui/enter_key.png<>res://src/scripts/npc/npc.gd
+shark_man.tscn::PackedScene::7232896819570893308::1709351966::0::1::::<><>::uid://cqtod5o7lnp7v::::res://resources/images/characters/npc/shark_man_npc.png<>uid://dgyge77y40fub::::res://resources/images/ui/enter_key.png<>res://src/scripts/npc/npc.gd
 slim_cognito.tscn::PackedScene::-1::1708056406::0::1::::<><>::res://resources/models/SlimCognito.material<>res://resources/models/OrangeMetal.material<>res://src/scripts/npc/vendor.gd<>res://resources/images/ui/enter_key.png
 vox_talking_head_resize2.png::CompressedTexture2D::6652863076018234510::1708056406::1708056406::1::::<><>::
 ::res://scenes/Projectiles/::1708056406
@@ -1322,8 +1322,8 @@ ReturnMainMenu.gd::GDScript::-1::1708056316::0::1::::<>MenuSceneControlBase<>::
 SaveGames.gd::GDScript::-1::1708056316::0::1::::<>Control<>::
 ::res://src/scripts/Menu/addon/::1708056316
 LevelListing.gd::GDScript::-1::1708056316::0::1::::<>MenuSceneControlBase<>::
-::res://src/scripts/npc/::1708796274
-npc.gd::GDScript::-1::1708796274::0::1::::<>Area3D<>::
+::res://src/scripts/npc/::1708920145
+npc.gd::GDScript::-1::1708920145::0::1::::<>Area3D<>::
 vendor.gd::GDScript::-1::1708056316::0::1::::<>Area3D<>::
 vendor_container.gd::GDScript::-1::1708056316::0::1::::<>Control<>::
 ::res://src/scripts/npc/enemies/::1708056316
@@ -1348,10 +1348,10 @@ PlayerHit_box.gd::GDScript::-1::1708056316::0::1::::PlayerHit_box<>Area3D<>::
 PlayerUI.gd::GDScript::-1::1708056316::0::1::::<>Control<>::
 PlayerWeaponsInventory.gd::GDScript::-1::1708056316::0::1::::<>MenuSceneControlBase<>::
 player_target_detection_area.gd::GDScript::-1::1708056316::0::1::::<>Area3D<>::
-::res://src/scripts/UI/::1708791562
+::res://src/scripts/UI/::1709351902
 arena_menu.gd::GDScript::-1::1708056316::0::1::::<>MenuSceneControlBase<>::
 bolt_count.gd::GDScript::-1::1708056316::0::1::::<>Label<>::
-character_selection_button.gd::GDScript::-1::1708791562::0::1::::<>Button<>::
+character_selection_button.gd::GDScript::-1::1709351902::0::1::::<>Button<>::
 checkpoint_ui.gd::GDScript::-1::1708056316::0::1::::<>Area3D<>::
 fade_in.gd::GDScript::-1::1708056316::0::1::::<>ColorRect<>::
 main_menu.gd::GDScript::-1::1708056316::0::1::::<>MenuSceneBase<>::
@@ -1362,7 +1362,7 @@ vendor_weapon_button.gd::GDScript::-1::1708056316::0::1::::<>Button<>::
 ::res://src/scripts/world/::1708056316
 arch_door.gd::GDScript::-1::1708056316::0::1::::<>Node3D<>::
 teleport.gd::GDScript::-1::1708056316::0::1::::<>StaticBody3D<>::
-::res://src/theme/::1708791562
-zordoom_ingameui_theme.tres::Theme::3074942968399061943::1708791562::0::1::::<><>::uid://bqphl04f734t1::::res://resources/fonts/lato-regular.tres<>res://resources/fonts/lato-bold-ingameui.tres
-zordoom_resource_theme.tres::Theme::6695521123806943982::1708791562::0::1::::<><>::uid://bqphl04f734t1::::res://resources/fonts/lato-regular.tres
-zordoom_theme.tres::Theme::3150510744513541039::1708791562::0::1::::<><>::uid://3mfryjottcb2::::res://resources/fonts/lato-light.tres
+::res://src/theme/::1709351902
+zordoom_ingameui_theme.tres::Theme::3074942968399061943::1709351902::0::1::::<><>::uid://bqphl04f734t1::::res://resources/fonts/lato-regular.tres<>res://resources/fonts/lato-bold-ingameui.tres
+zordoom_resource_theme.tres::Theme::6695521123806943982::1709351902::0::1::::<><>::uid://bqphl04f734t1::::res://resources/fonts/lato-regular.tres
+zordoom_theme.tres::Theme::3150510744513541039::1709351902::0::1::::<><>::uid://3mfryjottcb2::::res://resources/fonts/lato-light.tres
