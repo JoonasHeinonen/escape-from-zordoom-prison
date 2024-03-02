@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://mw8y8holm8ld"]
 
-[ext_resource type="Script" path="res://src/scripts/effects/bullets/blitz_gun_projectile.gd" id="1"]
+[ext_resource type="Script" path="res://src/scripts/effects/bullets/blaster_projectile.gd" id="1_ykstm"]
 [ext_resource type="Texture2D" uid="uid://dbw27a41lum66" path="res://resources/images/effects/projectile_effects/BlitzGun_projectile.png" id="2"]
 
 [sub_resource type="BoxShape3D" id="1"]
@@ -10,7 +10,8 @@ size = Vector3(0.151786, 0.0856646, nan)
 
 [node name="BlitzGunProjectile" type="RigidBody3D"]
 gravity_scale = 0.0
-script = ExtResource("1")
+script = ExtResource("1_ykstm")
+weapon = "blitz_gun"
 
 [node name="Bullet" type="Sprite3D" parent="."]
 transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0.209488, 0, 0)
@@ -32,10 +33,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.289351, 0, 0)
 wait_time = 3.0
 autostart = true
 
-[node name="BlitzArea" type="Area3D" parent="."]
+[node name="Area" type="Area3D" parent="."]
 transform = Transform3D(0.296063, 0, 0, 0, 0.203169, 0, 0, 0, 1, 0.266527, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlitzArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area"]
 shape = SubResource("2")
 
-[connection signal="body_entered" from="BlitzArea" to="." method="_on_BiltzArea_body_entered"]
+[connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]

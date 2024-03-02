@@ -1,11 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bifupishenu0m"]
+[gd_scene load_steps=10 format=3 uid="uid://rht181j045mi"]
 
 [ext_resource type="Texture2D" uid="uid://bbr7cy67henfu" path="res://resources/images/effects/projectile_effects/BlitzGun_explosion .png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/effects/bullets/blitz_gun_projectile_explosion.gd" id="2"]
 
 [sub_resource type="BoxShape3D" id="6"]
 
-[sub_resource type="Animation" id="7"]
+[sub_resource type="Animation" id="4"]
 resource_name = "BlasterProjectileExplosion"
 loop_mode = 1
 tracks/0/type = "value"
@@ -32,62 +32,66 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.1, 1.0, 0.9]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProjectileExplosionArea/CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.2, 0.2, 0.2, 0.2, 1, 2, 2, 2, 0.3, 1, 0, 0, 0)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_r631s"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aw265"]
 _data = {
-"BlasterProjectileExplosion": SubResource("7")
+"BlasterProjectileExplosion": SubResource("4")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="5"]
 animation = &"BlasterProjectileExplosion"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_h8fjv"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p2tnl"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="8"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l0bsc"]
 states/BlasterProjectileExplosion/node = SubResource("5")
-states/BlasterProjectileExplosion/position = Vector2(323, 90)
-states/End/position = Vector2(472, 90)
-states/Start/position = Vector2(169, 90)
-transitions = ["Start", "BlasterProjectileExplosion", SubResource("AnimationNodeStateMachineTransition_h8fjv")]
+states/BlasterProjectileExplosion/position = Vector2(292, 129)
+states/Start/position = Vector2(104, 129)
+transitions = ["Start", "BlasterProjectileExplosion", SubResource("AnimationNodeStateMachineTransition_p2tnl")]
 
 [sub_resource type="BoxShape3D" id="10"]
 
-[node name="Node3D" type="Node3D"]
-
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="BlitzGunProjectileExplosion" type="CharacterBody3D"]
 script = ExtResource("2")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("6")
 disabled = true
 
-[node name="Sprite3D" type="Sprite3D" parent="CharacterBody3D"]
+[node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("1")
 hframes = 5
-frame = 2
+frame = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_r631s")
+"": SubResource("AnimationLibrary_aw265")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="CharacterBody3D"]
+[node name="AnimationTree" type="AnimationTree" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_r631s")
+"": SubResource("AnimationLibrary_aw265")
 }
-tree_root = SubResource("8")
+tree_root = SubResource("AnimationNodeStateMachine_l0bsc")
 anim_player = NodePath("../AnimationPlayer")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409)
-omni_range = 0.939577
+omni_range = 0.165368
 
-[node name="ProjectileExplosionArea" type="Area3D" parent="CharacterBody3D"]
+[node name="ProjectileExplosionArea" type="Area3D" parent="."]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/ProjectileExplosionArea"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileExplosionArea"]
+transform = Transform3D(0.181034, 0, 0, 0, 0.181034, 0, 0, 0, 0.181034, 0, 0, 0)
 shape = SubResource("10")

@@ -44,5 +44,4 @@ autostart = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.3, 0, 0)
 shape = SubResource("2")
 
-[connection signal="body_entered" from="." to="." method="_on_Projectile_body_entered"]
 [connection signal="body_entered" from="ProjectileArea" to="." method="_on_Area_body_entered"]

@@ -32,6 +32,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.1, 1.0, 0.9]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProjectileExplosionArea/CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.2, 0.2, 0.2, 0.2, 1, 2, 2, 2, 0.3, 1, 0, 0, 0)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aw265"]
 _data = {
@@ -84,11 +91,11 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409)
-omni_range = 0.116063
+omni_range = 0.218122
 
 [node name="ProjectileExplosionArea" type="Area3D" parent="."]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileExplosionArea"]
-transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+transform = Transform3D(0.165727, 0, 0, 0, 0.165727, 0, 0, 0, 0.165727, 0, 0, 0)
 shape = SubResource("6")

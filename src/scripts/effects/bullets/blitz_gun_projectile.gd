@@ -15,9 +15,8 @@ func _physics_process(delta):
 	velocity.x = speed * delta * 1
 	translate(velocity)
 
-func _on_BiltzArea_body_entered(_body):
+func _on_BlitzArea_body_entered(body):
 	var explosion = projectile_explosion.instantiate()
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_transform = $Explosion.global_transform
 	queue_free()
-	pass 
