@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://rht181j045mi"]
 
 [ext_resource type="Texture2D" uid="uid://bbr7cy67henfu" path="res://resources/images/effects/projectile_effects/BlitzGun_explosion .png" id="1"]
-[ext_resource type="Script" path="res://src/scripts/effects/bullets/blitz_gun_projectile_explosion.gd" id="2"]
+[ext_resource type="Script" path="res://src/scripts/effects/bullets/blaster_projectile_explosion.gd" id="1_af253"]
 
 [sub_resource type="BoxShape3D" id="6"]
 
@@ -60,11 +60,15 @@ transitions = ["Start", "BlasterProjectileExplosion", SubResource("AnimationNode
 [sub_resource type="BoxShape3D" id="10"]
 
 [node name="BlitzGunProjectileExplosion" type="CharacterBody3D"]
-script = ExtResource("2")
+script = ExtResource("1_af253")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("6")
 disabled = true
+
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
@@ -87,11 +91,11 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409)
-omni_range = 0.165368
+omni_range = 0.751097
 
 [node name="ProjectileExplosionArea" type="Area3D" parent="."]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileExplosionArea"]
-transform = Transform3D(0.181034, 0, 0, 0, 0.181034, 0, 0, 0, 0.181034, 0, 0, 0)
+transform = Transform3D(0.0110865, 0, 0, 0, 0.0110865, 0, 0, 0, 0.0110865, 0, 0, 0)
 shape = SubResource("10")
