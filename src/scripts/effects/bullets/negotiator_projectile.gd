@@ -14,4 +14,5 @@ func _on_ProjectileArea_body_entered(_body):
 	var explosion = projectile_explosion.instantiate()
 	get_tree().current_scene.add_child(explosion)
 	explosion.global_transform = $Explosion.global_transform
+	explosion.scale = Vector3(1, 1, 1)
 	queue_free()

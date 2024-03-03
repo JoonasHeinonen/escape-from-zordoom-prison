@@ -75,7 +75,7 @@ transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("1")
 hframes = 5
-frame = 4
+frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -91,11 +91,11 @@ anim_player = NodePath("../AnimationPlayer")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409)
-omni_range = 0.551107
+omni_range = 0.940686
 
 [node name="ProjectileExplosionArea" type="Area3D" parent="."]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileExplosionArea"]
-transform = Transform3D(0.0691128, 0, 0, 0, 0.0691128, 0, 0, 0, 0.0691128, 0, 0, 0)
+transform = Transform3D(1.42021, 0, 0, 0, 1.42021, 0, 0, 0, 1.42021, 0, 0, 0)
 shape = SubResource("6")
