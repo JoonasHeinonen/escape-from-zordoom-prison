@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://r1ge1e2mbvoy"]
 
-[ext_resource type="Texture2D" uid="uid://d0m2apco00b6r" path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://banat76blu3h7" path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/nef_laser.gd" id="2"]
 
 [sub_resource type="BoxShape3D" id="1"]

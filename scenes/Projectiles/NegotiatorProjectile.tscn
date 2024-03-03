@@ -1,8 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://mypdjho1gl0k"]
 
 [ext_resource type="Script" path="res://src/scripts/effects/bullets/negotiator_projectile.gd" id="2"]
-
-[sub_resource type="CompressedTexture2D" id="3"]
+[ext_resource type="Texture2D" uid="uid://cvotlr5ilb2mw" path="res://resources/images/effects/projectiles/negotiator_projectile.png" id="2_nvt67"]
 
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(1.24951, 0.94243, 2)
@@ -19,7 +18,7 @@ script = ExtResource("2")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)
 texture_filter = 0
-texture = SubResource("3")
+texture = ExtResource("2_nvt67")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("1")

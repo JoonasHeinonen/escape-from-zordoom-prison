@@ -49,6 +49,7 @@ size = Vector3(2.2914, 2, 2)
 
 [node name="testLevel" type="Node3D"]
 script = ExtResource("1_ksfwo")
+z_axis = -1.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f1r0c")
@@ -111,7 +112,7 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="Mia" parent="npc/friendly" instance=ExtResource("21")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 4.5, -2.808, -1.25)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -30.2724, 7.20774, 2.57596)
 
 [node name="npc" parent="npc/friendly" instance=ExtResource("9")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -3.162, -1.25)

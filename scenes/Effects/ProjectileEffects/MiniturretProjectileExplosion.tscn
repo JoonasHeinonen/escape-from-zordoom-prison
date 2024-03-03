@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://yeogllivy1dl"]
 
-[ext_resource type="Texture2D" uid="uid://o34tvrb8b23j" path="res://resources/images/effects/projectile_effects/miniturret_collide_effect.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bqelhpwus6djg" path="res://resources/images/effects/projectile_effects/miniturret_collide_effect.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/effects/explosions/explosive_projectile_explosion.gd" id="2"]
 [ext_resource type="Script" path="res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd" id="3"]
 

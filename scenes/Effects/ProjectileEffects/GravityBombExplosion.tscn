@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://fvufp0eijc4m"]
 
-[ext_resource type="Texture2D" uid="uid://dps1nwpah6md3" path="res://resources/images/effects/explosions_n_fire/Flame.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://b058vpcd57v0c" path="res://resources/images/effects/explosions_n_fire/Flame.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/effects/explosions/explosive_projectile_explosion.gd" id="2"]
 [ext_resource type="Script" path="res://src/scripts/effects/explosions/Particles_fade_out.gd" id="3"]
 [ext_resource type="Script" path="res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd" id="4"]

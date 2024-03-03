@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dp43n2yfdxkie"]
 
 [ext_resource type="Script" path="res://src/scripts/effects/bullets/pulse_rifle_projectile.gd" id="1"]
-[ext_resource type="Texture2D" uid="uid://cb8u413qbnv87" path="res://resources/images/effects/projectiles/pulse_rifle/pulse_rifle_main_projectile.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cardgu17ox13t" path="res://resources/images/effects/projectiles/pulse_rifle/pulse_rifle_main_projectile.png" id="2"]
 
 [sub_resource type="BoxShape3D" id="1"]
 
