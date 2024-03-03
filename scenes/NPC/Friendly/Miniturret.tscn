@@ -14,8 +14,15 @@
 
 [sub_resource type="Animation" id="Animation_mb5xc"]
 resource_name = "Activated"
-length = 0.5
+length = 2.0
 loop_mode = 1
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/CollisionShape3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.01, 0.01, 0.01, 0.0593129, 1, 3, 3, 3, 1.9, 1, 3, 3, 3)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nbenf"]
 _data = {
@@ -48,6 +55,7 @@ shape = SubResource("1")
 [node name="Area3D" type="Area3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 shape = SubResource("BoxShape3D_7gpmo")
 
 [node name="MiniturretGun" type="MeshInstance3D" parent="."]
