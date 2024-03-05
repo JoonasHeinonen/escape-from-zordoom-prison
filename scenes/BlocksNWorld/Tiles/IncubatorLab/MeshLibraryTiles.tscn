@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=3 uid="uid://pfobetx2xiu3"]
+[gd_scene load_steps=133 format=3 uid="uid://pfobetx2xiu3"]
 
 [ext_resource type="Material" path="res://resources/models/tiles/incubator_lab/ZordoomConcrete.material" id="2"]
 [ext_resource type="Material" path="res://resources/models/tiles/incubator_lab/Rock.material" id="3"]
@@ -11,6 +11,7 @@
 [ext_resource type="Material" path="res://resources/models/tiles/incubator_lab/Arch.material" id="10"]
 [ext_resource type="Material" path="res://resources/models/tiles/incubator_lab/LabFloor.material" id="11"]
 [ext_resource type="Material" uid="uid://b415iak6ukjnr" path="res://resources/models/tiles/incubator_lab/TempleWall_002.material" id="11_l3p1x"]
+[ext_resource type="Texture2D" uid="uid://6amvwmml16bs" path="res://resources/models/tiles/incubator_lab/warehouse_wall_warehouse_wall.png" id="12_uysha"]
 [ext_resource type="Material" path="res://resources/models/tiles/incubator_lab/RedBeacon.material" id="13"]
 [ext_resource type="Material" path="res://resources/models/tiles/incubator_lab/Void.material" id="14"]
 [ext_resource type="Material" path="res://resources/models/tiles/incubator_lab/PrisonCellWall.material" id="15"]
@@ -684,6 +685,9 @@ _surfaces = [{
 
 [sub_resource type="BoxShape3D" id="189"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2gso7"]
+albedo_texture = ExtResource("12_uysha")
+
 [sub_resource type="ArrayMesh" id="190"]
 resource_name = "warehouse_wall_Cube019"
 _surfaces = [{
@@ -692,6 +696,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 84,
 "index_data": PackedByteArray(28, 0, 9, 0, 3, 0, 28, 0, 32, 0, 9, 0, 34, 0, 21, 0, 10, 0, 34, 0, 40, 0, 21, 0, 42, 0, 17, 0, 23, 0, 42, 0, 50, 0, 17, 0, 48, 0, 4, 0, 15, 0, 48, 0, 30, 0, 4, 0, 7, 0, 12, 0, 18, 0, 7, 0, 1, 0, 12, 0, 22, 0, 5, 0, 11, 0, 22, 0, 16, 0, 5, 0, 13, 0, 26, 0, 52, 0, 13, 0, 2, 0, 26, 0, 47, 0, 51, 0, 43, 0, 47, 0, 55, 0, 51, 0, 20, 0, 54, 0, 46, 0, 20, 0, 14, 0, 54, 0, 39, 0, 41, 0, 35, 0, 39, 0, 45, 0, 41, 0, 8, 0, 44, 0, 38, 0, 8, 0, 19, 0, 44, 0, 25, 0, 33, 0, 29, 0, 25, 0, 37, 0, 33, 0, 0, 0, 36, 0, 24, 0, 0, 0, 6, 0, 36, 0, 53, 0, 31, 0, 49, 0, 53, 0, 27, 0, 31, 0),
+"material": SubResource("StandardMaterial3D_2gso7"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 56,
@@ -850,6 +855,9 @@ _surfaces = [{
 
 [sub_resource type="BoxShape3D" id="198"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bl4u"]
+albedo_texture = ExtResource("12_uysha")
+
 [sub_resource type="ArrayMesh" id="398"]
 resource_name = "tiles_prison_door_frame_0_Cube024"
 _surfaces = [{
@@ -880,6 +888,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 138,
 "index_data": PackedByteArray(7, 0, 5, 0, 3, 0, 21, 0, 38, 0, 11, 0, 21, 0, 46, 0, 38, 0, 11, 0, 37, 0, 8, 0, 11, 0, 38, 0, 37, 0, 19, 0, 7, 0, 20, 0, 19, 0, 5, 0, 7, 0, 15, 0, 9, 0, 17, 0, 15, 0, 12, 0, 9, 0, 22, 0, 11, 0, 14, 0, 22, 0, 21, 0, 11, 0, 18, 0, 14, 0, 4, 0, 18, 0, 22, 0, 14, 0, 4, 0, 16, 0, 2, 0, 4, 0, 14, 0, 16, 0, 0, 0, 22, 0, 18, 0, 0, 0, 13, 0, 22, 0, 13, 0, 21, 0, 22, 0, 13, 0, 10, 0, 21, 0, 1, 0, 20, 0, 6, 0, 1, 0, 19, 0, 20, 0, 10, 0, 46, 0, 21, 0, 10, 0, 36, 0, 46, 0, 30, 0, 26, 0, 28, 0, 48, 0, 38, 0, 46, 0, 48, 0, 34, 0, 38, 0, 34, 0, 37, 0, 38, 0, 34, 0, 31, 0, 37, 0, 45, 0, 30, 0, 28, 0, 45, 0, 47, 0, 30, 0, 41, 0, 32, 0, 35, 0, 41, 0, 43, 0, 32, 0, 49, 0, 34, 0, 48, 0, 49, 0, 40, 0, 34, 0, 44, 0, 40, 0, 49, 0, 44, 0, 27, 0, 40, 0, 27, 0, 42, 0, 40, 0, 27, 0, 25, 0, 42, 0, 23, 0, 49, 0, 39, 0, 23, 0, 44, 0, 49, 0, 39, 0, 48, 0, 33, 0, 39, 0, 49, 0, 48, 0, 24, 0, 47, 0, 45, 0, 24, 0, 29, 0, 47, 0, 33, 0, 46, 0, 36, 0, 33, 0, 48, 0, 46, 0),
+"material": SubResource("StandardMaterial3D_7bl4u"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 50,
@@ -921,6 +930,9 @@ _surfaces = [{
 
 [sub_resource type="BoxShape3D" id="621"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8mqw"]
+albedo_texture = ExtResource("12_uysha")
+
 [sub_resource type="ArrayMesh" id="399"]
 resource_name = "tiles_prison_door_frame_1_Cube026"
 _surfaces = [{
@@ -951,6 +963,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 90,
 "index_data": PackedByteArray(15, 0, 36, 0, 7, 0, 15, 0, 39, 0, 36, 0, 13, 0, 37, 0, 4, 0, 13, 0, 38, 0, 37, 0, 16, 0, 3, 0, 11, 0, 16, 0, 9, 0, 3, 0, 12, 0, 8, 0, 14, 0, 12, 0, 2, 0, 8, 0, 10, 0, 14, 0, 5, 0, 10, 0, 12, 0, 14, 0, 6, 0, 38, 0, 13, 0, 6, 0, 35, 0, 38, 0, 1, 0, 16, 0, 11, 0, 0, 0, 39, 0, 15, 0, 0, 0, 34, 0, 39, 0, 32, 0, 36, 0, 39, 0, 32, 0, 24, 0, 36, 0, 30, 0, 37, 0, 38, 0, 30, 0, 21, 0, 37, 0, 33, 0, 20, 0, 26, 0, 33, 0, 28, 0, 20, 0, 29, 0, 25, 0, 19, 0, 29, 0, 31, 0, 25, 0, 27, 0, 31, 0, 29, 0, 27, 0, 22, 0, 31, 0, 23, 0, 38, 0, 35, 0, 23, 0, 30, 0, 38, 0, 18, 0, 28, 0, 33, 0, 17, 0, 39, 0, 34, 0, 17, 0, 32, 0, 39, 0),
+"material": SubResource("StandardMaterial3D_k8mqw"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 40,
@@ -958,6 +971,9 @@ _surfaces = [{
 }]
 
 [sub_resource type="BoxShape3D" id="625"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2axeg"]
+albedo_texture = ExtResource("12_uysha")
 
 [sub_resource type="ArrayMesh" id="403"]
 resource_name = "tiles_prison_door_frame_2_Cube040"
@@ -989,6 +1005,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 60,
 "index_data": PackedByteArray(3, 0, 5, 0, 7, 0, 10, 0, 3, 0, 8, 0, 5, 0, 3, 0, 10, 0, 25, 0, 9, 0, 4, 0, 25, 0, 22, 0, 9, 0, 1, 0, 7, 0, 5, 0, 6, 0, 24, 0, 2, 0, 6, 0, 26, 0, 24, 0, 0, 0, 26, 0, 6, 0, 0, 0, 21, 0, 26, 0, 16, 0, 14, 0, 18, 0, 14, 0, 23, 0, 19, 0, 14, 0, 16, 0, 23, 0, 25, 0, 20, 0, 22, 0, 25, 0, 15, 0, 20, 0, 12, 0, 16, 0, 18, 0, 17, 0, 24, 0, 26, 0, 17, 0, 13, 0, 24, 0, 11, 0, 26, 0, 21, 0, 11, 0, 17, 0, 26, 0),
+"material": SubResource("StandardMaterial3D_2axeg"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 27,
@@ -996,6 +1013,9 @@ _surfaces = [{
 }]
 
 [sub_resource type="BoxShape3D" id="404"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7gtwj"]
+albedo_texture = ExtResource("12_uysha")
 
 [sub_resource type="ArrayMesh" id="405"]
 resource_name = "tiles_prison_door_frame_right_0_Cube058"
@@ -1027,6 +1047,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 138,
 "index_data": PackedByteArray(7, 0, 4, 0, 2, 0, 19, 0, 36, 0, 10, 0, 19, 0, 43, 0, 36, 0, 10, 0, 35, 0, 8, 0, 10, 0, 36, 0, 35, 0, 15, 0, 7, 0, 18, 0, 15, 0, 4, 0, 7, 0, 12, 0, 8, 0, 13, 0, 12, 0, 10, 0, 8, 0, 20, 0, 10, 0, 12, 0, 20, 0, 19, 0, 10, 0, 16, 0, 12, 0, 5, 0, 16, 0, 20, 0, 12, 0, 5, 0, 13, 0, 3, 0, 5, 0, 12, 0, 13, 0, 1, 0, 20, 0, 16, 0, 1, 0, 11, 0, 20, 0, 11, 0, 19, 0, 20, 0, 11, 0, 9, 0, 19, 0, 0, 0, 17, 0, 6, 0, 0, 0, 14, 0, 17, 0, 9, 0, 43, 0, 19, 0, 9, 0, 34, 0, 43, 0, 29, 0, 23, 0, 25, 0, 46, 0, 36, 0, 43, 0, 46, 0, 33, 0, 36, 0, 33, 0, 35, 0, 36, 0, 33, 0, 31, 0, 35, 0, 41, 0, 30, 0, 26, 0, 41, 0, 45, 0, 30, 0, 38, 0, 31, 0, 33, 0, 38, 0, 39, 0, 31, 0, 47, 0, 33, 0, 46, 0, 47, 0, 38, 0, 33, 0, 42, 0, 38, 0, 47, 0, 42, 0, 27, 0, 38, 0, 27, 0, 39, 0, 38, 0, 27, 0, 24, 0, 39, 0, 22, 0, 47, 0, 37, 0, 22, 0, 42, 0, 47, 0, 37, 0, 46, 0, 32, 0, 37, 0, 47, 0, 46, 0, 21, 0, 44, 0, 40, 0, 21, 0, 28, 0, 44, 0, 32, 0, 43, 0, 34, 0, 32, 0, 46, 0, 43, 0),
+"material": SubResource("StandardMaterial3D_7gtwj"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 48,
@@ -1068,6 +1089,9 @@ _surfaces = [{
 
 [sub_resource type="BoxShape3D" id="406"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ummb7"]
+albedo_texture = ExtResource("12_uysha")
+
 [sub_resource type="ArrayMesh" id="407"]
 resource_name = "tiles_prison_door_frame_right_1_Cube059"
 _surfaces = [{
@@ -1098,6 +1122,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 90,
 "index_data": PackedByteArray(18, 0, 42, 0, 9, 0, 18, 0, 45, 0, 42, 0, 16, 0, 43, 0, 5, 0, 16, 0, 44, 0, 43, 0, 17, 0, 3, 0, 11, 0, 17, 0, 7, 0, 3, 0, 13, 0, 6, 0, 15, 0, 13, 0, 2, 0, 6, 0, 10, 0, 14, 0, 4, 0, 10, 0, 12, 0, 14, 0, 8, 0, 44, 0, 16, 0, 8, 0, 41, 0, 44, 0, 0, 0, 17, 0, 11, 0, 1, 0, 45, 0, 18, 0, 1, 0, 40, 0, 45, 0, 39, 0, 42, 0, 45, 0, 39, 0, 28, 0, 42, 0, 36, 0, 43, 0, 44, 0, 36, 0, 24, 0, 43, 0, 37, 0, 22, 0, 26, 0, 37, 0, 30, 0, 22, 0, 33, 0, 25, 0, 21, 0, 33, 0, 35, 0, 25, 0, 29, 0, 34, 0, 32, 0, 29, 0, 23, 0, 34, 0, 27, 0, 44, 0, 41, 0, 27, 0, 36, 0, 44, 0, 19, 0, 31, 0, 38, 0, 20, 0, 45, 0, 40, 0, 20, 0, 39, 0, 45, 0),
+"material": SubResource("StandardMaterial3D_ummb7"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 46,
@@ -1105,6 +1130,9 @@ _surfaces = [{
 }]
 
 [sub_resource type="BoxShape3D" id="408"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_86xgi"]
+albedo_texture = ExtResource("12_uysha")
 
 [sub_resource type="ArrayMesh" id="409"]
 resource_name = "tiles_prison_door_frame_right_2_Cube060"
@@ -1136,6 +1164,7 @@ _surfaces = [{
 "format": 34359742487,
 "index_count": 60,
 "index_data": PackedByteArray(2, 0, 5, 0, 7, 0, 12, 0, 2, 0, 10, 0, 5, 0, 2, 0, 12, 0, 29, 0, 11, 0, 3, 0, 29, 0, 26, 0, 11, 0, 0, 0, 8, 0, 6, 0, 9, 0, 31, 0, 4, 0, 9, 0, 32, 0, 31, 0, 1, 0, 32, 0, 9, 0, 1, 0, 25, 0, 32, 0, 19, 0, 15, 0, 21, 0, 15, 0, 28, 0, 23, 0, 15, 0, 19, 0, 28, 0, 30, 0, 24, 0, 27, 0, 30, 0, 16, 0, 24, 0, 13, 0, 18, 0, 20, 0, 22, 0, 31, 0, 32, 0, 22, 0, 17, 0, 31, 0, 14, 0, 32, 0, 25, 0, 14, 0, 22, 0, 32, 0),
+"material": SubResource("StandardMaterial3D_86xgi"),
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
 "vertex_count": 33,
