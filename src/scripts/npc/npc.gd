@@ -13,6 +13,7 @@ var shark_man_dialog_value : int = 0
 var player
 var dialog
 
+
 func _ready():
 	if (character_name == "Girdeux"):
 		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
@@ -25,7 +26,7 @@ func _process(delta):
 func _input(event):
 	if (Globle.player_character == "Angela" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active):
 		if get_node_or_null('DialogNode') == null:
-			if Input.is_action_just_pressed("ui_accept") and active: 
+			if Input.is_action_just_pressed("ui_accept") and active:
 				match(character_name):
 					"Mia":
 						match(mia_dialog_value):
@@ -52,10 +53,11 @@ func _input(event):
 								print("checks dialogic")
 								commence_dialog('test_timeline')
 								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 1)
+								Globle.player_active = false
 							(1):
 								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 								Globle.arena_menu_open = true
-								#cant seem to disable player movement yet.
+								Globle.player_active = true
 	if (Globle.player_character == "Rivet" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active == true):
 		match(character_name):
 			"Mia":

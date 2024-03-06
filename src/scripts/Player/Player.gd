@@ -205,12 +205,13 @@ func _physics_process(delta):
 						velocity.x -= 0.1
 					if velocity.x < 0:
 						velocity.x += 0.1
-		elif Input.is_action_pressed("ui_right"):
+		#Checks to see if the player is talking with an npc thus restrits there movement until the player cycles through thier dialogic timeline.
+		elif Input.is_action_pressed("ui_right") and Globle.player_active == true:
 			walk(7, 1, -0.1)
 			$RivetArm/HandInstance/Hand.scale.y = -20
 			$AngelaArm/HandInstance/Hand.scale.y = -20
 			$PlayerHit_box.set_position(Vector3(0.649, 0, 0))
-		elif Input.is_action_pressed("ui_left"):
+		elif Input.is_action_pressed("ui_left") and Globle.player_active == true:
 			walk(-7, -1, 0.1)
 			$RivetArm/HandInstance/Hand.scale.y = 20
 			$AngelaArm/HandInstance/Hand.scale.y = 20
@@ -218,7 +219,7 @@ func _physics_process(delta):
 		else:
 			velocity.x = lerpf(velocity.x,0,0.1)
 			state_machine.travel("Player_Still")
-		if is_on_floor() and Input.is_action_pressed("jump"):
+		if is_on_floor() and Input.is_action_pressed("jump") and Globle.player_active == true:
 			velocity.y = jump
 		if !player_double_jump_used:
 			if (Input.is_action_just_pressed("jump") &&

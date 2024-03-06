@@ -4,7 +4,7 @@ res://src/scripts/UI/character_selection_button.gd
 res://src/theme/zordoom_theme.tres
 res://src/theme/zordoom_resource_theme.tres
 res://src/theme/zordoom_ingameui_theme.tres
-res://scenes/NPC/Friendly/shark_man.tscn
-res://addons/dialogic/Resources/shark_man.dch
-res://addons/dialogic/Resources/test_timeline.dtl
+res://src/scripts/Globle.gd
 res://src/scripts/npc/npc.gd
+res://src/scripts/Player/Player.gd
+res://scenes/NPC/Friendly/shark_man.tscn
