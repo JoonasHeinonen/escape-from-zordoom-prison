@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d22g7s2ju1pb4"
-path.s3tc="res://.godot/imported/projectile_blaster_effect.png-e141878017579d5431ad09ab61e2d26a.s3tc.ctex"
+path="res://.godot/imported/projectile_blaster_effect.png-e141878017579d5431ad09ab61e2d26a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/effects/projectile_effects/projectile_blaster_effect.png"
-dest_files=["res://.godot/imported/projectile_blaster_effect.png-e141878017579d5431ad09ab61e2d26a.s3tc.ctex"]
+dest_files=["res://.godot/imported/projectile_blaster_effect.png-e141878017579d5431ad09ab61e2d26a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -14,6 +14,7 @@ const RANDOM_ANGLE = PI / 2.0
 @onready var miniturret_packed_projectile = preload("res://scenes/Projectiles/MiniturretPackedProjectile.tscn")
 @onready var pulse_rifle_projectile = preload("res://scenes/Projectiles/PulseRifleProjectile.tscn")
 @onready var gun_btn = preload("res://scenes/UI/VendorWeaponButton.tscn")
+@onready var sheep = preload("res://scenes/NPC/Enemies/Sheep.tscn")
 @onready var hand_instance_src = "res://resources/images/characters/player/"
 
 @onready var angela_arm = $AngelaArm
@@ -21,11 +22,12 @@ const RANDOM_ANGLE = PI / 2.0
 @onready var shoot_timer = $ShootTimer
 @onready var sniping_radical = $SnipingRadical
 @onready var ui_timer = $PlayerUI/UINotification/Ui_Timer
+@onready var sheepinator_raycast = $SheepinatorRaycast
 @onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
 	$PlayerUI/VendorContainer,
-# $PlayerUI/ArenaMenu
+	# $PlayerUI/ArenaMenu
 ]
 
 @export var check_point_enabled = true
@@ -601,6 +603,14 @@ func shoot_ry3no():
 
 func shoot_sheepinator():
 	print("Sheepinator used. All enemies are converted into sheeps.")
+	var sheepinator_overlaps = sheepinator_raycast.get_overlapping_bodies()
+	if sheepinator_overlaps.size() > 0:
+		for overlap in sheepinator_overlaps:
+			if (overlap.get_meta("type") == "enemy"):
+				var overlap_sheep = sheep.instantiate()
+				overlap_sheep.global_transform = overlap.global_transform
+				overlap.queue_free()
+				get_parent().get_node("npc").get_node("enemies").add_child(overlap_sheep)
 
 func shoot_miniturret_glove():
 	var bullet = miniturret_packed_projectile.instantiate()
@@ -779,3 +789,6 @@ func _on_FadeIn_fade_finished():
 
 func _on_DamageCooloffTimer_timeout():
 	player_is_just_damaged = false
+
+func _on_sheepinator_raycast_timer_timeout():
+	pass

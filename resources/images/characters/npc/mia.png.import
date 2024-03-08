@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://co8rytf0hiyu3"
-path.s3tc="res://.godot/imported/mia.png-517832df2651bfd705a296464845a0e9.s3tc.ctex"
+path="res://.godot/imported/mia.png-517832df2651bfd705a296464845a0e9.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/characters/npc/mia.png"
-dest_files=["res://.godot/imported/mia.png-517832df2651bfd705a296464845a0e9.s3tc.ctex"]
+dest_files=["res://.godot/imported/mia.png-517832df2651bfd705a296464845a0e9.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://buetcn3j6bmt8"
-path.s3tc="res://.godot/imported/pulse_rifle.png-9c1c43897489d2c2ef028606c7d9f67b.s3tc.ctex"
+path="res://.godot/imported/pulse_rifle.png-9c1c43897489d2c2ef028606c7d9f67b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/weapons/pulse_rifle.png"
-dest_files=["res://.godot/imported/pulse_rifle.png-9c1c43897489d2c2ef028606c7d9f67b.s3tc.ctex"]
+dest_files=["res://.godot/imported/pulse_rifle.png-9c1c43897489d2c2ef028606c7d9f67b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

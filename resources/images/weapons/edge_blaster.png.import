@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bl1k1sd08mgw3"
-path.s3tc="res://.godot/imported/edge_blaster.png-c281226bff5077d29f7afb24156d146a.s3tc.ctex"
+path="res://.godot/imported/edge_blaster.png-c281226bff5077d29f7afb24156d146a.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/weapons/edge_blaster.png"
-dest_files=["res://.godot/imported/edge_blaster.png-c281226bff5077d29f7afb24156d146a.s3tc.ctex"]
+dest_files=["res://.godot/imported/edge_blaster.png-c281226bff5077d29f7afb24156d146a.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

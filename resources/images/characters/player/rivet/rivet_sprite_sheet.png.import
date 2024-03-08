@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cghn4fkyrnshn"
-path.s3tc="res://.godot/imported/rivet_sprite_sheet.png-47d4239d8731f671d133b0910d9ed972.s3tc.ctex"
+path="res://.godot/imported/rivet_sprite_sheet.png-47d4239d8731f671d133b0910d9ed972.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/characters/player/rivet/rivet_sprite_sheet.png"
-dest_files=["res://.godot/imported/rivet_sprite_sheet.png-47d4239d8731f671d133b0910d9ed972.s3tc.ctex"]
+dest_files=["res://.godot/imported/rivet_sprite_sheet.png-47d4239d8731f671d133b0910d9ed972.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

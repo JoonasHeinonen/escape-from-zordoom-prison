@@ -225,8 +225,10 @@ graph_offset = Vector2(-140.367, -99.1264)
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2")
+direction = null
 is_armored = true
 enemy_health = 4
+enemy_speed = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 2.1, 0, 0, 0, 0.4, 0, -0.15, 0)
@@ -261,6 +263,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("11")
 
 [node name="DetectDistance" type="Area3D" parent="."]
+transform = Transform3D(0.999989, 0, 0.00478218, 0, 1, 0, -0.00478218, 0, 0.999989, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DetectDistance"]
 transform = Transform3D(10, 0, 0, 0, 8, 0, 0, 0, 2, 0, 0, 0)

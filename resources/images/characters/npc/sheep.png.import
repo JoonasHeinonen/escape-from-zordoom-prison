@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwfelc82veqon"
-path="res://.godot/imported/angela_sheet_init_finished.png-6759115702ce84a0a1715b86cf166b9e.ctex"
+uid="uid://vychiu7h3fo7"
+path="res://.godot/imported/sheep.png-14a6d99e1d1367e2ac060489abba6c37.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/images/characters/player/angela/angela_sheet_init_finished.png"
-dest_files=["res://.godot/imported/angela_sheet_init_finished.png-6759115702ce84a0a1715b86cf166b9e.ctex"]
+source_file="res://resources/images/characters/npc/sheep.png"
+dest_files=["res://.godot/imported/sheep.png-14a6d99e1d1367e2ac060489abba6c37.ctex"]
 
 [params]
 

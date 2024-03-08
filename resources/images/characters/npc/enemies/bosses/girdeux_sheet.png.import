@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://goldf0vxdwvc"
-path.s3tc="res://.godot/imported/girdeux_sheet.png-93d179f73fd6bfcaee13745c4ec21a0b.s3tc.ctex"
+path="res://.godot/imported/girdeux_sheet.png-93d179f73fd6bfcaee13745c4ec21a0b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png"
-dest_files=["res://.godot/imported/girdeux_sheet.png-93d179f73fd6bfcaee13745c4ec21a0b.s3tc.ctex"]
+dest_files=["res://.godot/imported/girdeux_sheet.png-93d179f73fd6bfcaee13745c4ec21a0b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

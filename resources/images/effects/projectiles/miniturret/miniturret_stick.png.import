@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://p30u2bovshwi"
-path.s3tc="res://.godot/imported/miniturret_stick.png-83c8ccf72b4bc3b407b409e08565f7ec.s3tc.ctex"
+path="res://.godot/imported/miniturret_stick.png-83c8ccf72b4bc3b407b409e08565f7ec.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/effects/projectiles/miniturret/miniturret_stick.png"
-dest_files=["res://.godot/imported/miniturret_stick.png-83c8ccf72b4bc3b407b409e08565f7ec.s3tc.ctex"]
+dest_files=["res://.godot/imported/miniturret_stick.png-83c8ccf72b4bc3b407b409e08565f7ec.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dwdsn1lid1cvo"
-path.s3tc="res://.godot/imported/girdeux_flamethrower.png-6b484cb1f21f23b5a5019c51d575ce39.s3tc.ctex"
+path="res://.godot/imported/girdeux_flamethrower.png-6b484cb1f21f23b5a5019c51d575ce39.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/weapons/enemy/girdeux_flamethrower.png"
-dest_files=["res://.godot/imported/girdeux_flamethrower.png-6b484cb1f21f23b5a5019c51d575ce39.s3tc.ctex"]
+dest_files=["res://.godot/imported/girdeux_flamethrower.png-6b484cb1f21f23b5a5019c51d575ce39.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

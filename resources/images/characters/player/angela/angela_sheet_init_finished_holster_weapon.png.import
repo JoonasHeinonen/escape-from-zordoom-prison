@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbel2rhwi3en2"
-path.s3tc="res://.godot/imported/angela_sheet_init_finished_holster_weapon.png-8d8ed9614400c0e6370b0392c601b8a5.s3tc.ctex"
+path="res://.godot/imported/angela_sheet_init_finished_holster_weapon.png-8d8ed9614400c0e6370b0392c601b8a5.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png"
-dest_files=["res://.godot/imported/angela_sheet_init_finished_holster_weapon.png-8d8ed9614400c0e6370b0392c601b8a5.s3tc.ctex"]
+dest_files=["res://.godot/imported/angela_sheet_init_finished_holster_weapon.png-8d8ed9614400c0e6370b0392c601b8a5.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

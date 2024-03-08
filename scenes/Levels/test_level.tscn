@@ -121,9 +121,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -3.162, -1.25)
 
 [node name="Girdeux" parent="npc/enemies" instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9655, -21.3259, 0)
+direction = null
+enemy_speed = null
 
 [node name="Enemy" parent="npc/enemies" instance=ExtResource("15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.1698, -19.2244, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02467, 1.45589, 0)
 
 [node name="Enemy2" parent="npc/enemies" instance=ExtResource("15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0)

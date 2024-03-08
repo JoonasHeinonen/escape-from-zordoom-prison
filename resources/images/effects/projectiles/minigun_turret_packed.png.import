@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7kmfpleca41n"
-path.s3tc="res://.godot/imported/minigun_turret_packed.png-2dd87dbc657951a789b5086e1b7bc943.s3tc.ctex"
+path="res://.godot/imported/minigun_turret_packed.png-2dd87dbc657951a789b5086e1b7bc943.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://resources/images/effects/projectiles/minigun_turret_packed.png"
-dest_files=["res://.godot/imported/minigun_turret_packed.png-2dd87dbc657951a789b5086e1b7bc943.s3tc.ctex"]
+dest_files=["res://.godot/imported/minigun_turret_packed.png-2dd87dbc657951a789b5086e1b7bc943.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
