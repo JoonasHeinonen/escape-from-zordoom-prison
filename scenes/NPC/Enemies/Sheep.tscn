@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://dnrfyec61yev6"]
 
-[ext_resource type="Script" path="res://src/scripts/npc/enemies/enemy_base.gd" id="1_pa1sg"]
+[ext_resource type="Script" path="res://src/scripts/npc/enemies/sheep_ai.gd" id="1_pytf2"]
 [ext_resource type="Texture2D" uid="uid://vychiu7h3fo7" path="res://resources/images/characters/npc/sheep.png" id="2_ey0xd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5km1e"]
+size = Vector3(1, 0.628418, 1)
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_824vs"]
 states/End/position = Vector2(719, -17)
@@ -11,14 +12,17 @@ states/Start/position = Vector2(92, -36)
 graph_offset = Vector2(-113, -77)
 
 [node name="Sheep" type="CharacterBody3D"]
-script = ExtResource("1_pa1sg")
-direction = "Left"
+axis_lock_linear_z = true
+axis_lock_angular_z = true
+script = ExtResource("1_pytf2")
+direction = "Right"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 0.4, 0, -0.4, 0)
 shape = SubResource("BoxShape3D_5km1e")
 
 [node name="EnemySprite" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 alpha_scissor_threshold = 1.0
 texture_filter = 0
 texture = ExtResource("2_ey0xd")
@@ -28,3 +32,9 @@ texture = ExtResource("2_ey0xd")
 [node name="EnemyAnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_824vs")
 anim_player = NodePath("../EnemyAnimationPlayer")
+
+[node name="JumpTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]

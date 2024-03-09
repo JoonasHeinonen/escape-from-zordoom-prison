@@ -225,10 +225,8 @@ graph_offset = Vector2(-140.367, -99.1264)
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("2")
-direction = null
 is_armored = true
 enemy_health = 4
-enemy_speed = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1.2, 0, 0, 0, 2.1, 0, 0, 0, 0.4, 0, -0.15, 0)

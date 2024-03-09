@@ -7,6 +7,8 @@ class_name EnemyBase
 enum elements {GROUND, WATER, AIR, STATIC}
 
 @export_enum("Right", "Left") var direction: String
+@export_enum("Patrol", "Idle", "Aggressive") var stances: String
+
 @export var is_armored : bool = false
 @export var enemy_health : int = 10
 @export var enemy_speed : int = 10
@@ -16,6 +18,7 @@ var is_dead : bool = false
 var is_in_range : bool = false
 
 var element = null
+var stance = null
 var meta_name : String = ""
 var speed : int
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -37,6 +40,13 @@ func _process(_delta):
 	if (enemy_health <= 0) : expire_enemy()
 
 func _physics_process(delta):
+	determine_element(element, delta)
+
+	if (self.has_node("Audio")):
+		for audio_child in $Audio.get_children():
+			audio_child.position = Vector3(self.position.x, self.position.y, 0)
+
+func determine_element(element, delta: float):
 	match (element):
 		elements.GROUND:
 			if not is_on_floor():
@@ -56,9 +66,25 @@ func _physics_process(delta):
 			set_velocity(velocity * delta)
 			move_and_slide()
 
-	if (self.has_node("Audio")):
-		for audio_child in $Audio.get_children():
-			audio_child.position = Vector3(self.position.x, self.position.y, 0)
+## TODO Develop the stances later on.
+func determine_stance(stance: String, vel: float):
+	match(stance):
+		"Patrol":
+			if (is_on_wall()):
+				if (direction == "Left"):
+					$EnemySprite.scale.x = -4
+					velocity.x = vel
+					direction = "Right"
+				elif (direction == "Right"):
+					$EnemySprite.scale.x = 4
+					velocity.x -= vel
+					direction = "Left"
+		"Idle":
+			pass
+		"Aggressive":
+			pass
+		_:
+			pass
 
 func damage_enemy(health : int):
 	if (element == elements.STATIC):

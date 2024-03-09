@@ -609,6 +609,7 @@ func shoot_sheepinator():
 			if (overlap.get_meta("type") == "enemy"):
 				var overlap_sheep = sheep.instantiate()
 				overlap_sheep.global_transform = overlap.global_transform
+				overlap_sheep.scale = overlap.scale
 				overlap.queue_free()
 				get_parent().get_node("npc").get_node("enemies").add_child(overlap_sheep)
 

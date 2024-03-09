@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bvqbnb6c77jyo"]
+[gd_scene load_steps=31 format=3 uid="uid://bvqbnb6c77jyo"]
 
 [ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
 [ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_ksfwo"]
@@ -9,8 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/SlimCognito.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://d18jopbss2gd1" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
-[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/Player.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://dq4w3pnkkitcj" path="res://scenes/NPC/Friendly/NullNPC.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://dnrfyec61yev6" path="res://scenes/NPC/Enemies/Sheep.tscn" id="10_jby62"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
 [ext_resource type="PackedScene" uid="uid://dn230pjm7jtlh" path="res://scenes/Destructibles/Infrastructure/Lamps/LampPost.tscn" id="13"]
 [ext_resource type="PackedScene" uid="uid://bgdy24dvbfxun" path="res://scenes/Collectibles/AmmoCan.tscn" id="14"]
@@ -121,8 +122,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -3.162, -1.25)
 
 [node name="Girdeux" parent="npc/enemies" instance=ExtResource("6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9655, -21.3259, 0)
-direction = null
-enemy_speed = null
+
+[node name="Sheep" parent="npc/enemies" instance=ExtResource("10_jby62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.94502, -1.64278, 0)
 
 [node name="Enemy" parent="npc/enemies" instance=ExtResource("15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02467, 1.45589, 0)
