@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://resources/images/effects/explosions_n_fire/sparkle.png" type="Texture" id=1]
+[ext_resource path="res://resources/images/effects/explosions_n_fire/sparkle.png" type="Texture2D" id=1]
 [ext_resource path="res://src/scripts/effects/explosions/explosive_crate_explosion.gd" type="Script" id=2]
 
-[sub_resource type="SpatialMaterial" id=1]
+[sub_resource type="StandardMaterial3D" id=1]
 flags_unshaded = true
 vertex_color_use_as_albedo = true
 params_blend_mode = 1
@@ -14,10 +14,10 @@ particles_anim_loop = false
 albedo_texture = ExtResource( 1 )
 
 [sub_resource type="Gradient" id=6]
-offsets = PoolRealArray( 0, 0.947826, 1 )
-colors = PoolColorArray( 0.921875, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1 )
+offsets = PackedFloat32Array( 0, 0.947826, 1 )
+colors = PackedColorArray( 0.921875, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1 )
 
-[sub_resource type="GradientTexture" id=7]
+[sub_resource type="GradientTexture2D" id=7]
 gradient = SubResource( 6 )
 
 [sub_resource type="Curve" id=2]
@@ -26,7 +26,7 @@ _data = [ Vector2( 0, 1 ), 0.0, -0.0096503, 0, 0, Vector2( 1, 0.395455 ), 0.0, 0
 [sub_resource type="CurveTexture" id=3]
 curve = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticleProcessMaterial" id=4]
 emission_shape = 1
 emission_sphere_radius = 0.1
 direction = Vector3( 1, 1, 1 )
@@ -43,7 +43,7 @@ color_ramp = SubResource( 7 )
 
 [sub_resource type="QuadMesh" id=5]
 
-[node name="BoltSparkle" type="Spatial"]
+[node name="BoltSparkle" type="Node3D"]
 script = ExtResource( 2 )
 
 [node name="Particles" type="Particles" parent="."]

@@ -1,8 +1,8 @@
 class_name PlayerHit_box
 
-extends Area
+extends Area3D
 
-export var damage := 10
+@export var damage := 10
 # https://www.youtube.com/watch?v=JWjzSn95bM0
 # 13:00
 # Use the stuff from the npc to enter the hurt box.

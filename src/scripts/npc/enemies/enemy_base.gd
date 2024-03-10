@@ -1,15 +1,16 @@
-extends KinematicBody
+extends CharacterBody3D
 
 class_name EnemyBase
 
-onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
+@onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
 enum elements {GROUND, WATER, AIR, STATIC}
 
-export(String, "Right", "Left") var direction
-export var is_armored : bool = false
-export var enemy_health : int = 10
-export var enemy_speed : int = 10
+@export var direction : String # (String, "Right", "Left")
+@export var is_armored : bool = false
+@export var enemy_health : int = 10
+#why is this here if we have speed on line 22
+@export var enemy_speed : int = 10
 
 var is_alerted : bool = false
 var is_dead : bool = false
@@ -19,51 +20,62 @@ var element = null
 var gravity : int
 var meta_name : String = ""
 var speed : int
-var velocity = Vector3(0, 0, 0)
+#var velocity = Vector3(0, 0, 0)
 
-var animation_player
 var player
-var state_machine
+@onready var state_machine = $EnemyAnimationTree["parameters/playback"]
+@onready var animation_player : AnimationPlayer = $EnemyAnimationPlayer
 
 func _ready():
 	element = elements.STATIC
 	meta_name = "enemy"
-	state_machine = $EnemyAnimationTree.get("parameters/playback")
-	animation_player = $EnemyAnimationPlayer
+	#state_machine = $EnemyAnimationTree
+	#state_machine = $EnemyAnimationTree.get("parameters/playback")
+	#animation_player = $EnemyAnimationPlayer
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
 	player = get_parent().get_parent().get_parent().get_node('player')
 
 func _process(_delta):
-	if (state_machine.get_current_node() == "Enemy_Damage" and state_machine.get_current_play_position() >= 0.2):
-		state_machine.travel("Enemy_Idle")
-	if (enemy_health <= 0) : expire_enemy()
+	# checks to see if the state_machine is null or not
+	if (is_instance_valid(state_machine)):
+		if animation_player.get_current_animation() == "Enemy_Damage" and animation_player.is_playing():
+			print(state_machine)
+			state_machine.travel("Enemy_Idle")
+		if (enemy_health <= 0): 
+			expire_enemy()
 
 func _physics_process(delta):
 	match (element):
 		elements.GROUND:
 			if not is_on_floor() : velocity.y = -4
-			move_and_slide(velocity, Vector3.UP)
+			set_velocity(velocity)
+			set_up_direction(Vector3.UP)
+			move_and_slide()
 		elements.STATIC:
 			if not is_on_floor() : velocity.y = -4
-			move_and_slide(velocity, Vector3.UP)
+			set_velocity(velocity)
+			set_up_direction(Vector3.UP)
+			move_and_slide()
 		elements.AIR:
 			velocity.y = gravity
+			# try and use delta doe any velocity changes
 			velocity.x = speed * 1
-			move_and_slide(velocity * delta)
+			set_velocity(velocity)
+			move_and_slide()
 
 	if (self.has_node("Audio")):
 		for audio_child in $Audio.get_children():
-			audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+			audio_child.position = Vector3(self.position.x, self.position.y, 0)
 
 func damage_enemy(health : int):
 	if (element == elements.STATIC):
-		if (player.translation.x > self.translation.x):
+		if (player.position.x > self.position.x):
 			decide_direction("Left")
-		elif (player.translation.x < self.translation.x):
+		elif (player.position.x < self.position.x):
 			decide_direction("Right")
 	enemy_health -= health
-
+	print(enemy_health)
 func decide_direction(d : String):
 	if d == "Right" : 
 		$EnemySprite.flip_h = false
@@ -87,7 +99,7 @@ func expire_enemy():
 	# TODO add enemy death animation.
 
 func add_active_radical():
-	var g_t_r = radical.instance()
+	var g_t_r = radical.instantiate()
 	if (!self.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
 		self.add_child(g_t_r)
 		g_t_r.global_transform = $EnemySprite.global_transform

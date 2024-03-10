@@ -1,8 +1,8 @@
 extends MenuSceneControlBase
 
-onready var return_btn = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
-onready var screen_check_box = $VBoxContainer/CenterRow/Buttons/ScreenCheckBox
-onready var exit_btn = $VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton
+@onready var return_btn = $VBoxContainer/CenterRow/Buttons/ReturnToGameButton
+@onready var screen_check_box = $VBoxContainer/CenterRow/Buttons/ScreenCheckBox
+@onready var exit_btn = $VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton
 
 var btns : Array = [return_btn, exit_btn]
 
@@ -10,9 +10,9 @@ func _process(_delta):
 	if (Globle.vendor_active):
 		self.hide()
 	if (Globle.game_fullscreen):
-		self.rect_size = Vector2(1920, 1080)
+		self.size = Vector2(1920, 1080)
 	elif (!Globle.game_fullscreen):
-		self.rect_size = Vector2(1280, 720)
+		self.size = Vector2(1280, 720)
 	if (self.visible):
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
@@ -40,7 +40,7 @@ func _on_ReturnToGameButton_pressed():
 
 func _on_ReturnToMainMenuButton_pressed():
 	Globle.menu_to_return = "StartGame"
-	get_tree().change_scene("res://scenes/Menu/MainMenu.tscn")
+	get_tree().change_scene_to_file("res://scenes/Menu/MainMenu.tscn")
 
 func _on_ScreenCheckBox_pressed():
 	## TODO Try to figure a way how to keep this unpaused.

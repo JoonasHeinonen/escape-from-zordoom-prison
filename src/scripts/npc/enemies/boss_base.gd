@@ -2,9 +2,9 @@ extends EnemyBase
 
 class_name BossBase
 
-onready var flame_projectile = preload("res://scenes/Projectiles/enemy_projectiles/flame.tscn")
-onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
-onready var girdeux_body = preload("res://scenes/NPC/Enemies/Bosses/GirdeuxBody.tscn")
+@onready var flame_projectile = preload("res://scenes/Projectiles/enemy_projectiles/flame.tscn")
+@onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
+@onready var girdeux_body = preload("res://scenes/NPC/Enemies/Bosses/GirdeuxBody.tscn")
 
 var is_damaged : bool = false
 var is_player_nearby : bool = false
@@ -33,7 +33,7 @@ func _physics_process(delta):
 			var health_data : float = (float(enemy_health) / float(max_health)) * 100
 			player.boss_fight_active = true
 			player.init_boss_fight(self.name, health_data, self.name.to_lower(), max_health)
-			turn_enemy(player.translation.x, self.translation.x)
+			turn_enemy(player.position.x, self.position.x)
 		else:
 			state_machine.travel("Enemy_Idle")
 	if is_alerted and is_in_range : state_machine.travel("Girdeux_Shoot")
@@ -41,7 +41,9 @@ func _physics_process(delta):
 	# Do the jump logic after the boss is on wall.
 	if (is_on_wall() and !is_player_nearby):
 		velocity.y = 20
-	move_and_slide(velocity, Vector3.UP)
+	set_velocity(velocity)
+	set_up_direction(Vector3.UP)
+	move_and_slide()
 	
 func turn_head():
 	state_machine.travel("Girdeux_TurnHead")
@@ -53,7 +55,7 @@ func turn_head():
 
 func shoot_flames():
 	var flame_instance = flame_projectile.instance()
-	flame_instance.translation.x = 3
+	flame_instance.position.x = 3
 	get_parent().add_child(flame_instance)
 	flame_instance.global_transform = $Flamethrower/FlamethrowerSprite/FlamethrowerPos.global_transform
 	if direction == "Left": flame_instance.set_particle_size(-1)
@@ -63,7 +65,7 @@ func expire_enemy():
 	player.boss_fight_active = false
 	match self.name:
 		"Girdeux":
-			generate_body(girdeux_body.instance())
+			generate_body(girdeux_body.instantiate())
 		_:
 			pass
 	queue_free()

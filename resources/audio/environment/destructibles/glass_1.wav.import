@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/glass_1.wav-bcc9e8308babcbbf3b72a72a33c9a9ff.sample"
+type="AudioStreamWAV"
+uid="uid://cr3gfx1yw705t"
+path="res://.godot/imported/glass_1.wav-bcc9e8308babcbbf3b72a72a33c9a9ff.sample"
 
 [deps]
 
 source_file="res://resources/audio/environment/destructibles/glass_1.wav"
-dest_files=[ "res://.import/glass_1.wav-bcc9e8308babcbbf3b72a72a33c9a9ff.sample" ]
+dest_files=["res://.godot/imported/glass_1.wav-bcc9e8308babcbbf3b72a72a33c9a9ff.sample"]
 
 [params]
 

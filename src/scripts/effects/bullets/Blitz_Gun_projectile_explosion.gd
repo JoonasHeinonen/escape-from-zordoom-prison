@@ -1,4 +1,4 @@
-extends KinematicBody
+extends CharacterBody3D
 
 func _physics_process(delta):
 	self.rotation.x = 0

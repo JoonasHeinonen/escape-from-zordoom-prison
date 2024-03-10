@@ -1,6 +1,6 @@
-extends RigidBody
+extends RigidBody3D
 
-onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
+@onready var bolt_crate_fragments = preload("res://scenes/Destructibles/Crates/CrateFragments/bolt_crate_fragments.tscn")
 
 #func _on_Area_area_entered(area):
 #	if body.name == "ProjectileExplosionArea" || body.name == "ExplosionEffectiveRadius":

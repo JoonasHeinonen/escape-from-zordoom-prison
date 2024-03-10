@@ -58,6 +58,7 @@ var melee_attack = false
 var player_inventory = false
 var vendor_active = false
 var vendor_open = false
+var player_active = true
 
 var bolts = 0
 
@@ -70,9 +71,9 @@ func update_spawn(new_point) : spawn_point = new_point
 
 func _process(delta):
 	if (game_fullscreen):
-		OS.window_fullscreen = true
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (true) else Window.MODE_WINDOWED
 	elif (!game_fullscreen):
-		OS.window_fullscreen = false
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (false) else Window.MODE_WINDOWED
 
 ## TODO Not sure if we need this function.
 func instance_node(node, location, parent):
@@ -86,4 +87,4 @@ func update_vendor():
 	for wpn_for_sale in weapons_for_sale:
 		wpn_index += 1
 		if current_weapons.has(wpn_for_sale):
-			weapons_for_sale.remove(wpn_index)
+			weapons_for_sale.remove_at(wpn_index)

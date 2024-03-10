@@ -1,11 +1,11 @@
-extends Area
+extends Area3D
 
-onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
+@onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
 # When a body containing the proper tag enters the area.
 func _on_TargetDetectionArea_body_entered(body):
 	if (body.has_meta("type") && body.get_meta("type") == "destroyable"):
-		var g_t_r = radical.instance()
+		var g_t_r = radical.instantiate()
 		var b_c   = body.get_children()
 		
 		for c in b_c:

@@ -1,8 +1,8 @@
-extends Spatial
+extends Node3D
 
-onready var collision_shapes = [
-	$DoorRight/StaticBody/CollisionShape,
-	$DoorLeft/StaticBody/CollisionShape
+@onready var collision_shapes = [
+	$DoorRight/StaticBody3D/CollisionShape3D,
+	$DoorLeft/StaticBody3D/CollisionShape3D
 ]
 
 var player

@@ -1,13 +1,13 @@
 class_name Crate_hurt_Box
-extends Area 
+extends Area3D 
 
 func _init() -> void:
 	collision_layer = 0
 	collision_mask = 2
 
 func _ready() -> void: 
-	connect("area_entered", self, "_on_area_entered")
-	connect("area_exited", self, "_on_area_exit")
+	connect("area_entered", Callable(self, "_on_area_entered"))
+	connect("area_exited", Callable(self, "_on_area_exit"))
 
 func _on_area_entered(hitbox : PlayerHit_box) -> void:
 	if hitbox == null:

@@ -1,6 +1,6 @@
-extends Area
+extends Area3D
 
-export(String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_man") var character_name
+@export var character_name : String # (String, "Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_man")
 
 var active : bool = false
 
@@ -13,12 +13,12 @@ var shark_man_dialog_value : int = 0
 var player
 var dialog
 
+
 func _ready():
 	if (character_name == "Girdeux"):
 		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
-	connect("body_entered", self, "_on_NPC_body_entered")
-	connect("body_exited", self, "_on_NPC_body_exited")
-
+	connect("body_entered", Callable(self, "_on_NPC_body_entered"))
+	connect("body_exited", Callable(self, "_on_NPC_body_exited"))
 func _process(delta):
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active
@@ -26,7 +26,7 @@ func _process(delta):
 func _input(event):
 	if (Globle.player_character == "Angela" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active):
 		if get_node_or_null('DialogNode') == null:
-			if Input.is_action_just_pressed("ui_accept") and active: 
+			if Input.is_action_just_pressed("ui_accept") and active:
 				match(character_name):
 					"Mia":
 						match(mia_dialog_value):
@@ -50,9 +50,14 @@ func _input(event):
 					"Shark_man":
 						match(shark_man_dialog_value):
 							(0):
-								commence_dialog('timeline__Angela_shark_man')
-						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
-						Globle.arena_menu_open = true
+								print("checks dialogic")
+								commence_dialog('test_timeline')
+								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 1)
+								Globle.player_active = false
+							(1):
+								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
+								Globle.arena_menu_open = true
+								Globle.player_active = true
 	if (Globle.player_character == "Rivet" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active == true):
 		match(character_name):
 			"Mia":
@@ -78,6 +83,7 @@ func _input(event):
 				match(shark_man_dialog_value):
 					(0):
 						commence_dialog('timeline_Rivet_shark_man')
+						get_viewport().set_input_as_handled()
 				shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 				Globle.arena_menu_open = true
 	if (Globle.player_character == "Rivet"):
@@ -108,10 +114,8 @@ func _input(event):
 						match(shark_man_dialog_value):
 							(0):
 								#Re-due menue logic.
-								print(Globle.player_character)
 								commence_dialog('timeline_Rivet_shark_man')
 						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
-						Globle.arena_menu_open = true
 
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active
@@ -141,14 +145,19 @@ func process_dialog_value(dialog_value : int, max_value : int):
 	return dialog_value
 
 func commence_dialog(timeline : String):
-	get_tree().paused = true
+	# when trying to pause the game we can get the menue but get another error called invalid call. Nonexistent function 'remove' in base array
+	get_tree().paused = false
 	var dialog = Dialogic.start(timeline)
-	dialog.pause_mode = Node.PAUSE_MODE_PROCESS
-	dialog.connect('timeline_end',self,'unpause')
+	get_viewport().set_input_as_handled()
+	#need to check and see if the arena menu is being called correctly 
+	dialog.process_mode = Node.PROCESS_MODE_ALWAYS
+	dialog.connect('timeline_ended', Callable(self, 'unpause'))
 	add_child(dialog)
+	print(Globle.arena_menu_open)
 
 # Unpauses the game timeline.
 func unpause(timeline_name):
+	print("checks if the menu shows up in this unpause function")
 	get_tree().paused = false
 
 # Acts when the player has entered the NPC body.

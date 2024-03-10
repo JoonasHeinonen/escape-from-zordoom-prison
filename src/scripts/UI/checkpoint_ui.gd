@@ -1,10 +1,10 @@
-extends Area
+extends Area3D
 
 var is_active = false
 
 func _ready():
-	connect("body_entered", self, "_on_checkpoint_body_entered")
-	connect("body_exited", self, "_on_checkpoint_body_exited")
+	connect("body_entered", Callable(self, "_on_checkpoint_body_entered"))
+	connect("body_exited", Callable(self, "_on_checkpoint_body_exited"))
 	$checkpoint/Ui_notification.visible = false
 
 func _on_checkpoint_body_entered(body):

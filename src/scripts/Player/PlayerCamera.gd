@@ -1,4 +1,4 @@
-extends Camera
+extends Camera3D
 
 var player
 var player_camera
@@ -10,10 +10,10 @@ func _ready():
 	player = get_parent().get_parent()
 	player_camera = get_parent()
 	sniping_radical = get_parent().get_parent().get_node("SnipingRadical")
-	sniping_radical_camera = get_parent().get_parent().get_node("SnipingRadical/Spatial/Camera")
+	sniping_radical_camera = get_parent().get_parent().get_node("SnipingRadical/Node3D/Camera3D")
 
 func _physics_process(delta):
-	if (player.player_health <= 0) : self.set_as_toplevel(true)
+	if (player.player_health <= 0) : self.set_as_top_level(true)
 	
 	if (player.player_is_aiming_with_rifle):
 		var position2D = get_viewport().get_mouse_position()
@@ -26,8 +26,8 @@ func _physics_process(delta):
 		self.current = false
 		sniping_radical_camera.current = true
 	elif (!player.player_is_aiming_with_rifle): 
-		self.set_as_toplevel(false)
-		self.translation = Vector3(0, 0, 0)
+		self.set_as_top_level(false)
+		self.position = Vector3(0, 0, 0)
 		self.current = true
 		sniping_radical_camera.current = false
 
@@ -37,5 +37,5 @@ func _on_player_update_player_position_to_camera(new_aiming_radical):
 		# Set mouse position.
 		get_viewport().warp_mouse(get_viewport().size / 2)
 		# Confine the mouse to the center, then unconfine it, it centers the mouse.
-		sniping_radical.translation = Vector3(0, 0, 0)
+		sniping_radical.position = Vector3(0, 0, 0)
 		# TODO Initial startup is the issue. Proceed with the gameplay.

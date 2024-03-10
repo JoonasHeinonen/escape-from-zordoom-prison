@@ -1,9 +1,9 @@
 extends MenuSceneControlBase
 
-onready var level_button = preload("res://scenes/Menu/Materials/LevelButton.tscn")
-onready var back_button = $CenterContainer/VBoxContainer/BackButton
-onready var angela_sprite = get_parent().get_node("Angela/AngelaSprite")
-onready var rivet_sprite = get_parent().get_node("Rivet/RivetSprite")
+@onready var level_button = preload("res://scenes/Menu/Materials/LevelButton.tscn")
+@onready var back_button = $CenterContainer/VBoxContainer/BackButton
+@onready var angela_sprite = get_parent().get_node("Angela/AngelaSprite")
+@onready var rivet_sprite = get_parent().get_node("Rivet/RivetSprite")
 
 var scene = null
 var levels = []
@@ -20,7 +20,7 @@ func _ready():
 		angela_sprite.frame = 25
 
 	for level_name in levels:
-		var level = level_button.instance()
+		var level = level_button.instantiate()
 		level.set_scene_to_load("res://scenes/Levels/" + level_name)
 		
 		# Takes the chars from the level_name.
@@ -30,31 +30,18 @@ func _ready():
 		level_name = level_name.capitalize()
 
 		level.set_label(level_name)
-		level.connect("pressed", self, "_on_Button_pressed", [level.scene_to_load])
+		level.connect("pressed", Callable(self, "_on_Button_pressed").bind(level.scene_to_load))
 		$CenterContainer/VBoxContainer/CenterRow/Buttons/LevelList.add_child(level)
 	back_button.grab_focus()
 
 func _process(delta):
 	if (Globle.game_fullscreen):
-		$CenterContainer.rect_size = Vector2(1920, 1080)
+		$CenterContainer.size = Vector2(1920, 1080)
 	elif (!Globle.game_fullscreen):
-		$CenterContainer.rect_size = Vector2(1280, 720)
+		$CenterContainer.size = Vector2(1280, 720)
 
-func list_levels(path):
-	var files = []
-	var dir = Directory.new()
-	dir.open(path)
-	dir.list_dir_begin()
-
-	while true:
-		var file = dir.get_next()
-		if file == "":
-			break
-		elif file.ends_with(".tscn"):
-			files.append(file)
-	dir.list_dir_end()
-
-	return files
+func list_levels(path): 
+	return DirAccess.get_files_at(path)
 
 func _on_Button_pressed(scene_to_load):
 	scene = scene_to_load
@@ -62,4 +49,4 @@ func _on_Button_pressed(scene_to_load):
 	$FadeIn.fade_in()
 
 func _on_FadeIn_fade_finished():
-	get_tree().change_scene(scene)
+	get_tree().change_scene_to_file(scene)

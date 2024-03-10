@@ -1,4 +1,4 @@
-extends RigidBody
+extends RigidBody3D
 
 var speed = 5
 var velocity = Vector3(0, 0, 0)
