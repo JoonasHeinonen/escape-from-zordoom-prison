@@ -3,20 +3,21 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8w1nmvt1ncdb"
-path="res://.godot/imported/tiles_corner_roof_6_silver_city_sand_stone.png-11e56f76712ea1a0feb9b3dd5e2a182c.ctex"
+path.s3tc="res://.godot/imported/tiles_corner_roof_6_silver_city_sand_stone.png-11e56f76712ea1a0feb9b3dd5e2a182c.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={}
 
 [deps]
 
 source_file="res://resources/models/tiles/incubator_lab/tiles_corner_roof_6_silver_city_sand_stone.png"
-dest_files=["res://.godot/imported/tiles_corner_roof_6_silver_city_sand_stone.png-11e56f76712ea1a0feb9b3dd5e2a182c.ctex"]
+dest_files=["res://.godot/imported/tiles_corner_roof_6_silver_city_sand_stone.png-11e56f76712ea1a0feb9b3dd5e2a182c.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -32,4 +33,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
