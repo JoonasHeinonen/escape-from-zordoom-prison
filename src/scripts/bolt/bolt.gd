@@ -69,7 +69,10 @@ func _physics_process(_delta):
 					if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
 						position += (get_parent().get_node("player").position - position) / 10
 			else:
-				position += (get_parent().get_node("player").position - position) / 10
+				if (get_parent().has_node("player")):
+					position += (get_parent().get_node("player").position - position) / 10
+				else:
+					position += (get_parent().get_parent().get_node("player").position - position) / 10
 		var sub_bodies = get_overlapping_bodies()
 		for sub_body in sub_bodies:
 			if sub_body.name == "player":
@@ -78,8 +81,12 @@ func _physics_process(_delta):
 					match(type):
 						"bolt":
 							random.randomize()
-							var count_boults = get_parent().get_node("player").bolt + random.randi_range(5, 10)
-							Globle.bolts += count_boults
+							var count_bolts
+							if (get_parent().has_node("player")):
+								count_bolts = get_parent().get_node("player").bolt + random.randi_range(5, 10)
+							else:
+								count_bolts = get_parent().get_parent().get_node("player").bolt + random.randi_range(5, 10)
+							Globle.bolts += count_bolts
 							sub_body.collect_collectible(random.randi_range(0, 2), "bolt")
 							queue_free()
 
