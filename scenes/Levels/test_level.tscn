@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bvqbnb6c77jyo"]
+[gd_scene load_steps=34 format=3 uid="uid://bvqbnb6c77jyo"]
 
 [ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
 [ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_ksfwo"]
@@ -9,14 +9,15 @@
 [ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/SlimCognito.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://d18jopbss2gd1" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
-[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/Player.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://dq4w3pnkkitcj" path="res://scenes/NPC/Friendly/NullNPC.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://dnrfyec61yev6" path="res://scenes/NPC/Enemies/Sheep.tscn" id="10_jby62"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
 [ext_resource type="PackedScene" uid="uid://dn230pjm7jtlh" path="res://scenes/Destructibles/Infrastructure/Lamps/LampPost.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://dy2k7jfp7swx8" path="res://scenes/BlocksNWorld/Doors/Waypoint.tscn" id="13_or1yy"]
 [ext_resource type="PackedScene" uid="uid://bgdy24dvbfxun" path="res://scenes/Collectibles/AmmoCan.tscn" id="14"]
 [ext_resource type="PackedScene" uid="uid://dvebyw8glgp0n" path="res://scenes/NPC/Enemies/Enemy.tscn" id="15"]
-[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Doors/ArchDoors.tscn" id="16"]
+[ext_resource type="PackedScene" uid="uid://xov5w1sy23lh" path="res://scenes/BlocksNWorld/Doors/ArchDoors.tscn" id="16"]
 [ext_resource type="PackedScene" uid="uid://c6043ke27yksk" path="res://scenes/Destructibles/Crates/HealthCrate.tscn" id="17"]
 [ext_resource type="Script" path="res://src/scripts/UI/checkpoint_ui.gd" id="19"]
 [ext_resource type="PackedScene" uid="uid://brq654ih15j0g" path="res://scenes/Destructibles/Infrastructure/Lamps/LampPostQueue.tscn" id="19_2twd7"]
@@ -24,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://dtrmi0l7bxn5l" path="res://scenes/NPC/Friendly/Mia.tscn" id="21"]
 [ext_resource type="PackedScene" uid="uid://h6nugy4tsune" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
 [ext_resource type="PackedScene" uid="uid://xguugwg5v2bh" path="res://scenes/NPC/Friendly/AngelaOrRivet.tscn" id="23"]
+[ext_resource type="PackedScene" uid="uid://biefobxdqingm" path="res://scenes/BlocksNWorld/Doors/PrisonTaxi.tscn" id="24_mxcxe"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qyk4u"]
 panorama = ExtResource("1_vxvra")
@@ -141,6 +143,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6929, -14.4326, 0)
 collision_layer = 9
 collision_mask = 9
 
+[node name="nef_head2" parent="npc/enemies" instance=ExtResource("22")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.3071, -0.4326, 0)
+collision_layer = 9
+collision_mask = 9
+
+[node name="Waypoints" type="Node" parent="npc"]
+
+[node name="TaxiWaypoints" type="Node" parent="npc/Waypoints"]
+
+[node name="Waypoint0" parent="npc/Waypoints/TaxiWaypoints" instance=ExtResource("13_or1yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, -4, 0)
+
+[node name="Waypoint1" parent="npc/Waypoints/TaxiWaypoints" instance=ExtResource("13_or1yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, -9, 0)
+
+[node name="Waypoint2" parent="npc/Waypoints/TaxiWaypoints" instance=ExtResource("13_or1yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98, -4, 0)
+
+[node name="Waypoint3" parent="npc/Waypoints/TaxiWaypoints" instance=ExtResource("13_or1yy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 7, 0)
+
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("12")
 collision_layer = 3
@@ -183,6 +206,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.1048, -11.0882, 0.27)
 
 [node name="BoltCrate9" parent="destructibles/crates" instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.782, -2.675, 0)
+
+[node name="BoltCrate10" parent="destructibles/crates" instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.018, -2.675, 0)
+
+[node name="BoltCrate11" parent="destructibles/crates" instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.818, -2.675, 0)
+
+[node name="BoltCrate12" parent="destructibles/crates" instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.218, -2.675, 0)
+
+[node name="BoltCrate13" parent="destructibles/crates" instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.618, -1.875, 0)
+
+[node name="BoltCrate14" parent="destructibles/crates" instance=ExtResource("2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.418, -1.875, 0)
 
 [node name="HealthCrate" parent="destructibles/crates" instance=ExtResource("17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.4373, 0, 0)
@@ -275,12 +313,23 @@ collision_mask = 5
 
 [node name="teleports" type="Node" parent="."]
 
+[node name="PrisonTaxi" parent="teleports" instance=ExtResource("24_mxcxe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.509, -3.267, 0)
+
 [node name="Teleport_A1" parent="teleports" instance=ExtResource("7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.026, -23.8999, 0)
 teleport_index = "First"
 
 [node name="Teleport_A2" parent="teleports" instance=ExtResource("7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9881, 6.10031, 0)
+teleport_index = "Second"
+
+[node name="Teleport_B1" parent="teleports" instance=ExtResource("7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.9881, -3.89969, 0)
+teleport_index = "First"
+
+[node name="Teleport_B2" parent="teleports" instance=ExtResource("7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.2119, 6.10031, 0)
 teleport_index = "Second"
 
 [node name="Collectibles" type="Node" parent="."]

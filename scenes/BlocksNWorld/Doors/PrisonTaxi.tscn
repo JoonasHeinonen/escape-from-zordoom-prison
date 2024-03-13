@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://biefobxdqingm"]
+
+[ext_resource type="Script" path="res://src/scripts/world/taxi.gd" id="1_b0m51"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lp2mc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_or80p"]
+size = Vector3(2, 0.4, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qf744"]
+
+[node name="PrisonTaxi" type="Node3D"]
+script = ExtResource("1_b0m51")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(2, 0, 0, 0, 0.4, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_lp2mc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
+transform = Transform3D(0.5, 0, 0, 0, 2.5, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_or80p")
+skeleton = NodePath("../../..")
+
+[node name="ActivationArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("BoxShape3D_qf744")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy2k7jfp7swx8"]
+
+[ext_resource type="Texture2D" uid="uid://b6yg0oxg84rh1" path="res://resources/images/ui/waypoint.png" id="1_1gve7"]
+
+[node name="Waypoint" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_1gve7")
