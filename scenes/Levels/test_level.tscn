@@ -313,8 +313,9 @@ collision_mask = 5
 
 [node name="teleports" type="Node" parent="."]
 
-[node name="PrisonTaxi" parent="teleports" instance=ExtResource("24_mxcxe")]
+[node name="PrisonTaxi" parent="teleports" node_paths=PackedStringArray("waypoints_node") instance=ExtResource("24_mxcxe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.509, -3.267, 0)
+waypoints_node = NodePath("../../npc/Waypoints/TaxiWaypoints")
 
 [node name="Teleport_A1" parent="teleports" instance=ExtResource("7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.026, -23.8999, 0)
@@ -325,7 +326,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9881, 6.10031, 0)
 teleport_index = "Second"
 
 [node name="Teleport_B1" parent="teleports" instance=ExtResource("7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.9881, -3.89969, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -63.9881, -3.89969, 0)
 teleport_index = "First"
 
 [node name="Teleport_B2" parent="teleports" instance=ExtResource("7")]
@@ -345,8 +346,6 @@ weapon = "blitz_gun"
 [node name="WeaponCollectible3" parent="Collectibles" instance=ExtResource("4")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 12.2247, 4.45104, 0)
 weapon = "ry3no"
-
-[node name="WorldBlocks" type="Node" parent="."]
 
 [connection signal="body_entered" from="area_of_death/death" to="area_of_death/death" method="_on_death_body_entered"]
 [connection signal="body_entered" from="checkpoint/New SpawnPoint" to="checkpoint/New SpawnPoint" method="_on_New_SpawnPoint_body_entered"]

@@ -21,4 +21,3 @@ func _ready():
 		child.position.x = distance
 		distance += dist
 		add_child(child)
-		print("X-position: ", child.position)
