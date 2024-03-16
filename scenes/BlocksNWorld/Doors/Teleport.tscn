@@ -58,11 +58,11 @@ shape = SubResource("5")
 transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, -1.4, -0.1, 0)
 shape = SubResource("6")
 
-[node name="TekeportationArea" type="Area3D" parent="."]
+[node name="ActivationArea" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TekeportationArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 shape = SubResource("3")
 
-[connection signal="body_entered" from="TekeportationArea" to="." method="_on_TeleportationArea_body_entered"]
-[connection signal="body_exited" from="TekeportationArea" to="." method="_on_TeleportationArea_body_exited"]
+[connection signal="body_entered" from="ActivationArea" to="." method="_on_ActivationArea_body_entered"]
+[connection signal="body_exited" from="ActivationArea" to="." method="_on_ActivationArea_body_exited"]

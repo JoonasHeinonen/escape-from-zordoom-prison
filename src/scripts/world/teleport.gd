@@ -1,12 +1,10 @@
-extends StaticBody3D
+extends TransportNode
+
+class_name Teleport
 
 @export_enum("First", "Second") var teleport_index: String
 
-var player_in_teleport_radius : bool = false
-
 var target_teleport : String
-
-var player
 var target_teleport_location
 
 func _ready():
@@ -16,7 +14,7 @@ func _ready():
 			target_teleport_location = Vector3(c.position.x, c.position.y + 0.3, 0)
 
 func _process(_delta):
-	if (player_in_teleport_radius and Input.is_action_just_pressed("ui_accept")):
+	if (player_in_activation_radius and Input.is_action_just_pressed("ui_accept")):
 		teleport_player()
 
 func define_target_teleport():
@@ -34,13 +32,3 @@ func define_target_teleport():
 func teleport_player():
 	if (!player.boss_fight_active):
 		player.position = target_teleport_location
-
-func _on_TeleportationArea_body_entered(body):
-	if body.name == "player":
-		player_in_teleport_radius = true
-		player = body
-
-func _on_TeleportationArea_body_exited(body):
-	if body.name == "player":
-		player_in_teleport_radius = false
-		player = null
