@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/SlimCognito.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://d18jopbss2gd1" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
-[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/Player.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://dq4w3pnkkitcj" path="res://scenes/NPC/Friendly/NullNPC.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://dnrfyec61yev6" path="res://scenes/NPC/Enemies/Sheep.tscn" id="10_jby62"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
@@ -158,10 +158,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75, -4, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86, -9, 0)
 
 [node name="Waypoint2" parent="npc/Waypoints/TaxiWaypoints" instance=ExtResource("13_or1yy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -98, -4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -86.6643, -1, 0)
 
 [node name="Waypoint3" parent="npc/Waypoints/TaxiWaypoints" instance=ExtResource("13_or1yy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 7, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.1721, -1.61249, 0)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("12")
@@ -307,14 +307,14 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource("8")]
-transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -31.5992, 8.25528, 0)
+transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -65.5992, -2.24472, 0)
 collision_layer = 5
 collision_mask = 5
 
 [node name="teleports" type="Node" parent="."]
 
 [node name="PrisonTaxi" parent="teleports" node_paths=PackedStringArray("waypoints_node") instance=ExtResource("24_mxcxe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.509, -3.267, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.309, -1.467, 0)
 waypoints_node = NodePath("../../npc/Waypoints/TaxiWaypoints")
 
 [node name="Teleport_A1" parent="teleports" instance=ExtResource("7")]

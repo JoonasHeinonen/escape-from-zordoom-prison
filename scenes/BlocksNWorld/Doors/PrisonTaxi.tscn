@@ -24,3 +24,5 @@ shape = SubResource("BoxShape3D_lp2mc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
 shape = SubResource("BoxShape3D_qf744")
+
+[connection signal="area_entered" from="ActivationArea" to="." method="_on_activation_area_area_entered"]
