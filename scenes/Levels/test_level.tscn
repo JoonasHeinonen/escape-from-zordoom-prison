@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/SlimCognito.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://d18jopbss2gd1" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
-[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/Player.tscn" id="8"]
 [ext_resource type="PackedScene" uid="uid://dq4w3pnkkitcj" path="res://scenes/NPC/Friendly/NullNPC.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://dnrfyec61yev6" path="res://scenes/NPC/Enemies/Sheep.tscn" id="10_jby62"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
