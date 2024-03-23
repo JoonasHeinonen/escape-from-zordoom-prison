@@ -1,4 +1,4 @@
-tool
+@tool
 extends Control
 
 #signal tree_built # used for debugging
@@ -28,15 +28,15 @@ var builtin_enabled := false
 
 var patterns := [["\\bTODO\\b", Color("96f1ad")], ["\\bHACK\\b", Color("d5bc70")], ["\\bFIXME\\b", Color("d57070")]]
 
-onready var tabs := $VBoxContainer/TabContainer as TabContainer
-onready var project := $VBoxContainer/TabContainer/Project as Project
-onready var current := $VBoxContainer/TabContainer/Current as Current
-onready var project_tree := $VBoxContainer/TabContainer/Project/Tree as Tree
-onready var current_tree := $VBoxContainer/TabContainer/Current/Tree as Tree
-onready var settings_panel := $VBoxContainer/TabContainer/Settings as Panel
-onready var colours_container := $VBoxContainer/TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3/Colours as VBoxContainer
-onready var pattern_container := $VBoxContainer/TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4/Patterns as VBoxContainer
-onready var ignore_textbox := $VBoxContainer/TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/Scripts/IgnorePaths/TextEdit as LineEdit
+@onready var tabs := $VBoxContainer/TabContainer as TabContainer
+@onready var project := $VBoxContainer/TabContainer/Project as Project
+@onready var current := $VBoxContainer/TabContainer/Current as Current
+@onready var project_tree := $VBoxContainer/TabContainer/Project/Tree as Tree
+@onready var current_tree := $VBoxContainer/TabContainer/Current/Tree as Tree
+@onready var settings_panel := $VBoxContainer/TabContainer/Settings as Panel
+@onready var colours_container := $VBoxContainer/TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer3/Colours as VBoxContainer
+@onready var pattern_container := $VBoxContainer/TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4/Patterns as VBoxContainer
+@onready var ignore_textbox := $VBoxContainer/TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2/Scripts/IgnorePaths/TextEdit as LineEdit
 
 func _ready() -> void:
 	load_config()
@@ -85,8 +85,8 @@ func go_to_script(script_path: String, line_number : int = 0) -> void:
 		plugin.get_editor_interface().edit_resource(script)
 		plugin.get_editor_interface().get_script_editor().goto_line(line_number - 1)
 
-func get_exec_flags(editor_path : String, script_path : String, line_number : int) -> PoolStringArray:
-	var args : PoolStringArray
+func get_exec_flags(editor_path : String, script_path : String, line_number : int) -> PackedStringArray:
+	var args : PackedStringArray
 	var script_global_path = ProjectSettings.globalize_path(script_path)
 	
 	if editor_path.ends_with("code.cmd") or editor_path.ends_with("code"): ## VS Code
@@ -120,26 +120,26 @@ func sort_backwards(a, b) -> bool:
 func populate_settings() -> void:
 	for i in patterns.size():
 		## Create Colour Pickers
-		var colour_picker := ColourPicker.instance()
+		var colour_picker := ColourPicker.instantiate()
 		colour_picker.colour = patterns[i][1]
 		colour_picker.title = patterns[i][0]
 		colour_picker.index = i
 		colours_container.add_child(colour_picker)
-		colour_picker.colour_picker.connect("color_changed", self, "change_colour", [i])
+		colour_picker.colour_picker.connect("color_changed", Callable(self, "change_colour").bind(i))
 		
 		## Create Patterns
-		var pattern_edit := Pattern.instance()
+		var pattern_edit := Pattern.instantiate()
 		pattern_edit.text = patterns[i][0]
 		pattern_edit.index = i
 		pattern_container.add_child(pattern_edit)
-		pattern_edit.line_edit.connect("text_changed", self, "change_pattern", [i, colour_picker])
-		pattern_edit.remove_button.connect("pressed", self, "remove_pattern", [i, pattern_edit, colour_picker])
+		pattern_edit.line_edit.connect("text_changed", Callable(self, "change_pattern").bind(i, colour_picker))
+		pattern_edit.remove_button.connect("pressed", Callable(self, "remove_pattern").bind(i, pattern_edit, colour_picker))
 	$VBoxContainer/TabContainer/Settings/ScrollContainer/MarginContainer/VBoxContainer/HBoxContainer4/Patterns/AddPatternButton.raise()
 	
 	# path filtering
 	var ignore_paths_field := ignore_textbox
-	if !ignore_paths_field.is_connected("text_changed", self, "_on_ignore_paths_changed"):
-		ignore_paths_field.connect("text_changed", self, "_on_ignore_paths_changed")
+	if !ignore_paths_field.is_connected("text_changed", Callable(self, "_on_ignore_paths_changed")):
+		ignore_paths_field.connect("text_changed", Callable(self, "_on_ignore_paths_changed"))
 	var ignore_paths_text := ""
 	for path in ignore_paths:
 		ignore_paths_text += path + ", "
@@ -245,7 +245,7 @@ func _on_AlphSortCheckBox_toggled(button_pressed: bool) -> void:
 	sort_alphabetical = button_pressed
 
 func _on_AddPatternButton_pressed() -> void:
-	patterns.append(["\\bplaceholder\\b", Color.white])
+	patterns.append(["\\bplaceholder\\b", Color.WHITE])
 	rebuild_settings()
 
 func _on_RefreshCheckButton_toggled(button_pressed: bool) -> void:

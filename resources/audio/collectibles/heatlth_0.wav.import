@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/heatlth_0.wav-ddd5892ca83bc0881dd792031eb12f84.sample"
+type="AudioStreamWAV"
+uid="uid://5t5ahdtggfbn"
+path="res://.godot/imported/heatlth_0.wav-ddd5892ca83bc0881dd792031eb12f84.sample"
 
 [deps]
 
 source_file="res://resources/audio/collectibles/heatlth_0.wav"
-dest_files=[ "res://.import/heatlth_0.wav-ddd5892ca83bc0881dd792031eb12f84.sample" ]
+dest_files=["res://.godot/imported/heatlth_0.wav-ddd5892ca83bc0881dd792031eb12f84.sample"]
 
 [params]
 

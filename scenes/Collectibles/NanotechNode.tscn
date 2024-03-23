@@ -1,0 +1,82 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkkpet2ht6eam"]
+
+[ext_resource type="Script" path="res://src/scripts/bolt/bolt.gd" id="1_pogcq"]
+[ext_resource type="Texture2D" uid="uid://dojwj84gcxl48" path="res://resources/images/effects/health_crate/health_crate_node.png" id="2_kj4xl"]
+[ext_resource type="Texture2D" uid="uid://0nkpvk12ryk4" path="res://resources/images/effects/health_crate/health_crate_node_multiple.png" id="3_4yg4s"]
+
+[sub_resource type="StandardMaterial3D" id="10"]
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_kj4xl")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="11"]
+offsets = PackedFloat32Array(0, 0.315315, 0.756757)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="9"]
+gradient = SubResource("11")
+
+[sub_resource type="ParticleProcessMaterial" id="12"]
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("9")
+
+[sub_resource type="QuadMesh" id="13"]
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="14"]
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_4yg4s")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="15"]
+emission_shape = 1
+emission_sphere_radius = 0.12
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="QuadMesh" id="16"]
+size = Vector2(0.4, 0.4)
+
+[sub_resource type="BoxShape3D" id="25"]
+
+[node name="NanotechNode" type="Area3D"]
+script = ExtResource("1_pogcq")
+type = "nanotech_node"
+
+[node name="Particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0494768, 0)
+material_override = SubResource("10")
+process_material = SubResource("12")
+draw_pass_1 = SubResource("13")
+
+[node name="Particles2" type="GPUParticles3D" parent="."]
+material_override = SubResource("14")
+process_material = SubResource("15")
+draw_pass_1 = SubResource("16")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("25")
+
+[node name="Spots" type="Node3D" parent="."]
+
+[node name="Spot0" type="Node3D" parent="Spots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, -0.07, 0)
+
+[node name="Spot1" type="Node3D" parent="Spots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, -0.07, 0)
+
+[node name="Spot2" type="Node3D" parent="Spots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.07, 0.07, 0)
+
+[node name="Spot3" type="Node3D" parent="Spots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07, 0.07, 0)

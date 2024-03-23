@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/weapon_upgrade.wav-e72207b5c52bb12ba205d1a95d2e46ee.sample"
+type="AudioStreamWAV"
+uid="uid://pcj5vyxqmlts"
+path="res://.godot/imported/weapon_upgrade.wav-e72207b5c52bb12ba205d1a95d2e46ee.sample"
 
 [deps]
 
 source_file="res://resources/audio/weapons/player/weapon_upgrade.wav"
-dest_files=[ "res://.import/weapon_upgrade.wav-e72207b5c52bb12ba205d1a95d2e46ee.sample" ]
+dest_files=["res://.godot/imported/weapon_upgrade.wav-e72207b5c52bb12ba205d1a95d2e46ee.sample"]
 
 [params]
 

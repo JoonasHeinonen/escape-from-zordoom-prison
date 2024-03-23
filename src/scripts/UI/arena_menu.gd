@@ -2,9 +2,9 @@ extends MenuSceneControlBase
 
 const nef_head_preload = preload("res://scenes/NPC/Enemies/nef_head_enemy.tscn")
 
-onready var arena_button = $VBoxContainer/HBoxContainer/FightButtons/Fight1
-onready var exit_button = $VBoxContainer/HBoxContainer/FightButtons/ExitButton
-onready var player = get_parent().get_parent()
+@onready var arena_button = $VBoxContainer/HBoxContainer/FightButtons/Fight1
+@onready var exit_button = $VBoxContainer/HBoxContainer/FightButtons/ExitButton
+@onready var player = get_parent().get_parent()
 
 var bad_guy_instance = null
 var nodes = null
@@ -16,7 +16,7 @@ var check_is_open : bool = false
 func _ready():
 	hide()
 
-func _process(delta):
+func _process(_delta):
 	if (Globle.arena_menu_open && self.visible):
 		arena_button.grab_focus()
 
@@ -40,7 +40,7 @@ func close_menu():
 
 func spawn_bad_guys_in_fight():
 	nodes = get_tree().get_nodes_in_group("badGuySpawn1")
-	bad_guy_instance = nef_head_preload.instance()
+	bad_guy_instance = nef_head_preload.instantiate()
 	nodes[0].add_child(bad_guy_instance)
 
 func check_current_enemies():

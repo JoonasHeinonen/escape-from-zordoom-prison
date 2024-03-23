@@ -1,7 +1,7 @@
-extends Area
+extends Area3D
 
 func _ready():
-	$"../KillTimer".connect("timeout", self, "_on_KillTimer_timeout")
+	$"../KillTimer".connect("timeout", Callable(self, "_on_KillTimer_timeout"))
 	$"../KillTimer".start()
 
 func _on_KillTimer_timeout():

@@ -4,8 +4,8 @@
 [ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=3]
 
 [node name="MenuButton" type="Button"]
-margin_right = 1280.0
-margin_bottom = 51.0
+offset_right = 1280.0
+offset_bottom = 51.0
 mouse_filter = 2
 theme = ExtResource( 3 )
 text = "label"

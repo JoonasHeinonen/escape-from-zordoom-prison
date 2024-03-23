@@ -1,4 +1,4 @@
-tool
+@tool
 extends Panel
 
 signal tree_built # used for debugging
@@ -8,7 +8,7 @@ const TodoItem := preload("res://addons/Todo_Manager/todoItem_class.gd")
 
 var sort_alphabetical := true
 
-onready var tree := $Tree as Tree
+@onready var tree := $Tree as Tree
 
 func build_tree(todo_item : TodoItem, patterns : Array) -> void:
 	tree.clear()

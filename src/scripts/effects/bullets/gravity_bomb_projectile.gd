@@ -1,25 +1,36 @@
 extends ProjectileBase
 
-onready var gravity_bomb_explosion = preload("res://scenes/Effects/ProjectileEffects/GravityBombExplosion.tscn")
-onready var minigun_turret = preload("res://scenes/NPC/Friendly/miniturret.tscn")
+@onready var gravity_bomb_explosion = preload("res://scenes/Effects/ProjectileEffects/GravityBombExplosion.tscn")
+@onready var miniturret = preload("res://scenes/NPC/Friendly/Miniturret.tscn")
 
-export (String, "gravity_bomb_projectile", "miniturret_projectile") var projectile_type
+@export_enum("gravity_bomb_projectile", "miniturret_projectile") var projectile_type: String
 
-# https://www.youtube.com/watch?v=p6OQ7XVsiKw
 func _ready():
-	velocity = Vector3(1, -1, 0)
-	apply_impulse(Vector3.ZERO,velocity * 8)
+	if (projectile_type == "gravity_bomb_projectile"):
+		speed = 6
+	elif (projectile_type == "miniturret_projectile"):
+		speed = 3
 
-#https://www.youtube.com/watch?v=F1Fyj3Lh_Pc&t=239s
-func _on_GravityBombArea_body_entered(body):
+	velocity = Vector3(0, 0, 0)
+	apply_impulse(velocity * 8, Vector3.ZERO)
+
+func _physics_process(delta):
+	velocity.x = speed * delta * 1
+	translate(velocity)
+
+## https://www.youtube.com/watch?v=F1Fyj3Lh_Pc&t=239s
+func _on_GravityBombArea_body_entered(_body):
 	match (projectile_type):
 		"gravity_bomb_projectile":
-			var explosion = gravity_bomb_explosion.instance()
-			explosion.get_node("KinematicBody/Particles").pm.color.a = 1.0
+			var explosion = gravity_bomb_explosion.instantiate()
+			explosion.get_node("CharacterBody3D/Particles").pm.color.a = 1.0
 			get_tree().current_scene.add_child(explosion)
 			explosion.global_transform = $Explosion.global_transform
 		"miniturret_projectile":
-			var m_t = minigun_turret.instance()
+			var m_t = miniturret.instantiate()
 			get_tree().current_scene.add_child(m_t)
 			m_t.global_transform = self.global_transform
+			m_t.scale = Vector3(4, 4, 4)
+			m_t.rotation.y = 0
+			m_t.rotation.z = 0
 	queue_free()

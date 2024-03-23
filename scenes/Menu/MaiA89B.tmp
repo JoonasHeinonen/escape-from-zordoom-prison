@@ -1,0 +1,347 @@
+[gd_scene load_steps=16 format=3 uid="uid://dde5s2lnht7fc"]
+
+[ext_resource type="Script" path="res://src/scripts/Menu/MainMenu.gd" id="1"]
+[ext_resource type="Script" path="res://src/scripts/UI/main_menu.gd" id="2"]
+[ext_resource type="Script" path="res://src/scripts/UI/screen_check_box.gd" id="3"]
+[ext_resource type="Script" path="res://src/scripts/UI/menu_scene_control_base.gd" id="4"]
+[ext_resource type="Script" path="res://src/scripts/Menu/MenuButton.gd" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/Transitions/fade_in.tscn" id="6"]
+[ext_resource type="FontFile" path="res://resources/fonts/rg-future-italic.tres" id="7"]
+[ext_resource type="AudioStream" uid="uid://ds4hudwruc5gc" path="res://resources/audio/ui/button_click.wav" id="8"]
+[ext_resource type="AudioStream" uid="uid://b5npi31bqnhw1" path="res://resources/audio/ui/button_navigate.wav" id="9"]
+[ext_resource type="Theme" uid="uid://dlp4i8x8kuokd" path="res://src/theme/zordoom_theme.tres" id="11"]
+[ext_resource type="Script" path="res://src/scripts/Menu/ReturnMainMenu.gd" id="12"]
+[ext_resource type="PackedScene" path="res://scenes/UI/CharacterSelectionButton.tscn" id="13"]
+
+[sub_resource type="Sky" id="15"]
+radiance_size = 4
+
+[sub_resource type="Environment" id="16"]
+background_mode = 2
+sky = SubResource("15")
+sky_custom_fov = 120.0
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 16.0
+tonemap_mode = 3
+tonemap_white = 14.0
+
+[sub_resource type="StyleBoxFlat" id="17"]
+bg_color = Color(0.156863, 0.490196, 0.556863, 0.294118)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("2")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.905213, -1.34887e-08, 0.424958, -0.237879, 0.828647, 0.506713, -0.35214, -0.559772, 0.750102, 0, 4.95221, 10.8508)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("16")
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="LabelCenterContainer" type="CenterContainer" parent="MainMenu"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4")
+alignment = "Vertical alignment"
+
+[node name="Label" type="Label" parent="MainMenu/LabelCenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7")
+text = "ESCAPE FROM ZORDOOM"
+max_lines_visible = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenu/CenterContainer"]
+custom_minimum_size = Vector2(240, 270)
+layout_mode = 2
+theme_override_styles/panel = SubResource("17")
+
+[node name="Buttons" type="VBoxContainer" parent="MainMenu/CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="NewGameButton" type="Button" parent="MainMenu/CenterContainer/Buttons"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("11")
+text = "SELECT LEVEL"
+script = ExtResource("5")
+
+[node name="Audio" type="Node" parent="MainMenu/CenterContainer/Buttons/NewGameButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/NewGameButton/Audio"]
+stream = ExtResource("8")
+
+[node name="Move" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/NewGameButton/Audio"]
+stream = ExtResource("9")
+
+[node name="LoadGameButton" type="Button" parent="MainMenu/CenterContainer/Buttons"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("11")
+text = "LOAD GAME"
+script = ExtResource("5")
+
+[node name="Audio" type="Node" parent="MainMenu/CenterContainer/Buttons/LoadGameButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/LoadGameButton/Audio"]
+stream = ExtResource("8")
+
+[node name="Move" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/LoadGameButton/Audio"]
+stream = ExtResource("9")
+
+[node name="OptionsButton" type="Button" parent="MainMenu/CenterContainer/Buttons"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("11")
+text = "OPTIONS"
+script = ExtResource("5")
+
+[node name="Audio" type="Node" parent="MainMenu/CenterContainer/Buttons/OptionsButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/OptionsButton/Audio"]
+stream = ExtResource("8")
+
+[node name="Move" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/OptionsButton/Audio"]
+stream = ExtResource("9")
+
+[node name="QuitGameButton" type="Button" parent="MainMenu/CenterContainer/Buttons"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("11")
+text = "EXIT"
+script = ExtResource("5")
+
+[node name="Audio" type="Node" parent="MainMenu/CenterContainer/Buttons/QuitGameButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/QuitGameButton/Audio"]
+stream = ExtResource("8")
+
+[node name="Move" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/QuitGameButton/Audio"]
+stream = ExtResource("9")
+
+[node name="Audio" type="Node" parent="MainMenu"]
+
+[node name="Click" type="AudioStreamPlayer" parent="MainMenu/Audio"]
+stream = ExtResource("8")
+
+[node name="Move" type="AudioStreamPlayer" parent="MainMenu/Audio"]
+stream = ExtResource("9")
+
+[node name="FadeIn" parent="MainMenu" instance=ExtResource("6")]
+visible = false
+layout_mode = 0
+
+[node name="CharacterSelection" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("12")
+menus = "StartGame"
+alignment = "Full alignment"
+
+[node name="LabelCenterContainer" type="CenterContainer" parent="CharacterSelection"]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 240.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4")
+alignment = "Vertical alignment"
+
+[node name="Label" type="Label" parent="CharacterSelection/LabelCenterContainer"]
+layout_mode = 2
+theme = ExtResource("11")
+text = "Pick your character"
+uppercase = true
+
+[node name="CenterContainer" type="CenterContainer" parent="CharacterSelection"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="PanelContainer" type="PanelContainer" parent="CharacterSelection/CenterContainer"]
+custom_minimum_size = Vector2(420, 330)
+layout_mode = 2
+theme_override_styles/panel = SubResource("17")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelection/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CharacterSelection/CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 2
+alignment = 1
+
+[node name="AngelaSelectionButton" parent="CharacterSelection/CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13")]
+layout_mode = 2
+scene_to_load = "res://scenes/Menu/LevelView.tscn"
+characters = "Angela"
+
+[node name="RivetSelectionButton" parent="CharacterSelection/CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13")]
+layout_mode = 2
+scene_to_load = "res://scenes/Menu/LevelView.tscn"
+characters = "Rivet"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="CharacterSelection/CenterContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" type="Button" parent="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(405, 0)
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("11")
+text = "BACK"
+
+[node name="Audio" type="Node" parent="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton/Audio"]
+stream = ExtResource("8")
+
+[node name="Move" type="AudioStreamPlayer" parent="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton/Audio"]
+stream = ExtResource("9")
+
+[node name="Audio" type="Node" parent="CharacterSelection"]
+
+[node name="Click" type="AudioStreamPlayer" parent="CharacterSelection/Audio"]
+stream = ExtResource("8")
+
+[node name="Move" type="AudioStreamPlayer" parent="CharacterSelection/Audio"]
+stream = ExtResource("9")
+
+[node name="LoadGame" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("12")
+menus = "LoadGame"
+alignment = "Full alignment"
+
+[node name="CenterContainer" type="CenterContainer" parent="LoadGame"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LoadGame/CenterContainer"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="LoadGame/CenterContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("11")
+text = "BACK (LOADGAME)"
+
+[node name="Audio" type="Node" parent="LoadGame/CenterContainer/VBoxContainer/BackButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="LoadGame/CenterContainer/VBoxContainer/BackButton/Audio"]
+stream = ExtResource("8")
+
+[node name="Move" type="AudioStreamPlayer" parent="LoadGame/CenterContainer/VBoxContainer/BackButton/Audio"]
+stream = ExtResource("9")
+
+[node name="Audio" type="Node" parent="LoadGame"]
+
+[node name="Click" type="AudioStreamPlayer" parent="LoadGame/Audio"]
+stream = ExtResource("8")
+
+[node name="Move" type="AudioStreamPlayer" parent="LoadGame/Audio"]
+stream = ExtResource("9")
+
+[node name="Options" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("12")
+menus = "Options"
+alignment = "Full alignment"
+
+[node name="CenterContainer" type="CenterContainer" parent="Options"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/CenterContainer"]
+layout_mode = 2
+
+[node name="ScreenCheckBox" type="CheckBox" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Fullscreen"
+script = ExtResource("3")
+
+[node name="BackButton" type="Button" parent="Options/CenterContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("11")
+text = "BACK (OPTIONS)"
+
+[node name="Audio" type="Node" parent="Options/CenterContainer/VBoxContainer/BackButton"]
+
+[node name="Click" type="AudioStreamPlayer" parent="Options/CenterContainer/VBoxContainer/BackButton/Audio"]
+stream = ExtResource("8")
+
+[node name="Move" type="AudioStreamPlayer" parent="Options/CenterContainer/VBoxContainer/BackButton/Audio"]
+stream = ExtResource("9")
+
+[node name="Audio" type="Node" parent="Options"]
+
+[node name="Click" type="AudioStreamPlayer" parent="Options/Audio"]
+stream = ExtResource("8")
+
+[node name="Move" type="AudioStreamPlayer" parent="Options/Audio"]
+stream = ExtResource("9")
+
+[connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_NewGameButton_focus_exited"]
+[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MenuButton_pressed"]
+[connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/LoadGameButton" to="MainMenu/CenterContainer/Buttons/LoadGameButton" method="_on_LoadGameButton_focus_exited"]
+[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/LoadGameButton" to="MainMenu/CenterContainer/Buttons/LoadGameButton" method="_on_MainMenuButton_pressed"]
+[connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/OptionsButton" to="MainMenu/CenterContainer/Buttons/OptionsButton" method="_on_OptionsButton_focus_exited"]
+[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/OptionsButton" to="MainMenu/CenterContainer/Buttons/OptionsButton" method="_on_MainMenuButton_pressed"]
+[connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/QuitGameButton" to="MainMenu/CenterContainer/Buttons/QuitGameButton" method="_on_QuitGameButton_focus_exited"]
+[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/QuitGameButton" to="MainMenu/CenterContainer/Buttons/QuitGameButton" method="_on_QuitGameButton_pressed"]
+[connection signal="fade_finished" from="MainMenu/FadeIn" to="." method="_on_FadeIn_fade_finished"]
+[connection signal="focus_exited" from="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton" to="CharacterSelection" method="_on_BackButtonCS_focus_exited"]
+[connection signal="pressed" from="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton" to="CharacterSelection" method="_on_BackButton_pressed"]
+[connection signal="focus_exited" from="LoadGame/CenterContainer/VBoxContainer/BackButton" to="LoadGame/CenterContainer/VBoxContainer/BackButton" method="_on_BackButton_focus_exited"]
+[connection signal="pressed" from="LoadGame/CenterContainer/VBoxContainer/BackButton" to="LoadGame" method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Options/CenterContainer/VBoxContainer/ScreenCheckBox" to="Options/CenterContainer/VBoxContainer/ScreenCheckBox" method="_on_ScreenCheckBox_pressed"]
+[connection signal="focus_exited" from="Options/CenterContainer/VBoxContainer/BackButton" to="Options/CenterContainer/VBoxContainer/BackButton" method="_on_BackButton_focus_exited"]
+[connection signal="pressed" from="Options/CenterContainer/VBoxContainer/BackButton" to="Options" method="_on_BackButton_pressed"]

@@ -1,6 +1,6 @@
 extends "res://src/scripts/Menu/MenuButton.gd"
 
-export (String, "Angela", "Rivet") var characters
+@export_enum("Angela", "Rivet") var characters: String
 var res_string: String = ""
 
 func _ready():
@@ -10,7 +10,7 @@ func _ready():
 
 func _on_CharacterSelectionButton_pressed():
 	Globle.player_character = characters
-	get_tree().change_scene(scene_to_load)
+	get_tree().change_scene_to_file(scene_to_load)
 
 func _on_CharacterSelectionButton_focus_exited():
 	$Audio/Move.play()
