@@ -62,7 +62,7 @@ func _input(event):
 func _physics_process(delta):
 	if interpolation <= 1.0:
 		interpolation += delta
-	Engine.time_scale = lerp(Engine.time_scale, 1.0, interpolation)
+	Engine.time_scale = lerpf(Engine.time_scale, time_scale_target, interpolation)
 
 func determine_pause(inventory : bool, _scale : int, process_input : bool):
 	Globle.player_inventory = inventory

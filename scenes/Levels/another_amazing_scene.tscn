@@ -2,9 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/Player.tscn" id="1"]
 
-
-
-
 [node name="Node3D" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource( 1 )]

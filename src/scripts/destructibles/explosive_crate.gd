@@ -13,10 +13,10 @@ func _process(_delta):
 		state_machine.travel("Activated")
 		$Timer.start()
 
-func take_damage(_amount : int) -> void:
+func take_damage() -> void:
 	is_active = true
 
-func no_damage(_amount : int) -> void:
+func no_damage() -> void:
 	is_active = false
 
 func generate_explosion():

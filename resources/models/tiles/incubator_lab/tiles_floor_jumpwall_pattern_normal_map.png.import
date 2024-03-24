@@ -2,7 +2,7 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3vjgpbq8y3fx"
+uid="uid://dwjd86d5bmqa2"
 path.s3tc="res://.godot/imported/tiles_floor_jumpwall_pattern_normal_map.png-46024c34aafc0a330718ef7924fccbd4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
@@ -24,8 +24,8 @@ compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
-roughness/src_normal="res://resources/models/tiles/incubator_lab/tiles_floor_jumpwall_pattern_normal_map.png"
+roughness/mode=0
+roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

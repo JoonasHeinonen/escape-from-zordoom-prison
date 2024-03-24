@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://src/scripts/Player/pause_menu_container.gd" id="9"]
 [ext_resource type="Script" path="res://src/scripts/npc/vendor_container.gd" id="10"]
 [ext_resource type="Theme" uid="uid://cb5whtk27c2dl" path="res://src/theme/zordoom_resource_theme.tres" id="11"]
-[ext_resource type="Texture2D" uid="uid://cf3xp1q1vg3lm" path="res://scenes/UI/bolt-icon.png" id="12"]
+[ext_resource type="Texture2D" uid="uid://sfmc2o8clg3w" path="res://scenes/UI/bolt-icon.png" id="12"]
 [ext_resource type="Script" path="res://src/scripts/UI/bolt_count.gd" id="13"]
 [ext_resource type="Script" path="res://src/scripts/Player/player_weapons_inventory.gd" id="14"]
 [ext_resource type="Script" path="res://src/scripts/Player/player_hit_box.gd" id="15"]
@@ -27,22 +27,22 @@
 [ext_resource type="AudioStream" uid="uid://8yxgqiyporsf" path="res://resources/audio/player/melee_3.wav" id="26"]
 [ext_resource type="AudioStream" uid="uid://dfnmugl4le2jo" path="res://resources/audio/ui/button_navigate.wav" id="27"]
 [ext_resource type="AudioStream" uid="uid://bsht21vkuadfy" path="res://resources/audio/weapons/player/BlitzGun.wav" id="28"]
-[ext_resource type="Texture2D" uid="uid://6l3xdnd8xm4n" path="res://scenes/UI/ammo-icon.png" id="29"]
+[ext_resource type="Texture2D" uid="uid://cu10iyjk2o0h7" path="res://scenes/UI/ammo-icon.png" id="29"]
 [ext_resource type="Script" path="res://src/scripts/Player/player_ui.gd" id="30"]
 [ext_resource type="Texture2D" uid="uid://bgsbglk5prfu3" path="res://scenes/UI/health-icon.png" id="31"]
 [ext_resource type="Texture2D" uid="uid://ce1bs50p03nq6" path="res://scenes/UI/icon-hexagon-placeholder.png" id="32"]
-[ext_resource type="Texture2D" uid="uid://kmm3oy6rwu0p" path="res://scenes/UI/icon-square-placeholder.png" id="33"]
-[ext_resource type="Texture2D" uid="uid://hrkl62slgjxa" path="res://scenes/UI/icon-triangle-placeholder.png" id="34"]
+[ext_resource type="Texture2D" uid="uid://de2j7ldjtugwa" path="res://scenes/UI/icon-square-placeholder.png" id="33"]
+[ext_resource type="Texture2D" uid="uid://m6f3ebfht4hy" path="res://scenes/UI/icon-triangle-placeholder.png" id="34"]
 [ext_resource type="Theme" uid="uid://ctqho3n8qxq4v" path="res://src/theme/zordoom_ingameui_theme.tres" id="35"]
 [ext_resource type="Texture2D" uid="uid://cghn4fkyrnshn" path="res://resources/images/characters/player/rivet/rivet_sprite_sheet.png" id="36"]
 [ext_resource type="AudioStream" uid="uid://bmscikp5qvxc" path="res://resources/audio/weapons/player/GravityBomb.wav" id="37"]
 [ext_resource type="Script" path="res://src/scripts/Player/player_target_detection_area.gd" id="38"]
 [ext_resource type="AudioStream" uid="uid://cl60omdlcrbw6" path="res://resources/audio/collectibles/Ratchet_&_Clank_-_Going_Commando.iso_59400.wav" id="39"]
 [ext_resource type="AudioStream" uid="uid://cr5h2uc0o36ot" path="res://resources/audio/weapons/player/theNegotiator.wav" id="40"]
-[ext_resource type="Texture2D" uid="uid://bjq2pc0gcj5wt" path="res://resources/images/ui/r_n_c__Final_ammo.png" id="41"]
+[ext_resource type="Texture2D" uid="uid://bpu5svxnjjxda" path="res://resources/images/ui/r_n_c__Final_ammo.png" id="41"]
 [ext_resource type="PackedScene" uid="uid://bpus84su3l7sc" path="res://scenes/Transitions/FadeIn.tscn" id="42"]
 [ext_resource type="Script" path="res://src/scripts/Player/player_camera.gd" id="43"]
-[ext_resource type="Texture2D" uid="uid://d0p2hw5a74abe" path="res://resources/images/ui/boss_fight_icon_empty.png" id="44"]
+[ext_resource type="Texture2D" uid="uid://d2pu2dm0jawxk" path="res://resources/images/ui/boss_fight_icon_empty.png" id="44"]
 [ext_resource type="Texture2D" uid="uid://buetcn3j6bmt8" path="res://resources/images/weapons/pulse_rifle.png" id="45"]
 [ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Player/SnipingRaycast.tscn" id="46"]
 [ext_resource type="Material" path="res://resources/models/ui_elements/GreenSnipingTargetRadicalMaterial.material" id="47"]
@@ -761,7 +761,6 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 4
-frame = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
@@ -841,7 +840,7 @@ texture_filter = 0
 texture = ExtResource("36")
 hframes = 10
 vframes = 4
-frame = 1
+frame = 3
 
 [node name="RivetArm" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139)

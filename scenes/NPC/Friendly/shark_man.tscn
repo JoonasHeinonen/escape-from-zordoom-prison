@@ -1,24 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3nbx7l8pr3l4"]
+[gd_scene load_steps=6 format=3 uid="uid://dbbw0vqpqwku3"]
 
-[ext_resource type="Texture2D" uid="uid://o3ky4hrbyhx7" path="res://resources/images/characters/npc/shark_man_npc.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://cr7qupmet1gp4" path="res://resources/images/ui/enter_key.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cqtod5o7lnp7v" path="res://resources/images/characters/npc/shark_man_npc.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://dgyge77y40fub" path="res://resources/images/ui/enter_key.png" id="2"]
 [ext_resource type="Script" path="res://src/scripts/npc/npc.gd" id="3"]
 
 [sub_resource type="BoxShape3D" id="2"]
+size = Vector3(1.52301, 3.23157, 2.7583)
 
 [sub_resource type="BoxShape3D" id="3"]
+size = Vector3(1.51868, 3.31726, 2.78516)
 
 [node name="shark_man" type="CharacterBody3D"]
-transform = Transform3D(2.287, 0, 0, 0, 2.287, 0, 0, 0, 1, 0, 0, 0)
-axis_lock_linear_z = true
-axis_lock_angular_z = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.06696, 1.8004, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2.81515, 0, 0, 0, 2.81515, 0, 0, 0, 1, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("1")
 hframes = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.151031, -0.020673, 0.934326)
 shape = SubResource("2")
 disabled = true
 
@@ -28,10 +30,10 @@ script = ExtResource("3")
 character_name = "Shark_man"
 
 [node name="EnterButton" type="Sprite3D" parent="Area3D"]
+transform = Transform3D(3.12881, 0, 0, 0, 3.12881, 0, 0, 0, 1, -0.00982761, 1.06954, -0.038631)
 billboard = 1
-texture_filter = 0
 texture = ExtResource("2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.92759, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.148865, -0.675667, 0.925434)
 shape = SubResource("3")

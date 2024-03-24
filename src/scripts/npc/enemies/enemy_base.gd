@@ -35,9 +35,13 @@ func _ready():
 	player = get_parent().get_parent().get_parent().get_node('player')
 
 func _process(_delta):
-	if (state_machine.get_current_node() == "Enemy_Damage" and state_machine.get_current_play_position() >= 0.2):
-		state_machine.travel("Enemy_Idle")
-	if (enemy_health <= 0) : expire_enemy()
+	# checks to see if the state_machine is null or not
+	if (is_instance_valid(state_machine)):
+		if animation_player.get_current_animation() == "Enemy_Damage" and animation_player.is_playing():
+			print(state_machine)
+			state_machine.travel("Enemy_Idle")
+		if (enemy_health <= 0): 
+			expire_enemy()
 
 func _physics_process(delta):
 	determine_element(element, delta)
@@ -93,7 +97,7 @@ func damage_enemy(health : int):
 		elif (player.position.x < self.position.x):
 			decide_direction("Right")
 	enemy_health -= health
-
+	print(enemy_health)
 func decide_direction(d : String):
 	if d == "Right" : 
 		$EnemySprite.flip_h = false

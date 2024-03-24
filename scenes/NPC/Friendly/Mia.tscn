@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dtrmi0l7bxn5l"]
+[gd_scene load_steps=7 format=3 uid="uid://cbh0wg7ixblhq"]
 
 [ext_resource type="Texture2D" uid="uid://co8rytf0hiyu3" path="res://resources/images/characters/npc/mia.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/npc/friendly/character.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://cr7qupmet1gp4" path="res://resources/images/ui/enter_key.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://61tv181eopv8" path="res://resources/images/ui/enter_key.png" id="3"]
 [ext_resource type="Script" path="res://src/scripts/npc/npc.gd" id="4"]
 
 [sub_resource type="BoxShape3D" id="1"]
@@ -19,7 +19,6 @@ shape = SubResource("1")
 
 [node name="CharacterSprite" type="Sprite3D" parent="."]
 billboard = 1
-texture_filter = 0
 texture = ExtResource("1")
 hframes = 10
 vframes = 2
@@ -28,12 +27,11 @@ vframes = 2
 script = ExtResource("4")
 character_name = "Mia"
 
-[node name="EnterButton" type="Sprite3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
-billboard = 1
-texture_filter = 0
-texture = ExtResource("3")
-
 [node name="DiscussionRadius" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, -1.40976e-08, 0, 1.40976e-08, 1, 0, 0, 0)
 shape = SubResource("2")
+
+[node name="EnterButton" type="Sprite3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+billboard = 1
+texture = ExtResource("3")

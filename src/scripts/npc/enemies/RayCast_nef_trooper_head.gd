@@ -12,6 +12,7 @@ func _physics_process(_delta:float) -> void:
 		if get_collider() is Player:
 			emit_signal("player_seen")
 		elif get_collider() != Player:
+			emit_signal("player_not_seen")
 			pass
 	else :
 		pass

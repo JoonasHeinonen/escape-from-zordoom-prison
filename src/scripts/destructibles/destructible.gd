@@ -65,10 +65,10 @@ func generate_bolt_position(x_axis, y_axis):
 
 	return Vector3(x, y, 0)
 
-func take_damage(_amount : int) -> void:
+func take_damage() -> void:
 	is_active = true
 	
-func no_damage(_amount : int) -> void:
+func no_damage() -> void:
 	is_active = false
 # TODO Also need to get the box to explode and to get bolts(?)
 

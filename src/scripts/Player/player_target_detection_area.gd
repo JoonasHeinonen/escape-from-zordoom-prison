@@ -9,7 +9,6 @@ func _on_TargetDetectionArea_body_entered(body):
 			body.get_meta("type") == "enemy"
 		):
 			var g_t_r = radical.instantiate()
-
 			if (!body.has_node("GreenTargetRadical")):
 				g_t_r = radical.instantiate()
 				body.add_child(g_t_r)

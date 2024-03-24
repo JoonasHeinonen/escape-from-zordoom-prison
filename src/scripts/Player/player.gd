@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 class_name Player
 
-#signal update_player_position_to_camera(new_aiming_radical)
+signal update_the_player_position_to_camera(new_aiming_radical)
 
 const RANDOM_ANGLE = PI / 2.0
 
@@ -323,7 +323,6 @@ func _process(_delta):
 
 	if !boss_fight_active: 
 		$PlayerUI/UIBossData.visible = false
-
 	if Globle.arena_menu_open : $PlayerUI/ArenaMenu.opens_menu()
 	heal_player()
 	update_health_ui()
@@ -754,8 +753,8 @@ func _on_VendorWeaponButton_focus_entered(_button: Button, wpn):
 				Globle.WPNS[2][7]
 			)
 
-#func update_player_position_to_camera():
-#	emit_signal("update_player_position_to_camera", player_health)
+func update_player_position_to_camera():
+	emit_signal("update_the_player_position_to_camera", player_health)
 
 func _on_WeaponSlot1_pressed():
 	current_weapon = "edge_blaster"

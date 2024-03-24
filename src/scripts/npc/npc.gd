@@ -15,6 +15,7 @@ var shark_man_dialog_value : int = 0
 var player
 var dialog
 
+
 func _ready():
 	if (character_name == "Girdeux"):
 		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
@@ -28,60 +29,82 @@ func _process(_delta):
 func _input(_event):
 	if (Globle.player_character == "Angela" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active):
 		if get_node_or_null('DialogNode') == null:
-			if Input.is_action_just_pressed("ui_accept") and active: 
+			if Input.is_action_just_pressed("ui_accept") and active:
 				match(character_name):
 					"Mia":
 						match(mia_dialog_value):
 							(0):
+								print("Talking to Mia")
 								commence_dialog('timeline-Mia-angela-1')
 								mia_dialog_value = process_dialog_value(mia_dialog_value, 0)
 					"Null NPC":
 						match(npc_dialog_value):
 							(0):
+								print("Talking to Null NPC")
 								commence_dialog('timeline-1')
 							(2):
+								print("Talking to Null NPC")
 								commence_dialog('timeline-2')
 							(4):
+								print("Talking to Null NPC")
 								commence_dialog('timeline-3')
 								npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
 					"NPC_Angela_Rivet":
 						match(npc_angela_rivet_dialog_value):
 							(0):
+								print("Talking to NPC_Angela_Rivet")
 								commence_dialog('timeline_Rivet_npc_1')
 								npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
 					"Shark_man":
 						match(shark_man_dialog_value):
 							(0):
-								commence_dialog('timeline__Angela_shark_man')
-						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
-						Globle.arena_menu_open = true
+								print("Talking to Shark_man")
+								commence_dialog('test_timeline')
+								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 1)
+								Globle.player_active = false
+							(1):
+								print("Talking to Shark_man")
+								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
+								Globle.arena_menu_open = true
+								Globle.player_active = true
+					_:
+						print("checks dialogic")
 	if (Globle.player_character == "Rivet" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active == true):
 		match(character_name):
 			"Mia":
 				match(mia_dialog_value):
 					(0):
+						print("Talking to Mia")
 						commence_dialog('timeline-Mia-Rivet-1')
 						mia_dialog_value = process_dialog_value(mia_dialog_value, 0)
 			"Null NPC":
 				match(npc_dialog_value):
 					(0):
+						print("Talking to Null NPC")
 						commence_dialog('timeline-1')
 					(2):
+						print("Talking to Null NPC")
 						commence_dialog('timeline-2')
 					(4):
+						print("Talking to Null NPC")
 						commence_dialog('timeline-3')
 				npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
 			"NPC_Angela_Rivet":
 				match(npc_angela_rivet_dialog_value):
 					(0):
+						print("Talking to NPC_Angela_Rivet")
 						commence_dialog('timeline_Rivet_npc_1')
 				npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
 			"Shark_man":
 				match(shark_man_dialog_value):
 					(0):
+						print("Talking to Shark_man")
 						commence_dialog('timeline_Rivet_shark_man')
+						get_viewport().set_input_as_handled()
 				shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 				Globle.arena_menu_open = true
+			_:
+				print("checks 1 dialogic")
 	if (Globle.player_character == "Rivet"):
 		if get_node_or_null('DialogNode') == null:
 			if Input.is_action_just_pressed("ui_accept") and active == true: 
@@ -112,7 +135,8 @@ func _input(_event):
 								# Re-due menue logic.
 								commence_dialog('timeline_Rivet_shark_man')
 						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
-						Globle.arena_menu_open = true
+					_:
+						print("checks 2 dialogic")
 
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active
@@ -136,6 +160,7 @@ func _input(_event):
 					#girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 4)
 
 func process_dialog_value(dialog_value : int, max_value : int):
+	print("Processing dialog value ", dialog_value, ", max value at ", max_value)
 	dialog_value += 1
 	if dialog_value > max_value and active:
 		dialog_value = max_value
@@ -143,9 +168,9 @@ func process_dialog_value(dialog_value : int, max_value : int):
 	return dialog_value
 
 func commence_dialog(timeline : String):
-	pass
-	#get_tree().paused = true
-	#dialog = Dialogic.start(timeline)
+	print("Commencing timeline ", timeline)
+	get_tree().paused = true
+	dialog = Dialogic.start(timeline)
 	#dialog.process_mode = Node.PROCESS_MODE_ALWAYS
 	#dialog.connect('timeline_end', Callable(self, 'unpause'))
 	#add_child(dialog)

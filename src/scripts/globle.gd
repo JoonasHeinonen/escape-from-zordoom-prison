@@ -65,6 +65,7 @@ var melee_attack = false
 var player_inventory = false
 var vendor_active = false
 var vendor_open = false
+var player_active = true
 
 var bolts = 0
 
@@ -73,8 +74,13 @@ var player_character = "Angela"
 
 var spawn_point = Vector3(0 ,0, 0)
 
-func update_spawn(new_point):
-	spawn_point = new_point
+func update_spawn(new_point) : spawn_point = new_point
+
+func _process(delta):
+	if (game_fullscreen):
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (true) else Window.MODE_WINDOWED
+	elif (!game_fullscreen):
+		get_window().mode = Window.MODE_EXCLUSIVE_FULLSCREEN if (false) else Window.MODE_WINDOWED
 
 ## TODO Not sure if we need this function.
 func instance_node(node, location, parent):

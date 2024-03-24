@@ -2,13 +2,12 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfkd2m0vt7tes"
+uid="uid://b8f6uyt862sw7"
 path.s3tc="res://.godot/imported/tiles_stairs_2_temple_wall.png-70baca175172f0ac3d09d650ac673b43.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 
