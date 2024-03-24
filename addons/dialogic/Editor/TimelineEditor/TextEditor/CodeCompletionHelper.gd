@@ -84,7 +84,7 @@ func request_code_completion(force:bool, text:CodeEdit, mode:=Modes.FULL_HIGHLIG
 	var line := get_code_completion_line(text)
 	var word := get_code_completion_word(text)
 	var symbol := get_code_completion_prev_symbol(text)
-
+	var line_part := get_line_untill_caret(line)
 
 	## Note on use of KIND types for options.
 	# These types are mostly useless for us.
@@ -127,7 +127,7 @@ func request_code_completion(force:bool, text:CodeEdit, mode:=Modes.FULL_HIGHLIG
 				return
 
 			# suggest parameters
-			if symbol == ' ':
+			if symbol == ' ' and line.count('"')%2 == 0:
 				var parameters :Array = shortcode_events[code].get_shortcode_parameters().keys()
 				for param in parameters:
 					if !param+'=' in line:
@@ -169,7 +169,7 @@ func request_code_completion(force:bool, text:CodeEdit, mode:=Modes.FULL_HIGHLIG
 		if mode == Modes.TEXT_EVENT_ONLY and !event is DialogicTextEvent:
 			continue
 
-		if ! ' ' in line:
+		if ! ' ' in line_part:
 			event._get_start_code_completion(self, text)
 
 		if event.is_valid_event(line):
@@ -199,8 +199,8 @@ func suggest_timelines(text:CodeEdit, type := CodeEdit.KIND_MEMBER, color:=Color
 
 
 func suggest_labels(text:CodeEdit, timeline:String='', end:='', color:=Color()) -> void:
-	if timeline in Engine.get_main_loop().get_meta('dialogic_label_directory', {}):
-		for i in Engine.get_main_loop().get_meta('dialogic_label_directory')[timeline]:
+	if timeline in DialogicResourceUtil.get_label_cache():
+		for i in DialogicResourceUtil.get_label_cache()[timeline]:
 			text.add_code_completion_option(CodeEdit.KIND_MEMBER, i, i+end, color, load("res://addons/dialogic/Modules/Jump/icon_label.png"))
 
 
@@ -274,6 +274,10 @@ func symbol_lookup(symbol:String, line:int, column:int) -> void:
 	if symbol in shortcode_events.keys():
 		if !shortcode_events[symbol].help_page_path.is_empty():
 			OS.shell_open(shortcode_events[symbol].help_page_path)
+	if symbol in DialogicResourceUtil.get_character_directory():
+		EditorInterface.edit_resource(DialogicResourceUtil.get_resource_from_identifier(symbol, 'dch'))
+	if symbol in DialogicResourceUtil.get_timeline_directory():
+		EditorInterface.edit_resource(DialogicResourceUtil.get_resource_from_identifier(symbol, 'dtl'))
 
 
 # Called to test if a symbol can be clicked
@@ -281,3 +285,8 @@ func symbol_validate(symbol:String, text:CodeEdit) -> void:
 	if symbol in shortcode_events.keys():
 		if !shortcode_events[symbol].help_page_path.is_empty():
 			text.set_symbol_lookup_word_as_valid(true)
+	if symbol in DialogicResourceUtil.get_character_directory():
+		text.set_symbol_lookup_word_as_valid(true)
+	if symbol in DialogicResourceUtil.get_timeline_directory():
+		text.set_symbol_lookup_word_as_valid(true)
+
