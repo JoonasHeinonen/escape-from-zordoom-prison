@@ -143,11 +143,12 @@ func process_dialog_value(dialog_value : int, max_value : int):
 	return dialog_value
 
 func commence_dialog(timeline : String):
-	get_tree().paused = true
-	dialog = Dialogic.start(timeline)
-	dialog.process_mode = Node.PROCESS_MODE_ALWAYS
-	dialog.connect('timeline_end', Callable(self, 'unpause'))
-	add_child(dialog)
+	pass
+	#get_tree().paused = true
+	#dialog = Dialogic.start(timeline)
+	#dialog.process_mode = Node.PROCESS_MODE_ALWAYS
+	#dialog.connect('timeline_end', Callable(self, 'unpause'))
+	#add_child(dialog)
 
 # Unpauses the game timeline.
 func unpause(_timeline_name):
