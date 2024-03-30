@@ -51,7 +51,7 @@ func _input(event):
 						match(shark_man_dialog_value):
 							(0):
 								print("checks dialogic")
-								commence_dialog('test_timeline')
+								commence_dialog('shark_man_npc')
 								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 1)
 								Globle.player_active = false
 							(1):

@@ -23,11 +23,10 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
-"shark_man": "res://addons/dialogic/Resources/shark_man.dch",
-"test_character": "res://addons/dialogic/Resources/test_character.dch"
+"shark_man_talking_head": "res://addons/dialogic/Resources/shark_man_talking_head.dch"
 }
 directories/dtl_directory={
-"test_timeline": "res://addons/dialogic/Resources/test_timeline.dtl"
+"shark_man_npc": "res://addons/dialogic/Resources/shark_man_npc.dtl"
 }
 glossary/default_case_sensitive=true
 layout/style_list=[]

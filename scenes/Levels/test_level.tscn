@@ -7,18 +7,18 @@
 [ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/slim_cognito.tscn" id="5"]
 [ext_resource type="PackedScene" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://cjqxr4kfkj3ha" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
 [ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/null_npc.tscn" id="9"]
 [ext_resource type="MeshLibrary" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
 [ext_resource type="PackedScene" path="res://scenes/Destructibles/Infrastructure/Lamps/lamp_post.tscn" id="13"]
 [ext_resource type="PackedScene" path="res://scenes/Collectibles/ammo_can.tscn" id="14"]
-[ext_resource type="PackedScene" path="res://scenes/NPC/Enemies/Enemy.tscn" id="15"]
+[ext_resource type="PackedScene" uid="uid://clgbxvb1tfpdv" path="res://scenes/NPC/Enemies/Enemy.tscn" id="15"]
 [ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Doors/ArchDoors.tscn" id="16"]
 [ext_resource type="PackedScene" path="res://scenes/Destructibles/Crates/health_crate.tscn" id="17"]
 [ext_resource type="Script" path="res://src/scripts/UI/checkpoint_ui.gd" id="19"]
 [ext_resource type="Script" path="res://src/scripts/Player/New SpawnPoint.gd" id="20"]
 [ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/mia.tscn" id="21"]
-[ext_resource type="PackedScene" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
+[ext_resource type="PackedScene" uid="uid://3j7oaadkmoi3" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
 [ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/Angela_Or_Rivet.tscn" id="23"]
 
 [sub_resource type="Sky" id="20"]
@@ -250,10 +250,6 @@ text = "Checkpoint!"
 transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 15.8144, 0.600566, 0)
 collision_layer = 5
 collision_mask = 5
-axis_lock_motion_x = false
-axis_lock_motion_y = false
-move_lock_x = false
-move_lock_y = false
 
 [node name="teleports" type="Node" parent="."]
 
