@@ -2,14 +2,14 @@
 
 [ext_resource type="Script" path="res://src/scripts/Player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dbel2rhwi3en2" path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" id="3"]
-[ext_resource type="Theme" uid="uid://dlp4i8x8kuokd" path="res://src/theme/zordoom_theme.tres" id="4"]
+[ext_resource type="Theme" uid="uid://bk5epmeksv1nf" path="res://src/theme/zordoom_theme.tres" id="4"]
 [ext_resource type="Texture2D" uid="uid://bl1k1sd08mgw3" path="res://resources/images/weapons/edge_blaster.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://c7xd72ky151lf" path="res://resources/images/characters/player/angela/angela_weapon.png" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/Menu/PlayerMenuButtons/ReturnToMainMenuButton.tscn" id="7"]
 [ext_resource type="PackedScene" path="res://scenes/Menu/PlayerMenuButtons/ReturnToGameButton.tscn" id="8"]
 [ext_resource type="Script" path="res://src/scripts/Player/pause_menu_container.gd" id="9"]
 [ext_resource type="Script" path="res://src/scripts/npc/vendor_container.gd" id="10"]
-[ext_resource type="Theme" uid="uid://cb5whtk27c2dl" path="res://src/theme/zordoom_resource_theme.tres" id="11"]
+[ext_resource type="Theme" uid="uid://c2nmiwn8xj48a" path="res://src/theme/zordoom_resource_theme.tres" id="11"]
 [ext_resource type="Texture2D" uid="uid://cf3xp1q1vg3lm" path="res://scenes/UI/bolt-icon.png" id="12"]
 [ext_resource type="Script" path="res://src/scripts/UI/bolt_count.gd" id="13"]
 [ext_resource type="Script" path="res://src/scripts/Player/player_weapons_inventory.gd" id="14"]
@@ -33,14 +33,14 @@
 [ext_resource type="Texture2D" uid="uid://ce1bs50p03nq6" path="res://scenes/UI/icon-hexagon-placeholder.png" id="32"]
 [ext_resource type="Texture2D" uid="uid://kmm3oy6rwu0p" path="res://scenes/UI/icon-square-placeholder.png" id="33"]
 [ext_resource type="Texture2D" uid="uid://hrkl62slgjxa" path="res://scenes/UI/icon-triangle-placeholder.png" id="34"]
-[ext_resource type="Theme" uid="uid://ctqho3n8qxq4v" path="res://src/theme/zordoom_ingameui_theme.tres" id="35"]
+[ext_resource type="Theme" uid="uid://bj2r4j23i1hpn" path="res://src/theme/zordoom_ingameui_theme.tres" id="35"]
 [ext_resource type="Texture2D" uid="uid://cghn4fkyrnshn" path="res://resources/images/characters/player/rivet/rivet_sprite_sheet.png" id="36"]
 [ext_resource type="AudioStream" uid="uid://bmscikp5qvxc" path="res://resources/audio/weapons/player/GravityBomb.wav" id="37"]
 [ext_resource type="Script" path="res://src/scripts/Player/player_target_detection_area.gd" id="38"]
 [ext_resource type="AudioStream" uid="uid://cl60omdlcrbw6" path="res://resources/audio/collectibles/Ratchet_&_Clank_-_Going_Commando.iso_59400.wav" id="39"]
 [ext_resource type="AudioStream" uid="uid://cr5h2uc0o36ot" path="res://resources/audio/weapons/player/theNegotiator.wav" id="40"]
 [ext_resource type="Texture2D" uid="uid://bjq2pc0gcj5wt" path="res://resources/images/ui/r_n_c__Final_ammo.png" id="41"]
-[ext_resource type="PackedScene" uid="uid://bpus84su3l7sc" path="res://scenes/Transitions/FadeIn.tscn" id="42"]
+[ext_resource type="PackedScene" path="res://scenes/Transitions/FadeIn.tscn" id="42"]
 [ext_resource type="Script" path="res://src/scripts/Player/player_camera.gd" id="43"]
 [ext_resource type="Texture2D" uid="uid://d0p2hw5a74abe" path="res://resources/images/ui/boss_fight_icon_empty.png" id="44"]
 [ext_resource type="Texture2D" uid="uid://buetcn3j6bmt8" path="res://resources/images/weapons/pulse_rifle.png" id="45"]
@@ -761,7 +761,6 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 4
-frame = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)

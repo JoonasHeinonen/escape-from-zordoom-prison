@@ -1,29 +1,32 @@
-[gd_scene load_steps=16 format=3 uid="uid://dde5s2lnht7fc"]
+[gd_scene load_steps=18 format=3 uid="uid://cefix45ikufg"]
 
 [ext_resource type="Script" path="res://src/scripts/Menu/MainMenu.gd" id="1"]
 [ext_resource type="Script" path="res://src/scripts/UI/main_menu.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://lvv5c4obaulh" path="res://resources/images/environment/stars2.png" id="2_rfckn"]
 [ext_resource type="Script" path="res://src/scripts/UI/screen_check_box.gd" id="3"]
 [ext_resource type="Script" path="res://src/scripts/UI/menu_scene_control_base.gd" id="4"]
 [ext_resource type="Script" path="res://src/scripts/Menu/MenuButton.gd" id="5"]
-[ext_resource type="PackedScene" uid="uid://bpus84su3l7sc" path="res://scenes/Transitions/FadeIn.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/Transitions/FadeIn.tscn" id="6"]
 [ext_resource type="FontFile" path="res://resources/fonts/rg-future-italic.tres" id="7"]
 [ext_resource type="AudioStream" uid="uid://bmea3ibe58bhs" path="res://resources/audio/ui/button_click.wav" id="8"]
 [ext_resource type="AudioStream" uid="uid://dfnmugl4le2jo" path="res://resources/audio/ui/button_navigate.wav" id="9"]
-[ext_resource type="Theme" uid="uid://dlp4i8x8kuokd" path="res://src/theme/zordoom_theme.tres" id="11"]
+[ext_resource type="Theme" uid="uid://bk5epmeksv1nf" path="res://src/theme/zordoom_theme.tres" id="11"]
 [ext_resource type="Script" path="res://src/scripts/Menu/ReturnMainMenu.gd" id="12"]
 [ext_resource type="PackedScene" path="res://scenes/UI/CharacterSelectionButton.tscn" id="13"]
 
-[sub_resource type="Sky" id="15"]
-radiance_size = 4
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l6u71"]
+panorama = ExtResource("2_rfckn")
 
-[sub_resource type="Environment" id="16"]
+[sub_resource type="Sky" id="Sky_ka33v"]
+sky_material = SubResource("PanoramaSkyMaterial_l6u71")
+
+[sub_resource type="Environment" id="Environment_w8nwa"]
+resource_local_to_scene = true
 background_mode = 2
-sky = SubResource("15")
+sky = SubResource("Sky_ka33v")
 sky_custom_fov = 120.0
-ambient_light_sky_contribution = 0.0
-ambient_light_energy = 16.0
-tonemap_mode = 3
-tonemap_white = 14.0
+ambient_light_source = 3
+ambient_light_color = Color(0.835294, 0.839216, 0.968627, 1)
 
 [sub_resource type="StyleBoxFlat" id="17"]
 bg_color = Color(0.156863, 0.490196, 0.556863, 0.294118)
@@ -38,21 +41,21 @@ expand_margin_bottom = 10.0
 script = ExtResource("2")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.905213, -1.34887e-08, 0.424958, -0.237879, 0.828647, 0.506713, -0.35214, -0.559772, 0.750102, 0, 4.95221, 10.8508)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("16")
+environment = SubResource("Environment_w8nwa")
 
 [node name="MainMenu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1")
-alignment = "Vertical alignment"
 
 [node name="LabelCenterContainer" type="CenterContainer" parent="MainMenu"]
 layout_mode = 0
@@ -70,16 +73,11 @@ text = "ESCAPE FROM ZORDOOM"
 max_lines_visible = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
-layout_mode = 1
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("4")
-alignment = "Full alignment"
 
 [node name="PanelContainer" type="PanelContainer" parent="MainMenu/CenterContainer"]
 custom_minimum_size = Vector2(240, 270)
@@ -163,6 +161,7 @@ stream = ExtResource("9")
 [node name="FadeIn" parent="MainMenu" instance=ExtResource("6")]
 visible = false
 layout_mode = 0
+anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 

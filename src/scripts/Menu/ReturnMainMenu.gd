@@ -1,6 +1,5 @@
 extends MenuSceneControlBase
 
-@onready var main_menu = get_parent().get_node("MainMenu")
 
 var index_btn
 var sec_index_btn
@@ -16,7 +15,6 @@ func _on_BackButton_pressed():
 	match(get_tree().get_current_scene().get_name()):
 		"MainMenu":
 			self.visible = false
-			main_menu.visible = true
 			match menus:
 				"LoadGame":
 					btn_to_return_to = get_parent().get_node("MainMenu/CenterContainer/Buttons/LoadGameButton")

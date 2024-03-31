@@ -1,59 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://poenhiida1pv"]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource type="PackedScene" path="res://scenes/Menu/MenuScene.tscn" id="1"]
-[ext_resource type="AudioStream" uid="uid://ds4hudwruc5gc" path="res://resources/audio/ui/button_click.wav" id="2"]
-[ext_resource type="AudioStream" uid="uid://b5npi31bqnhw1" path="res://resources/audio/ui/button_navigate.wav" id="3"]
-[ext_resource type="Script" path="res://src/scripts/Menu/BackButton.gd" id="4"]
-[ext_resource type="Theme" uid="uid://dlp4i8x8kuokd" path="res://src/theme/zordoom_theme.tres" id="5"]
+[ext_resource path="res://scenes/Menu/MenuScene.tscn" type="PackedScene" id=1]
+[ext_resource path="res://resources/audio/ui/button_click.wav" type="AudioStream" id=2]
+[ext_resource path="res://resources/audio/ui/button_navigate.wav" type="AudioStream" id=3]
+[ext_resource path="res://src/scripts/Menu/BackButton.gd" type="Script" id=4]
+[ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=5]
 
-[node name="LoadGame" instance=ExtResource("1")]
-layout_mode = 3
-anchors_preset = 15
+[node name="LoadGame" instance=ExtResource( 1 )]
 menus = "LoadGame"
-alignment = "Full alignment"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
-layout_mode = 0
 offset_left = 597.0
 offset_top = 330.0
 offset_right = 683.0
 offset_bottom = 389.0
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" index="0"]
-layout_mode = 2
+offset_right = 86.0
 
 [node name="BackButton" type="Button" parent="VBoxContainer/CenterContainer" index="0"]
 visible = false
-layout_mode = 2
+offset_top = -30.0
+offset_right = 86.0
+offset_bottom = 29.0
 mouse_filter = 2
-theme = ExtResource("5")
+theme = ExtResource( 5 )
 text = "BACK"
-script = ExtResource("4")
+script = ExtResource( 4 )
 
 [node name="Audio" type="Node" parent="VBoxContainer/CenterContainer/BackButton" index="0"]
 
 [node name="Click" type="AudioStreamPlayer" parent="VBoxContainer/CenterContainer/BackButton/Audio" index="0"]
-stream = ExtResource("2")
+stream = ExtResource( 2 )
 
 [node name="Move" type="AudioStreamPlayer" parent="VBoxContainer/CenterContainer/BackButton/Audio" index="1"]
-stream = ExtResource("3")
+stream = ExtResource( 3 )
 
 [node name="Audio" type="Node" parent="." index="1"]
 
 [node name="Click" type="AudioStreamPlayer" parent="Audio" index="0"]
-stream = ExtResource("2")
+stream = ExtResource( 2 )
 
 [node name="Move" type="AudioStreamPlayer" parent="Audio" index="1"]
-stream = ExtResource("3")
-
-[node name="CenterContainer" parent="." index="2"]
-layout_mode = 0
-
-[node name="VBoxContainer" parent="CenterContainer" index="0"]
-layout_mode = 2
-
-[node name="BackButton" parent="CenterContainer/VBoxContainer" index="0"]
-layout_mode = 2
+stream = ExtResource( 3 )
 
 [connection signal="focus_exited" from="VBoxContainer/CenterContainer/BackButton" to="VBoxContainer/CenterContainer/BackButton" method="_on_BackButton_focus_exited"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/BackButton" to="." method="_on_BackButton_pressed"]

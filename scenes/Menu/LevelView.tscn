@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c5rmrkokp74ec"]
+[gd_scene load_steps=14 format=3 uid="uid://cvscn8q2gn43r"]
 
-[ext_resource type="Theme" uid="uid://dlp4i8x8kuokd" path="res://src/theme/zordoom_theme.tres" id="1"]
+[ext_resource type="Theme" uid="uid://bk5epmeksv1nf" path="res://src/theme/zordoom_theme.tres" id="1"]
 [ext_resource type="Script" path="res://src/scripts/Menu/addon/LevelListing.gd" id="2"]
 [ext_resource type="Script" path="res://src/scripts/Menu/ReturnMainMenu.gd" id="3"]
-[ext_resource type="PackedScene" uid="uid://bpus84su3l7sc" path="res://scenes/Transitions/FadeIn.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/Transitions/FadeIn.tscn" id="4"]
 [ext_resource type="AudioStream" uid="uid://bmea3ibe58bhs" path="res://resources/audio/ui/button_click.wav" id="5"]
 [ext_resource type="AudioStream" uid="uid://dfnmugl4le2jo" path="res://resources/audio/ui/button_navigate.wav" id="6"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="7"]
@@ -11,7 +11,23 @@
 [ext_resource type="Texture2D" uid="uid://b57ih4ff35gl0" path="res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png" id="9"]
 [ext_resource type="Script" path="res://src/scripts/UI/menu_scene_control_base.gd" id="10"]
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hhoep"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_i3xvj"]
+sky_material = SubResource("ProceduralSkyMaterial_hhoep")
+
+[sub_resource type="Environment" id="Environment_i3bdw"]
+background_mode = 2
+sky = SubResource("Sky_i3xvj")
+tonemap_mode = 2
+glow_enabled = true
+
 [node name="LevelView" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i3bdw")
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("7")
@@ -82,9 +98,13 @@ stream = ExtResource("6")
 [node name="FadeIn" parent="LevelViewUI" instance=ExtResource("4")]
 visible = false
 layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -3)
+current = true
 
 [node name="Angela" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, -8)
@@ -94,6 +114,7 @@ pixel_size = 0.04
 billboard = 1
 shaded = true
 double_sided = false
+texture_filter = 0
 texture = ExtResource("8")
 hframes = 10
 vframes = 4
@@ -108,6 +129,7 @@ pixel_size = 0.04
 billboard = 1
 shaded = true
 double_sided = false
+texture_filter = 0
 texture = ExtResource("9")
 hframes = 10
 vframes = 4
