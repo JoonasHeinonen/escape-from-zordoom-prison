@@ -2,7 +2,7 @@ extends EnemyBase
 
 @onready var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
 @onready var player_finding_raycast = $EnemySprite/player_finding
-#@onready var ground_finding_raycast = $EnemySprite/ground_finding
+@onready var ground_finding_raycast = $EnemySprite/ground_finding
 
 var value : int  = 0
 var attack_delay : int = 2
@@ -63,8 +63,7 @@ func _on_AreaEnemy_area_entered(area):
 		animation_player.play("Enemy_Damage")
 # $EnemySprite.rotation.y += PI will use rotation by the y axis the sprite with the math of pi
 func nef_head_movement():
-	pass
-	#if not ground_finding_raycast.is_colliding():
-		#speed *= -1
-		#$EnemySprite.rotation.y += PI
-		#isFlipping = true
+	if not ground_finding_raycast.is_colliding():
+		speed *= -1
+		$EnemySprite.rotation.y += PI
+		isFlipping = true
