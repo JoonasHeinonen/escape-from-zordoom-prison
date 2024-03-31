@@ -1,60 +1,70 @@
 extends EnemyBase
 
 @onready var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
-@onready var ray = $EnemySprite/player_finding
+@onready var player_finding_raycast = $EnemySprite/player_finding
+#@onready var ground_finding_raycast = $EnemySprite/ground_finding
 
 var value : int  = 0
 var attack_delay : int = 2
 var can_shoot : bool = true
+var isFlipping : bool = false
 var is_moving_left : bool = true
 var target : Player = null
 var attack = null
 var timer = null
 
-# Timer that has it so that it only shoots one bullet at a time after the player in in range.
-
-# Fix lock on redical.
 func _ready():
 	element = elements.AIR
-	speed = -90
+	gravity = -4
+	speed = 2
+
 	timer = Timer.new()
 	timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
 	timer.wait_time = 1
 	timer.one_shot = true
 	add_child(timer)
 	timer.start()
+
 	meta_name = "nef_head"
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
+	player = get_parent().find_child("player")
 
 func _physics_process(_delta):
-	for i in get_slide_collision_count():
-		if  is_on_wall() :
-			$EnemyAnimationPlayer.play("Enemy_Turn_Right")
-			speed *= -1
-			value += 1
-			ray.set_rotation_degrees(Vector3(0,0,90.237))
-			$laser_muzzle.set_rotation_degrees(Vector3(0,180,0))
-		if  is_on_wall() and value == 2:
-			$EnemyAnimationPlayer.play("Enemy_Turn_Left")
-			value = 0
-			ray.set_rotation_degrees(Vector3(0,0,-89.21))
-			$laser_muzzle.set_rotation_degrees(Vector3(0,0,0))
+	#allows the EnemyBase _physics_process function works
+	#in the nef_head_enemy_ai script
+	super(_delta)
+	nef_head_movement()
 
 func nef_head_shoot_time():
 	can_shoot = true
 
 func _on_player_finding_player_seen():
+	if player_finding_raycast.get_collider() == player:
+		speed *= 0
+		print("track player")
 	if can_shoot:
 		attack = laser_attack_scene.instantiate()
+		attack.bullet_speed = 9
+		#This checks the speed if it postive or negative.
+		attack.is_left = speed > 0
 		get_parent().add_child(attack)
 		attack.global_position = $laser_muzzle.global_position
-		attack.global_rotation = $laser_muzzle.global_rotation
 		can_shoot = false
 		timer.start()
+		
+func _on_player_finding_player_not_seen():
+	can_shoot = false
 
 func _on_AreaEnemy_area_entered(area):
-	if (area.name == "ProjectileExplosionArea"):
+	if (area.name == "ProjectileArea"):
 		state_machine.travel("Enemy_Damage")
 		damage_enemy(2)
 		animation_player.play("Enemy_Damage")
+# $EnemySprite.rotation.y += PI will use rotation by the y axis the sprite with the math of pi
+func nef_head_movement():
+	pass
+	#if not ground_finding_raycast.is_colliding():
+		#speed *= -1
+		#$EnemySprite.rotation.y += PI
+		#isFlipping = true
