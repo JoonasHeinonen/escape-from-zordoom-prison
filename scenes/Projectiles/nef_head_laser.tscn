@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://r1ge1e2mbvoy"]
+[gd_scene load_steps=7 format=3 uid="uid://cqfpa68jlkra3"]
 
-[ext_resource type="Texture2D" uid="uid://banat76blu3h7" path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bffrdrgqtroi5" path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/nef_laser.gd" id="2"]
 
 [sub_resource type="BoxShape3D" id="1"]
@@ -37,33 +37,31 @@ tracks/0/keys = {
 "values": [18]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_8f3yn"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8yajw"]
 _data = {
 "RESET": SubResource("3"),
 "laser": SubResource("2")
 }
 
-[node name="Laser" type="Node3D"]
+[node name="laser" type="Node3D"]
+script = ExtResource("2")
 
 [node name="Area3D" type="Area3D" parent="."]
-script = ExtResource("2")
 
 [node name="Sprite3D" type="Sprite3D" parent="Area3D"]
 transform = Transform3D(3.33004, 0, 0, 0, 3.33004, 0, 0, 0, 1, 0, -0.0240717, 0)
-texture_filter = 0
 texture = ExtResource("1")
 hframes = 8
 vframes = 4
 frame = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(-0.265581, 0, 0, 0, -0.265581, 0, 0, 0, 0.336862, 0.0133593, 0, 0)
 shape = SubResource("1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Area3D/Sprite3D")
 libraries = {
-"": SubResource("AnimationLibrary_8f3yn")
+"": SubResource("AnimationLibrary_8yajw")
 }
 
-[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_KinematicBody_body_entered"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
