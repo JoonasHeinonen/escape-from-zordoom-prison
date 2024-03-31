@@ -1,12 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://h6nugy4tsune"]
+[gd_scene load_steps=21 format=3 uid="uid://3j7oaadkmoi3"]
 
-[ext_resource type="Texture2D" uid="uid://banat76blu3h7" path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bffrdrgqtroi5" path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/nef_head_enemy_ai.gd" id="2"]
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/RayCast_nef_trooper_head.gd" id="3"]
 
 [sub_resource type="CapsuleShape3D" id="30"]
-radius = 0.050206
-height = 0.100412
+radius = 1.14185
+height = 3.42323
 
 [sub_resource type="Animation" id="34"]
 resource_name = "Enemy_Damage"
@@ -55,18 +55,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [12, 13, 14, 14]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../laser_muzzle:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(1.39123, -0.0128105, 5.07366e-06), Vector3(1.07494, -0.0126066, -2.69214e-07)]
-}
 
 [sub_resource type="Animation" id="31"]
 resource_name = "Enemy_Turn_Right"
@@ -81,18 +69,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [3, 4, 9, 10, 10]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../laser_muzzle:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(1.07494, -0.0126066, -2.69214e-07), Vector3(1.39123, -0.0128105, 5.07366e-06)]
 }
 
 [sub_resource type="Animation" id="23"]
@@ -160,29 +136,17 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../laser_muzzle:position")
+tracks/5/path = NodePath(".:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1.07494, -0.0126066, -2.69214e-07)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_10jtw"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b6ywp"]
 _data = {
 "Enemy_Damage": SubResource("34"),
 "Enemy_Idle": SubResource("22"),
@@ -201,41 +165,52 @@ animation = &"Enemy_Idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="38"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rtae2"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xcpds"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mp7cq"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1orld"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="24"]
+states/End/position = Vector2(535, 203)
 states/Enemy_Damage/node = SubResource("35")
-states/Enemy_Damage/position = Vector2(408, 83)
+states/Enemy_Damage/position = Vector2(420, 83)
 states/Enemy_Idle/node = SubResource("36")
 states/Enemy_Idle/position = Vector2(161, 83)
-transitions = ["Enemy_Idle", "Enemy_Damage", SubResource("37"), "Enemy_Damage", "Enemy_Idle", SubResource("38")]
+states/Start/position = Vector2(91, 203)
+transitions = ["Enemy_Idle", "Enemy_Damage", SubResource("37"), "Enemy_Damage", "Enemy_Idle", SubResource("38"), "Start", "Enemy_Idle", SubResource("AnimationNodeStateMachineTransition_rtae2"), "Start", "Enemy_Damage", SubResource("AnimationNodeStateMachineTransition_xcpds"), "Enemy_Idle", "End", SubResource("AnimationNodeStateMachineTransition_mp7cq"), "Enemy_Damage", "End", SubResource("AnimationNodeStateMachineTransition_1orld")]
 
 [sub_resource type="BoxShape3D" id="33"]
-size = Vector3(0.457702, 0.419296, 2)
+size = Vector3(2.70177, 3.69416, 2)
 
 [node name="nef_head" type="CharacterBody3D" groups=["nef_head"]]
-axis_lock_linear_z = true
-axis_lock_angular_z = true
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("2")
 
-[node name="target_radical" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.113366, 0, 0)
-
 [node name="laser_muzzle" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07494, -0.0126066, -2.69214e-07)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97782, 0, -0.0428034)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 0.4, 1.23528, -0.00802118, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.23528, -0.00802118, 0)
 shape = SubResource("30")
 
 [node name="EnemyAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../EnemySprite")
 libraries = {
-"": SubResource("AnimationLibrary_10jtw")
+"": SubResource("AnimationLibrary_b6ywp")
 }
 
 [node name="EnemyAnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../EnemySprite")
 libraries = {
-"": SubResource("AnimationLibrary_10jtw")
+"": SubResource("AnimationLibrary_b6ywp")
 }
 tree_root = SubResource("24")
 anim_player = NodePath("../EnemyAnimationPlayer")
@@ -247,6 +222,9 @@ texture = ExtResource("1")
 hframes = 9
 vframes = 4
 
+[node name="ground_finding" type="RayCast3D" parent="EnemySprite"]
+transform = Transform3D(0.649558, 0.000556133, -0.0239706, -0.000132988, 0.649899, 0.0114744, 0.0239767, -0.0114616, 0.649457, -0.122368, 0.0354374, -1.29418e-14)
+
 [node name="player_finding" type="RayCast3D" parent="EnemySprite"]
 transform = Transform3D(0.0137877, 0.999904, 0, -0.999904, 0.0137877, 0, 0, 0, 1, -0.0538642, 0, 0)
 collision_mask = 3
@@ -254,12 +232,18 @@ script = ExtResource("3")
 
 [node name="AreaEnemy" type="Area3D" parent="."]
 transform = Transform3D(1, 1.0727e-11, -5.45697e-12, -1.0727e-11, 1, -1.09139e-11, 5.45697e-12, 1.09139e-11, 1, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+gravity_point = true
+gravity = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaEnemy"]
-transform = Transform3D(14, 0, 0, 0, 14, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(1, 5.95568e-23, 0, 5.95568e-23, 1, 0, 0, 0, 1, 1.1714, -0.218465, 0.000673294)
 shape = SubResource("33")
 
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
+[connection signal="player_not_seen" from="EnemySprite/player_finding" to="." method="_on_player_finding_player_not_seen"]
 [connection signal="player_seen" from="EnemySprite/player_finding" to="." method="_on_player_finding_player_seen"]
 [connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
+[connection signal="body_entered" from="AreaEnemy" to="." method="_on_area_enemy_body_entered"]
