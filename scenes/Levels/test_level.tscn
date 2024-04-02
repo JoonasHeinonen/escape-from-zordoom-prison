@@ -1,30 +1,30 @@
 [gd_scene load_steps=33 format=3 uid="uid://brce6tfu5d81"]
 
-[ext_resource type="PackedScene" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
 [ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_ksfwo"]
 [ext_resource type="Texture2D" uid="uid://cbxa27fdyekuf" path="res://resources/images/environment/haerkonen.jpg" id="1_vxvra"]
-[ext_resource type="PackedScene" path="res://scenes/Destructibles/Crates/BoltCrate.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/Collectibles/Bolt.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/Collectibles/WeaponCollectible.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/SlimCognito.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://c0ejcgkoe8mfq" path="res://scenes/Destructibles/Crates/BoltCrate.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dwn5g72i2nu6s" path="res://scenes/Collectibles/Bolt.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://bp5ijfq147flt" path="res://scenes/Collectibles/WeaponCollectible.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/SlimCognito.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://d18jopbss2gd1" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
-[ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/NullNPC.tscn" id="9"]
-[ext_resource type="PackedScene" path="res://scenes/NPC/Enemies/Sheep.tscn" id="10_jby62"]
+[ext_resource type="PackedScene" uid="uid://dq4w3pnkkitcj" path="res://scenes/NPC/Friendly/NullNPC.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://dnrfyec61yev6" path="res://scenes/NPC/Enemies/Sheep.tscn" id="10_jby62"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
-[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Doors/Waypoint.tscn" id="13_or1yy"]
-[ext_resource type="PackedScene" path="res://scenes/Collectibles/AmmoCan.tscn" id="14"]
+[ext_resource type="PackedScene" uid="uid://dy2k7jfp7swx8" path="res://scenes/BlocksNWorld/Doors/Waypoint.tscn" id="13_or1yy"]
+[ext_resource type="PackedScene" uid="uid://bgdy24dvbfxun" path="res://scenes/Collectibles/AmmoCan.tscn" id="14"]
 [ext_resource type="PackedScene" uid="uid://dvebyw8glgp0n" path="res://scenes/NPC/Enemies/Enemy.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://xov5w1sy23lh" path="res://scenes/BlocksNWorld/Doors/ArchDoors.tscn" id="16"]
-[ext_resource type="PackedScene" path="res://scenes/Destructibles/Crates/HealthCrate.tscn" id="17"]
+[ext_resource type="PackedScene" uid="uid://c6043ke27yksk" path="res://scenes/Destructibles/Crates/HealthCrate.tscn" id="17"]
 [ext_resource type="Script" path="res://src/scripts/UI/checkpoint_ui.gd" id="19"]
-[ext_resource type="PackedScene" path="res://scenes/Destructibles/Infrastructure/Lamps/LampPostQueue.tscn" id="19_2twd7"]
+[ext_resource type="PackedScene" uid="uid://brq654ih15j0g" path="res://scenes/Destructibles/Infrastructure/Lamps/LampPostQueue.tscn" id="19_2twd7"]
 [ext_resource type="Script" path="res://src/scripts/Player/player_new_spawn_point.gd" id="20"]
-[ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/Mia.tscn" id="21"]
-[ext_resource type="PackedScene" uid="uid://h6nugy4tsune" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
-[ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/AngelaOrRivet.tscn" id="23"]
-[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Doors/PrisonTaxi.tscn" id="24_mxcxe"]
+[ext_resource type="PackedScene" uid="uid://dtrmi0l7bxn5l" path="res://scenes/NPC/Friendly/Mia.tscn" id="21"]
+[ext_resource type="PackedScene" uid="uid://3j7oaadkmoi3" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
+[ext_resource type="PackedScene" uid="uid://xguugwg5v2bh" path="res://scenes/NPC/Friendly/AngelaOrRivet.tscn" id="23"]
+[ext_resource type="PackedScene" uid="uid://biefobxdqingm" path="res://scenes/BlocksNWorld/Doors/PrisonTaxi.tscn" id="24_mxcxe"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qyk4u"]
 panorama = ExtResource("1_vxvra")
@@ -138,12 +138,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.57, -9.41359, 0)
 
 [node name="nef_head" parent="npc/enemies" instance=ExtResource("22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6929, -14.4326, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2121, -14.4326, 0)
 collision_layer = 9
 collision_mask = 9
 
 [node name="nef_head2" parent="npc/enemies" instance=ExtResource("22")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.3071, -0.4326, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.3071, -2.87909, 0)
 collision_layer = 9
 collision_mask = 9
 
@@ -307,7 +307,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource("8")]
-transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -65.5992, -2.24472, 0)
+transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -47.2165, -1.09836, 0)
 collision_layer = 5
 collision_mask = 5
 

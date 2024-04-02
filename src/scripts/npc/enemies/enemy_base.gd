@@ -11,7 +11,7 @@ enum elements {GROUND, WATER, AIR, STATIC}
 
 @export var is_armored : bool = false
 @export var enemy_health : int = 10
-@export var enemy_speed : int = 10
+@export var enemy_speed : int = 0
 
 var is_alerted : bool = false
 var is_dead : bool = false
@@ -61,7 +61,7 @@ func determine_element(element, delta: float):
 			set_up_direction(Vector3.UP)
 			move_and_slide()
 		elements.AIR:
-			velocity.y = 0
+			velocity.y = gravity
 			velocity.x = speed * 1
 			set_velocity(velocity * delta)
 			move_and_slide()

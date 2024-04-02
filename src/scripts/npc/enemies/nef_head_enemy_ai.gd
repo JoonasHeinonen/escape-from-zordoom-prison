@@ -16,8 +16,9 @@ var timer = null
 func _ready():
 	element = elements.AIR
 	gravity = -4
-	speed = 2
-
+	speed = -130
+	#print(enemy_speed)
+	#print(speed)
 	timer = Timer.new()
 	timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
 	timer.wait_time = 1
@@ -41,7 +42,7 @@ func nef_head_shoot_time():
 
 func _on_player_finding_player_seen():
 	if player_finding_raycast.get_collider() == player:
-		speed *= 0
+		speed *= 1
 		print("track player")
 	if can_shoot:
 		attack = laser_attack_scene.instantiate()
@@ -65,5 +66,6 @@ func _on_AreaEnemy_area_entered(area):
 func nef_head_movement():
 	if not ground_finding_raycast.is_colliding():
 		speed *= -1
+		print(speed)
 		$EnemySprite.rotation.y += PI
 		isFlipping = true
