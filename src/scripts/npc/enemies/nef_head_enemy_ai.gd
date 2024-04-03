@@ -64,6 +64,12 @@ func _on_AreaEnemy_area_entered(area):
 		animation_player.play("Enemy_Damage")
 # $EnemySprite.rotation.y += PI will use rotation by the y axis the sprite with the math of pi
 func nef_head_movement():
+	#looks for a wall or a box and then it flips the nef head sprite
+	if is_on_wall() == true:
+		print("hits wall")
+		$EnemySprite.rotation.y += PI
+		speed *= -1
+		isFlipping = true
 	if not ground_finding_raycast.is_colliding():
 		speed *= -1
 		print(speed)

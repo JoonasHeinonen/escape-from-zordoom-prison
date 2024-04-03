@@ -40,7 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://cl60omdlcrbw6" path="res://resources/audio/collectibles/Ratchet_&_Clank_-_Going_Commando.iso_59400.wav" id="39"]
 [ext_resource type="AudioStream" uid="uid://cr5h2uc0o36ot" path="res://resources/audio/weapons/player/theNegotiator.wav" id="40"]
 [ext_resource type="Texture2D" uid="uid://bjq2pc0gcj5wt" path="res://resources/images/ui/r_n_c__Final_ammo.png" id="41"]
-[ext_resource type="PackedScene" path="res://scenes/Transitions/FadeIn.tscn" id="42"]
+[ext_resource type="PackedScene" uid="uid://bpus84su3l7sc" path="res://scenes/Transitions/FadeIn.tscn" id="42"]
 [ext_resource type="Script" path="res://src/scripts/Player/player_camera.gd" id="43"]
 [ext_resource type="Texture2D" uid="uid://d0p2hw5a74abe" path="res://resources/images/ui/boss_fight_icon_empty.png" id="44"]
 [ext_resource type="Texture2D" uid="uid://buetcn3j6bmt8" path="res://resources/images/weapons/pulse_rifle.png" id="45"]
@@ -761,6 +761,7 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 4
+frame = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)

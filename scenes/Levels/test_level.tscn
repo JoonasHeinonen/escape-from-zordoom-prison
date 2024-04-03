@@ -144,8 +144,8 @@ collision_mask = 9
 
 [node name="nef_head2" parent="npc/enemies" instance=ExtResource("22")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.3071, -2.87909, 0)
-collision_layer = 9
-collision_mask = 9
+collision_layer = 1
+collision_mask = 1
 
 [node name="Waypoints" type="Node" parent="npc"]
 
@@ -308,8 +308,8 @@ text = "Checkpoint!"
 
 [node name="player" parent="." instance=ExtResource("8")]
 transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -47.2165, -1.09836, 0)
-collision_layer = 5
-collision_mask = 5
+collision_layer = 13
+collision_mask = 13
 
 [node name="teleports" type="Node" parent="."]
 
