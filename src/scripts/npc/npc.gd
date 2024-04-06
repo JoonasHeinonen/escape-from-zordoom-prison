@@ -147,12 +147,14 @@ func process_dialog_value(dialog_value : int, max_value : int):
 	return dialog_value
 
 func commence_dialog(timeline : String):
-	get_tree().paused = true
-	dialog = Dialogic.start(timeline)
+	get_tree().paused = false
+	var dialog = Dialogic.start(timeline)
+	get_viewport().set_input_as_handled()
+	#need to check and see if the arena menu is being called correctly 
 	dialog.process_mode = Node.PROCESS_MODE_ALWAYS
-	dialog.connect('timeline_end', Callable(self, 'unpause'))
+	dialog.connect('timeline_ended', Callable(self, 'unpause'))
 	add_child(dialog)
-
+	print(Globle.arena_menu_open)
 # Unpauses the game timeline.
 func unpause(_timeline_name):
 	get_tree().paused = false
