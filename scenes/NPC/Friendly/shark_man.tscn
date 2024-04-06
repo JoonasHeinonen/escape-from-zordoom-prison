@@ -7,6 +7,7 @@
 [sub_resource type="BoxShape3D" id="2"]
 
 [sub_resource type="BoxShape3D" id="3"]
+size = Vector3(1, 1, 2.41406)
 
 [node name="shark_man" type="CharacterBody3D"]
 transform = Transform3D(2.287, 0, 0, 0, 2.287, 0, 0, 0, 1, 0, 0, 0)
@@ -33,5 +34,5 @@ texture_filter = 0
 texture = ExtResource("2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.92759, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1.92758, 0, -1.12958, 1.91065)
 shape = SubResource("3")
