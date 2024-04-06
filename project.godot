@@ -22,8 +22,12 @@ Dialogic="*res://addons/dialogic/Other/DialogicGameHandler.gd"
 
 [dialogic]
 
-directories/dch_directory={}
-directories/dtl_directory={}
+directories/dch_directory={
+"shark_man": "res://dialogic/characters/shark_man.dch"
+}
+directories/dtl_directory={
+"timeline_Angela_shark_man": "res://addons/dialogic/Resources/timeline_Angela_shark_man.dtl"
+}
 
 [display]
 

@@ -52,10 +52,13 @@ func _input(_event):
 					"Shark_man":
 						match(shark_man_dialog_value):
 							(0):
-								#commence_dialog('timeline__Angela_shark_man')
-								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
+								Globle.arena_menu_open = false
+								commence_dialog('timeline_Angela_shark_man')
+								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 1)
+							(1):
+								#shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 								Globle.arena_menu_open = true
-						print(Globle.arena_menu_open)
+								print(Globle.arena_menu_open)
 	if (Globle.player_character == "Rivet" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active == true):
 		match(character_name):
 			"Mia":
