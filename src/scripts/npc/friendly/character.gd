@@ -1,6 +1,6 @@
-extends KinematicBody
+extends CharacterBody3D
 
-export(String, "Right", "Left") var direction
+@export_enum("Right", "Left") var direction : String
 
 var player
 
@@ -15,7 +15,7 @@ func _process(_delta):
 			$CharacterSprite.flip_h = true
 
 func _physics_process(_delta):
-	turn_character(player.translation.x, self.translation.x)
+	turn_character(player.position.x, self.position.x)
 
 func turn_character(player_x : float, character_x : float):
 	if (player_x > character_x):

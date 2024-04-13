@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/optional_edge_blaster.wav-bcb811853b607ed9d20259758b6b2075.sample"
+type="AudioStreamWAV"
+uid="uid://dr81sp6aumq3r"
+path="res://.godot/imported/optional_edge_blaster.wav-bcb811853b607ed9d20259758b6b2075.sample"
 
 [deps]
 
 source_file="res://resources/audio/weapons/player/optional_edge_blaster.wav"
-dest_files=[ "res://.import/optional_edge_blaster.wav-bcb811853b607ed9d20259758b6b2075.sample" ]
+dest_files=["res://.godot/imported/optional_edge_blaster.wav-bcb811853b607ed9d20259758b6b2075.sample"]
 
 [params]
 

@@ -1,81 +1,100 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=3 uid="uid://rht181j045mi"]
 
-[ext_resource path="res://resources/images/effects/projectile_effects/BlitzGun_explosion .png" type="Texture" id=1]
-[ext_resource path="res://src/scripts/effects/bullets/blitz_gun_projectile_explosion.gd" type="Script" id=2]
+[ext_resource type="Texture2D" uid="uid://bbr7cy67henfu" path="res://resources/images/effects/projectile_effects/BlitzGun_explosion .png" id="1"]
+[ext_resource type="Script" path="res://src/scripts/effects/bullets/blaster_projectile_explosion.gd" id="1_af253"]
 
-[sub_resource type="BoxShape" id=6]
+[sub_resource type="BoxShape3D" id="6"]
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id="4"]
 resource_name = "BlasterProjectileExplosion"
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite3D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0542033, 0.11257, 0.169549, 0.227915 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.0542033, 0.11257, 0.169549, 0.227915),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 0, 1, 2, 3, 4 ]
+"values": [0, 1, 2, 3, 4]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("OmniLight:omni_range")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:omni_range")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0597544, 0.18759 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.0597544, 0.18759),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [ 0.1, 1.0, 0.9 ]
+"values": [0.1, 1.0, 0.9]
+}
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProjectileExplosionArea/CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.2, 0.2, 0.2, 0.2, 1, 2, 2, 2, 0.3, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aw265"]
+_data = {
+"BlasterProjectileExplosion": SubResource("4")
 }
 
-[sub_resource type="AnimationNodeAnimation" id=5]
-animation = "BlasterProjectileExplosion"
+[sub_resource type="AnimationNodeAnimation" id="5"]
+animation = &"BlasterProjectileExplosion"
 
-[sub_resource type="AnimationNodeStateMachine" id=8]
-states/BlasterProjectileExplosion/node = SubResource( 5 )
-states/BlasterProjectileExplosion/position = Vector2( 236, 73 )
-start_node = "BlasterProjectileExplosion"
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p2tnl"]
+advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=9]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l0bsc"]
+states/BlasterProjectileExplosion/node = SubResource("5")
+states/BlasterProjectileExplosion/position = Vector2(292, 129)
+states/Start/position = Vector2(104, 129)
+transitions = ["Start", "BlasterProjectileExplosion", SubResource("AnimationNodeStateMachineTransition_p2tnl")]
 
-[sub_resource type="BoxShape" id=10]
+[sub_resource type="BoxShape3D" id="10"]
 
-[node name="Spatial" type="Spatial"]
+[node name="BlitzGunProjectileExplosion" type="CharacterBody3D"]
+script = ExtResource("1_af253")
 
-[node name="KinematicBody" type="KinematicBody" parent="."]
-script = ExtResource( 2 )
-
-[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
-shape = SubResource( 6 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("6")
 disabled = true
 
-[node name="Sprite3D" type="Sprite3D" parent="KinematicBody"]
-transform = Transform( 4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0 )
-texture = ExtResource( 1 )
+[node name="KillTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("1")
 hframes = 5
-frame = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody"]
-anims/BlasterProjectileExplosion = SubResource( 7 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aw265")
+}
 
-[node name="AnimationTree" type="AnimationTree" parent="KinematicBody"]
-tree_root = SubResource( 8 )
+[node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_aw265")
+}
+tree_root = SubResource("AnimationNodeStateMachine_l0bsc")
 anim_player = NodePath("../AnimationPlayer")
-active = true
-parameters/playback = SubResource( 9 )
 
-[node name="OmniLight" type="OmniLight" parent="KinematicBody"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409 )
-omni_range = 0.237162
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0631409)
+omni_range = 0.241735
 
-[node name="ProjectileExplosionArea" type="Area" parent="KinematicBody"]
-transform = Transform( 1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0 )
+[node name="ProjectileExplosionArea" type="Area3D" parent="."]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)
 
-[node name="CollisionShape" type="CollisionShape" parent="KinematicBody/ProjectileExplosionArea"]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
-shape = SubResource( 10 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileExplosionArea"]
+transform = Transform3D(0.284693, 0, 0, 0, 0.284693, 0, 0, 0, 0.284693, 0, 0, 0)
+shape = SubResource("10")

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/crate_0.wav-7b024685a9bb32270d9ab094ca9e4eba.sample"
+type="AudioStreamWAV"
+uid="uid://cc2f5l6i23xr6"
+path="res://.godot/imported/crate_0.wav-7b024685a9bb32270d9ab094ca9e4eba.sample"
 
 [deps]
 
 source_file="res://resources/audio/environment/destructibles/crate_0.wav"
-dest_files=[ "res://.import/crate_0.wav-7b024685a9bb32270d9ab094ca9e4eba.sample" ]
+dest_files=["res://.godot/imported/crate_0.wav-7b024685a9bb32270d9ab094ca9e4eba.sample"]
 
 [params]
 

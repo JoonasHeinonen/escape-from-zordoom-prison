@@ -1,126 +1,136 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=3 uid="uid://cvscn8q2gn43r"]
 
-[ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=1]
-[ext_resource path="res://src/scripts/Menu/addon/LevelListing.gd" type="Script" id=2]
-[ext_resource path="res://src/scripts/Menu/ReturnMainMenu.gd" type="Script" id=3]
-[ext_resource path="res://scenes/Transitions/fade_in.tscn" type="PackedScene" id=4]
-[ext_resource path="res://resources/audio/ui/button_click.wav" type="AudioStream" id=5]
-[ext_resource path="res://resources/audio/ui/button_navigate.wav" type="AudioStream" id=6]
-[ext_resource path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" type="MeshLibrary" id=7]
-[ext_resource path="res://resources/images/characters/player/angela/angela_sheet_init_finished.png" type="Texture" id=8]
-[ext_resource path="res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png" type="Texture" id=9]
-[ext_resource path="res://src/scripts/UI/menu_scene_control_base.gd" type="Script" id=10]
+[ext_resource type="Theme" uid="uid://bk5epmeksv1nf" path="res://src/theme/zordoom_theme.tres" id="1"]
+[ext_resource type="Script" path="res://src/scripts/Menu/addon/LevelListing.gd" id="2"]
+[ext_resource type="Script" path="res://src/scripts/Menu/ReturnMainMenu.gd" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/Transitions/FadeIn.tscn" id="4"]
+[ext_resource type="AudioStream" uid="uid://bmea3ibe58bhs" path="res://resources/audio/ui/button_click.wav" id="5"]
+[ext_resource type="AudioStream" uid="uid://dfnmugl4le2jo" path="res://resources/audio/ui/button_navigate.wav" id="6"]
+[ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="7"]
+[ext_resource type="Texture2D" uid="uid://bwfelc82veqon" path="res://resources/images/characters/player/angela/angela_sheet_init_finished.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://b57ih4ff35gl0" path="res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png" id="9"]
+[ext_resource type="Script" path="res://src/scripts/UI/menu_scene_control_base.gd" id="10"]
 
-[node name="LevelView" type="Spatial"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hhoep"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_i3xvj"]
+sky_material = SubResource("ProceduralSkyMaterial_hhoep")
+
+[sub_resource type="Environment" id="Environment_i3bdw"]
+background_mode = 2
+sky = SubResource("Sky_i3xvj")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="LevelView" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i3bdw")
 
 [node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource( 7 )
+mesh_library = ExtResource("7")
 data = {
-"cells": PoolIntArray( 0, 65528, 7, 1, 65528, 7, 2, 65528, 7, 65533, 65528, 7, 65534, 65528, 7, 65535, 65528, 7, 65536, 65528, 48, 65537, 65528, 48, 65538, 65528, 48, 131069, 65528, 48, 131070, 65528, 48, 131071, 65528, 48, 131072, 65528, 48, 131073, 65528, 48, 131074, 65528, 48, 196605, 65528, 48, 196606, 65528, 48, 196607, 65528, 48, 196608, 65528, 48, 196609, 65528, 48, 196610, 65528, 48, 262141, 65528, 48, 262142, 65528, 48, 262143, 65528, 48, 262144, 65528, 48, 262145, 65528, 48, 262146, 65528, 48, 327677, 65528, 48, 327678, 65528, 48, 327679, 65528, 48, 327680, 65528, 7, 327681, 65528, 7, 327682, 65528, 7, 393213, 65528, 7, 393214, 65528, 7, 393215, 65528, 7, 0, 65529, 7, 1, 65529, 7, 2, 65529, 7, 65533, 65529, 7, 65534, 65529, 7, 65535, 65529, 7, 65537, 65529, 49, 65538, 65529, 51, 65539, 65529, 48, 131068, 65529, 48, 131069, 65529, 49, 131070, 65529, 51, 131075, 65529, 48, 196604, 65529, 48, 196611, 65529, 48, 262140, 65529, 48, 262147, 65529, 48, 327676, 65529, 48, 327680, 65529, 7, 327681, 65529, 7, 327682, 65529, 7, 393213, 65529, 7, 393214, 65529, 7, 393215, 65529, 7, 0, 65530, 7, 1, 65530, 7, 2, 65530, 7, 65533, 65530, 7, 65534, 65530, 7, 65535, 65530, 7, 65539, 65530, 48, 131068, 65530, 48, 131075, 65530, 48, 196604, 65530, 48, 196611, 65530, 48, 262140, 65530, 48, 262147, 65530, 48, 327676, 65530, 48, 327680, 65530, 7, 327681, 65530, 7, 327682, 65530, 7, 393213, 65530, 7, 393214, 65530, 7, 393215, 65530, 7, 0, 65531, 7, 1, 65531, 7, 2, 65531, 7, 65533, 65531, 7, 65534, 65531, 7, 65535, 65531, 7, 65539, 65531, 48, 131068, 65531, 48, 131075, 65531, 48, 196604, 65531, 48, 196611, 65531, 48, 262140, 65531, 48, 262147, 65531, 48, 327676, 65531, 48, 327680, 65531, 7, 327681, 65531, 7, 327682, 65531, 7, 393213, 65531, 7, 393214, 65531, 7, 393215, 65531, 7, 0, 65532, 7, 1, 65532, 7, 2, 65532, 7, 65533, 65532, 7, 65534, 65532, 7, 65535, 65532, 7, 65539, 65532, 48, 131068, 65532, 48, 131075, 65532, 48, 196604, 65532, 48, 196611, 65532, 48, 262140, 65532, 48, 262147, 65532, 48, 327676, 65532, 48, 327680, 65532, 7, 327681, 65532, 7, 327682, 65532, 7, 393213, 65532, 7, 393214, 65532, 7, 393215, 65532, 7, 0, 65533, 24, 1, 65533, 24, 65534, 65533, 24, 65535, 65533, 24, 65537, 65533, 45, 65538, 65533, 31, 131069, 65533, 31, 131070, 65533, 42, 131073, 65533, 46, 131074, 65533, 31, 196605, 65533, 31, 196606, 65533, 43, 196610, 65533, 31, 262141, 65533, 31, 262144, 65533, 47, 262145, 65533, 31, 262146, 65533, 31, 327677, 65533, 31, 327678, 65533, 31, 327679, 65533, 44 )
-}
-__meta__ = {
-"_editor_clip_": 0,
-"_editor_floor_": Vector3( 0, 1, 0 )
+"cells": PackedInt32Array(0, 65528, 7, 1, 65528, 7, 2, 65528, 7, 65533, 65528, 7, 65534, 65528, 7, 65535, 65528, 7, 65536, 65528, 48, 65537, 65528, 48, 65538, 65528, 48, 131069, 65528, 48, 131070, 65528, 48, 131071, 65528, 48, 131072, 65528, 48, 131073, 65528, 48, 131074, 65528, 48, 196605, 65528, 48, 196606, 65528, 48, 196607, 65528, 48, 196608, 65528, 48, 196609, 65528, 48, 196610, 65528, 48, 262141, 65528, 48, 262142, 65528, 48, 262143, 65528, 48, 262144, 65528, 48, 262145, 65528, 48, 262146, 65528, 48, 327677, 65528, 48, 327678, 65528, 48, 327679, 65528, 48, 327680, 65528, 7, 327681, 65528, 7, 327682, 65528, 7, 393213, 65528, 7, 393214, 65528, 7, 393215, 65528, 7, 0, 65529, 7, 1, 65529, 7, 2, 65529, 7, 65533, 65529, 7, 65534, 65529, 7, 65535, 65529, 7, 65537, 65529, 49, 65538, 65529, 51, 65539, 65529, 48, 131068, 65529, 48, 131069, 65529, 49, 131070, 65529, 51, 131075, 65529, 48, 196604, 65529, 48, 196611, 65529, 48, 262140, 65529, 48, 262147, 65529, 48, 327676, 65529, 48, 327680, 65529, 7, 327681, 65529, 7, 327682, 65529, 7, 393213, 65529, 7, 393214, 65529, 7, 393215, 65529, 7, 0, 65530, 7, 1, 65530, 7, 2, 65530, 7, 65533, 65530, 7, 65534, 65530, 7, 65535, 65530, 7, 65539, 65530, 48, 131068, 65530, 48, 131075, 65530, 48, 196604, 65530, 48, 196611, 65530, 48, 262140, 65530, 48, 262147, 65530, 48, 327676, 65530, 48, 327680, 65530, 7, 327681, 65530, 7, 327682, 65530, 7, 393213, 65530, 7, 393214, 65530, 7, 393215, 65530, 7, 0, 65531, 7, 1, 65531, 7, 2, 65531, 7, 65533, 65531, 7, 65534, 65531, 7, 65535, 65531, 7, 65539, 65531, 48, 131068, 65531, 48, 131075, 65531, 48, 196604, 65531, 48, 196611, 65531, 48, 262140, 65531, 48, 262147, 65531, 48, 327676, 65531, 48, 327680, 65531, 7, 327681, 65531, 7, 327682, 65531, 7, 393213, 65531, 7, 393214, 65531, 7, 393215, 65531, 7, 0, 65532, 7, 1, 65532, 7, 2, 65532, 7, 65533, 65532, 7, 65534, 65532, 7, 65535, 65532, 7, 65539, 65532, 48, 131068, 65532, 48, 131075, 65532, 48, 196604, 65532, 48, 196611, 65532, 48, 262140, 65532, 48, 262147, 65532, 48, 327676, 65532, 48, 327680, 65532, 7, 327681, 65532, 7, 327682, 65532, 7, 393213, 65532, 7, 393214, 65532, 7, 393215, 65532, 7, 0, 65533, 24, 1, 65533, 24, 65534, 65533, 24, 65535, 65533, 24, 65537, 65533, 45, 65538, 65533, 31, 131069, 65533, 31, 131070, 65533, 42, 131073, 65533, 46, 131074, 65533, 31, 196605, 65533, 31, 196606, 65533, 43, 196610, 65533, 31, 262141, 65533, 31, 262144, 65533, 47, 262145, 65533, 31, 262146, 65533, 31, 327677, 65533, 31, 327678, 65533, 31, 327679, 65533, 44)
 }
 
 [node name="LevelViewUI" type="Control" parent="."]
-margin_right = 1280.0
-margin_bottom = 720.0
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
 mouse_filter = 2
-script = ExtResource( 2 )
+script = ExtResource("2")
 alignment = "Full alignment"
 
 [node name="CenterContainer" type="CenterContainer" parent="LevelViewUI"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 10 )
+script = ExtResource("10")
 alignment = "Full alignment"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LevelViewUI/CenterContainer"]
-margin_left = 530.0
-margin_top = 297.0
-margin_right = 750.0
-margin_bottom = 423.0
+layout_mode = 2
 alignment = 1
 
 [node name="CenterRow" type="HBoxContainer" parent="LevelViewUI/CenterContainer/VBoxContainer"]
-margin_right = 220.0
-margin_bottom = 63.0
+layout_mode = 2
 size_flags_vertical = 3
+alignment = 1
 
 [node name="Buttons" type="VBoxContainer" parent="LevelViewUI/CenterContainer/VBoxContainer/CenterRow"]
-margin_right = 220.0
-margin_bottom = 63.0
-rect_min_size = Vector2( 220, 0 )
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="Label" type="Label" parent="LevelViewUI/CenterContainer/VBoxContainer/CenterRow/Buttons"]
-margin_right = 220.0
-margin_bottom = 59.0
-theme = ExtResource( 1 )
+layout_mode = 2
+theme = ExtResource("1")
 text = "Select level"
-align = 1
-valign = 1
+horizontal_alignment = 1
 uppercase = true
 
 [node name="LevelList" type="VBoxContainer" parent="LevelViewUI/CenterContainer/VBoxContainer/CenterRow/Buttons"]
-margin_top = 63.0
-margin_right = 220.0
-margin_bottom = 63.0
+layout_mode = 2
 
 [node name="BackButton" type="Button" parent="LevelViewUI/CenterContainer/VBoxContainer"]
-margin_top = 67.0
-margin_right = 220.0
-margin_bottom = 126.0
+layout_mode = 2
 mouse_filter = 2
-theme = ExtResource( 1 )
+theme = ExtResource("1")
 text = "BACK"
-script = ExtResource( 3 )
+script = ExtResource("3")
 menus = "StartGame"
 
 [node name="Audio" type="Node" parent="LevelViewUI/CenterContainer/VBoxContainer/BackButton"]
 
 [node name="Click" type="AudioStreamPlayer" parent="LevelViewUI/CenterContainer/VBoxContainer/BackButton/Audio"]
-stream = ExtResource( 5 )
+stream = ExtResource("5")
 
 [node name="Move" type="AudioStreamPlayer" parent="LevelViewUI/CenterContainer/VBoxContainer/BackButton/Audio"]
-stream = ExtResource( 6 )
+stream = ExtResource("6")
 
-[node name="FadeIn" parent="LevelViewUI" instance=ExtResource( 4 )]
+[node name="FadeIn" parent="LevelViewUI" instance=ExtResource("4")]
 visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -3 )
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, -3)
+current = true
 
-[node name="Angela" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, -8 )
+[node name="Angela" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 3, -8)
 
 [node name="AngelaSprite" type="Sprite3D" parent="Angela"]
-generate_lightmap = false
 pixel_size = 0.04
 billboard = 1
 shaded = true
 double_sided = false
-texture = ExtResource( 8 )
+texture_filter = 0
+texture = ExtResource("8")
 hframes = 10
 vframes = 4
 frame = 9
 
-[node name="Rivet" type="Spatial" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, -8 )
+[node name="Rivet" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, -8)
 
 [node name="RivetSprite" type="Sprite3D" parent="Rivet"]
-generate_lightmap = false
 flip_h = true
 pixel_size = 0.04
 billboard = 1
 shaded = true
 double_sided = false
-texture = ExtResource( 9 )
+texture_filter = 0
+texture = ExtResource("9")
 hframes = 10
 vframes = 4
 frame = 9

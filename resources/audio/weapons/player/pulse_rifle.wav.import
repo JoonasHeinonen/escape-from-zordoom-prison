@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/pulse_rifle.wav-e68308e2f543614ce30eeb28b8aaf385.sample"
+type="AudioStreamWAV"
+uid="uid://kmgyv27cmnrg"
+path="res://.godot/imported/pulse_rifle.wav-e68308e2f543614ce30eeb28b8aaf385.sample"
 
 [deps]
 
 source_file="res://resources/audio/weapons/player/pulse_rifle.wav"
-dest_files=[ "res://.import/pulse_rifle.wav-e68308e2f543614ce30eeb28b8aaf385.sample" ]
+dest_files=["res://.godot/imported/pulse_rifle.wav-e68308e2f543614ce30eeb28b8aaf385.sample"]
 
 [params]
 

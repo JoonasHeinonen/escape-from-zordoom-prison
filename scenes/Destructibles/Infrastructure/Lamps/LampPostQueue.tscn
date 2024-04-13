@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://brq654ih15j0g"]
+
+[ext_resource type="Script" path="res://src/scripts/world/row_pattern.gd" id="1_oppx7"]
+[ext_resource type="PackedScene" uid="uid://dn230pjm7jtlh" path="res://scenes/Destructibles/Infrastructure/Lamps/LampPost.tscn" id="2_60jai"]
+
+[node name="PropRow" type="Node3D"]
+script = ExtResource("1_oppx7")
+elems = 4
+distance = 20.0
+packed_scene = ExtResource("2_60jai")
+
+[node name="LampPost" parent="." instance=ExtResource("2_60jai")]

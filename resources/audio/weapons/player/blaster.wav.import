@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/blaster.wav-dda536abc5d75fb750e9ba4e6bd01980.sample"
+type="AudioStreamWAV"
+uid="uid://bho3wnusjrw06"
+path="res://.godot/imported/blaster.wav-dda536abc5d75fb750e9ba4e6bd01980.sample"
 
 [deps]
 
 source_file="res://resources/audio/weapons/player/blaster.wav"
-dest_files=[ "res://.import/blaster.wav-dda536abc5d75fb750e9ba4e6bd01980.sample" ]
+dest_files=["res://.godot/imported/blaster.wav-dda536abc5d75fb750e9ba4e6bd01980.sample"]
 
 [params]
 

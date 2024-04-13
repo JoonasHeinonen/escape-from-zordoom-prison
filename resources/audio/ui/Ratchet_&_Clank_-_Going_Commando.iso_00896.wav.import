@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Ratchet_&_Clank_-_Going_Commando.iso_00896.wav-8f8280b73c32351010316b83187ed795.sample"
+type="AudioStreamWAV"
+uid="uid://cnfg6jap3erkq"
+path="res://.godot/imported/Ratchet_&_Clank_-_Going_Commando.iso_00896.wav-8f8280b73c32351010316b83187ed795.sample"
 
 [deps]
 
 source_file="res://resources/audio/ui/Ratchet_&_Clank_-_Going_Commando.iso_00896.wav"
-dest_files=[ "res://.import/Ratchet_&_Clank_-_Going_Commando.iso_00896.wav-8f8280b73c32351010316b83187ed795.sample" ]
+dest_files=["res://.godot/imported/Ratchet_&_Clank_-_Going_Commando.iso_00896.wav-8f8280b73c32351010316b83187ed795.sample"]
 
 [params]
 

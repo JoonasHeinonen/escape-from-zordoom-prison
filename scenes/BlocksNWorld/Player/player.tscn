@@ -1,1375 +1,1514 @@
-[gd_scene load_steps=112 format=2]
+[gd_scene load_steps=114 format=3 uid="uid://dbip5l63lixtv"]
 
-[ext_resource path="res://src/scripts/Player/Player.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" type="Texture" id=3]
-[ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=4]
-[ext_resource path="res://resources/images/weapons/edge_blaster.png" type="Texture" id=5]
-[ext_resource path="res://resources/images/characters/player/angela/angela_weapon.png" type="Texture" id=6]
-[ext_resource path="res://scenes/Menu/PlayerMenuButtons/ReturnToMainMenuButton.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/Menu/PlayerMenuButtons/ReturnToGameButton.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/scripts/Player/PauseMenuContainer.gd" type="Script" id=9]
-[ext_resource path="res://src/scripts/npc/vendor_container.gd" type="Script" id=10]
-[ext_resource path="res://src/theme/zordoom_resource_theme.tres" type="Theme" id=11]
-[ext_resource path="res://scenes/UI/bolt-icon.png" type="Texture" id=12]
-[ext_resource path="res://src/scripts/UI/bolt_count.gd" type="Script" id=13]
-[ext_resource path="res://src/scripts/Player/PlayerWeaponsInventory.gd" type="Script" id=14]
-[ext_resource path="res://src/scripts/Player/PlayerHit_box.gd" type="Script" id=15]
-[ext_resource path="res://resources/audio/weapons/player/edge_blaster_0.wav" type="AudioStream" id=16]
-[ext_resource path="res://resources/audio/collectibles/bolt_collect_1.wav" type="AudioStream" id=17]
-[ext_resource path="res://resources/audio/collectibles/bolt_collect_0.wav" type="AudioStream" id=18]
-[ext_resource path="res://resources/audio/collectibles/bolt_collect_2.wav" type="AudioStream" id=19]
-[ext_resource path="res://resources/audio/player/gravel_step_0.wav" type="AudioStream" id=20]
-[ext_resource path="res://resources/audio/player/gravel_step_1.wav" type="AudioStream" id=21]
-[ext_resource path="res://resources/audio/player/melee_2.wav" type="AudioStream" id=22]
-[ext_resource path="res://resources/audio/player/melee_1.wav" type="AudioStream" id=23]
-[ext_resource path="res://resources/audio/ui/button_click.wav" type="AudioStream" id=24]
-[ext_resource path="res://resources/audio/player/melee_0.wav" type="AudioStream" id=25]
-[ext_resource path="res://resources/audio/player/melee_3.wav" type="AudioStream" id=26]
-[ext_resource path="res://resources/audio/ui/button_navigate.wav" type="AudioStream" id=27]
-[ext_resource path="res://resources/audio/weapons/player/BlitzGun.wav" type="AudioStream" id=28]
-[ext_resource path="res://scenes/UI/ammo-icon.png" type="Texture" id=29]
-[ext_resource path="res://src/scripts/Player/PlayerUI.gd" type="Script" id=30]
-[ext_resource path="res://scenes/UI/health-icon.png" type="Texture" id=31]
-[ext_resource path="res://scenes/UI/icon-hexagon-placeholder.png" type="Texture" id=32]
-[ext_resource path="res://scenes/UI/icon-square-placeholder.png" type="Texture" id=33]
-[ext_resource path="res://scenes/UI/icon-triangle-placeholder.png" type="Texture" id=34]
-[ext_resource path="res://src/theme/zordoom_ingameui_theme.tres" type="Theme" id=35]
-[ext_resource path="res://resources/images/characters/player/rivet/rivet_sprite_sheet.png" type="Texture" id=36]
-[ext_resource path="res://resources/audio/weapons/player/GravityBomb.wav" type="AudioStream" id=37]
-[ext_resource path="res://src/scripts/Player/player_target_detection_area.gd" type="Script" id=38]
-[ext_resource path="res://resources/audio/collectibles/Ratchet_&_Clank_-_Going_Commando.iso_59400.wav" type="AudioStream" id=39]
-[ext_resource path="res://resources/audio/weapons/player/theNegotiator.wav" type="AudioStream" id=40]
-[ext_resource path="res://resources/images/ui/r_n_c__Final_ammo.png" type="Texture" id=41]
-[ext_resource path="res://scenes/Transitions/fade_in.tscn" type="PackedScene" id=42]
-[ext_resource path="res://src/scripts/Player/PlayerCamera.gd" type="Script" id=43]
-[ext_resource path="res://resources/images/ui/boss_fight_icon_empty.png" type="Texture" id=44]
-[ext_resource path="res://resources/images/weapons/pulse_rifle.png" type="Texture" id=45]
-[ext_resource path="res://scenes/BlocksNWorld/Player/sniping_raycast.tscn" type="PackedScene" id=46]
-[ext_resource path="res://resources/models/ui_elements/GreenSnipingTargetRadicalMaterial.material" type="Material" id=47]
-[ext_resource path="res://resources/audio/weapons/player/pulse_rifle.wav" type="AudioStream" id=48]
-[ext_resource path="res://src/scripts/UI/arena_menu.gd" type="Script" id=49]
+[ext_resource type="Script" path="res://src/scripts/Player/player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dbel2rhwi3en2" path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" id="3"]
+[ext_resource type="Theme" uid="uid://bk5epmeksv1nf" path="res://src/theme/zordoom_theme.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://bl1k1sd08mgw3" path="res://resources/images/weapons/edge_blaster.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://c7xd72ky151lf" path="res://resources/images/characters/player/angela/angela_weapon.png" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/Menu/PlayerMenuButtons/ReturnToMainMenuButton.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/Menu/PlayerMenuButtons/ReturnToGameButton.tscn" id="8"]
+[ext_resource type="Script" path="res://src/scripts/Player/pause_menu_container.gd" id="9"]
+[ext_resource type="Script" path="res://src/scripts/npc/vendor_container.gd" id="10"]
+[ext_resource type="Theme" uid="uid://c2nmiwn8xj48a" path="res://src/theme/zordoom_resource_theme.tres" id="11"]
+[ext_resource type="Texture2D" uid="uid://cf3xp1q1vg3lm" path="res://scenes/UI/bolt-icon.png" id="12"]
+[ext_resource type="Script" path="res://src/scripts/UI/bolt_count.gd" id="13"]
+[ext_resource type="Script" path="res://src/scripts/Player/player_weapons_inventory.gd" id="14"]
+[ext_resource type="Script" path="res://src/scripts/Player/player_hit_box.gd" id="15"]
+[ext_resource type="AudioStream" uid="uid://bqhcml1k4wstk" path="res://resources/audio/weapons/player/edge_blaster_0.wav" id="16"]
+[ext_resource type="AudioStream" uid="uid://cex6alkmaybc1" path="res://resources/audio/collectibles/bolt_collect_1.wav" id="17"]
+[ext_resource type="AudioStream" uid="uid://cx8lp3qrq1q7l" path="res://resources/audio/collectibles/bolt_collect_0.wav" id="18"]
+[ext_resource type="AudioStream" uid="uid://k8o1j4bku7g0" path="res://resources/audio/collectibles/bolt_collect_2.wav" id="19"]
+[ext_resource type="AudioStream" uid="uid://r2a2n2dxsicq" path="res://resources/audio/player/gravel_step_0.wav" id="20"]
+[ext_resource type="AudioStream" uid="uid://sp1pn0g4fl1a" path="res://resources/audio/player/gravel_step_1.wav" id="21"]
+[ext_resource type="AudioStream" uid="uid://bstl3wfciqah0" path="res://resources/audio/player/melee_2.wav" id="22"]
+[ext_resource type="AudioStream" uid="uid://b0ldhtc0o6qwa" path="res://resources/audio/player/melee_1.wav" id="23"]
+[ext_resource type="AudioStream" uid="uid://bmea3ibe58bhs" path="res://resources/audio/ui/button_click.wav" id="24"]
+[ext_resource type="AudioStream" uid="uid://dmyth55bjgehv" path="res://resources/audio/player/melee_0.wav" id="25"]
+[ext_resource type="AudioStream" uid="uid://8yxgqiyporsf" path="res://resources/audio/player/melee_3.wav" id="26"]
+[ext_resource type="AudioStream" uid="uid://dfnmugl4le2jo" path="res://resources/audio/ui/button_navigate.wav" id="27"]
+[ext_resource type="AudioStream" uid="uid://bsht21vkuadfy" path="res://resources/audio/weapons/player/BlitzGun.wav" id="28"]
+[ext_resource type="Texture2D" uid="uid://6l3xdnd8xm4n" path="res://scenes/UI/ammo-icon.png" id="29"]
+[ext_resource type="Script" path="res://src/scripts/Player/player_ui.gd" id="30"]
+[ext_resource type="Texture2D" uid="uid://bgsbglk5prfu3" path="res://scenes/UI/health-icon.png" id="31"]
+[ext_resource type="Texture2D" uid="uid://ce1bs50p03nq6" path="res://scenes/UI/icon-hexagon-placeholder.png" id="32"]
+[ext_resource type="Texture2D" uid="uid://kmm3oy6rwu0p" path="res://scenes/UI/icon-square-placeholder.png" id="33"]
+[ext_resource type="Texture2D" uid="uid://hrkl62slgjxa" path="res://scenes/UI/icon-triangle-placeholder.png" id="34"]
+[ext_resource type="Theme" uid="uid://bj2r4j23i1hpn" path="res://src/theme/zordoom_ingameui_theme.tres" id="35"]
+[ext_resource type="Texture2D" uid="uid://cghn4fkyrnshn" path="res://resources/images/characters/player/rivet/rivet_sprite_sheet.png" id="36"]
+[ext_resource type="AudioStream" uid="uid://bmscikp5qvxc" path="res://resources/audio/weapons/player/GravityBomb.wav" id="37"]
+[ext_resource type="Script" path="res://src/scripts/Player/player_target_detection_area.gd" id="38"]
+[ext_resource type="AudioStream" uid="uid://cl60omdlcrbw6" path="res://resources/audio/collectibles/Ratchet_&_Clank_-_Going_Commando.iso_59400.wav" id="39"]
+[ext_resource type="AudioStream" uid="uid://cr5h2uc0o36ot" path="res://resources/audio/weapons/player/theNegotiator.wav" id="40"]
+[ext_resource type="Texture2D" uid="uid://bjq2pc0gcj5wt" path="res://resources/images/ui/r_n_c__Final_ammo.png" id="41"]
+[ext_resource type="PackedScene" uid="uid://bpus84su3l7sc" path="res://scenes/Transitions/FadeIn.tscn" id="42"]
+[ext_resource type="Script" path="res://src/scripts/Player/player_camera.gd" id="43"]
+[ext_resource type="Texture2D" uid="uid://d0p2hw5a74abe" path="res://resources/images/ui/boss_fight_icon_empty.png" id="44"]
+[ext_resource type="Texture2D" uid="uid://buetcn3j6bmt8" path="res://resources/images/weapons/pulse_rifle.png" id="45"]
+[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Player/SnipingRaycast.tscn" id="46"]
+[ext_resource type="Material" path="res://resources/models/ui_elements/GreenSnipingTargetRadicalMaterial.material" id="47"]
+[ext_resource type="AudioStream" uid="uid://kmgyv27cmnrg" path="res://resources/audio/weapons/player/pulse_rifle.wav" id="48"]
+[ext_resource type="Script" path="res://src/scripts/UI/arena_menu.gd" id="49"]
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape3D" id="5"]
 
-[sub_resource type="BoxShape" id=50]
+[sub_resource type="BoxShape3D" id="50"]
 
-[sub_resource type="QuadMesh" id=2]
-size = Vector2( 2, 2 )
+[sub_resource type="QuadMesh" id="2"]
+size = Vector2(2, 2)
 
-[sub_resource type="SpatialMaterial" id=3]
-params_billboard_mode = 1
-albedo_texture = ExtResource( 2 )
-
-[sub_resource type="SphereShape" id=6]
+[sub_resource type="SphereShape3D" id="6"]
 radius = 2.29378
 
-[sub_resource type="QuadMesh" id=21]
+[sub_resource type="QuadMesh" id="21"]
 
-[sub_resource type="PointMesh" id=20]
+[sub_resource type="PointMesh" id="20"]
 
-[sub_resource type="Animation" id=67]
+[sub_resource type="Animation" id="67"]
 resource_name = "Player_Damage"
 length = 0.4
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("AngelaSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id="15"]
 resource_name = "Player_Fall"
 length = 0.5
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("AngelaSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 19 ]
+"values": [19]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AngelaSprite/SpotLight:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0.221415, -0.0698602, 0.10579 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("AngelaSprite/SpotLight2:translation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( -0.0157429, -0.446967, 0.10579 ) ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("AngelaSprite/SpotLight3:translation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0.50632, -0.179795, 0.10579 ) ]
-}
-
-[sub_resource type="Animation" id=24]
-resource_name = "Player_Melee"
-tracks/0/type = "value"
-tracks/0/path = NodePath("AngelaSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.35 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 20, 21, 22, 23, 24 ]
-}
-
-[sub_resource type="Animation" id=8]
-resource_name = "Player_Still"
-length = 0.9
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("AngelaSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 0, 0, 1, 0, 0, 1, 2 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AngelaSprite/SpotLight:translation")
+tracks/1/path = NodePath("AngelaSprite/SpotLight3D:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector3( -0.115846, -0.281346, 0.10579 ) ]
+"values": [Vector3(0.221415, -0.0698602, 0.10579)]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AngelaSprite/SpotLight2:translation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
+tracks/2/path = NodePath("AngelaSprite/SpotLight2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector3( -0.382073, -0.547632, 0.10579 ) ]
+"values": [Vector3(-0.0157429, -0.446967, 0.10579)]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AngelaSprite/SpotLight3:translation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
+tracks/3/path = NodePath("AngelaSprite/SpotLight3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Vector3( 0.235502, -0.54609, 0.10579 ) ]
+"values": [Vector3(0.50632, -0.179795, 0.10579)]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AngelaSprite/SpotLight:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
+tracks/4/path = NodePath("AngelaSprite:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="24"]
+resource_name = "Player_Melee"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngelaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ true ]
+"values": [20, 21, 22, 23, 24]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AngelaSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="8"]
+resource_name = "Player_Still"
+length = 0.9
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngelaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 0, 0, 1, 0, 0, 1, 2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AngelaSprite/SpotLight3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.115846, -0.281346, 0.10579)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AngelaSprite/SpotLight2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.382073, -0.547632, 0.10579)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AngelaSprite/SpotLight3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.235502, -0.54609, 0.10579)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AngelaSprite/SpotLight3D:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("AngelaSprite/SpotLight2:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
 }
 tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("AngelaSprite/SpotLight3:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AngelaSprite:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id="7"]
 resource_name = "Player_Walk"
 length = 0.95
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("AngelaSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 8, 10, 11, 12, 13, 14, 15, 16, 17, 18 ]
+"values": [8, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("AngelaSprite/SpotLight:translation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
+tracks/1/path = NodePath("AngelaSprite/SpotLight3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [ Vector3( 0.377, -0.249, 0.106 ), Vector3( 0.14, -0.18, 0.106 ), Vector3( 0.06, -0.16, 0.106 ), Vector3( 0.18, -0.16, 0.106 ), Vector3( 0.22, -0.14, 0.106 ), Vector3( 0.06, -0.24, 0.106 ), Vector3( 0.18, -0.16, 0.106 ) ]
+"values": [Vector3(0.377, -0.249, 0.106), Vector3(0.14, -0.18, 0.106), Vector3(0.06, -0.16, 0.106), Vector3(0.18, -0.16, 0.106), Vector3(0.22, -0.14, 0.106), Vector3(0.06, -0.24, 0.106), Vector3(0.18, -0.16, 0.106)]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("AngelaSprite/SpotLight:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
+tracks/2/path = NodePath("AngelaSprite/SpotLight3D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ false, false, true, false, false, true ]
+"values": [false, false, true, false, false, true]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("AngelaSprite/SpotLight2:translation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
+tracks/3/path = NodePath("AngelaSprite/SpotLight2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [ Vector3( 0.3, -0.56, 0.106 ), Vector3( 0.12, -0.55, 0.106 ), Vector3( -0.5, -0.45, 0.106 ), Vector3( 0.22, -0.55, 0.106 ), Vector3( -0.3, -0.5, 0.106 ), Vector3( 0.38, -0.4, 0.106 ), Vector3( 0.25, -0.5, 0.106 ), Vector3( 0.325, -0.5, 0.106 ) ]
+"values": [Vector3(0.3, -0.56, 0.106), Vector3(0.12, -0.55, 0.106), Vector3(-0.5, -0.45, 0.106), Vector3(0.22, -0.55, 0.106), Vector3(-0.3, -0.5, 0.106), Vector3(0.38, -0.4, 0.106), Vector3(0.25, -0.5, 0.106), Vector3(0.325, -0.5, 0.106)]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("AngelaSprite/SpotLight3:translation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
+tracks/4/path = NodePath("AngelaSprite/SpotLight3:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [ Vector3( 0.13, -0.56, 0.106 ), Vector3( 0.45, -0.42, 0.106 ), Vector3( 0.34, -0.45, 0.106 ), Vector3( 0.38, -0.54, 0.106 ), Vector3( 0.33, -0.56, 0.106 ), Vector3( -0.12, -0.6, 0.106 ), Vector3( -0.35, -0.34, 0.106 ), Vector3( -0.15, -0.45, 0.106 ) ]
+"values": [Vector3(0.13, -0.56, 0.106), Vector3(0.45, -0.42, 0.106), Vector3(0.34, -0.45, 0.106), Vector3(0.38, -0.54, 0.106), Vector3(0.33, -0.56, 0.106), Vector3(-0.12, -0.6, 0.106), Vector3(-0.35, -0.34, 0.106), Vector3(-0.15, -0.45, 0.106)]
 }
 tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
 tracks/5/path = NodePath("AngelaSprite/SpotLight3:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.1, 0.5, 0.6, 0.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ false, true, true, false, true ]
+"values": [false, true, true, false, true]
 }
 tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
 tracks/6/path = NodePath("Audio/Body/Step")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
 tracks/6/keys = {
-"clips": [ {
+"clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 21 )
+"stream": ExtResource("21")
 }, {
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource( 20 )
-} ],
-"times": PoolRealArray( 0, 0.5 )
+"stream": ExtResource("20")
+}],
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/6/use_blend = true
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AngelaSprite:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=68]
-animation = "Player_Damage"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_48tsd"]
+_data = {
+"Player_Damage": SubResource("67"),
+"Player_Fall": SubResource("15"),
+"Player_Melee": SubResource("24"),
+"Player_Still": SubResource("8"),
+"Player_Walk": SubResource("7")
+}
 
-[sub_resource type="AnimationNodeAnimation" id=40]
-animation = "Player_Fall"
+[sub_resource type="AnimationNodeAnimation" id="68"]
+animation = &"Player_Damage"
 
-[sub_resource type="AnimationNodeAnimation" id=41]
-animation = "Player_Melee"
+[sub_resource type="AnimationNodeAnimation" id="40"]
+animation = &"Player_Fall"
 
-[sub_resource type="AnimationNodeAnimation" id=42]
-animation = "Player_Still"
+[sub_resource type="AnimationNodeAnimation" id="41"]
+animation = &"Player_Melee"
 
-[sub_resource type="AnimationNodeAnimation" id=43]
-animation = "Player_Walk"
+[sub_resource type="AnimationNodeAnimation" id="42"]
+animation = &"Player_Still"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=44]
+[sub_resource type="AnimationNodeAnimation" id="43"]
+animation = &"Player_Walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=45]
+[sub_resource type="AnimationNodeStateMachineTransition" id="44"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=46]
+[sub_resource type="AnimationNodeStateMachineTransition" id="45"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=47]
+[sub_resource type="AnimationNodeStateMachineTransition" id="46"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=48]
+[sub_resource type="AnimationNodeStateMachineTransition" id="47"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=49]
+[sub_resource type="AnimationNodeStateMachineTransition" id="48"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=69]
+[sub_resource type="AnimationNodeStateMachineTransition" id="49"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=70]
+[sub_resource type="AnimationNodeStateMachineTransition" id="69"]
 
-[sub_resource type="AnimationNodeStateMachine" id=13]
-states/Player_Damage/node = SubResource( 68 )
-states/Player_Damage/position = Vector2( -50, 44 )
-states/Player_Fall/node = SubResource( 40 )
-states/Player_Fall/position = Vector2( 153, 152 )
-states/Player_Melee/node = SubResource( 41 )
-states/Player_Melee/position = Vector2( 369, 152 )
-states/Player_Still/node = SubResource( 42 )
-states/Player_Still/position = Vector2( 153, 44 )
-states/Player_Walk/node = SubResource( 43 )
-states/Player_Walk/position = Vector2( 369, 44 )
-transitions = [ "Player_Still", "Player_Walk", SubResource( 44 ), "Player_Walk", "Player_Still", SubResource( 45 ), "Player_Still", "Player_Fall", SubResource( 46 ), "Player_Fall", "Player_Still", SubResource( 47 ), "Player_Still", "Player_Melee", SubResource( 48 ), "Player_Melee", "Player_Still", SubResource( 49 ), "Player_Damage", "Player_Still", SubResource( 69 ), "Player_Still", "Player_Damage", SubResource( 70 ) ]
-start_node = "Player_Still"
-graph_offset = Vector2( -156.359, -65 )
+[sub_resource type="AnimationNodeStateMachineTransition" id="70"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=14]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ofvuq"]
+advance_mode = 2
 
-[sub_resource type="Animation" id=71]
+[sub_resource type="AnimationNodeStateMachine" id="13"]
+states/Player_Damage/node = SubResource("68")
+states/Player_Damage/position = Vector2(-50, 44)
+states/Player_Fall/node = SubResource("40")
+states/Player_Fall/position = Vector2(153, 152)
+states/Player_Melee/node = SubResource("41")
+states/Player_Melee/position = Vector2(369, 152)
+states/Player_Still/node = SubResource("42")
+states/Player_Still/position = Vector2(153, 44)
+states/Player_Walk/node = SubResource("43")
+states/Player_Walk/position = Vector2(369, 44)
+states/Start/position = Vector2(153, -34)
+transitions = ["Player_Still", "Player_Walk", SubResource("44"), "Player_Walk", "Player_Still", SubResource("45"), "Player_Still", "Player_Fall", SubResource("46"), "Player_Fall", "Player_Still", SubResource("47"), "Player_Still", "Player_Melee", SubResource("48"), "Player_Melee", "Player_Still", SubResource("49"), "Player_Damage", "Player_Still", SubResource("69"), "Player_Still", "Player_Damage", SubResource("70"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_ofvuq")]
+graph_offset = Vector2(-137.359, -82)
+
+[sub_resource type="Animation" id="71"]
 resource_name = "Player_Damage"
 length = 0.4
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("RivetSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id="32"]
 resource_name = "Player_Fall"
 length = 0.1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("RivetSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 23 ]
+"values": [23]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id=54]
+[sub_resource type="Animation" id="54"]
 resource_name = "Player_Melee"
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("RivetSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 30, 31, 33, 34, 35, 36 ]
+"values": [30, 31, 33, 34, 35, 36]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id="30"]
 resource_name = "Player_Still"
 length = 1.5
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("RivetSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.4, 0.6, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 1, 3, 1, 3, 1 ]
+"values": [1, 3, 1, 3, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id="31"]
 resource_name = "Player_Walk"
-loop = true
+loop_mode = 1
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("RivetSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [ 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
+"values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=72]
-animation = "Player_Damage"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ghn3u"]
+_data = {
+"Player_Damage": SubResource("71"),
+"Player_Fall": SubResource("32"),
+"Player_Melee": SubResource("54"),
+"Player_Still": SubResource("30"),
+"Player_Walk": SubResource("31")
+}
 
-[sub_resource type="AnimationNodeAnimation" id=33]
-animation = "Player_Fall"
+[sub_resource type="AnimationNodeAnimation" id="72"]
+animation = &"Player_Damage"
 
-[sub_resource type="AnimationNodeAnimation" id=57]
-animation = "Player_Melee"
+[sub_resource type="AnimationNodeAnimation" id="33"]
+animation = &"Player_Fall"
 
-[sub_resource type="AnimationNodeAnimation" id=58]
-animation = "Player_Still"
+[sub_resource type="AnimationNodeAnimation" id="57"]
+animation = &"Player_Melee"
 
-[sub_resource type="AnimationNodeAnimation" id=52]
-animation = "Player_Walk"
+[sub_resource type="AnimationNodeAnimation" id="58"]
+animation = &"Player_Still"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=59]
+[sub_resource type="AnimationNodeAnimation" id="52"]
+animation = &"Player_Walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=60]
+[sub_resource type="AnimationNodeStateMachineTransition" id="59"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=61]
+[sub_resource type="AnimationNodeStateMachineTransition" id="60"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=62]
+[sub_resource type="AnimationNodeStateMachineTransition" id="61"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=63]
+[sub_resource type="AnimationNodeStateMachineTransition" id="62"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=64]
+[sub_resource type="AnimationNodeStateMachineTransition" id="63"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=73]
+[sub_resource type="AnimationNodeStateMachineTransition" id="64"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=74]
+[sub_resource type="AnimationNodeStateMachineTransition" id="73"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=75]
+[sub_resource type="AnimationNodeStateMachineTransition" id="74"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=76]
+[sub_resource type="AnimationNodeStateMachineTransition" id="75"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=77]
+[sub_resource type="AnimationNodeStateMachineTransition" id="76"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=78]
+[sub_resource type="AnimationNodeStateMachineTransition" id="77"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=79]
+[sub_resource type="AnimationNodeStateMachineTransition" id="78"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=80]
+[sub_resource type="AnimationNodeStateMachineTransition" id="79"]
 
-[sub_resource type="AnimationNodeStateMachine" id=28]
-states/Player_Damage/node = SubResource( 72 )
-states/Player_Damage/position = Vector2( 390, -24 )
-states/Player_Fall/node = SubResource( 33 )
-states/Player_Fall/position = Vector2( 511, 84 )
-states/Player_Melee/node = SubResource( 57 )
-states/Player_Melee/position = Vector2( 486, 184 )
-states/Player_Still/node = SubResource( 58 )
-states/Player_Still/position = Vector2( 285, 84 )
-states/Player_Walk/node = SubResource( 52 )
-states/Player_Walk/position = Vector2( 285, 184 )
-transitions = [ "Player_Still", "Player_Fall", SubResource( 59 ), "Player_Fall", "Player_Still", SubResource( 60 ), "Player_Still", "Player_Melee", SubResource( 61 ), "Player_Melee", "Player_Still", SubResource( 62 ), "Player_Still", "Player_Walk", SubResource( 63 ), "Player_Walk", "Player_Still", SubResource( 64 ), "Player_Damage", "Player_Still", SubResource( 73 ), "Player_Still", "Player_Damage", SubResource( 74 ), "Player_Damage", "Player_Walk", SubResource( 75 ), "Player_Walk", "Player_Damage", SubResource( 76 ), "Player_Damage", "Player_Melee", SubResource( 77 ), "Player_Melee", "Player_Damage", SubResource( 78 ), "Player_Fall", "Player_Damage", SubResource( 79 ), "Player_Damage", "Player_Fall", SubResource( 80 ) ]
-start_node = "Player_Still"
-graph_offset = Vector2( -84, -93 )
+[sub_resource type="AnimationNodeStateMachineTransition" id="80"]
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=29]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dpwch"]
+advance_mode = 2
 
-[sub_resource type="StyleBoxFlat" id=19]
-bg_color = Color( 0, 0, 0, 0.490196 )
+[sub_resource type="AnimationNodeStateMachine" id="28"]
+states/Player_Damage/node = SubResource("72")
+states/Player_Damage/position = Vector2(390, -24)
+states/Player_Fall/node = SubResource("33")
+states/Player_Fall/position = Vector2(511, 84)
+states/Player_Melee/node = SubResource("57")
+states/Player_Melee/position = Vector2(486, 184)
+states/Player_Still/node = SubResource("58")
+states/Player_Still/position = Vector2(285, 84)
+states/Player_Walk/node = SubResource("52")
+states/Player_Walk/position = Vector2(285, 184)
+states/Start/position = Vector2(129, 84)
+transitions = ["Player_Still", "Player_Fall", SubResource("59"), "Player_Fall", "Player_Still", SubResource("60"), "Player_Still", "Player_Melee", SubResource("61"), "Player_Melee", "Player_Still", SubResource("62"), "Player_Still", "Player_Walk", SubResource("63"), "Player_Walk", "Player_Still", SubResource("64"), "Player_Damage", "Player_Still", SubResource("73"), "Player_Still", "Player_Damage", SubResource("74"), "Player_Damage", "Player_Walk", SubResource("75"), "Player_Walk", "Player_Damage", SubResource("76"), "Player_Damage", "Player_Melee", SubResource("77"), "Player_Melee", "Player_Damage", SubResource("78"), "Player_Fall", "Player_Damage", SubResource("79"), "Player_Damage", "Player_Fall", SubResource("80"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_dpwch")]
+graph_offset = Vector2(-84, -93)
 
-[sub_resource type="StyleBoxFlat" id=22]
-bg_color = Color( 0.14493, 0.522855, 0.570801, 0.372549 )
+[sub_resource type="StyleBoxFlat" id="19"]
+bg_color = Color(0, 0, 0, 0.490196)
 
-[sub_resource type="StyleBoxFlat" id=65]
-bg_color = Color( 1, 0, 0, 1 )
-corner_detail = 1
+[sub_resource type="StyleBoxFlat" id="22"]
+bg_color = Color(0.14493, 0.522855, 0.570801, 0.372549)
 
-[sub_resource type="StyleBoxFlat" id=66]
-bg_color = Color( 0.341176, 0, 0, 1 )
-corner_detail = 1
+[sub_resource type="BoxShape3D" id="23"]
 
-[sub_resource type="BoxShape" id=23]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5rgg"]
 
-[sub_resource type="ArrayMesh" id=83]
+[sub_resource type="ArrayMesh" id="ArrayMesh_jxfow"]
+_surfaces = [{
+"aabb": AABB(-1, -2, -1, 2, 2, 2),
+"format": 34896613377,
+"index_count": 186,
+"index_data": PackedByteArray(0, 0, 1, 0, 32, 0, 1, 0, 2, 0, 32, 0, 2, 0, 3, 0, 32, 0, 3, 0, 4, 0, 32, 0, 4, 0, 5, 0, 32, 0, 5, 0, 6, 0, 32, 0, 6, 0, 7, 0, 32, 0, 7, 0, 8, 0, 32, 0, 8, 0, 9, 0, 32, 0, 9, 0, 10, 0, 32, 0, 10, 0, 11, 0, 32, 0, 11, 0, 12, 0, 32, 0, 12, 0, 13, 0, 32, 0, 13, 0, 14, 0, 32, 0, 14, 0, 15, 0, 32, 0, 15, 0, 16, 0, 32, 0, 16, 0, 17, 0, 32, 0, 17, 0, 18, 0, 32, 0, 18, 0, 19, 0, 32, 0, 19, 0, 20, 0, 32, 0, 20, 0, 21, 0, 32, 0, 21, 0, 22, 0, 32, 0, 22, 0, 23, 0, 32, 0, 23, 0, 24, 0, 32, 0, 24, 0, 25, 0, 32, 0, 25, 0, 26, 0, 32, 0, 26, 0, 27, 0, 32, 0, 27, 0, 28, 0, 32, 0, 28, 0, 29, 0, 32, 0, 29, 0, 30, 0, 32, 0, 31, 0, 1, 0, 0, 0, 1, 0, 3, 0, 2, 0, 3, 0, 5, 0, 4, 0, 5, 0, 7, 0, 6, 0, 7, 0, 9, 0, 8, 0, 9, 0, 11, 0, 10, 0, 11, 0, 13, 0, 12, 0, 13, 0, 15, 0, 14, 0, 15, 0, 17, 0, 16, 0, 17, 0, 19, 0, 18, 0, 19, 0, 21, 0, 20, 0, 21, 0, 23, 0, 22, 0, 23, 0, 25, 0, 24, 0, 25, 0, 27, 0, 26, 0, 27, 0, 29, 0, 28, 0, 29, 0, 31, 0, 30, 0, 31, 0, 3, 0, 1, 0, 3, 0, 7, 0, 5, 0, 7, 0, 11, 0, 9, 0, 11, 0, 15, 0, 13, 0, 15, 0, 19, 0, 17, 0, 19, 0, 23, 0, 21, 0, 23, 0, 27, 0, 25, 0, 27, 0, 31, 0, 29, 0, 31, 0, 7, 0, 3, 0, 7, 0, 15, 0, 11, 0, 15, 0, 23, 0, 19, 0, 23, 0, 31, 0, 27, 0, 31, 0, 15, 0, 7, 0, 15, 0, 31, 0, 23, 0, 30, 0, 31, 0, 32, 0, 31, 0, 0, 0, 32, 0),
+"lods": [0.107395, PackedByteArray(0, 0, 4, 0, 32, 0, 4, 0, 6, 0, 32, 0, 31, 0, 0, 0, 32, 0, 6, 0, 10, 0, 32, 0, 10, 0, 11, 0, 32, 0, 30, 0, 31, 0, 32, 0, 28, 0, 30, 0, 32, 0, 26, 0, 28, 0, 32, 0, 11, 0, 12, 0, 32, 0, 12, 0, 16, 0, 32, 0, 16, 0, 18, 0, 32, 0, 18, 0, 20, 0, 32, 0, 24, 0, 26, 0, 32, 0, 20, 0, 21, 0, 32, 0, 21, 0, 24, 0, 32, 0, 4, 0, 10, 0, 6, 0, 0, 0, 10, 0, 4, 0, 31, 0, 10, 0, 0, 0, 10, 0, 12, 0, 11, 0, 31, 0, 12, 0, 10, 0, 28, 0, 31, 0, 30, 0, 26, 0, 31, 0, 28, 0, 21, 0, 31, 0, 26, 0, 12, 0, 31, 0, 21, 0, 21, 0, 26, 0, 24, 0, 12, 0, 21, 0, 20, 0, 12, 0, 20, 0, 16, 0, 16, 0, 20, 0, 18, 0), 0.880727, PackedByteArray(4, 0, 6, 0, 32, 0, 31, 0, 4, 0, 32, 0, 30, 0, 31, 0, 32, 0, 6, 0, 10, 0, 32, 0, 10, 0, 11, 0, 32, 0, 11, 0, 16, 0, 32, 0, 16, 0, 18, 0, 32, 0, 18, 0, 30, 0, 32, 0, 4, 0, 10, 0, 6, 0, 31, 0, 10, 0, 4, 0, 31, 0, 16, 0, 10, 0, 10, 0, 16, 0, 11, 0, 16, 0, 31, 0, 30, 0, 16, 0, 30, 0, 18, 0)],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 33,
+"vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 0, 0, 248, 152, 0, 0, 117, 2, 0, 0, 251, 176, 0, 0, 190, 9, 0, 0, 28, 199, 0, 0, 146, 21, 0, 0, 129, 218, 0, 0, 125, 37, 0, 0, 108, 234, 0, 0, 226, 56, 0, 0, 64, 246, 0, 0, 3, 79, 0, 0, 137, 253, 0, 0, 6, 103, 0, 0, 255, 255, 0, 0, 255, 127, 0, 0, 137, 253, 0, 0, 248, 152, 0, 0, 64, 246, 0, 0, 251, 176, 0, 0, 108, 234, 0, 0, 28, 199, 0, 0, 129, 218, 0, 0, 129, 218, 0, 0, 28, 199, 0, 0, 108, 234, 0, 0, 251, 176, 0, 0, 64, 246, 0, 0, 248, 152, 0, 0, 137, 253, 0, 0, 255, 127, 0, 0, 255, 255, 0, 0, 6, 103, 0, 0, 137, 253, 0, 0, 3, 79, 0, 0, 64, 246, 0, 0, 226, 56, 0, 0, 108, 234, 0, 0, 125, 37, 0, 0, 129, 218, 0, 0, 146, 21, 0, 0, 28, 199, 0, 0, 190, 9, 0, 0, 251, 176, 0, 0, 117, 2, 0, 0, 248, 152, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0, 117, 2, 0, 0, 6, 103, 0, 0, 190, 9, 0, 0, 3, 79, 0, 0, 146, 21, 0, 0, 226, 56, 0, 0, 125, 37, 0, 0, 125, 37, 0, 0, 226, 56, 0, 0, 146, 21, 0, 0, 3, 79, 0, 0, 190, 9, 0, 0, 6, 103, 0, 0, 117, 2, 0, 0, 255, 127, 255, 255, 255, 127, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_jwird"]
+resource_name = "raycast_cone_Cone"
+_surfaces = [{
+"aabb": AABB(-1, -2, -1, 2, 2, 2),
+"attribute_data": PackedByteArray(255, 63, 142, 130, 255, 191, 142, 130, 255, 63, 142, 130, 251, 203, 189, 131, 252, 75, 189, 131, 252, 75, 189, 131, 130, 215, 60, 135, 130, 87, 60, 135, 130, 87, 60, 135, 33, 226, 233, 140, 33, 98, 233, 140, 33, 98, 233, 140, 112, 235, 141, 148, 113, 107, 141, 148, 113, 107, 141, 148, 20, 243, 221, 157, 21, 115, 221, 157, 21, 115, 221, 157, 194, 248, 124, 168, 194, 120, 124, 168, 194, 120, 124, 168, 65, 252, 2, 180, 65, 124, 2, 180, 65, 124, 2, 180, 111, 253, 255, 191, 112, 125, 255, 191, 112, 125, 255, 191, 65, 252, 251, 203, 65, 124, 251, 203, 65, 124, 251, 203, 194, 248, 130, 215, 194, 120, 130, 215, 194, 120, 130, 215, 20, 243, 33, 226, 21, 115, 33, 226, 21, 115, 33, 226, 112, 235, 112, 235, 113, 107, 112, 235, 113, 107, 112, 235, 33, 226, 20, 243, 33, 98, 20, 243, 33, 98, 20, 243, 130, 215, 194, 248, 130, 87, 194, 248, 130, 87, 194, 248, 251, 203, 65, 252, 252, 75, 65, 252, 252, 75, 65, 252, 255, 63, 111, 253, 255, 191, 111, 253, 255, 63, 111, 253, 3, 52, 65, 252, 3, 52, 65, 252, 2, 180, 65, 252, 124, 40, 194, 248, 124, 40, 194, 248, 124, 168, 194, 248, 221, 29, 20, 243, 221, 29, 20, 243, 221, 157, 20, 243, 142, 20, 112, 235, 142, 20, 112, 235, 141, 148, 112, 235, 234, 12, 33, 226, 234, 12, 33, 226, 233, 140, 33, 226, 60, 7, 130, 215, 60, 7, 130, 215, 60, 135, 130, 215, 189, 3, 251, 203, 189, 3, 251, 203, 189, 131, 251, 203, 143, 2, 255, 191, 143, 2, 255, 191, 142, 130, 255, 191, 189, 3, 2, 180, 189, 3, 2, 180, 189, 131, 2, 180, 60, 7, 124, 168, 60, 7, 124, 168, 60, 135, 124, 168, 234, 12, 221, 157, 234, 12, 221, 157, 233, 140, 221, 157, 142, 20, 141, 148, 142, 20, 141, 148, 141, 148, 141, 148, 221, 29, 233, 140, 221, 29, 233, 140, 221, 157, 233, 140, 124, 40, 60, 135, 124, 40, 60, 135, 124, 168, 60, 135, 3, 52, 189, 131, 3, 52, 189, 131, 2, 180, 189, 131, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 124, 40, 194, 248, 124, 40, 60, 135, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191, 255, 63, 255, 191),
+"format": 34896613399,
+"index_count": 186,
+"index_data": PackedByteArray(2, 0, 4, 0, 112, 0, 5, 0, 7, 0, 114, 0, 8, 0, 10, 0, 116, 0, 11, 0, 13, 0, 118, 0, 14, 0, 16, 0, 120, 0, 17, 0, 19, 0, 122, 0, 20, 0, 22, 0, 124, 0, 23, 0, 25, 0, 126, 0, 26, 0, 29, 0, 127, 0, 28, 0, 32, 0, 125, 0, 31, 0, 35, 0, 123, 0, 34, 0, 38, 0, 121, 0, 37, 0, 41, 0, 119, 0, 40, 0, 44, 0, 117, 0, 43, 0, 47, 0, 115, 0, 46, 0, 50, 0, 113, 0, 48, 0, 52, 0, 111, 0, 51, 0, 55, 0, 109, 0, 54, 0, 58, 0, 107, 0, 57, 0, 61, 0, 105, 0, 60, 0, 64, 0, 103, 0, 63, 0, 67, 0, 101, 0, 66, 0, 70, 0, 99, 0, 69, 0, 73, 0, 97, 0, 72, 0, 75, 0, 96, 0, 76, 0, 78, 0, 98, 0, 79, 0, 81, 0, 100, 0, 82, 0, 84, 0, 102, 0, 85, 0, 87, 0, 104, 0, 88, 0, 90, 0, 106, 0, 95, 0, 3, 0, 1, 0, 3, 0, 9, 0, 6, 0, 9, 0, 15, 0, 12, 0, 15, 0, 21, 0, 18, 0, 21, 0, 27, 0, 24, 0, 27, 0, 33, 0, 30, 0, 33, 0, 39, 0, 36, 0, 39, 0, 45, 0, 42, 0, 45, 0, 53, 0, 49, 0, 53, 0, 59, 0, 56, 0, 59, 0, 65, 0, 62, 0, 65, 0, 71, 0, 68, 0, 71, 0, 77, 0, 74, 0, 77, 0, 83, 0, 80, 0, 83, 0, 89, 0, 86, 0, 89, 0, 95, 0, 92, 0, 95, 0, 9, 0, 3, 0, 9, 0, 21, 0, 15, 0, 21, 0, 33, 0, 27, 0, 33, 0, 45, 0, 39, 0, 45, 0, 59, 0, 53, 0, 59, 0, 71, 0, 65, 0, 71, 0, 83, 0, 77, 0, 83, 0, 95, 0, 89, 0, 95, 0, 21, 0, 9, 0, 21, 0, 45, 0, 33, 0, 45, 0, 71, 0, 59, 0, 71, 0, 95, 0, 83, 0, 95, 0, 45, 0, 21, 0, 45, 0, 95, 0, 71, 0, 91, 0, 93, 0, 108, 0, 94, 0, 0, 0, 110, 0),
+"lods": [0.107395, PackedByteArray(0, 0, 13, 0, 136, 0, 13, 0, 19, 0, 136, 0, 93, 0, 0, 0, 136, 0, 19, 0, 31, 0, 123, 0, 31, 0, 34, 0, 123, 0, 90, 0, 93, 0, 134, 0, 84, 0, 90, 0, 134, 0, 78, 0, 84, 0, 134, 0, 34, 0, 37, 0, 135, 0, 37, 0, 48, 0, 135, 0, 48, 0, 54, 0, 135, 0, 54, 0, 60, 0, 133, 0, 72, 0, 78, 0, 133, 0, 60, 0, 63, 0, 133, 0, 63, 0, 72, 0, 133, 0, 12, 0, 30, 0, 18, 0, 1, 0, 30, 0, 12, 0, 95, 0, 30, 0, 1, 0, 30, 0, 36, 0, 33, 0, 95, 0, 36, 0, 30, 0, 86, 0, 95, 0, 92, 0, 80, 0, 95, 0, 86, 0, 65, 0, 95, 0, 80, 0, 36, 0, 95, 0, 65, 0, 65, 0, 80, 0, 74, 0, 36, 0, 65, 0, 62, 0, 36, 0, 62, 0, 49, 0, 49, 0, 62, 0, 56, 0), 0.880727, PackedByteArray(13, 0, 19, 0, 132, 0, 93, 0, 13, 0, 132, 0, 90, 0, 93, 0, 130, 0, 19, 0, 31, 0, 123, 0, 31, 0, 34, 0, 123, 0, 34, 0, 48, 0, 131, 0, 48, 0, 54, 0, 131, 0, 128, 0, 129, 0, 96, 0, 12, 0, 30, 0, 18, 0, 95, 0, 30, 0, 12, 0, 95, 0, 49, 0, 30, 0, 30, 0, 49, 0, 33, 0, 49, 0, 95, 0, 92, 0, 49, 0, 92, 0, 56, 0)],
+"material": SubResource("StandardMaterial3D_v5rgg"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 137,
+"vertex_data": PackedByteArray(255, 127, 0, 0, 0, 0, 226, 236, 255, 127, 0, 0, 0, 0, 255, 63, 255, 127, 0, 0, 0, 0, 226, 236, 248, 152, 0, 0, 117, 2, 255, 63, 248, 152, 0, 0, 117, 2, 226, 236, 248, 152, 0, 0, 117, 2, 179, 234, 251, 176, 0, 0, 190, 9, 255, 63, 251, 176, 0, 0, 190, 9, 179, 234, 251, 176, 0, 0, 190, 9, 14, 231, 28, 199, 0, 0, 146, 21, 255, 63, 28, 199, 0, 0, 146, 21, 14, 231, 28, 199, 0, 0, 146, 21, 156, 226, 129, 218, 0, 0, 125, 37, 255, 63, 129, 218, 0, 0, 125, 37, 156, 226, 129, 218, 0, 0, 125, 37, 192, 221, 108, 234, 0, 0, 226, 56, 255, 63, 108, 234, 0, 0, 226, 56, 192, 221, 108, 234, 0, 0, 226, 56, 168, 216, 64, 246, 0, 0, 3, 79, 255, 63, 64, 246, 0, 0, 3, 79, 168, 216, 64, 246, 0, 0, 3, 79, 111, 211, 137, 253, 0, 0, 6, 103, 255, 63, 137, 253, 0, 0, 6, 103, 111, 211, 137, 253, 0, 0, 6, 103, 32, 206, 255, 255, 0, 0, 255, 127, 255, 63, 255, 255, 0, 0, 255, 127, 32, 206, 255, 255, 0, 0, 255, 127, 188, 200, 137, 253, 0, 0, 248, 152, 255, 63, 137, 253, 0, 0, 248, 152, 60, 195, 137, 253, 0, 0, 248, 152, 188, 200, 64, 246, 0, 0, 251, 176, 255, 63, 64, 246, 0, 0, 251, 176, 137, 189, 64, 246, 0, 0, 251, 176, 60, 195, 108, 234, 0, 0, 28, 199, 255, 63, 108, 234, 0, 0, 28, 199, 114, 183, 108, 234, 0, 0, 28, 199, 137, 189, 129, 218, 0, 0, 129, 218, 255, 63, 129, 218, 0, 0, 129, 218, 162, 176, 129, 218, 0, 0, 129, 218, 114, 183, 28, 199, 0, 0, 108, 234, 255, 63, 28, 199, 0, 0, 108, 234, 139, 168, 28, 199, 0, 0, 108, 234, 162, 176, 251, 176, 0, 0, 64, 246, 255, 63, 251, 176, 0, 0, 64, 246, 164, 158, 251, 176, 0, 0, 64, 246, 139, 168, 248, 152, 0, 0, 137, 253, 255, 63, 248, 152, 0, 0, 137, 253, 190, 148, 248, 152, 0, 0, 137, 253, 164, 158, 255, 127, 0, 0, 255, 255, 190, 148, 255, 127, 0, 0, 255, 255, 255, 63, 255, 127, 0, 0, 255, 255, 190, 148, 6, 103, 0, 0, 137, 253, 164, 158, 6, 103, 0, 0, 137, 253, 190, 148, 6, 103, 0, 0, 137, 253, 255, 63, 3, 79, 0, 0, 64, 246, 139, 168, 3, 79, 0, 0, 64, 246, 164, 158, 3, 79, 0, 0, 64, 246, 255, 63, 226, 56, 0, 0, 108, 234, 162, 176, 226, 56, 0, 0, 108, 234, 139, 168, 226, 56, 0, 0, 108, 234, 255, 63, 125, 37, 0, 0, 129, 218, 114, 183, 125, 37, 0, 0, 129, 218, 162, 176, 125, 37, 0, 0, 129, 218, 255, 63, 146, 21, 0, 0, 28, 199, 137, 189, 146, 21, 0, 0, 28, 199, 114, 183, 146, 21, 0, 0, 28, 199, 255, 63, 190, 9, 0, 0, 251, 176, 60, 195, 190, 9, 0, 0, 251, 176, 137, 189, 190, 9, 0, 0, 251, 176, 255, 63, 117, 2, 0, 0, 248, 152, 188, 200, 117, 2, 0, 0, 248, 152, 60, 195, 117, 2, 0, 0, 248, 152, 255, 63, 0, 0, 0, 0, 255, 127, 32, 206, 0, 0, 0, 0, 255, 127, 188, 200, 0, 0, 0, 0, 255, 127, 255, 63, 117, 2, 0, 0, 6, 103, 32, 206, 117, 2, 0, 0, 6, 103, 111, 211, 117, 2, 0, 0, 6, 103, 255, 63, 190, 9, 0, 0, 3, 79, 111, 211, 190, 9, 0, 0, 3, 79, 168, 216, 190, 9, 0, 0, 3, 79, 255, 63, 146, 21, 0, 0, 226, 56, 168, 216, 146, 21, 0, 0, 226, 56, 192, 221, 146, 21, 0, 0, 226, 56, 255, 63, 125, 37, 0, 0, 125, 37, 192, 221, 125, 37, 0, 0, 125, 37, 156, 226, 125, 37, 0, 0, 125, 37, 255, 63, 226, 56, 0, 0, 146, 21, 156, 226, 226, 56, 0, 0, 146, 21, 14, 231, 226, 56, 0, 0, 146, 21, 255, 63, 3, 79, 0, 0, 190, 9, 14, 231, 3, 79, 0, 0, 190, 9, 179, 234, 3, 79, 0, 0, 190, 9, 255, 63, 6, 103, 0, 0, 117, 2, 179, 234, 6, 103, 0, 0, 117, 2, 226, 236, 6, 103, 0, 0, 117, 2, 255, 63, 255, 127, 255, 255, 255, 127, 32, 206, 255, 127, 255, 255, 255, 127, 188, 200, 255, 127, 255, 255, 255, 127, 111, 211, 255, 127, 255, 255, 255, 127, 60, 195, 255, 127, 255, 255, 255, 127, 168, 216, 255, 127, 255, 255, 255, 127, 137, 189, 255, 127, 255, 255, 255, 127, 192, 221, 255, 127, 255, 255, 255, 127, 114, 183, 255, 127, 255, 255, 255, 127, 156, 226, 255, 127, 255, 255, 255, 127, 162, 176, 255, 127, 255, 255, 255, 127, 14, 231, 255, 127, 255, 255, 255, 127, 139, 168, 255, 127, 255, 255, 255, 127, 179, 234, 255, 127, 255, 255, 255, 127, 164, 158, 255, 127, 255, 255, 255, 127, 226, 236, 255, 127, 255, 255, 255, 127, 190, 148, 255, 127, 255, 255, 255, 127, 226, 236, 255, 127, 255, 255, 255, 127, 190, 148, 255, 127, 255, 255, 255, 127, 179, 234, 255, 127, 255, 255, 255, 127, 164, 158, 255, 127, 255, 255, 255, 127, 14, 231, 255, 127, 255, 255, 255, 127, 139, 168, 255, 127, 255, 255, 255, 127, 156, 226, 255, 127, 255, 255, 255, 127, 162, 176, 255, 127, 255, 255, 255, 127, 192, 221, 255, 127, 255, 255, 255, 127, 114, 183, 255, 127, 255, 255, 255, 127, 168, 216, 255, 127, 255, 255, 255, 127, 137, 189, 255, 127, 255, 255, 255, 127, 111, 211, 255, 127, 255, 255, 255, 127, 60, 195, 255, 127, 255, 255, 255, 127, 32, 206, 255, 127, 255, 255, 255, 127, 188, 200, 3, 79, 0, 0, 64, 246, 63, 184, 3, 79, 0, 0, 190, 9, 74, 204, 255, 127, 255, 255, 255, 127, 10, 238, 255, 127, 255, 255, 255, 127, 66, 156, 255, 127, 255, 255, 255, 127, 127, 229, 255, 127, 255, 255, 255, 127, 126, 191, 255, 127, 255, 255, 255, 127, 5, 229, 255, 127, 255, 255, 255, 127, 129, 157, 255, 127, 255, 255, 255, 127, 174, 233, 219, 244, 208, 141, 0, 0, 255, 127, 45, 242, 219, 116, 0, 0, 255, 127, 45, 242, 219, 116, 33, 223, 71, 102, 0, 0, 255, 127, 33, 223, 71, 102, 97, 211, 197, 94, 0, 0, 255, 127, 97, 211, 197, 94, 141, 203, 60, 91, 0, 0, 255, 127, 141, 203, 60, 91, 222, 197, 225, 89, 0, 0, 255, 127, 222, 197, 225, 89, 109, 193, 202, 89, 0, 0, 255, 127, 109, 193, 202, 89, 194, 189, 128, 90, 0, 0, 255, 127, 194, 189, 128, 90, 154, 186, 198, 91, 0, 0, 255, 127, 154, 186, 198, 91, 210, 183, 127, 93, 0, 0, 255, 127, 88, 181, 155, 95, 210, 183, 127, 93, 0, 0, 255, 127, 50, 179, 25, 98, 88, 181, 155, 95, 0, 0, 255, 127, 131, 177, 251, 100, 50, 179, 25, 98, 0, 0, 255, 127, 184, 176, 74, 104, 131, 177, 251, 100, 0, 0, 255, 127, 253, 177, 20, 108, 184, 176, 74, 104, 0, 0, 255, 127, 12, 185, 146, 112, 253, 177, 20, 108, 0, 0, 255, 127, 27, 213, 176, 119, 12, 185, 146, 112, 175, 247, 227, 170, 0, 0, 255, 127, 27, 213, 176, 119, 146, 240, 242, 198, 175, 247, 227, 170, 0, 0, 255, 127, 20, 236, 1, 206, 146, 240, 242, 198, 0, 0, 255, 127, 74, 232, 70, 207, 20, 236, 1, 206, 0, 0, 255, 127, 251, 228, 122, 206, 74, 232, 70, 207, 0, 0, 255, 127, 24, 226, 203, 204, 251, 228, 122, 206, 0, 0, 255, 127, 155, 223, 165, 202, 24, 226, 203, 204, 0, 0, 255, 127, 126, 221, 44, 200, 155, 223, 165, 202, 0, 0, 255, 127, 198, 219, 99, 197, 126, 221, 44, 200, 0, 0, 255, 127, 198, 219, 99, 197, 127, 218, 59, 194, 0, 0, 255, 127, 127, 218, 59, 194, 201, 217, 145, 190, 0, 0, 255, 127, 201, 217, 145, 190, 224, 217, 32, 186, 0, 0, 255, 127, 224, 217, 32, 186, 60, 219, 113, 180, 0, 0, 255, 127, 60, 219, 113, 180, 197, 222, 157, 172, 0, 0, 255, 127, 197, 222, 157, 172, 70, 230, 221, 160, 0, 0, 255, 127, 70, 230, 221, 160, 219, 244, 208, 141, 0, 0, 255, 127, 198, 219, 99, 197, 126, 221, 44, 200, 127, 218, 59, 194, 155, 223, 165, 202, 201, 217, 145, 190, 24, 226, 203, 204, 224, 217, 32, 186, 251, 228, 122, 206, 60, 219, 113, 180, 74, 232, 70, 207, 197, 222, 157, 172, 20, 236, 1, 206, 70, 230, 221, 160, 146, 240, 242, 198, 219, 244, 208, 141, 175, 247, 227, 170, 45, 242, 219, 116, 27, 213, 176, 119, 33, 223, 71, 102, 12, 185, 146, 112, 97, 211, 197, 94, 253, 177, 20, 108, 141, 203, 60, 91, 184, 176, 74, 104, 222, 197, 225, 89, 131, 177, 251, 100, 109, 193, 202, 89, 50, 179, 25, 98, 194, 189, 128, 90, 88, 181, 155, 95, 154, 186, 198, 91, 210, 183, 127, 93, 42, 224, 113, 198, 182, 217, 15, 191, 103, 229, 96, 164, 205, 249, 27, 57, 95, 210, 130, 80, 231, 226, 205, 203, 185, 220, 242, 179, 184, 235, 158, 47, 85, 223, 67, 93)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_jxfow")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8qemm"]
+points = PackedVector3Array(-0.000195742, 0, -0.000195742, 0.194988, -2, -0.980814, -0.000195742, -2, -1, -0.195184, -2, -0.980814, -0.382733, -2, -0.924041, -0.555599, -2, -0.831637, -0.707126, -2, -0.707126, -0.831637, -2, -0.555599, -0.924041, -2, -0.382733, -0.980814, -2, -0.195184, -1, -2, -0.000195742, -0.980814, -2, 0.194988, -0.924041, -2, 0.382537, -0.831637, -2, 0.555403, -0.707126, -2, 0.70693, -0.555599, -2, 0.831441, -0.382733, -2, 0.923845, -0.195184, -2, 0.980619, -0.000195742, -2, 1, 0.194988, -2, 0.980619, 0.382537, -2, 0.923845, 0.555403, -2, 0.831441, 0.70693, -2, 0.70693, 0.831441, -2, 0.555403, 0.923845, -2, 0.382537, 0.980619, -2, 0.194988, 0.999804, -2, -0.000195742, 0.980619, -2, -0.195184, 0.923845, -2, -0.382733, 0.831441, -2, -0.555599, 0.70693, -2, -0.707126, 0.555403, -2, -0.831637, 0.382537, -2, -0.924041)
+
+[sub_resource type="ArrayMesh" id="83"]
 resource_name = "green_target_radical_pulse_rifle_Plane"
-surfaces/0 = {
-"aabb": AABB( -1, -1, -2.98023e-07, 2, 2.00001, 1.04172e-05 ),
-"array_data": PoolByteArray( 1, 0, 128, 191, 254, 255, 127, 63, 0, 0, 0, 52, 0, 0, 0, 126, 255, 59, 145, 6, 254, 255, 127, 191, 1, 0, 128, 191, 0, 0, 160, 52, 0, 0, 0, 126, 142, 6, 141, 6, 254, 255, 127, 63, 1, 0, 128, 63, 0, 0, 160, 180, 0, 0, 0, 126, 255, 59, 255, 59, 1, 0, 128, 63, 254, 255, 127, 191, 0, 0, 0, 180, 0, 0, 0, 126, 141, 6, 255, 59 ),
-"array_index_data": PoolByteArray( 0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0 ),
-"blend_shape_data": [  ],
-"format": 2194711,
+_surfaces = [{
+"aabb": AABB(-1, -1, -2.98023e-07, 2, 2.00001, 1.04172e-05),
+"attribute_data": PackedByteArray(0, 224, 127, 63, 0, 32, 210, 56, 0, 192, 209, 56, 0, 160, 209, 56, 0, 224, 127, 63, 0, 224, 127, 63, 0, 160, 209, 56, 0, 224, 127, 63),
+"format": 34359742487,
 "index_count": 6,
-"material": ExtResource( 47 ),
-"primitive": 4,
-"skeleton_aabb": [  ],
-"vertex_count": 4
-}
+"index_data": PackedByteArray(0, 0, 3, 0, 1, 0, 0, 0, 2, 0, 3, 0),
+"material": ExtResource("47"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(1, 0, 128, 191, 254, 255, 127, 63, 0, 0, 0, 52, 254, 255, 127, 191, 1, 0, 128, 191, 0, 0, 160, 52, 254, 255, 127, 63, 1, 0, 128, 63, 0, 0, 160, 180, 1, 0, 128, 63, 254, 255, 127, 191, 0, 0, 0, 180, 0, 0, 0, 0, 255, 127, 252, 254, 0, 0, 0, 0, 255, 127, 252, 254, 0, 0, 0, 0, 255, 127, 252, 254, 0, 0, 0, 0, 255, 127, 252, 254)
+}]
 
-[sub_resource type="Animation" id=84]
+[sub_resource type="Animation" id="84"]
 resource_name = "Idle"
 
-[sub_resource type="AnimationNodeStateMachine" id=81]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yuxq4"]
+_data = {
+"Idle": SubResource("84")
+}
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=82]
+[sub_resource type="AnimationNodeStateMachine" id="81"]
 
-[node name="player" type="KinematicBody"]
-pause_mode = 1
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0612217 )
-axis_lock_motion_x = true
-axis_lock_motion_y = true
-move_lock_x = true
-move_lock_y = true
-script = ExtResource( 1 )
+[node name="Player" type="CharacterBody3D"]
+process_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0612217)
+axis_lock_linear_z = true
+axis_lock_angular_z = true
+script = ExtResource("1")
 check_point_enabled = false
 speed = 200
 
-[node name="PlayerSpawnPoint" type="Position3D" parent="."]
-transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
+[node name="PlayerSpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(-0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139)
 
-[node name="ColliisionArea" type="Area" parent="."]
+[node name="CollisionArea" type="Area3D" parent="."]
 
-[node name="CollisionShape" type="CollisionShape" parent="ColliisionArea"]
-transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0 )
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
+transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("5")
 
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0 )
-shape = SubResource( 5 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 2, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("5")
 
-[node name="ShootingRaycast" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.09193 )
-shape = SubResource( 5 )
+[node name="ShootingRaycast" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.09193)
+shape = SubResource("5")
 disabled = true
 
-[node name="TargetDetectionArea" type="Area" parent="."]
+[node name="TargetDetectionArea" type="Area3D" parent="."]
 collision_layer = 3
 collision_mask = 0
-script = ExtResource( 38 )
+script = ExtResource("38")
 
-[node name="TargetDetectionRaycast" type="CollisionShape" parent="TargetDetectionArea"]
-transform = Transform( 3, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0 )
-shape = SubResource( 50 )
+[node name="TargetDetectionRaycast" type="CollisionShape3D" parent="TargetDetectionArea"]
+transform = Transform3D(3, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("50")
 
-[node name="MeshInstance" type="MeshInstance" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
-mesh = SubResource( 2 )
-skeleton = NodePath("../CollisionShape")
-material/0 = SubResource( 3 )
+mesh = SubResource("2")
+skeleton = NodePath("../CollisionShape3D")
 
-[node name="AreaPlayer" type="Area" parent="."]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+[node name="AreaPlayer" type="Area3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 
-[node name="CollisionShape" type="CollisionShape" parent="AreaPlayer"]
-shape = SubResource( 6 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaPlayer"]
+shape = SubResource("6")
 
 [node name="AngelaSprite" type="Sprite3D" parent="."]
-generate_lightmap = false
 pixel_size = 0.04
 shaded = true
 double_sided = false
-texture = ExtResource( 3 )
-hframes = 10
-vframes = 4
-
-[node name="SpotLight" type="SpotLight" parent="AngelaSprite"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579 )
-light_color = Color( 1, 0.482353, 0.482353, 1 )
-light_energy = 0.5
-light_indirect_energy = 0.5
-light_specular = 0.2
-spot_range = 0.43704
-
-[node name="SpotLight2" type="SpotLight" parent="AngelaSprite"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382073, -0.547632, 0.10579 )
-light_color = Color( 1, 0.482353, 0.482353, 1 )
-light_energy = 0.5
-light_indirect_energy = 0.5
-light_specular = 0.2
-spot_range = 0.43704
-
-[node name="SpotLight3" type="SpotLight" parent="AngelaSprite"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235502, -0.54609, 0.10579 )
-light_color = Color( 1, 0.482353, 0.482353, 1 )
-light_energy = 0.5
-light_indirect_energy = 0.5
-light_specular = 0.2
-spot_range = 0.43704
-
-[node name="AngelaArm" type="MeshInstance" parent="."]
-transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
-visible = false
-mesh = SubResource( 21 )
-skeleton = NodePath("../AngelaSprite")
-
-[node name="HandInstance" type="MeshInstance" parent="AngelaArm"]
-transform = Transform( -8.74665e-08, 2.001, -8.74227e-08, 2.001, 8.74665e-08, 8.74229e-09, -1.74933e-08, 1.74933e-07, 1, 0, -1.25, 0.024 )
-mesh = SubResource( 20 )
-skeleton = NodePath("../../AngelaSprite")
-
-[node name="Hand" type="Sprite3D" parent="AngelaArm/HandInstance"]
-transform = Transform( 20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01 )
-shaded = true
-texture = ExtResource( 6 )
-
-[node name="WeaponPlaceHolder" type="Sprite3D" parent="AngelaArm/HandInstance/Hand"]
-transform = Transform( 0.25, 6.893e-37, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
-pixel_size = 0.04
-shaded = true
-texture = ExtResource( 5 )
-
-[node name="blitzGunMuzzle" type="Position3D" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder"]
-transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0 )
-
-[node name="WeaponMuzzle" type="Position3D" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder"]
-transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
-
-[node name="SnipingRayCast" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder" instance=ExtResource( 46 )]
-transform = Transform( -4.37114e-08, 1, -7.10543e-15, -1, -4.37114e-08, -3.55271e-15, 0, -8.8818e-15, 1, -0.837188, -0.157588, -1.3411e-07 )
-
-[node name="AngelaAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Player_Damage = SubResource( 67 )
-anims/Player_Fall = SubResource( 15 )
-anims/Player_Melee = SubResource( 24 )
-anims/Player_Still = SubResource( 8 )
-anims/Player_Walk = SubResource( 7 )
-
-[node name="AngelaAnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 13 )
-anim_player = NodePath("../AngelaAnimationPlayer")
-active = true
-parameters/playback = SubResource( 14 )
-
-[node name="RivetSprite" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0677329, 0, 0 )
-generate_lightmap = false
-pixel_size = 0.04
-shaded = true
-double_sided = false
-texture = ExtResource( 36 )
+texture_filter = 0
+texture = ExtResource("3")
 hframes = 10
 vframes = 4
 frame = 1
 
-[node name="RivetArm" type="MeshInstance" parent="."]
-transform = Transform( -0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139 )
-mesh = SubResource( 21 )
+[node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
+light_color = Color(1, 0.482353, 0.482353, 1)
+light_energy = 0.5
+light_indirect_energy = 0.5
+light_specular = 0.2
+spot_range = 0.43704
+
+[node name="SpotLight2" type="SpotLight3D" parent="AngelaSprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.382073, -0.547632, 0.10579)
+light_color = Color(1, 0.482353, 0.482353, 1)
+light_energy = 0.5
+light_indirect_energy = 0.5
+light_specular = 0.2
+spot_range = 0.43704
+
+[node name="SpotLight3" type="SpotLight3D" parent="AngelaSprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.235502, -0.54609, 0.10579)
+light_color = Color(1, 0.482353, 0.482353, 1)
+light_energy = 0.5
+light_indirect_energy = 0.5
+light_specular = 0.2
+spot_range = 0.43704
+
+[node name="AngelaArm" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -0.1, 1.50996e-07, 0, -1.50996e-08, -1, 0, 0, -0.139)
+mesh = SubResource("21")
+skeleton = NodePath("../AngelaSprite")
+
+[node name="HandInstance" type="MeshInstance3D" parent="AngelaArm"]
+transform = Transform3D(-8.74665e-08, 2.001, -8.74227e-08, 2.001, 8.74665e-08, 8.74229e-09, -1.74933e-08, 1.74933e-07, 1, 0, -1.25, 0.024)
+mesh = SubResource("20")
+skeleton = NodePath("../../AngelaSprite")
+
+[node name="Hand" type="Sprite3D" parent="AngelaArm/HandInstance"]
+transform = Transform3D(20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, 0, 1, 2.25974, -0.0573018, -0.01)
+shaded = true
+texture_filter = 0
+texture = ExtResource("6")
+
+[node name="WeaponPlaceHolder" type="Sprite3D" parent="AngelaArm/HandInstance/Hand"]
+transform = Transform3D(0.25, 6.893e-37, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01)
+pixel_size = 0.04
+shaded = true
+texture_filter = 0
+texture = ExtResource("5")
+
+[node name="blitzGunMuzzle" type="Marker3D" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder"]
+transform = Transform3D(1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0)
+
+[node name="WeaponMuzzle" type="Marker3D" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder"]
+transform = Transform3D(1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0)
+
+[node name="SnipingRayCast" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder" instance=ExtResource("46")]
+transform = Transform3D(-4.37114e-08, 1, -7.10543e-15, -1, -4.37114e-08, -3.55271e-15, 0, -8.8818e-15, 1, -0.837188, -0.157588, -1.3411e-07)
+
+[node name="AngelaAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_48tsd")
+}
+
+[node name="AngelaAnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_48tsd")
+}
+tree_root = SubResource("13")
+anim_player = NodePath("../AngelaAnimationPlayer")
+
+[node name="RivetSprite" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0677329, 0, 0)
+visible = false
+pixel_size = 0.04
+shaded = true
+double_sided = false
+texture_filter = 0
+texture = ExtResource("36")
+hframes = 10
+vframes = 4
+frame = 1
+
+[node name="RivetArm" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139)
+visible = false
+mesh = SubResource("21")
 skeleton = NodePath("../RivetSprite")
 
-[node name="HandInstance" type="MeshInstance" parent="RivetArm"]
-transform = Transform( -8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0, -1.25, 0.0236015 )
-mesh = SubResource( 20 )
+[node name="HandInstance" type="MeshInstance3D" parent="RivetArm"]
+transform = Transform3D(-8.74665e-08, 2.001, 0, 2.001, 8.74665e-08, 8.74228e-07, -1.74933e-08, -7.64656e-16, 1, 0, -1.25, 0.0236015)
+mesh = SubResource("20")
 skeleton = NodePath("../../RivetSprite")
 
 [node name="Hand" type="Sprite3D" parent="RivetArm/HandInstance"]
-transform = Transform( 20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, -1.61559e-27, 1, 2.25974, -0.0573018, -0.01 )
+transform = Transform3D(20, -1.13687e-13, 0, -1.13687e-13, -20, 0, 0, -1.61559e-27, 1, 2.25974, -0.0573018, -0.01)
 shaded = true
-texture = ExtResource( 6 )
+texture_filter = 0
+texture = ExtResource("6")
 
 [node name="WeaponPlaceHolder" type="Sprite3D" parent="RivetArm/HandInstance/Hand"]
-transform = Transform( 0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01 )
+transform = Transform3D(0.25, -6.10952e-36, 0, -6.893e-37, 0.25, 0, 0, 0, 1, 0.125243, 0.0375, 0.01)
 pixel_size = 0.04
 shaded = true
-texture = ExtResource( 45 )
+texture_filter = 0
+texture = ExtResource("45")
 
-[node name="blitzGunMuzzle" type="Position3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
-transform = Transform( 1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0 )
+[node name="blitzGunMuzzle" type="Marker3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
+transform = Transform3D(1, 7.10543e-15, 0, -7.10543e-15, 1, 0, 0, -2.82728e-27, 1, 0.498717, 0.165527, 0)
 
-[node name="WeaponMuzzle" type="Position3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
-transform = Transform( 1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0 )
+[node name="WeaponMuzzle" type="Marker3D" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder"]
+transform = Transform3D(1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431, 0.153141, 0)
 
-[node name="SnipingRayCast" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder" instance=ExtResource( 46 )]
-transform = Transform( -4.37114e-08, 1, -7.10188e-15, -1, -4.37114e-08, -7.10188e-15, 8.88178e-15, -8.88179e-15, 1, -0.837188, -0.157588, 0 )
+[node name="SnipingRayCast" parent="RivetArm/HandInstance/Hand/WeaponPlaceHolder" instance=ExtResource("46")]
+transform = Transform3D(-4.37114e-08, 1, -7.10188e-15, -1, -4.37114e-08, -7.10188e-15, 8.88178e-15, -8.88179e-15, 1, -0.837188, -0.157588, 0)
 
 [node name="RivetAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Player_Damage = SubResource( 71 )
-anims/Player_Fall = SubResource( 32 )
-anims/Player_Melee = SubResource( 54 )
-anims/Player_Still = SubResource( 30 )
-anims/Player_Walk = SubResource( 31 )
+libraries = {
+"": SubResource("AnimationLibrary_ghn3u")
+}
 
 [node name="RivetAnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 28 )
+libraries = {
+"": SubResource("AnimationLibrary_ghn3u")
+}
+tree_root = SubResource("28")
 anim_player = NodePath("../RivetAnimationPlayer")
-active = true
-parameters/playback = SubResource( 29 )
 
-[node name="FadeIn" parent="." instance=ExtResource( 42 )]
+[node name="FadeIn" parent="." instance=ExtResource("42")]
 visible = false
 
 [node name="PlayerUI" type="Control" parent="."]
-pause_mode = 2
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-script = ExtResource( 30 )
+script = ExtResource("30")
 
 [node name="InGameUI" type="Control" parent="PlayerUI"]
-pause_mode = 2
-visible = false
+process_mode = 3
+anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="Ammo" type="Control" parent="PlayerUI/InGameUI"]
-margin_left = 930.0
-margin_top = 25.0
-margin_right = 1280.0
-margin_bottom = 175.0
+anchors_preset = 0
+offset_left = 930.0
+offset_top = 25.0
+offset_right = 1280.0
+offset_bottom = 175.0
 
-[node name="IconPlaceHolder" type="Sprite" parent="PlayerUI/InGameUI/Ammo"]
-position = Vector2( 232, 37 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 32 )
+[node name="IconPlaceHolder" type="Sprite2D" parent="PlayerUI/InGameUI/Ammo"]
+position = Vector2(232, 37)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("32")
 
-[node name="AmmoSprite" type="Sprite" parent="PlayerUI/InGameUI/Ammo/IconPlaceHolder"]
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 29 )
+[node name="AmmoSprite" type="Sprite2D" parent="PlayerUI/InGameUI/Ammo/IconPlaceHolder"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("29")
 
-[node name="AmmoPanel2" type="Sprite" parent="PlayerUI/InGameUI/Ammo"]
-position = Vector2( 99, 22 )
-scale = Vector2( 1.02, 0.3 )
-texture = ExtResource( 33 )
+[node name="AmmoPanel2" type="Sprite2D" parent="PlayerUI/InGameUI/Ammo"]
+position = Vector2(99, 22)
+scale = Vector2(1.02, 0.3)
+texture = ExtResource("33")
 
-[node name="AmmoPanelWest" type="Sprite" parent="PlayerUI/InGameUI/Ammo"]
-position = Vector2( 12, 22 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 34 )
+[node name="AmmoPanelWest" type="Sprite2D" parent="PlayerUI/InGameUI/Ammo"]
+position = Vector2(12, 22)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("34")
 
-[node name="AmmoPanelEast" type="Sprite" parent="PlayerUI/InGameUI/Ammo"]
-position = Vector2( 186, 22 )
+[node name="AmmoPanelEast" type="Sprite2D" parent="PlayerUI/InGameUI/Ammo"]
+position = Vector2(186, 22)
 rotation = -6.28319
-scale = Vector2( -0.3, -0.3 )
-texture = ExtResource( 34 )
+scale = Vector2(-0.3, -0.3)
+texture = ExtResource("34")
 
 [node name="AmmoHas" type="Label" parent="PlayerUI/InGameUI/Ammo"]
-margin_right = 80.0
-margin_bottom = 50.0
-theme = ExtResource( 35 )
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 45.0
+theme = ExtResource("35")
 text = "0"
-align = 2
-valign = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="AmmoBy" type="Label" parent="PlayerUI/InGameUI/Ammo"]
-margin_left = 80.0
-margin_right = 120.0
-margin_bottom = 50.0
-theme = ExtResource( 35 )
-custom_colors/font_color = Color( 0.25098, 0.443137, 0.470588, 0.784314 )
+layout_mode = 0
+offset_left = 80.0
+offset_right = 120.0
+offset_bottom = 45.0
+theme = ExtResource("35")
+theme_override_colors/font_color = Color(0.25098, 0.443137, 0.470588, 0.784314)
 text = "/"
-align = 1
-valign = 1
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AmmoMax" type="Label" parent="PlayerUI/InGameUI/Ammo"]
-margin_left = 120.0
-margin_right = 200.0
-margin_bottom = 50.0
-theme = ExtResource( 35 )
-custom_colors/font_color = Color( 0.25098, 0.443137, 0.470588, 0.784314 )
+layout_mode = 0
+offset_left = 120.0
+offset_right = 200.0
+offset_bottom = 45.0
+theme = ExtResource("35")
+theme_override_colors/font_color = Color(0.25098, 0.443137, 0.470588, 0.784314)
 text = "0"
-valign = 1
+vertical_alignment = 1
 
 [node name="Bolts" type="Control" parent="PlayerUI/InGameUI"]
-margin_left = 930.0
-margin_top = 570.0
-margin_right = 1280.0
-margin_bottom = 720.0
+anchors_preset = 0
+offset_left = 930.0
+offset_top = 570.0
+offset_right = 1280.0
+offset_bottom = 720.0
 
-[node name="IconPlaceHolder" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
-position = Vector2( 232, 38 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 32 )
+[node name="IconPlaceHolder" type="Sprite2D" parent="PlayerUI/InGameUI/Bolts"]
+position = Vector2(232, 38)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("32")
 
-[node name="BoltSprite" type="Sprite" parent="PlayerUI/InGameUI/Bolts/IconPlaceHolder"]
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 12 )
+[node name="BoltSprite" type="Sprite2D" parent="PlayerUI/InGameUI/Bolts/IconPlaceHolder"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("12")
 
-[node name="BoltsPanel" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
-position = Vector2( 71.75, 23 )
-scale = Vector2( 1.38333, 0.3 )
-texture = ExtResource( 33 )
+[node name="BoltsPanel" type="Sprite2D" parent="PlayerUI/InGameUI/Bolts"]
+position = Vector2(71.75, 23)
+scale = Vector2(1.38333, 0.3)
+texture = ExtResource("33")
 
-[node name="BoltsPanelWest" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
-position = Vector2( -43, 23 )
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 34 )
+[node name="BoltsPanelWest" type="Sprite2D" parent="PlayerUI/InGameUI/Bolts"]
+position = Vector2(-43, 23)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("34")
 
-[node name="BoltsPanelEast" type="Sprite" parent="PlayerUI/InGameUI/Bolts"]
-position = Vector2( 186, 23 )
+[node name="BoltsPanelEast" type="Sprite2D" parent="PlayerUI/InGameUI/Bolts"]
+position = Vector2(186, 23)
 rotation = 3.14159
-scale = Vector2( 0.3, 0.3 )
-texture = ExtResource( 34 )
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("34")
 
 [node name="bolts" type="Label" parent="PlayerUI/InGameUI/Bolts"]
-margin_left = -30.0
-margin_top = -2.0
-margin_right = 170.0
-margin_bottom = 48.0
-theme = ExtResource( 35 )
+layout_mode = 0
+offset_left = -30.0
+offset_right = 170.0
+offset_bottom = 46.0
+theme = ExtResource("35")
 text = "100"
-align = 2
-valign = 1
-script = ExtResource( 13 )
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("13")
 
 [node name="Health" type="Control" parent="PlayerUI/InGameUI"]
-margin_top = 25.0
-margin_right = 350.0
-margin_bottom = 175.0
+anchors_preset = 0
+offset_top = 25.0
+offset_right = 350.0
+offset_bottom = 175.0
 
-[node name="IconPlaceHolder" type="Sprite" parent="PlayerUI/InGameUI/Health"]
-position = Vector2( 106, 37 )
-scale = Vector2( 0.6, 0.6 )
-texture = ExtResource( 32 )
+[node name="IconPlaceHolder" type="Sprite2D" parent="PlayerUI/InGameUI/Health"]
+position = Vector2(106, 37)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("32")
 
-[node name="HealthSprite" type="Sprite" parent="PlayerUI/InGameUI/Health/IconPlaceHolder"]
-scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 31 )
+[node name="HealthSprite" type="Sprite2D" parent="PlayerUI/InGameUI/Health/IconPlaceHolder"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("31")
 
-[node name="HealthPanel2" type="Sprite" parent="PlayerUI/InGameUI/Health"]
-position = Vector2( 200.25, 22 )
-scale = Vector2( 0.5, 0.3 )
-texture = ExtResource( 33 )
+[node name="HealthPanel2" type="Sprite2D" parent="PlayerUI/InGameUI/Health"]
+position = Vector2(200.25, 22)
+scale = Vector2(0.5, 0.3)
+texture = ExtResource("33")
 
-[node name="HealthPanelWest" type="Sprite" parent="PlayerUI/InGameUI/Health"]
-position = Vector2( 152, 22 )
-scale = Vector2( 0.3, -0.3 )
-texture = ExtResource( 34 )
+[node name="HealthPanelWest" type="Sprite2D" parent="PlayerUI/InGameUI/Health"]
+position = Vector2(152, 22)
+scale = Vector2(0.3, -0.3)
+texture = ExtResource("34")
 
-[node name="HealthPanelEast" type="Sprite" parent="PlayerUI/InGameUI/Health"]
-position = Vector2( 249, 22 )
+[node name="HealthPanelEast" type="Sprite2D" parent="PlayerUI/InGameUI/Health"]
+position = Vector2(249, 22)
 rotation = -3.14159
-scale = Vector2( 0.3, -0.3 )
-texture = ExtResource( 34 )
+scale = Vector2(0.3, -0.3)
+texture = ExtResource("34")
 
 [node name="HealthHas" type="Label" parent="PlayerUI/InGameUI/Health"]
-margin_left = 150.25
-margin_top = -3.0
-margin_right = 195.25
-margin_bottom = 47.0
-theme = ExtResource( 35 )
+layout_mode = 0
+offset_left = 150.0
+offset_top = -3.0
+offset_right = 195.0
+offset_bottom = 45.0
+theme = ExtResource("35")
 text = "0"
-align = 2
-valign = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="HealthBy" type="Label" parent="PlayerUI/InGameUI/Health"]
-margin_left = 195.25
-margin_top = -3.0
-margin_right = 205.25
-margin_bottom = 47.0
-theme = ExtResource( 35 )
+layout_mode = 0
+offset_left = 195.0
+offset_top = -3.0
+offset_right = 205.0
+offset_bottom = 45.0
+theme = ExtResource("35")
 text = "/"
-align = 1
-valign = 1
+vertical_alignment = 1
 
 [node name="HealthMax" type="Label" parent="PlayerUI/InGameUI/Health"]
-margin_left = 205.25
-margin_top = -3.0
-margin_right = 250.25
-margin_bottom = 47.0
-theme = ExtResource( 35 )
+layout_mode = 0
+offset_left = 205.0
+offset_top = -3.0
+offset_right = 250.0
+offset_bottom = 45.0
+theme = ExtResource("35")
 text = "0"
-valign = 1
+vertical_alignment = 1
 
 [node name="InventoryContainer" type="Control" parent="PlayerUI"]
-pause_mode = 2
+process_mode = 3
 visible = false
+anchors_preset = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -140.0
-margin_top = -140.0
-margin_right = 140.0
-margin_bottom = 140.0
+offset_left = -140.0
+offset_top = -140.0
+offset_right = 140.0
+offset_bottom = 140.0
 mouse_filter = 2
-script = ExtResource( 14 )
+script = ExtResource("14")
 alignment = "Full alignment"
 
 [node name="Panel" type="Panel" parent="PlayerUI/InventoryContainer"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1250.0
-margin_top = -661.0
-margin_right = 1374.0
-margin_bottom = 715.0
-custom_styles/panel = SubResource( 19 )
+offset_left = -1250.0
+offset_top = -661.0
+offset_right = 1374.0
+offset_bottom = 715.0
+theme_override_styles/panel = SubResource("19")
 
 [node name="MenuContainer" type="GridContainer" parent="PlayerUI/InventoryContainer"]
-margin_right = 280.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 280, 280 )
-custom_constants/vseparation = 35
-custom_constants/hseparation = 35
+custom_minimum_size = Vector2(280, 280)
+layout_mode = 0
+offset_right = 280.0
+offset_bottom = 280.0
+theme_override_constants/h_separation = 35
+theme_override_constants/v_separation = 35
 columns = 3
 
 [node name="WeaponSlot1" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
-margin_right = 70.0
-margin_bottom = 70.0
-theme = ExtResource( 4 )
+layout_mode = 2
+theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot1"]
-margin_right = 70.0
-margin_bottom = 70.0
+texture_filter = 1
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
 stretch_mode = 4
 
 [node name="WeaponSlot2" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
-margin_left = 105.0
-margin_right = 175.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-theme = ExtResource( 4 )
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot2"]
-margin_right = 70.0
-margin_bottom = 70.0
+texture_filter = 1
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
 stretch_mode = 4
 
 [node name="WeaponSlot3" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
-margin_left = 210.0
-margin_right = 280.0
-margin_bottom = 70.0
-rect_min_size = Vector2( 70, 70 )
-theme = ExtResource( 4 )
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot3"]
-margin_right = 70.0
-margin_bottom = 70.0
+texture_filter = 1
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
 stretch_mode = 4
 
 [node name="WeaponSlot4" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
-margin_top = 105.0
-margin_right = 70.0
-margin_bottom = 175.0
-rect_min_size = Vector2( 70, 70 )
-theme = ExtResource( 4 )
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot4"]
-margin_right = 70.0
-margin_bottom = 70.0
+texture_filter = 1
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
 stretch_mode = 4
 
 [node name="BackButton" type="Panel" parent="PlayerUI/InventoryContainer/MenuContainer"]
-margin_left = 105.0
-margin_top = 105.0
-margin_right = 175.0
-margin_bottom = 175.0
-rect_min_size = Vector2( 70, 70 )
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
 
 [node name="WeaponSlot5" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
-margin_left = 210.0
-margin_top = 105.0
-margin_right = 280.0
-margin_bottom = 175.0
-rect_min_size = Vector2( 70, 70 )
-theme = ExtResource( 4 )
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot5"]
-margin_right = 70.0
-margin_bottom = 70.0
+texture_filter = 1
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
 stretch_mode = 4
 
 [node name="WeaponSlot6" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
-margin_top = 210.0
-margin_right = 70.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 70, 70 )
-theme = ExtResource( 4 )
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot6"]
-margin_right = 70.0
-margin_bottom = 70.0
+texture_filter = 1
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
 stretch_mode = 4
 
 [node name="WeaponSlot7" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
-margin_left = 105.0
-margin_top = 210.0
-margin_right = 175.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 70, 70 )
-theme = ExtResource( 4 )
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot7"]
-margin_right = 70.0
-margin_bottom = 70.0
+texture_filter = 1
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
 stretch_mode = 4
 
 [node name="WeaponSlot8" type="Button" parent="PlayerUI/InventoryContainer/MenuContainer"]
-margin_left = 210.0
-margin_top = 210.0
-margin_right = 280.0
-margin_bottom = 280.0
-rect_min_size = Vector2( 70, 70 )
-theme = ExtResource( 4 )
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme = ExtResource("4")
 disabled = true
 
 [node name="SlotTexture" type="TextureRect" parent="PlayerUI/InventoryContainer/MenuContainer/WeaponSlot8"]
-margin_right = 70.0
-margin_bottom = 70.0
+texture_filter = 1
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
 stretch_mode = 4
 
 [node name="PauseMenuContainer" type="Control" parent="PlayerUI"]
 visible = false
-margin_right = 1280.0
-margin_bottom = 720.0
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
 mouse_filter = 2
-script = ExtResource( 9 )
+script = ExtResource("9")
 alignment = "Full alignment"
 
 [node name="Panel" type="Panel" parent="PlayerUI/PauseMenuContainer"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -500.0
-margin_top = -220.0
-margin_right = 500.0
-margin_bottom = 220.0
-custom_styles/panel = SubResource( 19 )
+offset_left = -500.0
+offset_top = -220.0
+offset_right = 500.0
+offset_bottom = 220.0
+theme_override_styles/panel = SubResource("19")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/PauseMenuContainer"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -140.0
-margin_top = -140.0
-margin_right = 140.0
-margin_bottom = 140.0
+offset_left = -140.0
+offset_top = -140.0
+offset_right = 140.0
+offset_bottom = 140.0
 alignment = 1
 
 [node name="CenterRow" type="HBoxContainer" parent="PlayerUI/PauseMenuContainer/VBoxContainer"]
-margin_right = 280.0
-margin_bottom = 280.0
+layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow"]
-margin_right = 280.0
-margin_bottom = 280.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ReturnToGameButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
-margin_top = 65.0
-margin_right = 280.0
-margin_bottom = 124.0
+[node name="ReturnToGameButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource("8")]
+layout_mode = 2
 mouse_filter = 2
 shortcut_in_tooltip = false
 text = "RETURN"
 
 [node name="ScreenCheckBox" type="CheckBox" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons"]
-margin_top = 128.0
-margin_right = 280.0
-margin_bottom = 152.0
+layout_mode = 2
 text = "Fullscreen"
-script = ExtResource( 49 )
+script = ExtResource("49")
 
-[node name="ReturnToMainMenuButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource( 7 )]
-margin_top = 156.0
-margin_right = 280.0
-margin_bottom = 215.0
+[node name="ReturnToMainMenuButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource("7")]
+layout_mode = 2
 mouse_filter = 2
 scene_to_load = ""
 
 [node name="Audio" type="Node" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton"]
 
 [node name="Click" type="AudioStreamPlayer" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton/Audio"]
-stream = ExtResource( 24 )
+stream = ExtResource("24")
 
 [node name="Move" type="AudioStreamPlayer" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ReturnToMainMenuButton/Audio"]
-stream = ExtResource( 27 )
+stream = ExtResource("27")
 
 [node name="VendorContainer" type="Control" parent="PlayerUI"]
 visible = false
-margin_left = 70.0
-margin_top = 70.0
-margin_right = 1210.0
-margin_bottom = 650.0
+anchors_preset = 0
+offset_left = 70.0
+offset_top = 70.0
+offset_right = 1210.0
+offset_bottom = 650.0
 mouse_filter = 2
-script = ExtResource( 10 )
+script = ExtResource("10")
 
 [node name="VendorBackgroundPanel" type="Panel" parent="PlayerUI/VendorContainer"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -70.0
-margin_top = -70.0
-margin_right = 70.0
-margin_bottom = 70.0
-custom_styles/panel = SubResource( 19 )
+offset_left = -70.0
+offset_top = -70.0
+offset_right = 70.0
+offset_bottom = 70.0
+theme_override_styles/panel = SubResource("19")
 
 [node name="VendorCenterContainer" type="CenterContainer" parent="PlayerUI/VendorContainer"]
-margin_right = 1140.0
-margin_bottom = 580.0
+layout_mode = 0
+offset_right = 1140.0
+offset_bottom = 580.0
 
 [node name="VendorPanel" type="Panel" parent="PlayerUI/VendorContainer"]
-margin_right = 1140.0
-margin_bottom = 580.0
+layout_mode = 0
+offset_right = 1140.0
+offset_bottom = 580.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 22 )
+theme_override_styles/panel = SubResource("22")
 
 [node name="ReturnToGameButtonContainer" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -570.0
-margin_top = -290.0
-margin_right = 570.0
-margin_bottom = -230.0
+offset_left = -570.0
+offset_top = -290.0
+offset_right = 570.0
+offset_bottom = -230.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="CenterRow" type="HBoxContainer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer"]
-margin_right = 1140.0
-margin_bottom = 60.0
+layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Buttons" type="VBoxContainer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow"]
-margin_right = 1140.0
-margin_bottom = 60.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
-[node name="ReturnToGameButton" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons" instance=ExtResource( 8 )]
-margin_right = 1140.0
-margin_bottom = 59.0
+[node name="ReturnToGameButton" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons" instance=ExtResource("8")]
+layout_mode = 2
 shortcut_in_tooltip = false
 text = "LEAVE VENDOR"
 
 [node name="Audio2" type="Node" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton"]
 
 [node name="Click" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
-stream = ExtResource( 24 )
+stream = ExtResource("24")
 
 [node name="Move" type="AudioStreamPlayer" parent="PlayerUI/VendorContainer/ReturnToGameButtonContainer/CenterRow/Buttons/ReturnToGameButton/Audio2"]
-stream = ExtResource( 27 )
+stream = ExtResource("27")
 
 [node name="WeaponsForSale" type="VBoxContainer" parent="PlayerUI/VendorContainer"]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -570.0
-margin_top = -210.0
-margin_right = -190.0
-margin_bottom = 290.0
+offset_left = -570.0
+offset_top = -210.0
+offset_right = -190.0
+offset_bottom = 290.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="CenterRow" type="HBoxContainer" parent="PlayerUI/VendorContainer/WeaponsForSale"]
-margin_right = 380.0
-margin_bottom = 500.0
+layout_mode = 2
 size_flags_vertical = 3
 
 [node name="WeaponsForSaleButtons" type="VBoxContainer" parent="PlayerUI/VendorContainer/WeaponsForSale/CenterRow"]
-margin_right = 380.0
-margin_bottom = 500.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="WeaponDescriptionPanel" type="Panel" parent="PlayerUI/VendorContainer"]
-margin_left = 400.0
-margin_top = 80.0
-margin_right = 1140.0
-margin_bottom = 580.0
+layout_mode = 0
+offset_left = 400.0
+offset_top = 80.0
+offset_right = 1140.0
+offset_bottom = 580.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_styles/panel = SubResource( 22 )
+theme_override_styles/panel = SubResource("22")
 
 [node name="CurrentBolts" type="HBoxContainer" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel"]
-margin_left = 200.0
-margin_top = 20.0
-margin_right = 550.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 350, 0 )
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 0
+offset_left = 200.0
+offset_top = 20.0
+offset_right = 550.0
+offset_bottom = 80.0
 
 [node name="Bolts" type="Label" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts"]
-margin_right = 191.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 120, 60 )
-theme = ExtResource( 4 )
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+theme = ExtResource("4")
 text = "Current bolts:"
 
 [node name="CurrentBoltsLabel" type="Label" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/CurrentBolts"]
-margin_left = 195.0
-margin_right = 355.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 160, 60 )
-theme = ExtResource( 4 )
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+theme = ExtResource("4")
 text = "0"
-align = 2
 
 [node name="WpnImageContainer" type="Panel" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel"]
-self_modulate = Color( 0.027451, 0.886275, 1, 0 )
-margin_left = 20.0
-margin_top = 100.0
-margin_right = 720.0
-margin_bottom = 240.0
+self_modulate = Color(0.027451, 0.886275, 1, 0)
+custom_minimum_size = Vector2(700, 140)
+layout_mode = 0
+offset_left = 20.0
+offset_top = 100.0
+offset_right = 720.0
+offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_min_size = Vector2( 700, 140 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer"]
-margin_right = 700.0
-margin_bottom = 140.0
+layout_mode = 0
+offset_right = 700.0
+offset_bottom = 140.0
 alignment = 1
 
 [node name="WpnImageBackground" type="Panel" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/HBoxContainer"]
-self_modulate = Color( 0.027451, 0.886275, 1, 0 )
-margin_left = 280.0
-margin_right = 420.0
-margin_bottom = 140.0
-grow_horizontal = 2
-grow_vertical = 2
-rect_min_size = Vector2( 140, 140 )
-theme = ExtResource( 4 )
+self_modulate = Color(0.027451, 0.886275, 1, 0)
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 2
+theme = ExtResource("4")
 
 [node name="WpnImage" type="TextureRect" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/HBoxContainer/WpnImageBackground"]
-margin_right = 140.0
-margin_bottom = 140.0
-rect_min_size = Vector2( 140, 140 )
+custom_minimum_size = Vector2(140, 140)
+layout_mode = 0
+offset_right = 140.0
+offset_bottom = 140.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel"]
-margin_left = 20.0
-margin_top = 260.0
-margin_right = 204.0
-margin_bottom = 320.0
+layout_mode = 0
+offset_left = 20.0
+offset_top = 260.0
+offset_right = 204.0
+offset_bottom = 320.0
 
 [node name="TxtRect" type="Label" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/HBoxContainer"]
-margin_right = 60.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 60, 60 )
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/HBoxContainer/TxtRect"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 50.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 40, 40 )
-texture = ExtResource( 12 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": true
-}
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 50.0
+offset_bottom = 50.0
+texture = ExtResource("12")
+expand_mode = 1
 
 [node name="WeaponPrice" type="Label" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel/HBoxContainer"]
-margin_left = 64.0
-margin_right = 184.0
-margin_bottom = 60.0
-rect_min_size = Vector2( 120, 60 )
-theme = ExtResource( 4 )
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 2
+theme = ExtResource("4")
 text = "0"
-align = 2
 
 [node name="WeaponName" type="Label" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel"]
-margin_left = 220.0
-margin_top = 260.0
-margin_right = 720.0
-margin_bottom = 320.0
-rect_min_size = Vector2( 120, 60 )
-theme = ExtResource( 4 )
+custom_minimum_size = Vector2(120, 60)
+layout_mode = 0
+offset_left = 220.0
+offset_top = 260.0
+offset_right = 720.0
+offset_bottom = 320.0
+theme = ExtResource("4")
 text = "Weapon name"
 
 [node name="WeaponDescription" type="Label" parent="PlayerUI/VendorContainer/WeaponDescriptionPanel"]
-margin_left = 20.0
-margin_top = 340.0
-margin_right = 720.0
-margin_bottom = 480.0
-theme = ExtResource( 11 )
+layout_mode = 0
+offset_left = 20.0
+offset_top = 340.0
+offset_right = 720.0
+offset_bottom = 480.0
+theme = ExtResource("11")
 text = "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."
-autowrap = true
 clip_text = true
 
 [node name="UINotification" type="Control" parent="PlayerUI"]
 visible = false
-margin_right = 40.0
-margin_bottom = 40.0
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="PlayerUI/UINotification"]
 layer = 3
 
 [node name="Ui_notification" type="CenterContainer" parent="PlayerUI/UINotification/CanvasLayer"]
 visible = false
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -4.0
-margin_top = -124.0
-margin_right = -4.0
-margin_bottom = -124.0
+offset_left = -4.0
+offset_top = -124.0
+offset_right = -4.0
+offset_bottom = -124.0
 
 [node name="TextureRect" type="TextureRect" parent="PlayerUI/UINotification/CanvasLayer/Ui_notification"]
-margin_left = 217.0
-margin_top = 218.0
-margin_right = 1062.0
-margin_bottom = 502.0
-texture = ExtResource( 41 )
+layout_mode = 2
+texture = ExtResource("41")
 
 [node name="ui_ammo" type="RichTextLabel" parent="PlayerUI/UINotification/CanvasLayer/Ui_notification"]
-margin_left = 440.0
-margin_top = 335.0
-margin_right = 840.0
-margin_bottom = 385.0
-rect_min_size = Vector2( 400, 50 )
+custom_minimum_size = Vector2(400, 50)
+layout_mode = 2
 bbcode_enabled = true
-bbcode_text = "[center]You got xxx ammo for xxx[/center]"
 text = "You got xxx ammo for xxx"
 
 [node name="Ui_Timer" type="Timer" parent="PlayerUI/UINotification"]
@@ -1377,163 +1516,147 @@ wait_time = 3.0
 
 [node name="UIBossData" type="Control" parent="PlayerUI"]
 visible = false
-margin_right = 1280.0
-margin_bottom = 180.0
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 180.0
 
 [node name="UIBossDataCenterContainer" type="CenterContainer" parent="PlayerUI/UIBossData"]
-margin_right = 1280.0
-margin_bottom = 180.0
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 180.0
 
 [node name="CenterContainer" type="CenterContainer" parent="PlayerUI/UIBossData/UIBossDataCenterContainer"]
-margin_left = 415.0
-margin_top = 80.0
-margin_right = 865.0
-margin_bottom = 100.0
+layout_mode = 2
 
-[node name="BossHealthPanelWest" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 0, 66 )
-scale = Vector2( 0.2, 0.2 )
-texture = ExtResource( 34 )
+[node name="BossHealthPanelWest" type="Sprite2D" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+modulate = Color(0.172549, 0.172549, 0.172549, 1)
+position = Vector2(0, 66)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("34")
 
-[node name="BossHealthPanelEast" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 430, 66 )
-scale = Vector2( -0.2, -0.2 )
-texture = ExtResource( 34 )
+[node name="BossHealthPanelEast" type="Sprite2D" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+modulate = Color(0.172549, 0.172549, 0.172549, 1)
+position = Vector2(430, 66)
+scale = Vector2(-0.2, -0.2)
+texture = ExtResource("34")
 
-[node name="BossHealthPanel" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 215, 66 )
-scale = Vector2( 2.77333, 0.2 )
-texture = ExtResource( 33 )
+[node name="BossHealthPanel" type="Sprite2D" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+modulate = Color(0.172549, 0.172549, 0.172549, 1)
+position = Vector2(215, 66)
+scale = Vector2(2.77333, 0.2)
+texture = ExtResource("33")
 
-[node name="BossHealthPanelPercentageWest" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 369.875, 29.75 )
-scale = Vector2( 0.25, -0.25 )
-texture = ExtResource( 34 )
+[node name="BossHealthPanelPercentageWest" type="Sprite2D" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+modulate = Color(0.172549, 0.172549, 0.172549, 1)
+position = Vector2(369.875, 29.75)
+scale = Vector2(0.25, -0.25)
+texture = ExtResource("34")
 
-[node name="BossHealthPanelPercentageEast" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 447.875, 29.75 )
-scale = Vector2( -0.25, -0.25 )
-texture = ExtResource( 34 )
+[node name="BossHealthPanelPercentageEast" type="Sprite2D" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+modulate = Color(0.172549, 0.172549, 0.172549, 1)
+position = Vector2(447.875, 29.75)
+scale = Vector2(-0.25, -0.25)
+texture = ExtResource("34")
 
-[node name="BossHealthPanelPercentage" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 408.875, 29.75 )
-scale = Vector2( 0.4, 0.25 )
-texture = ExtResource( 33 )
+[node name="BossHealthPanelPercentage" type="Sprite2D" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+modulate = Color(0.172549, 0.172549, 0.172549, 1)
+position = Vector2(408.875, 29.75)
+scale = Vector2(0.4, 0.25)
+texture = ExtResource("33")
 
-[node name="BossIconEast" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 517.25, 43.5 )
-scale = Vector2( -0.5, -0.5 )
-texture = ExtResource( 34 )
+[node name="BossIconEast" type="Sprite2D" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+modulate = Color(0.172549, 0.172549, 0.172549, 1)
+position = Vector2(517.25, 43.5)
+scale = Vector2(-0.5, -0.5)
+texture = ExtResource("34")
 
-[node name="BossIconWest" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 445.25, 43.5 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 34 )
+[node name="BossIconWest" type="Sprite2D" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+modulate = Color(0.172549, 0.172549, 0.172549, 1)
+position = Vector2(445.25, 43.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34")
 
-[node name="BossIcon" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-modulate = Color( 0.172549, 0.172549, 0.172549, 1 )
-position = Vector2( 481.25, 43.5 )
-scale = Vector2( 0.232, 0.5 )
-texture = ExtResource( 33 )
+[node name="BossIcon" type="Sprite2D" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+modulate = Color(0.172549, 0.172549, 0.172549, 1)
+position = Vector2(481.25, 43.5)
+scale = Vector2(0.232, 0.5)
+texture = ExtResource("33")
 
-[node name="BossIconHolder" type="Sprite" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-position = Vector2( 480.25, 43.5 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 44 )
+[node name="BossIconHolder" type="Sprite2D" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
+position = Vector2(480.25, 43.5)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("44")
 
 [node name="BossHealthPercentage" type="Label" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-margin_left = 203.0
-margin_right = 246.0
-margin_bottom = 20.0
-theme = ExtResource( 35 )
+layout_mode = 2
+theme = ExtResource("35")
 text = "100 %"
-align = 1
-valign = 1
 uppercase = true
 
 [node name="BossName" type="Label" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-margin_right = 450.0
-margin_bottom = 20.0
-rect_min_size = Vector2( 450, 0 )
-theme = ExtResource( 35 )
+custom_minimum_size = Vector2(450, 0)
+layout_mode = 2
+theme = ExtResource("35")
 text = "BOSSNAME"
-valign = 1
 uppercase = true
 
 [node name="BossHealthBar" type="ProgressBar" parent="PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer"]
-margin_left = 224.0
-margin_top = 9.0
-margin_right = 225.0
-margin_bottom = 10.0
-custom_styles/fg = SubResource( 65 )
-custom_styles/bg = SubResource( 66 )
+layout_mode = 2
 step = 1.0
-percent_visible = false
 
 [node name="ArenaMenu" type="Control" parent="PlayerUI" groups=["arena_menu_group"]]
 visible = false
+anchors_preset = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -640.0
-margin_top = -360.0
-margin_right = 640.0
-margin_bottom = 360.0
-script = ExtResource( 49 )
+offset_left = -640.0
+offset_top = -360.0
+offset_right = 640.0
+offset_bottom = 360.0
+script = ExtResource("49")
 alignment = "Full alignment"
 
 [node name="Panel" type="Panel" parent="PlayerUI/ArenaMenu"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -693.0
-margin_top = -269.0
-margin_right = 650.0
-margin_bottom = 544.0
-custom_styles/panel = SubResource( 19 )
+offset_left = -693.0
+offset_top = -269.0
+offset_right = 650.0
+offset_bottom = 544.0
+theme_override_styles/panel = SubResource("19")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PlayerUI/ArenaMenu"]
+custom_minimum_size = Vector2(280, 600)
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -140.0
-margin_top = -295.0
-margin_right = 140.0
-margin_bottom = 305.0
-rect_min_size = Vector2( 280, 600 )
+offset_left = -140.0
+offset_top = -295.0
+offset_right = 140.0
+offset_bottom = 305.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/ArenaMenu/VBoxContainer"]
-margin_right = 280.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 280, 600 )
+custom_minimum_size = Vector2(280, 600)
+layout_mode = 2
 
 [node name="FightButtons" type="VBoxContainer" parent="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer"]
-margin_right = 280.0
-margin_bottom = 600.0
-rect_min_size = Vector2( 280, 0 )
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
 alignment = 1
 
 [node name="Fight1" type="Button" parent="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons"]
-margin_top = 239.0
-margin_right = 280.0
-margin_bottom = 298.0
-theme = ExtResource( 4 )
+layout_mode = 2
+theme = ExtResource("4")
 text = "Fight1"
 
 [node name="ExitButton" type="Button" parent="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons"]
-margin_top = 302.0
-margin_right = 280.0
-margin_bottom = 361.0
-theme = ExtResource( 4 )
+layout_mode = 2
+theme = ExtResource("4")
 action_mode = 0
 text = "Exit"
 
@@ -1546,15 +1669,15 @@ autostart = true
 
 [node name="DamageCooloffTimer" type="Timer" parent="."]
 
-[node name="PlayerHit_box" type="Area" parent="."]
-transform = Transform( 1.76495, 0, 0, 0, 2.53835, 0, 0, 0, 1, 0.0593457, 0.347264, 0 )
+[node name="PlayerHit_box" type="Area3D" parent="."]
+transform = Transform3D(1.76495, 0, 0, 0, 2.53835, 0, 0, 0, 1, 0.0593457, 0.347264, 0)
 collision_layer = 2
 collision_mask = 0
-script = ExtResource( 15 )
+script = ExtResource("15")
 
-[node name="CollisionShape" type="CollisionShape" parent="PlayerHit_box"]
-transform = Transform( 0.074, 0, 0, 0, 0.222, 0, 0, 0, 0.074, 0.388, 0, 0 )
-shape = SubResource( 23 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHit_box"]
+transform = Transform3D(0.074, 0, 0, 0, 0.222, 0, 0, 0, 0.074, 0.388, 0, 0)
+shape = SubResource("23")
 
 [node name="Effects" type="Node" parent="."]
 
@@ -1563,118 +1686,137 @@ shape = SubResource( 23 )
 [node name="Weapons" type="Node" parent="Audio"]
 
 [node name="PulseRifle" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
-stream = ExtResource( 48 )
-unit_db = 80.0
+stream = ExtResource("48")
+volume_db = 80.0
 
 [node name="GravityBomb" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
-stream = ExtResource( 37 )
-unit_db = 80.0
+stream = ExtResource("37")
+volume_db = 80.0
 
 [node name="BlizGun" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
-stream = ExtResource( 28 )
-unit_db = 80.0
+stream = ExtResource("28")
+volume_db = 80.0
 
 [node name="theNegotiator" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
-stream = ExtResource( 40 )
-unit_db = 80.0
+stream = ExtResource("40")
+volume_db = 80.0
 
 [node name="EdgeBlaster" type="AudioStreamPlayer3D" parent="Audio/Weapons"]
-stream = ExtResource( 16 )
-unit_db = 80.0
+stream = ExtResource("16")
+volume_db = 80.0
 
 [node name="Body" type="Node" parent="Audio"]
 
 [node name="Step" type="AudioStreamPlayer3D" parent="Audio/Body"]
-stream = ExtResource( 20 )
-unit_db = 80.0
+stream = ExtResource("20")
+volume_db = 80.0
 
 [node name="Melee" type="Node" parent="Audio"]
 
 [node name="Melee0" type="AudioStreamPlayer3D" parent="Audio/Melee"]
-stream = ExtResource( 25 )
-unit_db = 80.0
+stream = ExtResource("25")
+volume_db = 80.0
 
 [node name="Melee1" type="AudioStreamPlayer3D" parent="Audio/Melee"]
-stream = ExtResource( 23 )
-unit_db = 80.0
+stream = ExtResource("23")
+volume_db = 80.0
 
 [node name="Melee2" type="AudioStreamPlayer3D" parent="Audio/Melee"]
-stream = ExtResource( 22 )
-unit_db = 80.0
+stream = ExtResource("22")
+volume_db = 80.0
 
 [node name="Melee3" type="AudioStreamPlayer3D" parent="Audio/Melee"]
-stream = ExtResource( 26 )
-unit_db = 80.0
+stream = ExtResource("26")
+volume_db = 80.0
 
 [node name="UI" type="Node" parent="Audio"]
 
 [node name="Click" type="AudioStreamPlayer" parent="Audio/UI"]
-stream = ExtResource( 24 )
+stream = ExtResource("24")
 
 [node name="Move" type="AudioStreamPlayer" parent="Audio/UI"]
-stream = ExtResource( 27 )
+stream = ExtResource("27")
 
 [node name="Collectibles" type="Node" parent="Audio"]
 
 [node name="Bolt" type="Node" parent="Audio/Collectibles"]
 
 [node name="Bolt0" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Bolt"]
-stream = ExtResource( 18 )
-unit_db = 80.0
+stream = ExtResource("18")
+volume_db = 80.0
 
 [node name="Bolt1" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Bolt"]
-stream = ExtResource( 17 )
-unit_db = 80.0
+stream = ExtResource("17")
+volume_db = 80.0
 
 [node name="Bolt2" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Bolt"]
-stream = ExtResource( 19 )
-unit_db = 80.0
+stream = ExtResource("19")
+volume_db = 80.0
 
 [node name="Ammo" type="Node" parent="Audio/Collectibles"]
 
 [node name="Ammo0" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Ammo"]
-stream = ExtResource( 18 )
-unit_db = 80.0
+stream = ExtResource("18")
+volume_db = 80.0
 
 [node name="Ammo1" type="AudioStreamPlayer3D" parent="Audio/Collectibles/Ammo"]
-stream = ExtResource( 39 )
-unit_db = 80.0
+stream = ExtResource("39")
+volume_db = 80.0
 
 [node name="HealthNode" type="Node" parent="Audio/Collectibles"]
 
 [node name="HealthNode0" type="AudioStreamPlayer3D" parent="Audio/Collectibles/HealthNode"]
-unit_db = 80.0
+volume_db = 80.0
 
-[node name="PlayerCamera" type="Spatial" parent="."]
-transform = Transform( 0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 7.138 )
+[node name="SheepinatorRaycast" type="Area3D" parent="."]
 
-[node name="Camera" type="Camera" parent="PlayerCamera"]
-transform = Transform( 1.06181, 0, 0, 0, 1.06181, 0, 0, 0, 1.06181, 0, 0, 0 )
+[node name="Cone" type="MeshInstance3D" parent="SheepinatorRaycast"]
+transform = Transform3D(14.1268, 0, 0, 0, -4.11667e-07, -14.1268, 0, 9.41785, -6.17501e-07, 0, 0, 16.138)
+visible = false
+mesh = SubResource("ArrayMesh_jwird")
+skeleton = NodePath("")
+
+[node name="SheepinatorRaycastVisionCone" type="CollisionShape3D" parent="SheepinatorRaycast"]
+transform = Transform3D(14.1268, 0, 0, 0, -4.11667e-07, -14.1268, 0, 9.41785, -6.17501e-07, 0, 0, 16.138)
+shape = SubResource("ConvexPolygonShape3D_8qemm")
+
+[node name="SheepinatorRaycastTimer" type="Timer" parent="SheepinatorRaycast"]
+wait_time = 0.25
+autostart = true
+
+[node name="PlayerCamera" type="Node3D" parent="."]
+transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 0, 0, 7.138)
+
+[node name="Camera3D" type="Camera3D" parent="PlayerCamera"]
+transform = Transform3D(1.06181, 0, 0, 0, 1.06181, 0, 0, 0, 1.06181, 0, 0, 0)
 current = true
-script = ExtResource( 43 )
+script = ExtResource("43")
 
 [node name="SnipingRadical" type="Sprite3D" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.00583e-07 )
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.00583e-07)
 
-[node name="SnipingRadical3D" type="MeshInstance" parent="SnipingRadical"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0 )
-mesh = SubResource( 83 )
+[node name="SnipingRadical3D" type="MeshInstance3D" parent="SnipingRadical"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0, 0)
+mesh = SubResource("83")
 
 [node name="SnipingRadicalAnimationPlayer" type="AnimationPlayer" parent="SnipingRadical"]
-anims/Idle = SubResource( 84 )
+libraries = {
+"": SubResource("AnimationLibrary_yuxq4")
+}
 
 [node name="SnipingRadicalAnimationTree" type="AnimationTree" parent="SnipingRadical"]
-tree_root = SubResource( 81 )
+libraries = {
+"": SubResource("AnimationLibrary_yuxq4")
+}
+tree_root = SubResource("81")
 anim_player = NodePath("../SnipingRadicalAnimationPlayer")
-parameters/playback = SubResource( 82 )
 
-[node name="Spatial" type="Spatial" parent="SnipingRadical"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138 )
+[node name="Node3D" type="Node3D" parent="SnipingRadical"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138)
 
-[node name="Camera" type="Camera" parent="SnipingRadical/Spatial"]
+[node name="Camera3D" type="Camera3D" parent="SnipingRadical/Node3D"]
 
-[connection signal="update_player_position_to_camera" from="." to="PlayerCamera/Camera" method="_on_player_update_player_position_to_camera"]
-[connection signal="area_entered" from="ColliisionArea" to="." method="_on_CollisionArea_area_entered"]
+[connection signal="area_entered" from="CollisionArea" to="." method="_on_CollisionArea_area_entered"]
 [connection signal="body_entered" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_entered"]
 [connection signal="body_exited" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_exited"]
 [connection signal="fade_finished" from="FadeIn" to="." method="_on_FadeIn_fade_finished"]
@@ -1696,3 +1838,4 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138 )
 [connection signal="pressed" from="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons/Fight1" to="PlayerUI/ArenaMenu" method="_on_ArenaButton_pressed"]
 [connection signal="pressed" from="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons/ExitButton" to="PlayerUI/ArenaMenu" method="_on_ExitButton_pressed"]
 [connection signal="timeout" from="DamageCooloffTimer" to="." method="_on_DamageCooloffTimer_timeout"]
+[connection signal="timeout" from="SheepinatorRaycast/SheepinatorRaycastTimer" to="." method="_on_sheepinator_raycast_timer_timeout"]

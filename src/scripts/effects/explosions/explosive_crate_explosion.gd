@@ -1,6 +1,6 @@
-extends Spatial
+extends Node3D
 
-onready var countdown = $ExpireTimer.time_left
+@onready var countdown = $ExpireTimer.time_left
 
 func _on_ExpireTimer_timeout():
 	countdown -= 1

@@ -1,11 +1,11 @@
-extends RigidBody
+extends RigidBody3D
 
 var speed = 5
 var velocity = Vector3(0, 0, 0)
 
 var player
 
-func _process(delta):
+func _process(_delta):
 	player = get_parent().get_parent().get_parent().get_node('player')
 
 func _physics_process(delta):

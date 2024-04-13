@@ -1,35 +1,35 @@
-extends KinematicBody
+extends CharacterBody3D
 
 class_name EnemyBase
 
-onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
+@onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
 enum elements {GROUND, WATER, AIR, STATIC}
 
-export(String, "Right", "Left") var direction
-export var is_armored : bool = false
-export var enemy_health : int = 10
-export var enemy_speed : int = 10
+@export_enum("Right", "Left") var direction: String
+@export_enum("Patrol", "Idle", "Aggressive") var stances: String
+
+@export var is_armored : bool = false
+@export var enemy_health : int = 10
+@export var enemy_speed : int = 0
 
 var is_alerted : bool = false
 var is_dead : bool = false
 var is_in_range : bool = false
 
 var element = null
-var gravity : int
+var stance = null
 var meta_name : String = ""
 var speed : int
-var velocity = Vector3(0, 0, 0)
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var animation_player
+@onready var animation_player = $EnemyAnimationPlayer
 var player
-var state_machine
+@onready var state_machine = $EnemyAnimationTree.get("parameters/playback")
 
 func _ready():
 	element = elements.STATIC
 	meta_name = "enemy"
-	state_machine = $EnemyAnimationTree.get("parameters/playback")
-	animation_player = $EnemyAnimationPlayer
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
 	player = get_parent().get_parent().get_parent().get_node('player')
@@ -40,27 +40,57 @@ func _process(_delta):
 	if (enemy_health <= 0) : expire_enemy()
 
 func _physics_process(delta):
-	match (element):
-		elements.GROUND:
-			if not is_on_floor() : velocity.y = -4
-			move_and_slide(velocity, Vector3.UP)
-		elements.STATIC:
-			if not is_on_floor() : velocity.y = -4
-			move_and_slide(velocity, Vector3.UP)
-		elements.AIR:
-			velocity.y = gravity
-			velocity.x = speed * 1
-			move_and_slide(velocity * delta)
+	determine_element(element, delta)
 
 	if (self.has_node("Audio")):
 		for audio_child in $Audio.get_children():
-			audio_child.translation = Vector3(self.translation.x, self.translation.y, 0)
+			audio_child.position = Vector3(self.position.x, self.position.y, 0)
+
+func determine_element(element, delta: float):
+	match (element):
+		elements.GROUND:
+			if not is_on_floor():
+				velocity.y -= gravity * delta
+			set_velocity(velocity)
+			set_up_direction(Vector3.UP)
+			move_and_slide()
+		elements.STATIC:
+			if not is_on_floor():
+				velocity.y -= gravity * delta
+			set_velocity(velocity)
+			set_up_direction(Vector3.UP)
+			move_and_slide()
+		elements.AIR:
+			velocity.y = gravity
+			velocity.x = speed * 1
+			set_velocity(velocity * delta)
+			move_and_slide()
+
+## TODO Develop the stances later on.
+func determine_stance(stance: String, vel: float):
+	match(stance):
+		"Patrol":
+			if (is_on_wall()):
+				if (direction == "Left"):
+					$EnemySprite.scale.x = -4
+					velocity.x = vel
+					direction = "Right"
+				elif (direction == "Right"):
+					$EnemySprite.scale.x = 4
+					velocity.x -= vel
+					direction = "Left"
+		"Idle":
+			pass
+		"Aggressive":
+			pass
+		_:
+			pass
 
 func damage_enemy(health : int):
 	if (element == elements.STATIC):
-		if (player.translation.x > self.translation.x):
+		if (player.position.x > self.position.x):
 			decide_direction("Left")
-		elif (player.translation.x < self.translation.x):
+		elif (player.position.x < self.position.x):
 			decide_direction("Right")
 	enemy_health -= health
 
@@ -87,7 +117,7 @@ func expire_enemy():
 	# TODO add enemy death animation.
 
 func add_active_radical():
-	var g_t_r = radical.instance()
+	var g_t_r = radical.instantiate()
 	if (!self.has_node("res://scenes/UI/GreenTargetRadical.tscn")):
 		self.add_child(g_t_r)
 		g_t_r.global_transform = $EnemySprite.global_transform

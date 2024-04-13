@@ -1,27 +1,27 @@
 extends Destructible
 
-onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
-onready var countdown = $Timer.time_left
+@onready var explosion = preload("res://scenes/Effects/Explosions/ExplosiveCrateExplosion.tscn")
+@onready var countdown = $Timer.time_left
 
 var state_machine
 
 func _ready():
 	state_machine = $AnimationTree.get("parameters/playback")
 
-func _process(delta):
+func _process(_delta):
 	if Globle.melee_attack && is_active:
 		state_machine.travel("Activated")
 		$Timer.start()
 
-func take_damage(amount : int) -> void:
+func take_damage(_amount : int) -> void:
 	is_active = true
 
-func no_damage(amount : int) -> void:
+func no_damage(_amount : int) -> void:
 	is_active = false
 
 func generate_explosion():
-	var expl = explosion.instance()
-	expl.translation.x = 3
+	var expl = explosion.instantiate()
+	expl.position.x = 3
 	get_parent().add_child(expl)
 	expl.global_transform = $ExplosiveCrate.global_transform
 	queue_free()

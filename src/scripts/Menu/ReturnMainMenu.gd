@@ -1,12 +1,11 @@
 extends MenuSceneControlBase
 
-onready var main_menu = get_parent().get_node("MainMenu")
 
 var index_btn
 var sec_index_btn
 var btn_to_return_to
 
-export (String, "StartGame", "LoadGame", "Options") var menus
+@export_enum("StartGame", "LoadGame", "Options") var menus: String
 
 func _on_BackButton_pressed():
 	$Audio/Click.play()
@@ -16,7 +15,6 @@ func _on_BackButton_pressed():
 	match(get_tree().get_current_scene().get_name()):
 		"MainMenu":
 			self.visible = false
-			main_menu.visible = true
 			match menus:
 				"LoadGame":
 					btn_to_return_to = get_parent().get_node("MainMenu/CenterContainer/Buttons/LoadGameButton")
@@ -31,7 +29,7 @@ func _on_BackButton_pressed():
 					btn_to_return_to = get_parent().get_node("MainMenu/CenterContainer/Buttons/NewGameButton")
 					btn_to_return_to.grab_focus()
 		"LevelView":
-			get_tree().change_scene("res://scenes/Menu/MainMenu.tscn")
+			get_tree().change_scene_to_file("res://scenes/Menu/MainMenu.tscn")
 
 func _on_BackButton_focus_exited():
 	$Audio/Move.play()

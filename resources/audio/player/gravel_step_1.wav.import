@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/gravel_step_1.wav-49f2c07f2bc0b15ad9618db3015df545.sample"
+type="AudioStreamWAV"
+uid="uid://sp1pn0g4fl1a"
+path="res://.godot/imported/gravel_step_1.wav-49f2c07f2bc0b15ad9618db3015df545.sample"
 
 [deps]
 
 source_file="res://resources/audio/player/gravel_step_1.wav"
-dest_files=[ "res://.import/gravel_step_1.wav-49f2c07f2bc0b15ad9618db3015df545.sample" ]
+dest_files=["res://.godot/imported/gravel_step_1.wav-49f2c07f2bc0b15ad9618db3015df545.sample"]
 
 [params]
 

@@ -1,8 +1,8 @@
-extends KinematicBody
+extends CharacterBody3D
 
-onready var projectile = preload("res://scenes/Projectiles/MiniturretProjectile.tscn")
+@onready var projectile = preload("res://scenes/Projectiles/MiniturretProjectile.tscn")
 
-onready var miniturret_gun = $MiniturretGun
+@onready var miniturret_gun = $MiniturretGun
 
 var body_target = null
 var turn_direction : String
@@ -14,33 +14,29 @@ var is_locked_on_target : bool = false
 
 var directions : Array = ["up", "down"]
 
-var velocity = Vector3(0, 0, 0)
+var miniturret_velocity = Vector3(0, 0, 0)
 var random = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	state_machine = $MiniturretAnimationTree.get("parameters/playback")
 
-	# Set the rotation of the miniturret to default.
-	self.rotation.y = 0
-	self.rotation.z = 0
-
 	random.randomize()
 	turn_direction = directions[(random.randi_range(0, directions.size() - 1))]
 
-	$ExpireTimer.connect("timeout", self, "_on_ExpireTimer_timeout")
+	$ExpireTimer.connect("timeout", Callable(self, "_on_ExpireTimer_timeout"))
 	$ExpireTimer.start()
 
-	$TurnTimer.connect("timeout", self, "_on_TurnTimer_timeout")
+	$TurnTimer.connect("timeout", Callable(self, "_on_TurnTimer_timeout"))
 	$TurnTimer.start()
 
-	$ShootTimer.connect("timeout", self, "_on_ShootTimer_timeout")
+	$ShootTimer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
 	$ShootTimer.start()
 
 	$Audio/Deploy.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if (miniturret_ammo <= 0) : queue_free()
 	if (!is_locked_on_target):
 		if (turn_direction == "up"):
@@ -48,10 +44,12 @@ func _process(delta):
 		elif (turn_direction == "down"):
 			miniturret_gun.rotation.z += turn_increment
 
-func _physics_process(delta):
-	state_machine.travel("Start")
-	velocity.y = -4
-	move_and_slide(velocity, Vector3.UP)
+func _physics_process(_delta):
+	state_machine.travel("Activated")
+	miniturret_velocity.y = -4
+	set_velocity(miniturret_velocity)
+	set_up_direction(Vector3.UP)
+	move_and_slide()
 
 	if (is_locked_on_target):
 		# https://godotengine.org/qa/74812/rotate-kinematiccharacter3d-towards-another-object-only
@@ -70,11 +68,17 @@ func _on_TurnTimer_timeout():
 
 func _on_ShootTimer_timeout():
 	if (is_locked_on_target):
-		var bullet = projectile.instance()
+		var bullet = projectile.instantiate()
 		get_parent().add_child(bullet)
 		bullet.global_transform = $MiniturretGun/WeaponMuzzle.global_transform
 		$Audio/MiniturretGun.play()
 		miniturret_ammo -= 1
+
+## https://godotengine.org/qa/74812/rotate-kinematiccharacter3d-towards-another-object-only
+## Returns the difference between point a and point b and returns the difference.
+func get_angle(a : Vector2, b : Vector2):
+	var diff = Vector2(a.x - b.x, a.y - b.y)
+	return atan2(diff.y, diff.x)
 
 func _on_TargetDetectionArea_body_entered(body):
 	if (body.has_meta("type") && body.get_meta("type") == "enemy"):
@@ -85,9 +89,3 @@ func _on_TargetDetectionArea_body_exited(body):
 	if (body.has_meta("type") && body.get_meta("type") == "enemy"):
 		is_locked_on_target = false
 		body_target = null
-
-# https://godotengine.org/qa/74812/rotate-kinematiccharacter3d-towards-another-object-only
-# Returns the difference between point a and point b and returns the difference.
-func get_angle(a : Vector2, b : Vector2):
-	var diff = Vector2(a.x - b.x, a.y - b.y)
-	return atan2(diff.y, diff.x)

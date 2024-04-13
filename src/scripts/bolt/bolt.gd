@@ -1,11 +1,11 @@
-extends Area
+extends Area3D
 
-onready var health_light = preload("res://scenes/Effects/Player/CollectHealthNode.tscn")
-onready var trail_particle = preload("res://scenes/Effects/Collectibles/TrailParticles.tscn")
+@onready var health_light = preload("res://scenes/Effects/Player/CollectHealthNode.tscn")
+@onready var trail_particle = preload("res://scenes/Effects/Collectibles/TrailParticles.tscn")
 
 var projectile
 
-export (String, "bolt", "ammo", "nanotech_node") var type
+@export_enum("bolt", "ammo", "nanotech_node") var type: String
 
 var does_emit_trail : bool = false
 var does_get_magnet : bool = false
@@ -45,7 +45,8 @@ func _ready():
 # Called during the physics processing step of the main loop.
 func _physics_process(_delta):
 	# Makes the bolts fall due to the y axis
-	if !does_get_magnet : translation.y
+#	if !does_get_magnet:
+#		position.y
 
 	if (does_emit_trail):
 		$Particles.hide()
@@ -59,16 +60,19 @@ func _physics_process(_delta):
 			if (type == "nanotech_node" and player.player_health < player.player_max_health):
 					does_emit_trail = true
 					for s in $Spots.get_children():
-						var t_p = trail_particle.instance()
+						var t_p = trail_particle.instantiate()
 						t_p.global_transform = s.global_transform
 						get_parent().add_child(t_p)
 					queue_free()
 			elif (type == "ammo"):
 				for wpn in Globle.WPNS[3].size():
 					if (Globle.WPNS[3][wpn] > Globle.player_weapons_ammo[wpn]):
-						translation += (get_parent().get_node("player").translation - translation) / 10
+						position += (get_parent().get_node("player").position - position) / 10
 			else:
-				translation += (get_parent().get_node("player").translation - translation) / 10
+				if (get_parent().has_node("player")):
+					position += (get_parent().get_node("player").position - position) / 10
+				else:
+					position += (get_parent().get_parent().get_node("player").position - position) / 10
 		var sub_bodies = get_overlapping_bodies()
 		for sub_body in sub_bodies:
 			if sub_body.name == "player":
@@ -77,8 +81,12 @@ func _physics_process(_delta):
 					match(type):
 						"bolt":
 							random.randomize()
-							var count_boults = get_parent().get_node("player").bolt + random.randi_range(5, 10)
-							Globle.bolts += count_boults
+							var count_bolts
+							if (get_parent().has_node("player")):
+								count_bolts = get_parent().get_node("player").bolt + random.randi_range(5, 10)
+							else:
+								count_bolts = get_parent().get_parent().get_node("player").bolt + random.randi_range(5, 10)
+							Globle.bolts += count_bolts
 							sub_body.collect_collectible(random.randi_range(0, 2), "bolt")
 							queue_free()
 
@@ -92,13 +100,13 @@ func _physics_process(_delta):
 						"nanotech_node":
 							if (sub_body.player_health < sub_body.player_max_health):
 								var effects : Node = null
-								var health_light_instance = health_light.instance()
+								var health_light_instance = health_light.instantiate()
 								if (sub_body.has_node("Effects")):
 									effects = sub_body.get_node("Effects")
 									effects.add_child(health_light_instance)
 								queue_free()
 
-func define_refillable_wpn(weapon_name : String, body : KinematicBody):
+func define_refillable_wpn(weapon_name : String, body : CharacterBody3D):
 	match(weapon_name):
 		"edge_blaster":
 			check_weapon_stats(weapon_name, 0, body, 16)
@@ -117,7 +125,7 @@ func define_refillable_wpn(weapon_name : String, body : KinematicBody):
 		"miniturret_glove":
 			check_weapon_stats(weapon_name, 7, body, 3)
 
-func check_weapon_stats(weapon_name : String, index : int, body : KinematicBody, ammo : int):
+func check_weapon_stats(weapon_name : String, index : int, body : CharacterBody3D, ammo : int):
 	var dynamic_ammo = ammo - ((Globle.player_weapons_ammo[index] + ammo) - Globle.WPNS[3][index])
 	if (dynamic_ammo >= ammo) : dynamic_ammo = ammo
 	if (Globle.player_weapons_ammo[index] > Globle.WPNS[3][index]):

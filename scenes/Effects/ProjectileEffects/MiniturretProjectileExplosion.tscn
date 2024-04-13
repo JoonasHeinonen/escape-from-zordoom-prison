@@ -1,91 +1,91 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=16 format=3 uid="uid://yeogllivy1dl"]
 
-[ext_resource path="res://resources/images/effects/projectile_effects/miniturret_collide_effect.png" type="Texture" id=1]
-[ext_resource path="res://src/scripts/effects/explosions/explosive_projectile_explosion.gd" type="Script" id=2]
-[ext_resource path="res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://bqelhpwus6djg" path="res://resources/images/effects/projectile_effects/miniturret_collide_effect.png" id="1"]
+[ext_resource type="Script" path="res://src/scripts/effects/explosions/explosive_projectile_explosion.gd" id="2"]
+[ext_resource type="Script" path="res://src/scripts/effects/explosions/ProjectileExplosionArea_timer.gd" id="3"]
 
-[sub_resource type="SpatialMaterial" id=8]
-flags_unshaded = true
+[sub_resource type="StandardMaterial3D" id="8"]
+blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-params_blend_mode = 1
-params_billboard_mode = 3
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("1")
+billboard_mode = 3
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
-albedo_color = Color( 1, 0, 0, 1 )
-albedo_texture = ExtResource( 1 )
 
-[sub_resource type="Gradient" id=10]
-offsets = PoolRealArray( 0, 0.721649, 1 )
-colors = PoolColorArray( 1, 0, 0, 1, 0.649485, 0, 0, 1, 0, 0, 0, 1 )
+[sub_resource type="Gradient" id="10"]
+offsets = PackedFloat32Array(0, 0.721649, 1)
+colors = PackedColorArray(1, 0, 0, 1, 0.649485, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture" id=11]
-gradient = SubResource( 10 )
+[sub_resource type="GradientTexture2D" id="11"]
+gradient = SubResource("10")
 
-[sub_resource type="ParticlesMaterial" id=12]
-gravity = Vector3( 0, 4, 0 )
-color_ramp = SubResource( 11 )
+[sub_resource type="ParticleProcessMaterial" id="12"]
+gravity = Vector3(0, 4, 0)
+color_ramp = SubResource("11")
 
-[sub_resource type="QuadMesh" id=9]
-size = Vector2( 3, 3 )
+[sub_resource type="QuadMesh" id="9"]
+size = Vector2(3, 3)
 
-[sub_resource type="SpatialMaterial" id=17]
-flags_unshaded = true
+[sub_resource type="StandardMaterial3D" id="17"]
+blend_mode = 1
+shading_mode = 0
 vertex_color_use_as_albedo = true
-params_blend_mode = 1
-params_billboard_mode = 1
-albedo_color = Color( 0.611765, 0.611765, 0.611765, 1 )
-albedo_texture = ExtResource( 1 )
+albedo_color = Color(0.611765, 0.611765, 0.611765, 1)
+albedo_texture = ExtResource("1")
+billboard_mode = 1
 
-[sub_resource type="Gradient" id=13]
-offsets = PoolRealArray( 0, 0.388235, 1 )
-colors = PoolColorArray( 1, 0.4375, 0.4375, 1, 0.905882, 0.396324, 0.396324, 1, 0, 0, 0, 1 )
+[sub_resource type="Gradient" id="13"]
+offsets = PackedFloat32Array(0, 0.388235, 1)
+colors = PackedColorArray(1, 0.4375, 0.4375, 1, 0.905882, 0.396324, 0.396324, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture" id=14]
-gradient = SubResource( 13 )
+[sub_resource type="GradientTexture2D" id="14"]
+gradient = SubResource("13")
 
-[sub_resource type="ParticlesMaterial" id=15]
+[sub_resource type="ParticleProcessMaterial" id="15"]
 emission_shape = 1
 emission_sphere_radius = 0.6
-gravity = Vector3( 0, 8, 0 )
-color = Color( 1, 0.329412, 0.329412, 1 )
-color_ramp = SubResource( 14 )
+gravity = Vector3(0, 8, 0)
+color = Color(1, 0.329412, 0.329412, 1)
+color_ramp = SubResource("14")
 
-[sub_resource type="QuadMesh" id=16]
+[sub_resource type="QuadMesh" id="16"]
 
-[sub_resource type="BoxShape" id=1]
+[sub_resource type="BoxShape3D" id="1"]
 
-[sub_resource type="BoxShape" id=7]
+[sub_resource type="BoxShape3D" id="7"]
 
-[node name="Spatial" type="Spatial"]
+[node name="Node3D" type="Node3D"]
 
 [node name="KillTimer" type="Timer" parent="."]
 wait_time = 0.8
 autostart = true
 
-[node name="KinematicBody" type="KinematicBody" parent="."]
-script = ExtResource( 2 )
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("2")
 
-[node name="Particle" type="Particles" parent="KinematicBody"]
-material_override = SubResource( 8 )
+[node name="Particle" type="GPUParticles3D" parent="CharacterBody3D"]
+material_override = SubResource("8")
 amount = 1
-process_material = SubResource( 12 )
-draw_pass_1 = SubResource( 9 )
+process_material = SubResource("12")
+draw_pass_1 = SubResource("9")
 
-[node name="SmallParticles" type="Particles" parent="KinematicBody"]
-material_override = SubResource( 17 )
+[node name="SmallParticles" type="GPUParticles3D" parent="CharacterBody3D"]
+material_override = SubResource("17")
 amount = 5
-process_material = SubResource( 15 )
-draw_pass_1 = SubResource( 16 )
+process_material = SubResource("15")
+draw_pass_1 = SubResource("16")
 
-[node name="CollisionShape" type="CollisionShape" parent="KinematicBody"]
-shape = SubResource( 1 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("1")
 disabled = true
 
-[node name="ProjectileExplosionArea" type="Area" parent="."]
-transform = Transform( 1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0 )
-script = ExtResource( 3 )
+[node name="ProjectileExplosionArea" type="Area3D" parent="."]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, 0, 0)
+script = ExtResource("3")
 
-[node name="CollisionShape" type="CollisionShape" parent="ProjectileExplosionArea"]
-transform = Transform( 0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0 )
-shape = SubResource( 7 )
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectileExplosionArea"]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+shape = SubResource("7")

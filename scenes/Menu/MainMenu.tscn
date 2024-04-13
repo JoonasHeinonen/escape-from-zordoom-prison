@@ -1,377 +1,343 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=3 uid="uid://cefix45ikufg"]
 
-[ext_resource path="res://src/scripts/Menu/MainMenu.gd" type="Script" id=1]
-[ext_resource path="res://src/scripts/UI/main_menu.gd" type="Script" id=2]
-[ext_resource path="res://src/scripts/UI/screen_check_box.gd" type="Script" id=3]
-[ext_resource path="res://src/scripts/UI/menu_scene_control_base.gd" type="Script" id=4]
-[ext_resource path="res://src/scripts/Menu/MenuButton.gd" type="Script" id=5]
-[ext_resource path="res://scenes/Transitions/fade_in.tscn" type="PackedScene" id=6]
-[ext_resource path="res://resources/fonts/rg-future-italic.tres" type="DynamicFont" id=7]
-[ext_resource path="res://resources/audio/ui/button_click.wav" type="AudioStream" id=8]
-[ext_resource path="res://resources/audio/ui/button_navigate.wav" type="AudioStream" id=9]
-[ext_resource path="res://resources/images/environment/stars2.png" type="Texture" id=10]
-[ext_resource path="res://src/theme/zordoom_theme.tres" type="Theme" id=11]
-[ext_resource path="res://src/scripts/Menu/ReturnMainMenu.gd" type="Script" id=12]
-[ext_resource path="res://scenes/UI/CharacterSelectionButton.tscn" type="PackedScene" id=13]
+[ext_resource type="Script" path="res://src/scripts/Menu/MainMenu.gd" id="1"]
+[ext_resource type="Script" path="res://src/scripts/UI/main_menu.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://lvv5c4obaulh" path="res://resources/images/environment/stars2.png" id="2_rfckn"]
+[ext_resource type="Script" path="res://src/scripts/UI/screen_check_box.gd" id="3"]
+[ext_resource type="Script" path="res://src/scripts/UI/menu_scene_control_base.gd" id="4"]
+[ext_resource type="Script" path="res://src/scripts/Menu/MenuButton.gd" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/Transitions/FadeIn.tscn" id="6"]
+[ext_resource type="FontFile" path="res://resources/fonts/rg-future-italic.tres" id="7"]
+[ext_resource type="AudioStream" uid="uid://bmea3ibe58bhs" path="res://resources/audio/ui/button_click.wav" id="8"]
+[ext_resource type="AudioStream" uid="uid://dfnmugl4le2jo" path="res://resources/audio/ui/button_navigate.wav" id="9"]
+[ext_resource type="Theme" uid="uid://bk5epmeksv1nf" path="res://src/theme/zordoom_theme.tres" id="11"]
+[ext_resource type="Script" path="res://src/scripts/Menu/ReturnMainMenu.gd" id="12"]
+[ext_resource type="PackedScene" path="res://scenes/UI/CharacterSelectionButton.tscn" id="13"]
 
-[sub_resource type="PanoramaSky" id=15]
-radiance_size = 4
-panorama = ExtResource( 10 )
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l6u71"]
+panorama = ExtResource("2_rfckn")
 
-[sub_resource type="Environment" id=16]
+[sub_resource type="Sky" id="Sky_ka33v"]
+sky_material = SubResource("PanoramaSkyMaterial_l6u71")
+
+[sub_resource type="Environment" id="Environment_w8nwa"]
+resource_local_to_scene = true
 background_mode = 2
-background_sky = SubResource( 15 )
-background_sky_custom_fov = 120.0
-ambient_light_energy = 16.0
-ambient_light_sky_contribution = 0.0
-tonemap_mode = 3
-tonemap_white = 14.0
-auto_exposure_max_luma = 16.0
-auto_exposure_speed = 22.97
-dof_blur_far_enabled = true
-dof_blur_far_distance = 2.9
-dof_blur_far_transition = 48.59
-dof_blur_far_amount = 0.08
-dof_blur_far_quality = 0
+sky = SubResource("Sky_ka33v")
+sky_custom_fov = 120.0
+ambient_light_source = 3
+ambient_light_color = Color(0.835294, 0.839216, 0.968627, 1)
 
-[sub_resource type="StyleBoxFlat" id=17]
-bg_color = Color( 0.156863, 0.490196, 0.556863, 0.294118 )
+[sub_resource type="StyleBoxFlat" id="17"]
+bg_color = Color(0.156863, 0.490196, 0.556863, 0.294118)
 corner_radius_top_left = 10
 corner_radius_bottom_right = 10
 expand_margin_left = 10.0
-expand_margin_right = 10.0
 expand_margin_top = 10.0
+expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
-[node name="MainMenu" type="Spatial"]
-script = ExtResource( 2 )
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("2")
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.905213, -1.34887e-08, 0.424958, -0.237879, 0.828647, 0.506713, -0.35214, -0.559772, 0.750102, 0, 4.95221, 10.8508 )
+[node name="Camera3D" type="Camera3D" parent="."]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 16 )
+environment = SubResource("Environment_w8nwa")
 
 [node name="MainMenu" type="Control" parent="."]
-margin_right = 1280.0
-margin_bottom = 720.0
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 1 )
+mouse_filter = 2
+script = ExtResource("1")
 
 [node name="LabelCenterContainer" type="CenterContainer" parent="MainMenu"]
-margin_right = 1280.0
-margin_bottom = 360.0
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 360.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 4 )
+script = ExtResource("4")
 alignment = "Vertical alignment"
 
 [node name="Label" type="Label" parent="MainMenu/LabelCenterContainer"]
-margin_left = 408.0
-margin_top = 150.0
-margin_right = 871.0
-margin_bottom = 209.0
-custom_fonts/font = ExtResource( 7 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7")
 text = "ESCAPE FROM ZORDOOM"
-align = 1
-valign = 1
 max_lines_visible = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="MainMenu"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="PanelContainer" type="PanelContainer" parent="MainMenu/CenterContainer"]
-margin_left = 520.0
-margin_top = 225.0
-margin_right = 760.0
-margin_bottom = 495.0
-rect_min_size = Vector2( 240, 270 )
-custom_styles/panel = SubResource( 17 )
+custom_minimum_size = Vector2(240, 270)
+layout_mode = 2
+theme_override_styles/panel = SubResource("17")
 
 [node name="Buttons" type="VBoxContainer" parent="MainMenu/CenterContainer"]
-margin_left = 535.0
-margin_top = 236.0
-margin_right = 745.0
-margin_bottom = 484.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 1
 
 [node name="NewGameButton" type="Button" parent="MainMenu/CenterContainer/Buttons"]
-margin_right = 210.0
-margin_bottom = 59.0
+layout_mode = 2
 mouse_filter = 2
-theme = ExtResource( 11 )
+theme = ExtResource("11")
 text = "SELECT LEVEL"
-script = ExtResource( 5 )
+script = ExtResource("5")
 
 [node name="Audio" type="Node" parent="MainMenu/CenterContainer/Buttons/NewGameButton"]
 
 [node name="Click" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/NewGameButton/Audio"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Move" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/NewGameButton/Audio"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
 [node name="LoadGameButton" type="Button" parent="MainMenu/CenterContainer/Buttons"]
-margin_top = 63.0
-margin_right = 210.0
-margin_bottom = 122.0
+layout_mode = 2
 mouse_filter = 2
-theme = ExtResource( 11 )
+theme = ExtResource("11")
 text = "LOAD GAME"
-script = ExtResource( 5 )
+script = ExtResource("5")
 
 [node name="Audio" type="Node" parent="MainMenu/CenterContainer/Buttons/LoadGameButton"]
 
 [node name="Click" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/LoadGameButton/Audio"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Move" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/LoadGameButton/Audio"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
 [node name="OptionsButton" type="Button" parent="MainMenu/CenterContainer/Buttons"]
-margin_top = 126.0
-margin_right = 210.0
-margin_bottom = 185.0
+layout_mode = 2
 mouse_filter = 2
-theme = ExtResource( 11 )
+theme = ExtResource("11")
 text = "OPTIONS"
-script = ExtResource( 5 )
+script = ExtResource("5")
 
 [node name="Audio" type="Node" parent="MainMenu/CenterContainer/Buttons/OptionsButton"]
 
 [node name="Click" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/OptionsButton/Audio"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Move" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/OptionsButton/Audio"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
 [node name="QuitGameButton" type="Button" parent="MainMenu/CenterContainer/Buttons"]
-margin_top = 189.0
-margin_right = 210.0
-margin_bottom = 248.0
+layout_mode = 2
 mouse_filter = 2
-theme = ExtResource( 11 )
+theme = ExtResource("11")
 text = "EXIT"
-script = ExtResource( 5 )
+script = ExtResource("5")
 
 [node name="Audio" type="Node" parent="MainMenu/CenterContainer/Buttons/QuitGameButton"]
 
 [node name="Click" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/QuitGameButton/Audio"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Move" type="AudioStreamPlayer" parent="MainMenu/CenterContainer/Buttons/QuitGameButton/Audio"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
 [node name="Audio" type="Node" parent="MainMenu"]
 
 [node name="Click" type="AudioStreamPlayer" parent="MainMenu/Audio"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Move" type="AudioStreamPlayer" parent="MainMenu/Audio"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
-[node name="FadeIn" parent="MainMenu" instance=ExtResource( 6 )]
+[node name="FadeIn" parent="MainMenu" instance=ExtResource("6")]
 visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 
 [node name="CharacterSelection" type="Control" parent="."]
 visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-script = ExtResource( 12 )
-alignment = "Full alignment"
+script = ExtResource("12")
 menus = "StartGame"
+alignment = "Full alignment"
 
 [node name="LabelCenterContainer" type="CenterContainer" parent="CharacterSelection"]
-margin_right = 1280.0
-margin_bottom = 240.0
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 240.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource( 4 )
+script = ExtResource("4")
 alignment = "Vertical alignment"
 
 [node name="Label" type="Label" parent="CharacterSelection/LabelCenterContainer"]
-margin_left = 461.0
-margin_top = 90.0
-margin_right = 818.0
-margin_bottom = 149.0
-theme = ExtResource( 11 )
+layout_mode = 2
+theme = ExtResource("11")
 text = "Pick your character"
-align = 1
-valign = 1
 uppercase = true
 
 [node name="CenterContainer" type="CenterContainer" parent="CharacterSelection"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="PanelContainer" type="PanelContainer" parent="CharacterSelection/CenterContainer"]
-margin_left = 430.0
-margin_top = 195.0
-margin_right = 850.0
-margin_bottom = 525.0
-rect_min_size = Vector2( 420, 330 )
-custom_styles/panel = SubResource( 17 )
+custom_minimum_size = Vector2(420, 330)
+layout_mode = 2
+theme_override_styles/panel = SubResource("17")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CharacterSelection/CenterContainer"]
-margin_top = 203.0
-margin_right = 1280.0
-margin_bottom = 516.0
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CharacterSelection/CenterContainer/VBoxContainer"]
-margin_right = 1280.0
-margin_bottom = 250.0
-grow_horizontal = 0
-grow_vertical = 0
-rect_min_size = Vector2( 1280, 0 )
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 2
 alignment = 1
 
-[node name="AngelaSelectionButton" parent="CharacterSelection/CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 13 )]
-margin_left = 438.0
-margin_right = 638.0
-margin_bottom = 250.0
-scene_to_load = "res://scenes/Menu/LevelView.tscn"
+[node name="AngelaSelectionButton" parent="CharacterSelection/CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13")]
+layout_mode = 2
 characters = "Angela"
-
-[node name="RivetSelectionButton" parent="CharacterSelection/CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource( 13 )]
-margin_left = 642.0
-margin_right = 842.0
-margin_bottom = 250.0
 scene_to_load = "res://scenes/Menu/LevelView.tscn"
+
+[node name="RivetSelectionButton" parent="CharacterSelection/CenterContainer/VBoxContainer/HBoxContainer" instance=ExtResource("13")]
+layout_mode = 2
 characters = "Rivet"
+scene_to_load = "res://scenes/Menu/LevelView.tscn"
 
 [node name="VBoxContainer" type="HBoxContainer" parent="CharacterSelection/CenterContainer/VBoxContainer"]
-margin_top = 254.0
-margin_right = 1280.0
-margin_bottom = 313.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 alignment = 1
 
 [node name="BackButton" type="Button" parent="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer"]
-margin_left = 437.0
-margin_right = 842.0
-margin_bottom = 59.0
-rect_min_size = Vector2( 405, 0 )
+custom_minimum_size = Vector2(405, 0)
+layout_mode = 2
 mouse_filter = 2
-theme = ExtResource( 11 )
+theme = ExtResource("11")
 text = "BACK"
 
 [node name="Audio" type="Node" parent="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton"]
 
 [node name="Click" type="AudioStreamPlayer" parent="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton/Audio"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Move" type="AudioStreamPlayer" parent="CharacterSelection/CenterContainer/VBoxContainer/VBoxContainer/BackButton/Audio"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
 [node name="Audio" type="Node" parent="CharacterSelection"]
 
 [node name="Click" type="AudioStreamPlayer" parent="CharacterSelection/Audio"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Move" type="AudioStreamPlayer" parent="CharacterSelection/Audio"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
 [node name="LoadGame" type="Control" parent="."]
 visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-script = ExtResource( 12 )
-alignment = "Full alignment"
+script = ExtResource("12")
 menus = "LoadGame"
+alignment = "Full alignment"
 
 [node name="CenterContainer" type="CenterContainer" parent="LoadGame"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="LoadGame/CenterContainer"]
-margin_left = 494.0
-margin_top = 330.0
-margin_right = 785.0
-margin_bottom = 389.0
+layout_mode = 2
 
 [node name="BackButton" type="Button" parent="LoadGame/CenterContainer/VBoxContainer"]
-margin_right = 291.0
-margin_bottom = 59.0
+layout_mode = 2
 mouse_filter = 2
-theme = ExtResource( 11 )
+theme = ExtResource("11")
 text = "BACK (LOADGAME)"
 
 [node name="Audio" type="Node" parent="LoadGame/CenterContainer/VBoxContainer/BackButton"]
 
 [node name="Click" type="AudioStreamPlayer" parent="LoadGame/CenterContainer/VBoxContainer/BackButton/Audio"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Move" type="AudioStreamPlayer" parent="LoadGame/CenterContainer/VBoxContainer/BackButton/Audio"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
 [node name="Audio" type="Node" parent="LoadGame"]
 
 [node name="Click" type="AudioStreamPlayer" parent="LoadGame/Audio"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Move" type="AudioStreamPlayer" parent="LoadGame/Audio"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
 [node name="Options" type="Control" parent="."]
 visible = false
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
-script = ExtResource( 12 )
-alignment = "Full alignment"
+script = ExtResource("12")
 menus = "Options"
+alignment = "Full alignment"
 
 [node name="CenterContainer" type="CenterContainer" parent="Options"]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options/CenterContainer"]
-margin_left = 514.0
-margin_top = 316.0
-margin_right = 766.0
-margin_bottom = 403.0
+layout_mode = 2
 
 [node name="ScreenCheckBox" type="CheckBox" parent="Options/CenterContainer/VBoxContainer"]
-margin_right = 252.0
-margin_bottom = 24.0
+layout_mode = 2
 text = "Fullscreen"
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="BackButton" type="Button" parent="Options/CenterContainer/VBoxContainer"]
-margin_top = 28.0
-margin_right = 252.0
-margin_bottom = 87.0
+layout_mode = 2
 mouse_filter = 2
-theme = ExtResource( 11 )
+theme = ExtResource("11")
 text = "BACK (OPTIONS)"
 
 [node name="Audio" type="Node" parent="Options/CenterContainer/VBoxContainer/BackButton"]
 
 [node name="Click" type="AudioStreamPlayer" parent="Options/CenterContainer/VBoxContainer/BackButton/Audio"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Move" type="AudioStreamPlayer" parent="Options/CenterContainer/VBoxContainer/BackButton/Audio"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
 [node name="Audio" type="Node" parent="Options"]
 
 [node name="Click" type="AudioStreamPlayer" parent="Options/Audio"]
-stream = ExtResource( 8 )
+stream = ExtResource("8")
 
 [node name="Move" type="AudioStreamPlayer" parent="Options/Audio"]
-stream = ExtResource( 9 )
+stream = ExtResource("9")
 
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_NewGameButton_focus_exited"]
 [connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MainMenuButton_pressed"]

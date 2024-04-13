@@ -1,6 +1,6 @@
-extends Area
+extends Area3D
 
-onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
+@onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
 func _on_TargetDetectionArea_body_entered(body):
 	if (body.has_meta("type")):
@@ -8,11 +8,10 @@ func _on_TargetDetectionArea_body_entered(body):
 			body.get_meta("type") == "destroyable" and
 			body.get_meta("type") == "enemy"
 		):
-			var g_t_r = radical.instance()
-			var b_c = body.get_children()
-			
+			var g_t_r = radical.instantiate()
+
 			if (!body.has_node("GreenTargetRadical")):
-				g_t_r = radical.instance()
+				g_t_r = radical.instantiate()
 				body.add_child(g_t_r)
 			if (body.get_meta("type") == "destroyable"):
 				g_t_r.global_transform = body.get_child(0).global_transform

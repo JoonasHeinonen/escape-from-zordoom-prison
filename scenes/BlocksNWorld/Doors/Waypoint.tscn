@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://dy2k7jfp7swx8"]
+
+[ext_resource type="Texture2D" uid="uid://b6yg0oxg84rh1" path="res://resources/images/ui/waypoint.png" id="1_1gve7"]
+[ext_resource type="Script" path="res://src/scripts/npc/waypoint.gd" id="1_w67co"]
+[ext_resource type="Texture2D" uid="uid://tarc23ub7hgw" path="res://resources/images/ui/waypoint_active.png" id="3_px2wn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ieyjm"]
+
+[node name="Waypoint" type="Node3D"]
+script = ExtResource("1_w67co")
+
+[node name="PassiveWaypoint" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_1gve7")
+
+[node name="ActiveWaypoint" type="Sprite3D" parent="."]
+visible = false
+billboard = 1
+texture_filter = 0
+texture = ExtResource("3_px2wn")
+
+[node name="WaypointDetectionArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaypointDetectionArea"]
+shape = SubResource("BoxShape3D_ieyjm")

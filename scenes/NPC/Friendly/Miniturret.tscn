@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://cdtejo8m4q1dv"]
+
+[ext_resource type="Texture2D" uid="uid://p30u2bovshwi" path="res://resources/images/effects/projectiles/miniturret/miniturret_stick.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://ds61opx4o1crm" path="res://resources/images/effects/projectiles/miniturret/miniturret_gun.png" id="2"]
+[ext_resource type="Script" path="res://src/scripts/npc/friendly/miniturret.gd" id="3"]
+[ext_resource type="AudioStream" uid="uid://d3sb2tvn7mknb" path="res://resources/audio/npc/miniturret/miniturret_gun.wav" id="4"]
+[ext_resource type="AudioStream" uid="uid://dp0gws21kco6c" path="res://resources/audio/npc/miniturret/deploy.wav" id="5"]
+
+[sub_resource type="BoxShape3D" id="1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7gpmo"]
+
+[sub_resource type="QuadMesh" id="2"]
+
+[sub_resource type="Animation" id="Animation_mb5xc"]
+resource_name = "Activated"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "scale_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/CollisionShape3D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.01, 0.01, 0.01, 0.0593129, 1, 3, 3, 3, 1.9, 1, 3, 3, 3)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nbenf"]
+_data = {
+"Activated": SubResource("Animation_mb5xc")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2is1j"]
+animation = &"Activated"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s4pyl"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="4"]
+states/Activated/node = SubResource("AnimationNodeAnimation_2is1j")
+states/Activated/position = Vector2(318, 151)
+states/End/position = Vector2(899, 100)
+states/Start/position = Vector2(318, 78)
+transitions = ["Start", "Activated", SubResource("AnimationNodeStateMachineTransition_s4pyl")]
+
+[node name="Miniturret" type="CharacterBody3D"]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 0, 0)
+axis_lock_linear_z = true
+axis_lock_angular_z = true
+script = ExtResource("3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.08, 0, 0, 0, 0.32, 0, 0, 0, 0.08, 0, 0, 0)
+shape = SubResource("1")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_7gpmo")
+
+[node name="MiniturretGun" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.00126624, 0.0491582, 0.003)
+mesh = SubResource("2")
+
+[node name="MiniturretGunSprite" type="Sprite3D" parent="MiniturretGun"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0.623, 0.014, 0.024)
+texture_filter = 0
+texture = ExtResource("2")
+
+[node name="WeaponMuzzle" type="Marker3D" parent="MiniturretGun"]
+transform = Transform3D(6, 1.06582e-14, 0, -1.06582e-14, 6, 0, 0, 0, 6, 4.82758, 0.0374426, 0)
+
+[node name="MiniturretStick" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1")
+
+[node name="MiniturretAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nbenf")
+}
+
+[node name="MiniturretAnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nbenf")
+}
+tree_root = SubResource("4")
+anim_player = NodePath("../MiniturretAnimationPlayer")
+
+[node name="ExpireTimer" type="Timer" parent="."]
+wait_time = 12.0
+autostart = true
+
+[node name="TurnTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Deploy" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("5")
+volume_db = 80.0
+
+[node name="MiniturretGun" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("4")
+volume_db = 80.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_TargetDetectionArea_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_TargetDetectionArea_body_exited"]

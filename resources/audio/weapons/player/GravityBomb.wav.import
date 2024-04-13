@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/GravityBomb.wav-d4a3bedda84c1345509bbbb5eea5fc6f.sample"
+type="AudioStreamWAV"
+uid="uid://bmscikp5qvxc"
+path="res://.godot/imported/GravityBomb.wav-d4a3bedda84c1345509bbbb5eea5fc6f.sample"
 
 [deps]
 
 source_file="res://resources/audio/weapons/player/GravityBomb.wav"
-dest_files=[ "res://.import/GravityBomb.wav-d4a3bedda84c1345509bbbb5eea5fc6f.sample" ]
+dest_files=["res://.godot/imported/GravityBomb.wav-d4a3bedda84c1345509bbbb5eea5fc6f.sample"]
 
 [params]
 
