@@ -56,6 +56,7 @@ var player_double_jump : bool = false
 var player_double_jump_used : bool = false
 var player_is_aiming_with_rifle : bool = false
 var player_is_just_damaged : bool = false
+var player_sliding : bool = false
 var ui_notification : bool = false
 
 var sniping_ray
@@ -244,6 +245,11 @@ func _physics_process(delta):
 				player_double_jump_used = true
 			if (Input.is_action_just_released("jump") && !is_on_floor()):
 				player_double_jump = true
+		if Input.is_action_pressed("ui_crouch"):
+			# TODO Implement crouching animation.
+			player_sliding = true
+		if Input.is_action_just_released("ui_crouch"):
+			player_sliding = false
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
@@ -263,13 +269,17 @@ func _physics_process(delta):
 
 	if not is_on_floor():
 		player_velocity.y -= gravity * delta
-		state_machine.travel("Player_Fall")
-		if Globle.player_character == "Angela":
-			if Input.is_action_pressed("ui_melee_attack"):
-				state_machine.travel("Player_Melee")
-		if Globle.player_character == "Rivet":
-			if Input.is_action_pressed("ui_melee_attack"):
-				state_machine.travel("Player_Melee")
+		if !player_sliding:
+			state_machine.travel("Player_Fall")
+			if Globle.player_character == "Angela":
+				if Input.is_action_pressed("ui_melee_attack"):
+					state_machine.travel("Player_Melee")
+			if Globle.player_character == "Rivet":
+				if Input.is_action_pressed("ui_melee_attack"):
+					state_machine.travel("Player_Melee")
+
+	if player_sliding:
+		state_machine.travel("Player_Slide")
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	set_velocity(player_velocity)

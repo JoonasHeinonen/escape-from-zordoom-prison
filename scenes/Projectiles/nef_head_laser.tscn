@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cqfpa68jlkra3"]
 
-[ext_resource type="Texture2D" uid="uid://bffrdrgqtroi5" path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://banat76blu3h7" path="res://resources/images/characters/npc/enemies/Nef_trooper_head/nef_trooper_head.png" id="1"]
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/nef_laser.gd" id="2"]
 
 [sub_resource type="BoxShape3D" id="1"]
@@ -47,15 +47,18 @@ _data = {
 script = ExtResource("2")
 
 [node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="Area3D"]
-transform = Transform3D(3.33004, 0, 0, 0, 3.33004, 0, 0, 0, 1, 0, -0.0240717, 0)
+transform = Transform3D(16.65, 0, 0, 0, 16.65, 0, 0, 0, 5, 0, -0.0240717, 0)
+texture_filter = 0
 texture = ExtResource("1")
 hframes = 8
 vframes = 4
 frame = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
