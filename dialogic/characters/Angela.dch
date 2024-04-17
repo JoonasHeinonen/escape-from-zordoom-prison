@@ -1,0 +1,74 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 1, 1, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": ""
+},
+"default_portrait": "angela_talking_head1",
+"description": "",
+"display_name": "Angela",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(-440, 0),
+"portraits": {
+"angela_character_selection": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/angela/angela_character_selection.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"angela_sheet_init_finished": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/angela/angela_sheet_init_finished.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"angela_sheet_init_finished_holster_weapon": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"angela_talking_head1": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/angela/angela_talking_head1.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"angela_weapon": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/angela/angela_weapon.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"angela_weapon_outdated": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/angela/angela_weapon_outdated.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+"scale": 0.5
+}

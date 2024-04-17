@@ -1,2 +1,12 @@
 join mia 2
 mia: Um um excuse me
+leave mia
+join Angela 2
+Angela: Um...yes?
+leave Angela
+join mia 2
+mia: I'm trying to get back home, can you help me please?
+leave mia
+join Angela 2
+Angela: Um...sure... I can see what I can do.
+leave Angela
