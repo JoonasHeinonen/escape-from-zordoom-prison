@@ -110,7 +110,7 @@ shape = SubResource("21")
 [node name="friendly" type="Node" parent="npc"]
 
 [node name="Angela_Or_Rivet" parent="npc/friendly" instance=ExtResource("23")]
-transform = Transform3D(-3.436, 0, 0, 0, 3.436, 0, 0, 0, 1, 61.6197, -10.9118, 0)
+transform = Transform3D(-3.436, 0, 0, 0, 3.436, 0, 0, 0, 1, 61.6197, -10.9118, 0.396291)
 collision_layer = 0
 collision_mask = 0
 
@@ -307,7 +307,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource("8")]
-transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -27.7336, 7.06222, 0)
+transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 57.5981, -10.2372, 0)
 collision_layer = 13
 collision_mask = 13
 
