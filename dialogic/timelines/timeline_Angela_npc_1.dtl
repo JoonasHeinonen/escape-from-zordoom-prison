@@ -1,3 +1,6 @@
 join Angela (angela_talking_head_2) 4
 Angela (angela_talking_head_2): Hey Rivet.
 leave Angela
+join Rivet (rivet_talking_head_2) 1
+Rivet (rivet_talking_head_2): Yo Angie!
+leave 

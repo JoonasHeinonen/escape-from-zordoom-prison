@@ -46,9 +46,18 @@
 "export_overrides": {
 "image": "\"res://resources/images/characters/player/rivet/rivet_talking_head1.png\""
 },
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"rivet_talking_head_2": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/rivet/rivet_talking_head_2.png\""
+},
 "ignore_char_scale": true,
 "mirror": false,
-"offset": Vector2(300, 0),
+"offset": Vector2(-500, 10),
 "scale": 0.5,
 "scene": ""
 },
