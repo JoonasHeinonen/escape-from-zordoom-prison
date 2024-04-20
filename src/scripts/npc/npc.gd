@@ -83,7 +83,7 @@ func _input(_event):
 			"NPC_Angela_Rivet":
 				match(npc_angela_rivet_dialog_value):
 					(0):
-						commence_dialog('timeline_Rivet_npc_1')
+						commence_dialog('timeline_Angela_npc_1')
 				npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
 			#why is there two if statments checking if the player is rivet or not?
 			"Shark_man":
