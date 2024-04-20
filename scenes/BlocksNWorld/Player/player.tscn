@@ -192,6 +192,48 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
+[sub_resource type="Animation" id="Animation_v1imr"]
+resource_name = "Player_Slide"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngelaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [26]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AngelaSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 2, 0.8, 2)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, -0.6, 0)
+
 [sub_resource type="Animation" id="8"]
 resource_name = "Player_Still"
 length = 0.9
@@ -415,40 +457,6 @@ tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
-[sub_resource type="Animation" id="Animation_v1imr"]
-resource_name = "Player_Slide"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AngelaSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [26]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AngelaSprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "scale_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape3D")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 2, 0.8, 2)
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_48tsd"]
 _data = {
 "Player_Damage": SubResource("67"),
@@ -515,7 +523,7 @@ states/Player_Walk/node = SubResource("43")
 states/Player_Walk/position = Vector2(369, 44)
 states/Start/position = Vector2(153, -34)
 transitions = ["Player_Still", "Player_Walk", SubResource("44"), "Player_Walk", "Player_Still", SubResource("45"), "Player_Still", "Player_Fall", SubResource("46"), "Player_Fall", "Player_Still", SubResource("47"), "Player_Still", "Player_Melee", SubResource("48"), "Player_Melee", "Player_Still", SubResource("49"), "Player_Damage", "Player_Still", SubResource("69"), "Player_Still", "Player_Damage", SubResource("70"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_ofvuq"), "Player_Still", "Player_Slide", SubResource("AnimationNodeStateMachineTransition_fx0gl"), "Player_Slide", "Player_Still", SubResource("AnimationNodeStateMachineTransition_cejvx")]
-graph_offset = Vector2(-316.359, -178)
+graph_offset = Vector2(-326.359, -54)
 
 [sub_resource type="Animation" id="71"]
 resource_name = "Player_Damage"
@@ -588,6 +596,34 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_x8yuu"]
+resource_name = "Player_Slide"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="30"]
 resource_name = "Player_Still"
 length = 1.5
@@ -640,33 +676,6 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_x8yuu"]
-resource_name = "Player_Slide"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RivetSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [28]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RivetSprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
@@ -836,6 +845,7 @@ speed = 200
 transform = Transform3D(-0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139)
 
 [node name="CollisionArea" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
 shape = SubResource("5")
@@ -877,7 +887,6 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 4
-frame = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)

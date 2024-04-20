@@ -148,10 +148,17 @@ func _physics_process(delta):
 				for audio_child in audio_sub_child.get_children():
 					audio_child.position = Vector3(self.position.x, self.position.y, 0)
 
-	# Reset double jump while on the ground.
+	# Sliding logic. Reset double jump while on the ground.
 	if is_on_floor():
 		player_double_jump = false
 		player_double_jump_used = false
+		if Input.is_action_pressed("ui_crouch"):
+			# TODO Implement crouching animation.
+			player_sliding = true
+			velocity.x = 0
+		if Input.is_action_just_released("ui_crouch"):
+			player_sliding = false
+	print($CollisionShape3D.scale)
 
 	var _current = state_machine.get_current_node()
 
@@ -198,58 +205,51 @@ func _physics_process(delta):
 			gun_instance.hide()
 
 	if player_health > 0 && !Globle.player_inventory && !player_is_aiming_with_rifle:
-		if Input.is_action_pressed("ui_melee_attack"):
-			if Globle.player_character == "Rivet":
-				state_machine.travel("Player_Melee")
-				if (state_machine.get_current_play_position() > 0.3):
-					Globle.melee_attack = true
-				if (state_machine.get_current_play_position() >= 0.4):
-					Globle.melee_attack = false
-					if player_velocity.x > 0:
-						player_velocity.x -= 0.1
-					if player_velocity.x < 0:
-						player_velocity.x += 0.1
-			if Globle.player_character == "Angela":
-				state_machine.travel("Player_Melee")
-				if (state_machine.get_current_play_position() > 0.3):
-					Globle.melee_attack = true
-				if (state_machine.get_current_play_position() >= 0.4):
-					Globle.melee_attack = false
-					if player_velocity.x > 0:
-						player_velocity.x -= 0.1
-					if player_velocity.x < 0:
-						player_velocity.x += 0.1
-		#Checks to see if the player is talking with an npc thus restrits there movement until the player cycles through thier dialogic timeline.
-		elif Input.is_action_pressed("ui_right") and Globle.player_active == true:
-			walk(7, 1, -0.1)
-			$RivetArm/HandInstance/Hand.scale.y = -20
-			$AngelaArm/HandInstance/Hand.scale.y = -20
-			$PlayerHit_box.set_position(Vector3(0.649, 0, 0))
-		elif Input.is_action_pressed("ui_left") and Globle.player_active == true:
-			walk(-7, -1, 0.1)
-			$RivetArm/HandInstance/Hand.scale.y = 20
-			$AngelaArm/HandInstance/Hand.scale.y = 20
-			$PlayerHit_box.set_position(Vector3((-0.649 * 3.1), 0, 0))
-		else:
-			player_velocity.x = lerp(player_velocity.x, 0.0, 0.1)
-			state_machine.travel("Player_Still")
-		if is_on_floor() and Input.is_action_pressed("jump") and Globle.player_active == true:
-			player_velocity.y = jump
-		if !player_double_jump_used:
-			if (Input.is_action_just_pressed("jump") &&
-				player_double_jump &&
-				!is_on_floor()
-			):
+		if !player_sliding:
+			if Input.is_action_pressed("ui_melee_attack"):
+				if Globle.player_character == "Rivet":
+					state_machine.travel("Player_Melee")
+					if (state_machine.get_current_play_position() > 0.3):
+						Globle.melee_attack = true
+					if (state_machine.get_current_play_position() >= 0.4):
+						Globle.melee_attack = false
+						if player_velocity.x > 0:
+							player_velocity.x -= 0.1
+						if player_velocity.x < 0:
+							player_velocity.x += 0.1
+				if Globle.player_character == "Angela":
+					state_machine.travel("Player_Melee")
+					if (state_machine.get_current_play_position() > 0.3):
+						Globle.melee_attack = true
+					if (state_machine.get_current_play_position() >= 0.4):
+						Globle.melee_attack = false
+						player_slide(0.1)
+			#Checks to see if the player is talking with an npc thus restrits there movement until the player cycles through thier dialogic timeline.
+			elif Input.is_action_pressed("ui_right") and Globle.player_active == true:
+				walk(7, 1, -0.1)
+				$RivetArm/HandInstance/Hand.scale.y = -20
+				$AngelaArm/HandInstance/Hand.scale.y = -20
+				$PlayerHit_box.set_position(Vector3(0.649, 0, 0))
+			elif Input.is_action_pressed("ui_left") and Globle.player_active == true:
+				walk(-7, -1, 0.1)
+				$RivetArm/HandInstance/Hand.scale.y = 20
+				$AngelaArm/HandInstance/Hand.scale.y = 20
+				$PlayerHit_box.set_position(Vector3((-0.649 * 3.1), 0, 0))
+			else:
+				player_velocity.x = lerp(player_velocity.x, 0.0, 0.1)
+				state_machine.travel("Player_Still")
+			if is_on_floor() and Input.is_action_pressed("jump") and Globle.player_active == true:
 				player_velocity.y = jump
-				player_double_jump = false
-				player_double_jump_used = true
-			if (Input.is_action_just_released("jump") && !is_on_floor()):
-				player_double_jump = true
-		if Input.is_action_pressed("ui_crouch"):
-			# TODO Implement crouching animation.
-			player_sliding = true
-		if Input.is_action_just_released("ui_crouch"):
-			player_sliding = false
+			if !player_double_jump_used:
+				if (Input.is_action_just_pressed("jump") &&
+					player_double_jump &&
+					!is_on_floor()
+				):
+					player_velocity.y = jump
+					player_double_jump = false
+					player_double_jump_used = true
+				if (Input.is_action_just_released("jump") && !is_on_floor()):
+					player_double_jump = true
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
@@ -280,6 +280,7 @@ func _physics_process(delta):
 
 	if player_sliding:
 		state_machine.travel("Player_Slide")
+		player_slide(0.05)
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	set_velocity(player_velocity)
@@ -694,6 +695,12 @@ func shoot_gun(index : int):
 func update_ammo_ui(has_ammo : int, max_ammo : int):
 	$PlayerUI/InGameUI/Ammo/AmmoHas.text = str(has_ammo)
 	$PlayerUI/InGameUI/Ammo/AmmoMax.text = str(max_ammo)
+
+func player_slide(dec_val: float):
+	if player_velocity.x > 0:
+		player_velocity.x -= dec_val
+	if player_velocity.x < 0:
+		player_velocity.x += dec_val
 
 func _on_Vendor_Choice_pressed(button, wpn):
 	match (wpn):
