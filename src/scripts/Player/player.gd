@@ -280,7 +280,12 @@ func _physics_process(delta):
 
 	if player_sliding:
 		state_machine.travel("Player_Slide")
+		$CollisionShape3D.scale = Vector3(2, 0.8, 0.4)
+		$CollisionShape3D.position = Vector3(0, -0.6, 0)
 		player_slide(0.05)
+	else:
+		$CollisionShape3D.scale = Vector3(0.8, 2, 0.4)
+		$CollisionShape3D.position = Vector3(0, 0, 0)
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	set_velocity(player_velocity)

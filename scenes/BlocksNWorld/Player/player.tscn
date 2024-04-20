@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://dbip5l63lixtv"]
+[gd_scene load_steps=118 format=3 uid="uid://dbip5l63lixtv"]
 
 [ext_resource type="Script" path="res://src/scripts/Player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dbel2rhwi3en2" path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" id="3"]
@@ -225,7 +225,7 @@ tracks/2/enabled = true
 tracks/2/path = NodePath("CollisionShape3D")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 2, 0.8, 2)
+tracks/2/keys = PackedFloat32Array(0, 1, 2, 0.8, 0.4)
 tracks/3/type = "position_3d"
 tracks/3/imported = false
 tracks/3/enabled = true
@@ -568,6 +568,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="Animation" id="54"]
 resource_name = "Player_Melee"
@@ -595,6 +602,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="Animation" id="Animation_x8yuu"]
 resource_name = "Player_Slide"
@@ -623,6 +637,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 2, 0.8, 0.4)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, -0.6, 0)
 
 [sub_resource type="Animation" id="30"]
 resource_name = "Player_Still"
@@ -652,6 +680,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="Animation" id="31"]
 resource_name = "Player_Walk"
@@ -680,6 +715,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ghn3u"]
 _data = {
@@ -734,33 +776,25 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8dmjc"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="77"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="78"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="80"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7e85f"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="79"]
 
 [sub_resource type="AnimationNodeStateMachine" id="28"]
+states/End/position = Vector2(626, 84)
 states/Player_Damage/node = SubResource("72")
-states/Player_Damage/position = Vector2(20, 84)
+states/Player_Damage/position = Vector2(57, 84)
 states/Player_Fall/node = SubResource("33")
-states/Player_Fall/position = Vector2(285, 257)
+states/Player_Fall/position = Vector2(285, 185)
 states/Player_Melee/node = SubResource("57")
-states/Player_Melee/position = Vector2(507, 257)
+states/Player_Melee/position = Vector2(462, 185)
 states/Player_Slide/node = SubResource("AnimationNodeAnimation_2o7wi")
-states/Player_Slide/position = Vector2(20, 257)
+states/Player_Slide/position = Vector2(57, 185)
 states/Player_Still/node = SubResource("58")
 states/Player_Still/position = Vector2(285, 84)
 states/Player_Walk/node = SubResource("52")
-states/Player_Walk/position = Vector2(507, 84)
+states/Player_Walk/position = Vector2(462, 84)
 states/Start/position = Vector2(285, -77)
-transitions = ["Player_Still", "Player_Fall", SubResource("59"), "Player_Fall", "Player_Still", SubResource("60"), "Player_Still", "Player_Melee", SubResource("61"), "Player_Melee", "Player_Still", SubResource("62"), "Player_Still", "Player_Walk", SubResource("63"), "Player_Walk", "Player_Still", SubResource("64"), "Player_Damage", "Player_Still", SubResource("73"), "Player_Still", "Player_Damage", SubResource("74"), "Player_Damage", "Player_Walk", SubResource("75"), "Player_Walk", "Player_Damage", SubResource("76"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_dpwch"), "Player_Still", "Player_Slide", SubResource("AnimationNodeStateMachineTransition_8dmjc"), "Player_Damage", "Player_Melee", SubResource("77"), "Player_Melee", "Player_Damage", SubResource("78"), "Player_Damage", "Player_Fall", SubResource("80"), "Player_Slide", "Player_Still", SubResource("AnimationNodeStateMachineTransition_7e85f"), "Player_Fall", "Player_Damage", SubResource("79")]
-graph_offset = Vector2(-115, -103)
+transitions = ["Player_Still", "Player_Fall", SubResource("59"), "Player_Fall", "Player_Still", SubResource("60"), "Player_Still", "Player_Melee", SubResource("61"), "Player_Melee", "Player_Still", SubResource("62"), "Player_Still", "Player_Walk", SubResource("63"), "Player_Walk", "Player_Still", SubResource("64"), "Player_Damage", "Player_Still", SubResource("73"), "Player_Still", "Player_Damage", SubResource("74"), "Player_Damage", "Player_Walk", SubResource("75"), "Player_Walk", "Player_Damage", SubResource("76"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_dpwch"), "Player_Still", "Player_Slide", SubResource("AnimationNodeStateMachineTransition_8dmjc"), "Player_Slide", "Player_Still", SubResource("AnimationNodeStateMachineTransition_7e85f")]
+graph_offset = Vector2(-176, -38)
 
 [sub_resource type="StyleBoxFlat" id="19"]
 bg_color = Color(0, 0, 0, 0.490196)
@@ -887,6 +921,7 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 4
+frame = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
