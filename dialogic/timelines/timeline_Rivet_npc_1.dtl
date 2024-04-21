@@ -4,12 +4,12 @@ leave Rivet
 join Angela 2
 Angela: Hey Rivet. So you got any info on this head of security guy?
 leave Angela
-join Rivet 1
-Rivet: Right so he the big bad of this area. So watch out for his flamethrower!
+join Rivet (rivet_talking_head1) 1
+Rivet: Right so he the big bad of this area. So watch out for his flamethrower and aim for his back!
 leave Rivet
-join Angela 2
+join Angela (angela_talking_head1) 2
 Angela: Jeez...alright thanks for the info.
 leave Angela
-join Rivet 1
+join Rivet (rivet_talking_head1) 1
 Rivet: Right good luck!
 leave Rivet

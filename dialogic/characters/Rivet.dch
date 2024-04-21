@@ -8,12 +8,12 @@
 "sound_moods": {},
 "style": ""
 },
-"default_portrait": "rivet_talking_head1",
+"default_portrait": "rivet_talking_head_2",
 "description": "",
 "display_name": "Rivet",
 "mirror": false,
 "nicknames": [""],
-"offset": Vector2(350, 0),
+"offset": Vector2(0, 0),
 "portraits": {
 "rivet_character_selection": {
 "export_overrides": {
@@ -46,9 +46,10 @@
 "export_overrides": {
 "image": "\"res://resources/images/characters/player/rivet/rivet_talking_head1.png\""
 },
+"ignore_char_scale": true,
 "mirror": false,
-"offset": Vector2(0, 0),
-"scale": 1,
+"offset": Vector2(640, 0),
+"scale": 0.5,
 "scene": ""
 },
 "rivet_talking_head_2": {
@@ -57,7 +58,7 @@
 },
 "ignore_char_scale": true,
 "mirror": false,
-"offset": Vector2(-500, 10),
+"offset": Vector2(-200, 10),
 "scale": 0.5,
 "scene": ""
 },
