@@ -69,8 +69,12 @@ func _input(_event):
 			"Mia":
 				match(mia_dialog_value):
 					(0):
-						commence_dialog('timeline-Mia-Rivet-1')
-						mia_dialog_value = process_dialog_value(mia_dialog_value, 0)
+						Globle.player_active = false
+						commence_dialog('Mia_Rivet_timeline')
+						mia_dialog_value = process_dialog_value(mia_dialog_value, 1)
+					(1):
+						mia_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
+						Globle.player_active = true
 			"Null NPC":
 				match(npc_dialog_value):
 					(0):
@@ -104,7 +108,7 @@ func _input(_event):
 					"Mia":
 						match(mia_dialog_value):
 							(0):
-								commence_dialog('timeline-Mia-Rivet-1')
+								commence_dialog('Mia_Rivet_timeline')
 								mia_dialog_value = process_dialog_value(mia_dialog_value, 0)
 					"Null NPC":
 						match(npc_dialog_value):
