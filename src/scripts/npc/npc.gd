@@ -16,6 +16,7 @@ var player
 var dialog
 
 func _ready():
+	# why so many get parents
 	if (character_name == "Girdeux"):
 		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
 	connect("body_entered", Callable(self, "_on_NPC_body_entered"))
@@ -147,14 +148,14 @@ func _input(_event):
 						#(0):
 							#commence_dialog('timeline-girdeux')
 					#girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 4)
-	#elif (Globle.player_character == "Angela"):
-		#match(character_name):
-			#"Girdeux":
-				#if (player.boss_fight_active):
-					#match(girdeux_dialog_value):
-						#(0):
-							#commence_dialog('timeline-girdeux')
-					#girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 4)
+	if (Globle.player_character == "Angela"):
+		match(character_name):
+			"Girdeux":
+				if (player.boss_fight_active):
+					match(girdeux_dialog_value):
+						(0):
+							commence_dialog('timeline-girdeux')
+					girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 2)
 
 func process_dialog_value(dialog_value : int, max_value : int):
 	dialog_value += 1

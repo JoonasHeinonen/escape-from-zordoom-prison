@@ -19,7 +19,7 @@ func _ready():
 		_:
 			enemy_health = 1
 	max_health = enemy_health
-	player = get_parent().get_parent().get_parent().get_node('player')
+	#player = get_parent().get_parent().get_parent().get_node('player')
 
 func _physics_process(_delta):
 	if is_alerted and !is_in_range:
