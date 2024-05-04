@@ -13,9 +13,7 @@ func _ready():
 	add_child(music)
 
 	if (music_stream):
-		music_stream.loop = true
 		music.set_stream(music_stream)
-		music.set_autoplay(true)
 		music.play()
 	else:
 		printerr("No musical track was provided for this level.")
