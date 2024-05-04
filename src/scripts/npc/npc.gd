@@ -7,6 +7,7 @@ class_name NPC
 var active : bool = false
 
 var trigger_Cutscene = false
+var cutscene_Ended = false
 var npc_dialog_value : int = 0
 var mia_dialog_value : int = 0
 var girdeux_dialog_value : int = 0
@@ -184,6 +185,7 @@ func unpause():
 	#get_tree().paused = false
 	Dialogic.timeline_ended.disconnect(unpause)
 	Globle.player_active = true
+	cutscene_Ended = true
 
 # Acts when the player has entered the NPC body.
 func _on_NPC_body_entered(body):
