@@ -25,7 +25,7 @@ func _physics_process(_delta):
 	if is_alerted and !is_in_range:
 		#this goes up to three once the player starts moving
 		print($AreaEnemy.girdeux_dialog_value)
-		if $AreaEnemy.girdeux_dialog_value == 3:
+		if $AreaEnemy.girdeux_dialog_value == 6:
 			$FlamethrowerTimer.start()
 			$TurnTimer.start()
 	if not is_on_floor():
