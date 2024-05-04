@@ -35,7 +35,7 @@ directories/dtl_directory={
 "Mia_Angela_timeline": "res://dialogic/timelines/Mia_Angela_timeline.dtl",
 "Mia_Rivet_timeline": "res://dialogic/timelines/Mia_Rivet_timeline.dtl",
 "timeline_Angela_npc_1": "res://dialogic/timelines/timeline_Angela_npc_1.dtl",
-"timeline_Angela_shark_man": "res://addons/dialogic/Resources/timeline_Angela_shark_man.dtl",
+"timeline_Angela_shark_man": "res://dialogic/timelines/timeline_Angela_shark_man.dtl",
 "timeline_Rivet_npc_1": "res://dialogic/timelines/timeline_Rivet_npc_1.dtl",
 "timeline_Rivet_shark_man": "res://dialogic/timelines/timeline_Rivet_shark_man.dtl"
 }

@@ -33,14 +33,13 @@ func _input(_event):
 	if (Globle.player_character == "Angela" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active):
 		if get_node_or_null('DialogNode') == null:
 			if Input.is_action_just_pressed("ui_accept") and active: 
-				print(mia_dialog_value)
 				match(character_name):
 					"Mia":
 						match(mia_dialog_value):
 							(0):
 								Globle.player_active = false
 								commence_dialog('Mia_Angela_timeline')
-								mia_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
+								mia_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value,2)
 							(2):
 								mia_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 								Globle.player_active = true
@@ -50,12 +49,13 @@ func _input(_event):
 								commence_dialog('timeline_Rivet_npc_1')
 								npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
 					"Shark_man":
+						print(shark_man_dialog_value)
 						match(shark_man_dialog_value):
 							(0):
 								Globle.arena_menu_open = false
 								Globle.player_active = false
 								commence_dialog('timeline_Angela_shark_man')
-								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 1)
+								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
 							(1):
 								shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 								Globle.arena_menu_open = true
@@ -67,8 +67,8 @@ func _input(_event):
 					(0):
 						Globle.player_active = false
 						commence_dialog('Mia_Rivet_timeline')
-						mia_dialog_value = process_dialog_value(mia_dialog_value, 1)
-					(1):
+						mia_dialog_value = process_dialog_value(mia_dialog_value, 2)
+					(2):
 						mia_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 						Globle.player_active = true
 			"NPC_Angela_Rivet":
@@ -78,40 +78,17 @@ func _input(_event):
 				npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
 			#why is there two if statments checking if the player is rivet or not?
 			"Shark_man":
+				print(shark_man_dialog_value)
 				match(shark_man_dialog_value):
 					(0):
 						Globle.arena_menu_open = false
 						Globle.player_active = false
 						commence_dialog('timeline_Rivet_shark_man')
-						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 1)
+						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
 					(1):
 						shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 						Globle.player_active = true
 						Globle.arena_menu_open = true
-	if (Globle.player_character == "Rivet"):
-		if get_node_or_null('DialogNode') == null:
-			if Input.is_action_just_pressed("ui_accept") and active == true: 
-				match(character_name):
-					"Mia":
-						match(mia_dialog_value):
-							(0):
-								commence_dialog('Mia_Rivet_timeline')
-								mia_dialog_value = process_dialog_value(mia_dialog_value, 0)
-					"NPC_Angela_Rivet":
-						match(npc_angela_rivet_dialog_value):
-							(0):
-								#Re-due menue logic.
-								commence_dialog('timeline_Angela_npc_1')
-						npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
-					#"Shark_man":
-						#match(shark_man_dialog_value):
-							#(0):
-								#Globle.arena_menu_open = false
-								#Globle.player_active = false
-								#commence_dialog('timeline_Rivet_shark_man')
-								#shark_man_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 1)
-							#(1):
-								#Globle.player_active = true
 
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active
