@@ -11,7 +11,8 @@ var mia_dialog_value : int = 0
 var girdeux_dialog_value : int = 0
 var npc_angela_rivet_dialog_value : int = 0
 var shark_man_dialog_value : int = 0
-
+var min : int = 0
+var max : int = 2
 var player
 var dialog
 
@@ -152,10 +153,21 @@ func _input(_event):
 		match(character_name):
 			"Girdeux":
 				if (player.boss_fight_active):
+					#this adds up the girdeux_dialog_value by 1 by checking to see 
+					if Input.is_action_pressed("dialogic_default_action"):
+						girdeux_dialog_value = process_dialog_value(girdeux_dialog_value+1, 2)
+						#this limits how much the values goes by right now the max is 2
+						girdeux_dialog_value = clamp(girdeux_dialog_value,min,max)
+						print(girdeux_dialog_value)
 					match(girdeux_dialog_value):
 						(0):
-							commence_dialog('timeline-girdeux')
-					girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 2)
+							Globle.player_active = false
+							commence_dialog('Girdeux_Angela_Timeline1')
+							girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 2)
+						(2):
+							Globle.player_active = true
+							girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 0)
+							
 
 func process_dialog_value(dialog_value : int, max_value : int):
 	dialog_value += 1
@@ -165,14 +177,13 @@ func process_dialog_value(dialog_value : int, max_value : int):
 	return dialog_value
 
 func commence_dialog(timeline : String):
-	get_tree().paused = false
+	#get_tree().paused = false
 	var dialog = Dialogic.start(timeline)
 	get_viewport().set_input_as_handled()
 	#need to check and see if the arena menu is being called correctly 
 	dialog.process_mode = Node.PROCESS_MODE_ALWAYS
 	dialog.connect('timeline_ended', Callable(self, 'unpause'))
 	add_child(dialog)
-	print(Globle.arena_menu_open)
 # Unpauses the game timeline.
 func unpause(_timeline_name):
 	get_tree().paused = false

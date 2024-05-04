@@ -19,12 +19,15 @@ func _ready():
 		_:
 			enemy_health = 1
 	max_health = enemy_health
-	#player = get_parent().get_parent().get_parent().get_node('player')
+	player = get_parent().get_parent().get_parent().get_node('player')
 
 func _physics_process(_delta):
 	if is_alerted and !is_in_range:
-		$FlamethrowerTimer.start()
-		$TurnTimer.start()
+		#this goes up to three once the player starts moving
+		print($AreaEnemy.girdeux_dialog_value)
+		if $AreaEnemy.girdeux_dialog_value == 3:
+			$FlamethrowerTimer.start()
+			$TurnTimer.start()
 	if not is_on_floor():
 		velocity.y = -4
 		state_machine.travel("Enemy_Fall")
