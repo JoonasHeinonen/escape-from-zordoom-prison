@@ -164,14 +164,11 @@ func _physics_process(delta):
 					audio_child.position = Vector3(self.position.x, self.position.y, 0)
 
 	# Sliding logic. Reset double jump while on the ground.
-	## TODO La Marseillaise
 	if is_on_floor():
 		player_double_jump = false
 		player_double_jump_used = false
 		if Input.is_action_pressed("ui_crouch"):
-			# TODO Implement crouching animation.
 			player_sliding = true
-			velocity.x = 1
 		if Input.is_action_just_released("ui_crouch"):
 			if !is_ceiling_raycast_colliding:
 				player_sliding = false
@@ -235,9 +232,9 @@ func _physics_process(delta):
 					if (state_machine.get_current_play_position() >= 0.4):
 						Globle.melee_attack = false
 						if player_velocity.x > 0:
-							player_velocity.x -= 0.1
+							player_velocity.x -= 2
 						if player_velocity.x < 0:
-							player_velocity.x += 0.1
+							player_velocity.x += 2
 				if Globle.player_character == "Angela":
 					state_machine.travel("Player_Melee")
 					if (state_machine.get_current_play_position() > 0.3):
