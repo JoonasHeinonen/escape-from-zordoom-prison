@@ -54,7 +54,7 @@ size = Vector3(2.2914, 2, 2)
 [node name="testLevel" type="Node3D"]
 script = ExtResource("1_ksfwo")
 z_axis = -1.5
-music_stream = ExtResource("2_udr33")
+default_music_stream = ExtResource("2_udr33")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f1r0c")

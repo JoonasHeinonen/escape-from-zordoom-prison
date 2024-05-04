@@ -3,18 +3,21 @@ extends Node
 class_name LevelData
 
 @export var z_axis : float
-# AudioStreamPlayer3D
-@export var music_stream : AudioStreamMP3
+@export var default_music_stream : AudioStreamMP3
+@export var boss_music_stream : AudioStreamMP3
+
+var player = null
 
 var music = AudioStreamPlayer.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_child(music)
+	player = get_node("player")
 
-	if (music_stream):
-		music_stream.loop = true
-		music.set_stream(music_stream)
+	if (default_music_stream):
+		default_music_stream.loop = true
+		music.set_stream(default_music_stream)
 		music.set_autoplay(true)
 		music.play()
 	else:
