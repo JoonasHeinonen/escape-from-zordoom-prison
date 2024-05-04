@@ -46,9 +46,10 @@
 "export_overrides": {
 "image": "\"res://resources/images/characters/npc/enemies/bosses/girdeux_talking_head1.png\""
 },
+"ignore_char_scale": true,
 "mirror": false,
-"offset": Vector2(0, 0),
-"scale": 1,
+"offset": Vector2(-130, 0),
+"scale": 0.45,
 "scene": ""
 },
 "girdeux_talking_head1_old": {

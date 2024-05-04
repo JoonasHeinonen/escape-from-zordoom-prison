@@ -153,7 +153,7 @@ func _input(_event):
 		match(character_name):
 			"Girdeux":
 				if (player.boss_fight_active):
-					#this adds up the girdeux_dialog_value by 1 by checking to see 
+					#this adds up the girdeux_dialog_value by 1 by checking to see the enter button is pressed
 					if Input.is_action_pressed("dialogic_default_action"):
 						girdeux_dialog_value = process_dialog_value(girdeux_dialog_value+1, 2)
 						#this limits how much the values goes by right now the max is 2
