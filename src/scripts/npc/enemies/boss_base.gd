@@ -24,7 +24,7 @@ func _ready():
 func _physics_process(_delta):
 	if is_alerted and !is_in_range:
 		#this goes up to three once the player starts moving
-		if $AreaEnemy.cutscene_Ended == true:
+		if $AreaEnemy.cutscene_Ended:
 			$AreaEnemy.cutscene_Ended = false
 			$FlamethrowerTimer.start()
 			$TurnTimer.start()
