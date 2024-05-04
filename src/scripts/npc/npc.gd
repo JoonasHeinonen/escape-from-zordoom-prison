@@ -2,7 +2,7 @@ extends Area3D
 
 class_name NPC
 
-@export_enum("Mia", "Null NPC", "Girdeux" , "NPC_Angela_Rivet", "Shark_man") var character_name: String
+@export_enum("Mia", "Girdeux" , "NPC_Angela_Rivet", "Shark_man") var character_name: String
 
 var active : bool = false
 
@@ -33,25 +33,17 @@ func _input(_event):
 	if (Globle.player_character == "Angela" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active):
 		if get_node_or_null('DialogNode') == null:
 			if Input.is_action_just_pressed("ui_accept") and active: 
+				print(mia_dialog_value)
 				match(character_name):
 					"Mia":
 						match(mia_dialog_value):
 							(0):
 								Globle.player_active = false
 								commence_dialog('Mia_Angela_timeline')
-								mia_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 1)
-							(1):
+								mia_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
+							(2):
 								mia_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 								Globle.player_active = true
-					"Null NPC":
-						match(npc_dialog_value):
-							(0):
-								commence_dialog('timeline-1')
-							(2):
-								commence_dialog('timeline-2')
-							(4):
-								commence_dialog('timeline-3')
-								npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
 					"NPC_Angela_Rivet":
 						match(npc_angela_rivet_dialog_value):
 							(0):
@@ -79,15 +71,6 @@ func _input(_event):
 					(1):
 						mia_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 						Globle.player_active = true
-			"Null NPC":
-				match(npc_dialog_value):
-					(0):
-						commence_dialog('timeline-1')
-					(2):
-						commence_dialog('timeline-2')
-					(4):
-						commence_dialog('timeline-3')
-				npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
 			"NPC_Angela_Rivet":
 				match(npc_angela_rivet_dialog_value):
 					(0):
@@ -114,15 +97,6 @@ func _input(_event):
 							(0):
 								commence_dialog('Mia_Rivet_timeline')
 								mia_dialog_value = process_dialog_value(mia_dialog_value, 0)
-					"Null NPC":
-						match(npc_dialog_value):
-							(0):
-								commence_dialog('timeLine-Rivet-1')
-							(2):
-								commence_dialog('timeLine-Rivet-2')
-							(4):
-								commence_dialog('timeLine-Rivet-3')
-						npc_dialog_value = process_dialog_value(npc_dialog_value, 4)
 					"NPC_Angela_Rivet":
 						match(npc_angela_rivet_dialog_value):
 							(0):
