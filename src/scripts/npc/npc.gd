@@ -6,13 +6,14 @@ class_name NPC
 
 var active : bool = false
 
+var trigger_Cutscene = false
 var npc_dialog_value : int = 0
 var mia_dialog_value : int = 0
 var girdeux_dialog_value : int = 0
 var npc_angela_rivet_dialog_value : int = 0
 var shark_man_dialog_value : int = 0
 var min : int = 0
-var max : int = 6
+var max : int = 8
 var player
 var dialog
 
@@ -143,37 +144,22 @@ func _input(_event):
 	if (Globle.player_character == "Rivet"): 
 		match(character_name):
 			"Girdeux":
-				if (player.boss_fight_active):
-					if Input.is_action_pressed("dialogic_default_action"):
-						girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 0)
-						girdeux_dialog_value = clamp(girdeux_dialog_value,min,max)
-						print(girdeux_dialog_value)
-					match(girdeux_dialog_value):
-						(0):
-							Globle.player_active = false
-							commence_dialog('Girdeux_Rivet_Timeline1')
-							girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 6)
-						(6):
-							Globle.player_active = true
-							#girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 0)
+					if player.boss_fight_active and trigger_Cutscene == false:
+						commence_dialog('Girdeux_Rivet_Timeline1')
+						trigger_Cutscene = true
+						
 	if (Globle.player_character == "Angela"):
 		match(character_name):
 			"Girdeux":
-				if (player.boss_fight_active):
-					#this adds up the girdeux_dialog_value by 1 by checking to see the enter button is pressed
-					if Input.is_action_pressed("dialogic_default_action"):
-						girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 0)
-						#this limits how much the values goes by right now the max is 2
-						girdeux_dialog_value = clamp(girdeux_dialog_value,min,max)
-						print(girdeux_dialog_value)
-					match(girdeux_dialog_value):
-						(0):
-							Globle.player_active = false
-							commence_dialog('Girdeux_Angela_Timeline1')
-							girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 0)
-						(6):
-							Globle.player_active = true
-							girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 0)
+				if player.boss_fight_active and trigger_Cutscene == false:
+					commence_dialog('Girdeux_Angela_Timeline1')
+					trigger_Cutscene = true
+					#match(girdeux_dialog_value):
+						#(0):
+							#Globle.player_active = false
+						#(2):
+							#Globle.player_active = true
+					#girdeux_dialog_value = process_dialog_value(girdeux_dialog_value, 2)
 
 func process_dialog_value(dialog_value : int, max_value : int):
 	dialog_value += 1
@@ -184,15 +170,20 @@ func process_dialog_value(dialog_value : int, max_value : int):
 
 func commence_dialog(timeline : String):
 	#get_tree().paused = false
-	var dialog = Dialogic.start(timeline)
+	Globle.player_active = false
+	Dialogic.timeline_ended.connect(unpause)
+	Dialogic.start(timeline)
 	get_viewport().set_input_as_handled()
-	#need to check and see if the arena menu is being called correctly 
-	dialog.process_mode = Node.PROCESS_MODE_ALWAYS
-	dialog.connect('timeline_ended', Callable(self, 'unpause'))
-	add_child(dialog)
+	#add_child(dialog)
+	#dialog.process_mode = Node.PROCESS_MODE_ALWAYS
+	#dialog.connect('timeline_ended', Callable(self, 'unpause'))
+
+
 # Unpauses the game timeline.
-func unpause(_timeline_name):
-	get_tree().paused = false
+func unpause():
+	#get_tree().paused = false
+	Dialogic.timeline_ended.disconnect(unpause)
+	Globle.player_active = true
 
 # Acts when the player has entered the NPC body.
 func _on_NPC_body_entered(body):
