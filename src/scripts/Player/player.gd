@@ -30,6 +30,8 @@ const RANDOM_ANGLE = PI / 2.0
 	# $PlayerUI/ArenaMenu
 ]
 
+@onready var level = get_parent()
+
 @export var check_point_enabled = true
 @export var speed = 1
 
@@ -324,6 +326,7 @@ func _process(_delta):
 
 	if !boss_fight_active: 
 		$PlayerUI/UIBossData.visible = false
+		#level.play_music(false)
 
 	if Globle.arena_menu_open : $PlayerUI/ArenaMenu.opens_menu()
 	heal_player()
@@ -344,6 +347,7 @@ func init_boss_fight(
 	current_boss_name = boss_name
 
 	if boss_fight_active: 
+		#level.play_music(true)
 		$PlayerUI/UIBossData.visible = true
 		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossHealthBar.value = int(boss_health)
 		$PlayerUI/UIBossData/UIBossDataCenterContainer/CenterContainer/BossHealthPercentage.text = str(int(boss_health)) + " %"

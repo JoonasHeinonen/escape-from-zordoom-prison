@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://brce6tfu5d81"]
+[gd_scene load_steps=35 format=3 uid="uid://brce6tfu5d81"]
 
 [ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
 [ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_ksfwo"]
@@ -6,12 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://c0ejcgkoe8mfq" path="res://scenes/Destructibles/Crates/BoltCrate.tscn" id="2"]
 [ext_resource type="AudioStream" uid="uid://cjyro6lonjvwk" path="res://resources/audio/music/02_tobruk_crater_novalis.mp3" id="2_udr33"]
 [ext_resource type="PackedScene" uid="uid://dwn5g72i2nu6s" path="res://scenes/Collectibles/Bolt.tscn" id="3"]
+[ext_resource type="AudioStream" uid="uid://cg108aqdlepao" path="res://resources/audio/music/45_jet_fighter_dog_fighting.mp3" id="3_xfu21"]
 [ext_resource type="PackedScene" uid="uid://bp5ijfq147flt" path="res://scenes/Collectibles/WeaponCollectible.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/SlimCognito.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://d18jopbss2gd1" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
-[ext_resource type="PackedScene" uid="uid://dq4w3pnkkitcj" path="res://scenes/NPC/Friendly/NullNPC.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/NPC/Friendly/NullNPC.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://dnrfyec61yev6" path="res://scenes/NPC/Enemies/Sheep.tscn" id="10_jby62"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
 [ext_resource type="PackedScene" uid="uid://dy2k7jfp7swx8" path="res://scenes/BlocksNWorld/Doors/Waypoint.tscn" id="13_or1yy"]
@@ -55,6 +56,7 @@ size = Vector3(2.2914, 2, 2)
 script = ExtResource("1_ksfwo")
 z_axis = -1.5
 default_music_stream = ExtResource("2_udr33")
+boss_music_stream = ExtResource("3_xfu21")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f1r0c")
@@ -309,7 +311,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource("8")]
-transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -47.2165, -1.09836, 0)
+transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -19.2165, -19.0984, 0)
 collision_layer = 13
 collision_mask = 13
 
