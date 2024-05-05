@@ -197,7 +197,7 @@ func _physics_process(delta):
 			gun_instance.hide()
 
 	if player_health > 0 && !Globle.player_inventory && !player_is_aiming_with_rifle:
-		if Input.is_action_pressed("ui_melee_attack"):
+		if Input.is_action_pressed("ui_melee_attack") and Globle.player_active == true:
 			if Globle.player_character == "Rivet":
 				state_machine.travel("Player_Melee")
 				if (state_machine.get_current_play_position() > 0.3):
@@ -320,7 +320,7 @@ func _process(_delta):
 			rivet_arm.hide()
 		else:
 			rivet_arm.show()
-	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0, 4))
+	if Input.is_action_just_pressed("ui_melee_attack") and Globle.player_active == true: play_melee_sound(random.randi_range(0, 4))
 
 	if !boss_fight_active: 
 		$PlayerUI/UIBossData.visible = false
