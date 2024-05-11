@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://dbip5l63lixtv"]
+[gd_scene load_steps=118 format=3 uid="uid://dbip5l63lixtv"]
 
 [ext_resource type="Script" path="res://src/scripts/Player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dbel2rhwi3en2" path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" id="3"]
@@ -78,6 +78,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="Animation" id="15"]
 resource_name = "Player_Fall"
@@ -143,6 +150,13 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/5/type = "scale_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CollisionShape3D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="Animation" id="24"]
 resource_name = "Player_Melee"
@@ -170,6 +184,55 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
+
+[sub_resource type="Animation" id="Animation_v1imr"]
+resource_name = "Player_Slide"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngelaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [26]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AngelaSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 2, 0.8, 0.4)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, -0.6, 0)
 
 [sub_resource type="Animation" id="8"]
 resource_name = "Player_Still"
@@ -271,6 +334,13 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/8/type = "scale_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CollisionShape3D")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="Animation" id="7"]
 resource_name = "Player_Walk"
@@ -379,12 +449,20 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/8/type = "scale_3d"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CollisionShape3D")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_48tsd"]
 _data = {
 "Player_Damage": SubResource("67"),
 "Player_Fall": SubResource("15"),
 "Player_Melee": SubResource("24"),
+"Player_Slide": SubResource("Animation_v1imr"),
 "Player_Still": SubResource("8"),
 "Player_Walk": SubResource("7")
 }
@@ -397,6 +475,9 @@ animation = &"Player_Fall"
 
 [sub_resource type="AnimationNodeAnimation" id="41"]
 animation = &"Player_Melee"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6x1pi"]
+animation = &"Player_Slide"
 
 [sub_resource type="AnimationNodeAnimation" id="42"]
 animation = &"Player_Still"
@@ -423,6 +504,10 @@ animation = &"Player_Walk"
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ofvuq"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fx0gl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cejvx"]
+
 [sub_resource type="AnimationNodeStateMachine" id="13"]
 states/Player_Damage/node = SubResource("68")
 states/Player_Damage/position = Vector2(-50, 44)
@@ -430,13 +515,15 @@ states/Player_Fall/node = SubResource("40")
 states/Player_Fall/position = Vector2(153, 152)
 states/Player_Melee/node = SubResource("41")
 states/Player_Melee/position = Vector2(369, 152)
+states/Player_Slide/node = SubResource("AnimationNodeAnimation_6x1pi")
+states/Player_Slide/position = Vector2(-50, 152)
 states/Player_Still/node = SubResource("42")
 states/Player_Still/position = Vector2(153, 44)
 states/Player_Walk/node = SubResource("43")
 states/Player_Walk/position = Vector2(369, 44)
 states/Start/position = Vector2(153, -34)
-transitions = ["Player_Still", "Player_Walk", SubResource("44"), "Player_Walk", "Player_Still", SubResource("45"), "Player_Still", "Player_Fall", SubResource("46"), "Player_Fall", "Player_Still", SubResource("47"), "Player_Still", "Player_Melee", SubResource("48"), "Player_Melee", "Player_Still", SubResource("49"), "Player_Damage", "Player_Still", SubResource("69"), "Player_Still", "Player_Damage", SubResource("70"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_ofvuq")]
-graph_offset = Vector2(-137.359, -82)
+transitions = ["Player_Still", "Player_Walk", SubResource("44"), "Player_Walk", "Player_Still", SubResource("45"), "Player_Still", "Player_Fall", SubResource("46"), "Player_Fall", "Player_Still", SubResource("47"), "Player_Still", "Player_Melee", SubResource("48"), "Player_Melee", "Player_Still", SubResource("49"), "Player_Damage", "Player_Still", SubResource("69"), "Player_Still", "Player_Damage", SubResource("70"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_ofvuq"), "Player_Still", "Player_Slide", SubResource("AnimationNodeStateMachineTransition_fx0gl"), "Player_Slide", "Player_Still", SubResource("AnimationNodeStateMachineTransition_cejvx")]
+graph_offset = Vector2(-326.359, -54)
 
 [sub_resource type="Animation" id="71"]
 resource_name = "Player_Damage"
@@ -481,6 +568,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="Animation" id="54"]
 resource_name = "Player_Melee"
@@ -508,6 +602,55 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
+
+[sub_resource type="Animation" id="Animation_x8yuu"]
+resource_name = "Player_Slide"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [28]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 2, 0.8, 0.4)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CollisionShape3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, -0.6, 0)
 
 [sub_resource type="Animation" id="30"]
 resource_name = "Player_Still"
@@ -537,6 +680,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="Animation" id="31"]
 resource_name = "Player_Walk"
@@ -565,12 +715,20 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ghn3u"]
 _data = {
 "Player_Damage": SubResource("71"),
 "Player_Fall": SubResource("32"),
 "Player_Melee": SubResource("54"),
+"Player_Slide": SubResource("Animation_x8yuu"),
 "Player_Still": SubResource("30"),
 "Player_Walk": SubResource("31")
 }
@@ -583,6 +741,9 @@ animation = &"Player_Fall"
 
 [sub_resource type="AnimationNodeAnimation" id="57"]
 animation = &"Player_Melee"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2o7wi"]
+animation = &"Player_Slide"
 
 [sub_resource type="AnimationNodeAnimation" id="58"]
 animation = &"Player_Still"
@@ -610,31 +771,30 @@ animation = &"Player_Walk"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="76"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="77"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="78"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="79"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="80"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dpwch"]
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8dmjc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7e85f"]
+
 [sub_resource type="AnimationNodeStateMachine" id="28"]
+states/End/position = Vector2(626, 84)
 states/Player_Damage/node = SubResource("72")
-states/Player_Damage/position = Vector2(390, -24)
+states/Player_Damage/position = Vector2(57, 84)
 states/Player_Fall/node = SubResource("33")
-states/Player_Fall/position = Vector2(511, 84)
+states/Player_Fall/position = Vector2(285, 185)
 states/Player_Melee/node = SubResource("57")
-states/Player_Melee/position = Vector2(486, 184)
+states/Player_Melee/position = Vector2(462, 185)
+states/Player_Slide/node = SubResource("AnimationNodeAnimation_2o7wi")
+states/Player_Slide/position = Vector2(57, 185)
 states/Player_Still/node = SubResource("58")
 states/Player_Still/position = Vector2(285, 84)
 states/Player_Walk/node = SubResource("52")
-states/Player_Walk/position = Vector2(285, 184)
-states/Start/position = Vector2(129, 84)
-transitions = ["Player_Still", "Player_Fall", SubResource("59"), "Player_Fall", "Player_Still", SubResource("60"), "Player_Still", "Player_Melee", SubResource("61"), "Player_Melee", "Player_Still", SubResource("62"), "Player_Still", "Player_Walk", SubResource("63"), "Player_Walk", "Player_Still", SubResource("64"), "Player_Damage", "Player_Still", SubResource("73"), "Player_Still", "Player_Damage", SubResource("74"), "Player_Damage", "Player_Walk", SubResource("75"), "Player_Walk", "Player_Damage", SubResource("76"), "Player_Damage", "Player_Melee", SubResource("77"), "Player_Melee", "Player_Damage", SubResource("78"), "Player_Fall", "Player_Damage", SubResource("79"), "Player_Damage", "Player_Fall", SubResource("80"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_dpwch")]
-graph_offset = Vector2(-84, -93)
+states/Player_Walk/position = Vector2(462, 84)
+states/Start/position = Vector2(285, -77)
+transitions = ["Player_Still", "Player_Fall", SubResource("59"), "Player_Fall", "Player_Still", SubResource("60"), "Player_Still", "Player_Melee", SubResource("61"), "Player_Melee", "Player_Still", SubResource("62"), "Player_Still", "Player_Walk", SubResource("63"), "Player_Walk", "Player_Still", SubResource("64"), "Player_Damage", "Player_Still", SubResource("73"), "Player_Still", "Player_Damage", SubResource("74"), "Player_Damage", "Player_Walk", SubResource("75"), "Player_Walk", "Player_Damage", SubResource("76"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_dpwch"), "Player_Still", "Player_Slide", SubResource("AnimationNodeStateMachineTransition_8dmjc"), "Player_Slide", "Player_Still", SubResource("AnimationNodeStateMachineTransition_7e85f")]
+graph_offset = Vector2(-176, -38)
 
 [sub_resource type="StyleBoxFlat" id="19"]
 bg_color = Color(0, 0, 0, 0.490196)
@@ -714,18 +874,19 @@ axis_lock_angular_z = true
 script = ExtResource("1")
 check_point_enabled = false
 speed = 200
+player_direction = "right"
 
 [node name="PlayerSpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(-0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139)
 
 [node name="CollisionArea" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea"]
-transform = Transform3D(0.2, 0, 0, 0, 1, 0, 0, 0, 0.2, 0, 0, 0)
 shape = SubResource("5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 2, 0, 0, 0, 0.4, 0, 0, 0)
+transform = Transform3D(0.8, 0, 0, 0, 2, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("5")
 
 [node name="ShootingRaycast" type="CollisionShape3D" parent="."]
@@ -1660,10 +1821,6 @@ theme = ExtResource("4")
 action_mode = 0
 text = "Exit"
 
-[node name="Node" type="Node" parent="."]
-
-[node name="Node2" type="Node" parent="."]
-
 [node name="ShootTimer" type="Timer" parent="."]
 autostart = true
 
@@ -1815,6 +1972,11 @@ anim_player = NodePath("../SnipingRadicalAnimationPlayer")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138)
 
 [node name="Camera3D" type="Camera3D" parent="SnipingRadical/Node3D"]
+
+[node name="CeilingRaycast" type="RayCast3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+collide_with_areas = true
+debug_shape_thickness = 5
 
 [connection signal="area_entered" from="CollisionArea" to="." method="_on_CollisionArea_area_entered"]
 [connection signal="body_entered" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_entered"]
