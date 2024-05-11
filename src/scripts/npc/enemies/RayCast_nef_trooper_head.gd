@@ -7,7 +7,7 @@ var target: Player = null
 signal player_seen 
 signal player_not_seen
 
-func _physics_process(_delta:float) -> void:
+func _physics_process(_delta : float) -> void:
 	if is_colliding():
 		if get_collider() is Player:
 			emit_signal("player_seen")
