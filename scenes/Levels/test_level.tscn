@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://brce6tfu5d81"]
+[gd_scene load_steps=31 format=3 uid="uid://brce6tfu5d81"]
 
 [ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
 [ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_ksfwo"]

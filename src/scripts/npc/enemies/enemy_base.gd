@@ -62,7 +62,7 @@ func determine_element(element, delta: float):
 			move_and_slide()
 		elements.AIR:
 			velocity.y = gravity
-			velocity.x = speed * 1
+			velocity.x = enemy_speed * 1
 			set_velocity(velocity * delta)
 			move_and_slide()
 

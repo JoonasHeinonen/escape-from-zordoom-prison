@@ -16,8 +16,8 @@ var timer = null
 func _ready():
 	element = elements.AIR
 	gravity = -4
-	speed = -130
-	#print(enemy_speed)
+	#speed = -130
+	#print($EnemyBase.enemy_speed)
 	#print(speed)
 	timer = Timer.new()
 	timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
