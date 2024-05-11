@@ -170,6 +170,7 @@ func end_timeline() -> void:
 	current_timeline_events = []
 	clear(ClearFlags.TIMLEINE_INFO_ONLY)
 	timeline_ended.emit()
+	
 
 
 func handle_next_event(ignore_argument:Variant = "") -> void:

@@ -1,0 +1,76 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 1, 1, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": ""
+},
+"default_portrait": "rivet_talking_head_2",
+"description": "",
+"display_name": "Rivet",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {
+"rivet_character_selection": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/rivet/rivet_character_selection.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"rivet_sprite_sheet": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/rivet/rivet_sprite_sheet.png~\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"rivet_sprite_sheet_unarmed": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/rivet/rivet_sprite_sheet_unarmed.png~\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"rivet_talking_head1": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/rivet/rivet_talking_head1.png\""
+},
+"ignore_char_scale": true,
+"mirror": false,
+"offset": Vector2(640, 0),
+"scale": 0.5,
+"scene": ""
+},
+"rivet_talking_head_2": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/rivet/rivet_talking_head_2.png\""
+},
+"ignore_char_scale": true,
+"mirror": false,
+"offset": Vector2(-200, 10),
+"scale": 0.5,
+"scene": ""
+},
+"rivet_weapon": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/player/rivet/rivet_weapon.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+"scale": 1.0
+}

@@ -1,0 +1,66 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 1, 1, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": ""
+},
+"default_portrait": "girdeux_boss_fight_icon",
+"description": "",
+"display_name": "Girdeux",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {
+"girdeux_boss_fight_icon": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/npc/enemies/bosses/girdeux_boss_fight_icon.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"girdeux_sheet": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/npc/enemies/bosses/girdeux_sheet.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"girdeux_sheet_armed": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/npc/enemies/bosses/girdeux_sheet_armed.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"girdeux_talking_head1": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/npc/enemies/bosses/girdeux_talking_head1.png\""
+},
+"ignore_char_scale": true,
+"mirror": false,
+"offset": Vector2(-130, 0),
+"scale": 0.45,
+"scene": ""
+},
+"girdeux_talking_head1_old": {
+"export_overrides": {
+"image": "\"res://resources/images/characters/npc/enemies/bosses/girdeux_talking_head1_old.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+"scale": 1.0
+}

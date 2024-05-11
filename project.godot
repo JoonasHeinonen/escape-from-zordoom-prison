@@ -23,11 +23,42 @@ Dialogic="*res://addons/dialogic/Other/DialogicGameHandler.gd"
 [dialogic]
 
 directories/dch_directory={
+"Angela": "res://dialogic/characters/Angela.dch",
+"Girdeux": "res://dialogic/characters/Girdeux.dch",
+"Rivet": "res://dialogic/characters/Rivet.dch",
+"mia": "res://dialogic/characters/mia.dch",
 "shark_man": "res://dialogic/characters/shark_man.dch"
 }
 directories/dtl_directory={
-"timeline_Angela_shark_man": "res://addons/dialogic/Resources/timeline_Angela_shark_man.dtl"
+"Girdeux_Angela_Timeline1": "res://dialogic/timelines/Girdeux_Angela_Timeline1.dtl",
+"Girdeux_Rivet_Timeline1": "res://dialogic/timelines/Girdeux_Rivet_Timeline1.dtl",
+"Mia_Angela_timeline": "res://dialogic/timelines/Mia_Angela_timeline.dtl",
+"Mia_Rivet_timeline": "res://dialogic/timelines/Mia_Rivet_timeline.dtl",
+"timeline_Angela_npc_1": "res://dialogic/timelines/timeline_Angela_npc_1.dtl",
+"timeline_Angela_shark_man": "res://dialogic/timelines/timeline_Angela_shark_man.dtl",
+"timeline_Rivet_npc_1": "res://dialogic/timelines/timeline_Rivet_npc_1.dtl",
+"timeline_Rivet_shark_man": "res://dialogic/timelines/timeline_Rivet_shark_man.dtl"
 }
+text/letter_speed=0.01
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+animations/join_default_length=0.5
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/join_default_wait=true
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+text/autopauses={}
+glossary/default_case_sensitive=true
+layout/style_list=[]
+layout/default_style="Default"
+variables={}
 
 [display]
 
