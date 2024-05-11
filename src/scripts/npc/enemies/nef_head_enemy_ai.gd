@@ -39,7 +39,7 @@ func _physics_process(_delta):
 
 func nef_head_shoot_time():
 	can_shoot = true
-
+#may need some changes
 func _on_player_finding_player_seen():
 	if player_finding_raycast.get_collider() == player:
 		speed *= 1
