@@ -17,9 +17,8 @@ To import the project into Godot, open your Godot Engine's project manager. Clic
 Currently, running on the following Godot version:
 | Project                  | Version                  |
 | ------------------------ | ------------------------ |
-| Godot                    | 3.4.4 (Stable, official) |
+| Godot                    | 4.2.1 (Stable, official) |
 
-_An update to Godot 3.5 is being planned._
 
 ## Version management
 
