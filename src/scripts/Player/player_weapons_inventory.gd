@@ -24,7 +24,7 @@ func _process(_delta):
 
 func _input(event):
 	if (!get_tree().paused):
-		if event.is_action_pressed("ui_inventory"):
+		if event.is_action_pressed("ui_inventory") and Globle.player_active == true:
 			determine_pause(true, 0, false)
 			show()
 			if (player.current_weapon != null):

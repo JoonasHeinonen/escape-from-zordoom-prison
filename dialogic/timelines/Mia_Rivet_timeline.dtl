@@ -1,0 +1,12 @@
+join mia 2
+mia: Um hello?
+leave mia
+join Rivet 1
+Rivet: Hey whats up?
+leave Rivet
+join mia 2
+mia: Can you help me get back home to Lorian?
+leave mia
+join Rivet 1
+Rivet: Sure! I can see what I can do!
+leave Rivet

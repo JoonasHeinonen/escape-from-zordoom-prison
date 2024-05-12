@@ -23,6 +23,7 @@ const RANDOM_ANGLE = PI / 2.0
 @onready var sniping_radical = $SnipingRadical
 @onready var ui_timer = $PlayerUI/UINotification/Ui_Timer
 @onready var sheepinator_raycast = $SheepinatorRaycast
+@onready var ceiling_raycast = $CeilingRaycast
 @onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
 	$PlayerUI/PauseMenuContainer,
@@ -34,6 +35,7 @@ const RANDOM_ANGLE = PI / 2.0
 
 @export var check_point_enabled = true
 @export var speed = 1
+@export_enum("left", "right") var player_direction : String
 
 var animation_player
 var gun_instance
@@ -58,6 +60,8 @@ var player_double_jump : bool = false
 var player_double_jump_used : bool = false
 var player_is_aiming_with_rifle : bool = false
 var player_is_just_damaged : bool = false
+var player_sliding : bool = false
+var is_ceiling_raycast_colliding : bool = false
 var ui_notification : bool = false
 
 var sniping_ray
@@ -137,6 +141,18 @@ func _ready():
 	if (get_parent().has_node("arena")):
 		_arena = get_parent().get_node("arena")
 
+	match player_direction:
+		"left":
+			$AngelaSprite.scale.x = -1
+			$RivetSprite.scale.x = -1
+			$AngelaArm/HandInstance/Hand.scale.y = 20
+			$RivetArm/HandInstance/Hand.scale.y = 20
+		"right":
+			$AngelaSprite.scale.x = 1
+			$RivetSprite.scale.x = 1
+			$AngelaArm/HandInstance/Hand.scale.y = -20
+			$RivetArm/HandInstance/Hand.scale.y = -20
+
 func _physics_process(delta):
 	# Set the audio nodes position to share the same position as the player.
 	for audio_container_child in $Audio.get_children():
@@ -149,10 +165,20 @@ func _physics_process(delta):
 				for audio_child in audio_sub_child.get_children():
 					audio_child.position = Vector3(self.position.x, self.position.y, 0)
 
-	# Reset double jump while on the ground.
+	# Sliding logic. Reset double jump while on the ground.
 	if is_on_floor():
 		player_double_jump = false
 		player_double_jump_used = false
+		if Input.is_action_pressed("ui_crouch"):
+			player_sliding = true
+		if Input.is_action_just_released("ui_crouch"):
+			if !is_ceiling_raycast_colliding:
+				player_sliding = false
+		if !is_ceiling_raycast_colliding:
+			if !Input.is_action_pressed("ui_crouch"):
+				player_sliding = false
+	else:
+		player_sliding = false
 
 	var _current = state_machine.get_current_node()
 
@@ -199,7 +225,7 @@ func _physics_process(delta):
 			gun_instance.hide()
 
 	if player_health > 0 && !Globle.player_inventory && !player_is_aiming_with_rifle:
-		if Input.is_action_pressed("ui_melee_attack"):
+		if Input.is_action_pressed("ui_melee_attack") and Globle.player_active == true and !player_sliding::
 			if Globle.player_character == "Rivet":
 				state_machine.travel("Player_Melee")
 				if (state_machine.get_current_play_position() > 0.3):
@@ -242,10 +268,16 @@ func _physics_process(delta):
 				!is_on_floor()
 			):
 				player_velocity.y = jump
-				player_double_jump = false
-				player_double_jump_used = true
-			if (Input.is_action_just_released("jump") && !is_on_floor()):
-				player_double_jump = true
+			if !player_double_jump_used:
+				if (Input.is_action_just_pressed("jump") &&
+					player_double_jump &&
+					!is_on_floor()
+				):
+					player_velocity.y = jump
+					player_double_jump = false
+					player_double_jump_used = true
+				if (Input.is_action_just_released("jump") && !is_on_floor()):
+					player_double_jump = true
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
@@ -265,13 +297,35 @@ func _physics_process(delta):
 
 	if not is_on_floor():
 		player_velocity.y -= gravity * delta
-		state_machine.travel("Player_Fall")
-		if Globle.player_character == "Angela":
-			if Input.is_action_pressed("ui_melee_attack"):
-				state_machine.travel("Player_Melee")
-		if Globle.player_character == "Rivet":
-			if Input.is_action_pressed("ui_melee_attack"):
-				state_machine.travel("Player_Melee")
+		if !player_sliding:
+			state_machine.travel("Player_Fall")
+			if Globle.player_character == "Angela":
+				if Input.is_action_pressed("ui_melee_attack"):
+					state_machine.travel("Player_Melee")
+			if Globle.player_character == "Rivet":
+				if Input.is_action_pressed("ui_melee_attack"):
+					state_machine.travel("Player_Melee")
+
+	## TODO La Marseillaise
+	if player_sliding:
+		if !is_ceiling_raycast_colliding:
+			player_slide(0.1)
+		else:
+			if player_direction == "right":
+				player_velocity.x = 7
+			elif player_direction == "left":
+				player_velocity.x = -7
+		state_machine.travel("Player_Slide")
+		$CollisionShape3D.scale = Vector3(2, 0.8, 0.4)
+		$CollisionShape3D.position = Vector3(0, -0.6, 0)
+	else:
+		$CollisionShape3D.scale = Vector3(0.8, 2, 0.4)
+		$CollisionShape3D.position = Vector3(0, 0, 0)
+
+	if ceiling_raycast.is_colliding():
+		is_ceiling_raycast_colliding = true
+	else:
+		is_ceiling_raycast_colliding = false
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	set_velocity(player_velocity)
@@ -322,7 +376,7 @@ func _process(_delta):
 			rivet_arm.hide()
 		else:
 			rivet_arm.show()
-	if Input.is_action_just_pressed("ui_melee_attack") : play_melee_sound(random.randi_range(0, 4))
+	if Input.is_action_just_pressed("ui_melee_attack") and Globle.player_active == true: play_melee_sound(random.randi_range(0, 4))
 
 	if !boss_fight_active: 
 		$PlayerUI/UIBossData.visible = false
@@ -563,68 +617,75 @@ func determine_character_weapon_muzzle(player : String, bullet):
 			pass
 
 func shoot_edge_blaster():
-	$Audio/Weapons/EdgeBlaster.play()
-	var bullet = projectile.instantiate()
-	bullet.position.x = 3
-	get_parent().add_child(bullet)
-	determine_character_weapon_muzzle(Globle.player_character, bullet)
-
-func shoot_blitz_gun():
-	$Audio/Weapons/BlizGun.play()
-	# Bullet spread.
-	for index in fire_rate:
-		var bullet = blitz_gun_projectile.instantiate()
+	if Globle.player_active == true:
+		$Audio/Weapons/EdgeBlaster.play()
+		var bullet = projectile.instantiate()
 		bullet.position.x = 3
 		get_parent().add_child(bullet)
 		determine_character_weapon_muzzle(Globle.player_character, bullet)
-		bullet.rotate(Vector3(0,0,1),(randf()-.5)*RANDOM_ANGLE)
+
+func shoot_blitz_gun():
+	# Bullet spread.
+	for index in fire_rate:
+		if Globle.player_active == true:
+			$Audio/Weapons/BlizGun.play()
+			var bullet = blitz_gun_projectile.instantiate()
+			bullet.position.x = 3
+			get_parent().add_child(bullet)
+			determine_character_weapon_muzzle(Globle.player_character, bullet)
+			bullet.rotate(Vector3(0,0,1),(randf()-.5)*RANDOM_ANGLE)
 
 func shoot_gravity_bomb():
-	$Audio/Weapons/GravityBomb.play()
-	var bullet = gravity_bomb_projectile.instantiate()
-	bullet.position.x = 3
-	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
-	get_parent().add_child(bullet)
-	bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
-	determine_character_weapon_muzzle(Globle.player_character, bullet)
+	if Globle.player_active == true:
+		$Audio/Weapons/GravityBomb.play()
+		var bullet = gravity_bomb_projectile.instantiate()
+		bullet.position.x = 3
+		bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
+		get_parent().add_child(bullet)
+		bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
+		determine_character_weapon_muzzle(Globle.player_character, bullet)
 	
 func shoot_negotiator():
-	$Audio/Weapons/theNegotiator.play()
-	var bullet = negotiator_projectile.instantiate()
-	bullet.position.x = 3
-	get_parent().add_child(bullet)
-	bullet.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+	if Globle.player_active == true:
+		$Audio/Weapons/theNegotiator.play()
+		var bullet = negotiator_projectile.instantiate()
+		bullet.position.x = 3
+		get_parent().add_child(bullet)
+		bullet.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 
 func shoot_pulse_rifle():
-	if (player_is_aiming_with_rifle):
-		$Audio/Weapons/PulseRifle.play()
-		projectile = pulse_rifle_projectile.instantiate()
-		projectile.position.x = 10
-		get_parent().add_child(projectile)
-		projectile.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
+	if Globle.player_active == true:
+		if (player_is_aiming_with_rifle):
+			$Audio/Weapons/PulseRifle.play()
+			projectile = pulse_rifle_projectile.instantiate()
+			projectile.position.x = 10
+			get_parent().add_child(projectile)
+			projectile.global_transform = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform
 
 func shoot_ry3no():
 	print("RY3NO!")
 
 func shoot_sheepinator():
-	print("Sheepinator used. All enemies are converted into sheeps.")
-	var sheepinator_overlaps = sheepinator_raycast.get_overlapping_bodies()
-	if sheepinator_overlaps.size() > 0:
-		for overlap in sheepinator_overlaps:
-			if (overlap.get_meta("type") == "enemy"):
-				var overlap_sheep = sheep.instantiate()
-				overlap_sheep.global_transform = overlap.global_transform
-				overlap_sheep.scale = overlap.scale
-				overlap.queue_free()
-				get_parent().get_node("npc").get_node("enemies").add_child(overlap_sheep)
+	if Globle.player_active == true:
+		print("Sheepinator used. All enemies are converted into sheeps.")
+		var sheepinator_overlaps = sheepinator_raycast.get_overlapping_bodies()
+		if sheepinator_overlaps.size() > 0:
+			for overlap in sheepinator_overlaps:
+				if (overlap.get_meta("type") == "enemy"):
+					var overlap_sheep = sheep.instantiate()
+					overlap_sheep.global_transform = overlap.global_transform
+					overlap_sheep.scale = overlap.scale
+					overlap.queue_free()
+					get_parent().get_node("npc").get_node("enemies").add_child(overlap_sheep)
 
 func shoot_miniturret_glove():
-	var bullet = miniturret_packed_projectile.instantiate()
-	bullet.position.x = 3
-	bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
-	get_parent().add_child(bullet)
-	bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
-	determine_character_weapon_muzzle(Globle.player_character, bullet)
+	if Globle.player_active == true:
+		var bullet = miniturret_packed_projectile.instantiate()
+		bullet.position.x = 3
+		bullet.velocity = $AngelaArm/HandInstance/Hand/WeaponPlaceHolder/WeaponMuzzle.global_transform.basis.x
+		get_parent().add_child(bullet)
+		bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
+		determine_character_weapon_muzzle(Globle.player_character, bullet)
 
 ### FUNCTIONS USED FUR DEBUGGING THE PLAYER SCENE. NOT USED IN THE FINAL PRODUCT.
 
@@ -688,6 +749,12 @@ func shoot_gun(index : int):
 func update_ammo_ui(has_ammo : int, max_ammo : int):
 	$PlayerUI/InGameUI/Ammo/AmmoHas.text = str(has_ammo)
 	$PlayerUI/InGameUI/Ammo/AmmoMax.text = str(max_ammo)
+
+func player_slide(dec_val: float):
+	if player_velocity.x > 0:
+		player_velocity.x -= dec_val
+	if player_velocity.x < 0:
+		player_velocity.x += dec_val
 
 func _on_Vendor_Choice_pressed(button, wpn):
 	match (wpn):
