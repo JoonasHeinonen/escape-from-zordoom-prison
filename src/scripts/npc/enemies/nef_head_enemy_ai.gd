@@ -3,6 +3,8 @@ extends EnemyBase
 @onready var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
 @onready var player_finding_raycast = $EnemySprite/player_finding
 @onready var ground_finding_raycast = $EnemySprite/ground_finding
+@onready var enemy_sprite = $EnemySprite
+@onready var enemy_base = $EnemyBase
 
 var value : int  = 0
 var attack_delay : int = 2
@@ -16,9 +18,6 @@ var timer = null
 func _ready():
 	element = elements.AIR
 	gravity = -4
-	#speed = -130
-	#print($EnemyBase.enemy_speed)
-	#print(speed)
 	timer = Timer.new()
 	timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
 	timer.wait_time = 1
@@ -30,10 +29,14 @@ func _ready():
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
 	player = get_parent().find_child("player")
+	
+	print(enemy_sprite)
+	print(enemy_base)
 
 func _physics_process(_delta):
 	#allows the EnemyBase _physics_process function works
 	#in the nef_head_enemy_ai script
+	# how can we make the enemy movement speed work from here?
 	super(_delta)
 	nef_head_movement()
 
@@ -67,11 +70,10 @@ func nef_head_movement():
 	#looks for a wall or a box and then it flips the nef head sprite
 	if is_on_wall() == true:
 		print("hits wall")
-		$EnemySprite.rotation.y += PI
-		speed *= -1
+		enemy_sprite.rotation.y += PI
+		self.enemy_speed *= -1
 		isFlipping = true
 	if not ground_finding_raycast.is_colliding():
-		speed *= -1
-		print(speed)
-		$EnemySprite.rotation.y += PI
+		self.enemy_speed *= -1
+		rotation.y += PI
 		isFlipping = true
