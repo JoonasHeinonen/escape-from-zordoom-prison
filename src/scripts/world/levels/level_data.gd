@@ -4,7 +4,6 @@ class_name LevelData
 
 @export var z_axis : float
 @export var default_music_stream : AudioStreamMP3
-@export var boss_music_stream : AudioStreamMP3
 
 var default_music = AudioStreamPlayer.new()
 
