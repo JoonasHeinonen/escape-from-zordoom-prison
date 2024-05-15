@@ -32,6 +32,7 @@ func _ready():
 	meta_name = "enemy"
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
+	#this shows as null like why bro!!
 	player = get_parent().get_parent().get_parent().get_node('player')
 
 func _process(_delta):
@@ -66,6 +67,7 @@ func determine_element(element, delta: float):
 			velocity.x = enemy_speed * 1
 			set_velocity(velocity * delta)
 			move_and_slide()
+			#print(player)
 
 ## TODO Develop the stances later on.
 func determine_stance(stance: String, vel: float):

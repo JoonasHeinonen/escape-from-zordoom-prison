@@ -6,9 +6,10 @@ extends EnemyBase
 @onready var enemy_sprite = $EnemySprite
 @onready var enemy_base = $EnemyBase
 
+
 var value : int  = 0
 var attack_delay : int = 2
-var can_shoot : bool = true
+var can_shoot : bool = false
 var isFlipping : bool = false
 var is_moving_left : bool = true
 var target : Player = null
@@ -28,10 +29,7 @@ func _ready():
 	meta_name = "nef_head"
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
-	player = get_parent().find_child("player")
-	
-	print(enemy_sprite)
-	print(enemy_base)
+	player = get_parent().get_parent().get_parent().get_node('player')
 
 func _physics_process(_delta):
 	#allows the EnemyBase _physics_process function works
@@ -39,15 +37,25 @@ func _physics_process(_delta):
 	# how can we make the enemy movement speed work from here?
 	super(_delta)
 	nef_head_movement()
+	_on_player_finding_player_seen()
 
 func nef_head_shoot_time():
-	can_shoot = true
+	can_shoot = false
 #may need some changes
 func _on_player_finding_player_seen():
+	if player_finding_raycast.get_collider() != player:
+		#self.enemy_speed *= 1
+		#look_at(player.position)
+		print("can't see player")
+		#print(player)
 	if player_finding_raycast.get_collider() == player:
-		speed *= 1
-		print("track player")
-	if can_shoot:
+		print("can see player")
+		#print(can_shoot)
+		can_shoot = true
+		#print(player)
+		#look_at(player.position)
+		pass
+	if can_shoot == true:
 		attack = laser_attack_scene.instantiate()
 		attack.bullet_speed = 9
 		#This checks the speed if it postive or negative.
@@ -58,7 +66,7 @@ func _on_player_finding_player_seen():
 		timer.start()
 		
 func _on_player_finding_player_not_seen():
-	can_shoot = false
+	pass
 
 func _on_AreaEnemy_area_entered(area):
 	if (area.name == "ProjectileArea"):
