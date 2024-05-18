@@ -4,7 +4,9 @@
 [ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_ksfwo"]
 [ext_resource type="Texture2D" uid="uid://cbxa27fdyekuf" path="res://resources/images/environment/haerkonen.jpg" id="1_vxvra"]
 [ext_resource type="PackedScene" uid="uid://c0ejcgkoe8mfq" path="res://scenes/Destructibles/Crates/BoltCrate.tscn" id="2"]
+[ext_resource type="AudioStream" uid="uid://cjyro6lonjvwk" path="res://resources/audio/music/02_tobruk_crater_novalis.mp3" id="2_udr33"]
 [ext_resource type="PackedScene" uid="uid://dwn5g72i2nu6s" path="res://scenes/Collectibles/Bolt.tscn" id="3"]
+[ext_resource type="AudioStream" uid="uid://cg108aqdlepao" path="res://resources/audio/music/45_jet_fighter_dog_fighting.mp3" id="3_xfu21"]
 [ext_resource type="PackedScene" uid="uid://bp5ijfq147flt" path="res://scenes/Collectibles/WeaponCollectible.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/SlimCognito.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
@@ -50,6 +52,8 @@ size = Vector3(2.2914, 2, 2)
 [node name="testLevel" type="Node3D"]
 script = ExtResource("1_ksfwo")
 z_axis = -1.5
+default_music_stream = ExtResource("2_udr33")
+boss_music_stream = ExtResource("3_xfu21")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f1r0c")
@@ -331,6 +335,9 @@ weapon = "blitz_gun"
 [node name="WeaponCollectible3" parent="Collectibles" instance=ExtResource("4")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 12.2247, 4.45104, 0)
 weapon = "ry3no"
+
+[node name="Musica" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_udr33")
 
 [connection signal="body_entered" from="area_of_death/death" to="area_of_death/death" method="_on_death_body_entered"]
 [connection signal="body_entered" from="checkpoint/New SpawnPoint" to="checkpoint/New SpawnPoint" method="_on_New_SpawnPoint_body_entered"]
