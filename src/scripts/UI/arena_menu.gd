@@ -39,9 +39,15 @@ func close_menu():
 	hide()
 
 func spawn_bad_guys_in_fight():
-	nodes = get_tree().get_nodes_in_group("badGuySpawn1")
+	# nodes = get_tree().get_nodes_in_group("badGuySpawn1")
+	# bad_guy_instance = nef_head_preload.instantiate()
+	# nodes[0].add_child(bad_guy_instance)
+	var enemies_node = get_parent().get_parent().get_parent().get_node("npc/enemies")
+	var spawn_point = get_parent().get_parent().get_parent().get_node("badGuySpawn1")
+
 	bad_guy_instance = nef_head_preload.instantiate()
-	nodes[0].add_child(bad_guy_instance)
+	bad_guy_instance.global_transform = spawn_point.global_transform
+	enemies_node.add_child(bad_guy_instance)
 
 func check_current_enemies():
 	nodes = get_tree().get_nodes_in_group("nef_head")

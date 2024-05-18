@@ -6,11 +6,10 @@ extends EnemyBase
 @onready var enemy_sprite = $EnemySprite
 @onready var enemy_base = $EnemyBase
 
-
 var value : int  = 0
 var attack_delay : int = 2
 var can_shoot : bool = false
-var isFlipping : bool = false
+var is_flipping : bool = false
 var is_moving_left : bool = true
 var target : Player = null
 var attack = null
@@ -88,11 +87,11 @@ func _on_AreaEnemy_area_entered(area):
 func nef_head_movement():
 	#looks for a wall or a box and then it flips the nef head sprite
 	if is_on_wall() == true:
-		print("hits wall")
+		# print("hits wall")
 		enemy_sprite.rotation.y += PI
 		self.enemy_speed *= -1
-		isFlipping = true
+		is_flipping = true
 	if not ground_finding_raycast.is_colliding():
 		self.enemy_speed *= -1
 		rotation.y += PI
-		isFlipping = true
+		is_flipping = true

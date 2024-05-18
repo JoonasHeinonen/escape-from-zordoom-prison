@@ -196,7 +196,6 @@ size = Vector3(2.70177, 3.69416, 2)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2")
-enemy_speed = -200
 
 [node name="laser_muzzle" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97782, 0, -0.0428034)
@@ -227,7 +226,7 @@ hframes = 9
 vframes = 4
 
 [node name="ground_finding" type="RayCast3D" parent="EnemySprite"]
-transform = Transform3D(0.649558, 0.000556133, -0.0239706, -0.000132988, 0.649899, 0.0114744, 0.0239767, -0.0114616, 0.649457, -0.147831, 0.0354374, 1.26007e-13)
+transform = Transform3D(0.649558, 0.000556133, -0.0239706, -0.000132988, 0.649899, 0.0114744, 0.0239767, -0.0114616, 0.649457, -0.122368, 0.0354374, -1.29418e-14)
 
 [node name="player_finding" type="RayCast3D" parent="EnemySprite"]
 transform = Transform3D(0.0137877, 0.999904, 0, -0.999904, 0.0137877, 0, 0, 0, 1, -0.0538642, 0, 0)
@@ -254,6 +253,8 @@ shape = SubResource("33")
 
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
+[connection signal="player_not_seen" from="EnemySprite/player_finding" to="." method="_on_player_finding_player_not_seen"]
+[connection signal="player_seen" from="EnemySprite/player_finding" to="." method="_on_player_finding_player_seen"]
 [connection signal="body_entered" from="playerFindingArea" to="." method="_on_player_finding_area_body_entered"]
 [connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]
 [connection signal="body_entered" from="AreaEnemy" to="." method="_on_area_enemy_body_entered"]
