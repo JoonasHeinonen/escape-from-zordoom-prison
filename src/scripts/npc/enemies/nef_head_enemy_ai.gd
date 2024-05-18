@@ -25,11 +25,12 @@ func _ready():
 	timer.one_shot = true
 	add_child(timer)
 	timer.start()
-
+	
 	meta_name = "nef_head"
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
 	player = get_parent().get_parent().get_parent().get_node('player')
+	#player = $"../../../player"
 
 func _physics_process(_delta):
 	#allows the EnemyBase _physics_process function works
@@ -46,16 +47,19 @@ func _on_player_finding_player_seen():
 	if player_finding_raycast.get_collider() != player:
 		#self.enemy_speed *= 1
 		#look_at(player.position)
-		print("can't see player")
+		#print("can't see player")
 		#print(player)
+		can_shoot = false
 	if player_finding_raycast.get_collider() == player:
-		print("can see player")
+		#print("can see player")
 		#print(can_shoot)
 		can_shoot = true
 		#print(player)
 		#look_at(player.position)
-		pass
+		
 	if can_shoot == true:
+		var player_direction = (player.global_position.x - global_position.x)
+		#print(player_direction)
 		attack = laser_attack_scene.instantiate()
 		attack.bullet_speed = 9
 		#This checks the speed if it postive or negative.
@@ -63,7 +67,14 @@ func _on_player_finding_player_seen():
 		get_parent().add_child(attack)
 		attack.global_position = $laser_muzzle.global_position
 		can_shoot = false
-		timer.start()
+		attack.direction = 1
+		print(attack.direction)
+		if player_direction < 0:
+			attack.direction = -1
+		if player_direction >0:
+			attack.direction = 1
+			
+		#timer.start()
 		
 func _on_player_finding_player_not_seen():
 	pass
