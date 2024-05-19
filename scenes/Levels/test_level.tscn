@@ -291,7 +291,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource("8")]
-transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 19.899, -12.6874, 0)
+transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -44.6636, 11.5315, 0)
 collision_layer = 13
 collision_mask = 13
 player_direction = "left"

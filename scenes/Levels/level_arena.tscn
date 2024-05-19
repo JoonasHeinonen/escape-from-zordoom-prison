@@ -64,7 +64,7 @@ data = {
 }
 
 [node name="badGuySpawn1" type="Marker3D" parent="." groups=["badGuySpawn1"]]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 4.606, 4.016, 16.8594)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.184, 4.016, 16.8594)
 
 [node name="npc" type="Node" parent="."]
 

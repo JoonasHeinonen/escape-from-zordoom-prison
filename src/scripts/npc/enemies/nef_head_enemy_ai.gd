@@ -76,6 +76,7 @@ func nef_head_movement():
 	#looks for a wall or a box and then it flips the nef head sprite
 	#print(self.enemy_speed)
 	#need to refactor
+	is_flipping = false
 	if is_on_wall() == true:
 		# print("hits wall")
 		enemy_sprite.rotation.y += PI
@@ -84,5 +85,6 @@ func nef_head_movement():
 		is_flipping = true
 	if not ground_finding_raycast.is_colliding():
 		self.enemy_speed *= -1
-		rotation.y += PI
-		#is_flipping = true
+		enemy_sprite.rotation.y += PI
+		is_flipping = true
+		print(enemy_speed)
