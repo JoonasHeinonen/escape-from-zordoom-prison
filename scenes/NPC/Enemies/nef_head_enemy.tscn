@@ -252,6 +252,11 @@ gravity = 0.0
 transform = Transform3D(1, 5.95568e-23, 0, 5.95568e-23, 1, 0, 0, 0, 1, 1.1714, -0.218465, 0.000673294)
 shape = SubResource("33")
 
+[node name="CoolDownTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
 [connection signal="player_not_seen" from="EnemySprite/player_finding" to="." method="_on_player_finding_player_not_seen"]

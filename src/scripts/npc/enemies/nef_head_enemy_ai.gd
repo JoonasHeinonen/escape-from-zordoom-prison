@@ -5,6 +5,7 @@ extends EnemyBase
 @onready var ground_finding_raycast = $EnemySprite/ground_finding
 @onready var enemy_sprite = $EnemySprite
 @onready var enemy_base = $EnemyBase
+@onready var cooldown := $CoolDownTimer
 
 var value : int  = 0
 var attack_delay : int = 2
@@ -13,17 +14,16 @@ var is_flipping : bool = false
 var is_moving_left : bool = true
 var target : Player = null
 var attack = null
-var timer = null
 
 func _ready():
 	element = elements.AIR
 	gravity = -4
-	timer = Timer.new()
-	timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
-	timer.wait_time = 1
-	timer.one_shot = true
-	add_child(timer)
-	timer.start()
+	#timer = Timer.new()
+	#timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
+	#timer.wait_time = 1
+	#timer.one_shot = true
+	#add_child(timer)
+	#timer.start()
 	
 	meta_name = "nef_head"
 	self.set_meta("type", "enemy")
@@ -38,15 +38,15 @@ func _physics_process(_delta):
 	nef_head_movement()
 	_on_player_finding_player_seen()
 
-func nef_head_shoot_time():
-	can_shoot = false
 #may need some changes
 func _on_player_finding_player_seen():
 	if player_finding_raycast.get_collider() != player:
 		can_shoot = false
 	if player_finding_raycast.get_collider() == player:
 		can_shoot = true
-	if can_shoot == true:
+		
+		print(cooldown)
+	if can_shoot == true and cooldown.is_stopped():
 		var player_direction = (player.global_position.x - global_position.x)
 		#print(player_direction)
 		attack = laser_attack_scene.instantiate()
@@ -61,7 +61,10 @@ func _on_player_finding_player_seen():
 			attack.direction = -1
 		if player_direction >0:
 			attack.direction = 1
-		timer.start()
+		cooldown.start()
+		#timer.stop()
+		
+		
 		
 func _on_player_finding_player_not_seen():
 	pass
