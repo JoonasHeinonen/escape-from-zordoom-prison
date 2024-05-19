@@ -29,7 +29,6 @@ func _ready():
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
 	player = get_parent().get_parent().get_parent().get_node('player')
-	#player = $"../../../player"
 
 func _physics_process(_delta):
 	#allows the EnemyBase _physics_process function works
@@ -44,18 +43,9 @@ func nef_head_shoot_time():
 #may need some changes
 func _on_player_finding_player_seen():
 	if player_finding_raycast.get_collider() != player:
-		#self.enemy_speed *= 1
-		#look_at(player.position)
-		#print("can't see player")
-		#print(player)
 		can_shoot = false
 	if player_finding_raycast.get_collider() == player:
-		#print("can see player")
-		#print(can_shoot)
 		can_shoot = true
-		#print(player)
-		#look_at(player.position)
-		
 	if can_shoot == true:
 		var player_direction = (player.global_position.x - global_position.x)
 		#print(player_direction)
@@ -71,7 +61,7 @@ func _on_player_finding_player_seen():
 			attack.direction = -1
 		if player_direction >0:
 			attack.direction = 1
-		#timer.start()
+		timer.start()
 		
 func _on_player_finding_player_not_seen():
 	pass
@@ -84,6 +74,8 @@ func _on_AreaEnemy_area_entered(area):
 # $EnemySprite.rotation.y += PI will use rotation by the y axis the sprite with the math of pi
 func nef_head_movement():
 	#looks for a wall or a box and then it flips the nef head sprite
+	#print(self.enemy_speed)
+	#need to refactor
 	if is_on_wall() == true:
 		# print("hits wall")
 		enemy_sprite.rotation.y += PI
@@ -93,4 +85,4 @@ func nef_head_movement():
 	if not ground_finding_raycast.is_colliding():
 		self.enemy_speed *= -1
 		rotation.y += PI
-		is_flipping = true
+		#is_flipping = true
