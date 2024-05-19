@@ -196,6 +196,7 @@ size = Vector3(2.70177, 3.69416, 2)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2")
+enemy_speed = -130
 
 [node name="laser_muzzle" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97782, 0, -0.0428034)

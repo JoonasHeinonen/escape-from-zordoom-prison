@@ -67,12 +67,10 @@ func _on_player_finding_player_seen():
 		attack.global_position = $laser_muzzle.global_position
 		can_shoot = false
 		attack.direction = 1
-		print(attack.direction)
 		if player_direction < 0:
 			attack.direction = -1
 		if player_direction >0:
 			attack.direction = 1
-			
 		#timer.start()
 		
 func _on_player_finding_player_not_seen():
@@ -90,6 +88,7 @@ func nef_head_movement():
 		# print("hits wall")
 		enemy_sprite.rotation.y += PI
 		self.enemy_speed *= -1
+		print(enemy_speed)
 		is_flipping = true
 	if not ground_finding_raycast.is_colliding():
 		self.enemy_speed *= -1
