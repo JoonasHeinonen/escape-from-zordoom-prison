@@ -31,6 +31,8 @@ const RANDOM_ANGLE = PI / 2.0
 	# $PlayerUI/ArenaMenu
 ]
 
+@onready var level = get_parent()
+
 @export var check_point_enabled = true
 @export var speed = 1
 @export_enum("left", "right") var player_direction : String
@@ -223,7 +225,7 @@ func _physics_process(delta):
 			gun_instance.hide()
 
 	if player_health > 0 && !Globle.player_inventory && !player_is_aiming_with_rifle:
-		if Input.is_action_pressed("ui_melee_attack") and Globle.player_active == true and !player_sliding:
+		if Input.is_action_pressed("ui_melee_attack") and Globle.player_active and !player_sliding:
 			if Globle.player_character == "Rivet":
 				state_machine.travel("Player_Melee")
 				if (state_machine.get_current_play_position() > 0.3):
