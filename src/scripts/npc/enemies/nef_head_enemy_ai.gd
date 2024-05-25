@@ -1,10 +1,11 @@
 extends EnemyBase
 
 @onready var laser_attack_scene = preload("res://scenes/Projectiles/nef_head_laser.tscn")
+# the player finding ray cast is not working at all in the level_arena
 @onready var player_finding_raycast = $EnemySprite/player_finding
 @onready var ground_finding_raycast = $EnemySprite/ground_finding
 @onready var enemy_sprite = $EnemySprite
-@onready var enemy_base = $EnemyBase
+#@onready var enemy_base = $EnemyBase
 @onready var cooldown := $CoolDownTimer
 
 var value : int  = 0
@@ -18,34 +19,23 @@ var attack = null
 func _ready():
 	element = elements.AIR
 	gravity = -4
-	#timer = Timer.new()
-	#timer.connect("timeout", Callable(self, "nef_head_shoot_time"))
-	#timer.wait_time = 1
-	#timer.one_shot = true
-	#add_child(timer)
-	#timer.start()
-	
 	meta_name = "nef_head"
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
 	player = get_parent().get_parent().get_parent().get_node('player')
-
+	
 func _physics_process(_delta):
-	#allows the EnemyBase _physics_process function works
-	#in the nef_head_enemy_ai script
-	# how can we make the enemy movement speed work from here?
 	super(_delta)
 	nef_head_movement()
 	_on_player_finding_player_seen()
 
-#may need some changes
 func _on_player_finding_player_seen():
 	if player_finding_raycast.get_collider() != player:
 		can_shoot = false
+		
 	if player_finding_raycast.get_collider() == player:
 		can_shoot = true
-		
-		print(cooldown)
+		print("find player")
 	if can_shoot == true and cooldown.is_stopped():
 		var player_direction = (player.global_position.x - global_position.x)
 		#print(player_direction)
@@ -62,12 +52,6 @@ func _on_player_finding_player_seen():
 		if player_direction >0:
 			attack.direction = 1
 		cooldown.start()
-		#timer.stop()
-		
-		
-		
-func _on_player_finding_player_not_seen():
-	pass
 
 func _on_AreaEnemy_area_entered(area):
 	if (area.name == "ProjectileArea"):
@@ -76,8 +60,6 @@ func _on_AreaEnemy_area_entered(area):
 		animation_player.play("Enemy_Damage")
 # $EnemySprite.rotation.y += PI will use rotation by the y axis the sprite with the math of pi
 func nef_head_movement():
-	#looks for a wall or a box and then it flips the nef head sprite
-	#print(self.enemy_speed)
 	#need to refactor
 	is_flipping = false
 	if is_on_wall() == true:
