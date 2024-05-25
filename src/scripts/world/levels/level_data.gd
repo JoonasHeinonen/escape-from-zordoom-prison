@@ -2,6 +2,12 @@ extends Node
 
 class_name LevelData
 
+## Dynamic weather data variables
+@export var weather_rain : bool = false
+@export var weather_storm : bool = false
+@export var weather_cloudy : bool = false
+@export var weather_fog : bool = false
+
 @export var z_axis : float
 @export var default_music_stream : AudioStreamMP3
 
