@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c0ejcgkoe8mfq" path="res://scenes/Destructibles/Crates/BoltCrate.tscn" id="2"]
 [ext_resource type="AudioStream" uid="uid://cjyro6lonjvwk" path="res://resources/audio/music/02_tobruk_crater_novalis.mp3" id="2_udr33"]
 [ext_resource type="PackedScene" uid="uid://dwn5g72i2nu6s" path="res://scenes/Collectibles/Bolt.tscn" id="3"]
-[ext_resource type="AudioStream" uid="uid://cg108aqdlepao" path="res://resources/audio/music/45_jet_fighter_dog_fighting.mp3" id="3_xfu21"]
 [ext_resource type="PackedScene" uid="uid://bp5ijfq147flt" path="res://scenes/Collectibles/WeaponCollectible.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://d2ngolw6xx8ki" path="res://scenes/NPC/Friendly/SlimCognito.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
@@ -53,7 +52,9 @@ size = Vector3(2.2914, 2, 2)
 script = ExtResource("1_ksfwo")
 z_axis = -1.5
 default_music_stream = ExtResource("2_udr33")
-boss_music_stream = ExtResource("3_xfu21")
+mission_params = {
+"retrieveKeyCard": false
+}
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f1r0c")
