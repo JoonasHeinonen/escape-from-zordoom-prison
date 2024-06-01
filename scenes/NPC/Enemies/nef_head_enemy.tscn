@@ -196,6 +196,7 @@ size = Vector3(2.70177, 3.69416, 2)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2")
+enemy_speed = 130
 
 [node name="laser_muzzle" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.97782, 0, -0.0428034)
@@ -227,10 +228,11 @@ vframes = 4
 
 [node name="ground_finding" type="RayCast3D" parent="EnemySprite"]
 transform = Transform3D(0.649558, 0.000556133, -0.0239706, -0.000132988, 0.649899, 0.0114744, 0.0239767, -0.0114616, 0.649457, -0.122368, 0.0354374, -1.29418e-14)
+collision_mask = 7
 
 [node name="player_finding" type="RayCast3D" parent="EnemySprite"]
 transform = Transform3D(0.0137877, 0.999904, 0, -0.999904, 0.0137877, 0, 0, 0, 1, -0.0538642, 0, 0)
-collision_mask = 3
+collision_mask = 15
 script = ExtResource("3")
 
 [node name="playerFindingArea" type="Area3D" parent="."]
@@ -250,6 +252,11 @@ gravity = 0.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AreaEnemy"]
 transform = Transform3D(1, 5.95568e-23, 0, 5.95568e-23, 1, 0, 0, 0, 1, 1.1714, -0.218465, 0.000673294)
 shape = SubResource("33")
+
+[node name="CoolDownTimer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_Enemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_Enemy_mouse_exited"]
