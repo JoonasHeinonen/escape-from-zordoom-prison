@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://brce6tfu5d81"]
+[gd_scene load_steps=33 format=3 uid="uid://brce6tfu5d81"]
 
 [ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
 [ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_ksfwo"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://d18jopbss2gd1" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://bgmepj0rqpcwm" path="res://scenes/BlocksNWorld/MissionParameter.tscn" id="9_kt4pd"]
 [ext_resource type="PackedScene" uid="uid://dnrfyec61yev6" path="res://scenes/NPC/Enemies/Sheep.tscn" id="10_jby62"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
 [ext_resource type="PackedScene" uid="uid://dy2k7jfp7swx8" path="res://scenes/BlocksNWorld/Doors/Waypoint.tscn" id="13_or1yy"]
@@ -108,6 +109,9 @@ collision_mask = 0
 
 [node name="Mia" parent="npc/friendly" instance=ExtResource("21")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -30.2724, 7.20774, 2.57596)
+
+[node name="MissionParameter" parent="npc/friendly" instance=ExtResource("9_kt4pd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.8727, -11.1584, 0.326386)
 
 [node name="enemies" type="Node" parent="npc"]
 

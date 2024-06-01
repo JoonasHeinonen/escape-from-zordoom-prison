@@ -16,7 +16,7 @@ func _ready():
 	default_music.set_stream(default_music_stream)
 
 	## TODO Use the following pattern to add new mission parameters.
-	mission_params.merge({ "newMission": false })
+	## mission_params.merge({ "newMission": false })
 
 	add_child(default_music)
 	player = get_node("player")
