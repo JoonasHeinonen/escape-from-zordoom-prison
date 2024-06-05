@@ -223,7 +223,7 @@ func _physics_process(delta):
 			shoot_timer.wait_time = Globle.WPNS[4][7]
 		_:
 			gun_instance.hide()
-#ladder logic
+
 	if player_health > 0 && !Globle.player_inventory && !player_is_aiming_with_rifle:
 		if Input.is_action_pressed("ui_melee_attack") and Globle.player_active and !player_sliding:
 			if Globle.player_character == "Rivet":
