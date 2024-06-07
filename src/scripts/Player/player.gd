@@ -164,7 +164,7 @@ func _physics_process(delta):
 			for audio_sub_child in audio_container_child.get_children():
 				for audio_child in audio_sub_child.get_children():
 					audio_child.position = Vector3(self.position.x, self.position.y, 0)
-
+	# Ladder logic
 	# Sliding logic. Reset double jump while on the ground.
 	if is_on_floor():
 		player_double_jump = false
@@ -223,7 +223,7 @@ func _physics_process(delta):
 			shoot_timer.wait_time = Globle.WPNS[4][7]
 		_:
 			gun_instance.hide()
-	# ladder logic
+
 	if player_health > 0 && !Globle.player_inventory && !player_is_aiming_with_rifle:
 		if Input.is_action_pressed("ui_melee_attack") and Globle.player_active and !player_sliding:
 			if Globle.player_character == "Rivet":

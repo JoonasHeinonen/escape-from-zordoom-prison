@@ -168,6 +168,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 1, -1)
 [node name="ladder2" parent="GridMap" instance=ExtResource("16_3qxim")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -3, -1)
 
+[node name="ladder3" parent="GridMap" instance=ExtResource("16_3qxim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2, -1)
+
 [node name="destructibles" type="Node" parent="."]
 
 [node name="crates" type="Node" parent="destructibles"]
