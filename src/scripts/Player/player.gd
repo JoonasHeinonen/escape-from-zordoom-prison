@@ -36,6 +36,7 @@ const RANDOM_ANGLE = PI / 2.0
 @export var check_point_enabled = true
 @export var speed = 1
 @export_enum("left", "right") var player_direction : String
+@export var at_ladder = false
 
 var animation_player
 var gun_instance
@@ -164,7 +165,7 @@ func _physics_process(delta):
 			for audio_sub_child in audio_container_child.get_children():
 				for audio_child in audio_sub_child.get_children():
 					audio_child.position = Vector3(self.position.x, self.position.y, 0)
-	# Ladder logic
+	
 	# Sliding logic. Reset double jump while on the ground.
 	if is_on_floor():
 		player_double_jump = false
@@ -281,7 +282,17 @@ func _physics_process(delta):
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
-
+	# Ladder logic
+	if Input.is_action_pressed("ui_climb_up") and at_ladder == true:
+		#print("climb")
+		gravity = 0
+		player_velocity.x = 0
+		player_velocity.y = 3
+		print(player_velocity.y)
+	if Input.is_action_just_released("ui_climb_up") and at_ladder == true:
+		player_velocity.y = 0
+	if at_ladder == false:
+		gravity = 4
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
 			#update_player_position_to_camera()
