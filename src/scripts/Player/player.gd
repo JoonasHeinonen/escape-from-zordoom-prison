@@ -289,10 +289,16 @@ func _physics_process(delta):
 		player_velocity.x = 0
 		player_velocity.y = 3
 		print(player_velocity.y)
+	if Input.is_action_pressed("ui_climb_down") and at_ladder == true:
+		gravity = 0
+		player_velocity.x = 0
+		player_velocity.y = -3
 	if Input.is_action_just_released("ui_climb_up") and at_ladder == true:
 		player_velocity.y = 0
+	if Input.is_action_just_released("ui_climb_down") and at_ladder == true:
+		player_velocity.y = 0
 	if at_ladder == false:
-		gravity = 4
+		gravity = 3
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
 			#update_player_position_to_camera()

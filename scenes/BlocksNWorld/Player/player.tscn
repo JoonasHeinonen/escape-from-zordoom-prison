@@ -924,6 +924,7 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 4
+frame = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)

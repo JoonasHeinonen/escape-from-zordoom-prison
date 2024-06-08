@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://brce6tfu5d81"]
+[gd_scene load_steps=34 format=3 uid="uid://brce6tfu5d81"]
 
 [ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
 [ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_ksfwo"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dvebyw8glgp0n" path="res://scenes/NPC/Enemies/Enemy.tscn" id="15"]
 [ext_resource type="PackedScene" uid="uid://xov5w1sy23lh" path="res://scenes/BlocksNWorld/Doors/ArchDoors.tscn" id="16"]
 [ext_resource type="PackedScene" uid="uid://c73o2eucjmvet" path="res://scenes/BlocksNWorld/Ladder/ladderScene.tscn" id="16_3qxim"]
+[ext_resource type="PackedScene" uid="uid://tnqakjesc5w7" path="res://scenes/BlocksNWorld/Ladder/ladder_long_Scene.tscn" id="16_rbfw2"]
 [ext_resource type="PackedScene" uid="uid://c6043ke27yksk" path="res://scenes/Destructibles/Crates/HealthCrate.tscn" id="17"]
 [ext_resource type="Script" path="res://src/scripts/UI/checkpoint_ui.gd" id="19"]
 [ext_resource type="PackedScene" uid="uid://brq654ih15j0g" path="res://scenes/Destructibles/Infrastructure/Lamps/LampPostQueue.tscn" id="19_2twd7"]
@@ -162,14 +163,11 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 [node name="ArchDoors" parent="GridMap" instance=ExtResource("16")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -16, 0)
 
+[node name="Longladder" parent="GridMap" instance=ExtResource("16_rbfw2")]
+transform = Transform3D(1, 0, 0, 0, 4.03, 0, 0, 0, 1, 58, -8.06, -1)
+
 [node name="ladder" parent="GridMap" instance=ExtResource("16_3qxim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 1, -1)
-
-[node name="ladder2" parent="GridMap" instance=ExtResource("16_3qxim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, -3, -1)
-
-[node name="ladder3" parent="GridMap" instance=ExtResource("16_3qxim")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 2, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 1.7, -1)
 
 [node name="destructibles" type="Node" parent="."]
 
@@ -303,7 +301,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource("8")]
-transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 50.4567, 4.939, 0)
+transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 53.2821, 3.05543, 0)
 collision_layer = 13
 collision_mask = 13
 player_direction = "left"
