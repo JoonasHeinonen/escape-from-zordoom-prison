@@ -21,7 +21,6 @@ const RANDOM_ANGLE = PI / 2.0
 @onready var rivet_arm = $RivetArm
 @onready var shoot_timer = $ShootTimer
 @onready var sniping_radical = $SnipingRadical
-@onready var ui_timer = $PlayerUI/UINotification/Ui_Timer
 @onready var sheepinator_raycast = $SheepinatorRaycast
 @onready var ceiling_raycast = $CeilingRaycast
 @onready var ui_containers = [
@@ -30,6 +29,8 @@ const RANDOM_ANGLE = PI / 2.0
 	$PlayerUI/VendorContainer,
 	# $PlayerUI/ArenaMenu
 ]
+@onready var ui_objectives = $PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ListOfObjectives
+@onready var ui_timer = $PlayerUI/UINotification/Ui_Timer
 
 @onready var level = get_parent()
 
@@ -77,6 +78,8 @@ var random = RandomNumberGenerator.new()
 ### INHERITED FUNCTIONS FROM GODOT.
 
 func _ready():
+	set_missions("Allons enfants de la patrie !")
+
 	if check_point_enabled == true:
 		global_transform.origin = Globle.spawn_point
 	if Globle.spawn_point != Vector3.ZERO:
@@ -614,6 +617,18 @@ func determine_character_weapon_muzzle(player : String, bullet):
 		_:
 			pass
 
+func set_missions(missions : String):
+	for mission_param in level.mission_params:
+		#var regex = RegEx.new()
+		#regex.compile("//([a-z0-9])([A-Z])//g")
+		#var mission = regex.search(mission_param)
+		#print(mission)
+		var regex = RegEx.new()
+		regex.compile("\\w-(\\d+)")
+		var result = regex.search("abc n-0123")
+		if result:
+			print(result.get_string()) # Would print n-0123
+
 func shoot_edge_blaster():
 	if Globle.player_active == true:
 		$Audio/Weapons/EdgeBlaster.play()
@@ -685,6 +700,25 @@ func shoot_miniturret_glove():
 		bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
 		determine_character_weapon_muzzle(Globle.player_character, bullet)
 
+func shoot_gun(index : int):
+	shoot_timer.start()
+	shoot_timer.wait_time = Globle.WPNS[4][index]
+	if (current_weapon != "pulse_rifle" && !player_is_aiming_with_rifle):
+		Globle.player_weapons_ammo[index] -= 1
+	elif (current_weapon == "pulse_rifle" && player_is_aiming_with_rifle):
+		Globle.player_weapons_ammo[index] -= 1
+	update_ammo_ui(Globle.player_weapons_ammo[index], Globle.WPNS[3][index])
+
+func update_ammo_ui(has_ammo : int, max_ammo : int):
+	$PlayerUI/InGameUI/Ammo/AmmoHas.text = str(has_ammo)
+	$PlayerUI/InGameUI/Ammo/AmmoMax.text = str(max_ammo)
+
+func player_slide(dec_val: float):
+	if player_velocity.x > 0:
+		player_velocity.x -= dec_val
+	if player_velocity.x < 0:
+		player_velocity.x += dec_val
+
 ### FUNCTIONS USED FUR DEBUGGING THE PLAYER SCENE. NOT USED IN THE FINAL PRODUCT.
 
 func debug_rotation_values(x, y, z):
@@ -734,25 +768,6 @@ func _on_ShootTimer_timeout():
 				if (Globle.player_weapons_ammo[7] > 0):
 					shoot_miniturret_glove()
 					shoot_gun(7)
-
-func shoot_gun(index : int):
-	shoot_timer.start()
-	shoot_timer.wait_time = Globle.WPNS[4][index]
-	if (current_weapon != "pulse_rifle" && !player_is_aiming_with_rifle):
-		Globle.player_weapons_ammo[index] -= 1
-	elif (current_weapon == "pulse_rifle" && player_is_aiming_with_rifle):
-		Globle.player_weapons_ammo[index] -= 1
-	update_ammo_ui(Globle.player_weapons_ammo[index], Globle.WPNS[3][index])
-
-func update_ammo_ui(has_ammo : int, max_ammo : int):
-	$PlayerUI/InGameUI/Ammo/AmmoHas.text = str(has_ammo)
-	$PlayerUI/InGameUI/Ammo/AmmoMax.text = str(max_ammo)
-
-func player_slide(dec_val: float):
-	if player_velocity.x > 0:
-		player_velocity.x -= dec_val
-	if player_velocity.x < 0:
-		player_velocity.x += dec_val
 
 func _on_Vendor_Choice_pressed(button, wpn):
 	match (wpn):

@@ -54,6 +54,7 @@ script = ExtResource("1_ksfwo")
 z_axis = -1.5
 default_music_stream = ExtResource("2_udr33")
 mission_params = {
+"reachOtherEnd": false,
 "retrieveKeyCard": false
 }
 

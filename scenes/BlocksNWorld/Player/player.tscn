@@ -922,7 +922,6 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 4
-frame = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
@@ -1430,6 +1429,10 @@ text = "RETURN"
 layout_mode = 2
 text = "Fullscreen"
 script = ExtResource("49")
+
+[node name="ListOfObjectives" type="Label" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons"]
+layout_mode = 2
+text = "lorem ipsum dolor sit amet..."
 
 [node name="ReturnToMainMenuButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource("7")]
 layout_mode = 2
