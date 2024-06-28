@@ -56,7 +56,7 @@ mission_params = {
 "completeNCOSchool": true,
 "reachOtherEnd": false,
 "retrieveKeyCard": false,
-"talkToFirstLieutenant": false
+"talkToFirstLieutenant": true
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -345,14 +345,18 @@ stream = ExtResource("2_udr33")
 
 [node name="Param" parent="." instance=ExtResource("27_bh0ds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.485, -2, 0)
-index = 1
 
 [node name="Param2" parent="." instance=ExtResource("27_bh0ds")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.407, -3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.485, -2, 0)
+index = 1
 
 [node name="Param3" parent="." instance=ExtResource("27_bh0ds")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.701, -3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.485, -2, 0)
 index = 2
+
+[node name="Param4" parent="." instance=ExtResource("27_bh0ds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.485, -2, 0)
+index = 3
 
 [connection signal="body_entered" from="area_of_death/death" to="area_of_death/death" method="_on_death_body_entered"]
 [connection signal="body_entered" from="checkpoint/New SpawnPoint" to="checkpoint/New SpawnPoint" method="_on_New_SpawnPoint_body_entered"]

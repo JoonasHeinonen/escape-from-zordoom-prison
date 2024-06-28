@@ -4,7 +4,5 @@ extends Area3D
 @export var index : int = 0
 
 func _ready():
-	print("Data coming from param.gd:")
-	print(level.mission_params.values()[index])
-	print("End data")
+	print(level.mission_params.keys()[index], ": ", level.mission_params.values()[index])
 	pass

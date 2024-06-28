@@ -622,7 +622,6 @@ func set_missions():
 	var mission_param_index : int = 0
 	for mission_param in level.mission_params:
 		var mission_finished : bool = level.mission_params.values()[mission_param_index]
-		print(mission_param, ": ", mission_finished)
 		if (!mission_finished):
 			var mission_label = Label.new()
 			mission_label.text = " - " + mission_param
