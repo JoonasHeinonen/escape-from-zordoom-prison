@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://chyk0cww0n2lb" path="res://scenes/NPC/Enemies/Bosses/Girdeux.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://d18jopbss2gd1" path="res://scenes/BlocksNWorld/Doors/Teleport.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="8"]
-[ext_resource type="PackedScene" uid="uid://bgmepj0rqpcwm" path="res://scenes/BlocksNWorld/MissionParameter.tscn" id="9_kt4pd"]
 [ext_resource type="PackedScene" uid="uid://dnrfyec61yev6" path="res://scenes/NPC/Enemies/Sheep.tscn" id="10_jby62"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="12"]
 [ext_resource type="PackedScene" uid="uid://dy2k7jfp7swx8" path="res://scenes/BlocksNWorld/Doors/Waypoint.tscn" id="13_or1yy"]
@@ -26,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://3j7oaadkmoi3" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
 [ext_resource type="PackedScene" uid="uid://xguugwg5v2bh" path="res://scenes/NPC/Friendly/AngelaOrRivet.tscn" id="23"]
 [ext_resource type="PackedScene" uid="uid://biefobxdqingm" path="res://scenes/BlocksNWorld/Doors/PrisonTaxi.tscn" id="24_mxcxe"]
+[ext_resource type="PackedScene" uid="uid://c8hiifeh7s72n" path="res://scenes/BlocksNWorld/Param.tscn" id="27_bh0ds"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qyk4u"]
 panorama = ExtResource("1_vxvra")
@@ -52,10 +52,11 @@ size = Vector3(2.2914, 2, 2)
 [node name="testLevel" type="Node3D"]
 script = ExtResource("1_ksfwo")
 z_axis = -1.5
-default_music_stream = ExtResource("2_udr33")
 mission_params = {
+"completeNCOSchool": true,
 "reachOtherEnd": false,
-"retrieveKeyCard": false
+"retrieveKeyCard": false,
+"talkToFirstLieutenant": false
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -110,9 +111,6 @@ collision_mask = 0
 
 [node name="Mia" parent="npc/friendly" instance=ExtResource("21")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -30.2724, 7.20774, 2.57596)
-
-[node name="MissionParameter" parent="npc/friendly" instance=ExtResource("9_kt4pd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.8727, -11.1584, 0.326386)
 
 [node name="enemies" type="Node" parent="npc"]
 
@@ -344,6 +342,17 @@ weapon = "ry3no"
 
 [node name="Musica" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_udr33")
+
+[node name="Param" parent="." instance=ExtResource("27_bh0ds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.485, -2, 0)
+index = 1
+
+[node name="Param2" parent="." instance=ExtResource("27_bh0ds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.407, -3, 0)
+
+[node name="Param3" parent="." instance=ExtResource("27_bh0ds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.701, -3, 0)
+index = 2
 
 [connection signal="body_entered" from="area_of_death/death" to="area_of_death/death" method="_on_death_body_entered"]
 [connection signal="body_entered" from="checkpoint/New SpawnPoint" to="checkpoint/New SpawnPoint" method="_on_New_SpawnPoint_body_entered"]

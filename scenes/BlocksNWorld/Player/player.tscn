@@ -1000,7 +1000,7 @@ double_sided = false
 texture_filter = 0
 texture = ExtResource("36")
 hframes = 10
-vframes = 4
+vframes = 5
 frame = 1
 
 [node name="RivetArm" type="MeshInstance3D" parent="."]
@@ -1379,7 +1379,6 @@ offset_bottom = 70.0
 stretch_mode = 4
 
 [node name="PauseMenuContainer" type="Control" parent="PlayerUI"]
-visible = false
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
@@ -1430,9 +1429,8 @@ layout_mode = 2
 text = "Fullscreen"
 script = ExtResource("49")
 
-[node name="ListOfObjectives" type="Label" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons"]
+[node name="ListOfObjectives" type="VBoxContainer" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons"]
 layout_mode = 2
-text = "lorem ipsum dolor sit amet..."
 
 [node name="ReturnToMainMenuButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource("7")]
 layout_mode = 2

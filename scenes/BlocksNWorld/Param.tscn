@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8hiifeh7s72n"]
+
+[ext_resource type="Texture2D" uid="uid://dk5xtodpnea3j" path="res://resources/images/collectibles/ammo_can.png" id="2_64nf2"]
+[ext_resource type="Script" path="res://src/scripts/world/param.gd" id="2_rd3dg"]
+
+[sub_resource type="BoxShape3D" id="1"]
+
+[node name="Param" type="Area3D"]
+script = ExtResource("2_rd3dg")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+shaded = true
+double_sided = false
+texture_filter = 0
+texture = ExtResource("2_64nf2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("1")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.33333, 0.94281, 0, -0.94281, -0.33333, -0.0202379, 1.07535, -0.185955)
+light_color = Color(0.74902, 0.898039, 0.901961, 1)
+spot_range = 1.0
+spot_angle = 43.4095

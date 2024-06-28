@@ -43,7 +43,6 @@ func nef_head_shoot_time():
 func _on_player_finding_player_seen():
 	if player_finding_raycast.get_collider() == player:
 		speed *= 1
-		print("track player")
 	if can_shoot:
 		attack = laser_attack_scene.instantiate()
 		attack.bullet_speed = 9
@@ -66,12 +65,10 @@ func _on_AreaEnemy_area_entered(area):
 func nef_head_movement():
 	#looks for a wall or a box and then it flips the nef head sprite
 	if is_on_wall() == true:
-		print("hits wall")
 		$EnemySprite.rotation.y += PI
 		speed *= -1
 		isFlipping = true
 	if not ground_finding_raycast.is_colliding():
 		speed *= -1
-		print(speed)
 		$EnemySprite.rotation.y += PI
 		isFlipping = true

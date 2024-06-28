@@ -78,7 +78,7 @@ var random = RandomNumberGenerator.new()
 ### INHERITED FUNCTIONS FROM GODOT.
 
 func _ready():
-	set_missions("Allons enfants de la patrie !")
+	set_missions()
 
 	if check_point_enabled == true:
 		global_transform.origin = Globle.spawn_point
@@ -617,17 +617,28 @@ func determine_character_weapon_muzzle(player : String, bullet):
 		_:
 			pass
 
-func set_missions(missions : String):
+func set_missions():
+	print("\n\n\n")
+	var mission_param_index : int = 0
 	for mission_param in level.mission_params:
-		#var regex = RegEx.new()
-		#regex.compile("//([a-z0-9])([A-Z])//g")
-		#var mission = regex.search(mission_param)
-		#print(mission)
-		var regex = RegEx.new()
-		regex.compile("\\w-(\\d+)")
-		var result = regex.search("abc n-0123")
-		if result:
-			print(result.get_string()) # Would print n-0123
+		var mission_finished : bool = level.mission_params.values()[mission_param_index]
+		print(mission_param, ": ", mission_finished)
+		if (!mission_finished):
+			var mission_label = Label.new()
+			mission_label.text = " - " + mission_param
+			#print("MyCamelCaseStringID".gsub(/([a-z0-9])([A-Z])/) { "#{$1} #{$2}" })
+			ui_objectives.add_child(mission_label)
+			mission_param_index = mission_param_index + 1
+			#var regex = RegEx.new()
+		
+			#regex.compile("//([a-z0-9])([A-Z])//g")
+			#var mission = regex.search(mission_param)
+			#print(mission)
+			#var regex = RegEx.new()
+			#regex.compile("\\w-(\\d+)")
+			#var result = regex.search("abc n-0123")
+			#if result:
+				#print(result.get_string()) # Would print n-0123
 
 func shoot_edge_blaster():
 	if Globle.player_active == true:
@@ -680,7 +691,6 @@ func shoot_ry3no():
 
 func shoot_sheepinator():
 	if Globle.player_active == true:
-		print("Sheepinator used. All enemies are converted into sheeps.")
 		var sheepinator_overlaps = sheepinator_raycast.get_overlapping_bodies()
 		if sheepinator_overlaps.size() > 0:
 			for overlap in sheepinator_overlaps:

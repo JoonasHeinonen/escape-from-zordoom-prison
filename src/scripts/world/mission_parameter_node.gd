@@ -5,11 +5,14 @@ class_name MissionParameter
 @onready var level = get_parent()
 
 func _ready():
-	print("Mission parameter")
+	print("Data coming from mission_parameter.gd:")
+	print(level)
+	#print(level.default_music_stream)
+	print("End data")
+	pass
 
 func _on_player_detection_body_entered(body):
 	if body.name == "player":
-		print("Player here")
 		pass # active = true
 		## TODO Pseudocode list:
 		## 1. Conenct to the level.

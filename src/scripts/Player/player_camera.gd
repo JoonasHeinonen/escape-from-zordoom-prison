@@ -34,7 +34,6 @@ func _physics_process(_delta):
 
 func _on_player_update_player_position_to_camera(_new_aiming_radical):
 	if (!player.player_is_aiming_with_rifle):
-		print(get_viewport().size / 2)
 		# Set mouse position.
 		get_viewport().warp_mouse(get_viewport().size / 2)
 		# Confine the mouse to the center, then unconfine it, it centers the mouse.

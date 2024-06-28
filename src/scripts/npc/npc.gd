@@ -49,7 +49,6 @@ func _input(_event):
 								commence_dialog('timeline_Rivet_npc_1')
 								npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
 					"Shark_man":
-						print(shark_man_dialog_value)
 						match(shark_man_dialog_value):
 							(0):
 								Globle.arena_menu_open = false
@@ -78,7 +77,6 @@ func _input(_event):
 				npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 2)
 			#why is there two if statments checking if the player is rivet or not?
 			"Shark_man":
-				print(shark_man_dialog_value)
 				match(shark_man_dialog_value):
 					(0):
 						Globle.arena_menu_open = false

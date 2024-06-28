@@ -12,7 +12,8 @@ var default_music = AudioStreamPlayer.new()
 var player = null
 
 func _ready():
-	default_music_stream.loop = true
+	if default_music_stream:
+		default_music_stream.loop = true
 	default_music.set_stream(default_music_stream)
 
 	## HINT Use the following pattern to add new mission parameters.
@@ -25,9 +26,6 @@ func _ready():
 	if (get_node("npc/friendly")):
 		for npc in $npc/friendly.get_children():
 			npc.position.z = z_axis
-			print(npc.position.z)
-	else:
-		printerr("Does not exist...")
 
 func set_music(
 		music : AudioStreamPlayer,
