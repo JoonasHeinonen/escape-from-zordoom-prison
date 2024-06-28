@@ -4,5 +4,15 @@ extends Area3D
 @export var index : int = 0
 
 func _ready():
-	print(level.mission_params.keys()[index], ": ", level.mission_params.values()[index])
-	pass
+	remove_param()
+
+func _process(_delta):
+	remove_param()
+
+func remove_param():
+	if (level.mission_params.values()[index]):
+		queue_free()
+
+func _on_body_entered(body):
+	if (body.name == "player"):
+		level.mission_params[level.mission_params.keys()[index]] = true

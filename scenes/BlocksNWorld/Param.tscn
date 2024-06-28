@@ -25,3 +25,6 @@ transform = Transform3D(1, 0, 0, 0, -0.33333, 0.94281, 0, -0.94281, -0.33333, -0
 light_color = Color(0.74902, 0.898039, 0.901961, 1)
 spot_range = 1.0
 spot_angle = 43.4095
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
