@@ -78,8 +78,6 @@ var random = RandomNumberGenerator.new()
 ### INHERITED FUNCTIONS FROM GODOT.
 
 func _ready():
-	set_missions()
-
 	if check_point_enabled == true:
 		global_transform.origin = Globle.spawn_point
 	if Globle.spawn_point != Vector3.ZERO:
@@ -284,6 +282,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
+		set_missions()
 
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
@@ -336,6 +335,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(_delta):
+	set_missions()
 	var _y_position = self.global_transform.origin.y
 	var _space_state = get_world_3d().direct_space_state
 	var _slot_index = 1
@@ -617,27 +617,26 @@ func determine_character_weapon_muzzle(player : String, bullet):
 		_:
 			pass
 
+func update_missions():
+	var mission_param_index : int = 0
+	for mission_param in level.mission_params:
+		var mission_finished : bool = level.mission_params.values()[mission_param_index]
+		if (!mission_finished):
+			pass
+
 func set_missions():
-	print("\n\n\n")
 	var mission_param_index : int = 0
 	for mission_param in level.mission_params:
 		var mission_finished : bool = level.mission_params.values()[mission_param_index]
 		if (!mission_finished):
 			var mission_label = Label.new()
-			mission_label.text = " - " + mission_param
+			mission_label.text = mission_param
 			#print("MyCamelCaseStringID".gsub(/([a-z0-9])([A-Z])/) { "#{$1} #{$2}" })
 			ui_objectives.add_child(mission_label)
 			mission_param_index = mission_param_index + 1
-			#var regex = RegEx.new()
-		
-			#regex.compile("//([a-z0-9])([A-Z])//g")
-			#var mission = regex.search(mission_param)
-			#print(mission)
-			#var regex = RegEx.new()
-			#regex.compile("\\w-(\\d+)")
-			#var result = regex.search("abc n-0123")
-			#if result:
-				#print(result.get_string()) # Would print n-0123
+	for ui_objective in ui_objectives.get_children():
+		if (ui_objective.text):
+			pass
 
 func shoot_edge_blaster():
 	if Globle.player_active == true:

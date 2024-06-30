@@ -53,9 +53,9 @@ size = Vector3(2.2914, 2, 2)
 script = ExtResource("1_ksfwo")
 z_axis = -1.5
 mission_params = {
-"completeNCOSchool": true,
+"completeNCOSchool": false,
 "reachOtherEnd": false,
-"retrieveKeyCard": false,
+"retrieveKeyCard": true,
 "talkToFirstLieutenant": true
 }
 
