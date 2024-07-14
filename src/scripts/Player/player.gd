@@ -284,7 +284,6 @@ func _physics_process(delta):
 		Globle.update_vendor()
 	# Ladder logic
 	if Input.is_action_pressed("ui_climb_up") and at_ladder == true:
-		print(at_ladder)
 		gravity = 0
 		player_velocity.x = 0
 		player_velocity.y = 3
@@ -292,18 +291,25 @@ func _physics_process(delta):
 		if Globle.player_character == "Rivet":
 			$RivetSprite.hide()
 			$RivetClimingSprite.show() 
-			$RivetAnimationPlayer.play("Player_Climb")
+			$RivetAnimationPlayer.play("Player_Climb_Up")
 	
 	if Input.is_action_pressed("ui_climb_down") and at_ladder == true:
 		gravity = 0
 		player_velocity.x = 0
 		player_velocity.y = -3
+		if Globle.player_character == "Rivet":
+			$RivetSprite.hide()
+			$RivetClimingSprite.show() 
+			$RivetAnimationPlayer.play("Player_Climb_Down")
 	if Input.is_action_just_released("ui_climb_up") and at_ladder == true:
 		player_velocity.y = 0
+		if Globle.player_character == "Rivet":
+			$RivetSprite.hide()
+			$RivetClimingSprite.show() 
+			$RivetAnimationPlayer.play("Player_Climb_Idle")
 	if Input.is_action_just_released("ui_climb_down") and at_ladder == true:
 		player_velocity.y = 0
 	if at_ladder == false:
-		print(at_ladder)
 		gravity = 3
 		if Globle.player_character == "Rivet":
 			$RivetClimingSprite.hide()
