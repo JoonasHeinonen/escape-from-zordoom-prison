@@ -165,7 +165,7 @@ func _physics_process(delta):
 			for audio_sub_child in audio_container_child.get_children():
 				for audio_child in audio_sub_child.get_children():
 					audio_child.position = Vector3(self.position.x, self.position.y, 0)
-	
+
 	# Sliding logic. Reset double jump while on the ground.
 	if is_on_floor():
 		player_double_jump = false
@@ -287,7 +287,7 @@ func _physics_process(delta):
 		gravity = 0
 		player_velocity.x = 0
 		player_velocity.y = 3
-		print(player_velocity.y)
+
 		if Globle.player_character == "Rivet":
 			$RivetSprite.hide()
 			$RivetClimingSprite.show() 
@@ -301,12 +301,15 @@ func _physics_process(delta):
 			$RivetSprite.hide()
 			$RivetClimingSprite.show() 
 			$RivetAnimationPlayer.play("Player_Climb_Down")
+
 	if Input.is_action_just_released("ui_climb_up") and at_ladder == true:
+
 		player_velocity.y = 0
 		if Globle.player_character == "Rivet":
 			$RivetSprite.hide()
 			$RivetClimingSprite.show() 
 			$RivetAnimationPlayer.play("Player_Climb_Idle")
+
 	if Input.is_action_just_released("ui_climb_down") and at_ladder == true:
 		player_velocity.y = 0
 	if at_ladder == false:
@@ -314,6 +317,7 @@ func _physics_process(delta):
 		if Globle.player_character == "Rivet":
 			$RivetClimingSprite.hide()
 			$RivetSprite.show()
+
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
 			#update_player_position_to_camera()
