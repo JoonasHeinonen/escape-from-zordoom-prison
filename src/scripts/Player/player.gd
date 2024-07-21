@@ -312,11 +312,16 @@ func _physics_process(delta):
 
 	if Input.is_action_just_released("ui_climb_down") and at_ladder == true:
 		player_velocity.y = 0
+		if Globle.player_character == "Rivet":
+			$RivetClimingSprite.show()
+			$RivetSprite.hide()
+			$RivetAnimationPlayer.play("Player_Climb_Idle")
 	if at_ladder == false:
 		gravity = 3
 		if Globle.player_character == "Rivet":
 			$RivetClimingSprite.hide()
 			$RivetSprite.show()
+			$RivetAnimationPlayer.play("Player_Climb_Idle")
 
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
