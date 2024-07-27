@@ -155,6 +155,7 @@ func _ready():
 			$RivetArm/HandInstance/Hand.scale.y = -20
 
 func _physics_process(delta):
+	
 	# Set the audio nodes position to share the same position as the player.
 	for audio_container_child in $Audio.get_children():
 		for audio_child in audio_container_child.get_children():
@@ -287,7 +288,6 @@ func _physics_process(delta):
 		gravity = 0
 		player_velocity.x = 0
 		player_velocity.y = 3
-
 		if Globle.player_character == "Rivet":
 			$RivetSprite.hide()
 			$RivetClimingSprite.show() 
@@ -300,15 +300,17 @@ func _physics_process(delta):
 		if Globle.player_character == "Rivet":
 			$RivetSprite.hide()
 			$RivetClimingSprite.show() 
+			$RivetArm/HandInstance/Hand.hide()
 			$RivetAnimationPlayer.play("Player_Climb_Down")
 
 	if Input.is_action_just_released("ui_climb_up") and at_ladder == true:
-
 		player_velocity.y = 0
 		if Globle.player_character == "Rivet":
 			$RivetSprite.hide()
+			$RivetArm/HandInstance/Hand.hide()
 			$RivetClimingSprite.show() 
 			$RivetAnimationPlayer.play("Player_Climb_Idle")
+			
 
 	if Input.is_action_just_released("ui_climb_down") and at_ladder == true:
 		player_velocity.y = 0
@@ -318,10 +320,16 @@ func _physics_process(delta):
 			$RivetAnimationPlayer.play("Player_Climb_Idle")
 	if at_ladder == false:
 		gravity = 3
+	
 		if Globle.player_character == "Rivet":
 			$RivetClimingSprite.hide()
 			$RivetSprite.show()
+			$RivetArm/HandInstance/Hand.show()
 			$RivetAnimationPlayer.play("Player_Climb_Idle")
+			# is able to detect shooting 
+	if player_velocity.x == 0 || player_velocity.y == 3 || player_velocity.y == -3:
+		if Input.is_action_pressed("ui_ranged_attack"):
+			print("shoot gun")
 
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
