@@ -53,7 +53,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_fvm7x")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aafb2"]
-size = Vector3(3.8291, 14.8643, 6.98041)
+size = Vector3(3.8291, 14, 6.98041)
 
 [node name="ladder" type="Node3D"]
 script = ExtResource("1_ts4vf")
@@ -66,7 +66,7 @@ skeleton = NodePath("")
 [node name="StaticBody3D" type="Area3D" parent="ladder"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ladder/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41455, 0.328613, 0.196198)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41455, 0.76076, 0.196198)
 shape = SubResource("BoxShape3D_aafb2")
 
 [connection signal="body_entered" from="ladder/StaticBody3D" to="." method="_on_static_body_3d_body_entered"]

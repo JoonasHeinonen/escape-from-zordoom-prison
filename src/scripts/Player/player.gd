@@ -326,10 +326,6 @@ func _physics_process(delta):
 			$RivetSprite.show()
 			$RivetArm/HandInstance/Hand.show()
 			$RivetAnimationPlayer.play("Player_Climb_Idle")
-			# is able to detect shooting 
-	if player_velocity.x == 0 || player_velocity.y == 3 || player_velocity.y == -3:
-		if Input.is_action_pressed("ui_ranged_attack"):
-			print("shoot gun")
 
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
@@ -749,7 +745,7 @@ func _on_UI_Timer_timeout():
 		$PlayerUI/UINotification/CanvasLayer/Ui_notification.hide()
 
 func _on_ShootTimer_timeout():
-	if Input.is_action_pressed("ui_ranged_attack") && !Input.is_action_pressed("ui_melee_attack"):
+	if Input.is_action_pressed("ui_ranged_attack") && !Input.is_action_pressed("ui_melee_attack") && !at_ladder:
 		match current_weapon:
 			"edge_blaster":
 				if (Globle.player_weapons_ammo[0] > 0):
