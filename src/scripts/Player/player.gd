@@ -290,8 +290,12 @@ func _physics_process(delta):
 		player_velocity.y = 3
 		if Globle.player_character == "Rivet":
 			$RivetSprite.hide()
-			$RivetClimingSprite.show() 
+			$RivetClimbingSprite.show() 
 			$RivetAnimationPlayer.play("Player_Climb_Up")
+		if Globle.player_character == "Angela":
+			$AngelaSprite.hide()
+			$AngelaClimbingSprite.show() 
+			$AngelaAnimationPlayer.play("Player_Climb_Up")
 	
 	if Input.is_action_pressed("ui_climb_down") and at_ladder == true:
 		gravity = 0
@@ -299,7 +303,7 @@ func _physics_process(delta):
 		player_velocity.y = -3
 		if Globle.player_character == "Rivet":
 			$RivetSprite.hide()
-			$RivetClimingSprite.show() 
+			$RivetClimbingSprite.show() 
 			$RivetArm/HandInstance/Hand.hide()
 			$RivetAnimationPlayer.play("Player_Climb_Down")
 
@@ -308,21 +312,22 @@ func _physics_process(delta):
 		if Globle.player_character == "Rivet":
 			$RivetSprite.hide()
 			$RivetArm/HandInstance/Hand.hide()
-			$RivetClimingSprite.show() 
+			$RivetClimbingSprite.show() 
 			$RivetAnimationPlayer.play("Player_Climb_Idle")
 			
 
 	if Input.is_action_just_released("ui_climb_down") and at_ladder == true:
 		player_velocity.y = 0
 		if Globle.player_character == "Rivet":
-			$RivetClimingSprite.show()
+			$RivetClimbingSprite.show()
 			$RivetSprite.hide()
 			$RivetAnimationPlayer.play("Player_Climb_Idle")
+		
 	if at_ladder == false:
 		gravity = 3
 	
 		if Globle.player_character == "Rivet":
-			$RivetClimingSprite.hide()
+			$RivetClimbingSprite.hide()
 			$RivetSprite.show()
 			$RivetArm/HandInstance/Hand.show()
 			$RivetAnimationPlayer.play("Player_Climb_Idle")

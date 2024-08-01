@@ -1,8 +1,9 @@
-[gd_scene load_steps=124 format=3 uid="uid://dbip5l63lixtv"]
+[gd_scene load_steps=128 format=3 uid="uid://dbip5l63lixtv"]
 
 [ext_resource type="Script" path="res://src/scripts/Player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dbel2rhwi3en2" path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" id="3"]
 [ext_resource type="Theme" uid="uid://bk5epmeksv1nf" path="res://src/theme/zordoom_theme.tres" id="4"]
+[ext_resource type="Texture2D" uid="uid://dcm02p0ocd6vv" path="res://resources/images/characters/player/angela/Angela_spreetsheet_climbing.png" id="4_5qvix"]
 [ext_resource type="Texture2D" uid="uid://bl1k1sd08mgw3" path="res://resources/images/weapons/edge_blaster.png" id="5"]
 [ext_resource type="Texture2D" uid="uid://c7xd72ky151lf" path="res://resources/images/characters/player/angela/angela_weapon.png" id="6"]
 [ext_resource type="PackedScene" path="res://scenes/Menu/PlayerMenuButtons/ReturnToMainMenuButton.tscn" id="7"]
@@ -459,15 +460,51 @@ tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
+[sub_resource type="Animation" id="Animation_uik53"]
+resource_name = "Player_Climb_Up"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngelaClimbingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_50woe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngelaClimbingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_48tsd"]
 _data = {
+"Player_Climb_Up": SubResource("Animation_uik53"),
 "Player_Damage": SubResource("67"),
 "Player_Fall": SubResource("15"),
 "Player_Melee": SubResource("24"),
 "Player_Slide": SubResource("Animation_v1imr"),
 "Player_Still": SubResource("8"),
-"Player_Walk": SubResource("7")
+"Player_Walk": SubResource("7"),
+"RESET": SubResource("Animation_50woe")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qh5q6"]
+animation = &"Player_Climb_Up"
 
 [sub_resource type="AnimationNodeAnimation" id="68"]
 animation = &"Player_Damage"
@@ -511,6 +548,8 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cejvx"]
 
 [sub_resource type="AnimationNodeStateMachine" id="13"]
+states/Player_Climb_Up/node = SubResource("AnimationNodeAnimation_qh5q6")
+states/Player_Climb_Up/position = Vector2(494.641, -3)
 states/Player_Damage/node = SubResource("68")
 states/Player_Damage/position = Vector2(-50, 44)
 states/Player_Fall/node = SubResource("40")
@@ -533,7 +572,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RivetClimingSprite:frame")
+tracks/0/path = NodePath("RivetClimbingSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -549,7 +588,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RivetClimingSprite:frame")
+tracks/0/path = NodePath("RivetClimbingSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -565,7 +604,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RivetClimingSprite:frame")
+tracks/0/path = NodePath("RivetClimbingSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -778,7 +817,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RivetClimingSprite:frame")
+tracks/0/path = NodePath("RivetClimbingSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -990,7 +1029,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("6")
 
 [node name="AngelaSprite" type="Sprite3D" parent="."]
-visible = false
 pixel_size = 0.04
 shaded = true
 double_sided = false
@@ -998,6 +1036,7 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 4
+frame = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
@@ -1022,6 +1061,15 @@ light_energy = 0.5
 light_indirect_energy = 0.5
 light_specular = 0.2
 spot_range = 0.43704
+
+[node name="AngelaClimbingSprite" type="Sprite3D" parent="."]
+transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 0, 0.995942, 0)
+visible = false
+shaded = true
+double_sided = false
+texture_filter = 0
+texture = ExtResource("4_5qvix")
+hframes = 10
 
 [node name="AngelaArm" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, -0.1, 1.50996e-07, 0, -1.50996e-08, -1, 0, 0, -0.139)
@@ -1070,6 +1118,7 @@ anim_player = NodePath("../AngelaAnimationPlayer")
 
 [node name="RivetSprite" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0677329, 0, 0)
+visible = false
 pixel_size = 0.04
 shaded = true
 double_sided = false
@@ -1077,9 +1126,9 @@ texture_filter = 0
 texture = ExtResource("36")
 hframes = 10
 vframes = 4
-frame = 1
+frame = 2
 
-[node name="RivetClimingSprite" type="Sprite3D" parent="."]
+[node name="RivetClimbingSprite" type="Sprite3D" parent="."]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 0, -0.145799, 0)
 visible = false
 shaded = true
@@ -1950,7 +1999,6 @@ volume_db = 80.0
 [node name="Body" type="Node" parent="Audio"]
 
 [node name="Step" type="AudioStreamPlayer3D" parent="Audio/Body"]
-stream = ExtResource("20")
 volume_db = 80.0
 
 [node name="Melee" type="Node" parent="Audio"]
