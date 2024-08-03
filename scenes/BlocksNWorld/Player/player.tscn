@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://dbip5l63lixtv"]
+[gd_scene load_steps=130 format=3 uid="uid://dbip5l63lixtv"]
 
 [ext_resource type="Script" path="res://src/scripts/Player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dbel2rhwi3en2" path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" id="3"]
@@ -65,6 +65,22 @@ radius = 2.29378
 [sub_resource type="QuadMesh" id="21"]
 
 [sub_resource type="PointMesh" id="20"]
+
+[sub_resource type="Animation" id="Animation_uik53"]
+resource_name = "Player_Climb_Up"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngelaClimbingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 1, 2, 3, 4, 1, 2]
+}
 
 [sub_resource type="Animation" id="67"]
 resource_name = "Player_Damage"
@@ -460,22 +476,6 @@ tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
-[sub_resource type="Animation" id="Animation_uik53"]
-resource_name = "Player_Climb_Up"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AngelaClimbingSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 1, 2, 3, 4]
-}
-
 [sub_resource type="Animation" id="Animation_50woe"]
 length = 0.001
 tracks/0/type = "value"
@@ -491,8 +491,40 @@ tracks/0/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_bhwor"]
+resource_name = "Player_Climb_Down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngelaClimbingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 3, 2, 1, 4, 3, 2, 1, 4, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1ncu8"]
+resource_name = "Player_Climb_Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngelaClimbingSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_48tsd"]
 _data = {
+"Player_Climb_Down": SubResource("Animation_bhwor"),
+"Player_Climb_Idle": SubResource("Animation_1ncu8"),
 "Player_Climb_Up": SubResource("Animation_uik53"),
 "Player_Damage": SubResource("67"),
 "Player_Fall": SubResource("15"),
@@ -1029,6 +1061,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("6")
 
 [node name="AngelaSprite" type="Sprite3D" parent="."]
+visible = false
 pixel_size = 0.04
 shaded = true
 double_sided = false
@@ -1036,7 +1069,6 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 4
-frame = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
@@ -1064,7 +1096,6 @@ spot_range = 0.43704
 
 [node name="AngelaClimbingSprite" type="Sprite3D" parent="."]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 0, 0.995942, 0)
-visible = false
 shaded = true
 double_sided = false
 texture_filter = 0

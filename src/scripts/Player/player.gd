@@ -294,7 +294,8 @@ func _physics_process(delta):
 			$RivetAnimationPlayer.play("Player_Climb_Up")
 		if Globle.player_character == "Angela":
 			$AngelaSprite.hide()
-			$AngelaClimbingSprite.show() 
+			$AngelaClimbingSprite.show()
+			$AngelaArm/HandInstance/Hand.hide()
 			$AngelaAnimationPlayer.play("Player_Climb_Up")
 	
 	if Input.is_action_pressed("ui_climb_down") and at_ladder == true:
@@ -306,6 +307,11 @@ func _physics_process(delta):
 			$RivetClimbingSprite.show() 
 			$RivetArm/HandInstance/Hand.hide()
 			$RivetAnimationPlayer.play("Player_Climb_Down")
+		if Globle.player_character == "Angela":
+			$AngelaSprite.hide()
+			$AngelaClimbingSprite.show() 
+			$AngelaArm/HandInstance/Hand.hide()
+			$AngelaAnimationPlayer.play("Player_Climb_Down")
 
 	if Input.is_action_just_released("ui_climb_up") and at_ladder == true:
 		player_velocity.y = 0
@@ -314,7 +320,11 @@ func _physics_process(delta):
 			$RivetArm/HandInstance/Hand.hide()
 			$RivetClimbingSprite.show() 
 			$RivetAnimationPlayer.play("Player_Climb_Idle")
-			
+		if Globle.player_character == "Angela":
+			$AngelaSprite.hide()
+			$AngelaClimbingSprite.show() 
+			$AngelaArm/HandInstance/Hand.hide()
+			$AngelaAnimationPlayer.play("Player_Climb_Idle")			
 
 	if Input.is_action_just_released("ui_climb_down") and at_ladder == true:
 		player_velocity.y = 0
@@ -322,6 +332,11 @@ func _physics_process(delta):
 			$RivetClimbingSprite.show()
 			$RivetSprite.hide()
 			$RivetAnimationPlayer.play("Player_Climb_Idle")
+		if Globle.player_character == "Angela":
+			$AngelaSprite.hide()
+			$AngelaClimbingSprite.show() 
+			$AngelaArm/HandInstance/Hand.hide()
+			$AngelaAnimationPlayer.play("Player_Climb_Idle")
 		
 	if at_ladder == false:
 		gravity = 3
@@ -331,6 +346,11 @@ func _physics_process(delta):
 			$RivetSprite.show()
 			$RivetArm/HandInstance/Hand.show()
 			$RivetAnimationPlayer.play("Player_Climb_Idle")
+		if Globle.player_character == "Angela":
+			$AngelaSprite.show()
+			$AngelaClimbingSprite.hide() 
+			$AngelaArm/HandInstance/Hand.show()
+			$AngelaAnimationPlayer.play("Player_Climb_Idle")
 
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
