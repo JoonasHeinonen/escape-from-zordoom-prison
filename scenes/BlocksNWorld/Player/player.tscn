@@ -1061,7 +1061,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 shape = SubResource("6")
 
 [node name="AngelaSprite" type="Sprite3D" parent="."]
-visible = false
 pixel_size = 0.04
 shaded = true
 double_sided = false
@@ -1096,6 +1095,7 @@ spot_range = 0.43704
 
 [node name="AngelaClimbingSprite" type="Sprite3D" parent="."]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 0, 0.995942, 0)
+visible = false
 shaded = true
 double_sided = false
 texture_filter = 0
@@ -1157,7 +1157,7 @@ texture_filter = 0
 texture = ExtResource("36")
 hframes = 10
 vframes = 4
-frame = 2
+frame = 1
 
 [node name="RivetClimbingSprite" type="Sprite3D" parent="."]
 transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 0, -0.145799, 0)
