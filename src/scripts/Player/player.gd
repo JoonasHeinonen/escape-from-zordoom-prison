@@ -78,6 +78,7 @@ var random = RandomNumberGenerator.new()
 ### INHERITED FUNCTIONS FROM GODOT.
 
 func _ready():
+	set_missions()
 	if check_point_enabled == true:
 		global_transform.origin = Globle.spawn_point
 	if Globle.spawn_point != Vector3.ZERO:
@@ -335,7 +336,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(_delta):
-	set_missions()
 	var _y_position = self.global_transform.origin.y
 	var _space_state = get_world_3d().direct_space_state
 	var _slot_index = 1
@@ -626,6 +626,12 @@ func update_missions():
 
 func set_missions():
 	var mission_param_index : int = 0
+
+	# Clears all the mission parameters in pre-run.
+	for ui_objective in ui_objectives.get_children():
+		ui_objective.queue_free()
+
+	# Sets the missions.
 	for mission_param in level.mission_params:
 		var mission_finished : bool = level.mission_params.values()[mission_param_index]
 		if (!mission_finished):
@@ -634,9 +640,6 @@ func set_missions():
 			#print("MyCamelCaseStringID".gsub(/([a-z0-9])([A-Z])/) { "#{$1} #{$2}" })
 			ui_objectives.add_child(mission_label)
 			mission_param_index = mission_param_index + 1
-	for ui_objective in ui_objectives.get_children():
-		if (ui_objective.text):
-			pass
 
 func shoot_edge_blaster():
 	if Globle.player_active == true:
