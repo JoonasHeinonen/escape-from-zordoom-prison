@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" path="res://scenes/Menu/PlayerMenuButtons/ReturnToGameButton.tscn" id="8"]
 [ext_resource type="Script" path="res://src/scripts/Player/pause_menu_container.gd" id="9"]
 [ext_resource type="Script" path="res://src/scripts/npc/vendor_container.gd" id="10"]
-[ext_resource type="Texture2D" uid="uid://ba4duoebwhy7p" path="res://resources/images/characters/player/rivet/rivet_climing_Sprite_Sheet.png" id="10_intfw"]
+[ext_resource type="Texture2D" path="res://resources/images/characters/player/rivet/rivet_climing_Sprite_Sheet.png" id="10_intfw"]
 [ext_resource type="Theme" uid="uid://c2nmiwn8xj48a" path="res://src/theme/zordoom_resource_theme.tres" id="11"]
 [ext_resource type="Texture2D" uid="uid://cf3xp1q1vg3lm" path="res://scenes/UI/bolt-icon.png" id="12"]
 [ext_resource type="Script" path="res://src/scripts/UI/bolt_count.gd" id="13"]

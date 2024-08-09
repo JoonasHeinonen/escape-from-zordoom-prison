@@ -286,33 +286,12 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
 
-# Ladder logic
-	if Input.is_action_pressed("ui_climb_up") and at_ladder == true:
-		climbing = true
-		grabbed_ladder = true
-		gravity = 0
-		player_velocity.x = 0
-		player_velocity.y = 3
-		state_machine.travel("Player_Climb")
-		if Globle.player_character == "Rivet":
-			$RivetArm/HandInstance/Hand.hide()
-		if Globle.player_character == "Angela":
-			$AngelaArm/HandInstance/Hand.hide()
-
-	if Input.is_action_pressed("ui_climb_down") and at_ladder == true:
-		climbing = true
-		grabbed_ladder = true
-		gravity = 0
-		player_velocity.x = 0
-		player_velocity.y = -3
-		state_machine.travel("Player_Climb")
-		if Globle.player_character == "Rivet":
-			$RivetArm/HandInstance/Hand.hide()
-		if Globle.player_character == "Angela":
-			$AngelaArm/HandInstance/Hand.hide()
-			#IDLE
-			print("PLAYER CLIMBS CLIMBS CLIMBS DOWN")
-			#$AngelaAnimationPlayer.play("Player_Climb")
+	# Ladder logic
+	if at_ladder:
+		if Input.is_action_pressed("ui_climb_up"):
+			climb_ladder(3)
+		if Input.is_action_pressed("ui_climb_down"):
+			climb_ladder(-3)
 
 	if Input.is_action_just_released("ui_climb_down") or Input.is_action_just_released("ui_climb_up") and at_ladder:
 		climbing = false
@@ -328,17 +307,10 @@ func _physics_process(delta):
 		grabbed_ladder = false
 
 		if Globle.player_character == "Rivet":
-			$RivetClimbingSprite.hide()
-			$RivetSprite.show()
 			$RivetArm/HandInstance/Hand.show()
-			$RivetAnimationPlayer.play("Player_Climb_Idle")
 		if Globle.player_character == "Angela":
 			$AngelaArm/HandInstance/Hand.show()
-			#IDLE
-			#state_machine.travel("Player_Climb") # NOT THIS
-			#$AngelaAnimationPlayer.play("Player_Climb")
 
-# Ladder logic ends here
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
 			#update_player_position_to_camera()
@@ -360,7 +332,6 @@ func _physics_process(delta):
 				state_machine.travel("Player_Climb_Idle")
 				if climbing:
 					state_machine.travel("Player_Climb")
-				print("Idle player climbs")
 			if Globle.player_character == "Angela":
 				if Input.is_action_pressed("ui_melee_attack"):
 					state_machine.travel("Player_Melee")
@@ -597,6 +568,18 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponDescription.text = str(wpn_desc)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/HBoxContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
+
+func climb_ladder(y_vel : int):
+	climbing = true
+	grabbed_ladder = true
+	gravity = 0
+	player_velocity.x = 0
+	player_velocity.y = y_vel
+	state_machine.travel("Player_Climb")
+	if Globle.player_character == "Rivet":
+		$RivetArm/HandInstance/Hand.hide()
+	if Globle.player_character == "Angela":
+		$AngelaArm/HandInstance/Hand.hide()
 
 func update_health_ui():
 	$PlayerUI/InGameUI/Health/HealthHas.text = str(player_health)
