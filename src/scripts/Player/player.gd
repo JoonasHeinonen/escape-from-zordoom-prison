@@ -36,7 +36,6 @@ const RANDOM_ANGLE = PI / 2.0
 @export var check_point_enabled = true
 @export var speed = 1
 @export_enum("left", "right") var player_direction : String
-@export var at_ladder = false
 
 var animation_player
 var gun_instance
@@ -55,6 +54,9 @@ var player_health = 4
 var player_max_health
 var health_node_counter = 0
 
+var at_ladder : bool = false
+var climbing : bool = false
+var grabbed_ladder : bool = false
 var boss_fight_active : bool = false
 var in_teleport_radius : bool = false
 var player_double_jump : bool = false
@@ -283,75 +285,60 @@ func _physics_process(delta):
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
-	# Ladder logic
+
+# Ladder logic
 	if Input.is_action_pressed("ui_climb_up") and at_ladder == true:
+		climbing = true
+		grabbed_ladder = true
 		gravity = 0
 		player_velocity.x = 0
 		player_velocity.y = 3
+		state_machine.travel("Player_Climb")
 		if Globle.player_character == "Rivet":
-			$RivetSprite.hide()
-			$RivetClimbingSprite.show() 
-			$RivetAnimationPlayer.play("Player_Climb_Up")
+			$RivetArm/HandInstance/Hand.hide()
 		if Globle.player_character == "Angela":
-			$AngelaSprite.hide()
-			$AngelaClimbingSprite.show()
 			$AngelaArm/HandInstance/Hand.hide()
-			$AngelaAnimationPlayer.play("Player_Climb_Up")
-	
+
 	if Input.is_action_pressed("ui_climb_down") and at_ladder == true:
+		climbing = true
+		grabbed_ladder = true
 		gravity = 0
 		player_velocity.x = 0
 		player_velocity.y = -3
+		state_machine.travel("Player_Climb")
 		if Globle.player_character == "Rivet":
-			$RivetSprite.hide()
-			$RivetClimbingSprite.show() 
 			$RivetArm/HandInstance/Hand.hide()
-			$RivetAnimationPlayer.play("Player_Climb_Down")
 		if Globle.player_character == "Angela":
-			$AngelaSprite.hide()
-			$AngelaClimbingSprite.show() 
 			$AngelaArm/HandInstance/Hand.hide()
-			$AngelaAnimationPlayer.play("Player_Climb_Down")
+			#IDLE
+			print("PLAYER CLIMBS CLIMBS CLIMBS DOWN")
+			#$AngelaAnimationPlayer.play("Player_Climb")
 
-	if Input.is_action_just_released("ui_climb_up") and at_ladder == true:
+	if Input.is_action_just_released("ui_climb_down") or Input.is_action_just_released("ui_climb_up") and at_ladder:
+		climbing = false
 		player_velocity.y = 0
+		state_machine.travel("Player_Climb")
 		if Globle.player_character == "Rivet":
-			$RivetSprite.hide()
 			$RivetArm/HandInstance/Hand.hide()
-			$RivetClimbingSprite.show() 
-			$RivetAnimationPlayer.play("Player_Climb_Idle")
 		if Globle.player_character == "Angela":
-			$AngelaSprite.hide()
-			$AngelaClimbingSprite.show() 
 			$AngelaArm/HandInstance/Hand.hide()
-			$AngelaAnimationPlayer.play("Player_Climb_Idle")			
 
-	if Input.is_action_just_released("ui_climb_down") and at_ladder == true:
-		player_velocity.y = 0
-		if Globle.player_character == "Rivet":
-			$RivetClimbingSprite.show()
-			$RivetSprite.hide()
-			$RivetAnimationPlayer.play("Player_Climb_Idle")
-		if Globle.player_character == "Angela":
-			$AngelaSprite.hide()
-			$AngelaClimbingSprite.show() 
-			$AngelaArm/HandInstance/Hand.hide()
-			$AngelaAnimationPlayer.play("Player_Climb_Idle")
-		
-	if at_ladder == false:
+	if !at_ladder:
 		gravity = 3
-	
+		grabbed_ladder = false
+
 		if Globle.player_character == "Rivet":
 			$RivetClimbingSprite.hide()
 			$RivetSprite.show()
 			$RivetArm/HandInstance/Hand.show()
 			$RivetAnimationPlayer.play("Player_Climb_Idle")
 		if Globle.player_character == "Angela":
-			$AngelaSprite.show()
-			$AngelaClimbingSprite.hide() 
 			$AngelaArm/HandInstance/Hand.show()
-			$AngelaAnimationPlayer.play("Player_Climb_Idle")
+			#IDLE
+			#state_machine.travel("Player_Climb") # NOT THIS
+			#$AngelaAnimationPlayer.play("Player_Climb")
 
+# Ladder logic ends here
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
 			#update_player_position_to_camera()
@@ -369,6 +356,11 @@ func _physics_process(delta):
 		player_velocity.y -= gravity * delta
 		if !player_sliding:
 			state_machine.travel("Player_Fall")
+			if grabbed_ladder:
+				state_machine.travel("Player_Climb_Idle")
+				if climbing:
+					state_machine.travel("Player_Climb")
+				print("Idle player climbs")
 			if Globle.player_character == "Angela":
 				if Input.is_action_pressed("ui_melee_attack"):
 					state_machine.travel("Player_Melee")
