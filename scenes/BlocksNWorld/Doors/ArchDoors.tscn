@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://xov5w1sy23lh"]
 
-[ext_resource type="Material" path="res://resources/models/tiles/incubator_lab/ZordoomDoor.material" id="1"]
+[ext_resource type="Material" uid="uid://b0mdercibkpxd" path="res://resources/models/tiles/incubator_lab/ZordoomDoor.material" id="1"]
 [ext_resource type="Script" path="res://src/scripts/world/arch_door.gd" id="2"]
 
 [sub_resource type="ArrayMesh" id="1"]

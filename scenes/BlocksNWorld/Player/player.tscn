@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://dbip5l63lixtv"]
+[gd_scene load_steps=141 format=3 uid="uid://dbip5l63lixtv"]
 
 [ext_resource type="Script" path="res://src/scripts/Player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dbel2rhwi3en2" path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" id="3"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" path="res://scenes/Menu/PlayerMenuButtons/ReturnToGameButton.tscn" id="8"]
 [ext_resource type="Script" path="res://src/scripts/Player/pause_menu_container.gd" id="9"]
 [ext_resource type="Script" path="res://src/scripts/npc/vendor_container.gd" id="10"]
+[ext_resource type="Texture2D" path="res://resources/images/characters/player/rivet/rivet_climing_Sprite_Sheet.png" id="10_intfw"]
 [ext_resource type="Theme" uid="uid://c2nmiwn8xj48a" path="res://src/theme/zordoom_resource_theme.tres" id="11"]
 [ext_resource type="Texture2D" uid="uid://cf3xp1q1vg3lm" path="res://scenes/UI/bolt-icon.png" id="12"]
 [ext_resource type="Script" path="res://src/scripts/UI/bolt_count.gd" id="13"]
@@ -64,6 +65,62 @@ radius = 2.29378
 
 [sub_resource type="PointMesh" id="20"]
 
+[sub_resource type="Animation" id="Animation_uik53"]
+resource_name = "Player_Climb"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngelaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [44, 43, 42, 41]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AngelaSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1ncu8"]
+resource_name = "Player_Climb_Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AngelaSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [41]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AngelaSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="67"]
 resource_name = "Player_Damage"
 length = 0.4
@@ -89,7 +146,6 @@ tracks/1/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="Animation" id="15"]
 resource_name = "Player_Fall"
-length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -458,15 +514,27 @@ tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
+[sub_resource type="Animation" id="Animation_50woe"]
+length = 0.001
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_48tsd"]
 _data = {
+"Player_Climb": SubResource("Animation_uik53"),
+"Player_Climb_Idle": SubResource("Animation_1ncu8"),
 "Player_Damage": SubResource("67"),
 "Player_Fall": SubResource("15"),
 "Player_Melee": SubResource("24"),
 "Player_Slide": SubResource("Animation_v1imr"),
 "Player_Still": SubResource("8"),
-"Player_Walk": SubResource("7")
+"Player_Walk": SubResource("7"),
+"RESET": SubResource("Animation_50woe")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t4xby"]
+animation = &"Player_Climb"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_04rbx"]
+animation = &"Player_Climb_Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="68"]
 animation = &"Player_Damage"
@@ -509,7 +577,23 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cejvx"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3b7pj"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_kkys8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_762ap"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b6hi1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjkmy"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4pi5j"]
+
 [sub_resource type="AnimationNodeStateMachine" id="13"]
+states/Player_Climb/node = SubResource("AnimationNodeAnimation_t4xby")
+states/Player_Climb/position = Vector2(153, -102)
+states/Player_Climb_Idle/node = SubResource("AnimationNodeAnimation_04rbx")
+states/Player_Climb_Idle/position = Vector2(-50, -34)
 states/Player_Damage/node = SubResource("68")
 states/Player_Damage/position = Vector2(-50, 44)
 states/Player_Fall/node = SubResource("40")
@@ -522,9 +606,38 @@ states/Player_Still/node = SubResource("42")
 states/Player_Still/position = Vector2(153, 44)
 states/Player_Walk/node = SubResource("43")
 states/Player_Walk/position = Vector2(369, 44)
-states/Start/position = Vector2(153, -34)
-transitions = ["Player_Still", "Player_Walk", SubResource("44"), "Player_Walk", "Player_Still", SubResource("45"), "Player_Still", "Player_Fall", SubResource("46"), "Player_Fall", "Player_Still", SubResource("47"), "Player_Still", "Player_Melee", SubResource("48"), "Player_Melee", "Player_Still", SubResource("49"), "Player_Damage", "Player_Still", SubResource("69"), "Player_Still", "Player_Damage", SubResource("70"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_ofvuq"), "Player_Still", "Player_Slide", SubResource("AnimationNodeStateMachineTransition_fx0gl"), "Player_Slide", "Player_Still", SubResource("AnimationNodeStateMachineTransition_cejvx")]
-graph_offset = Vector2(-326.359, -54)
+states/Start/position = Vector2(369, -34)
+transitions = ["Player_Still", "Player_Walk", SubResource("44"), "Player_Walk", "Player_Still", SubResource("45"), "Player_Still", "Player_Fall", SubResource("46"), "Player_Fall", "Player_Still", SubResource("47"), "Player_Still", "Player_Melee", SubResource("48"), "Player_Melee", "Player_Still", SubResource("49"), "Player_Damage", "Player_Still", SubResource("69"), "Player_Still", "Player_Damage", SubResource("70"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_ofvuq"), "Player_Still", "Player_Slide", SubResource("AnimationNodeStateMachineTransition_fx0gl"), "Player_Slide", "Player_Still", SubResource("AnimationNodeStateMachineTransition_cejvx"), "Player_Climb", "Player_Still", SubResource("AnimationNodeStateMachineTransition_3b7pj"), "Player_Still", "Player_Climb", SubResource("AnimationNodeStateMachineTransition_kkys8"), "Player_Climb_Idle", "Player_Still", SubResource("AnimationNodeStateMachineTransition_762ap"), "Player_Still", "Player_Climb_Idle", SubResource("AnimationNodeStateMachineTransition_b6hi1"), "Player_Climb", "Player_Climb_Idle", SubResource("AnimationNodeStateMachineTransition_fjkmy"), "Player_Climb_Idle", "Player_Climb", SubResource("AnimationNodeStateMachineTransition_4pi5j")]
+graph_offset = Vector2(-405.359, -159.039)
+
+[sub_resource type="Animation" id="Animation_gnm5u"]
+resource_name = "Player_Climb_Idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [44]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="71"]
 resource_name = "Player_Damage"
@@ -548,26 +661,26 @@ length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/path = NodePath("RivetSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [23]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("RivetSprite:modulate")
+tracks/1/path = NodePath("RivetSprite:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [23]
 }
 tracks/2/type = "scale_3d"
 tracks/2/imported = false
@@ -582,26 +695,26 @@ resource_name = "Player_Melee"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/path = NodePath("RivetSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [30, 31, 33, 34, 35, 36]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RivetSprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [30, 31, 33, 34, 35, 36]
 }
 tracks/2/type = "scale_3d"
 tracks/2/imported = false
@@ -617,26 +730,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/path = NodePath("RivetSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [28]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RivetSprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [28]
 }
 tracks/2/type = "scale_3d"
 tracks/2/imported = false
@@ -660,26 +773,26 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/path = NodePath("RivetSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.4, 0.6, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [1, 3, 1, 3, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RivetSprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1, 3, 1, 3, 1]
 }
 tracks/2/type = "scale_3d"
 tracks/2/imported = false
@@ -695,14 +808,53 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
+tracks/0/path = NodePath("RivetSprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+}
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
+
+[sub_resource type="Animation" id="Animation_6on03"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_2vjbu"]
+resource_name = "Player_Climb"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("RivetSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+"values": [44, 43, 42, 41]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -716,23 +868,25 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/2/type = "scale_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape3D")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ghn3u"]
 _data = {
+"Player_Climb": SubResource("Animation_2vjbu"),
+"Player_Climb_Idle": SubResource("Animation_gnm5u"),
 "Player_Damage": SubResource("71"),
 "Player_Fall": SubResource("32"),
 "Player_Melee": SubResource("54"),
 "Player_Slide": SubResource("Animation_x8yuu"),
 "Player_Still": SubResource("30"),
-"Player_Walk": SubResource("31")
+"Player_Walk": SubResource("31"),
+"RESET": SubResource("Animation_6on03")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gpyxs"]
+animation = &"Player_Climb"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ll688"]
+animation = &"Player_Climb_Idle"
 
 [sub_resource type="AnimationNodeAnimation" id="72"]
 animation = &"Player_Damage"
@@ -779,8 +933,24 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7e85f"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a74xs"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_70rxh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_df6mb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_q7gu1"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vpmah"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gaoit"]
+
 [sub_resource type="AnimationNodeStateMachine" id="28"]
 states/End/position = Vector2(626, 84)
+states/Player_Climb/node = SubResource("AnimationNodeAnimation_gpyxs")
+states/Player_Climb/position = Vector2(57, -3)
+states/Player_Climb_Idle/node = SubResource("AnimationNodeAnimation_ll688")
+states/Player_Climb_Idle/position = Vector2(285, -88)
 states/Player_Damage/node = SubResource("72")
 states/Player_Damage/position = Vector2(57, 84)
 states/Player_Fall/node = SubResource("33")
@@ -793,9 +963,9 @@ states/Player_Still/node = SubResource("58")
 states/Player_Still/position = Vector2(285, 84)
 states/Player_Walk/node = SubResource("52")
 states/Player_Walk/position = Vector2(462, 84)
-states/Start/position = Vector2(285, -77)
-transitions = ["Player_Still", "Player_Fall", SubResource("59"), "Player_Fall", "Player_Still", SubResource("60"), "Player_Still", "Player_Melee", SubResource("61"), "Player_Melee", "Player_Still", SubResource("62"), "Player_Still", "Player_Walk", SubResource("63"), "Player_Walk", "Player_Still", SubResource("64"), "Player_Damage", "Player_Still", SubResource("73"), "Player_Still", "Player_Damage", SubResource("74"), "Player_Damage", "Player_Walk", SubResource("75"), "Player_Walk", "Player_Damage", SubResource("76"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_dpwch"), "Player_Still", "Player_Slide", SubResource("AnimationNodeStateMachineTransition_8dmjc"), "Player_Slide", "Player_Still", SubResource("AnimationNodeStateMachineTransition_7e85f")]
-graph_offset = Vector2(-176, -38)
+states/Start/position = Vector2(462, -3)
+transitions = ["Player_Still", "Player_Fall", SubResource("59"), "Player_Fall", "Player_Still", SubResource("60"), "Player_Still", "Player_Melee", SubResource("61"), "Player_Melee", "Player_Still", SubResource("62"), "Player_Still", "Player_Walk", SubResource("63"), "Player_Walk", "Player_Still", SubResource("64"), "Player_Damage", "Player_Still", SubResource("73"), "Player_Still", "Player_Damage", SubResource("74"), "Player_Damage", "Player_Walk", SubResource("75"), "Player_Walk", "Player_Damage", SubResource("76"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_dpwch"), "Player_Still", "Player_Slide", SubResource("AnimationNodeStateMachineTransition_8dmjc"), "Player_Slide", "Player_Still", SubResource("AnimationNodeStateMachineTransition_7e85f"), "Player_Climb", "Player_Still", SubResource("AnimationNodeStateMachineTransition_a74xs"), "Player_Still", "Player_Climb", SubResource("AnimationNodeStateMachineTransition_70rxh"), "Player_Climb_Idle", "Player_Still", SubResource("AnimationNodeStateMachineTransition_df6mb"), "Player_Still", "Player_Climb_Idle", SubResource("AnimationNodeStateMachineTransition_q7gu1"), "Player_Climb", "Player_Climb_Idle", SubResource("AnimationNodeStateMachineTransition_vpmah"), "Player_Climb_Idle", "Player_Climb", SubResource("AnimationNodeStateMachineTransition_gaoit")]
+graph_offset = Vector2(-201, -122)
 
 [sub_resource type="StyleBoxFlat" id="19"]
 bg_color = Color(0, 0, 0, 0.490196)
@@ -888,7 +1058,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0152588)
 shape = SubResource("5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.8, 0, 0, 0, 2, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("5")
 
 [node name="ShootingRaycast" type="CollisionShape3D" parent="."]
@@ -923,7 +1092,7 @@ double_sided = false
 texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
-vframes = 4
+vframes = 5
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
@@ -1002,11 +1171,21 @@ double_sided = false
 texture_filter = 0
 texture = ExtResource("36")
 hframes = 10
-vframes = 4
+vframes = 5
+frame = 41
+
+[node name="RivetClimbingSprite" type="Sprite3D" parent="."]
+transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 0, -0.145799, 0)
+visible = false
+shaded = true
+double_sided = false
+texture_filter = 0
+texture = ExtResource("10_intfw")
+hframes = 10
 frame = 1
 
 [node name="RivetArm" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.1, 0, 0, 0, 0.1, -8.74228e-08, 0, 8.74228e-09, 1, 0, 0, -0.139)
+transform = Transform3D(0.1, 0, 0, 0, -0.1, 1.50996e-07, 0, -1.50996e-08, -1, 0, 0, -0.139)
 visible = false
 mesh = SubResource("21")
 skeleton = NodePath("../RivetSprite")
@@ -1867,7 +2046,6 @@ volume_db = 80.0
 [node name="Body" type="Node" parent="Audio"]
 
 [node name="Step" type="AudioStreamPlayer3D" parent="Audio/Body"]
-stream = ExtResource("20")
 volume_db = 80.0
 
 [node name="Melee" type="Node" parent="Audio"]

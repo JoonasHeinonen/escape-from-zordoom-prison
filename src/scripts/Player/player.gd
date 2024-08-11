@@ -54,6 +54,9 @@ var player_health = 4
 var player_max_health
 var health_node_counter = 0
 
+var at_ladder : bool = false
+var climbing : bool = false
+var grabbed_ladder : bool = false
 var boss_fight_active : bool = false
 var in_teleport_radius : bool = false
 var player_double_jump : bool = false
@@ -154,6 +157,7 @@ func _ready():
 			$RivetArm/HandInstance/Hand.scale.y = -20
 
 func _physics_process(delta):
+	
 	# Set the audio nodes position to share the same position as the player.
 	for audio_container_child in $Audio.get_children():
 		for audio_child in audio_container_child.get_children():
@@ -282,6 +286,31 @@ func _physics_process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
 
+	# Ladder logic
+	if at_ladder:
+		if Input.is_action_pressed("ui_climb_up"):
+			climb_ladder(3)
+		if Input.is_action_pressed("ui_climb_down"):
+			climb_ladder(-3)
+
+	if Input.is_action_just_released("ui_climb_down") or Input.is_action_just_released("ui_climb_up") and at_ladder:
+		climbing = false
+		player_velocity.y = 0
+		state_machine.travel("Player_Climb")
+		if Globle.player_character == "Rivet":
+			$RivetArm/HandInstance/Hand.hide()
+		if Globle.player_character == "Angela":
+			$AngelaArm/HandInstance/Hand.hide()
+
+	if !at_ladder:
+		gravity = 3
+		grabbed_ladder = false
+
+		if Globle.player_character == "Rivet":
+			$RivetArm/HandInstance/Hand.show()
+		if Globle.player_character == "Angela":
+			$AngelaArm/HandInstance/Hand.show()
+
 	if Input.is_action_pressed("ui_ranged_sniper_aim") && !Input.is_action_pressed("ui_melee_attack"):
 		if (current_weapon == "pulse_rifle"):
 			#update_player_position_to_camera()
@@ -299,6 +328,10 @@ func _physics_process(delta):
 		player_velocity.y -= gravity * delta
 		if !player_sliding:
 			state_machine.travel("Player_Fall")
+			if grabbed_ladder:
+				state_machine.travel("Player_Climb_Idle")
+				if climbing:
+					state_machine.travel("Player_Climb")
 			if Globle.player_character == "Angela":
 				if Input.is_action_pressed("ui_melee_attack"):
 					state_machine.travel("Player_Melee")
@@ -536,6 +569,18 @@ func update_vendor_data(wpn_name, wpn_price : int, wpn_desc):
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WeaponName.text = str(wpn_name_to_label)
 	$PlayerUI/VendorContainer/WeaponDescriptionPanel/WpnImageContainer/HBoxContainer/WpnImageBackground/WpnImage.texture = load(weapon_sprite_path)
 
+func climb_ladder(y_vel : int):
+	climbing = true
+	grabbed_ladder = true
+	gravity = 0
+	player_velocity.x = 0
+	player_velocity.y = y_vel
+	state_machine.travel("Player_Climb")
+	if Globle.player_character == "Rivet":
+		$RivetArm/HandInstance/Hand.hide()
+	if Globle.player_character == "Angela":
+		$AngelaArm/HandInstance/Hand.hide()
+
 func update_health_ui():
 	$PlayerUI/InGameUI/Health/HealthHas.text = str(player_health)
 	$PlayerUI/InGameUI/Health/HealthMax.text = str(player_max_health)
@@ -700,7 +745,7 @@ func _on_UI_Timer_timeout():
 		$PlayerUI/UINotification/CanvasLayer/Ui_notification.hide()
 
 func _on_ShootTimer_timeout():
-	if Input.is_action_pressed("ui_ranged_attack") && !Input.is_action_pressed("ui_melee_attack"):
+	if Input.is_action_pressed("ui_ranged_attack") && !Input.is_action_pressed("ui_melee_attack") && !at_ladder:
 		match current_weapon:
 			"edge_blaster":
 				if (Globle.player_weapons_ammo[0] > 0):
