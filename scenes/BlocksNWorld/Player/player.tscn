@@ -50,6 +50,7 @@
 [ext_resource type="Script" path="res://src/scripts/UI/arena_menu.gd" id="49"]
 
 [sub_resource type="BoxShape3D" id="5"]
+size = Vector3(1, 1, 1.25415)
 
 [sub_resource type="BoxShape3D" id="50"]
 

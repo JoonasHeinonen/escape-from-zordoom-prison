@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://bk5epmeksv1nf" path="res://src/theme/zordoom_theme.tres" id="1"]
 [ext_resource type="Script" path="res://src/scripts/Menu/addon/LevelListing.gd" id="2"]
 [ext_resource type="Script" path="res://src/scripts/Menu/ReturnMainMenu.gd" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/Transitions/FadeIn.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bpus84su3l7sc" path="res://scenes/Transitions/FadeIn.tscn" id="4"]
 [ext_resource type="AudioStream" uid="uid://bmea3ibe58bhs" path="res://resources/audio/ui/button_click.wav" id="5"]
 [ext_resource type="AudioStream" uid="uid://dfnmugl4le2jo" path="res://resources/audio/ui/button_navigate.wav" id="6"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="7"]

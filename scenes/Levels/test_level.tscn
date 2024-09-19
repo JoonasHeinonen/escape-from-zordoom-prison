@@ -25,7 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://3j7oaadkmoi3" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
 [ext_resource type="PackedScene" uid="uid://xguugwg5v2bh" path="res://scenes/NPC/Friendly/AngelaOrRivet.tscn" id="23"]
 [ext_resource type="PackedScene" uid="uid://biefobxdqingm" path="res://scenes/BlocksNWorld/Doors/PrisonTaxi.tscn" id="24_mxcxe"]
-[ext_resource type="PackedScene" uid="uid://c8hiifeh7s72n" path="res://scenes/BlocksNWorld/Param.tscn" id="27_bh0ds"]
+[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Param.tscn" id="27_bh0ds"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qyk4u"]
 panorama = ExtResource("1_vxvra")
