@@ -117,7 +117,7 @@ double_sided = false
 texture_filter = 0
 texture = ExtResource("8")
 hframes = 10
-vframes = 4
+vframes = 5
 frame = 9
 
 [node name="Rivet" type="Node3D" parent="."]
@@ -132,7 +132,7 @@ double_sided = false
 texture_filter = 0
 texture = ExtResource("9")
 hframes = 10
-vframes = 4
+vframes = 5
 frame = 9
 
 [connection signal="focus_exited" from="LevelViewUI/CenterContainer/VBoxContainer/BackButton" to="LevelViewUI/CenterContainer/VBoxContainer/BackButton" method="_on_BackButton_focus_exited"]
