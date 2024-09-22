@@ -94,10 +94,10 @@ func _input(_event):
 	if (Globle.player_character == "Rivet"): 
 		match(character_name):
 			"Girdeux":
-					if player.boss_fight_active and trigger_Cutscene == false:
-						commence_dialog('Girdeux_Rivet_Timeline1')
-						trigger_Cutscene = true
-						
+				if player.boss_fight_active and trigger_Cutscene == false:
+					commence_dialog('Girdeux_Rivet_Timeline1')
+					trigger_Cutscene = true
+
 	if (Globle.player_character == "Angela"):
 		match(character_name):
 			"Girdeux":

@@ -59,9 +59,11 @@ func _on_AreaEnemy_area_entered(area):
 		damage_enemy(2)
 		animation_player.play("Enemy_Damage")
 # $EnemySprite.rotation.y += PI will use rotation by the y axis the sprite with the math of pi
+
 func nef_head_movement():
-	#need to refactor
+	# Need to be refactored.
 	is_flipping = false
+
 	if is_on_wall() == true:
 		# print("hits wall")
 		enemy_sprite.rotation.y += PI

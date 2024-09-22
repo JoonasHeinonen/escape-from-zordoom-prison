@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://brce6tfu5d81"]
+[gd_scene load_steps=35 format=3 uid="uid://brce6tfu5d81"]
 
 [ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
 [ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_ksfwo"]
@@ -28,7 +28,6 @@
 [ext_resource type="PackedScene" uid="uid://xguugwg5v2bh" path="res://scenes/NPC/Friendly/AngelaOrRivet.tscn" id="23"]
 [ext_resource type="PackedScene" uid="uid://biefobxdqingm" path="res://scenes/BlocksNWorld/Doors/PrisonTaxi.tscn" id="24_mxcxe"]
 [ext_resource type="PackedScene" uid="uid://c8hiifeh7s72n" path="res://scenes/BlocksNWorld/Param.tscn" id="27_bh0ds"]
-
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qyk4u"]
 panorama = ExtResource("1_vxvra")
@@ -61,7 +60,6 @@ mission_params = {
 "retrieveKeyCard": true,
 "talkToFirstLieutenant": true
 }
-default_music_stream = ExtResource("2_udr33")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f1r0c")
@@ -122,10 +120,10 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -30.2724, 7.20774, 2.57596)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.9655, -21.3259, 0)
 
 [node name="Sheep" parent="npc/enemies" instance=ExtResource("10_jby62")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.94502, -1.64278, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.055, -2.64278, 0)
 
 [node name="Enemy" parent="npc/enemies" instance=ExtResource("15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02467, 1.45589, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02467, 1.45589, -0.0796814)
 
 [node name="Enemy2" parent="npc/enemies" instance=ExtResource("15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.5738, 2.4755, 0)
