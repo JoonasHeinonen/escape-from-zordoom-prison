@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkvvfru1vjy4g"]
+
+[ext_resource type="Script" path="res://src/scripts/npc/friendly/character.gd" id="1_entlf"]
+[ext_resource type="Texture2D" uid="uid://bgm2bly4antvj" path="res://resources/images/characters/npc/f44.png" id="2_cig55"]
+[ext_resource type="Script" path="res://src/scripts/npc/npc.gd" id="3_3y061"]
+[ext_resource type="Texture2D" uid="uid://cr7qupmet1gp4" path="res://resources/images/ui/enter_key.png" id="4_7pgmb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p0pqb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cewbu"]
+
+[node name="F44" type="CharacterBody3D"]
+script = ExtResource("1_entlf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("BoxShape3D_p0pqb")
+
+[node name="CharacterSprite" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_cig55")
+hframes = 5
+vframes = 5
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("3_3y061")
+character_name = "F44"
+
+[node name="EnterButton" type="Sprite3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+billboard = 1
+texture_filter = 0
+texture = ExtResource("4_7pgmb")
+
+[node name="DiscussionRadius" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.40976e-08, 0, 1.40976e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_cewbu")
