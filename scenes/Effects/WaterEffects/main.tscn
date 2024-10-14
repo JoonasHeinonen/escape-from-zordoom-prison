@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://c37kdbr4ndjew"]
+
+[ext_resource type="Shader" path="res://scenes/Effects/WaterEffects/Simulation.gdshader" id="1_ceujw"]
+[ext_resource type="Script" path="res://src/scripts/effects/water_shader_effect.gd" id="1_jbqw2"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0ants"]
+viewport_path = NodePath("Simulation")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s47rt"]
+resource_local_to_scene = true
+shader = ExtResource("1_ceujw")
+shader_parameter/phase = 0.2
+shader_parameter/attenuation = 0.999
+shader_parameter/deltaUV = 3.0
+shader_parameter/sim_tex = SubResource("ViewportTexture_0ants")
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_jbqw2")
+
+[node name="Simulation" type="SubViewport" parent="."]
+size = Vector2i(514, 514)
+
+[node name="ColorRect" type="ColorRect" parent="Simulation"]
+material = SubResource("ShaderMaterial_s47rt")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
