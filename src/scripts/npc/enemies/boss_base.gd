@@ -8,9 +8,16 @@ class_name BossBase
 
 var is_damaged : bool = false
 var is_player_nearby : bool = false
+var is_dialog_ended : bool = false
 var max_health : int = 0
 
+var detect_distance_scale : Vector3
+var detect_distance_dialog_scale : Vector3
+
 func _ready():
+	detect_distance_scale = $DetectDistance/CollisionShape3D.scale
+	detect_distance_dialog_scale = detect_distance_scale * 1.25
+	$DetectDistance/CollisionShape3D.scale = detect_distance_dialog_scale
 	element = elements.GROUND
 
 	match self.name:
@@ -22,12 +29,14 @@ func _ready():
 	player = get_parent().get_parent().get_parent().get_node('player')
 
 func _physics_process(_delta):
-	if is_alerted and !is_in_range:
-		#this goes up to three once the player starts moving
-		if $AreaEnemy.cutscene_Ended:
-			$AreaEnemy.cutscene_Ended = false
+	if is_alerted and $AreaEnemy.cutscene_ended:
+		$DetectDistance/CollisionShape3D.scale = detect_distance_scale
+		if !is_in_range:
+			# This goes up to three once the player starts moving
+			is_dialog_ended = true
 			$FlamethrowerTimer.start()
 			$TurnTimer.start()
+
 	if not is_on_floor():
 		velocity.y = -4
 		state_machine.travel("Enemy_Fall")
@@ -37,10 +46,10 @@ func _physics_process(_delta):
 			player.boss_fight_active = true
 			player.init_boss_fight(self.name, health_data, self.name.to_lower(), max_health)
 			turn_enemy(player.position.x, self.position.x)
+			if is_in_range and is_dialog_ended:
+				state_machine.travel("Girdeux_Shoot")
 		else:
 			state_machine.travel("Enemy_Idle")
-	if is_alerted and is_in_range:
-		state_machine.travel("Girdeux_Shoot")
 
 	# Do the jump logic after the boss is on wall.
 	if (is_on_wall() and !is_player_nearby):
@@ -59,11 +68,13 @@ func turn_head():
 
 func shoot_flames():
 	var flame_instance = flame_projectile.instantiate()
-	flame_instance.position.x = 3
-	get_parent().add_child(flame_instance)
-	flame_instance.global_transform = $Flamethrower/FlamethrowerSprite/FlamethrowerPos.global_transform
-	if direction == "Left": flame_instance.set_particle_size(-1)
-	elif direction == "Right": flame_instance.set_particle_size(1)
+	if (is_in_range):
+		state_machine.travel("Girdeux_Shoot")
+		flame_instance.position.x = 3
+		get_parent().add_child(flame_instance)
+		flame_instance.global_transform = $Flamethrower/FlamethrowerSprite/FlamethrowerPos.global_transform
+		if direction == "Left": flame_instance.set_particle_size(-1)
+		elif direction == "Right": flame_instance.set_particle_size(1)
 
 func expire_enemy():
 	player.boss_fight_active = false

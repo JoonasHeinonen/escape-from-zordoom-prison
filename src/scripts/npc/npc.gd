@@ -5,9 +5,8 @@ class_name NPC
 @export_enum("Mia", "Girdeux" , "NPC_Angela_Rivet", "Shark_man", "F44") var character_name: String
 
 var active : bool = false
-
-var trigger_Cutscene = false
-var cutscene_Ended = false
+var trigger_cutscene : bool = false
+var cutscene_ended : bool = false
 var npc_dialog_value : int = 0
 var mia_dialog_value : int = 0
 var girdeux_dialog_value : int = 0
@@ -15,11 +14,11 @@ var npc_angela_rivet_dialog_value : int = 0
 var shark_man_dialog_value : int = 0
 var min : int = 0
 var max : int = 8
+
 var player
 var dialog
 
 func _ready():
-	# why so many get parents
 	if (character_name == "Girdeux"):
 		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
 	connect("body_entered", Callable(self, "_on_NPC_body_entered"))
@@ -28,8 +27,14 @@ func _ready():
 func _process(_delta):
 	if (self.has_node("EnterButton")):
 		$EnterButton.visible = active
+	boss_fight_dialog()
 
 func _input(_event):
+	if (self.has_node("EnterButton")):
+		$EnterButton.visible = active
+	npc_dialog()
+
+func npc_dialog():
 	if (Globle.player_character == "Angela" and get_node_or_null('DialogNode') == null and Input.is_action_just_pressed("ui_accept") and active):
 		if get_node_or_null('DialogNode') == null:
 			if Input.is_action_just_pressed("ui_accept") and active: 
@@ -92,22 +97,20 @@ func _input(_event):
 			"F44":
 				print("Ce soir la vie n'est plus un enfer pour 2 fois.")
 
-	if (self.has_node("EnterButton")):
-		$EnterButton.visible = active
-
+func boss_fight_dialog():
 	if (Globle.player_character == "Rivet"): 
 		match(character_name):
 			"Girdeux":
-				if player.boss_fight_active and trigger_Cutscene == false:
+				if player.boss_fight_active and trigger_cutscene == false:
 					commence_dialog('Girdeux_Rivet_Timeline1')
-					trigger_Cutscene = true
+					trigger_cutscene = true
 
 	if (Globle.player_character == "Angela"):
 		match(character_name):
 			"Girdeux":
-				if player.boss_fight_active and trigger_Cutscene == false:
+				if player.boss_fight_active and trigger_cutscene == false:
 					commence_dialog('Girdeux_Angela_Timeline1')
-					trigger_Cutscene = true
+					trigger_cutscene = true
 					#match(girdeux_dialog_value):
 						#(0):
 							#Globle.player_active = false
@@ -132,13 +135,12 @@ func commence_dialog(timeline : String):
 	#dialog.process_mode = Node.PROCESS_MODE_ALWAYS
 	#dialog.connect('timeline_ended', Callable(self, 'unpause'))
 
-
 # Unpauses the game timeline.
 func unpause():
 	#get_tree().paused = false
 	Dialogic.timeline_ended.disconnect(unpause)
 	Globle.player_active = true
-	cutscene_Ended = true
+	cutscene_ended = true
 
 # Acts when the player has entered the NPC body.
 func _on_NPC_body_entered(body):

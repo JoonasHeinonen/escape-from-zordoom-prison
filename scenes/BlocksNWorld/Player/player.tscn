@@ -1093,6 +1093,7 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 5
+frame = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
@@ -1172,7 +1173,7 @@ texture_filter = 0
 texture = ExtResource("36")
 hframes = 10
 vframes = 5
-frame = 3
+frame = 1
 
 [node name="RivetArm" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, -0.1, 1.50996e-07, 0, -1.50996e-08, -1, 0, 0, -0.139)
@@ -1550,6 +1551,7 @@ offset_bottom = 70.0
 stretch_mode = 4
 
 [node name="PauseMenuContainer" type="Control" parent="PlayerUI"]
+visible = false
 anchors_preset = 0
 offset_right = 1280.0
 offset_bottom = 720.0
