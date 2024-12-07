@@ -12,8 +12,6 @@ var mia_dialog_value : int = 0
 var girdeux_dialog_value : int = 0
 var npc_angela_rivet_dialog_value : int = 0
 var shark_man_dialog_value : int = 0
-var min : int = 0
-var max : int = 8
 
 var player
 var dialog
@@ -23,6 +21,9 @@ func _ready():
 		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
 	connect("body_entered", Callable(self, "_on_NPC_body_entered"))
 	connect("body_exited", Callable(self, "_on_NPC_body_exited"))
+	
+	connect("area_entered", Callable(self, "_on_Area3D_entered"))
+	connect("area_exited", Callable(self, "_on_Area3D_exited"))
 
 func _process(_delta):
 	toggle_enter_button()
@@ -137,12 +138,12 @@ func toggle_enter_button():
 		else:
 			$EnterButton.visible = active
 
-# Acts when the player has entered the NPC body.
-func _on_NPC_body_entered(body):
-	if body.name == "player" :
+# Acts when the player has entered the NPC area 3D.
+func _on_Area3D_entered(body):
+	if body.name == "AreaPlayer":
 		active = true
 
-# Acts when the player has left the NPC body.
-func _on_NPC_body_exited(body):
-	if body.name == "player":
+# Acts when the player has left the NPC area 3D.
+func _on_Area3D_exited(body):
+	if body.name == "AreaPlayer":
 		active = false
