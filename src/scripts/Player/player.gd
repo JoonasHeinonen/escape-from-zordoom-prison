@@ -675,8 +675,8 @@ func set_missions():
 	for ui_objective in ui_objectives.get_children():
 		ui_objective.queue_free()
 
-	# Sets the missions.
-	if level.mission_params:
+	# Sets the missions. Check if the parent is of type LevelData.
+	if (level == LevelData):
 		for mission_param in level.mission_params:
 			var mission_finished : bool = level.mission_params.values()[mission_param_index]
 			if (!mission_finished):

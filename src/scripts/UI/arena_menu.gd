@@ -18,6 +18,7 @@ func _ready():
 
 func _process(_delta):
 	if (Globle.arena_menu_open && self.visible):
+		Globle.player_active = false
 		arena_button.grab_focus()
 
 func arena_menu_process(is_vendor_open, is_paused):
@@ -33,6 +34,7 @@ func opens_menu():
 func close_menu():
 	check_is_open  = false
 	Globle.arena_menu_open = false
+	Globle.player_active = true
 	arena_menu_process(false, true)
 	hide()
 
