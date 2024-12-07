@@ -68,10 +68,8 @@ func nef_head_movement():
 		# print("hits wall")
 		enemy_sprite.rotation.y += PI
 		self.enemy_speed *= -1
-		print(enemy_speed)
 		is_flipping = true
 	if not ground_finding_raycast.is_colliding():
 		self.enemy_speed *= -1
 		enemy_sprite.rotation.y += PI
 		is_flipping = true
-		print(enemy_speed)

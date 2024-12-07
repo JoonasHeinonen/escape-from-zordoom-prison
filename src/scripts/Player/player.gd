@@ -159,7 +159,6 @@ func _ready():
 			$RivetArm/HandInstance/Hand.scale.y = -20
 
 func _physics_process(delta):
-	
 	# Set the audio nodes position to share the same position as the player.
 	for audio_container_child in $Audio.get_children():
 		for audio_child in audio_container_child.get_children():
@@ -677,14 +676,15 @@ func set_missions():
 		ui_objective.queue_free()
 
 	# Sets the missions.
-	for mission_param in level.mission_params:
-		var mission_finished : bool = level.mission_params.values()[mission_param_index]
-		if (!mission_finished):
-			var mission_label = Label.new()
-			mission_label.text = mission_param
-			#print("MyCamelCaseStringID".gsub(/([a-z0-9])([A-Z])/) { "#{$1} #{$2}" })
-			ui_objectives.add_child(mission_label)
-			mission_param_index = mission_param_index + 1
+	if level.mission_params:
+		for mission_param in level.mission_params:
+			var mission_finished : bool = level.mission_params.values()[mission_param_index]
+			if (!mission_finished):
+				var mission_label = Label.new()
+				mission_label.text = mission_param
+				#print("MyCamelCaseStringID".gsub(/([a-z0-9])([A-Z])/) { "#{$1} #{$2}" })
+				ui_objectives.add_child(mission_label)
+				mission_param_index = mission_param_index + 1
 
 func shoot_edge_blaster():
 	if Globle.player_active == true:

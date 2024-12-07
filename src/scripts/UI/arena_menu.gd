@@ -22,8 +22,6 @@ func _process(_delta):
 
 func arena_menu_process(is_vendor_open, is_paused):
 	Globle.update_vendor()
-	get_tree().paused = is_vendor_open
-	get_parent().set_process_input(is_paused)
 
 func opens_menu():
 	if not check_is_open:

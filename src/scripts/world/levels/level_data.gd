@@ -38,8 +38,6 @@ func _process(_delta):
 			finished_missions = finished_missions + 1
 	if (mission_params.size() == finished_missions):
 		is_level_complete = true
-	if (is_level_complete):
-		print("All level parameters are complete")
 
 func set_music(
 		music : AudioStreamPlayer,

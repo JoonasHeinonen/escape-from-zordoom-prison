@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhn0idvhadk7u"]
+[gd_scene load_steps=10 format=3 uid="uid://dhn0idvhadk7u"]
 
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="1"]
+[ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_3cwyk"]
 [ext_resource type="PackedScene" uid="uid://c3nbx7l8pr3l4" path="res://scenes/NPC/Friendly/shark_man.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://deq5x6nf5jgqu" path="res://scenes/BlocksNWorld/ArenaWall.tscn" id="3"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="4"]
@@ -22,6 +23,7 @@ glow_enabled = true
 size = Vector3(4.40028, 2, 2)
 
 [node name="LevelArena" type="Node3D"]
+script = ExtResource("1_3cwyk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_o44lh")
@@ -37,10 +39,6 @@ shape = SubResource("1")
 
 [node name="player" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 3.25247, 0.296367)
-
-[node name="shark_man" parent="." instance=ExtResource("2")]
-process_mode = 3
-transform = Transform3D(4.05494, 0, 0, 0, 3.76338, 0, 0, 0, 1, -12.1107, 4.25218, -1.68291)
 
 [node name="arena" type="Node" parent="."]
 
@@ -69,3 +67,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.184,
 [node name="npc" type="Node" parent="."]
 
 [node name="enemies" type="Node" parent="npc"]
+
+[node name="friendly" type="Node" parent="npc"]
+
+[node name="shark_man" parent="npc/friendly" instance=ExtResource("2")]
+process_mode = 3
+transform = Transform3D(4.05494, 0, 0, 0, 3.76338, 0, 0, 0, 1, -12.1107, 4.25218, -1.68291)
