@@ -9,8 +9,9 @@ var btn_to_return_to
 
 func _on_BackButton_pressed():
 	$Audio/Click.play()
-	if (self.has_node('CenterContainer')) : index_btn = $CenterContainer/VBoxContainer/BackButton
-	if (self.has_node('CenterContainer')) : sec_index_btn = $CenterContainer/VBoxContainer/VBoxContainer/BackButton
+	if (self.has_node('CenterContainer')):
+		index_btn = $CenterContainer/VBoxContainer/BackButton
+		sec_index_btn = $CenterContainer/VBoxContainer/VBoxContainer/BackButton
 
 	match(get_tree().get_current_scene().get_name()):
 		"MainMenu":

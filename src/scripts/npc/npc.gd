@@ -11,6 +11,7 @@ var npc_dialog_value : int = 0
 var mia_dialog_value : int = 0
 var girdeux_dialog_value : int = 0
 var npc_angela_rivet_dialog_value : int = 0
+var npc_rivet_angela_dialog_value : int = 0
 var shark_man_dialog_value : int = 0
 
 var player
@@ -72,10 +73,10 @@ func npc_dialog():
 						mia_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 0)
 						Globle.player_active = true
 			"NPC_Angela_Rivet":
-				match(npc_angela_rivet_dialog_value):
+				match(npc_rivet_angela_dialog_value):
 					(0):
-						commence_dialog('timeline_Rivet_npc_1')
-						npc_angela_rivet_dialog_value = process_dialog_value(npc_angela_rivet_dialog_value, 8)
+						commence_dialog('timeline_Angela_npc_1')
+						npc_rivet_angela_dialog_value = process_dialog_value(npc_rivet_angela_dialog_value, 8)
 			"Shark_man":
 				match(shark_man_dialog_value):
 					(0):

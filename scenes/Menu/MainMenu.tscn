@@ -6,13 +6,13 @@
 [ext_resource type="Script" path="res://src/scripts/UI/screen_check_box.gd" id="3"]
 [ext_resource type="Script" path="res://src/scripts/UI/menu_scene_control_base.gd" id="4"]
 [ext_resource type="Script" path="res://src/scripts/Menu/MenuButton.gd" id="5"]
-[ext_resource type="PackedScene" path="res://scenes/Transitions/FadeIn.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://bpus84su3l7sc" path="res://scenes/Transitions/FadeIn.tscn" id="6"]
 [ext_resource type="FontFile" path="res://resources/fonts/rg-future-italic.tres" id="7"]
 [ext_resource type="AudioStream" uid="uid://bmea3ibe58bhs" path="res://resources/audio/ui/button_click.wav" id="8"]
 [ext_resource type="AudioStream" uid="uid://dfnmugl4le2jo" path="res://resources/audio/ui/button_navigate.wav" id="9"]
 [ext_resource type="Theme" uid="uid://bk5epmeksv1nf" path="res://src/theme/zordoom_theme.tres" id="11"]
 [ext_resource type="Script" path="res://src/scripts/Menu/ReturnMainMenu.gd" id="12"]
-[ext_resource type="PackedScene" path="res://scenes/UI/CharacterSelectionButton.tscn" id="13"]
+[ext_resource type="PackedScene" uid="uid://b0v5lvucoxv5r" path="res://scenes/UI/CharacterSelectionButton.tscn" id="13"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l6u71"]
 panorama = ExtResource("2_rfckn")
@@ -194,9 +194,12 @@ text = "Pick your character"
 uppercase = true
 
 [node name="CenterContainer" type="CenterContainer" parent="CharacterSelection"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="CharacterSelection/CenterContainer"]
 custom_minimum_size = Vector2(420, 330)
@@ -340,8 +343,8 @@ stream = ExtResource("8")
 stream = ExtResource("9")
 
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_NewGameButton_focus_exited"]
-[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MainMenuButton_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MainMenuButton_pressed"]
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/LoadGameButton" to="MainMenu/CenterContainer/Buttons/LoadGameButton" method="_on_LoadGameButton_focus_exited"]
 [connection signal="pressed" from="MainMenu/CenterContainer/Buttons/LoadGameButton" to="MainMenu/CenterContainer/Buttons/LoadGameButton" method="_on_MainMenuButton_pressed"]
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/OptionsButton" to="MainMenu/CenterContainer/Buttons/OptionsButton" method="_on_OptionsButton_focus_exited"]
