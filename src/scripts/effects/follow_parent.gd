@@ -1,7 +1,7 @@
 extends GPUParticles3D
 
 @onready var expire_timer = $ExpireTimer
-@onready var player = get_parent().get_parent()
+@onready var player = get_tree().get_root().get_node("Level/player")
 
 var parent = null
 

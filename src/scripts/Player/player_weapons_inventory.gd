@@ -1,6 +1,6 @@
 extends MenuSceneControlBase
 
-@onready var player = get_parent().get_parent()
+@onready var player = get_tree().get_root().get_node("Level/player")
 
 var weapon_slots = []
 

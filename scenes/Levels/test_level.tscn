@@ -51,14 +51,14 @@ size = Vector3(2.2914, 2, 2)
 
 [sub_resource type="BoxShape3D" id="17"]
 
-[node name="testLevel" type="Node3D"]
+[node name="Level" type="Node3D"]
 script = ExtResource("1_ksfwo")
 z_axis = -1.5
 mission_params = {
 "completeNCOSchool": false,
 "reachOtherEnd": false,
-"retrieveKeyCard": true,
-"talkToFirstLieutenant": true
+"retrieveKeyCard": false,
+"talkToFirstLieutenant": false
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

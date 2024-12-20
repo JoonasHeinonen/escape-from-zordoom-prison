@@ -11,7 +11,7 @@ var original_collision_shapes_sizes = []
 var player
 
 func _ready():
-	player = get_parent().get_parent().get_node('player')
+	player = get_tree().get_root().get_node("Level/player")
 	for c_s in collision_shapes:
 		original_collision_shapes_sizes.append(c_s.scale)
 

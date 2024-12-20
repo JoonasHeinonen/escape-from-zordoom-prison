@@ -18,8 +18,8 @@ var player
 var dialog
 
 func _ready():
-	if (character_name == "Girdeux"):
-		player = get_parent().get_parent().get_parent().get_parent().get_node('player')
+	# TODO TODO TODO
+	player = get_tree().get_root().get_node("Level/player")
 	connect("body_entered", Callable(self, "_on_NPC_body_entered"))
 	connect("body_exited", Callable(self, "_on_NPC_body_exited"))
 	
@@ -116,7 +116,6 @@ func process_dialog_value(dialog_value : int, max_value : int):
 
 func commence_dialog(timeline : String):
 	Globle.player_active = false
-	#get_tree().paused = false
 	Dialogic.timeline_ended.connect(unpause)
 	Dialogic.start(timeline)
 	get_viewport().set_input_as_handled()
@@ -126,7 +125,6 @@ func commence_dialog(timeline : String):
 
 # Unpauses the game timeline.
 func unpause():
-	#get_tree().paused = false
 	Dialogic.timeline_ended.disconnect(unpause)
 	Globle.player_active = true
 	cutscene_ended = true
@@ -134,17 +132,17 @@ func unpause():
 # Toggles enter button if no active dialogic timeline or has EnterButton node.
 func toggle_enter_button():
 	if (self.has_node("EnterButton")):
-		if Dialogic.current_timeline != null:
+		if Dialogic.current_timeline:
 			$EnterButton.visible = false
 		else:
 			$EnterButton.visible = active
 
-# Acts when the player has entered the NPC area 3D.
+# Activate when the player has entered the Area3D area.
 func _on_Area3D_entered(body):
 	if body.name == "AreaPlayer":
 		active = true
 
-# Acts when the player has left the NPC area 3D.
+# Activates when the player has exited the Area3D area.
 func _on_Area3D_exited(body):
 	if body.name == "AreaPlayer":
 		active = false

@@ -22,7 +22,7 @@ func _ready():
 	meta_name = "nef_head"
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
-	player = get_parent().get_parent().get_parent().get_node('player')
+	player = get_tree().get_root().get_node("Level/player")
 	
 func _physics_process(_delta):
 	super(_delta)

@@ -7,7 +7,7 @@ var sniping_radical_camera
 
 func _ready():
 	set_process(true)
-	player = get_parent().get_parent()
+	player = get_tree().get_root().get_node("Level/player")
 	player_camera = get_parent()
 	sniping_radical = get_parent().get_parent().get_node("SnipingRadical")
 	sniping_radical_camera = get_parent().get_parent().get_node("SnipingRadical/Node3D/Camera3D")

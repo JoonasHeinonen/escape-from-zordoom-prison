@@ -4,7 +4,7 @@ const nef_head_preload = preload("res://scenes/NPC/Enemies/nef_head_enemy.tscn")
 
 @onready var arena_button = $VBoxContainer/HBoxContainer/FightButtons/Fight1
 @onready var exit_button = $VBoxContainer/HBoxContainer/FightButtons/ExitButton
-@onready var player = get_parent().get_parent()
+@onready var player = get_tree().get_root().get_node("Level/player")
 
 var bad_guy_instance = null
 var nodes = null

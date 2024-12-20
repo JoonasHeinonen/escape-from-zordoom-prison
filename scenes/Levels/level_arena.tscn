@@ -23,7 +23,7 @@ glow_enabled = true
 [sub_resource type="BoxShape3D" id="1"]
 size = Vector3(4.40028, 2, 2)
 
-[node name="LevelArena" type="Node3D"]
+[node name="Level" type="Node3D"]
 script = ExtResource("1_3cwyk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

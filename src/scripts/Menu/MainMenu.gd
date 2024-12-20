@@ -17,7 +17,7 @@ func _ready():
 	$Audio/Click.play()
 
 	get_tree().paused = false
-	main_menu.visible = false
+	main_menu.visible = true
 	character_selection.visible = false
 	options.visible = false
 	load_game.visible = false
@@ -37,6 +37,10 @@ func _ready():
 
 func _process(_delta):
 	alignment = "Full alignment"
+
+	# Ensure that the main menu is visible.
+	if !character_selection.visible and !load_game.visible and !options.visible:
+		main_menu.visible = true
 
 func _physics_process(_delta):
 	camera.rotation += Vector3(0.001, 0.002, 0)

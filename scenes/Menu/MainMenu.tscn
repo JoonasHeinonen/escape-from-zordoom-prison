@@ -1,7 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://cefix45ikufg"]
+[gd_scene load_steps=17 format=3 uid="uid://cefix45ikufg"]
 
 [ext_resource type="Script" path="res://src/scripts/Menu/MainMenu.gd" id="1"]
-[ext_resource type="Script" path="res://src/scripts/UI/main_menu.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://lvv5c4obaulh" path="res://resources/images/environment/stars2.png" id="2_rfckn"]
 [ext_resource type="Script" path="res://src/scripts/UI/screen_check_box.gd" id="3"]
 [ext_resource type="Script" path="res://src/scripts/UI/menu_scene_control_base.gd" id="4"]
@@ -38,7 +37,6 @@ expand_margin_right = 10.0
 expand_margin_bottom = 10.0
 
 [node name="MainMenu" type="Node3D"]
-script = ExtResource("2")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
@@ -56,6 +54,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("1")
+alignment = "Full alignment"
 
 [node name="LabelCenterContainer" type="CenterContainer" parent="MainMenu"]
 layout_mode = 0
@@ -343,8 +342,8 @@ stream = ExtResource("8")
 stream = ExtResource("9")
 
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_NewGameButton_focus_exited"]
-[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MenuButton_pressed"]
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/LoadGameButton" to="MainMenu/CenterContainer/Buttons/LoadGameButton" method="_on_LoadGameButton_focus_exited"]
 [connection signal="pressed" from="MainMenu/CenterContainer/Buttons/LoadGameButton" to="MainMenu/CenterContainer/Buttons/LoadGameButton" method="_on_MainMenuButton_pressed"]
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/OptionsButton" to="MainMenu/CenterContainer/Buttons/OptionsButton" method="_on_OptionsButton_focus_exited"]
