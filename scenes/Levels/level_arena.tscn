@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhn0idvhadk7u"]
+[gd_scene load_steps=16 format=3 uid="uid://dhn0idvhadk7u"]
 
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c3nbx7l8pr3l4" path="res://scenes/NPC/Friendly/shark_man.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://deq5x6nf5jgqu" path="res://scenes/BlocksNWorld/ArenaWall.tscn" id="3"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="4"]
+[ext_resource type="PackedScene" uid="uid://bcw1h466ytc4b" path="res://scenes/BlocksNWorld/Tiles/arena_box_1.tscn" id="4_4ucs8"]
 [ext_resource type="Texture2D" uid="uid://bl024yc5l5gbo" path="res://resources/images/environment/backgrounds_for_area.png" id="5_ocs4g"]
 [ext_resource type="PackedScene" uid="uid://c37kdbr4ndjew" path="res://scenes/Effects/WaterEffects/WaterEffects.tscn" id="6_gmk8l"]
 
@@ -85,6 +86,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.487, 3.6295, 0.818525)
 
 [node name="ArenaWall" parent="WorldBlocks" instance=ExtResource("3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.30252, 10.8684)
+
+[node name="arena_box_3" parent="WorldBlocks" instance=ExtResource("4_4ucs8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.7, -3)
+
+[node name="arena_box_2" parent="WorldBlocks" instance=ExtResource("4_4ucs8")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 1, 0.4, 3.38, -4)
+
+[node name="arena_box_1" parent="WorldBlocks" instance=ExtResource("4_4ucs8")]
+transform = Transform3D(0.760951, -0.0232641, 0.648392, 0.0150046, 0.999721, 0.0182602, -0.648636, -0.00416627, 0.761087, 0.170492, 1.70098, -3.2237)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("4")

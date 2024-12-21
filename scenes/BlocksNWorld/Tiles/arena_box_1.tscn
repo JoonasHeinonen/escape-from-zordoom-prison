@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcw1h466ytc4b"]
+
+[ext_resource type="PackedScene" uid="uid://comd8rsaii3fj" path="res://resources/models/arena_assets/arena_box_1.glb" id="1_y1ix2"]
+
+[node name="arena_box_1" instance=ExtResource("1_y1ix2")]
+
+[node name="Cube_001" parent="." index="0"]
+transform = Transform3D(1.31298, 0, 0, 0, 0.690799, 0, 0, 0, 0.690799, 0, 0.988106, 0.54416)
