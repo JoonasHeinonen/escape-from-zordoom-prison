@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhn0idvhadk7u"]
+[gd_scene load_steps=17 format=3 uid="uid://dhn0idvhadk7u"]
 
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://c3nbx7l8pr3l4" path="res://scenes/NPC/Friendly/shark_man.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://deq5x6nf5jgqu" path="res://scenes/BlocksNWorld/ArenaWall.tscn" id="3"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="4"]
 [ext_resource type="PackedScene" uid="uid://bcw1h466ytc4b" path="res://scenes/BlocksNWorld/Tiles/arena_box_1.tscn" id="4_4ucs8"]
+[ext_resource type="PackedScene" uid="uid://c4mymser2ikwe" path="res://scenes/BlocksNWorld/Tiles/arena_box_2_concrete.tscn" id="5_8v2vf"]
 [ext_resource type="Texture2D" uid="uid://bl024yc5l5gbo" path="res://resources/images/environment/backgrounds_for_area.png" id="5_ocs4g"]
 [ext_resource type="PackedScene" uid="uid://c37kdbr4ndjew" path="res://scenes/Effects/WaterEffects/WaterEffects.tscn" id="6_gmk8l"]
 
@@ -80,7 +81,7 @@ transform = Transform3D(4.05494, 0, 0, 0, 3.76338, 0, 0, 0, 1, -12.1107, 4.25218
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.964, 3.274, 16.7486)
 
 [node name="PlayerSpawnArena_return" type="Marker3D" parent="." groups=["playerReturnPostion"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.487, 3.6295, 0.818525)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4704, 3.6295, 0.927812)
 
 [node name="WorldBlocks" type="Node" parent="."]
 
@@ -95,6 +96,15 @@ transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 1, 0.4, 3.38, -4)
 
 [node name="arena_box_1" parent="WorldBlocks" instance=ExtResource("4_4ucs8")]
 transform = Transform3D(0.760951, -0.0232641, 0.648392, 0.0150046, 0.999721, 0.0182602, -0.648636, -0.00416627, 0.761087, 0.170492, 1.70098, -3.2237)
+
+[node name="arena_box_2_Concrete_3" parent="WorldBlocks" instance=ExtResource("5_8v2vf")]
+transform = Transform3D(0.866406, -0.00336846, -0.499329, 0.00290615, 0.999994, -0.00170337, 0.499332, 2.46825e-05, 0.866411, -18.445, 5.57017, -1.34112)
+
+[node name="arena_box_2_Concrete_2" parent="WorldBlocks" instance=ExtResource("5_8v2vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8225, 3.28509, 13.9294)
+
+[node name="arena_box_2_Concrete_1" parent="WorldBlocks" instance=ExtResource("5_8v2vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4312, 3.24254, -1.61647)
 
 [node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("4")
