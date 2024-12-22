@@ -122,7 +122,7 @@ func _ready():
 	shoot_timer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
 	shoot_timer.start()
 	$PlayerUI/InventoryContainer.visible = false
-	walk(0, 1, -0.1)
+	walk(0, 1, -0.1, "right")
 
 	"""
 	"edge_blaster",
@@ -135,7 +135,7 @@ func _ready():
 	"miniturret_glove"
 	"""
 	if Globle.current_weapons.size() > 0:
-		current_weapon = "blitz_gun"
+		current_weapon = "edge_blaster"
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
@@ -252,13 +252,13 @@ func _physics_process(delta):
 					if player_velocity.x < 0:
 						player_velocity.x += 0.1
 		#Checks to see if the player is talking with an npc thus restrits there movement until the player cycles through thier dialogic timeline.
-		elif Input.is_action_pressed("ui_right") and Globle.player_active == true:
-			walk(7, 1, -0.1)
+		elif Input.is_action_pressed("ui_right") and Globle.player_active == true and !player_sliding:
+			walk(7, 1, -0.1, "right")
 			$RivetArm/HandInstance/Hand.scale.y = -20
 			$AngelaArm/HandInstance/Hand.scale.y = -20
 			$PlayerHit_box.set_position(Vector3(0.649, 0, 0))
-		elif Input.is_action_pressed("ui_left") and Globle.player_active == true:
-			walk(-7, -1, 0.1)
+		elif Input.is_action_pressed("ui_left") and Globle.player_active == true and !player_sliding:
+			walk(-7, -1, 0.1, "left")
 			$RivetArm/HandInstance/Hand.scale.y = 20
 			$AngelaArm/HandInstance/Hand.scale.y = 20
 			$PlayerHit_box.set_position(Vector3((-0.649 * 3.1), 0, 0))
@@ -348,7 +348,7 @@ func _physics_process(delta):
 		else:
 			if player_direction == "right":
 				player_velocity.x = 7
-			elif player_direction == "left":
+			if player_direction == "left":
 				player_velocity.x = -7
 		state_machine.travel("Player_Slide")
 		$CollisionShape3D.scale = Vector3(2, 0.8, 0.4)
@@ -528,9 +528,11 @@ func change_weapon_texture(weapon_name : String):
 	gun_instance.texture = load(weapon_sprite_path)
 	gun_instance.show()
 
-func walk(vel, sprite_scale, _mesh_translation):
+func walk(vel, sprite_scale, _mesh_translation, direction):
 	state_machine.travel("Player_Walk")
 	player_velocity.x = vel
+	player_direction = direction
+
 	if (Globle.player_character == "Angela"):
 		$AngelaSprite.scale.x = sprite_scale
 	elif (Globle.player_character == "Rivet"):
@@ -678,7 +680,6 @@ func set_missions():
 
 	# Sets the missions. Check if the parent is of type LevelData.
 	if level is LevelData:
-		print("#")
 		for mission_param in level.mission_params:
 			var mission_finished : bool = level.mission_params.values()[mission_param_index]
 			if (!mission_finished):
@@ -772,10 +773,11 @@ func update_ammo_ui(has_ammo : int, max_ammo : int):
 	$PlayerUI/InGameUI/Ammo/AmmoMax.text = str(max_ammo)
 
 func player_slide(dec_val: float):
-	if player_velocity.x > 0:
-		player_velocity.x -= dec_val
-	if player_velocity.x < 0:
-		player_velocity.x += dec_val
+	if player_velocity.x >= 0:
+		player_velocity.x -= dec_val ** 2
+	if player_velocity.x <= 0:
+		player_velocity.x += dec_val ** 2
+	print(player_velocity.x)
 
 ### FUNCTIONS USED FUR DEBUGGING THE PLAYER SCENE. NOT USED IN THE FINAL PRODUCT.
 
