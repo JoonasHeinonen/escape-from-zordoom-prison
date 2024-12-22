@@ -176,6 +176,11 @@ func _physics_process(delta):
 		player_double_jump_used = false
 		if Input.is_action_pressed("ui_crouch"):
 			player_sliding = true
+		if Input.is_action_just_pressed("ui_crouch"):
+			if player_direction == "left":
+				player_velocity.x = -30
+			elif player_direction == "right":
+				player_velocity.x = 30
 		if Input.is_action_just_released("ui_crouch"):
 			if !is_ceiling_raycast_colliding:
 				player_sliding = false
@@ -774,10 +779,9 @@ func update_ammo_ui(has_ammo : int, max_ammo : int):
 
 func player_slide(dec_val: float):
 	if player_velocity.x >= 0:
-		player_velocity.x -= dec_val ** 2
+		player_velocity.x -= 0.1
 	if player_velocity.x <= 0:
-		player_velocity.x += dec_val ** 2
-	print(player_velocity.x)
+		player_velocity.x += 0.1
 
 ### FUNCTIONS USED FUR DEBUGGING THE PLAYER SCENE. NOT USED IN THE FINAL PRODUCT.
 
