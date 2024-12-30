@@ -5,7 +5,7 @@ extends CharacterBody3D
 var player
 
 func _ready():
-	player = get_parent().get_parent().get_parent().get_node('player')
+	player = get_tree().get_root().get_node("Level/player")
 
 func _process(_delta):
 	match (direction):

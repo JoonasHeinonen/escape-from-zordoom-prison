@@ -18,7 +18,7 @@ func _process(_delta):
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _input(event):
-	if event.is_action_pressed("ui_esc"):
+	if event.is_action_pressed("ui_esc") and Dialogic.current_timeline == null:
 		if (!Globle.player_inventory):
 			return_btn.grab_focus()
 			if (!self.visible && !get_tree().paused):

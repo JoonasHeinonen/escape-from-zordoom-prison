@@ -37,3 +37,8 @@ func _process(_delta):
 		$InGameUI.hide()
 	else:
 		$InGameUI.show()
+
+	if Dialogic.current_timeline == null:
+		self.show()
+	else:
+		self.hide()

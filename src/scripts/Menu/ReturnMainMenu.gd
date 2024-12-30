@@ -1,6 +1,5 @@
 extends MenuSceneControlBase
 
-
 var index_btn
 var sec_index_btn
 var btn_to_return_to
@@ -9,8 +8,9 @@ var btn_to_return_to
 
 func _on_BackButton_pressed():
 	$Audio/Click.play()
-	if (self.has_node('CenterContainer')) : index_btn = $CenterContainer/VBoxContainer/BackButton
-	if (self.has_node('CenterContainer')) : sec_index_btn = $CenterContainer/VBoxContainer/VBoxContainer/BackButton
+	if (self.has_node('CenterContainer')):
+		index_btn = $CenterContainer/VBoxContainer/BackButton
+		sec_index_btn = $CenterContainer/VBoxContainer/VBoxContainer/BackButton
 
 	match(get_tree().get_current_scene().get_name()):
 		"MainMenu":
@@ -20,12 +20,15 @@ func _on_BackButton_pressed():
 					btn_to_return_to = get_parent().get_node("MainMenu/CenterContainer/Buttons/LoadGameButton")
 					btn_to_return_to.grab_focus()
 				"Options":
+					#get_parent().get_node("MainMenu").show()
 					btn_to_return_to = get_parent().get_node("MainMenu/CenterContainer/Buttons/OptionsButton")
 					btn_to_return_to.grab_focus()
 				"StartGame":
+					#get_parent().get_node("MainMenu").show()
 					btn_to_return_to = get_parent().get_node("MainMenu/CenterContainer/Buttons/NewGameButton")
 					btn_to_return_to.grab_focus()
 				_:
+					#get_parent().get_node("MainMenu").show()
 					btn_to_return_to = get_parent().get_node("MainMenu/CenterContainer/Buttons/NewGameButton")
 					btn_to_return_to.grab_focus()
 		"LevelView":

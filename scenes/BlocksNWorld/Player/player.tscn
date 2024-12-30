@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://dbip5l63lixtv"]
+[gd_scene load_steps=140 format=3 uid="uid://dbip5l63lixtv"]
 
 [ext_resource type="Script" path="res://src/scripts/Player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dbel2rhwi3en2" path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" id="3"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" path="res://scenes/Menu/PlayerMenuButtons/ReturnToGameButton.tscn" id="8"]
 [ext_resource type="Script" path="res://src/scripts/Player/pause_menu_container.gd" id="9"]
 [ext_resource type="Script" path="res://src/scripts/npc/vendor_container.gd" id="10"]
-[ext_resource type="Texture2D" path="res://resources/images/characters/player/rivet/rivet_climing_Sprite_Sheet.png" id="10_intfw"]
 [ext_resource type="Theme" uid="uid://c2nmiwn8xj48a" path="res://src/theme/zordoom_resource_theme.tres" id="11"]
 [ext_resource type="Texture2D" uid="uid://cf3xp1q1vg3lm" path="res://scenes/UI/bolt-icon.png" id="12"]
 [ext_resource type="Script" path="res://src/scripts/UI/bolt_count.gd" id="13"]
@@ -610,6 +609,35 @@ states/Start/position = Vector2(369, -34)
 transitions = ["Player_Still", "Player_Walk", SubResource("44"), "Player_Walk", "Player_Still", SubResource("45"), "Player_Still", "Player_Fall", SubResource("46"), "Player_Fall", "Player_Still", SubResource("47"), "Player_Still", "Player_Melee", SubResource("48"), "Player_Melee", "Player_Still", SubResource("49"), "Player_Damage", "Player_Still", SubResource("69"), "Player_Still", "Player_Damage", SubResource("70"), "Start", "Player_Still", SubResource("AnimationNodeStateMachineTransition_ofvuq"), "Player_Still", "Player_Slide", SubResource("AnimationNodeStateMachineTransition_fx0gl"), "Player_Slide", "Player_Still", SubResource("AnimationNodeStateMachineTransition_cejvx"), "Player_Climb", "Player_Still", SubResource("AnimationNodeStateMachineTransition_3b7pj"), "Player_Still", "Player_Climb", SubResource("AnimationNodeStateMachineTransition_kkys8"), "Player_Climb_Idle", "Player_Still", SubResource("AnimationNodeStateMachineTransition_762ap"), "Player_Still", "Player_Climb_Idle", SubResource("AnimationNodeStateMachineTransition_b6hi1"), "Player_Climb", "Player_Climb_Idle", SubResource("AnimationNodeStateMachineTransition_fjkmy"), "Player_Climb_Idle", "Player_Climb", SubResource("AnimationNodeStateMachineTransition_4pi5j")]
 graph_offset = Vector2(-405.359, -159.039)
 
+[sub_resource type="Animation" id="Animation_2vjbu"]
+resource_name = "Player_Climb"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RivetSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [44, 43, 42, 41]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RivetSprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_gnm5u"]
 resource_name = "Player_Climb_Idle"
 length = 0.2
@@ -840,35 +868,6 @@ tracks/2/keys = PackedFloat32Array(0, 1, 0.8, 2, 0.4)
 [sub_resource type="Animation" id="Animation_6on03"]
 length = 0.001
 
-[sub_resource type="Animation" id="Animation_2vjbu"]
-resource_name = "Player_Climb"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RivetSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [44, 43, 42, 41]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RivetSprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ghn3u"]
 _data = {
 "Player_Climb": SubResource("Animation_2vjbu"),
@@ -1058,6 +1057,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0152588)
 shape = SubResource("5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 2, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("5")
 
 [node name="ShootingRaycast" type="CollisionShape3D" parent="."]
@@ -1093,6 +1093,7 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 5
+frame = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
@@ -1172,16 +1173,6 @@ texture_filter = 0
 texture = ExtResource("36")
 hframes = 10
 vframes = 5
-frame = 41
-
-[node name="RivetClimbingSprite" type="Sprite3D" parent="."]
-transform = Transform3D(4.31, 0, 0, 0, 4.31, 0, 0, 0, 4.31, 0, -0.145799, 0)
-visible = false
-shaded = true
-double_sided = false
-texture_filter = 0
-texture = ExtResource("10_intfw")
-hframes = 10
 frame = 1
 
 [node name="RivetArm" type="MeshInstance3D" parent="."]
@@ -1607,10 +1598,12 @@ shortcut_in_tooltip = false
 text = "RETURN"
 
 [node name="ScreenCheckBox" type="CheckBox" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons"]
-visible = false
 layout_mode = 2
 text = "Fullscreen"
 script = ExtResource("49")
+
+[node name="ListOfObjectives" type="VBoxContainer" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons"]
+layout_mode = 2
 
 [node name="ReturnToMainMenuButton" parent="PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons" instance=ExtResource("7")]
 layout_mode = 2
@@ -2003,6 +1996,10 @@ action_mode = 0
 text = "Exit"
 
 [node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="SlideTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="DamageCooloffTimer" type="Timer" parent="."]

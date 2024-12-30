@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnrfyec61yev6"]
+[gd_scene load_steps=6 format=3 uid="uid://dnrfyec61yev6"]
 
 [ext_resource type="Script" path="res://src/scripts/npc/enemies/sheep_ai.gd" id="1_pytf2"]
 [ext_resource type="Texture2D" uid="uid://vychiu7h3fo7" path="res://resources/images/characters/npc/sheep.png" id="2_ey0xd"]
@@ -11,11 +11,15 @@ states/End/position = Vector2(719, -17)
 states/Start/position = Vector2(92, -36)
 graph_offset = Vector2(-113, -77)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_crjtr"]
+
 [node name="Sheep" type="CharacterBody3D"]
 axis_lock_linear_z = true
 axis_lock_angular_z = true
 script = ExtResource("1_pytf2")
 direction = "Right"
+stances = "Patrol"
+enemy_health = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 0.4, 0, -0.4, 0)
@@ -38,4 +42,11 @@ anim_player = NodePath("../EnemyAnimationPlayer")
 wait_time = 0.5
 autostart = true
 
+[node name="AreaEnemy" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AreaEnemy"]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 0.2, 0, 0, 0)
+shape = SubResource("BoxShape3D_crjtr")
+
 [connection signal="timeout" from="JumpTimer" to="." method="_on_jump_timer_timeout"]
+[connection signal="area_entered" from="AreaEnemy" to="." method="_on_AreaEnemy_area_entered"]

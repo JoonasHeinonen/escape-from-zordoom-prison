@@ -33,7 +33,7 @@ func _ready():
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
 	#this shows as null like why bro!!
-	player = get_parent().get_parent().get_parent().get_node('player')
+	player = get_tree().get_root().get_node("Level/player")
 
 func _process(_delta):
 	if (state_machine.get_current_node() == "Enemy_Damage" and state_machine.get_current_play_position() >= 0.2):
