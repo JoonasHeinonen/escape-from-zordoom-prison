@@ -28,7 +28,6 @@ func _physics_process(delta):
 	position = position.move_toward(active_waypoint.position, delta*2)
 
 func _on_activation_area_area_entered(area):
-	print(area)
 	if (area.name == "WaypointDetectionArea"):
 		if (area.get_parent().name == active_waypoint.name):
 			if (waypoint_index == number_of_waypoints):

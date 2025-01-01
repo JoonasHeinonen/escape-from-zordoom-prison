@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="1"]
 
-[node name="Node3D" type="Node3D"]
+[node name="Level" type="Node3D"]
 
 [node name="player" parent="." instance=ExtResource("1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

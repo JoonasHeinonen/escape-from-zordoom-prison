@@ -25,14 +25,14 @@ visible = false
 texture_filter = 0
 texture = ExtResource("2")
 hframes = 10
-vframes = 4
+vframes = 5
 
 [node name="Rivet_sprite" type="Sprite3D" parent="."]
 visible = false
 texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
-vframes = 4
+vframes = 5
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(0.980252, 0, 0, 0, 1, 0, -9.31323e-10, 0, 3.42277, 1.14565e-05, 0, -0.00140555)

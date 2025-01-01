@@ -5,10 +5,8 @@ var velocity = Vector3(0, 0, 0)
 
 var player
 
-func _process(_delta):
-	player = get_parent().get_parent().get_parent().get_node('player')
-
 func _physics_process(delta):
+	player = get_tree().get_root().get_node("Level/player")
 	velocity.x = speed * delta * 1
 	translate(velocity)
 

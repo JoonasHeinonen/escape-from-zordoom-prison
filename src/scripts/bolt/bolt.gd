@@ -21,7 +21,7 @@ func _ready():
 	var bolt_index = str(random.randi_range(0,2))
 	var bolt_file_name = "bolt_" + bolt_index + ".png"
 	var resource = null
-	
+
 	if (self.has_node('TrailParticles')):
 		projectile = $TrailParticles
 

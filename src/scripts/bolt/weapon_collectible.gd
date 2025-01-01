@@ -1,7 +1,7 @@
 extends Area3D
 
 @onready var sprite = $Sprite3D
-@onready var player = get_parent().get_parent().get_node("player")
+@onready var player = get_tree().get_root().get_node("Level/player")
 
 @export_enum("edge_blaster", "blitz_gun", "gravity_bomb", "negotiator", "pulse_rifle", "ry3no", "sheepinator") var weapon: String
 

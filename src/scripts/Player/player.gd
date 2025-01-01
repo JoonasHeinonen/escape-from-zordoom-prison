@@ -21,7 +21,6 @@ const RANDOM_ANGLE = PI / 2.0
 @onready var rivet_arm = $RivetArm
 @onready var shoot_timer = $ShootTimer
 @onready var sniping_radical = $SnipingRadical
-@onready var ui_timer = $PlayerUI/UINotification/Ui_Timer
 @onready var sheepinator_raycast = $SheepinatorRaycast
 @onready var ceiling_raycast = $CeilingRaycast
 @onready var ui_containers = [
@@ -30,6 +29,8 @@ const RANDOM_ANGLE = PI / 2.0
 	$PlayerUI/VendorContainer,
 	# $PlayerUI/ArenaMenu
 ]
+@onready var ui_objectives = $PlayerUI/PauseMenuContainer/VBoxContainer/CenterRow/Buttons/ListOfObjectives
+@onready var ui_timer = $PlayerUI/UINotification/Ui_Timer
 
 @onready var level = get_parent()
 
@@ -80,6 +81,7 @@ var random = RandomNumberGenerator.new()
 ### INHERITED FUNCTIONS FROM GODOT.
 
 func _ready():
+	set_missions()
 	if check_point_enabled == true:
 		global_transform.origin = Globle.spawn_point
 	if Globle.spawn_point != Vector3.ZERO:
@@ -120,7 +122,7 @@ func _ready():
 	shoot_timer.connect("timeout", Callable(self, "_on_ShootTimer_timeout"))
 	shoot_timer.start()
 	$PlayerUI/InventoryContainer.visible = false
-	walk(0, 1, -0.1)
+	walk(0, 1, -0.1, "right")
 
 	"""
 	"edge_blaster",
@@ -133,7 +135,7 @@ func _ready():
 	"miniturret_glove"
 	"""
 	if Globle.current_weapons.size() > 0:
-		current_weapon = "blitz_gun"
+		current_weapon = "edge_blaster"
 
 	set_vendor_weapons(Globle.weapons_for_sale)
 	# TODO Invalid set index 'origin' (on base: 'Transform') with value of type 'Transform'.
@@ -157,7 +159,6 @@ func _ready():
 			$RivetArm/HandInstance/Hand.scale.y = -20
 
 func _physics_process(delta):
-	
 	# Set the audio nodes position to share the same position as the player.
 	for audio_container_child in $Audio.get_children():
 		for audio_child in audio_container_child.get_children():
@@ -175,6 +176,11 @@ func _physics_process(delta):
 		player_double_jump_used = false
 		if Input.is_action_pressed("ui_crouch"):
 			player_sliding = true
+		if Input.is_action_just_pressed("ui_crouch"):
+			if player_direction == "left":
+				player_velocity.x = -30
+			elif player_direction == "right":
+				player_velocity.x = 30
 		if Input.is_action_just_released("ui_crouch"):
 			if !is_ceiling_raycast_colliding:
 				player_sliding = false
@@ -251,13 +257,13 @@ func _physics_process(delta):
 					if player_velocity.x < 0:
 						player_velocity.x += 0.1
 		#Checks to see if the player is talking with an npc thus restrits there movement until the player cycles through thier dialogic timeline.
-		elif Input.is_action_pressed("ui_right") and Globle.player_active == true:
-			walk(7, 1, -0.1)
+		elif Input.is_action_pressed("ui_right") and Globle.player_active == true and !player_sliding:
+			walk(7, 1, -0.1, "right")
 			$RivetArm/HandInstance/Hand.scale.y = -20
 			$AngelaArm/HandInstance/Hand.scale.y = -20
 			$PlayerHit_box.set_position(Vector3(0.649, 0, 0))
-		elif Input.is_action_pressed("ui_left") and Globle.player_active == true:
-			walk(-7, -1, 0.1)
+		elif Input.is_action_pressed("ui_left") and Globle.player_active == true and !player_sliding:
+			walk(-7, -1, 0.1, "left")
 			$RivetArm/HandInstance/Hand.scale.y = 20
 			$AngelaArm/HandInstance/Hand.scale.y = 20
 			$PlayerHit_box.set_position(Vector3((-0.649 * 3.1), 0, 0))
@@ -285,6 +291,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
+		set_missions()
 
 	# Ladder logic
 	if at_ladder:
@@ -346,7 +353,7 @@ func _physics_process(delta):
 		else:
 			if player_direction == "right":
 				player_velocity.x = 7
-			elif player_direction == "left":
+			if player_direction == "left":
 				player_velocity.x = -7
 		state_machine.travel("Player_Slide")
 		$CollisionShape3D.scale = Vector3(2, 0.8, 0.4)
@@ -526,9 +533,11 @@ func change_weapon_texture(weapon_name : String):
 	gun_instance.texture = load(weapon_sprite_path)
 	gun_instance.show()
 
-func walk(vel, sprite_scale, _mesh_translation):
+func walk(vel, sprite_scale, _mesh_translation, direction):
 	state_machine.travel("Player_Walk")
 	player_velocity.x = vel
+	player_direction = direction
+
 	if (Globle.player_character == "Angela"):
 		$AngelaSprite.scale.x = sprite_scale
 	elif (Globle.player_character == "Rivet"):
@@ -659,6 +668,32 @@ func determine_character_weapon_muzzle(player : String, bullet):
 		_:
 			pass
 
+func update_missions():
+	var mission_param_index : int = 0
+	for mission_param in level.mission_params:
+		var mission_finished : bool = level.mission_params.values()[mission_param_index]
+		if (!mission_finished):
+			pass
+
+func set_missions():
+	var mission_param_index : int = 0
+
+	print("Setting missions")
+	# Clears all the mission parameters in pre-run.
+	for ui_objective in ui_objectives.get_children():
+		ui_objective.queue_free()
+
+	# Sets the missions. Check if the parent is of type LevelData.
+	if level is LevelData:
+		for mission_param in level.mission_params:
+			var mission_finished : bool = level.mission_params.values()[mission_param_index]
+			if (!mission_finished):
+				var mission_label = Label.new()
+				mission_label.text = mission_param
+				#print("MyCamelCaseStringID".gsub(/([a-z0-9])([A-Z])/) { "#{$1} #{$2}" })
+				ui_objectives.add_child(mission_label)
+				mission_param_index = mission_param_index + 1
+
 func shoot_edge_blaster():
 	if Globle.player_active == true:
 		$Audio/Weapons/EdgeBlaster.play()
@@ -710,7 +745,6 @@ func shoot_ry3no():
 
 func shoot_sheepinator():
 	if Globle.player_active == true:
-		print("Sheepinator used. All enemies are converted into sheeps.")
 		var sheepinator_overlaps = sheepinator_raycast.get_overlapping_bodies()
 		if sheepinator_overlaps.size() > 0:
 			for overlap in sheepinator_overlaps:
@@ -729,6 +763,25 @@ func shoot_miniturret_glove():
 		get_parent().add_child(bullet)
 		bullet.rotate(Vector3(0, 0, 1), (randf() - .5) * RANDOM_ANGLE)
 		determine_character_weapon_muzzle(Globle.player_character, bullet)
+
+func shoot_gun(index : int):
+	shoot_timer.start()
+	shoot_timer.wait_time = Globle.WPNS[4][index]
+	if (current_weapon != "pulse_rifle" && !player_is_aiming_with_rifle):
+		Globle.player_weapons_ammo[index] -= 1
+	elif (current_weapon == "pulse_rifle" && player_is_aiming_with_rifle):
+		Globle.player_weapons_ammo[index] -= 1
+	update_ammo_ui(Globle.player_weapons_ammo[index], Globle.WPNS[3][index])
+
+func update_ammo_ui(has_ammo : int, max_ammo : int):
+	$PlayerUI/InGameUI/Ammo/AmmoHas.text = str(has_ammo)
+	$PlayerUI/InGameUI/Ammo/AmmoMax.text = str(max_ammo)
+
+func player_slide(dec_val: float):
+	if player_velocity.x >= 0:
+		player_velocity.x -= 0.1
+	if player_velocity.x <= 0:
+		player_velocity.x += 0.1
 
 ### FUNCTIONS USED FUR DEBUGGING THE PLAYER SCENE. NOT USED IN THE FINAL PRODUCT.
 
@@ -779,25 +832,6 @@ func _on_ShootTimer_timeout():
 				if (Globle.player_weapons_ammo[7] > 0):
 					shoot_miniturret_glove()
 					shoot_gun(7)
-
-func shoot_gun(index : int):
-	shoot_timer.start()
-	shoot_timer.wait_time = Globle.WPNS[4][index]
-	if (current_weapon != "pulse_rifle" && !player_is_aiming_with_rifle):
-		Globle.player_weapons_ammo[index] -= 1
-	elif (current_weapon == "pulse_rifle" && player_is_aiming_with_rifle):
-		Globle.player_weapons_ammo[index] -= 1
-	update_ammo_ui(Globle.player_weapons_ammo[index], Globle.WPNS[3][index])
-
-func update_ammo_ui(has_ammo : int, max_ammo : int):
-	$PlayerUI/InGameUI/Ammo/AmmoHas.text = str(has_ammo)
-	$PlayerUI/InGameUI/Ammo/AmmoMax.text = str(max_ammo)
-
-func player_slide(dec_val: float):
-	if player_velocity.x > 0:
-		player_velocity.x -= dec_val
-	if player_velocity.x < 0:
-		player_velocity.x += dec_val
 
 func _on_Vendor_Choice_pressed(button, wpn):
 	match (wpn):

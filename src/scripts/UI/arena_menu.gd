@@ -4,7 +4,7 @@ const nef_head_preload = preload("res://scenes/NPC/Enemies/nef_head_enemy.tscn")
 
 @onready var arena_button = $VBoxContainer/HBoxContainer/FightButtons/Fight1
 @onready var exit_button = $VBoxContainer/HBoxContainer/FightButtons/ExitButton
-@onready var player = get_parent().get_parent()
+@onready var player = get_tree().get_root().get_node("Level/player")
 
 var bad_guy_instance = null
 var nodes = null
@@ -18,12 +18,11 @@ func _ready():
 
 func _process(_delta):
 	if (Globle.arena_menu_open && self.visible):
+		Globle.player_active = false
 		arena_button.grab_focus()
 
 func arena_menu_process(is_vendor_open, is_paused):
 	Globle.update_vendor()
-	get_tree().paused = is_vendor_open
-	get_parent().set_process_input(is_paused)
 
 func opens_menu():
 	if not check_is_open:
@@ -35,6 +34,7 @@ func opens_menu():
 func close_menu():
 	check_is_open  = false
 	Globle.arena_menu_open = false
+	Globle.player_active = true
 	arena_menu_process(false, true)
 	hide()
 

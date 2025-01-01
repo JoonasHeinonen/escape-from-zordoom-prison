@@ -22,7 +22,7 @@ func _ready():
 	meta_name = "nef_head"
 	self.set_meta("type", "enemy")
 	self.set_meta("name", "enemy")
-	player = get_parent().get_parent().get_parent().get_node('player')
+	player = get_tree().get_root().get_node("Level/player")
 	
 func _physics_process(_delta):
 	super(_delta)
@@ -59,17 +59,17 @@ func _on_AreaEnemy_area_entered(area):
 		damage_enemy(2)
 		animation_player.play("Enemy_Damage")
 # $EnemySprite.rotation.y += PI will use rotation by the y axis the sprite with the math of pi
+
 func nef_head_movement():
-	#need to refactor
+	# Need to be refactored.
 	is_flipping = false
+
 	if is_on_wall() == true:
 		# print("hits wall")
 		enemy_sprite.rotation.y += PI
 		self.enemy_speed *= -1
-		print(enemy_speed)
 		is_flipping = true
 	if not ground_finding_raycast.is_colliding():
 		self.enemy_speed *= -1
 		enemy_sprite.rotation.y += PI
 		is_flipping = true
-		print(enemy_speed)
