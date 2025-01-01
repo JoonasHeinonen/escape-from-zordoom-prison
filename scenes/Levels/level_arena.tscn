@@ -1,13 +1,12 @@
 [gd_scene load_steps=17 format=3 uid="uid://dhn0idvhadk7u"]
 
 [ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="1"]
-[ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_3cwyk"]
-[ext_resource type="PackedScene" uid="uid://c3nbx7l8pr3l4" path="res://scenes/NPC/Friendly/shark_man.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://deq5x6nf5jgqu" path="res://scenes/BlocksNWorld/ArenaWall.tscn" id="3"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="4"]
 [ext_resource type="PackedScene" uid="uid://bcw1h466ytc4b" path="res://scenes/BlocksNWorld/Tiles/arena_box_1.tscn" id="4_4ucs8"]
 [ext_resource type="PackedScene" uid="uid://c4mymser2ikwe" path="res://scenes/BlocksNWorld/Tiles/arena_box_2_concrete.tscn" id="5_8v2vf"]
 [ext_resource type="Texture2D" uid="uid://bl024yc5l5gbo" path="res://resources/images/environment/backgrounds_for_area.png" id="5_ocs4g"]
+[ext_resource type="PackedScene" uid="uid://c3nbx7l8pr3l4" path="res://scenes/NPC/Friendly/shark_man.tscn" id="6_gjc71"]
 [ext_resource type="PackedScene" uid="uid://c37kdbr4ndjew" path="res://scenes/Effects/WaterEffects/WaterEffects.tscn" id="6_gmk8l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vlhhk"]
@@ -55,7 +54,7 @@ use_particle_trails = true
 material = SubResource("StandardMaterial3D_r4xoa")
 curve = SubResource("Curve_1cym4")
 
-[node name="LevelArena" type="Node3D"]
+[node name="Level" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_o44lh")
@@ -116,6 +115,9 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.184, 4.016, 16.8594)
 
 [node name="npc" type="Node" parent="."]
+
+[node name="shark_man" parent="npc" instance=ExtResource("6_gjc71")]
+transform = Transform3D(2.287, 0, 0, 0, 2.287, 0, 0, 0, 1, -13.722, 3.4305, 0)
 
 [node name="enemies" type="Node" parent="npc"]
 
