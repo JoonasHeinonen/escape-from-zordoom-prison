@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://brce6tfu5d81"]
+[gd_scene load_steps=36 format=3 uid="uid://brce6tfu5d81"]
 
 [ext_resource type="PackedScene" uid="uid://b8qpehcteu3y3" path="res://scenes/Destructibles/Crates/ExplosiveCrate.tscn" id="1"]
 [ext_resource type="Script" path="res://src/scripts/world/levels/level_data.gd" id="1_ksfwo"]
@@ -27,7 +27,8 @@
 [ext_resource type="PackedScene" uid="uid://3j7oaadkmoi3" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
 [ext_resource type="PackedScene" uid="uid://xguugwg5v2bh" path="res://scenes/NPC/Friendly/AngelaOrRivet.tscn" id="23"]
 [ext_resource type="PackedScene" uid="uid://biefobxdqingm" path="res://scenes/BlocksNWorld/Doors/PrisonTaxi.tscn" id="24_mxcxe"]
-[ext_resource type="PackedScene" uid="uid://c8hiifeh7s72n" path="res://scenes/BlocksNWorld/Param.tscn" id="27_bh0ds"]
+[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Param.tscn" id="27_bh0ds"]
+[ext_resource type="PackedScene" uid="uid://dj23licvbrca8" path="res://scenes/GameplayElements/SwingshotOrb.tscn" id="29_hvsmr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qyk4u"]
 panorama = ExtResource("1_vxvra")
@@ -365,6 +366,17 @@ index = 2
 [node name="Param4" parent="." instance=ExtResource("27_bh0ds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.485, -2, 0)
 index = 3
+
+[node name="swingshots" type="Node" parent="."]
+
+[node name="SwingshotOrb" parent="swingshots" instance=ExtResource("29_hvsmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 70.791, -8, 0)
+
+[node name="SwingshotOrb2" parent="swingshots" instance=ExtResource("29_hvsmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.791, -8, 0)
+
+[node name="SwingshotOrb3" parent="swingshots" instance=ExtResource("29_hvsmr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.791, -8, 0)
 
 [connection signal="body_entered" from="area_of_death/death" to="area_of_death/death" method="_on_death_body_entered"]
 [connection signal="body_entered" from="checkpoint/New SpawnPoint" to="checkpoint/New SpawnPoint" method="_on_New_SpawnPoint_body_entered"]

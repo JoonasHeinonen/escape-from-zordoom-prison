@@ -66,6 +66,7 @@ var player_is_aiming_with_rifle : bool = false
 var player_is_just_damaged : bool = false
 var player_sliding : bool = false
 var is_ceiling_raycast_colliding : bool = false
+var is_swingshot_orb_in_range : bool = false;
 var ui_notification : bool = false
 
 var sniping_ray
@@ -678,7 +679,6 @@ func update_missions():
 func set_missions():
 	var mission_param_index : int = 0
 
-	print("Setting missions")
 	# Clears all the mission parameters in pre-run.
 	for ui_objective in ui_objectives.get_children():
 		ui_objective.queue_free()
