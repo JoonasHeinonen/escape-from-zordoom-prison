@@ -66,7 +66,8 @@ var player_is_aiming_with_rifle : bool = false
 var player_is_just_damaged : bool = false
 var player_sliding : bool = false
 var is_ceiling_raycast_colliding : bool = false
-var is_swingshot_orb_in_range : bool = false;
+var is_swingshot_in_use : bool = false
+var is_swingshot_orb_in_range : bool = false
 var ui_notification : bool = false
 
 var sniping_ray
@@ -289,6 +290,10 @@ func _physics_process(delta):
 					player_double_jump_used = true
 				if (Input.is_action_just_released("jump") && !is_on_floor()):
 					player_double_jump = true
+		if Input.is_action_pressed("ui_gadget"):
+			is_swingshot_in_use = true
+		elif Input.is_action_just_released("ui_gadget"):
+			is_swingshot_in_use = false
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
@@ -300,6 +305,10 @@ func _physics_process(delta):
 			climb_ladder(3)
 		if Input.is_action_pressed("ui_climb_down"):
 			climb_ladder(-3)
+
+	# Swingshot
+	if is_swingshot_in_use:
+		change_weapon_texture("swingshot")
 
 	if Input.is_action_just_released("ui_climb_down") or Input.is_action_just_released("ui_climb_up") and at_ladder:
 		climbing = false
@@ -798,7 +807,7 @@ func _on_UI_Timer_timeout():
 		$PlayerUI/UINotification/CanvasLayer/Ui_notification.hide()
 
 func _on_ShootTimer_timeout():
-	if Input.is_action_pressed("ui_ranged_attack") && !Input.is_action_pressed("ui_melee_attack") && !at_ladder:
+	if Input.is_action_pressed("ui_ranged_attack") && !Input.is_action_pressed("ui_melee_attack") && !at_ladder && !is_swingshot_in_use:
 		match current_weapon:
 			"edge_blaster":
 				if (Globle.player_weapons_ammo[0] > 0):

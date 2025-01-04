@@ -342,8 +342,8 @@ stream = ExtResource("8")
 stream = ExtResource("9")
 
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_NewGameButton_focus_exited"]
-[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MainMenuButton_pressed"]
+[connection signal="pressed" from="MainMenu/CenterContainer/Buttons/NewGameButton" to="MainMenu/CenterContainer/Buttons/NewGameButton" method="_on_MenuButton_pressed"]
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/LoadGameButton" to="MainMenu/CenterContainer/Buttons/LoadGameButton" method="_on_LoadGameButton_focus_exited"]
 [connection signal="pressed" from="MainMenu/CenterContainer/Buttons/LoadGameButton" to="MainMenu/CenterContainer/Buttons/LoadGameButton" method="_on_MainMenuButton_pressed"]
 [connection signal="focus_exited" from="MainMenu/CenterContainer/Buttons/OptionsButton" to="MainMenu/CenterContainer/Buttons/OptionsButton" method="_on_OptionsButton_focus_exited"]
