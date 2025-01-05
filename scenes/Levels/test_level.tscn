@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://3j7oaadkmoi3" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="22"]
 [ext_resource type="PackedScene" uid="uid://xguugwg5v2bh" path="res://scenes/NPC/Friendly/AngelaOrRivet.tscn" id="23"]
 [ext_resource type="PackedScene" uid="uid://biefobxdqingm" path="res://scenes/BlocksNWorld/Doors/PrisonTaxi.tscn" id="24_mxcxe"]
-[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Param.tscn" id="27_bh0ds"]
+[ext_resource type="PackedScene" uid="uid://377piqr7thmv" path="res://scenes/BlocksNWorld/Param.tscn" id="27_bh0ds"]
 [ext_resource type="PackedScene" uid="uid://dj23licvbrca8" path="res://scenes/GameplayElements/SwingshotOrb.tscn" id="29_hvsmr"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_qyk4u"]
@@ -308,7 +308,7 @@ text = "Checkpoint!"
 [node name="Timer" type="Timer" parent="checkpoint/Area3D/checkpoint/Ui_notification"]
 
 [node name="player" parent="." instance=ExtResource("8")]
-transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, -19.157, -1.0138, 0)
+transform = Transform3D(0.941785, 0, 0, 0, 0.941785, 0, 0, 0, 0.941785, 57.843, -9.0138, 0)
 collision_layer = 13
 collision_mask = 13
 player_direction = "left"

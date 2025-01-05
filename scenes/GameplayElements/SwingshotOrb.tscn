@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dj23licvbrca8"]
+[gd_scene load_steps=8 format=3 uid="uid://dj23licvbrca8"]
 
+[ext_resource type="Script" path="res://src/scripts/world/gameplay_elem.gd" id="1_g1a78"]
 [ext_resource type="Texture2D" uid="uid://d4i65kmri6g2i" path="res://resources/models/gameplay_elements/swingshot_orb_swingshot_orb.png" id="1_rwonx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1qlj0"]
@@ -70,9 +71,17 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_gxpl0")
 
-[node name="SwingshotOrb" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_3yho5"]
+
+[node name="SwingshotOrb" type="CharacterBody3D"]
+script = ExtResource("1_g1a78")
+gameplay_elem_type = "swingshot_orb"
 
 [node name="SwingshotOrb" type="MeshInstance3D" parent="."]
 transform = Transform3D(3.82137e-16, 8.74228e-09, 0.2, 0.2, -8.74228e-09, 0, 8.74228e-09, 0.2, -8.74228e-09, 0, 0, 0)
 mesh = SubResource("ArrayMesh_m1niq")
 skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+shape = SubResource("SphereShape3D_3yho5")

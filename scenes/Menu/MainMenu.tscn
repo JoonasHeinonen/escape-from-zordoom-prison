@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://dfnmugl4le2jo" path="res://resources/audio/ui/button_navigate.wav" id="9"]
 [ext_resource type="Theme" uid="uid://bk5epmeksv1nf" path="res://src/theme/zordoom_theme.tres" id="11"]
 [ext_resource type="Script" path="res://src/scripts/Menu/ReturnMainMenu.gd" id="12"]
-[ext_resource type="PackedScene" uid="uid://b0v5lvucoxv5r" path="res://scenes/UI/CharacterSelectionButton.tscn" id="13"]
+[ext_resource type="PackedScene" path="res://scenes/UI/CharacterSelectionButton.tscn" id="13"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_l6u71"]
 panorama = ExtResource("2_rfckn")

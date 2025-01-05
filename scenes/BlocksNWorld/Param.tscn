@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8hiifeh7s72n"]
+[gd_scene load_steps=4 format=3 uid="uid://377piqr7thmv"]
 
-[ext_resource type="Texture2D" uid="uid://c5iq7pwyrnp6k" path="res://resources/images/collectibles/mission_param_card.png" id="2_cfnnq"]
+[ext_resource type="Texture2D" path="res://resources/images/collectibles/mission_param_card.png" id="2_cfnnq"]
 [ext_resource type="Script" path="res://src/scripts/world/param.gd" id="2_rd3dg"]
 
 [sub_resource type="BoxShape3D" id="1"]

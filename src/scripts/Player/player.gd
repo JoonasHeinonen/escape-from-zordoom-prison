@@ -21,7 +21,7 @@ const RANDOM_ANGLE = PI / 2.0
 @onready var rivet_arm = $RivetArm
 @onready var shoot_timer = $ShootTimer
 @onready var sniping_radical = $SnipingRadical
-@onready var sheepinator_raycast = $SheepinatorRaycast
+@onready var gadget_raycast = $GadgetRaycast
 @onready var ceiling_raycast = $CeilingRaycast
 @onready var ui_containers = [
 	$PlayerUI/InventoryContainer,
@@ -309,6 +309,13 @@ func _physics_process(delta):
 	# Swingshot
 	if is_swingshot_in_use:
 		change_weapon_texture("swingshot")
+		var swingshot_orb_number : int = 0
+		var raycast_overlaps = gadget_raycast.get_overlapping_bodies()
+		if raycast_overlaps.size() > 0:
+			for overlap in raycast_overlaps:
+				if (overlap.has_meta("type") and overlap.get_meta("type") == "swingshot_orb"):
+					swingshot_orb_number += 1
+					print("Number of swingshot orbs: ", swingshot_orb_number)
 
 	if Input.is_action_just_released("ui_climb_down") or Input.is_action_just_released("ui_climb_up") and at_ladder:
 		climbing = false
@@ -754,9 +761,9 @@ func shoot_ry3no():
 
 func shoot_sheepinator():
 	if Globle.player_active == true:
-		var sheepinator_overlaps = sheepinator_raycast.get_overlapping_bodies()
-		if sheepinator_overlaps.size() > 0:
-			for overlap in sheepinator_overlaps:
+		var raycast_overlaps = gadget_raycast.get_overlapping_bodies()
+		if raycast_overlaps.size() > 0:
+			for overlap in raycast_overlaps:
 				if (overlap.get_meta("type") == "enemy"):
 					var overlap_sheep = sheep.instantiate()
 					overlap_sheep.global_transform = overlap.global_transform

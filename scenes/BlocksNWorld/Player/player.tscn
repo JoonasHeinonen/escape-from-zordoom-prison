@@ -1093,6 +1093,7 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 5
+frame = 1
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
@@ -2101,19 +2102,19 @@ volume_db = 80.0
 [node name="HealthNode0" type="AudioStreamPlayer3D" parent="Audio/Collectibles/HealthNode"]
 volume_db = 80.0
 
-[node name="SheepinatorRaycast" type="Area3D" parent="."]
+[node name="GadgetRaycast" type="Area3D" parent="."]
 
-[node name="Cone" type="MeshInstance3D" parent="SheepinatorRaycast"]
+[node name="Cone" type="MeshInstance3D" parent="GadgetRaycast"]
 transform = Transform3D(14.1268, 0, 0, 0, -4.11667e-07, -14.1268, 0, 9.41785, -6.17501e-07, 0, 0, 16.138)
 visible = false
 mesh = SubResource("ArrayMesh_jwird")
 skeleton = NodePath("")
 
-[node name="SheepinatorRaycastVisionCone" type="CollisionShape3D" parent="SheepinatorRaycast"]
+[node name="RaycastVisionCone" type="CollisionShape3D" parent="GadgetRaycast"]
 transform = Transform3D(14.1268, 0, 0, 0, -4.11667e-07, -14.1268, 0, 9.41785, -6.17501e-07, 0, 0, 16.138)
 shape = SubResource("ConvexPolygonShape3D_8qemm")
 
-[node name="SheepinatorRaycastTimer" type="Timer" parent="SheepinatorRaycast"]
+[node name="SheepinatorRaycastTimer" type="Timer" parent="GadgetRaycast"]
 wait_time = 0.25
 autostart = true
 
@@ -2176,4 +2177,4 @@ debug_shape_thickness = 5
 [connection signal="pressed" from="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons/Fight1" to="PlayerUI/ArenaMenu" method="_on_ArenaButton_pressed"]
 [connection signal="pressed" from="PlayerUI/ArenaMenu/VBoxContainer/HBoxContainer/FightButtons/ExitButton" to="PlayerUI/ArenaMenu" method="_on_ExitButton_pressed"]
 [connection signal="timeout" from="DamageCooloffTimer" to="." method="_on_DamageCooloffTimer_timeout"]
-[connection signal="timeout" from="SheepinatorRaycast/SheepinatorRaycastTimer" to="." method="_on_sheepinator_raycast_timer_timeout"]
+[connection signal="timeout" from="GadgetRaycast/SheepinatorRaycastTimer" to="." method="_on_sheepinator_raycast_timer_timeout"]
