@@ -7,3 +7,11 @@ class_name GameplayElem
 func _ready():
 	self.set_meta("type", gameplay_elem_type)
 	print(self.get_meta("type"))
+
+func _on_mouse_entered():
+	Globle.player_pointing_swingshot_orb = true
+	Globle.player_pointed_swingshot_orb = self
+
+func _on_mouse_exited():
+	Globle.player_pointing_swingshot_orb = false
+	Globle.player_pointed_swingshot_orb = null

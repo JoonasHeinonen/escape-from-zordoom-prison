@@ -309,13 +309,8 @@ func _physics_process(delta):
 	# Swingshot
 	if is_swingshot_in_use:
 		change_weapon_texture("swingshot")
-		var swingshot_orb_number : int = 0
-		var raycast_overlaps = gadget_raycast.get_overlapping_bodies()
-		if raycast_overlaps.size() > 0:
-			for overlap in raycast_overlaps:
-				if (overlap.has_meta("type") and overlap.get_meta("type") == "swingshot_orb"):
-					swingshot_orb_number += 1
-					print("Number of swingshot orbs: ", swingshot_orb_number)
+		if Globle.player_pointing_swingshot_orb:
+			print("Orb pointed: ", Globle.player_pointed_swingshot_orb)
 
 	if Input.is_action_just_released("ui_climb_down") or Input.is_action_just_released("ui_climb_up") and at_ladder:
 		climbing = false

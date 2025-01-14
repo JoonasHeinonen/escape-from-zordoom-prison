@@ -63,11 +63,13 @@ var arena_menu_open = false
 var game_fullscreen = false
 var melee_attack = false
 var player_inventory = false
+var player_pointing_swingshot_orb = false
 var vendor_active = false
 var vendor_open = false
 var player_active = true
 
 var bolts = 0
+var player_pointed_swingshot_orb = null
 
 var menu_to_return = "none"
 var player_character = "Angela"
