@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://deq5x6nf5jgqu" path="res://scenes/BlocksNWorld/ArenaWall.tscn" id="3"]
 [ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="4"]
 [ext_resource type="PackedScene" uid="uid://bcw1h466ytc4b" path="res://scenes/BlocksNWorld/Tiles/arena_box_1.tscn" id="4_4ucs8"]
-[ext_resource type="PackedScene" uid="uid://c4mymser2ikwe" path="res://scenes/BlocksNWorld/Tiles/arena_box_2_concrete.tscn" id="5_8v2vf"]
+[ext_resource type="PackedScene" path="res://scenes/BlocksNWorld/Tiles/arena_box_2_concrete.tscn" id="5_8v2vf"]
 [ext_resource type="Texture2D" uid="uid://bl024yc5l5gbo" path="res://resources/images/environment/backgrounds_for_area.png" id="5_ocs4g"]
 [ext_resource type="PackedScene" uid="uid://c3nbx7l8pr3l4" path="res://scenes/NPC/Friendly/shark_man.tscn" id="6_gjc71"]
 [ext_resource type="PackedScene" uid="uid://c37kdbr4ndjew" path="res://scenes/Effects/WaterEffects/WaterEffects.tscn" id="6_gmk8l"]

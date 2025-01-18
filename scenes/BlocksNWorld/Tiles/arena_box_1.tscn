@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bcw1h466ytc4b"]
 
-[ext_resource type="PackedScene" uid="uid://comd8rsaii3fj" path="res://resources/models/arena_assets/arena_box_1.glb" id="1_y1ix2"]
+[ext_resource type="PackedScene" uid="uid://cvlwpmigucsnh" path="res://resources/models/arena_assets/arena_box_1.glb" id="1_y1ix2"]
 
 [node name="arena_box_1" instance=ExtResource("1_y1ix2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0166206, 9.53674e-07, 0.109287)

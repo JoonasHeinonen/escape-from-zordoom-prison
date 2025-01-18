@@ -11,7 +11,3 @@ func _ready():
 func _on_mouse_entered():
 	Globle.player_pointing_swingshot_orb = true
 	Globle.player_pointed_swingshot_orb = self
-
-func _on_mouse_exited():
-	Globle.player_pointing_swingshot_orb = false
-	Globle.player_pointed_swingshot_orb = null

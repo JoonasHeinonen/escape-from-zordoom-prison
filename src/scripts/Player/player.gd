@@ -54,6 +54,7 @@ var jump = 5
 var player_health = 4
 var player_max_health
 var health_node_counter = 0
+var offset = -PI * 0.5
 
 var at_ladder : bool = false
 var climbing : bool = false
@@ -68,6 +69,7 @@ var player_sliding : bool = false
 var is_ceiling_raycast_colliding : bool = false
 var is_swingshot_in_use : bool = false
 var is_swingshot_orb_in_range : bool = false
+var is_swingshot_locked : bool = false
 var ui_notification : bool = false
 
 var sniping_ray
@@ -294,6 +296,9 @@ func _physics_process(delta):
 			is_swingshot_in_use = true
 		elif Input.is_action_just_released("ui_gadget"):
 			is_swingshot_in_use = false
+			if is_swingshot_locked:
+				is_swingshot_locked = false
+				Globle.player_pointed_swingshot_orb = null
 
 	if Input.is_action_just_released("ui_accept"):
 		Globle.update_vendor()
@@ -310,7 +315,7 @@ func _physics_process(delta):
 	if is_swingshot_in_use:
 		change_weapon_texture("swingshot")
 		if Globle.player_pointing_swingshot_orb:
-			print("Orb pointed: ", Globle.player_pointed_swingshot_orb)
+			is_swingshot_locked = true
 
 	if Input.is_action_just_released("ui_climb_down") or Input.is_action_just_released("ui_climb_up") and at_ladder:
 		climbing = false
@@ -405,10 +410,10 @@ func _process(_delta):
 
 	# Button for melee is pressed once.
 	if !Globle.player_inventory:
-		var offset = -PI * 0.5
 		var screen_pos = get_viewport().get_camera_3d().unproject_position(angela_arm.global_transform.origin)
 		var mouse_pos = get_viewport().get_mouse_position()
 		var angle = screen_pos.angle_to_point(mouse_pos)
+		var arm_transform = angela_arm.global_transform.origin
 
 		if (current_weapon != "pulse_rifle" && !player_is_aiming_with_rifle):
 			rotate_arm(0, 0, -angle + offset)
@@ -416,6 +421,17 @@ func _process(_delta):
 			rotate_arm(0, 0, -angle + offset)
 		elif (current_weapon == "pulse_rifle" && !player_is_aiming_with_rifle):
 			rotate_arm(0, 0, 0)
+		if (is_swingshot_locked && Globle.player_pointed_swingshot_orb != null):
+			var orb_pos = Vector2(
+				Globle.player_pointed_swingshot_orb.position.x,
+				Globle.player_pointed_swingshot_orb.position.y
+			)
+			var arm_pos = Vector2(arm_transform.x, arm_transform.y)
+			var swingshot_angle = arm_pos.angle_to_point(orb_pos)
+			rotate_arm(0, 0, swingshot_angle + offset)
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 	# Trying to get a return value of a method that returns "void"
 	if Globle.player_character == "Angela":
