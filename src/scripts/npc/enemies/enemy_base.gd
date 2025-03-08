@@ -4,12 +4,13 @@ class_name EnemyBase
 
 @onready var radical = preload("res://scenes/UI/GreenTargetRadical.tscn")
 
-enum elements {GROUND, WATER, AIR, STATIC}
+enum elements { GROUND, WATER, AIR, STATIC }
 
 @export_enum("Right", "Left") var direction: String
 @export_enum("Patrol", "Idle", "Aggressive") var stances: String
 
 @export var is_armored : bool = false
+@export  var has_a_turret : bool = false
 @export var enemy_health : int = 10
 @export var enemy_speed : int = 0
 
@@ -21,10 +22,13 @@ var element = null
 var stance = null
 var meta_name : String = ""
 var speed : int
+var offset = -PI * 0.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var animation_player = $EnemyAnimationPlayer
 var player
+var cannon
+
+@onready var animation_player = $EnemyAnimationPlayer
 @onready var state_machine = $EnemyAnimationTree.get("parameters/playback")
 
 func _ready():
@@ -46,6 +50,15 @@ func _physics_process(delta):
 	if (self.has_node("Audio")):
 		for audio_child in $Audio.get_children():
 			audio_child.position = Vector3(self.position.x, self.position.y, 0)
+
+	# Turret logic.
+	if has_a_turret:
+		cannon = $TurretSprite/CannonInstance
+		var cannon_transform = $TurretSprite/CannonInstance.global_transform.origin
+		var player_pos = Vector2(player.position.x, player.position.y)
+		var cannon_pos = Vector2(cannon_transform.x, cannon_transform.y)
+		var cannon_angle = cannon_pos.angle_to_point(player_pos)
+		rotate_cannon(0, 0, cannon_angle + offset)
 
 func determine_element(element, delta: float):
 	match (element):
@@ -131,6 +144,11 @@ func remove_active_radical():
 	for c in d_l:
 		if (c.name == "GreenTargetRadical"):
 			c.queue_free()
+
+func rotate_cannon(x_val : float, y_val : float, z_val : float):
+	cannon.rotation.x = x_val
+	cannon.rotation.y = y_val
+	cannon.rotation.z = z_val
 
 func walk(vel):
 	if !is_in_range:

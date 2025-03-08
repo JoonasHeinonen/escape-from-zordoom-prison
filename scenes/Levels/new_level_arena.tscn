@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3 uid="uid://cok3c2x4u7t21"]
+
+[ext_resource type="PackedScene" uid="uid://dbip5l63lixtv" path="res://scenes/BlocksNWorld/Player/player.tscn" id="1_2irdp"]
+[ext_resource type="MeshLibrary" uid="uid://dgbj31ka7hny" path="res://resources/mesh_libraries/incubator_lab_tiles.meshlib" id="2_80x6d"]
+[ext_resource type="PackedScene" uid="uid://c3nbx7l8pr3l4" path="res://scenes/NPC/Friendly/shark_man.tscn" id="3_t8sqq"]
+[ext_resource type="PackedScene" uid="uid://3j7oaadkmoi3" path="res://scenes/NPC/Enemies/nef_head_enemy.tscn" id="4_j0vg8"]
+[ext_resource type="Texture2D" uid="uid://bl024yc5l5gbo" path="res://resources/images/environment/backgrounds_for_area.png" id="5_au4yw"]
+[ext_resource type="PackedScene" uid="uid://c37kdbr4ndjew" path="res://scenes/Effects/WaterEffects/WaterEffects.tscn" id="6_idxbr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_alryf"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_f63kd"]
+sky_material = SubResource("ProceduralSkyMaterial_alryf")
+
+[sub_resource type="Environment" id="Environment_hhrid"]
+background_mode = 2
+sky = SubResource("Sky_f63kd")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ypxvq"]
+size = Vector3(4.40028, 2, 2)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h5j7b"]
+emission_shape = 3
+emission_box_extents = Vector3(10, 0.5, 10)
+direction = Vector3(0, -1, 0)
+spread = 5.0
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+color = Color(0.490196, 0.721569, 0.776471, 1)
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="Curve" id="Curve_1cym4"]
+max_value = 0.1
+_data = [Vector2(0.0148148, 0.000293963), 0.0, 0.0, 0, 0, Vector2(0.0933333, 0.0861037), 0.19897, 0.19897, 0, 0, Vector2(0.998519, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4xoa"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+use_particle_trails = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_0ofvp"]
+material = SubResource("StandardMaterial3D_r4xoa")
+curve = SubResource("Curve_1cym4")
+
+[node name="Level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hhrid")
+
+[node name="CSGBox1" type="CSGBox3D" parent="."]
+visible = false
+size = Vector3(33.6922, 1, 6.1806)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox1/StaticBody3D"]
+shape = SubResource("BoxShape3D_ypxvq")
+
+[node name="player" parent="." instance=ExtResource("1_2irdp")]
+transform = Transform3D(0.999999, 0.00172788, 0, -0.00172788, 0.999999, 0, 0, 0, 1, -10, 3.25247, 0.296367)
+
+[node name="PlayerSpawnArena" type="Marker3D" parent="." groups=["arenaSpawnPosition"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.964, 3.274, 16.7486)
+
+[node name="PlayerSpawnArena_return" type="Marker3D" parent="." groups=["playerReturnPostion"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4704, 3.6295, 0.927812)
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("2_80x6d")
+collision_layer = 3
+collision_mask = 3
+data = {
+"cells": PackedInt32Array(0, 0, 60, 1, 0, 60, 2, 0, 60, 3, 0, 60, 4, 0, 60, 5, 0, 60, 6, 0, 60, 65526, 0, 60, 65527, 0, 60, 65528, 0, 60, 65529, 0, 60, 65530, 0, 60, 65531, 0, 60, 65532, 0, 60, 65533, 0, 60, 65534, 0, 60, 65535, 0, 60, 0, 1, 60, 1, 1, 60, 2, 1, 60, 3, 1, 60, 4, 1, 60, 5, 1, 60, 6, 1, 60, 65526, 1, 60, 65527, 1, 60, 65528, 1, 60, 65529, 1, 60, 65530, 1, 60, 65531, 1, 60, 65532, 1, 60, 65533, 1, 60, 65534, 1, 60, 65535, 1, 60, 0, 2, 60, 1, 2, 60, 2, 2, 60, 3, 2, 60, 4, 2, 60, 5, 2, 60, 6, 2, 60, 65526, 2, 60, 65527, 2, 60, 65528, 2, 60, 65529, 2, 60, 65530, 2, 60, 65531, 2, 60, 65532, 2, 60, 65533, 2, 60, 65534, 2, 60, 65535, 2, 60, 0, 3, 60, 1, 3, 60, 2, 3, 60, 3, 3, 60, 4, 3, 60, 5, 3, 60, 6, 3, 60, 65526, 3, 60, 65527, 3, 60, 65528, 3, 60, 65529, 3, 60, 65530, 3, 60, 65531, 3, 60, 65532, 3, 60, 65533, 3, 60, 65534, 3, 60, 65535, 3, 60, 0, 4, 60, 1, 4, 60, 2, 4, 60, 3, 4, 60, 4, 4, 60, 5, 4, 60, 6, 4, 60, 65526, 4, 60, 65527, 4, 60, 65528, 4, 60, 65529, 4, 60, 65530, 4, 60, 65531, 4, 60, 65532, 4, 60, 65533, 4, 60, 65534, 4, 60, 65535, 4, 60, 0, 6, 61, 1, 6, 61, 2, 6, 61, 3, 6, 61, 4, 6, 61, 5, 6, 61, 6, 6, 61, 65526, 6, 61, 65527, 6, 61, 65528, 6, 61, 65529, 6, 61, 65530, 6, 61, 65531, 6, 61, 65532, 6, 61, 65533, 6, 61, 65534, 6, 61, 65535, 6, 61, 0, 7, 61, 1, 7, 61, 2, 7, 61, 3, 7, 61, 4, 7, 61, 5, 7, 61, 6, 7, 61, 65526, 7, 61, 65527, 7, 61, 65528, 7, 61, 65529, 7, 61, 65530, 7, 61, 65531, 7, 61, 65532, 7, 61, 65533, 7, 61, 65534, 7, 61, 65535, 7, 61, 0, 8, 61, 1, 8, 61, 2, 8, 61, 3, 8, 61, 4, 8, 61, 5, 8, 61, 6, 8, 61, 65526, 8, 61, 65527, 8, 61, 65528, 8, 61, 65529, 8, 61, 65530, 8, 61, 65531, 8, 61, 65532, 8, 61, 65533, 8, 61, 65534, 8, 61, 65535, 8, 61, 0, 9, 61, 1, 9, 61, 2, 9, 61, 3, 9, 61, 4, 9, 61, 5, 9, 61, 6, 9, 61, 65526, 9, 61, 65527, 9, 61, 65528, 9, 61, 65529, 9, 61, 65530, 9, 61, 65531, 9, 61, 65532, 9, 61, 65533, 9, 61, 65534, 9, 61, 65535, 9, 61, 0, 65533, 63, 1, 65533, 63, 2, 65533, 63, 3, 65533, 63, 4, 65533, 63, 5, 65533, 63, 6, 65533, 63, 65526, 65533, 63, 65527, 65533, 63, 65528, 65533, 63, 65529, 65533, 63, 65530, 65533, 63, 65531, 65533, 63, 65532, 65533, 63, 65533, 65533, 63, 65534, 65533, 63, 65535, 65533, 63, 0, 65534, 60, 1, 65534, 60, 2, 65534, 60, 3, 65534, 60, 4, 65534, 60, 5, 65534, 60, 6, 65534, 60, 65526, 65534, 60, 65527, 65534, 60, 65528, 65534, 60, 65529, 65534, 60, 65530, 65534, 60, 65531, 65534, 60, 65532, 65534, 60, 65533, 65534, 60, 65534, 65534, 60, 65535, 65534, 60, 0, 65535, 60, 1, 65535, 60, 2, 65535, 60, 3, 65535, 60, 4, 65535, 60, 5, 65535, 60, 6, 65535, 60, 65526, 65535, 60, 65527, 65535, 60, 65528, 65535, 60, 65529, 65535, 60, 65530, 65535, 60, 65531, 65535, 60, 65532, 65535, 60, 65533, 65535, 60, 65534, 65535, 60, 65535, 65535, 60)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="badGuySpawn1" type="Marker3D" parent="." groups=["badGuySpawn1"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.184, 4.016, 16.8594)
+
+[node name="npc" type="Node" parent="."]
+
+[node name="shark_man" parent="npc" instance=ExtResource("3_t8sqq")]
+transform = Transform3D(2.287, 0, 0, 0, 2.287, 0, 0, 0, 1, -13.722, 3.4305, 0)
+
+[node name="enemies" type="Node" parent="npc"]
+
+[node name="nef_head" parent="npc/enemies" instance=ExtResource("4_j0vg8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.223, 4.898, 0)
+
+[node name="background" type="Node" parent="."]
+
+[node name="Sprite3D" type="Sprite3D" parent="background"]
+transform = Transform3D(5.79765, 0, 0, 0, 5.79765, 0, 0, 0, 1, 0.0213585, 2.33916, 13.2089)
+texture_filter = 0
+texture = ExtResource("5_au4yw")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.999996, -0.00286234, 0, 0.00286234, 0.999996, 0, 0, 0, 1, -7.44152, 17.4739, 6.56856)
+amount = 1000
+lifetime = 2.0
+randomness = 0.74
+visibility_aabb = AABB(-10, -10, -10, 38.407, 20, 20)
+trail_enabled = true
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_h5j7b")
+draw_pass_1 = SubResource("RibbonTrailMesh_0ofvp")
+
+[node name="waterEffect" parent="." instance=ExtResource("6_idxbr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

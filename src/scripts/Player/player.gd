@@ -430,6 +430,15 @@ func _process(_delta):
 			var swingshot_angle = arm_pos.angle_to_point(orb_pos)
 			rotate_arm(0, 0, swingshot_angle + offset)
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+			# SWINGSHOT
+			swingshot_rope(
+				Vector3(arm_transform.x, arm_transform.y, 0),
+				Vector3(
+					Globle.player_pointed_swingshot_orb.position.x,
+					Globle.player_pointed_swingshot_orb.position.y,
+					0
+				)
+			)
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
@@ -720,6 +729,27 @@ func set_missions():
 				#print("MyCamelCaseStringID".gsub(/([a-z0-9])([A-Z])/) { "#{$1} #{$2}" })
 				ui_objectives.add_child(mission_label)
 				mission_param_index = mission_param_index + 1
+
+func swingshot_rope(swingshot_pos : Vector3, orb_pos : Vector3):
+	var line_instance := MeshInstance3D.new()
+	var immediate_mesh := ImmediateMesh.new()
+	var material := ORMMaterial3D.new()
+	
+	line_instance.mesh = immediate_mesh
+	line_instance.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	
+	immediate_mesh.surface_begin(Mesh.PRIMITIVE_LINES, material)
+	immediate_mesh.surface_add_vertex(swingshot_pos)
+	immediate_mesh.surface_add_vertex(orb_pos)
+	immediate_mesh.surface_end()
+	
+	material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	material.albedo_color = Color.WHITE_SMOKE
+
+	get_tree().get_root().add_child(line_instance)
+	await get_tree().physics_frame
+	line_instance.queue_free()
+	return line_instance
 
 func shoot_edge_blaster():
 	if Globle.player_active == true:
