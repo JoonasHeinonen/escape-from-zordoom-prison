@@ -48,7 +48,18 @@ func spawn_bad_guys_in_fight():
 	bad_guy_instance = nef_head_preload.instantiate()
 	bad_guy_instance.global_transform = spawn_point.global_transform
 	enemies_node.add_child(bad_guy_instance)
-
+	# Debugging: Check RayCast node
+	var raycast_node = bad_guy_instance.get_node("nef_head/EnemySprite/player_finding")
+	# checks if the raycast is null after you spawn from the arena menu
+	if raycast_node == null:
+		print("RayCast node is null")
+	else:
+		print("RayCast node is valid")
+		print("RayCast position: ", raycast_node.global_transform.origin)
+		print("RayCast direction: ", raycast_node.cast_to)
+	# Ensure RayCast is enabled
+	if raycast_node != null:
+		raycast_node.set_enabled(true)
 func check_current_enemies():
 	nodes = get_tree().get_nodes_in_group("nef_head")
 	for node in nodes:
