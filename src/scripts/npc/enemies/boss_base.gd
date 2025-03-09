@@ -93,7 +93,7 @@ func _on_FlamethrowerTimer_timeout():
 	shoot_flames()
 
 func _on_TurnTimer_timeout():
-	decide_direction(direction)
+	decide_direction(direction, $EnemySprite)
 
 func _on_DamageCooloffTimer_timeout():
 	is_damaged = false

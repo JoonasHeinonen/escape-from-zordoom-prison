@@ -13,8 +13,8 @@ enum elements { GROUND, WATER, AIR, STATIC }
 @export  var has_a_turret : bool = false
 @export var enemy_health : int = 10
 @export var enemy_speed : int = 0
+@export var is_alerted : bool = false
 
-var is_alerted : bool = false
 var is_dead : bool = false
 var is_in_range : bool = false
 
@@ -57,8 +57,31 @@ func _physics_process(delta):
 		var cannon_transform = $TurretSprite/CannonInstance.global_transform.origin
 		var player_pos = Vector2(player.position.x, player.position.y)
 		var cannon_pos = Vector2(cannon_transform.x, cannon_transform.y)
-		var cannon_angle = cannon_pos.angle_to_point(player_pos)
-		rotate_cannon(0, 0, cannon_angle + offset)
+		if is_in_range:
+			state_machine.travel("EnemyFire")
+			$TurretSprite.show()
+			rotate_cannon(0, 0, cannon_pos.angle_to_point(player_pos) + offset)
+		else:
+			state_machine.travel("Enemy_Idle")
+			$TurretSprite.hide()
+		if (player.position.x > self.position.x):
+			decide_direction("Left", $TurretSprite)
+			decide_direction(
+				"Left",
+				$TurretSprite/CannonInstance/CannonSprite
+			)
+			$TurretSprite/CannonInstance.position.x = 0.13
+			print("LEFT")
+			# 0.13
+		elif (player.position.x < self.position.x):
+			decide_direction("Right", $TurretSprite)
+			decide_direction(
+				"Right",
+				$TurretSprite/CannonInstance/CannonSprite
+			)
+			$TurretSprite/CannonInstance.position.x = 0.13
+			print("RIGHT")
+			# -0.13
 
 func determine_element(element, delta: float):
 	match (element):
@@ -80,7 +103,6 @@ func determine_element(element, delta: float):
 			velocity.x = enemy_speed * 1
 			set_velocity(velocity * delta)
 			move_and_slide()
-			#print(player)
 
 ## TODO Develop the stances later on.
 func determine_stance(stance: String, vel: float):
@@ -105,17 +127,17 @@ func determine_stance(stance: String, vel: float):
 func damage_enemy(health : int):
 	if (element == elements.STATIC):
 		if (player.position.x > self.position.x):
-			decide_direction("Left")
+			decide_direction("Left", $EnemySprite)
 		elif (player.position.x < self.position.x):
-			decide_direction("Right")
+			decide_direction("Right", $EnemySprite)
 	enemy_health -= health
 
-func decide_direction(d : String):
+func decide_direction(d : String, sprite):
 	if d == "Right" : 
-		$EnemySprite.flip_h = false
+		sprite.flip_h = false
 		self.scale.x = 1
 	elif d == "Left": 
-		$EnemySprite.flip_h = true
+		sprite.flip_h = true
 		self.scale.x = -1
 
 func turn_enemy(player_x : float, enemy_x : float):
