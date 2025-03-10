@@ -69,7 +69,9 @@ size = Vector3(33.6922, 1, 6.1806)
 shape = SubResource("1")
 
 [node name="player" parent="." instance=ExtResource("1")]
-transform = Transform3D(0.999999, 0.00172788, 0, -0.00172788, 0.999999, 0, 0, 0, 1, -10, 3.25247, 0.296367)
+transform = Transform3D(0.999999, 0.00172788, 0, -0.00172788, 0.999999, 0, 0, 0, 1, -9.99827, 4.25247, 0.174139)
+collision_layer = 15
+collision_mask = 15
 
 [node name="arena" type="Node" parent="."]
 
@@ -111,15 +113,15 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
-[node name="badGuySpawn1" type="Marker3D" parent="." groups=["badGuySpawn1"]]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.184, 4.016, 16.8594)
-
 [node name="npc" type="Node" parent="."]
+
+[node name="enemies" type="Node" parent="npc"]
 
 [node name="shark_man" parent="npc" instance=ExtResource("6_gjc71")]
 transform = Transform3D(2.287, 0, 0, 0, 2.287, 0, 0, 0, 1, -13.722, 3.4305, 0)
 
-[node name="enemies" type="Node" parent="npc"]
+[node name="badGuySpawn1" type="Marker3D" parent="." groups=["badGuySpawn1"]]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7.184, 4.016, 16.8594)
 
 [node name="background" type="Node" parent="."]
 
