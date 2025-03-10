@@ -44,7 +44,7 @@ func _on_player_finding_player_seen():
 		#This checks the speed if it postive or negative.
 		attack.is_left = speed > 0
 		get_parent().add_child(attack)
-		attack.global_position = $laser_muzzle.global_position
+		attack.global_position = %laser_muzzle.global_position
 		can_shoot = false
 		attack.direction = 1
 		if player_direction < 0:
