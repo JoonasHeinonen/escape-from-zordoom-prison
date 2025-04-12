@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://dbip5l63lixtv"]
+[gd_scene load_steps=141 format=3 uid="uid://dbip5l63lixtv"]
 
 [ext_resource type="Script" path="res://src/scripts/Player/player.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://dbel2rhwi3en2" path="res://resources/images/characters/player/angela/angela_sheet_init_finished_holster_weapon.png" id="3"]
@@ -48,6 +48,7 @@
 [ext_resource type="Material" path="res://resources/models/ui_elements/GreenSnipingTargetRadicalMaterial.material" id="47"]
 [ext_resource type="AudioStream" uid="uid://kmgyv27cmnrg" path="res://resources/audio/weapons/player/pulse_rifle.wav" id="48"]
 [ext_resource type="Script" path="res://src/scripts/UI/arena_menu.gd" id="49"]
+[ext_resource type="Script" path="res://src/scripts/Player/player_grappling_hook_helper.gd" id="49_qliye"]
 
 [sub_resource type="BoxShape3D" id="5"]
 size = Vector3(1, 1, 1.25415)
@@ -1093,7 +1094,6 @@ texture_filter = 0
 texture = ExtResource("3")
 hframes = 10
 vframes = 5
-frame = 2
 
 [node name="SpotLight3D" type="SpotLight3D" parent="AngelaSprite"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.115846, -0.281346, 0.10579)
@@ -1151,6 +1151,10 @@ transform = Transform3D(1, 1.77636e-15, 0, -1.77636e-15, 1, 0, 0, 0, 1, 1.07431,
 [node name="SnipingRayCast" parent="AngelaArm/HandInstance/Hand/WeaponPlaceHolder" instance=ExtResource("46")]
 transform = Transform3D(-4.37114e-08, 1, -7.10543e-15, -1, -4.37114e-08, -3.55271e-15, 0, -8.8818e-15, 1, -0.837188, -0.157588, -1.3411e-07)
 
+[node name="GrapplingHookRayCast" type="RayCast3D" parent="AngelaArm"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74226e-09, 0, -8.74228e-08, -0.1, 0, 0, 0)
+target_position = Vector3(0, -60, 0)
+
 [node name="AngelaAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_48tsd")
@@ -1173,7 +1177,7 @@ texture_filter = 0
 texture = ExtResource("36")
 hframes = 10
 vframes = 5
-frame = 2
+frame = 1
 
 [node name="RivetArm" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, -0.1, 1.50996e-07, 0, -1.50996e-08, -1, 0, 0, -0.139)
@@ -2154,6 +2158,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.138)
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 collide_with_areas = true
 debug_shape_thickness = 5
+
+[node name="GrapplingHook" type="Node" parent="." node_paths=PackedStringArray("ray")]
+script = ExtResource("49_qliye")
+ray = NodePath("../AngelaArm/GrapplingHookRayCast")
 
 [connection signal="area_entered" from="CollisionArea" to="." method="_on_CollisionArea_area_entered"]
 [connection signal="body_entered" from="TargetDetectionArea" to="TargetDetectionArea" method="_on_TargetDetectionArea_body_entered"]
